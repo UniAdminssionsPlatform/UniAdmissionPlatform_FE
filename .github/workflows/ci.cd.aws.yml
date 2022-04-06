@@ -9,7 +9,7 @@ jobs:
     name: amplify-cli-action
     env:
       awsRegion: us-east-1
-      amplifyVersion: 4.16.1
+      amplifyVersion: 4.32.1
       amplifyEnvironment: "${{ (github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/master') && 'prod' || 'dev' }}"
     runs-on: ubuntu-latest
     strategy:
