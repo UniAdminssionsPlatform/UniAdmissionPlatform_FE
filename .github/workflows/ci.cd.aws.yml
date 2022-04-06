@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: configure amplify
-        uses: ambientlight/amplify-cli-action@0.2.1
+        uses: ambientlight/amplify-cli-action@0.3.0
         with:
           amplify_cli_version: ${{ env.amplifyVersion }}
           amplify_command: configure
