@@ -39,5 +39,5 @@ jobs:
         with:
           name: frontend
           path: build
-      - run: aws s3 sync ./build s3://s3-fe-uap/
+      - run: aws s3 sync ./build s3://s3-fe-uap/ --acl public-read
 
