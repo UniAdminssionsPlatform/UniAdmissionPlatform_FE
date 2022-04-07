@@ -1,9 +1,8 @@
-name: Buid and Test
+name: Build and Deploy
 on:
   push:
     branches:
       - main
-      - develope
 jobs:
   build:
     name: Build
@@ -18,6 +17,26 @@ jobs:
           touch .env
           echo ${{secrets.REACT_APP_API_URL}} >> .env
         working-directory: ./
-      - name: Clean install
-        run: npm install
+      - run: |
+          npm ci
+          npm build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: frontend
+          path: ./build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+      - uses: actions/download-artifact@v2
+        with:
+          name: frontend
+          path: build
+      - run: aws s3 sync ./build s3://s3-fe-uap/
 
