@@ -9,8 +9,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '14'
       - name: Export .env file
@@ -18,14 +18,12 @@ jobs:
           touch .env
           echo ${{secrets.REACT_APP_API_URL}} >> .env
         working-directory: ./
-      - run: npm install
-        working-directory: ./
-      - run: npm run build
-        working-directory: ./
+      - run: |
+          npm ci
       - uses: actions/upload-artifact@v2
         with:
           name: frontend
-          path: ./build
+          path: ./jobfair-frontend/build
 
   deploy:
     needs: build
@@ -40,3 +38,5 @@ jobs:
         with:
           name: frontend
           path: build
+      - run: aws s3 sync ./build s3://s3-fe-uap/
+
