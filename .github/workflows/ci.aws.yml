@@ -1,0 +1,19 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - name: Clean install
+        run: npm install
+      - name: npm CI
+        run: npm run test
+

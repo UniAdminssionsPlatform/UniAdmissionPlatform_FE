@@ -1,14 +1,14 @@
 import axios from 'axios'
 import * as cookie from 'js-cookie'
-import {TOKEN_KEY} from '../constants/AppConst'
+import { TOKEN_KEY } from '../constants/AppConst'
 
 export const CallAPI = (
-    endpoint,
-    method = 'GET',
-    body = {},
-    params = {},
-    configHeaders = null,
-    responseType = null
+  endpoint,
+  method = 'GET',
+  body = {},
+  params = {},
+  configHeaders = null,
+  responseType = null
 ) => {
     let token = null
     var headers = configHeaders
