@@ -1,10 +1,10 @@
 import React from 'react'
-import ForgetPasswordContainer from '../../../containers/authen/ForgotPasswordContainer/ForgetPassword.container'
+import ForgotPasswordContainer from '../../../containers/authen/ForgotPasswordContainer/ForgotPassword.container'
 
 const ForgetPasswordPage = () => {
   return (
     <>
-      <ForgetPasswordContainer />
+      <ForgotPasswordContainer />
     </>
   )
 }

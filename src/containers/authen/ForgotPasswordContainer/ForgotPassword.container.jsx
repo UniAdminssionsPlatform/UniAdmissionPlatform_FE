@@ -1,14 +1,11 @@
+/* eslint-disable */
 import React from 'react'
 import ForgotPasswordComponent from '../../../components/authen/ForgotPasswordComponent/ForgotPassword.component'
 
-const onFinish = value => {
-  console.log(value)
-}
-const onFinishFailed = errorInfo => {
-  console.log('Failed:', errorInfo)
-}
+const onFinish = value => {}
+const onFinishFailed = errorInfo => {}
 
-const ForgetPasswordContainer = () => {
+const ForgotPasswordContainer = () => {
   return (
     <>
       <ForgotPasswordComponent
@@ -19,4 +16,4 @@ const ForgetPasswordContainer = () => {
   )
 }
 
-export default ForgetPasswordContainer
+export default ForgotPasswordContainer

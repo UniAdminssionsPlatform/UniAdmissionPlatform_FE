@@ -1,9 +1,8 @@
+/* eslint-disable */
 import React from 'react'
 import LoginComponent from '../../../components/authen/LoginComponent/Login.component'
 
-const onFinish = value => {
-  console.log(value)
-}
+const onFinish = value => {}
 
 const LoginContainer = () => {
   return (

@@ -12,7 +12,6 @@ const AppRouter = () => {
   return (
     <>
       <Switch>
-        // public routing path
         <Route path={PATH.INDEX} exact>
           <HomePage />
         </Route>
@@ -31,7 +30,6 @@ const AppRouter = () => {
         <Route path="/index.html">
           <Redirect to="/" />
         </Route>
-        //Handle error Page
         <Route path="*" component={() => <ErrorPage code={404} />} />
       </Switch>
     </>
