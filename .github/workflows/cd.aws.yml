@@ -18,7 +18,7 @@ jobs:
           echo ${{secrets.REACT_APP_API_URL}} >> .env
         working-directory: ./
       - run: |
-          npm ci
+          npm install --force
           npm run build
           rm -r node_modules
       - uses: actions/upload-artifact@v2
