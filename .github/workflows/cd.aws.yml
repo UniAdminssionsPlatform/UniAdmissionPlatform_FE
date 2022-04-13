@@ -20,6 +20,7 @@ jobs:
       - run: |
           npm ci
           npm run build
+          rm -r node_modules
       - uses: actions/upload-artifact@v2
         with:
           name: frontend
