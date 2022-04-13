@@ -1,24 +1,23 @@
-import logo from './logo.svg'
 import './App.css'
-
+import 'animate.css'
+import 'antd/dist/antd.min.css'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import AppRouter from './router/AppRouter'
+import ErrorHandlerComponent from './components/commons/ErrorHandler/ErrorHandler.component'
+import React, { Suspense } from 'react'
+import store from './redux-flow/index'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ErrorHandlerComponent>
+        <Provider store={store}>
+          <Suspense fallback="loading">
+            <AppRouter />
+          </Suspense>
+        </Provider>
+      </ErrorHandlerComponent>
+    </BrowserRouter>
   )
 }
 

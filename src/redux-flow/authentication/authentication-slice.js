@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createSlice } from '@reduxjs/toolkit'
 import { USER_STORAGE } from '../../constants/AppConst'
 
