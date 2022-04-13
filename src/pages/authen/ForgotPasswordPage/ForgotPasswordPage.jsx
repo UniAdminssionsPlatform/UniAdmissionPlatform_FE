@@ -1,5 +1,5 @@
 import React from 'react'
-import ForgetPasswordContainer from '../../containers/forgetPassword/ForgetPassword.container'
+import ForgetPasswordContainer from '../../../containers/authen/ForgotPasswordContainer/ForgetPassword.container'
 
 const ForgetPasswordPage = () => {
   return (
@@ -8,5 +8,4 @@ const ForgetPasswordPage = () => {
     </>
   )
 }
-
 export default ForgetPasswordPage

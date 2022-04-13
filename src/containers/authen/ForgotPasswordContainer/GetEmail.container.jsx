@@ -1,5 +1,5 @@
 import React from 'react'
-import GetEmailComponent from '../../components/authen/forgetPassword/GetEmail.component'
+import GetEmailComponent from '../../../components/authen/ForgotPasswordComponent/component/GetEmail.component'
 
 const onFinish = value => {
   console.log(value)

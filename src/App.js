@@ -1,10 +1,23 @@
-import GetEmail from './pages/forgetPassword/GetEmailPage'
-import 'antd/dist/antd.css'
+import './App.css'
+import 'animate.css'
+import 'antd/dist/antd.min.css'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import AppRouter from './router/AppRouter'
+import ErrorHandlerComponent from './components/commons/ErrorHandler/ErrorHandler.component'
+import React, { Suspense } from 'react'
+import store from './redux-flow/index'
 function App() {
   return (
-    <div>
-      <GetEmail />
-    </div>
+    <BrowserRouter>
+      <ErrorHandlerComponent>
+        <Provider store={store}>
+          <Suspense fallback="loading">
+            <AppRouter />
+          </Suspense>
+        </Provider>
+      </ErrorHandlerComponent>
+    </BrowserRouter>
   )
 }
 

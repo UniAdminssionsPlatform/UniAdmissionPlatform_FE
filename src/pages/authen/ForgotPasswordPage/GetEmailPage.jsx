@@ -1,5 +1,5 @@
 import React from 'react'
-import GetEmailContainer from '../../containers/forgetPassword/GetEmail.container'
+import GetEmailContainer from '../../../containers/authen/ForgotPasswordContainer/GetEmail.container'
 
 const GetEmailPage = () => {
   return (
@@ -8,5 +8,4 @@ const GetEmailPage = () => {
     </>
   )
 }
-
 export default GetEmailPage

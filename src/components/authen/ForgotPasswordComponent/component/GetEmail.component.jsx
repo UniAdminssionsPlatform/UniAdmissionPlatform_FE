@@ -1,6 +1,5 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
-import FogotPage from '../../../pages/forgetPassword/ForgetPasswordPage'
 
 const GetEmailComponent = props => {
   const { onFinish } = props
@@ -47,7 +46,7 @@ const GetEmailComponent = props => {
             type="danger"
             htmlType="submit"
             onClick={() => {
-              return <FogotPage />
+              //todo
             }}
           >
             Change Password

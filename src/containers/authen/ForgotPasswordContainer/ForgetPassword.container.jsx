@@ -1,10 +1,6 @@
-import ForgetPasswordComponent from '../../components/authen/forgetPassword/ForgetPassword.component'
 import React from 'react'
+import ForgotPasswordComponent from '../../../components/authen/ForgotPasswordComponent/ForgotPassword.component'
 
-const data = {
-  username: 'Tinnt',
-  passwrod: '132456'
-}
 const onFinish = value => {
   console.log(value)
 }
@@ -15,8 +11,7 @@ const onFinishFailed = errorInfo => {
 const ForgetPasswordContainer = () => {
   return (
     <>
-      <ForgetPasswordComponent
-        data={data}
+      <ForgotPasswordComponent
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       />

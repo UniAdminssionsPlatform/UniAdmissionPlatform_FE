@@ -30,16 +30,3 @@ export const CallAPI = (
     params: params
   })
 }
-
-export const CallAPIOutsite = (endpoint, method = 'GET', body) => {
-  var headers = {
-    'content-type': 'application/json'
-  }
-
-  return axios({
-    method: method,
-    url: `${endpoint}`,
-    headers: headers,
-    data: body
-  })
-}
