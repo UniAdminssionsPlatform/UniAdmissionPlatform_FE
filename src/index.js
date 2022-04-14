@@ -4,7 +4,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './App.css'
 import './styles/index.scss'
-import './index.css'
+import './index.scss'
 import 'animate.css'
 import 'antd/dist/antd.min.css'
 ReactDOM.render(
