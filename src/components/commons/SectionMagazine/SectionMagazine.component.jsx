@@ -5,7 +5,7 @@ import HeaderFilter from './HeaderFilter.component'
 const SectionMagazine = ({
   posts,
   tabs,
-  heading = 'Latest Articles 🎈 ',
+  heading = 'Thông tin tuyển sinh🎈 ',
   className = ''
 }) => {
   const [tabActive, setTabActive] = useState(tabs[0])

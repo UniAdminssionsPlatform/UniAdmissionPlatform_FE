@@ -7,7 +7,7 @@ import ButtonSecondary from '../../field/ButtonSecondary/ButtonSecondary.compone
 const HeaderFilter = ({
   tabActive,
   tabs,
-  heading = '🎈 Latest Articles',
+  heading = '🎈 Thông tin tuyển sinh',
   onClickTab
 }) => {
   return (

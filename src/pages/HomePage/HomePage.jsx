@@ -4,7 +4,13 @@ import BgGlassmorphism from '../../components/commons/BgGlassmorphism/BgGlassmor
 import SectionLargeSlider from '../../components/commons/SectionLargeSlider/SectionLargeSlider'
 import { DEMO_POSTS } from '../../data/posts'
 import SectionMagazine from '../../components/commons/SectionMagazine/SectionMagazine.component'
-const MAGAZINE1_TABS = ['all', 'Garden', 'Fitness', 'Design']
+
+const MAGAZINE1_TABS = [
+  'Tất cả',
+  'Trường học ưu thích',
+  'Trường gợi ý',
+  'trường top'
+]
 const MAGAZINE1_POSTS = DEMO_POSTS.filter((_, i) => i >= 8 && i < 16)
 const HomePage = () => (
   <div>
