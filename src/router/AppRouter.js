@@ -1,16 +1,20 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { PATH } from '../constants/Paths/Path'
-import HomePage from '../pages/HomePage'
+import HomePage from '../pages/HomePage/HomePage'
 import ErrorPage from '../pages/ErrorPage/ErrorPage'
 import LoginPage from '../pages/authen/LoginPage/Login.page'
 import ForgotPasswordPage from '../pages/authen/ForgotPasswordPage/ForgotPasswordPage'
 import ChangePasswordPage from '../pages/authen/ChangePasswordPage/ChangePasswordPage'
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage'
+import HeaderContainer from '../containers/Header/Header.container'
+import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component'
 
 const AppRouter = () => {
   return (
     <>
+      <ScrollToTop />
+      <HeaderContainer />
       <Switch>
         <Route path={PATH.INDEX} exact>
           <HomePage />
