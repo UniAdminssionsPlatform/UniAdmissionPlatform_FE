@@ -32,8 +32,7 @@
         "singleQuote": true,
         "printWidth": 120,
         "jsxSingleQuote": true,
-        "endOfLine": "auto",
-        "bracketSameLine": true
+        "endOfLine": "auto"
       }
     ],
     "no-unused-vars": [
@@ -137,7 +136,7 @@
         "functionPrototypeMethods": true
       }
     ],
-    "no-empty-function": "error",
+    "no-empty-function": "warn",
     "no-labels": "error",
     "no-lone-blocks": "error",
     "no-param-reassign": "error",
