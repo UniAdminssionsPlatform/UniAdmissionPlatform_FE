@@ -1,5 +1,5 @@
-import ncNanoId from '../utils/ncNanoId'
-import __megamenu from './jsons/__megamenu.json'
+import __megamenu from './jsons/__megamenu.json';
+import ncNanoId from '../utils/ncNanoId';
 
 const megaMenuDemo = [
   {
@@ -7,13 +7,13 @@ const megaMenuDemo = [
     image:
       'https://images.unsplash.com/photo-1497215842964-222b430dc094?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNvbXBhbnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60',
     title: 'Company',
-    items: __megamenu.map(i => ({
+    items: __megamenu.map((i) => ({
       id: ncNanoId(),
       href: '#',
       name: i.Company
     }))
   }
-]
+];
 
 const megaMenu3ItemDemo = [
   {
@@ -21,20 +21,20 @@ const megaMenu3ItemDemo = [
     image:
       'http://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29ycG9yYXRlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60',
     title: 'Corporate',
-    items: __megamenu.map(i => ({
+    items: __megamenu.map((i) => ({
       id: ncNanoId(),
       href: '#',
       name: i.Corporate
     }))
   }
-]
+];
 const demoChildMenus = [
   {
     id: ncNanoId(),
     name: 'Home Page',
     href: '/'
   }
-]
+];
 
 const templateChilds = [
   {
@@ -52,7 +52,7 @@ const templateChilds = [
     href: '/single-video/this-is-single-slug',
     name: 'Single Video'
   }
-]
+];
 
 export const NAVIGATION_DEMO = [
   {
@@ -84,4 +84,4 @@ export const NAVIGATION_DEMO = [
     type: 'dropdown',
     children: templateChilds
   }
-]
+];

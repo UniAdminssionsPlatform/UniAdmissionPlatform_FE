@@ -1,15 +1,15 @@
-import React from 'react'
-import { Form, Input, Button } from 'antd'
+import { Button, Form, Input } from 'antd';
+import React from 'react';
 
-const GetEmailComponent = props => {
-  const { onFinish } = props
+const GetEmailComponent = (props) => {
+  const { onFinish } = props;
 
-  const { onFinishFailed } = props
+  const { onFinishFailed } = props;
 
   return (
     <>
       <Form
-        name="basic"
+        name='basic'
         labelCol={{
           span: 8
         }}
@@ -21,40 +21,36 @@ const GetEmailComponent = props => {
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
+        autoComplete='off'>
         <Form.Item
-          label="Username or email"
-          name="Email"
+          label='Username or email'
+          name='Email'
           rules={[
             {
               required: true,
               message: 'Please input your email!'
             }
-          ]}
-        >
-          <Input placeholder="Username or email" />
+          ]}>
+          <Input placeholder='Username or email' />
         </Form.Item>
 
         <Form.Item
           wrapperCol={{
             offset: 8,
             span: 16
-          }}
-        >
+          }}>
           <Button
-            type="danger"
-            htmlType="submit"
+            type='danger'
+            htmlType='submit'
             onClick={() => {
               //todo
-            }}
-          >
+            }}>
             Change Password
           </Button>
         </Form.Item>
       </Form>
     </>
-  )
-}
+  );
+};
 
-export default GetEmailComponent
+export default GetEmailComponent;

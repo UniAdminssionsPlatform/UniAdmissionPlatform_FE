@@ -1,159 +1,131 @@
-import React, { useEffect, useRef, useState } from 'react'
-import BookmarkContainer from '../../containers/commons/BookmarkContainer/BookmarkContainer.container'
-import SocialsShare from '../commons/SocialsShare/SocialsShare.component'
-import MainNav from '../commons/NavBar/NavBar.component'
-import Avatar from '../commons/Avatar/Avatar.component'
-import PostCardLikeContainer from '../../containers/commons/PostCardLikeContainer/PostCardLikeContainer.container'
+import Avatar from '../commons/Avatar/Avatar.component';
+import BookmarkContainer from '../../containers/commons/BookmarkContainer/BookmarkContainer.container';
+import MainNav from '../commons/NavBar/NavBar.component';
+import PostCardLikeContainer from '../../containers/commons/PostCardLikeContainer/PostCardLikeContainer.container';
+import React, { useEffect, useRef, useState } from 'react';
+import SocialsShare from '../commons/SocialsShare/SocialsShare.component';
 
 const Header = ({ currentPage }) => {
-  const containerRef = useRef()
-  const mainMenuRef = useRef()
-  const progressBarRef = useRef()
+  const containerRef = useRef();
+  const mainMenuRef = useRef();
+  const progressBarRef = useRef();
   //
-  let prevScrollpos = window.pageYOffset
+  let prevScrollpos = window.pageYOffset;
   //
-  const showSingleMenu = currentPage?.type === '/single/:slug'
+  const showSingleMenu = currentPage?.type === '/single/:slug';
   //
-  const [isSingleHeaderShowing, setIsSingleHeaderShowing] = useState(false)
-  const [isTop, setIsTop] = useState(true)
+  const [isSingleHeaderShowing, setIsSingleHeaderShowing] = useState(false);
+  const [isTop, setIsTop] = useState(true);
 
   useEffect(() => {
-    if (!mainMenuRef.current) {
-      return
-    }
-    let mainMenuHeight = mainMenuRef.current.offsetHeight
+    if (!mainMenuRef.current) return;
+
+    const mainMenuHeight = mainMenuRef.current.offsetHeight;
 
     window.onscroll = function () {
-      showHideHeaderMenu(mainMenuHeight)
-    }
-  }, [])
+      showHideHeaderMenu(mainMenuHeight);
+    };
+  }, []);
 
   useEffect(() => {
     if (showSingleMenu) {
       setTimeout(() => {
         //  BECAUSE DIV HAVE TRANSITION 100ms
-        window.addEventListener('scroll', showHideSingleHeade)
-      }, 200)
-    } else {
-      window.removeEventListener('scroll', showHideSingleHeade)
-    }
-  }, [showSingleMenu])
+        window.addEventListener('scroll', showHideSingleHeade);
+      }, 200);
+    } else window.removeEventListener('scroll', showHideSingleHeade);
+  }, [showSingleMenu]);
 
   const handleProgressIndicator = () => {
-    const entryContent = document.querySelector('#single-entry-content')
+    const entryContent = document.querySelector('#single-entry-content');
 
-    if (!showSingleMenu || !entryContent) {
-      return
-    }
+    if (!showSingleMenu || !entryContent) return;
 
-    const totalEntryH = entryContent.offsetTop + entryContent.offsetHeight
-    let winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop
-    let scrolled = (winScroll / totalEntryH) * 100
-    if (!progressBarRef.current || scrolled > 140) {
-      return
-    }
+    const totalEntryH = entryContent.offsetTop + entryContent.offsetHeight;
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    let scrolled = (winScroll / totalEntryH) * 100;
+    if (!progressBarRef.current || scrolled > 140) return;
 
-    scrolled = scrolled > 100 ? 100 : scrolled
+    scrolled = scrolled > 100 ? 100 : scrolled;
 
-    progressBarRef.current.style.width = scrolled + '%'
-  }
+    progressBarRef.current.style.width = `${scrolled}%`;
+  };
 
   const showHideSingleHeade = () => {
-    handleProgressIndicator()
+    handleProgressIndicator();
     // SHOW _ HIDE SINGLE DESC MENU
-    let winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
-    if (winScroll > 600) {
-      setIsSingleHeaderShowing(true)
-    } else {
-      setIsSingleHeaderShowing(false)
-    }
-  }
+    if (winScroll > 600) setIsSingleHeaderShowing(true);
+    else setIsSingleHeaderShowing(false);
+  };
 
-  const showHideHeaderMenu = mainMenuHeight => {
-    let currentScrollPos = window.pageYOffset
-    if (!containerRef.current) return
-    if (!mainMenuRef.current) return
+  const showHideHeaderMenu = (mainMenuHeight) => {
+    const currentScrollPos = window.pageYOffset;
+    if (!containerRef.current) return;
+    if (!mainMenuRef.current) return;
 
     // SET BG
-    if (prevScrollpos < currentScrollPos) {
-      currentScrollPos > mainMenuHeight ? setIsTop(false) : setIsTop(true)
-    } else {
-      currentScrollPos > 0 ? setIsTop(false) : setIsTop(true)
-    }
+    if (prevScrollpos < currentScrollPos) currentScrollPos > mainMenuHeight ? setIsTop(false) : setIsTop(true);
+    else currentScrollPos > 0 ? setIsTop(false) : setIsTop(true);
 
     // SHOW _ HIDE MAIN MENU
-    if (prevScrollpos > currentScrollPos) {
-      containerRef.current.style.top = '0'
-    } else {
-      containerRef.current.style.top = `-${mainMenuHeight + 2}px`
-    }
-    prevScrollpos = currentScrollPos
-  }
+    if (prevScrollpos > currentScrollPos) containerRef.current.style.top = '0';
+    else containerRef.current.style.top = `-${mainMenuHeight + 2}px`;
+
+    prevScrollpos = currentScrollPos;
+  };
 
   const renderSingleHeader = () => {
-    if (!isSingleHeaderShowing) return null
-    const SINGLE = currentPage.data
-    const { title, author, id, bookmark } = SINGLE
+    if (!isSingleHeaderShowing) return null;
+    const SINGLE = currentPage.data;
+    const { title, author, id, bookmark } = SINGLE;
     return (
-      <div className="nc-SingleHeaderMenu dark relative py-4 bg-neutral-900 dark:bg-neutral-900">
-        <div className="container">
-          <div className="flex justify-end lg:justify-between">
-            <div className="hidden lg:flex items-center mr-3">
+      <div className='nc-SingleHeaderMenu dark relative py-4 bg-neutral-900 dark:bg-neutral-900'>
+        <div className='container'>
+          <div className='flex justify-end lg:justify-between'>
+            <div className='hidden lg:flex items-center mr-3'>
               <Avatar
                 imgUrl={author.avatar}
                 userName={author.displayName}
-                sizeClass="w-8 h-8 text-lg"
-                radius="rounded-full"
+                sizeClass='w-8 h-8 text-lg'
+                radius='rounded-full'
               />
-              <h3 className="ml-4 text-lg line-clamp-1 text-neutral-100">
-                {title}
-              </h3>
+              <h3 className='ml-4 text-lg line-clamp-1 text-neutral-100'>{title}</h3>
             </div>
 
             {/* ACTION */}
-            <div className="flex items-center space-x-2 text-neutral-800 sm:space-x-3 dark:text-neutral-100">
+            <div className='flex items-center space-x-2 text-neutral-800 sm:space-x-3 dark:text-neutral-100'>
               <PostCardLikeContainer postId={SINGLE.id} like={SINGLE.like} />
-              <BookmarkContainer
-                initBookmarked={bookmark.isBookmarked}
-                postId={id}
-              />
-              <div className="border-l border-neutral-300 dark:border-neutral-700 h-6"></div>
+              <BookmarkContainer initBookmarked={bookmark.isBookmarked} postId={id} />
+              <div className='border-l border-neutral-300 dark:border-neutral-700 h-6'></div>
               <SocialsShare
-                className="flex space-x-2"
-                itemClass="w-8 h-8 bg-neutral-100 text-lg dark:bg-neutral-800 dark:text-neutral-300"
+                className='flex space-x-2'
+                itemClass='w-8 h-8 bg-neutral-100 text-lg dark:bg-neutral-800 dark:text-neutral-300'
               />
             </div>
           </div>
         </div>
-        <div className="absolute top-full left-0 w-full progress-container h-[5px] bg-neutral-300 overflow-hidden">
-          <div
-            ref={progressBarRef}
-            className="progress-bar h-[5px] w-0 bg-teal-600"
-          />
+        <div className='absolute top-full left-0 w-full progress-container h-[5px] bg-neutral-300 overflow-hidden'>
+          <div ref={progressBarRef} className='progress-bar h-[5px] w-0 bg-teal-600' />
         </div>
       </div>
-    )
-  }
+    );
+  };
 
-  const renderMainNav = () => {
-    return <MainNav isTop={isTop} />
-  }
+  const renderMainNav = () => <MainNav isTop={isTop} />;
 
   return (
     <div
-      className="nc-Header nc-will-change-top sticky top-0 w-full left-0 right-0 z-40 transition-all"
-      ref={containerRef}
-    >
+      className='nc-Header nc-will-change-top sticky top-0 w-full left-0 right-0 z-40 transition-all'
+      ref={containerRef}>
       {/* RENDER MAIN NAVIGATION */}
       <div ref={mainMenuRef}>{renderMainNav()}</div>
 
       {/* RENDER PROGESSBAR FOR SINGLE PAGE */}
       {showSingleMenu && renderSingleHeader()}
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

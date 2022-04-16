@@ -1,11 +1,9 @@
-import React from 'react'
-import GetEmailContainer from '../../../containers/authen/ForgotPasswordContainer/GetEmail.container'
+import GetEmailContainer from '../../../containers/authen/ForgotPasswordContainer/GetEmail.container';
+import React from 'react';
 
-const GetEmailPage = () => {
-  return (
-    <>
-      <GetEmailContainer />
-    </>
-  )
-}
-export default GetEmailPage
+const GetEmailPage = () => (
+  <>
+    <GetEmailContainer />
+  </>
+);
+export default GetEmailPage;

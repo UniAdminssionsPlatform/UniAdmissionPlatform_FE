@@ -1,15 +1,13 @@
-import React from 'react'
-import RegistrationComponent from '../../../components/authen/RegistrationComponent/Registration.component'
+import React from 'react';
+import RegistrationComponent from '../../../components/authen/RegistrationComponent/Registration.component';
 
-const onFinish = value => {
-  console.log(value)
-}
+const onFinish = (value) => {
+  console.log(value);
+};
 
-const RegisterContainer = () => {
-  return (
-    <>
-      <RegistrationComponent onFinish={onFinish} />
-    </>
-  )
-}
-export default RegisterContainer
+const RegisterContainer = () => (
+  <>
+    <RegistrationComponent onFinish={onFinish} />
+  </>
+);
+export default RegisterContainer;

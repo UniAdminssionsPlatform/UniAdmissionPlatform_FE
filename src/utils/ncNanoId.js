@@ -1,4 +1,4 @@
-import { nanoid } from '@reduxjs/toolkit'
+import { nanoid } from '@reduxjs/toolkit';
 export default function ncNanoId(prefix = 'uni') {
-  return prefix + nanoid() + '_'
+  return `${prefix + nanoid()}_`;
 }

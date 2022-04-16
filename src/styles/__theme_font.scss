@@ -2,60 +2,60 @@
 @font-face {
   font-family: Inter;
   font-weight: 300;
-  src: url("../fonts/Inter/static/Inter-Light.ttf");
+  src: url('../fonts/Inter/static/Inter-Light.ttf');
 }
 @font-face {
   font-family: Inter;
   font-weight: 400;
-  src: url("../fonts/Inter/static/Inter-Regular.ttf");
+  src: url('../fonts/Inter/static/Inter-Regular.ttf');
 }
 @font-face {
   font-family: Inter;
   font-weight: 500;
-  src: url("../fonts/Inter/static/Inter-Medium.ttf");
+  src: url('../fonts/Inter/static/Inter-Medium.ttf');
 }
 @font-face {
   font-family: Inter;
   font-weight: 600;
-  src: url("../fonts/Inter/static/Inter-SemiBold.ttf");
+  src: url('../fonts/Inter/static/Inter-SemiBold.ttf');
 }
 @font-face {
   font-family: Inter;
   font-weight: 700;
-  src: url("../fonts/Inter/static/Inter-Bold.ttf");
+  src: url('../fonts/Inter/static/Inter-Bold.ttf');
 }
 
 // Courgette
 @font-face {
   font-family: Courgette;
-  src: url("../fonts/Courgette/Courgette-Regular.ttf");
+  src: url('../fonts/Courgette/Courgette-Regular.ttf');
 }
 
 // POPPINS
 @font-face {
   font-family: Poppins;
   font-weight: 300;
-  src: url("../fonts/Poppins/Poppins-Light.otf");
+  src: url('../fonts/Poppins/Poppins-Light.otf');
 }
 @font-face {
   font-family: Poppins;
   font-weight: 400;
-  src: url("../fonts/Poppins/Poppins-Regular.otf");
+  src: url('../fonts/Poppins/Poppins-Regular.otf');
 }
 @font-face {
   font-family: Poppins;
   font-weight: 500;
-  src: url("../fonts/Poppins/Poppins-Medium.otf");
+  src: url('../fonts/Poppins/Poppins-Medium.otf');
 }
 @font-face {
   font-family: Poppins;
   font-weight: 600;
-  src: url("../fonts/Poppins/Poppins-SemiBold.otf");
+  src: url('../fonts/Poppins/Poppins-SemiBold.otf');
 }
 @font-face {
   font-family: Poppins;
   font-weight: 700;
-  src: url("../fonts/Poppins/Poppins-Bold.otf");
+  src: url('../fonts/Poppins/Poppins-Bold.otf');
 }
 
 //
@@ -86,11 +86,11 @@ h4 {
 }
 
 .theme-demo-6 {
-  --font-display: "PT Sans";
-  --font-body: "Rubik";
+  --font-display: 'PT Sans';
+  --font-body: 'Rubik';
 }
 
 .theme-demo-7 {
-  --font-display: "Noto Sans Arabic";
-  --font-body: "Noto Sans Arabic";
+  --font-display: 'Noto Sans Arabic';
+  --font-body: 'Noto Sans Arabic';
 }

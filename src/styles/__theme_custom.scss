@@ -154,21 +154,21 @@
   }
 }
 
-[type="button"] {
+[type='button'] {
   -webkit-appearance: none !important;
 }
 
 //
 .nc-section-rounded-none {
-  *[class*="rounded"],
-  *[class*="nc-box"] {
+  *[class*='rounded'],
+  *[class*='nc-box'] {
     border-radius: 0 !important;
   }
 }
 
 .nc-section-rounded-md {
-  *[class*="rounded"],
-  *[class*="nc-box"] {
+  *[class*='rounded'],
+  *[class*='nc-box'] {
     @apply rounded-md #{!important};
   }
 }

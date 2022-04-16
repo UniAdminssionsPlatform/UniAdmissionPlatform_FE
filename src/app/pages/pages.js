@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   currentPage: {
     type: '/',
     data: {}
   }
-}
+};
 
 export const currentPageSlice = createSlice({
   name: 'pages',
@@ -15,15 +15,15 @@ export const currentPageSlice = createSlice({
       state = {
         ...state,
         currentPage: action.payload
-      }
-      return state
+      };
+      return state;
     }
   }
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { changeCurrentPage } = currentPageSlice.actions
+export const { changeCurrentPage } = currentPageSlice.actions;
 
-export const selectCurrentPageData = state => state.pages?.currentPage
+export const selectCurrentPageData = (state) => state.pages?.currentPage;
 
-export default currentPageSlice.reducer
+export default currentPageSlice.reducer;

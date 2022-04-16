@@ -1,14 +1,12 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 function customColors(cssVar) {
   return ({ opacityVariable, opacityValue }) => {
-    if (opacityValue !== undefined) {
-      return `rgba(var(${cssVar}), ${opacityValue})`
-    }
-    if (opacityVariable !== undefined) {
-      return `rgba(var(${cssVar}), var(${opacityVariable}, 1))`
-    }
-    return `rgb(var(${cssVar}))`
-  }
+    if (opacityValue !== undefined) return `rgba(var(${cssVar}), ${opacityValue})`;
+
+    if (opacityVariable !== undefined) return `rgba(var(${cssVar}), var(${opacityVariable}, 1))`;
+
+    return `rgb(var(${cssVar}))`;
+  };
 }
 
 module.exports = {
@@ -81,4 +79,4 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio')
   ]
-}
+};

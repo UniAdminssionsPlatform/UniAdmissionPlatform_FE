@@ -1,5 +1,5 @@
 // noFlip rtl
-[dir="rtl"] {
+[dir='rtl'] {
   .nc-BackgroundSection {
     left: auto;
     right: 50%;
@@ -21,7 +21,7 @@
 
   .nc-PostFeaturedMedia,
   .modalPhotos-single-gallery {
-    [data-glide-el="controls"] {
+    [data-glide-el='controls'] {
       @apply flex-row-reverse;
     }
   }
