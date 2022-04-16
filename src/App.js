@@ -11,7 +11,7 @@ function App() {
       <ErrorHandlerComponent>
         <Provider store={store}>
           <Suspense fallback='loading'>
-            <div className='bg-white  text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200'>
+            <div className='bg-white text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200'>
               <AppRouter />
             </div>
           </Suspense>
