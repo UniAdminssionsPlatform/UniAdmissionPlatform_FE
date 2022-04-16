@@ -1,16 +1,16 @@
-import avatar1 from '../data/avatars/1.jpg'
-import avatar2 from '../data/avatars/2.jpg'
-import avatar3 from '../data/avatars/3.jpg'
-import avatar4 from '../data/avatars/4.jpg'
-import avatar6 from '../data/avatars/6.jpg'
-import avatar7 from '../data/avatars/7.jpg'
-import avatar8 from '../data/avatars/8.jpg'
-import avatar9 from '../data/avatars/9.jpg'
-import avatar11 from '../data/avatars/11.jpg'
-import avatar12 from '../data/avatars/12.jpg'
-import avatar13 from '../data/avatars/13.jpg'
-import avatar14 from '../data/avatars/14.jpg'
-import avatar15 from '../data/avatars/15.jpg'
+import avatar1 from '../data/avatars/1.jpg';
+import avatar11 from '../data/avatars/11.jpg';
+import avatar12 from '../data/avatars/12.jpg';
+import avatar13 from '../data/avatars/13.jpg';
+import avatar14 from '../data/avatars/14.jpg';
+import avatar15 from '../data/avatars/15.jpg';
+import avatar2 from '../data/avatars/2.jpg';
+import avatar3 from '../data/avatars/3.jpg';
+import avatar4 from '../data/avatars/4.jpg';
+import avatar6 from '../data/avatars/6.jpg';
+import avatar7 from '../data/avatars/7.jpg';
+import avatar8 from '../data/avatars/8.jpg';
+import avatar9 from '../data/avatars/9.jpg';
 
 export const avatarImgs = [
   avatar1,
@@ -26,7 +26,7 @@ export const avatarImgs = [
   avatar13,
   avatar14,
   avatar15
-]
+];
 
 const personNames = [
   'Kailey Greer',
@@ -47,7 +47,7 @@ const personNames = [
   'Mike Orr',
   'Azul Hull',
   'Derick Hubbard'
-]
+];
 
 const tagNames = [
   'Life',
@@ -64,7 +64,7 @@ const tagNames = [
   'Vue',
   'Reactjs',
   'Androind'
-]
+];
 
 const featuredImgs = [
   'https://images.pexels.com/photos/1337753/pexels-photo-1337753.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -82,7 +82,7 @@ const featuredImgs = [
   'https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
   'https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
   'https://images.pexels.com/photos/848618/pexels-photo-848618.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-]
+];
 
 const imgHigtQualitys = [
   'https://images.pexels.com/photos/6168061/pexels-photo-6168061.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
@@ -94,7 +94,7 @@ const imgHigtQualitys = [
   'https://images.pexels.com/photos/4273989/pexels-photo-4273989.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/4806731/pexels-photo-4806731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/5499131/pexels-photo-5499131.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-]
+];
 
 const aTitles = [
   'adipiscing bibendum est ultricies integer quis auctor elit sed vulputate',
@@ -110,37 +110,30 @@ const aTitles = [
   'tellus integer feugiat scelerisque varius morbi enim nunc faucibus a',
   'eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci',
   'non sodales neque sodales ut etiam sit amet nisl purus'
-]
+];
 
 function _getTitleRd() {
-  return aTitles[Math.floor(Math.random() * aTitles.length)]
+  return aTitles[Math.floor(Math.random() * aTitles.length)];
 }
 
 function _getPersonNameRd() {
-  return personNames[Math.floor(Math.random() * personNames.length)]
+  return personNames[Math.floor(Math.random() * personNames.length)];
 }
 
 function _getImgRd() {
-  return featuredImgs[Math.floor(Math.random() * featuredImgs.length)]
+  return featuredImgs[Math.floor(Math.random() * featuredImgs.length)];
 }
 
 function _getImgHightQualityRd() {
-  return imgHigtQualitys[Math.floor(Math.random() * imgHigtQualitys.length)]
+  return imgHigtQualitys[Math.floor(Math.random() * imgHigtQualitys.length)];
 }
 
 function _getTagNameRd() {
-  return tagNames[Math.floor(Math.random() * tagNames.length)]
+  return tagNames[Math.floor(Math.random() * tagNames.length)];
 }
 
 function _getAvatarRd() {
-  return avatarImgs[Math.floor(Math.random() * avatarImgs.length)]
+  return avatarImgs[Math.floor(Math.random() * avatarImgs.length)];
 }
 
-export {
-  _getImgRd,
-  _getTagNameRd,
-  _getAvatarRd,
-  _getImgHightQualityRd,
-  _getTitleRd,
-  _getPersonNameRd
-}
+export { _getImgRd, _getTagNameRd, _getAvatarRd, _getImgHightQualityRd, _getTitleRd, _getPersonNameRd };

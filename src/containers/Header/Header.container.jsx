@@ -1,11 +1,11 @@
-import React from 'react'
-import { useAppSelector } from '../../app/hook'
-import { selectCurrentPageData } from '../../app/pages/pages'
-import Header from '../../components/Header/Header.component'
+import { selectCurrentPageData } from '../../app/pages/pages';
+import { useAppSelector } from '../../app/hook';
+import Header from '../../components/Header/Header.component';
+import React from 'react';
 
 const HeaderContainer = () => {
-  const currentPage = useAppSelector(selectCurrentPageData)
-  return <Header currentPage={currentPage} />
-}
+  const currentPage = useAppSelector(selectCurrentPageData);
+  return <Header currentPage={currentPage} />;
+};
 
-export default HeaderContainer
+export default HeaderContainer;

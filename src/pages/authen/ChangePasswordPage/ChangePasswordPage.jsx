@@ -1,11 +1,9 @@
-import React from 'react'
-import ChangePasswordContainer from '../../../components/authen/ChangePasswordComponent/ChangePasswordComponent'
-const ChangePasswordPage = () => {
-  return (
-    <>
-      <ChangePasswordContainer />
-    </>
-  )
-}
+import ChangePasswordContainer from '../../../components/authen/ChangePasswordComponent/ChangePasswordComponent';
+import React from 'react';
+const ChangePasswordPage = () => (
+  <>
+    <ChangePasswordContainer />
+  </>
+);
 
-export default ChangePasswordPage
+export default ChangePasswordPage;

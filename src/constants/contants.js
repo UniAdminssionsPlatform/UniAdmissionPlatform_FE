@@ -25,6 +25,6 @@ const avatarColors = [
   '#1393BD',
   '#5E13BD',
   '#E208A7'
-]
+];
 
-export { avatarColors }
+export { avatarColors };

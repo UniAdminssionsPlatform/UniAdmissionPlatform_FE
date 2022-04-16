@@ -1,11 +1,6 @@
-import React from 'react'
-import { Form, Input, Checkbox, Button } from 'antd'
-import {
-  email,
-  username,
-  password,
-  confirm
-} from '../../../validate/Registration.validate'
+import { Button, Checkbox, Form, Input } from 'antd';
+import { confirm, email, password, username } from '../../../validate/Registration.validate';
+import React from 'react';
 
 const formItemLayout = {
   labelCol: {
@@ -24,7 +19,7 @@ const formItemLayout = {
       span: 16
     }
   }
-}
+};
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
@@ -36,12 +31,12 @@ const tailFormItemLayout = {
       offset: 8
     }
   }
-}
+};
 
-const RegistrationComponent = props => {
-  const [form] = Form.useForm()
+const RegistrationComponent = (props) => {
+  const [form] = Form.useForm();
 
-  const { onFinish } = props
+  const { onFinish } = props;
 
   return (
     <div>
@@ -49,65 +44,50 @@ const RegistrationComponent = props => {
       <Form
         {...formItemLayout}
         form={form}
-        name="register"
+        name='register'
         onFinish={onFinish}
         initialValues={{
           residence: ['zhejiang', 'hangzhou', 'xihu'],
           prefix: '86'
         }}
-        scrollToFirstError
-      >
-        <Form.Item name="email" label="E-mail" rules={email}>
+        scrollToFirstError>
+        <Form.Item name='email' label='E-mail' rules={email}>
           <Input />
         </Form.Item>
 
-        <Form.Item name="username" label="Username" rules={username}>
+        <Form.Item name='username' label='Username' rules={username}>
           <Input />
         </Form.Item>
 
-        <Form.Item
-          name="password"
-          label="Password"
-          rules={password}
-          hasFeedback
-        >
+        <Form.Item name='password' label='Password' rules={password} hasFeedback>
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item name='confirm' label='Confirm Password' dependencies={['password']} hasFeedback rules={confirm}>
           <Input.Password />
         </Form.Item>
 
         <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={['password']}
-          hasFeedback
-          rules={confirm}
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item
-          name="agreement"
-          valuePropName="checked"
+          name='agreement'
+          valuePropName='checked'
           rules={[
             {
               validator: (_, value) =>
-                value
-                  ? Promise.resolve()
-                  : Promise.reject(new Error('Should accept agreement'))
+                value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement'))
             }
           ]}
-          {...tailFormItemLayout}
-        >
+          {...tailFormItemLayout}>
           <Checkbox>
-            I have read the <a href="/">agreement</a>
+            I have read the <a href='/'>agreement</a>
           </Checkbox>
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="danger" htmlType="submit" className="btn">
+          <Button type='danger' htmlType='submit' className='btn'>
             Register
           </Button>
         </Form.Item>
       </Form>
     </div>
-  )
-}
-export default RegistrationComponent
+  );
+};
+export default RegistrationComponent;

@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { createSlice } from '@reduxjs/toolkit'
-import { USER_STORAGE } from '../../constants/AppConst'
+import { createSlice } from '@reduxjs/toolkit';
+import { USER_STORAGE } from '../../constants/AppConst';
 
 const authenticationSlice = createSlice({
   name: 'authentication',
@@ -19,10 +19,10 @@ const authenticationSlice = createSlice({
         ...state,
         data: [],
         isFetching: true
-      }
+      };
     },
     fetchingLoginSuccess: (state, action) => {
-      return { ...state, isAuthUser: true, user: action.payload }
+      return { ...state, isAuthUser: true, user: action.payload };
     },
     fetchingLoginFailure: (state, action) => {
       state = {
@@ -30,13 +30,13 @@ const authenticationSlice = createSlice({
         isFetching: false,
         error: true,
         status: action.data.status
-      }
+      };
     },
-    logout: state => {
-      return { ...state, isAuthUser: false, user: {} }
+    logout: (state) => {
+      return { ...state, isAuthUser: false, user: {} };
     }
   }
-})
+});
 
-export const authenticationActions = authenticationSlice.actions
-export default authenticationSlice.reducer
+export const authenticationActions = authenticationSlice.actions;
+export default authenticationSlice.reducer;

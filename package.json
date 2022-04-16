@@ -43,12 +43,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false && react-scripts build",
+    "refactor": "npm run prettier:fix && npm run lint:fix",
     "build-bao": "react-scripts build",
     "build-proc": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix --ext .js,.jsx .",
-    "lint:fix": "eslint --quiet --fix . --ext .js,.jsx src/"
+    "lint:fix": "eslint --quiet --fix . --ext .js,.jsx src/",
+    "prettier": "npx prettier src --check",
+    "prettier:fix": "npm run prettier -- --write"
   },
   "eslintConfig": {
     "extends": [

@@ -1,29 +1,28 @@
-import { SinglePageType } from 'containers/PageSingle/PageSingle'
-import { DEMO_TAGS } from './taxonomies'
-import __comments from './jsons/__comments.json'
-import a10 from './avatars/11.jpg'
-import { DEMO_AUTHORS } from './authors'
-import { CommentType } from 'components/CommentCard/CommentCard'
-import podcastImg from 'images/podcast.jpg'
+import { CommentType } from 'components/CommentCard/CommentCard';
+import { DEMO_AUTHORS } from './authors';
+import { DEMO_TAGS } from './taxonomies';
+import { SinglePageType } from 'containers/PageSingle/PageSingle';
+import __comments from './jsons/__comments.json';
+import a10 from './avatars/11.jpg';
+import podcastImg from 'images/podcast.jpg';
 
 // function nested the comment child -- make tree comment
-const nest = (items, id) => {
-  return items
-    .filter(item => item.parentId === id)
-    .map(item => ({
+const nest = (items, id) =>
+  items
+    .filter((item) => item.parentId === id)
+    .map((item) => ({
       ...item,
       children: nest(items, item.id | null)
-    }))
-}
+    }));
 
 // AUTHOR RANDOM FOR DEMO
-const commentHasAuthor = __comments.map(item => ({
+const commentHasAuthor = __comments.map((item) => ({
   ...item,
   author: DEMO_AUTHORS[Math.floor(Math.random() * 10)]
-}))
+}));
 
 //
-export const DEMO_COMMENTS = nest(commentHasAuthor, null)
+export const DEMO_COMMENTS = nest(commentHasAuthor, null);
 export const SINGLE = {
   id: 'eae0212192f63287e0c212',
   featuredImage:
@@ -75,7 +74,7 @@ export const SINGLE = {
   tags: [DEMO_TAGS[0], DEMO_TAGS[1], DEMO_TAGS[3]],
   content: '',
   comments: DEMO_COMMENTS
-}
+};
 
 export const SINGLE_AUDIO = {
   id: 'ea21212f687e0c',
@@ -118,7 +117,7 @@ export const SINGLE_AUDIO = {
   tags: [DEMO_TAGS[0], DEMO_TAGS[1], DEMO_TAGS[3]],
   content: '',
   comments: DEMO_COMMENTS
-}
+};
 
 export const SINGLE_VIDEO = {
   id: 'ea21ac32ds-6c192f68dscx7e0c212',
@@ -162,7 +161,7 @@ export const SINGLE_VIDEO = {
   tags: [DEMO_TAGS[0], DEMO_TAGS[1], DEMO_TAGS[3]],
   content: '',
   comments: DEMO_COMMENTS
-}
+};
 
 export const SINGLE_GALLERY = {
   id: 'eae0e85fd226c192f68dscx7e220c',
@@ -212,4 +211,4 @@ export const SINGLE_GALLERY = {
   tags: [DEMO_TAGS[0], DEMO_TAGS[1], DEMO_TAGS[3]],
   content: '',
   comments: DEMO_COMMENTS
-}
+};

@@ -1,31 +1,25 @@
-const checkInViewIntersectionObserver = ({
-  target,
-  distanceFromEnd,
-  callback
-}) => {
+const checkInViewIntersectionObserver = ({ target, distanceFromEnd, callback }) => {
   const _funCallback = (entries, observer) => {
-    entries.map(entry => {
+    entries.map((entry) => {
       if (entry.isIntersecting) {
-        const unobserve = callback()
-        unobserve && observer.unobserve(entry.target)
+        const unobserve = callback();
+        unobserve && observer.unobserve(entry.target);
       }
-      return true
-    })
-  }
+      return true;
+    });
+  };
 
   if (typeof window.IntersectionObserver === 'undefined') {
-    console.error(
-      'window.IntersectionObserver === undefined! => Your Browser is Notsupport'
-    )
-    return
+    console.error('window.IntersectionObserver === undefined! => Your Browser is Notsupport');
+    return;
   }
   const options = {
     root: null,
     rootMargin: `${distanceFromEnd}px 0px`,
     threshold: 0
-  }
-  const observer = new IntersectionObserver(_funCallback, options)
-  target && observer.observe(target)
-}
+  };
+  const observer = new IntersectionObserver(_funCallback, options);
+  target && observer.observe(target);
+};
 
-export default checkInViewIntersectionObserver
+export default checkInViewIntersectionObserver;

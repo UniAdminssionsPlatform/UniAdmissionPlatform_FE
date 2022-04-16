@@ -1,17 +1,13 @@
-import React from 'react'
-import { Form, Input, Button } from 'antd'
-import {
-  confirm,
-  username,
-  password
-} from '../../../validate/ChangePassword.validate'
-import './ChangePassword.module.css'
+import './ChangePassword.module.css';
+import { Button, Form, Input } from 'antd';
+import { confirm, password, username } from '../../../validate/ChangePassword.validate';
+import React from 'react';
 
-const ChangePasswordContainer = props => {
-  const { onFinish } = props
+const ChangePasswordContainer = (props) => {
+  const { onFinish } = props;
   return (
     <Form
-      name="basic"
+      name='basic'
       labelCol={{
         span: 8
       }}
@@ -22,18 +18,17 @@ const ChangePasswordContainer = props => {
         remember: true
       }}
       onFinish={onFinish}
-      autoComplete="off"
-    >
+      autoComplete='off'>
       <h1>CHANGE PASSWORD</h1>
-      <Form.Item label="Username" name="username" rules={username}>
+      <Form.Item label='Username' name='username' rules={username}>
         <Input />
       </Form.Item>
 
-      <Form.Item label="New Password" name="password" rules={password}>
+      <Form.Item label='New Password' name='password' rules={password}>
         <Input.Password />
       </Form.Item>
 
-      <Form.Item label="Confirm Password" name="Confirm" rules={confirm}>
+      <Form.Item label='Confirm Password' name='Confirm' rules={confirm}>
         <Input.Password />
       </Form.Item>
 
@@ -41,14 +36,13 @@ const ChangePasswordContainer = props => {
         wrapperCol={{
           offset: 8,
           span: 16
-        }}
-      >
-        <Button type="danger" htmlType="submit">
+        }}>
+        <Button type='danger' htmlType='submit'>
           Change
         </Button>
       </Form.Item>
     </Form>
-  )
-}
+  );
+};
 
-export default ChangePasswordContainer
+export default ChangePasswordContainer;

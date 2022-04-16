@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const PostCardSaveAction = ({
   className = '',
@@ -6,25 +6,20 @@ const PostCardSaveAction = ({
   // classBgIcon,
   readingTime
   // postData
-}) => {
+}) => (
   // const { bookmark, id } = postData
 
-  return (
-    <div
-      className={`nc-PostCardSaveAction flex items-center space-x-2 text-xs text-neutral-700 dark:text-neutral-300 ${className}`}
-      data-nc-id="PostCardSaveAction"
-    >
-      {!hidenReadingTime && !!readingTime && (
-        <span>{readingTime} min read</span>
-      )}
+  <div
+    className={`nc-PostCardSaveAction flex items-center space-x-2 text-xs text-neutral-700 dark:text-neutral-300 ${className}`}
+    data-nc-id='PostCardSaveAction'>
+    {!hidenReadingTime && !!readingTime && <span>{readingTime} min read</span>}
 
-      {/*<BookmarkContainer*/}
-      {/*  initBookmarked={bookmark.isBookmarked}*/}
-      {/*  containerClassName={classBgIcon}*/}
-      {/*  postId={id}*/}
-      {/*/>*/}
-    </div>
-  )
-}
+    {/*<BookmarkContainer*/}
+    {/*  initBookmarked={bookmark.isBookmarked}*/}
+    {/*  containerClassName={classBgIcon}*/}
+    {/*  postId={id}*/}
+    {/*/>*/}
+  </div>
+);
 
-export default PostCardSaveAction
+export default PostCardSaveAction;
