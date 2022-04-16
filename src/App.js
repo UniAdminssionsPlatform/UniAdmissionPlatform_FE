@@ -1,5 +1,5 @@
-import {BrowserRouter} from 'react-router-dom'
-import {Provider} from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import AppRouter from './router/AppRouter'
 import ErrorHandlerComponent from './components/commons/ErrorHandler/ErrorHandler.component'
 import React, {Suspense} from 'react'
