@@ -29,7 +29,7 @@ const ForgotPasswordComponent = (props) => {
           <Input type='number' placeholder='OTP Code' />
         </Form.Item>
 
-        <Form.Item label='Password' name='password' rules={password}>
+        <Form.Item label='New Password' name='password' rules={password}>
           <Input.Password placeholder='Password' />
         </Form.Item>
 
@@ -48,7 +48,7 @@ const ForgotPasswordComponent = (props) => {
             span: 24
           }}>
           <Button type='danger' htmlType='submit'>
-            Submit
+            Change Password
           </Button>
         </Form.Item>
       </Form>

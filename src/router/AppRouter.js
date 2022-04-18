@@ -5,6 +5,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ForgotPasswordPage from '../pages/authen/ForgotPasswordPage/ForgotPasswordPage';
 import HeaderContainer from '../containers/Header/Header.container';
 import HomePage from '../pages/HomePage/HomePage';
+import ListEventPage from '../pages/event/ListEvent/ListeventPage';
 import LoginPage from '../pages/authen/LoginPage/Login.page';
 import React from 'react';
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
@@ -29,6 +30,9 @@ const AppRouter = () => (
       </Route>
       <Route path={PATH.REGISTRATION} exact>
         <RegistrationPage />
+      </Route>
+      <Route path={PATH.LIST_EVENT} exact>
+        <ListEventPage />
       </Route>
       <Route path='/index.html'>
         <Redirect to='/' />

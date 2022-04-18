@@ -27,7 +27,7 @@ const LoginComponent = (props) => {
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
-          <a className='login-form-forgot' href='/'>
+          <a className='login-form-forgot' href='/auth/forgot-password'>
             Forgot password
           </a>
         </Form.Item>
