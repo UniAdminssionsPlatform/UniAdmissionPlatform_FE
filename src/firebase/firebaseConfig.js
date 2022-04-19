@@ -1,48 +1,22 @@
-import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
-import { post, postToken } from '../service/ReadAPI';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import firebase from 'firebase';
+import { getAnalytics } from 'firebase/analytics';
+import React from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from '@firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
-const app = firebase.initializeApp();
-
-if (!firebase.apps.length);
-else firebase.app(); // if already initialized, use that one
-
-const storage = firebase.storage();
-const auth = app.auth();
-const db = app.firestore();
-const googleProvider = new firebase.auth.GoogleAuthProvider();
-
-const loginWithGoogle = async () => {
-  try {
-    const res = await auth.signInWithPopup(googleProvider);
-
-    const t = await getToken(res.user._lat);
-    console.log('firebase token: ', res.user._lat);
-    console.log('authen token: ', t.data.data.token);
-    console.log('respone', res);
-    console.log('t: ', t);
-
-    localStorage.setItem('token', t.data.data.token);
-    localStorage.setItem('NAME', res.user.displayName);
-    localStorage.setItem('EMAIL', res.user.email);
-    localStorage.setItem('IMAGE', res.user.photoURL);
-    localStorage.setItem('UID', res.user.uid);
-    localStorage.setItem('PHONE', res.user.phoneNumber);
-  } catch (err) {
-    console.log(err);
-  }
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
-
-async function getToken(fbToken) {
-  return await post('/api/v1/users/login', { token: fbToken });
-}
-
-const logout = () => {
-  auth.signOut();
-};
-
-export { auth, db, storage, loginWithGoogle, logout };
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const db = getFirestore(app);
+export { db, auth, analytics };
