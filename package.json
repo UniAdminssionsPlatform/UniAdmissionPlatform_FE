@@ -6,7 +6,10 @@
     "@ant-design/icons": "^4.7.0",
     "@firebase/auth": "^0.19.12",
     "@firebase/firestore": "^3.4.8",
+<<<<<<< HEAD
     "@firebase/storage": "^0.9.5",
+=======
+>>>>>>> main
     "@glidejs/glide": "^3.5.2",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
@@ -23,7 +26,11 @@
     "antd": "^4.19.5",
     "antd-form-builder": "^2.1.4",
     "axios": "^0.26.1",
+<<<<<<< HEAD
     "class-utils": "^0.3.6",
+=======
+    "dotenv": "^16.0.0",
+>>>>>>> main
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
@@ -35,6 +42,7 @@
     "react-dom": "^18.0.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.29.0",
+    "react-icons": "^4.3.1",
     "react-redux": "^7.2.8",
     "react-router": "^6.3.0",
     "react-router-dom": "^5.2.0",

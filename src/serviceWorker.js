@@ -121,3 +121,4 @@ export function unregister() {
       });
   }
 }
+require('dotenv').config();
