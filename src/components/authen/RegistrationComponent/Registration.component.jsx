@@ -1,93 +1,101 @@
 import { Button, Checkbox, Form, Input } from 'antd';
-import { confirm, email, password, username } from '../../../validate/Registration.validate';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { password, username } from '../../../validate/Login.validate';
 import React from 'react';
+import { Helmet } from 'react-helmet';
+import LayoutPage from '../../commons/LayoutPage/LayoutPage.component';
+import facebookSvg from '../../../images/Facebook.svg';
+import googleSvg from '../../../images/Google.svg';
 
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24
-    },
-    sm: {
-      span: 8
-    }
+const loginSocials = [
+  {
+    name: 'Continue with Facebook',
+    href: '#',
+    icon: facebookSvg
   },
-  wrapperCol: {
-    xs: {
-      span: 24
-    },
-    sm: {
-      span: 16
-    }
+  {
+    name: 'Continue with Google',
+    href: '#',
+    icon: googleSvg
   }
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0
-    },
-    sm: {
-      span: 16,
-      offset: 8
-    }
-  }
-};
-
-const RegistrationComponent = (props) => {
-  const [form] = Form.useForm();
-
-  const { onFinish } = props;
-
+];
+const RegisterComponent = (props) => {
+  const { onSubmit, loginWithGoogle, className } = props;
   return (
-    <div>
-      <h1>REGISTRATION</h1>
-      <Form
-        {...formItemLayout}
-        form={form}
-        name='register'
-        onFinish={onFinish}
-        initialValues={{
-          residence: ['zhejiang', 'hangzhou', 'xihu'],
-          prefix: '86'
-        }}
-        scrollToFirstError>
-        <Form.Item name='email' label='E-mail' rules={email}>
-          <Input />
-        </Form.Item>
+    <div className={`nc-PageLogin ${className}`} data-nc-id='PageLogin'>
+      <Helmet>
+        <title>Registration || Blog Magazine React Template</title>
+      </Helmet>
+      <LayoutPage subHeading='Welcome to UniAdmissionPlatform' headingEmoji='🔑' heading='Registration'>
+        <div className='max-w-md mx-auto space-y-6'>
+          <div className='grid gap-3'>
+            {loginSocials.map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                className='nc-will-change-transform flex w-full rounded-lg bg-primary-50 dark:bg-neutral-800 px-4 py-3 transform transition-transform sm:px-6 hover:translate-y-[-2px]'>
+                <img className='flex-shrink-0' src={item.icon} alt={item.name} />
+                <h3 className='flex-grow text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm'>
+                  {item.name}
+                </h3>
+              </a>
+            ))}
+          </div>
+          {/* OR */}
+          <div className='relative text-center'>
+            <span className='relative z-10 inline-block px-4 font-medium text-sm bg-white dark:text-neutral-400 dark:bg-neutral-900'>
+              OR
+            </span>
+          </div>
+          <Form
+            name='normal_login'
+            className='grid grid-cols-1'
+            initialValues={{
+              remember: true
+            }}
+            onFinish={onSubmit}>
+            <Form.Item name='email' rules={username}>
+              <label className='block'>
+                <span className='text-neutral-800 dark:text-neutral-200'>Email address</span>
+                <Input
+                  prefix={<UserOutlined className='site-form-item-icon' />}
+                  placeholder='email'
+                  className='text-neutral-800 dark:text-neutral-200'
+                />
+              </label>
+            </Form.Item>
+            <span className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Password</span>
+            <Form.Item name='password' rules={password}>
+              <label className='block'>
+                <Input
+                  prefix={<LockOutlined className='site-form-item-icon' />}
+                  type='password'
+                  placeholder='Password'
+                  className='mt-1'
+                />
+              </label>
+            </Form.Item>
 
-        <Form.Item name='username' label='Username' rules={username}>
-          <Input />
-        </Form.Item>
+            <Form.Item>
+              <Form.Item name='remember' valuePropName='checked' noStyle>
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
 
-        <Form.Item name='password' label='Password' rules={password} hasFeedback>
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item name='confirm' label='Confirm Password' dependencies={['password']} hasFeedback rules={confirm}>
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item
-          name='agreement'
-          valuePropName='checked'
-          rules={[
-            {
-              validator: (_, value) =>
-                value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement'))
-            }
-          ]}
-          {...tailFormItemLayout}>
-          <Checkbox>
-            I have read the <a href='/'>agreement</a>
-          </Checkbox>
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          <Button type='danger' htmlType='submit' className='btn'>
-            Register
-          </Button>
-        </Form.Item>
-      </Form>
+              <a className='login-form-forgot' href='/'>
+                Forgot password
+              </a>
+            </Form.Item>
+            <span className='block text-center text-neutral-700 dark:text-neutral-300'>
+              <Form.Item>
+                <Button type='danger' htmlType='submit' className='login-form-button w-3/6'>
+                  Log in
+                </Button>
+              </Form.Item>
+            </span>
+          </Form>
+        </div>
+      </LayoutPage>
     </div>
   );
 };
-export default RegistrationComponent;
+export default RegisterComponent;

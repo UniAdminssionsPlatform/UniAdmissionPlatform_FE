@@ -149,7 +149,7 @@
       "as-needed"
     ],
     "sort-imports-es6-autofix/sort-imports-es6": [
-      "error",
+      "warn",
       {
         "ignoreCase": false,
         "ignoreMemberSort": false,
