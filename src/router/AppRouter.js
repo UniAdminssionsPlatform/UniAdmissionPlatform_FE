@@ -6,9 +6,11 @@ import ForgotPasswordPage from '../pages/authen/ForgotPasswordPage/ForgotPasswor
 import HeaderContainer from '../containers/Header/Header.container';
 import HomePage from '../pages/HomePage/HomePage';
 import LoginPage from '../pages/authen/LoginPage/Login.page';
+import PolicyPage from '../pages/policy/PolicyPage';
 import React from 'react';
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
+import SubmitEventPage from '../pages/event/CreateEvent/CreateEventPage';
 
 const AppRouter = () => (
   <>
@@ -29,6 +31,12 @@ const AppRouter = () => (
       </Route>
       <Route path={PATH.REGISTRATION} exact>
         <RegistrationPage />
+      </Route>
+      <Route path={PATH.CREATE_EVENT} exact>
+        <SubmitEventPage />
+      </Route>
+      <Route path={PATH.POLICY} exact>
+        <PolicyPage />
       </Route>
       <Route path='/index.html'>
         <Redirect to='/' />

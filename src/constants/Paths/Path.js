@@ -3,5 +3,7 @@ export const PATH = {
   LOGIN: '/auth/login',
   FORGOT_PASSWORD: '/auth/forgot-password',
   CHANGE_PASSWORD: '/auth/change-password',
-  REGISTRATION: '/auth/registration'
+  REGISTRATION: '/auth/registration',
+  CREATE_EVENT: '/create-event',
+  POLICY: '/policy'
 };

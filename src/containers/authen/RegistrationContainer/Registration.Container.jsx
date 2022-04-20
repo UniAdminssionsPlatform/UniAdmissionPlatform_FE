@@ -1,10 +1,10 @@
+import { PATH } from '../../../constants/Paths/Path';
+import { auth } from '../../../firebase/firebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { notification } from 'antd';
+import { useHistory } from 'react-router-dom';
 import React from 'react';
 import RegistrationComponent from '../../../components/authen/RegistrationComponent/Registration.component';
-import { useHistory } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../firebase/firebaseConfig';
-import { notification } from 'antd';
-import { PATH } from '../../../constants/Paths/Path';
 
 const RegisterContainer = () => {
   const history = useHistory();
