@@ -12,16 +12,18 @@ const loginSocials = [
   {
     name: 'Continue with Facebook',
     href: '#',
-    icon: facebookSvg
+    icon: facebookSvg,
+    action: 'facebook'
   },
   {
     name: 'Continue with Google',
     href: '#',
-    icon: googleSvg
+    icon: googleSvg,
+    action: 'google'
   }
 ];
 const LoginComponent = (props) => {
-  const { onFinish, loginWithGoogle, className } = props;
+  const { onFinish, signInWithPopupOption, className } = props;
   return (
     <div className={`nc-PageLogin ${className}`} data-nc-id='PageLogin'>
       <Helmet>
@@ -31,15 +33,17 @@ const LoginComponent = (props) => {
         <div className='max-w-md mx-auto space-y-6'>
           <div className='grid gap-3'>
             {loginSocials.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className='nc-will-change-transform flex w-full rounded-lg bg-primary-50 dark:bg-neutral-800 px-4 py-3 transform transition-transform sm:px-6 hover:translate-y-[-2px]'>
-                <img className='flex-shrink-0' src={item.icon} alt={item.name} />
-                <h3 className='flex-grow text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm'>
-                  {item.name}
-                </h3>
-              </a>
+              <div onClick={() => signInWithPopupOption(item.action)}>
+                <a
+                  key={index}
+                  href={item.href}
+                  className='nc-will-change-transform flex w-full rounded-lg bg-primary-50 dark:bg-neutral-800 px-4 py-3 transform transition-transform sm:px-6 hover:translate-y-[-2px]'>
+                  <img className='flex-shrink-0' src={item.icon} alt={item.name} />
+                  <h3 className='flex-grow text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm'>
+                    {item.name}
+                  </h3>
+                </a>
+              </div>
             ))}
           </div>
           {/* OR */}

@@ -4,12 +4,14 @@ import ButtonClose from '../../field/ButtonClose/ButtonClose.component';
 import React from 'react';
 // import DarkModeContainer from "containers/DarkModeContainer/DarkModeContainer";
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import { NAVIGATION_DEMO } from '../../../data/navigation';
 import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
 import Logo from '../Logo/Logo.component';
 import SocialsList from '../SocialsList/SocialsList.component';
+import { NavigationSystem } from '../../../router/navigation/NavigationSystem';
+import { useSelector } from 'react-redux';
 
-const NavMobile = ({ data = NAVIGATION_DEMO, onClickClose }) => {
+const NavMobile = ({ onClickClose }) => {
+  const { user } = useSelector((state) => state.authentication);
   const _renderMenuChild = (item) => (
     <ul className='nav-mobile-sub-menu pl-6 pb-1 text-base'>
       {item.children?.map((i, index) => (
@@ -94,7 +96,7 @@ const NavMobile = ({ data = NAVIGATION_DEMO, onClickClose }) => {
       <div className='py-6 px-5'>
         <Logo />
         <div className='flex flex-col mt-5 text-neutral-700 dark:text-neutral-300 text-sm'>
-          <span>Discover the most outstanding articles on all topics of life. Write your stories and share them</span>
+          <span>Đừng tò mò thế chứ</span>
 
           <div className='flex justify-between items-center mt-4'>
             <SocialsList itemClass='w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300' />
@@ -105,10 +107,10 @@ const NavMobile = ({ data = NAVIGATION_DEMO, onClickClose }) => {
           <ButtonClose onClick={onClickClose} />
         </span>
       </div>
-      <ul className='flex flex-col py-6 px-2 space-y-1'>{data.map(_renderItem)}</ul>
+      <ul className='flex flex-col py-6 px-2 space-y-1'>{NavigationSystem(user?.role).map(_renderItem)}</ul>
       <div className='flex items-center justify-between py-6 px-5 space-x-4'>
         <a href='/#' target='_blank' rel='noopener noreferrer'>
-          <ButtonPrimary>Get Template</ButtonPrimary>
+          <ButtonPrimary>Log out</ButtonPrimary>
         </a>
       </div>
     </div>

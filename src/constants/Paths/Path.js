@@ -5,5 +5,15 @@ export const PATH = {
   CHANGE_PASSWORD: '/auth/change-password',
   REGISTRATION: '/auth/registration',
   CREATE_EVENT: '/create-event',
-  POLICY: '/policy'
+  POLICY: '/policy',
+  UPDATE_PROFILE: '/auth/update-profile',
+  HIGH_SCHOOL_MANAGER: {
+    INDEX: '/'
+  },
+  UNIVERSITY_MANAGER: {
+    INDEX: '/'
+  },
+  HIGH_SCHOOL_STUDENT: {
+    INDEX: '/'
+  }
 };

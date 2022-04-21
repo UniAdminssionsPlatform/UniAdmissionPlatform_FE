@@ -1,36 +1,85 @@
 /* eslint-disable */
 import React from 'react';
 import LoginComponent from '../../../components/authen/LoginComponent/Login.component';
-import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithPopup, signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
 import { auth } from '../../../firebase/firebaseConfig';
-import { notification } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { SigninHandler } from '../../../redux-flow/authentication/authentication-action';
+import { loginByFirebase } from '../../../services/UserServices';
+import { PATH } from '../../../constants/Paths/Path';
+import { HIGH_SCHOOL_MANAGER, HIGH_SCHOOL_STUDENT, UNIVERSITY_MANAGER } from '../../../constants/RoleType';
+import { handleNotification } from '../../../notification/LoginNotification';
+
+const googleProvider = new GoogleAuthProvider();
+const facebookProvier = new FacebookAuthProvider();
 
 const LoginContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const handleRedirect = (user) => {
+    if (user.need_register === true) {
+      history.push(PATH.UPDATE_PROFILE);
+    } else {
+      if (user.roles === HIGH_SCHOOL_MANAGER) {
+        history.push(PATH.HIGH_SCHOOL_MANAGER.INDEX);
+      } else if (user.roles === HIGH_SCHOOL_STUDENT) {
+        history.push(PATH.HIGH_SCHOOL_STUDENT.INDEX);
+      } else if (user.roles === UNIVERSITY_MANAGER) {
+        history.push(PATH.UNIVERSITY_MANAGER.INDEX);
+      }
+    }
+  };
+
+  const handleLoginServer = (token, email) => {
+    loginByFirebase({ firebase_token: token })
+      .then((result) => {
+        const user = result.data.data;
+        dispatch(SigninHandler(user));
+        handleNotification('success', email);
+        handleRedirect(user);
+      })
+      .catch((err) => {
+        handleNotification('error', err);
+      });
+  };
+  const signInWithPopupOption = (option) => {
+    if (option === 'google') {
+      signInWithPopup(auth, googleProvider)
+        .then((userCredential) => {
+          const user = userCredential?.user;
+          const token = userCredential?.user.accessToken;
+          handleLoginServer(token, user.displayName);
+        })
+        .catch((err) => {
+          handleNotification('error', err);
+        });
+    } else if (option === 'facebook') {
+      signInWithPopup(auth, facebookProvier)
+        .then((userCredential) => {
+          const token = userCredential?.accessToken;
+          handleLoginServer(token, 'null');
+        })
+        .catch((err) => {
+          handleNotification('error', err);
+        });
+    }
+  };
   const onSubmit = (value) => {
     signInWithEmailAndPassword(auth, value.email, value.password)
-      .then((result) => {
-        console.log(result);
-        dispatch(SigninHandler(result.user));
-        notification.success({
-          message: 'Đăng nhập thành công!',
-          description: `Bạn đã đăng nhập vào website thành công với email. ${value.email}`
-        });
+      .then((userCredential) => {
+        if (userCredential != null) {
+          handleLoginServer(userCredential.user?.accessToken, value.email);
+        }
       })
-      .catch((error) => {
-        notification.error({
-          message: 'Đăng nhập thất bại!',
-          description: `[${error.code}] Sai email hoặc mật khẩu!`
-        });
+      .catch((err) => {
+        handleNotification('error', err);
       });
   };
   return (
     <>
-      <LoginComponent onFinish={onSubmit} loginWithGoogle={signInWithPopup} />
+      <LoginComponent onFinish={onSubmit} signInWithPopupOption={signInWithPopupOption} />
     </>
   );
 };
