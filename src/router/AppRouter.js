@@ -43,6 +43,7 @@ const AppRouter = () => (
       </Route>
       <Route path='*' component={() => <ErrorPage code={404} />} />
     </Switch>
+
   </>
 );
 export default AppRouter;

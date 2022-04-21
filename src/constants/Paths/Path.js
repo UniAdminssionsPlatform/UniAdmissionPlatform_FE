@@ -3,7 +3,14 @@ export const PATH = {
   LOGIN: '/auth/login',
   FORGOT_PASSWORD: '/auth/forgot-password',
   CHANGE_PASSWORD: '/auth/change-password',
-  REGISTRATION: '/auth/registration',
-  LIST_EVENT: '/list-event',
-  STUDENT_PROFILES: '/student-profile'
+  UPDATE_PROFILE: '/auth/update-profile',
+  HIGH_SCHOOL_MANAGER: {
+    INDEX: '/'
+  },
+  UNIVERSITY_MANAGER: {
+    INDEX: '/'
+  },
+  HIGH_SCHOOL_STUDENT: {
+    INDEX: '/'
+  }
 };
