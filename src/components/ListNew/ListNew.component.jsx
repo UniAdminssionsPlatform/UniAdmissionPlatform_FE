@@ -1,22 +1,22 @@
-import { DEMO_AUTHORS } from '../../../data/authors';
-import { DEMO_CATEGORIES } from '../../../data/taxonomies';
-import { DEMO_POSTS } from '../../../data/posts';
 import { Helmet } from 'react-helmet';
-import ArchiveFilterListBox from '../../commons/ArchiveFilterListBox/ArchiveFilterListBox.component';
-import Avatar from '../../commons/Avatar/Avatar.component';
-import BackgroundSection from '../../commons/BackgroundSection/BackgroundSection.component';
-import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
-import ButtonSecondary from '../../field/ButtonSecondary/ButtonSecondary.component';
-import Card11 from '../../commons/Card/Card11/Card11.component';
-import HeadBackgroundCommon from '../../commons/HeadBackgroundCommon/HeadBackgroundCommon.component';
-import Nav from '../../commons/Nav/Nav.component';
-import NavItem from '../../commons/NavItem/NavItem.component';
-import Pagination from '../../commons/Pagination/Pagination';
-import React, { useState } from 'react';
-import SectionGridCategoryBox from '../../commons/SectionGridCategoryBox/SectionGridCategoryBox.component';
-import SectionSliderNewAuthors from '../../commons/SectionSliderNewAuthors/SectionSliderNewAuthors.component';
-import SectionSubscribe2 from '../../commons/SectionSubscribe2/SectionSubscribe2.component';
-import SocialsList from '../../commons/SocialsList/SocialsList.component';
+
+import HeadBackgroundCommon from '../commons/HeadBackgroundCommon/HeadBackgroundCommon.component';
+import Card11 from '../commons/Card/Card11/Card11.component';
+import ButtonPrimary from '../field/ButtonPrimary/ButtonPrimary.component';
+import Pagination from '../commons/Pagination/Pagination';
+import BackgroundSection from '../commons/BackgroundSection/BackgroundSection.component';
+import SectionGridCategoryBox from '../commons/SectionGridCategoryBox/SectionGridCategoryBox.component';
+import ButtonSecondary from '../field/ButtonSecondary/ButtonSecondary.component';
+import SectionSliderNewAuthors from '../commons/SectionSliderNewAuthors/SectionSliderNewAuthors.component';
+import SocialsList from '../commons/SocialsList/SocialsList.component';
+import NavItem from '../commons/NavItem/NavItem.component';
+import { DEMO_POSTS } from '../../data/posts';
+import { DEMO_AUTHORS } from '../../data/authors';
+import Avatar from '../commons/Avatar/Avatar.component';
+import ArchiveFilterListBox from '../commons/ArchiveFilterListBox/ArchiveFilterListBox.component';
+import { DEMO_CATEGORIES } from '../../data/taxonomies';
+import { useState } from 'react';
+import Nav from '../commons/Nav/Nav.component';
 
 const posts = DEMO_POSTS.filter((_, i) => i < 12);
 const AUTHOR = DEMO_AUTHORS[0];
@@ -29,7 +29,7 @@ const FILTERS = [
 ];
 const TABS = ['Articles', 'Favorites', 'Saved'];
 
-const StudentProfileComponent = ({ className }) => {
+const ListNewComponent = ({ className }) => {
   const [tabActive, setTabActive] = useState(TABS[0]);
 
   const handleClickTab = (item) => {
@@ -111,10 +111,10 @@ const StudentProfileComponent = ({ className }) => {
         />
 
         {/* SUBCRIBES */}
-        <SectionSubscribe2 />
+        {/*<SectionSubscribe2 />*/}
       </div>
     </div>
   );
 };
 
-export default StudentProfileComponent;
+export default ListNewComponent;

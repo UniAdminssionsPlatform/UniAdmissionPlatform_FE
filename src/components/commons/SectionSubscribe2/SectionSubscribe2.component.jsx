@@ -5,7 +5,7 @@ import NcImage from '../NcImage/NcImage.component';
 import React from 'react';
 import rightImg from '../../../images/SVG-subcribe2.png';
 
-const SectionSubscribe2 = ({ className = '' }) => (
+const SectionSubscribe2 = ({ className }) => (
   <div
     className={`nc-SectionSubscribe2 relative flex flex-col lg:flex-row items-center ${className}`}
     data-nc-id='SectionSubscribe2'>

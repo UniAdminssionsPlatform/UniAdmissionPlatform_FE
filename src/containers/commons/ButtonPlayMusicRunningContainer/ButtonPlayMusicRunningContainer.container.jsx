@@ -23,8 +23,8 @@ const ButtonPlayMusicRunningContainer = ({
   const dispatch = useAppDispatch();
 
   // STATE
-  const mediaState = currentMediaRunning.state;
-
+  const mediaState = '';
+  // currentMediaRunning.state;
   //
   useEffect(() => {
     // check safari

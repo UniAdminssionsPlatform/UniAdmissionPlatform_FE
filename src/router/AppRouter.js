@@ -10,7 +10,7 @@ import LoginPage from '../pages/authen/LoginPage/Login.page';
 import React from 'react';
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
-import StudentProfilePage from '../pages/profiles/StudentProfile/studentProfilePage';
+import ListNewContainer from '../containers/listNew/ListNew/ListNew.container';
 
 const AppRouter = () => (
   <>
@@ -29,21 +29,20 @@ const AppRouter = () => (
       <Route path={PATH.CHANGE_PASSWORD} exact>
         <ChangePasswordPage />
       </Route>
-      <Route path={PATH.REGISTRATION} exact>
+      <Route path={PATH.UPDATE_PROFILE} exact>
         <RegistrationPage />
       </Route>
-      <Route path={PATH.LIST_EVENT} exact>
+      <Route path={PATH.HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
         <ListEventPage />
       </Route>
-      <Route path={PATH.STUDENT_PROFILES} exact>
-        <StudentProfilePage />
+      <Route path={PATH.UNIVERSITY_MANAGER.UNIVERSITY_NEW} exact>
+        <ListNewContainer />
       </Route>
       <Route path='/index.html'>
         <Redirect to='/' />
       </Route>
       <Route path='*' component={() => <ErrorPage code={404} />} />
     </Switch>
-
   </>
 );
 export default AppRouter;

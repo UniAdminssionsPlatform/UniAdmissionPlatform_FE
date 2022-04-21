@@ -8,9 +8,12 @@ export const PATH = {
     INDEX: '/'
   },
   UNIVERSITY_MANAGER: {
-    INDEX: '/'
+    INDEX: '/',
+    UNIVERSITY_NEW: 'uni/list-new'
   },
   HIGH_SCHOOL_STUDENT: {
-    INDEX: '/'
+    INDEX: '/',
+    LIST_EVENT: '/event-list',
+    PROFILE: '/profile'
   }
 };
