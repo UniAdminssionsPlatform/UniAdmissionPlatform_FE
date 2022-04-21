@@ -1,11 +1,11 @@
 import ButtonPrimary from '../../field/Button/Button.component';
 import React from 'react';
 // import DarkModeContainer from "containers/DarkModeContainer/DarkModeContainer";
+import { PATH } from '../../../constants/Paths/Path';
 import Logo from '../Logo/Logo.component';
 import MenuBar from '../MenuBar/MenuBar.component';
 import Navigation from '../Navigation/Navigation.component';
 import SearchDropdown from '../Navigation/SearchDropdown.component';
-import { PATH } from '../../../constants/Paths/Path';
 
 const MainNav = ({ isTop }) => (
   <div className={`nc-MainNav nc-MainNav1 relative z-10 ${isTop ? 'onTop ' : 'notOnTop backdrop-filter'}`}>

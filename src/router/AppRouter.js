@@ -10,6 +10,7 @@ import LoginPage from '../pages/authen/LoginPage/Login.page';
 import React from 'react';
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
+import StudentProfilePage from '../pages/profiles/StudentProfile/studentProfilePage';
 
 const AppRouter = () => (
   <>
@@ -33,6 +34,9 @@ const AppRouter = () => (
       </Route>
       <Route path={PATH.LIST_EVENT} exact>
         <ListEventPage />
+      </Route>
+      <Route path={PATH.STUDENT_PROFILES} exact>
+        <StudentProfilePage />
       </Route>
       <Route path='/index.html'>
         <Redirect to='/' />

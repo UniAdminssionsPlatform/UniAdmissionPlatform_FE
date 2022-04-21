@@ -14,7 +14,7 @@ const LoginContainer = () => {
   const onSubmit = (value) => {
     signInWithEmailAndPassword(auth, value.email, value.password)
       .then((result) => {
-          console.log(result)
+        console.log(result);
         dispatch(SigninHandler(result.user));
         notification.success({
           message: 'Đăng nhập thành công!',

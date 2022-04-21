@@ -1,10 +1,10 @@
 import './Login.module.css';
 import { Button, Checkbox, Form, Input } from 'antd';
+import { Helmet } from 'react-helmet';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { password, username } from '../../../validate/Login.validate';
-import React from 'react';
-import { Helmet } from 'react-helmet';
 import LayoutPage from '../../commons/LayoutPage/LayoutPage.component';
+import React from 'react';
 import facebookSvg from '../../../images/Facebook.svg';
 import googleSvg from '../../../images/Google.svg';
 
@@ -77,17 +77,10 @@ const LoginComponent = (props) => {
               </label>
             </Form.Item>
 
-<<<<<<< HEAD
-          <a className='login-form-forgot' href='/auth/forgot-password'>
-            Forgot password
-          </a>
-        </Form.Item>
-=======
             <Form.Item>
               <Form.Item name='remember' valuePropName='checked' noStyle>
                 <Checkbox>Remember me</Checkbox>
               </Form.Item>
->>>>>>> main
 
               <a className='login-form-forgot' href='/'>
                 Forgot password

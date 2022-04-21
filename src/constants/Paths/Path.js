@@ -4,5 +4,6 @@ export const PATH = {
   FORGOT_PASSWORD: '/auth/forgot-password',
   CHANGE_PASSWORD: '/auth/change-password',
   REGISTRATION: '/auth/registration',
-  LIST_EVENT: '/list-event'
+  LIST_EVENT: '/list-event',
+  STUDENT_PROFILES: '/student-profile'
 };
