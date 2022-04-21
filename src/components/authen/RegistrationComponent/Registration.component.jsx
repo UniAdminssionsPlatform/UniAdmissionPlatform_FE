@@ -1,9 +1,9 @@
 import { Button, Checkbox, Form, Input } from 'antd';
+import { Helmet } from 'react-helmet';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { password, username } from '../../../validate/Login.validate';
-import React from 'react';
-import { Helmet } from 'react-helmet';
 import LayoutPage from '../../commons/LayoutPage/LayoutPage.component';
+import React from 'react';
 import facebookSvg from '../../../images/Facebook.svg';
 import googleSvg from '../../../images/Google.svg';
 
