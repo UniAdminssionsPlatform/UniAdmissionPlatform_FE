@@ -10,7 +10,7 @@ import PolicyPage from '../pages/policy/PolicyPage';
 import React from 'react';
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
-import SubmitEventPage from '../pages/event/CreateEvent/CreateEventPage';
+import CreateEventPage from '../pages/event/CreateEvent/CreateEventPage';
 
 const AppRouter = () => (
   <>
@@ -32,8 +32,8 @@ const AppRouter = () => (
       <Route path={PATH.REGISTRATION} exact>
         <RegistrationPage />
       </Route>
-      <Route path={PATH.CREATE_EVENT} exact>
-        <SubmitEventPage />
+      <Route path={PATH.UNIVERSITY_MANAGER.CREATE_EVENT} exact>
+        <CreateEventPage />
       </Route>
       <Route path={PATH.POLICY} exact>
         <PolicyPage />
