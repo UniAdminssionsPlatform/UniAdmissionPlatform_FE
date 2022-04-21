@@ -11,6 +11,8 @@ import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage'
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import ListEventPage from '../pages/event/ListEvent/ListeventPage';
 import ListNewContainer from '../containers/listNew/ListNew/ListNew.container';
+import CreateEventPage from '../pages/event/CreateEvent/CreateEventPage';
+import PolicyPage from '../pages/policy/PolicyPage';
 
 const AppRouter = () => {
   return (
@@ -33,18 +35,23 @@ const AppRouter = () => {
         <Route path={PATH.REGISTRATION} exact>
           <RegistrationPage />
         </Route>
+        <Route path={PATH.POLICY} exact>
+          <PolicyPage />
+        </Route>
         <Route path={PATH.HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />
         </Route>
         <Route path={PATH.UNIVERSITY_MANAGER.UNIVERSITY_NEW} exact>
           <ListNewContainer />
         </Route>
+        <Route path={PATH.UNIVERSITY_MANAGER.CREATE_EVENT} exact>
+          <CreateEventPage />
+        </Route>
         <Route path='/index.html'>
           <Redirect to='/' />
         </Route>
         <Route path='*' component={() => <ErrorPage code={404} />} />
       </Switch>
-
     </>
   );
 };
