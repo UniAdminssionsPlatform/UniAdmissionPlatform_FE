@@ -4,6 +4,7 @@ export const PATH = {
   FORGOT_PASSWORD: '/auth/forgot-password',
   CHANGE_PASSWORD: '/auth/change-password',
   UPDATE_PROFILE: '/auth/update-profile',
+  REGISTER: '/auth/registration',
   HIGH_SCHOOL_MANAGER: {
     INDEX: '/'
   },

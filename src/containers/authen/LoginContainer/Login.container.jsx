@@ -20,7 +20,7 @@ const LoginContainer = () => {
 
   const handleRedirect = (user) => {
     if (user.need_register === true) {
-      history.push(PATH.UPDATE_PROFILE);
+      history.push(PATH.REGISTER);
     } else {
       if (user.roles === HIGH_SCHOOL_MANAGER) {
         history.push(PATH.HIGH_SCHOOL_MANAGER.INDEX);

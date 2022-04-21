@@ -23,6 +23,9 @@ const AppRouter = () => (
       <Route path={PATH.LOGIN} exact>
         <LoginPage />
       </Route>
+      <Route path={PATH.REGISTER} exact>
+        <RegistrationPage />
+      </Route>
       <Route path={PATH.FORGOT_PASSWORD} exact>
         <ForgotPasswordPage />
       </Route>
