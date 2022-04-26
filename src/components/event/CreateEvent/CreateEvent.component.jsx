@@ -1,9 +1,9 @@
-import { Form, Input, Select, Upload, Button } from 'antd';
+import { Button, Form, Input, Select, Upload } from 'antd';
+import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
 import { eventtype, excerpt, hostname, province, title } from '../../../validate/CreateEvent.validate';
 import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
 import Label from '../../commons/Label/Label';
 import React from 'react';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 
 const normFile = (e) => {
   console.log('Upload event:', e);

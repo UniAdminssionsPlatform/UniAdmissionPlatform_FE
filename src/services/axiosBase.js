@@ -1,5 +1,5 @@
-import Cookies from 'js-cookie';
 import { TOKEN_KEY } from '../constants/AppConst';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 
 export const CallAPI = (

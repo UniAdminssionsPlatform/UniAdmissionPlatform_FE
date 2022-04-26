@@ -1,6 +1,6 @@
+import { PATH } from '../../../constants/Paths/Path';
 import __megamenu from '../../../data/jsons/__megamenu.json';
 import ncNanoId from '../../../utils/ncNanoId';
-import { PATH } from '../../../constants/Paths/Path';
 
 const majorMenu = [
   {

@@ -1,7 +1,7 @@
-import NavigationItem from './NavigationItem.component';
-import React from 'react';
 import { NavigationSystem } from '../../../router/navigation/NavigationSystem';
 import { useSelector } from 'react-redux';
+import NavigationItem from './NavigationItem.component';
+import React from 'react';
 
 const Navigation = () => {
   const { user } = useSelector((state) => state.authentication);

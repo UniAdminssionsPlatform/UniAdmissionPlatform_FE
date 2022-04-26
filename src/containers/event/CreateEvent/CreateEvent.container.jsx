@@ -1,7 +1,7 @@
-import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
-import React from 'react';
 import { createEvent } from '../../../services/event/CreateEvent/CreateEvent';
 import { notification } from 'antd';
+import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
+import React from 'react';
 
 const onSubmit = (value) => {
   createEvent(
