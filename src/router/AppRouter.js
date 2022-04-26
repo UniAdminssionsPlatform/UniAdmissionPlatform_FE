@@ -48,4 +48,8 @@ const AppRouter = () => (
     </Switch>
   </>
 );
+import ListEventPage from '../pages/event/ListEvent/ListeventPage';
+import ListNewContainer from '../containers/listNew/ListNew/ListNew.container';
+import CreateEventPage from '../pages/event/CreateEvent/CreateEventPage';
+import PolicyPage from '../pages/policy/PolicyPage';
 export default AppRouter;
