@@ -1,4 +1,4 @@
-import { PATH } from '../constants/Paths/Path';
+import { PATH, PATH_HIGH_SCHOOL_STUDENT, PATH_UNIVERSITY_MANAGER } from '../constants/Paths/Path';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import ChangePasswordPage from '../pages/authen/ChangePasswordPage/ChangePasswordPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
@@ -13,6 +13,7 @@ import ListEventPage from '../pages/event/ListEvent/ListeventPage';
 import ListNewContainer from '../containers/listNew/ListNew/ListNew.container';
 import CreateEventPage from '../pages/event/CreateEvent/CreateEventPage';
 import PolicyPage from '../pages/policy/PolicyPage';
+import SchedulePage from '../pages/SchedulePage/SchedulePage';
 
 const AppRouter = () => {
   return (
@@ -38,14 +39,17 @@ const AppRouter = () => {
         <Route path={PATH.POLICY} exact>
           <PolicyPage />
         </Route>
-        <Route path={PATH.HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
+        <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />
         </Route>
-        <Route path={PATH.UNIVERSITY_MANAGER.UNIVERSITY_NEW} exact>
+        <Route path={PATH_UNIVERSITY_MANAGER.UNIVERSITY_NEW} exact>
           <ListNewContainer />
         </Route>
-        <Route path={PATH.UNIVERSITY_MANAGER.CREATE_EVENT} exact>
+        <Route path={PATH.CREATE_EVENT} exact>
           <CreateEventPage />
+        </Route>
+        <Route path={PATH.SCHEDULE_EVENT} exact>
+          <SchedulePage />
         </Route>
         <Route path='/index.html'>
           <Redirect to='/' />
