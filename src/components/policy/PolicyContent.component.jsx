@@ -1,14 +1,14 @@
 import React from 'react';
-import SingleContentDemo from './SingleContentDemo.component';
+import PolicyContentDemo from './PolicyContentDemo.component';
 
-const SingleContent = ({ data }) => (
+const PolicyContent = ({ data }) => (
   <div className='nc-SingleContent space-y-10'>
     <div
       id='single-entry-content'
       className='prose prose-sm !max-w-screen-md sm:prose lg:prose-lg mx-auto dark:prose-invert'>
-      <SingleContentDemo />
+      <PolicyContentDemo />
     </div>
   </div>
 );
 
-export default SingleContent;
+export default PolicyContent;

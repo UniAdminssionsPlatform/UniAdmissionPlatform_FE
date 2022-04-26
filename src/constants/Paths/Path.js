@@ -4,9 +4,9 @@ export const PATH = {
   FORGOT_PASSWORD: '/auth/forgot-password',
   CHANGE_PASSWORD: '/auth/change-password',
   REGISTRATION: '/auth/registration',
-  POLICY: '/policy',
+  // POLICY: '/policy',
   UPDATE_PROFILE: '/auth/update-profile',
-  CREATE_EVENT: 'uni/create-event',
+  // CREATE_EVENT: 'uni/create-event',
   HIGH_SCHOOL_MANAGER: {
     INDEX: '/'
   },
@@ -18,5 +18,7 @@ export const PATH = {
     INDEX: '/',
     LIST_EVENT: '/event-list',
     PROFILE: '/profile'
-  }
+  },
+
+  DETAIL_EVENT: '/detail-event'
 };

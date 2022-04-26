@@ -1,10 +1,8 @@
-import { CommentType } from 'components/CommentCard/CommentCard';
 import { DEMO_AUTHORS } from './authors';
 import { DEMO_TAGS } from './taxonomies';
-import { SinglePageType } from 'containers/PageSingle/PageSingle';
 import __comments from './jsons/__comments.json';
 import a10 from './avatars/11.jpg';
-import podcastImg from 'images/podcast.jpg';
+import podcastImg from '../images/podcast.jpg';
 
 // function nested the comment child -- make tree comment
 const nest = (items, id) =>
