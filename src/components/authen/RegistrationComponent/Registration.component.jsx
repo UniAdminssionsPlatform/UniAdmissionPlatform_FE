@@ -1,29 +1,33 @@
 import { Helmet } from 'react-helmet';
-import { Typography, Tag } from 'antd';
+import { Tag, Typography } from 'antd';
 import LayoutPage from '../../commons/LayoutPage/LayoutPage.component';
 import React, { useState } from 'react';
 import RegisterForm from '../../form/RegisterForm/RegisterForm.component';
-import university from '../../../images/university.svg';
 import highschool from '../../../images/highschool.svg';
 import student from '../../../images/student.svg';
+import university from '../../../images/university.svg';
 const loginSocials = [
   {
     name: 'Tài khoản quản lý đại học',
     href: '#',
-    icon: university
+    icon: university,
+    role: 'uni'
   },
   {
     name: 'Tài khoản quản lý trường cấp 3 ',
     href: '#',
-    icon: highschool
+    icon: highschool,
+    role: 'hs'
   },
   {
     name: 'Tài khoản học sinh',
     href: '#',
-    icon: student
+    icon: student,
+    role: 'st'
   }
 ];
 const RegisterComponent = (props) => {
+  const [role, setRole] = useState();
   const { Text, Link } = Typography;
   const { onSubmit, loginWithGoogle, className } = props;
   const [isSelected, setIsSelected] = useState(false);
@@ -40,7 +44,11 @@ const RegisterComponent = (props) => {
                 Hãy xác thực tài khoản của bạn
               </Text>
               {loginSocials.map((item, index) => (
-                <div onClick={() => setIsSelected(true)}>
+                <div
+                  onClick={() => {
+                    setIsSelected(true);
+                    setRole(item.role);
+                  }}>
                   <a
                     key={index}
                     href={item.href}
@@ -59,7 +67,7 @@ const RegisterComponent = (props) => {
             <Tag color='orange' onClick={() => setIsSelected(false)}>
               hoàn tác
             </Tag>
-            <RegisterForm />
+            <RegisterForm role={role} />
           </div>
         )}
       </LayoutPage>

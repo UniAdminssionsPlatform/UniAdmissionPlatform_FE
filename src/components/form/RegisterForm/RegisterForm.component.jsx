@@ -1,9 +1,15 @@
-import React from 'react';
-import Label from '../../commons/Label/Label.component';
 import { DatePicker, Input, Select } from 'antd';
-import moment from 'moment';
+import { getHighSchoolByCode } from '../../../services/HighSchoolService';
+import { getUniversityByCode } from '../../../services/UniversityService';
+import { handleNotification } from '../../../notification/LoginNotification';
+import { useDebouncedCallback } from 'use-debounce';
 import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
-const RegisterForm = () => {
+import Label from '../../commons/Label/Label.component';
+import React, { useState } from 'react';
+import moment from 'moment';
+
+const RegisterForm = (props) => {
+  const { role } = props;
   const { Option } = Select;
   const dateFormat = 'YYYY/MM/DD';
   const weekFormat = 'MM/DD';
@@ -12,6 +18,34 @@ const RegisterForm = () => {
   const customFormat = (value) => `custom format: ${value.format(dateFormat)}`;
   const customWeekStartEndFormat = (value) =>
     `${moment(value).startOf('week').format(weekFormat)} ~ ${moment(value).endOf('week').format(weekFormat)}`;
+
+  const [value, setValue] = useState('');
+
+  const debounced = useDebouncedCallback(
+    // function
+    (value) => {
+      if (role === 'hs') {
+        getHighSchoolByCode(value)
+          .then((result) => {
+            setValue(result.data.data.name);
+          })
+          .catch((err) => {
+            setValue(<font color='red'>Không tìm thấy !</font>);
+          });
+      }
+      if (role === 'uni') {
+        getUniversityByCode(value)
+          .then((result) => {
+            setValue(result.data.data.name);
+          })
+          .catch((err) => {
+            setValue(<font color='red'>Không tìm thấy !</font>);
+          });
+      }
+    },
+    // delay in ms
+    1000
+  );
   return (
     <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
       <form className='grid md:grid-cols-2 gap-6' action='#' method='post'>
@@ -77,6 +111,11 @@ const RegisterForm = () => {
         <label className='block'>
           <Label>ID Card</Label>
           <Input type='password' className='mt-1' />
+        </label>
+        <label className='block'>
+          <Label>Code</Label>
+          <Input type='text' className='mt-1' defaultValue='' onChange={(e) => debounced(e.target.value)} />
+          {value}
         </label>
 
         <ButtonPrimary className='md:col-span-2' type='submit'>
