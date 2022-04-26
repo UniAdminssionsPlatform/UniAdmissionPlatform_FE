@@ -5,7 +5,13 @@ import React from 'react';
 import SingleMetaAction2 from '../../commons/SingleMetaAction2/SingleMetaAction2.component';
 import SingleTitle from '../../commons/SingleTitle/SingleTitle.component';
 
-const SingleHeader = ({ pageData, titleMainClass, hiddenDesc = false, className = '' }) => {
+const DetailEventHeader = ({
+  pageData,
+  titleMainClass,
+  hiddenDesc = false,
+  className = '',
+  metaActionStyle = 'style1'
+}) => {
   const { categories, desc, title } = pageData;
 
   return (
@@ -13,7 +19,7 @@ const SingleHeader = ({ pageData, titleMainClass, hiddenDesc = false, className 
       <Helmet>
         <title>Event || Blog Magazine React Template</title>
       </Helmet>
-      <div className={`nc-Header nc-will-change-top sticky top-0 w-full left-0 right-0 z-40 transition-all`}>
+      <div className={`nc-SingleHeader ${className}`}>
         <div className='space-y-5'>
           <CategoryBadgeList itemClass='!px-3' categories={categories} />
           <SingleTitle mainClass={titleMainClass} title={title} />
@@ -37,4 +43,4 @@ const SingleHeader = ({ pageData, titleMainClass, hiddenDesc = false, className 
   );
 };
 
-export default SingleHeader;
+export default DetailEventHeader;

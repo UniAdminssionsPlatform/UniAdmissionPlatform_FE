@@ -1,5 +1,4 @@
 import { SOCIALS_DATA } from '../SocialsShare/SocialsShare.component';
-import BookmarkContainer from '../../../containers/commons/BookmarkContainer/BookmarkContainer.container';
 import NcDropDown from '../NcDropDown/NcDropDown.component';
 import PostActionDropdown from '../PostActionDropdown/PostActionDropdown.component';
 import PostCardLikeAndComment from '../PostCardLikeAndComment/PostCardLikeAndComment.component';

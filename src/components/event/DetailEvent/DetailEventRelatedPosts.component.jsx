@@ -8,7 +8,7 @@ import React from 'react';
 const demoRelated = DEMO_POSTS.filter((_, i) => i >= 10 && i < 14);
 const demoMoreFromAuthor = DEMO_POSTS.filter((_, i) => i >= 14 && i < 18);
 
-const DetailEventRelatedPosts = ({ relatedPosts = demoRelated, moreFromAuthorPosts = demoMoreFromAuthor }) => (
+const SingleRelatedPosts = ({ relatedPosts = demoRelated, moreFromAuthorPosts = demoMoreFromAuthor }) => (
   <div className='relative bg-neutral-100 dark:bg-neutral-800 py-16 lg:py-28 mt-16 lg:mt-28'>
     {/* RELATED  */}
     <div className='container'>
@@ -38,4 +38,4 @@ const DetailEventRelatedPosts = ({ relatedPosts = demoRelated, moreFromAuthorPos
   </div>
 );
 
-export default DetailEventRelatedPosts;
+export default SingleRelatedPosts;

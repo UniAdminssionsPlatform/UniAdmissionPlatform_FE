@@ -1,7 +1,9 @@
 import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
 import ButtonSecondary from '../../field/ButtonSecondary/ButtonSecondary.component';
 import React from 'react';
-import Textarea from '../Textarea/Textarea';
+import { Input } from 'antd';
+
+const { TextArea } = Input;
 
 const SingleCommentForm = ({
   className = 'mt-5',
@@ -9,12 +11,13 @@ const SingleCommentForm = ({
   onClickSubmit,
   onClickCancel,
   defaultValue = '',
+  textareaRef,
   rows = 4
 }) => (
   <form action='#' className={`nc-SingleCommentForm ${className}`}>
-    <Textarea
+    <TextArea
       placeholder='Add to discussion'
-      // ref={textareaRef}
+      ref={textareaRef}
       required={true}
       defaultValue={defaultValue}
       rows={rows}
