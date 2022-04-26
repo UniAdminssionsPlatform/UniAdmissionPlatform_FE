@@ -4,6 +4,7 @@ import ModalReportItem from '../ModalReportItem/ModalReportItem.component';
 import NcDropDown from '../NcDropDown/NcDropDown.component';
 import React, { useState } from 'react';
 import twFocusClass from '../../../utils/twFocusClass';
+import { SINGLE } from '../../../data/single';
 
 const PostActionDropdown = ({
   containerClassName = 'h-8 w-8 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700',
@@ -48,7 +49,7 @@ const PostActionDropdown = ({
 
   const hanldeClickDropDown = (item) => {
     if (item.id === 'copylink') {
-      navigator.clipboard.writeText(window.location.origin + postData.href);
+      navigator.clipboard.writeText(window.location.origin + SINGLE.href);
       setIsCopied(true);
       setTimeout(() => {
         setIsCopied(false);
@@ -59,7 +60,7 @@ const PostActionDropdown = ({
 
     if (item.id === 'hideThisAuthor') return openModalHideAuthor();
 
-    if (item.id === 'commentThisArticle') return history.push(`${postData.href}#comment`);
+    if (item.id === 'commentThisArticle') return history.push(`${SINGLE.href}#comment`);
   };
 
   const renderMenu = () => {
@@ -87,10 +88,10 @@ const PostActionDropdown = ({
     <div>
       {renderMenu()}
 
-      <ModalReportItem show={isReporting} id={postData.id} onCloseModalReportItem={closeModalReportPost} />
+      <ModalReportItem show={isReporting} id={SINGLE.id} onCloseModalReportItem={closeModalReportPost} />
       <ModalHideAuthor
         show={showModalHideAuthor}
-        auhthor={postData.author}
+        auhthor={SINGLE.author}
         onCloseModalHideAuthor={onCloseModalHideAuthor}
       />
     </div>

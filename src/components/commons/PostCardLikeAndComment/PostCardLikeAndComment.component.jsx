@@ -1,5 +1,6 @@
 import PostCardCommentBtn from '../PostCardCommentBtn/PostCardCommentBtn.component';
 import React from 'react';
+import { SINGLE } from '../../../data/single';
 
 const PostCardLikeAndComment = ({
   className = '',
@@ -17,8 +18,8 @@ const PostCardLikeAndComment = ({
     {/*  postId={postData.id}*/}
     {/*/>*/}
     <PostCardCommentBtn
-      href={postData.href}
-      commentCount={postData.commentCount}
+      href={SINGLE.href}
+      commentCount={SINGLE.commentCount}
       className={`${hiddenCommentOnMobile ? 'hidden sm:flex' : 'flex'}  ${itemClass}`}
     />
   </div>

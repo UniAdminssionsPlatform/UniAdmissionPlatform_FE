@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet';
+import { SINGLE } from '../../../data/single';
 import CategoryBadgeList from '../../commons/CategoryBadgeList/CategoryBadgeList.component';
 import PostMeta2 from '../../commons/PostMeta2/PostMeta2.component';
 import React from 'react';
@@ -12,7 +13,7 @@ const DetailEventHeader = ({
   className = '',
   metaActionStyle = 'style1'
 }) => {
-  const { categories, desc, title } = pageData;
+  const { name, short_description } = pageData;
 
   return (
     <>
@@ -21,10 +22,12 @@ const DetailEventHeader = ({
       </Helmet>
       <div className={`nc-SingleHeader ${className}`}>
         <div className='space-y-5'>
-          <CategoryBadgeList itemClass='!px-3' categories={categories} />
-          <SingleTitle mainClass={titleMainClass} title={title} />
-          {!!desc && !hiddenDesc && (
-            <span className='block text-base text-neutral-500 md:text-lg dark:text-neutral-400 pb-1'>{desc}</span>
+          <CategoryBadgeList itemClass='!px-3' categories={SINGLE.categories} />
+          <SingleTitle mainClass={titleMainClass} title={name} />
+          {!!short_description && !hiddenDesc && (
+            <span className='block text-base text-neutral-500 md:text-lg dark:text-neutral-400 pb-1'>
+              {short_description}
+            </span>
           )}
           <div className='w-full border-b border-neutral-100 dark:border-neutral-800'></div>
           <div className='flex flex-col sm:flex-row justify-between sm:items-end space-y-5 sm:space-y-0 sm:space-x-5'>
