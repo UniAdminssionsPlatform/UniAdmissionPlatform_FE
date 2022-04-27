@@ -1,6 +1,5 @@
 import ListEventComponent from '../../../components/event/ListEvent/listEvent.component';
 import React, { useEffect, useState } from 'react';
-import { handleNotification } from '../../../notification/LoginNotification';
 import { ListEvent } from '../../../services/event/GetListEvent/GetListEvent';
 
 const ListEventContainer = () => {
@@ -11,13 +10,9 @@ const ListEventContainer = () => {
   }, []);
 
   const getListEvent = () => {
-    ListEvent()
-      .then((result) => {
-        setListEvent(result.data.data.list);
-      })
-      .catch((err) => {
-        handleNotification('error', err);
-      });
+    ListEvent().then((result) => {
+      setListEvent(result.data.data.list);
+    });
   };
   return (
     <>

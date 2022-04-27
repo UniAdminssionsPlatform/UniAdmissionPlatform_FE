@@ -4,7 +4,6 @@ import React from 'react';
 
 const ListEvent = (props) => {
   const { listevent } = props;
-  console.log('listevent: ', listevent);
   return (
     <div className='flex flex-col space-y-8'>
       <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>

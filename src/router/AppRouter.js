@@ -13,6 +13,7 @@ import PolicyPage from '../pages/policy/PolicyPage';
 import React from 'react';
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
+import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 
 const AppRouter = () => (
   <>
@@ -45,6 +46,9 @@ const AppRouter = () => (
       </Route>
       <Route path={PATH.UNIVERSITY_MANAGER.CREATE_EVENT} exact>
         <CreateEventPage />
+      </Route>
+      <Route path={PATH.UNIVERSITY_DETAIL} exact>
+        <UniversityDetailPage />
       </Route>
       <Route path='/index.html'>
         <Redirect to='/' />
