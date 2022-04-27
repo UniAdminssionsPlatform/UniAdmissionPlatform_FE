@@ -52,6 +52,7 @@ const ScheduleComponent = () => {
   const commitChanges = ({ added, changed, deleted }) => {
     if (added) setData([...data, { id: data.length > 0 ? data[data.length - 1].id + 1 : 0, ...added }]);
     if (changed) {
+      console.log(data);
       setData(
         data.map((appointment) =>
           changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
@@ -78,9 +79,9 @@ const ScheduleComponent = () => {
           <ViewState />
           <EditingState onCommitChanges={commitChanges} />
           <EditRecurrenceMenu />
-          <DayView startDayHour={9.5} endDayHour={13.5} />
-          <WeekView startDayHour={8} endDayHour={13} />
-          <MonthView />
+          <DayView startDayHour={7} endDayHour={20} />
+          <WeekView startDayHour={7} endDayHour={20} />
+          <MonthView startDayHour={7} endDayHour={20} />
           <Toolbar />
           <ViewSwitcher />
           <Appointments appointmentComponent={Appointment} />

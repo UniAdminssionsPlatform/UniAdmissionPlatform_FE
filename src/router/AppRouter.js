@@ -42,7 +42,7 @@ const AppRouter = () => {
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />
         </Route>
-        <Route path={PATH_UNIVERSITY_MANAGER.UNIVERSITY_NEW} exact>
+        <Route path={PATH_UNIVERSITY_MANAGER.NEW} exact>
           <ListNewContainer />
         </Route>
         <Route path={PATH.CREATE_EVENT} exact>
