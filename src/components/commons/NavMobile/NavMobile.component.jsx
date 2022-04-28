@@ -4,11 +4,11 @@ import ButtonClose from '../../field/ButtonClose/ButtonClose.component';
 import React from 'react';
 // import DarkModeContainer from "containers/DarkModeContainer/DarkModeContainer";
 import { ChevronDownIcon } from '@heroicons/react/solid';
+import { NavigationSystem } from '../../../router/navigation/NavigationSystem';
+import { useSelector } from 'react-redux';
 import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
 import Logo from '../Logo/Logo.component';
 import SocialsList from '../SocialsList/SocialsList.component';
-import { NavigationSystem } from '../../../router/navigation/NavigationSystem';
-import { useSelector } from 'react-redux';
 
 const NavMobile = ({ onClickClose }) => {
   const { user } = useSelector((state) => state.authentication);

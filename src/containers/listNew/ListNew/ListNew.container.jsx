@@ -1,5 +1,5 @@
-import React from 'react';
 import ListNewComponent from '../../../components/ListNew/ListNew.component';
+import React from 'react';
 
 const ListNewContainer = () => (
   <>
