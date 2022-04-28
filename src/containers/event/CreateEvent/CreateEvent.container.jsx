@@ -1,40 +1,40 @@
-import { createEvent } from '../../../services/event/CreateEvent/CreateEvent';
-import { notification } from 'antd';
 import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ListHighSchool from '../../../components/ListHighSchool/ListHighSchool.component';
+import { people } from './Data/FakeData';
+import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
+import { getListHighSchool } from '../../../services/HighSchoolServices';
+import { useSelector } from 'react-redux';
 
-const onSubmit = (value) => {
-  createEvent(
-    value.title,
-    value.short_description,
-    value.description,
-    value.thumbnail,
-    value.file,
-    value.host_name,
-    value.target_student,
-    value.event_type,
-    value.address,
-    value.province,
-    value.meeting_url
-  )
-    .then((userCredential) => {
-      console.log(userCredential);
-      notification.success({
-        message: 'Tạo sự kiện thành công!'
+const CreateEventContainer = () => {
+  const [listHighSchool, setlistHighSchool] = useState();
+  const [dataSearch, setDataSeacrch] = useState();
+  const getListHSchool = (data) => {
+    getListHighSchool(data)
+      .then((res) => {
+        setlistHighSchool(res.data.data.list);
+        handleSuccessNotification('Danh sách các trường cấp 3');
+      })
+      .catch((err) => {
+        handleFailNotification('Lỗi khi lấy danh sách');
       });
-    })
-    .catch(() => {
-      notification.error({
-        message: 'Tạo sự kiện thất bại!'
-      });
-    });
-  console.log(value);
+  };
+  const { isSelected } = useSelector((state) => state.selectedHighSchool);
+  const [isClicked, setIsClicked] = useState(isSelected ? isSelected : false);
+  useEffect(() => {
+    getListHSchool(dataSearch);
+  }, [dataSearch, isClicked]);
+  return (
+    <>
+      <ListHighSchool
+        people={people}
+        listHighSchool={listHighSchool}
+        isClicked={isClicked}
+        setIsClicked={setIsClicked}
+      />
+      {/*<CreateEventComponent onFinish={onFinish} />*/}
+    </>
+  );
 };
-
-const CreateEventContainer = () => (
-  <>
-    <CreateEventComponent onFinish={onSubmit} />
-  </>
-);
 
 export default CreateEventContainer;

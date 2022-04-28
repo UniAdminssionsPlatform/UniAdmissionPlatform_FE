@@ -7,14 +7,14 @@ import React, { Fragment, useEffect, useState } from 'react';
 const NavigationItem = ({ menuItem, history }) => {
   const [menuCurrentHovers, setMenuCurrentHovers] = useState([]);
 
-  useEffect(() => {
-    const unlisten = history?.listen(() => {
-      setMenuCurrentHovers([]);
-    });
-    return () => {
-      unlisten();
-    };
-  }, [history]);
+  // useEffect(() => {
+  //   const unlisten = history?.listen(() => {
+  //     setMenuCurrentHovers([]);
+  //   });
+  //   return () => {
+  //     unlisten();
+  //   };
+  // }, [history]);
 
   const onMouseEnterMenu = (id) => {
     setMenuCurrentHovers((state) => [...state, id]);
