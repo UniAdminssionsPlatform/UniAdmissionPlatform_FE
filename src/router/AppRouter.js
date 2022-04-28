@@ -59,6 +59,9 @@ const AppRouter = () => {
         <Route path={PATH.DETAIL_EVENT} exact>
           <DetailEventPage />
         </Route>
+        <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
+          <ListEventPage />
+        </Route>
         <Route path='/index.html'>
           <Redirect to='/' />
         </Route>
