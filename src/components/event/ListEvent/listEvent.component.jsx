@@ -57,6 +57,9 @@ const ListEvent = (props) => {
                     <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
                       <span> {item.createdate}</span>
                     </td>
+                    <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
+                      <span> {item.email}</span>
+                    </td>
                     <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-neutral-300'>
                       <a href='/#' className='text-primary-800 dark:text-primary-500 hover:text-primary-900'>
                         Edit

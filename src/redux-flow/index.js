@@ -1,9 +1,10 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authenticationReducer from './authentication/authentication-slice';
-
+import selectedHighSchoolReducer from './selectedHighSchool/selectedHighSchool-slice';
 const store = configureStore({
   reducer: {
-    authentication: authenticationReducer
+    authentication: authenticationReducer,
+    selectedHighSchool: selectedHighSchoolReducer
   },
   middleware: [
     ...getDefaultMiddleware({
