@@ -8,10 +8,10 @@ import { useDispatch } from 'react-redux';
 import { SigninHandler } from '../../../redux-flow/authentication/authentication-action';
 import { loginByFirebase } from '../../../services/UserServices';
 import {
-    PATH,
-    PATH_HIGH_SCHOOL_MANAGER,
-    PATH_HIGH_SCHOOL_STUDENT,
-    PATH_UNIVERSITY_MANAGER
+  PATH,
+  PATH_HIGH_SCHOOL_MANAGER,
+  PATH_HIGH_SCHOOL_STUDENT,
+  PATH_UNIVERSITY_MANAGER
 } from '../../../constants/Paths/Path';
 import { HIGH_SCHOOL_MANAGER, HIGH_SCHOOL_STUDENT, UNIVERSITY_MANAGER } from '../../../constants/RoleType';
 import { handleNotification } from '../../../notification/LoginNotification';
