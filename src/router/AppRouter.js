@@ -15,6 +15,7 @@ import CreateEventPage from '../pages/event/CreateEvent/CreateEventPage';
 import PolicyPage from '../pages/policy/PolicyPage';
 import SchedulePage from '../pages/SchedulePage/SchedulePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
+import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
 
 const AppRouter = () => {
   return (
@@ -54,6 +55,9 @@ const AppRouter = () => {
         </Route>
         <Route path={PATH.SCHEDULE_EVENT} exact>
           <SchedulePage />
+        </Route>
+        <Route path={PATH.DETAIL_EVENT} exact>
+          <DetailEventPage />
         </Route>
         <Route path='/index.html'>
           <Redirect to='/' />

@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleContent from './SingleContent.component';
+import PolicyContent from './PolicyContent.component';
 
 const PolicyComponent = ({ className }) => (
   // DEMO DATA
@@ -10,7 +10,7 @@ const PolicyComponent = ({ className }) => (
         {/* SINGLE MAIN CONTENT */}
         <div className='container flex flex-col my-10 lg:flex-row '>
           <div className='w-full lg:w-3/5 xl:w-2/3 xl:pr-20'>
-            <SingleContent />
+            <PolicyContent />
           </div>
         </div>
       </div>
