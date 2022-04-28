@@ -39,7 +39,7 @@ const ErrorPage = ({ code = 404 }) => {
             <Button
               className='main-button'
               onClick={() => {
-                history.push(PATH.LOGIN_PAGE);
+                history.push(PATH.LOGIN);
               }}
               type='primary'
               style={{ width: '10rem' }}
