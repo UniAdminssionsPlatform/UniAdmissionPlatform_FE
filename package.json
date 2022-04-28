@@ -66,6 +66,7 @@
     "redux-persist": "^6.0.0",
     "sass": "^1.50.0",
     "styled-components": "^5.3.5",
+    "use-debounce": "^7.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
