@@ -1,18 +1,18 @@
 import ButtonPrimary from '../../field/Button/Button.component';
 import React from 'react';
 // import DarkModeContainer from "containers/DarkModeContainer/DarkModeContainer";
+import { PATH } from '../../../constants/Paths/Path';
+import { Tag, Typography } from 'antd';
+import { auth } from '../../../firebase/firebaseConfig';
+import { handleNotification } from '../../../notification/SignOutNotification';
+import { logoutHandler } from '../../../redux-flow/authentication/authentication-action';
+import { signOut } from 'firebase/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Logo from '../Logo/Logo.component';
 import MenuBar from '../MenuBar/MenuBar.component';
 import Navigation from '../Navigation/Navigation.component';
 import SearchDropdown from '../Navigation/SearchDropdown.component';
-import { PATH } from '../../../constants/Paths/Path';
-import { useSelector, useDispatch } from 'react-redux';
-import { Typography, Tag } from 'antd';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../../firebase/firebaseConfig';
-import { handleNotification } from '../../../notification/SignOutNotification';
-import { logoutHandler } from '../../../redux-flow/authentication/authentication-action';
-import { useHistory } from 'react-router-dom';
 const MainNav = ({ isTop }) => {
   const { Text } = Typography;
   const dispatch = useDispatch();
