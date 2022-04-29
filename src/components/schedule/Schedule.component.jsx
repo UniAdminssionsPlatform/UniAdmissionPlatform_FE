@@ -29,7 +29,8 @@ const Appointment = ({ children, style, ...restProps }) => (
       ...style,
       backgroundColor: '#FFC107',
       borderRadius: '8px'
-    }}>
+    }}
+    onClick={(data) => console.log(data)}>
     <Button type='primary'> Delete</Button>
     {children}
   </Appointments.Appointment>
