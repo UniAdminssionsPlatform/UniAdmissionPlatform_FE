@@ -1,4 +1,14 @@
 import { Button, DatePicker, Form, Input, Select } from 'antd';
+import {
+  address,
+  firstname,
+  idcard,
+  lastname,
+  middlename,
+  phone,
+  relogion,
+  vcode
+} from '../../../validate/RegisterForm.validate';
 import { city, distric, ward } from '../../../utils/getLocation';
 import { getHighSchoolByCode, getHighSchoolByManagerCode } from '../../../services/HighSchoolService';
 import { getUniversityByCode } from '../../../services/UniversityService';
@@ -7,16 +17,6 @@ import { useDebouncedCallback } from 'use-debounce';
 import Label from '../../commons/Label/Label.component';
 import React, { useState } from 'react';
 import moment from 'moment';
-import {
-  phone,
-  firstname,
-  lastname,
-  middlename,
-  address,
-  relogion,
-  vcode,
-  idcard
-} from '../../../validate/RegisterForm.validate';
 
 const RegisterForm = (props) => {
   const { role } = props;
@@ -181,7 +181,7 @@ const RegisterForm = (props) => {
                 </label>
               </Form.Item>
             </div>
-            <Form.Item name='provine'>
+            <Form.Item name='districs'>
               <label className='block'>
                 <Label>Quận/Huyện</Label>
                 <div className='mt-1'>
@@ -193,7 +193,7 @@ const RegisterForm = (props) => {
                 </div>
               </label>
             </Form.Item>
-            <Form.Item name='provine'>
+            <Form.Item name='ward'>
               <label className='block'>
                 <Label>Phường/Xã</Label>
                 <div className='mt-1'>
