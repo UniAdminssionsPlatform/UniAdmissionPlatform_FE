@@ -10,7 +10,7 @@ import { useState } from 'react';
 import CreateEventComponent from '../event/CreateEvent/CreateEvent.component';
 const ListHighSchool = (props) => {
   const dispatch = useDispatch();
-  const { listHighSchool, isClicked, setIsClicked } = props;
+  const { listHighSchool, isClicked, setIsClicked, setDataSearch, provinces, onChange, districts } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleSelectedEvent = (event) => {
     setIsClicked(true);
@@ -22,6 +22,7 @@ const ListHighSchool = (props) => {
   const handleCancelModal = () => {
     setIsModalOpen(false);
   };
+
   return (
     <LayoutPageWithout
       LayoutPage
@@ -51,7 +52,12 @@ const ListHighSchool = (props) => {
               </Space>
             </div>
           ) : (
-            <SearchBarComponent />
+            <SearchBarComponent
+              setDataSearch={setDataSearch}
+              provinces={provinces}
+              onChange={onChange}
+              districts={districts}
+            />
           )}
         </div>
 
