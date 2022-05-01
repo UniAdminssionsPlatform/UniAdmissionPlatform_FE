@@ -2,10 +2,10 @@ import { Helmet } from 'react-helmet';
 import { Tag, Typography } from 'antd';
 import LayoutPage from '../../commons/LayoutPage/LayoutPage.component';
 import React, { useState } from 'react';
-import RegisterForm from '../../form/RegisterForm/RegisterForm.component';
 import highschool from '../../../images/highschool.svg';
 import student from '../../../images/student.svg';
 import university from '../../../images/university.svg';
+import RegisterFormContainer from '../../../containers/authen/RegistrationContainer/RegisterForm.container';
 const loginSocials = [
   {
     name: 'Tài khoản quản lý đại học',
@@ -67,7 +67,7 @@ const RegisterComponent = (props) => {
             <Tag color='orange' onClick={() => setIsSelected(false)}>
               hoàn tác
             </Tag>
-            <RegisterForm role={role} />
+            <RegisterFormContainer role={role} />
           </div>
         )}
       </LayoutPage>
