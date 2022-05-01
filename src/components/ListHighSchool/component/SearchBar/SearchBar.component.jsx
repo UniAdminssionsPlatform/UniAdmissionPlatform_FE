@@ -92,7 +92,7 @@ const SearchBarComponent = (props) => {
         <Form.Item name='provine'>
           <Select
             showSearch
-            placeholder='Thành phố Hồ Chí'
+            placeholder='Tỉnh/Thành phố'
             optionFilterProp='children'
             onChange={onChange}
             onSearch={onSearch}

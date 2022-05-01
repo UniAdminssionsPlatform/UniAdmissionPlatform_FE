@@ -23,9 +23,10 @@ const CreateEventContainer = () => {
   const getListHSchool = (data) => {
     getListHighSchool(data)
       .then((res) => {
-        console.log('highschool: ', res.data.data.list);
-        setlistHighSchool(res.data.data.list);
-        handleSuccessNotification('Danh sách các trường cấp 3');
+        const hightschools = res.data.data.list;
+        setlistHighSchool(hightschools);
+        if (hightschools.length > 0) handleSuccessNotification('Danh sách các trường cấp 3');
+        if (hightschools.length === 0) handleSuccessNotification('Không tìm thấy trường cấp 3 theo yêu cầu');
       })
       .catch((err) => {
         handleFailNotification('Lỗi khi lấy danh sách');
@@ -34,7 +35,6 @@ const CreateEventContainer = () => {
   const geAllProvince = () => {
     getListProvinces()
       .then((result) => {
-        console.log('province: ', result.data.data.list);
         setProvinces(result.data.data.list);
       })
       .catch((err) => {
@@ -42,10 +42,8 @@ const CreateEventContainer = () => {
       });
   };
   function onChangeProvince(value) {
-    console.log('selected: ', value);
     getListDistrictByProvince(value)
       .then((result) => {
-        console.log('district: ', result.data.data.list);
         setDistricts(result.data.data.list);
       })
       .catch((err) => {
