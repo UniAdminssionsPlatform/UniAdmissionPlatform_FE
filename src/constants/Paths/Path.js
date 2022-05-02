@@ -8,7 +8,8 @@ export const PATH = {
   UPDATE_PROFILE: '/auth/update-profile',
   SCHEDULE_EVENT: '/schedule',
   DETAIL_EVENT: '/detail-event',
-  LIST_EVENT_FOR_HIGHSCHOOL: '/event-for-highschool'
+  LIST_EVENT_FOR_HIGHSCHOOL: '/event-for-highschool',
+  LIST_EVENT_FOR_UNIVERSITY: '/event-for-university'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/'
