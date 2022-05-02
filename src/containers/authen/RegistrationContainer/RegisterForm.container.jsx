@@ -6,18 +6,20 @@ import { getListDistrictByProvince } from '../../../services/DistrictService';
 import { getListProvinces } from '../../../services/ProvinceService';
 import { getListWardByDistrictId } from '../../../services/WardService';
 import { getUniversityByCode } from '../../../services/UniversityService';
-import { handleNotification } from '../../../notification/LoginNotification';
+import { handleNotification } from '../../../notification/RegisterNotification';
+import { registerForStudent } from '../../../services/UserServices';
 import { useDebouncedCallback } from 'use-debounce';
 
 const RegisterFormContainer = (props) => {
   const { role } = props;
 
   const [code, setCode] = useState('');
-  const [districtId, setDistrictId] = useState('');
+  const [wardId, setWardId] = useState('');
   const [dob, setDob] = useState('');
   const [sex, setSex] = useState('');
+  const [placeofbirth, setPlaceofbirth] = useState('');
 
-  const [schoolName, setSchoolName] = useState('');
+  const [schoolName, setSchoolName] = useState();
 
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
@@ -28,33 +30,26 @@ const RegisterFormContainer = (props) => {
   }, []);
 
   const getAllProvinces = () => {
-    getListProvinces()
-      .then((result) => {
-        setProvinces(result.data.data.list);
-      })
-      .catch(() => {
-        handleNotification('Lỗi Khi lấy tỉnh/thành phố');
-      });
+    getListProvinces().then((result) => {
+      setProvinces(result.data.data.list);
+    });
   };
 
   function onChangeProvince(value) {
-    getListDistrictByProvince(value)
-      .then((result) => {
-        setDistricts(result.data.data.list);
-      })
-      .catch(() => {
-        handleNotification('Lỗi Khi lấy quận/huyện');
-      });
+    getListDistrictByProvince(value).then((result) => {
+      setDistricts(result.data.data.list);
+    });
   }
   function onChangeDistricts(value) {
-    setDistrictId(value);
-    getListWardByDistrictId(value)
-      .then((result) => {
-        setWards(result.data.data.list);
-      })
-      .catch(() => {
-        handleNotification('Lỗi Khi lấy phường/xã');
-      });
+    getListWardByDistrictId(value).then((result) => {
+      setWards(result.data.data.list);
+    });
+  }
+  function onChangeWard(value) {
+    setWardId(value);
+  }
+  function onChangePlaceOfBirth(value) {
+    setPlaceofbirth(value);
   }
 
   const onChangeSex = (value) => {
@@ -75,7 +70,7 @@ const RegisterFormContainer = (props) => {
             setSchoolName(result.data.data.name);
           })
           .catch(() => {
-            setSchoolName(<font color='red'>Không tìm thấy !</font>);
+            setSchoolName('');
           });
       }
       if (role === 'uni') {
@@ -85,7 +80,7 @@ const RegisterFormContainer = (props) => {
             setSchoolName(result.data.data.name);
           })
           .catch(() => {
-            setSchoolName(<font color='red'>Không tìm thấy !</font>);
+            setSchoolName('');
           });
       }
       if (role === 'hs') {
@@ -95,7 +90,7 @@ const RegisterFormContainer = (props) => {
             setSchoolName(result.data.data.name);
           })
           .catch(() => {
-            setSchoolName(<font color='red'>Không tìm thấy !</font>);
+            setSchoolName('');
           });
       }
     },
@@ -104,11 +99,21 @@ const RegisterFormContainer = (props) => {
   );
 
   const onFinish = (values) => {
-    values.dob = dob;
-    values.code = code;
-    values.districs = districtId;
-    values.sex = sex;
+    values.date_of_birth = dob;
+    values.high_school_code = code;
+    values.ward_id = wardId;
+    values.gender_id = sex;
+    values.place_of_birth = placeofbirth;
     console.log('Success:', values);
+    if (role === 'st') {
+      registerForStudent(values)
+        .then((result) => {
+          console.log('Success:', result);
+        })
+        .then((err) => {
+          handleNotification('error');
+        });
+    }
   };
 
   return (
@@ -125,6 +130,8 @@ const RegisterFormContainer = (props) => {
         onChangeDistricts={onChangeDistricts}
         wards={wards}
         onChangeSex={onChangeSex}
+        onChangePlaceOfBirth={onChangePlaceOfBirth}
+        onChangeWard={onChangeWard}
       />
     </>
   );
