@@ -17,7 +17,7 @@ import SchedulePage from '../pages/SchedulePage/SchedulePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
 import ListEventForHighschoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
-import ListEventForUniversityFormPage from '../pages/event/ListEvent/ListEventForUniversityFormPage';
+import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
 
 const AppRouter = () => {
   return (
@@ -65,7 +65,7 @@ const AppRouter = () => {
           <ListEventForHighschoolPage />
         </Route>
         <Route path={PATH.LIST_EVENT_FOR_UNIVERSITY} exact>
-          <ListEventForUniversityFormPage />
+          <ListEventForUniversityPage />
         </Route>
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />

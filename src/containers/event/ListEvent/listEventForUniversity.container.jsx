@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import ListEventForUniversity from '../../../components/event/ListEvent/listEventForUniversity.component';
+import ListEventForUniversityForm from '../../../components/event/ListEvent/listEventForUniversityForm.component';
+import { EventForUniversity } from '../../../services/event/GetListEvent/GetListEventForUniversity';
+import { useSelector } from 'react-redux';
 
 const ListEventForUniversityContainer = () => {
-  const [eventforuniversity, setEventForUniversity] = useState([]);
+  const [eventforuniversity, setEventForUniversity] = useState();
+  const { user } = useSelector((state) => state.authentication);
+  const [dataSearch, setDataSearch] = useState({
+    name: '',
+    hostname: '',
+    eventtype: '',
+    status: '',
+    universityID: user.id ? user.id : 1
+  });
 
   useEffect(() => {
-    getEventForUniversity(1);
-  }, []);
+    getEventForUniversity(dataSearch);
+  }, [dataSearch]);
 
-  const getEventForUniversity = (highschoolID) => {
-    EventForUniversity(highschoolID).then((result) => {
+  const getEventForUniversity = (data) => {
+    EventForUniversity(data).then((result) => {
+      console.log('data: ', data);
       setEventForUniversity(result.data.data.list);
     });
   };
 
-  return <ListEventForUniversity eventforuniversity={eventforuniversity} />;
+  return <ListEventForUniversityForm eventforuniversity={eventforuniversity} setDataSearch={setDataSearch} />;
 };
 export default ListEventForUniversityContainer;
