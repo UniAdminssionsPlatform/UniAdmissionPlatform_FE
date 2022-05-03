@@ -119,7 +119,7 @@ const RegisterFormContainer = (props) => {
     if (role === 'st') {
       registerForStudent(values)
         .then((result) => {
-          handleNotification('success');
+          handleNotification('success', result.message);
         })
         .then((err) => {
           handleNotification('error', err);
