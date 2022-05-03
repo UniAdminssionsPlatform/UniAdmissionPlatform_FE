@@ -1,24 +1,21 @@
 import { Button, DatePicker, Form, Input, Select } from 'antd';
 import {
   address,
+  dob,
   firstname,
   idcard,
   lastname,
   middlename,
+  nation,
   phone,
-  relogion,
-  vcode,
-  dob,
-  sex,
   placeOfBirth,
-  province,
-  district,
-  ward,
-  nation
+  relogion,
+  sex,
+  vcode
 } from '../../../validate/RegisterForm.validate';
 
 import Label from '../../commons/Label/Label.component';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 const RegisterForm = (props) => {
@@ -38,7 +35,10 @@ const RegisterForm = (props) => {
     onChangeWard,
     isDisableDistrict,
     isDisableWard,
-    codeWithRole
+    codeWithRole,
+    onChangeReligion,
+    nation,
+    onChangeNation
   } = props;
   const { Option } = Select;
   const dateFormat = 'YYYY/MM/DD';
@@ -60,25 +60,25 @@ const RegisterForm = (props) => {
           <Form.Item name='last_name' rules={lastname}>
             <label className='block'>
               <Label>Họ</Label>
-              <Input placeholder='Example Doe' type='text' className='mt-1' />
+              <Input placeholder='Nguyễn, Trần, Lê,...' type='text' className='mt-1' />
             </label>
           </Form.Item>
           <Form.Item name='middle_name' rules={middlename}>
             <label className='block'>
               <Label>Tên đệm</Label>
-              <Input placeholder='Doe' type='text' className='mt-1' />
+              <Input placeholder='Thị, Văn,...' type='text' className='mt-1' />
             </label>
           </Form.Item>
           <Form.Item name='first_name' rules={firstname}>
             <label className='block'>
               <Label>Tên</Label>
-              <Input placeholder='Doe' type='text' className='mt-1' />
+              <Input placeholder='Tín, Đạt, Hào,...' type='text' className='mt-1' />
             </label>
           </Form.Item>
         </div>
 
         <div className='grid md:grid-cols-3 '>
-          <Form.Item name='date_of_birth' rules={dob}>
+          <Form.Item name='date_of_birth'>
             <div>
               <Label>Ngày sinh</Label>
               <div className='mt-1'>
@@ -92,10 +92,10 @@ const RegisterForm = (props) => {
           </Form.Item>
 
           <div>
-            <Form.Item name='gender_id' rules={sex}>
+            <Form.Item name='gender_id' hasFeedback>
               <Label>Giới tính</Label>
               <div className='mt-1'>
-                <Select defaultValue='' style={{ width: 150 }} onChange={onChangeSex}>
+                <Select placeholder='Giới tính' style={{ width: 150 }} onChange={onChangeSex}>
                   <Option value={1}>Nam</Option>
                   <Option value={2}>Nữ</Option>
                   {/* <Option value='Other'>Khác</Option> */}
@@ -105,7 +105,7 @@ const RegisterForm = (props) => {
           </div>
 
           <div>
-            <Form.Item name='place_of_birth' rules={placeOfBirth}>
+            <Form.Item name='place_of_birth'>
               <label className='block'>
                 <Label>nơi sinh</Label>
                 <div className='mt-1'>
@@ -149,18 +149,33 @@ const RegisterForm = (props) => {
         <label className='block '>
           <div className='grid md:grid-cols-2 gap-6 block md:col-span-2 '>
             <div className='mt-1'>
-              <Form.Item name='religion' rules={relogion}>
+              <Form.Item name='religion'>
                 <label className='block'>
                   <Label>Tôn giáo</Label>
-                  <Input placeholder='Doe' type='text' className='mt-1' />
+                  <Select placeholder='Tôn giáo' onChange={onChangeReligion}>
+                    <Option value='Phật giáo'>Phật giáo</Option>
+                    <Option value='Thiên Chúa Giáo'>Thiên chúa giáo</Option>
+                    <Option value='không'>Không</Option>
+                    <Option value='Khác'>Khác</Option>
+                  </Select>
                 </label>
               </Form.Item>
             </div>
             <div className='mt-1'>
-              <Form.Item name='nationality' rules={nation}>
+              <Form.Item name='nationality'>
                 <label className='block'>
                   <Label>Quốc tịch</Label>
-                  <Input placeholder='Doe' type='text' className='mt-1' />
+                  <Select
+                    showSearch
+                    placeholder='Quốc tịch'
+                    optionFilterProp='children'
+                    onChange={onChangeNation}
+                    onSearch={onSearch}
+                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                    {nation?.map((item) => (
+                      <Option value={item.name}>{item.name}</Option>
+                    ))}
+                  </Select>
                 </label>
               </Form.Item>
             </div>
@@ -253,7 +268,7 @@ const RegisterForm = (props) => {
           </div>
         </label>
         <Button className='md:col-span-2' htmlType='submit' type='primary' style={{ borderRadius: 10 }}>
-          Update profile
+          Đăng Kí
         </Button>
       </Form>
     </div>

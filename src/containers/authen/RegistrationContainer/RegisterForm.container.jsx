@@ -7,7 +7,12 @@ import { getListProvinces } from '../../../services/ProvinceService';
 import { getListWardByDistrictId } from '../../../services/WardService';
 import { getUniversityByCode } from '../../../services/UniversityService';
 import { handleNotification } from '../../../notification/RegisterNotification';
-import { registerForStudent } from '../../../services/UserServices';
+import {
+  registerForSchoolManager,
+  registerForStudent,
+  registerForUniversityManager
+} from '../../../services/UserServices';
+import { getListNation } from '../../../services/NationalityService';
 import { useDebouncedCallback } from 'use-debounce';
 
 const RegisterFormContainer = (props) => {
@@ -18,11 +23,14 @@ const RegisterFormContainer = (props) => {
   const [dob, setDob] = useState('');
   const [sex, setSex] = useState('');
   const [placeofbirth, setPlaceofbirth] = useState('');
+  const [religion, setReligion] = useState('');
+  const [nation, setNation] = useState('');
 
   const [schoolName, setSchoolName] = useState();
 
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
+  const [nationalities, setNationalities] = useState();
   const [isDisableDistrict, setIsDisableDistrict] = useState(true);
   const [wards, setWards] = useState();
   const [isDisableWard, setIsDisableWard] = useState(true);
@@ -31,6 +39,7 @@ const RegisterFormContainer = (props) => {
 
   useEffect(() => {
     getAllProvinces();
+    getAllNation();
     if (role === 'st') setCodeWithRole('high_school_code');
 
     if (role === 'hs') setCodeWithRole('high_school_manager_code');
@@ -38,6 +47,11 @@ const RegisterFormContainer = (props) => {
     if (role === 'uni') setCodeWithRole('university_code');
   }, []);
 
+  const getAllNation = () => {
+    getListNation().then((result) => {
+      setNationalities(result.data.data.list);
+    });
+  };
   const getAllProvinces = () => {
     getListProvinces().then((result) => {
       setProvinces(result.data.data.list);
@@ -65,6 +79,14 @@ const RegisterFormContainer = (props) => {
 
   const onChangeSex = (value) => {
     setSex(value);
+  };
+
+  const onChangeReligion = (value) => {
+    setReligion(value);
+  };
+
+  const onChangeNation = (value) => {
+    setNation(value);
   };
 
   const handleDatePicker = (date, dateString) => {
@@ -113,6 +135,8 @@ const RegisterFormContainer = (props) => {
     values.date_of_birth = dob;
     values.ward_id = wardId;
     values.gender_id = sex;
+    values.religion = religion;
+    values.nationality = nation;
 
     values.place_of_birth = placeofbirth;
 
@@ -125,6 +149,26 @@ const RegisterFormContainer = (props) => {
           handleNotification('error', err);
         });
     }
+    if (role === 'hs') {
+      registerForSchoolManager(values)
+        .then((result) => {
+          handleNotification('success', result.message);
+        })
+        .then((err) => {
+          handleNotification('error', err);
+        });
+    }
+
+    if (role === 'uni') {
+      registerForUniversityManager(values)
+        .then((result) => {
+          handleNotification('success', result.message);
+        })
+        .then((err) => {
+          handleNotification('error', err);
+        });
+    }
+
     console.log('Success:', values);
   };
 
@@ -147,6 +191,9 @@ const RegisterFormContainer = (props) => {
         isDisableDistrict={isDisableDistrict}
         isDisableWard={isDisableWard}
         codeWithRole={codeWithRole}
+        onChangeReligion={onChangeReligion}
+        nation={nationalities}
+        onChangeNation={onChangeNation}
       />
     </>
   );
