@@ -7,15 +7,23 @@ import {
   middlename,
   phone,
   relogion,
-  vcode
+  vcode,
+  dob,
+  sex,
+  placeOfBirth,
+  province,
+  district,
+  ward,
+  nation
 } from '../../../validate/RegisterForm.validate';
 
 import Label from '../../commons/Label/Label.component';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
 const RegisterForm = (props) => {
   const {
+    role,
     handleCode,
     schoolName,
     onFinish,
@@ -27,7 +35,10 @@ const RegisterForm = (props) => {
     wards,
     onChangeSex,
     onChangePlaceOfBirth,
-    onChangeWard
+    onChangeWard,
+    isDisableDistrict,
+    isDisableWard,
+    codeWithRole
   } = props;
   const { Option } = Select;
   const dateFormat = 'YYYY/MM/DD';
@@ -46,7 +57,7 @@ const RegisterForm = (props) => {
     <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
       <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish}>
         <div className='grid md:grid-cols-3 gap-6 block md:col-span-2'>
-          <Form.Item name='first_name' rules={firstname}>
+          <Form.Item name='last_name' rules={lastname}>
             <label className='block'>
               <Label>Họ</Label>
               <Input placeholder='Example Doe' type='text' className='mt-1' />
@@ -58,7 +69,7 @@ const RegisterForm = (props) => {
               <Input placeholder='Doe' type='text' className='mt-1' />
             </label>
           </Form.Item>
-          <Form.Item name='last_name' rules={lastname}>
+          <Form.Item name='first_name' rules={firstname}>
             <label className='block'>
               <Label>Tên</Label>
               <Input placeholder='Doe' type='text' className='mt-1' />
@@ -67,7 +78,7 @@ const RegisterForm = (props) => {
         </div>
 
         <div className='grid md:grid-cols-3 '>
-          <Form.Item name='date_of_birth'>
+          <Form.Item name='date_of_birth' rules={dob}>
             <div>
               <Label>Ngày sinh</Label>
               <div className='mt-1'>
@@ -81,10 +92,10 @@ const RegisterForm = (props) => {
           </Form.Item>
 
           <div>
-            <Form.Item name='gender_id'>
+            <Form.Item name='gender_id' rules={sex}>
               <Label>Giới tính</Label>
               <div className='mt-1'>
-                <Select defaultValue={1} style={{ width: 150 }} onChange={onChangeSex}>
+                <Select defaultValue='' style={{ width: 150 }} onChange={onChangeSex}>
                   <Option value={1}>Nam</Option>
                   <Option value={2}>Nữ</Option>
                   {/* <Option value='Other'>Khác</Option> */}
@@ -94,7 +105,7 @@ const RegisterForm = (props) => {
           </div>
 
           <div>
-            <Form.Item name='place_of_birth'>
+            <Form.Item name='place_of_birth' rules={placeOfBirth}>
               <label className='block'>
                 <Label>nơi sinh</Label>
                 <div className='mt-1'>
@@ -106,7 +117,7 @@ const RegisterForm = (props) => {
                     onSearch={onSearch}
                     filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                     {provinces?.map((item) => (
-                      <Option value={item.id}>{item.name}</Option>
+                      <Option value={item.name}>{item.name}</Option>
                     ))}
                   </Select>
                 </div>
@@ -146,7 +157,7 @@ const RegisterForm = (props) => {
               </Form.Item>
             </div>
             <div className='mt-1'>
-              <Form.Item name='nationality'>
+              <Form.Item name='nationality' rules={nation}>
                 <label className='block'>
                   <Label>Quốc tịch</Label>
                   <Input placeholder='Doe' type='text' className='mt-1' />
@@ -186,6 +197,7 @@ const RegisterForm = (props) => {
                     optionFilterProp='children'
                     onChange={onChangeDistricts}
                     onSearch={onSearch}
+                    disabled={isDisableDistrict}
                     filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                     {districts?.map((item) => (
                       <Option value={item.id}>{item.name}</Option>
@@ -205,6 +217,7 @@ const RegisterForm = (props) => {
                     optionFilterProp='children'
                     onChange={onChangeWard}
                     onSearch={onSearch}
+                    disabled={isDisableWard}
                     filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                     {wards?.map((item) => (
                       <Option value={item.id}>{item.name}</Option>
@@ -224,7 +237,7 @@ const RegisterForm = (props) => {
                   <Input type='text' />
                 </label>
               </Form.Item>
-              <Form.Item name='high_school_code' rules={vcode}>
+              <Form.Item name={codeWithRole} rules={vcode}>
                 <label className='block'>
                   <Label>Mã</Label>
                   <Input type='text' onChange={(e) => handleCode(e.target.value)} />

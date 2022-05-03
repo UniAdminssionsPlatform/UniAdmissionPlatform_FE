@@ -23,10 +23,19 @@ const RegisterFormContainer = (props) => {
 
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
+  const [isDisableDistrict, setIsDisableDistrict] = useState(true);
   const [wards, setWards] = useState();
+  const [isDisableWard, setIsDisableWard] = useState(true);
+
+  const [codeWithRole, setCodeWithRole] = useState();
 
   useEffect(() => {
     getAllProvinces();
+    if (role === 'st') setCodeWithRole('high_school_code');
+
+    if (role === 'hs') setCodeWithRole('high_school_manager_code');
+
+    if (role === 'uni') setCodeWithRole('university_code');
   }, []);
 
   const getAllProvinces = () => {
@@ -38,11 +47,13 @@ const RegisterFormContainer = (props) => {
   function onChangeProvince(value) {
     getListDistrictByProvince(value).then((result) => {
       setDistricts(result.data.data.list);
+      setIsDisableDistrict(false);
     });
   }
   function onChangeDistricts(value) {
     getListWardByDistrictId(value).then((result) => {
       setWards(result.data.data.list);
+      setIsDisableWard(false);
     });
   }
   function onChangeWard(value) {
@@ -100,20 +111,21 @@ const RegisterFormContainer = (props) => {
 
   const onFinish = (values) => {
     values.date_of_birth = dob;
-    values.high_school_code = code;
     values.ward_id = wardId;
     values.gender_id = sex;
+
     values.place_of_birth = placeofbirth;
-    console.log('Success:', values);
+
     if (role === 'st') {
       registerForStudent(values)
         .then((result) => {
-          console.log('Success:', result);
+          handleNotification('success');
         })
         .then((err) => {
-          handleNotification('error');
+          handleNotification('error', err);
         });
     }
+    console.log('Success:', values);
   };
 
   return (
@@ -132,6 +144,9 @@ const RegisterFormContainer = (props) => {
         onChangeSex={onChangeSex}
         onChangePlaceOfBirth={onChangePlaceOfBirth}
         onChangeWard={onChangeWard}
+        isDisableDistrict={isDisableDistrict}
+        isDisableWard={isDisableWard}
+        codeWithRole={codeWithRole}
       />
     </>
   );
