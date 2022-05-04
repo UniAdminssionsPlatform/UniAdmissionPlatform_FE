@@ -1,11 +1,10 @@
 import { Form, Input, Upload, Button, message, Typography, Select, DatePicker } from 'antd';
 import { excerpt, title } from '../../../validate/CreateEvent.validate';
-import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
 import Label from '../../commons/Label/Label';
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import moment from 'moment';
-const CreateEventComponent = (props) => {
+const CreateEventFormComponent = (props) => {
   const { Title } = Typography;
   const uploadFile = {
     name: 'file',
@@ -177,4 +176,4 @@ const CreateEventComponent = (props) => {
   );
 };
 
-export default CreateEventComponent;
+export default CreateEventFormComponent;

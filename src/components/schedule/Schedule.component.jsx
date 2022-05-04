@@ -20,7 +20,7 @@ import {
   TodayButton
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { appointments } from './fakeData';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { room } from './demo-data/task';
 const Appointment = ({ children, style, ...restProps }) => (
   <Appointments.Appointment

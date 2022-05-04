@@ -7,7 +7,7 @@ import ScheduleComponent from '../schedule/Schedule.component';
 import HighSchoolSmallInfomationComponent from './component/HighSchoolSmallInfomation.component';
 import { Button, Space, Modal } from 'antd';
 import { useState } from 'react';
-import CreateEventComponent from '../event/CreateEvent/CreateEvent.component';
+import CreateEventFormComponent from '../form/CreateEventForm/CreateEventForm.component';
 const ListHighSchool = (props) => {
   const dispatch = useDispatch();
   const { listHighSchool, isClicked, setIsClicked } = props;
@@ -46,7 +46,7 @@ const ListHighSchool = (props) => {
                   onOk={handleClickOkModal}
                   onCancel={handleCancelModal}
                   width={'1000px'}>
-                  <CreateEventComponent />
+                  <CreateEventFormComponent />
                 </Modal>
               </Space>
             </div>
