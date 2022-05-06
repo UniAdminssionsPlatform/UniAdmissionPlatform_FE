@@ -12,6 +12,7 @@ const CreateEventContainer = () => {
   const [listHighSchool, setlistHighSchool] = useState();
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
+  const [isDisableDistrict, setIsDisableDistrict] = useState(true);
   const [dataSearch, setDataSeacrch] = useState({
     name: '',
     address: '',
@@ -45,6 +46,7 @@ const CreateEventContainer = () => {
     getListDistrictByProvince(value)
       .then((result) => {
         setDistricts(result.data.data.list);
+        setIsDisableDistrict(false);
       })
       .catch((err) => {
         handleSuccessNotification('Lỗi Khi lấy danh sách quận');
@@ -68,6 +70,7 @@ const CreateEventContainer = () => {
         isClicked={isClicked}
         setIsClicked={setIsClicked}
         setDataSearch={setDataSeacrch}
+        isDisableDistrict={isDisableDistrict}
       />
       {/*<CreateEventComponent onFinish={onFinish} />*/}
     </>

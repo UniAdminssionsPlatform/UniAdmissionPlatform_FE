@@ -40,11 +40,11 @@ const RegisterFormContainer = (props) => {
   useEffect(() => {
     getAllProvinces();
     getAllNation();
-    if (role === 'st') setCodeWithRole('high_school_code');
+    if (role === 'st') setCodeWithRole('highSchoolCode');
 
-    if (role === 'hs') setCodeWithRole('high_school_manager_code');
+    if (role === 'hs') setCodeWithRole('highSchoolManagerCode');
 
-    if (role === 'uni') setCodeWithRole('university_code');
+    if (role === 'uni') setCodeWithRole('universityCode');
   }, []);
 
   const getAllNation = () => {
@@ -132,13 +132,13 @@ const RegisterFormContainer = (props) => {
   );
 
   const onFinish = (values) => {
-    values.date_of_birth = dob;
-    values.ward_id = wardId;
-    values.gender_id = sex;
+    values.dateOfBirth = dob;
+    values.wardId = wardId;
+    values.genderId = sex;
     values.religion = religion;
     values.nationality = nation;
 
-    values.place_of_birth = placeofbirth;
+    values.placeOfBirth = placeofbirth;
 
     if (role === 'st') {
       registerForStudent(values)
