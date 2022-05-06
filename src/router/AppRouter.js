@@ -4,7 +4,6 @@ import ChangePasswordPage from '../pages/authen/ChangePasswordPage/ChangePasswor
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ForgotPasswordPage from '../pages/authen/ForgotPasswordPage/ForgotPasswordPage';
 import HeaderContainer from '../containers/Header/Header.container';
-import HomePage from '../pages/HomePage/HomePage';
 import LoginPage from '../pages/authen/LoginPage/Login.page';
 import React from 'react';
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
@@ -18,6 +17,7 @@ import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
 import ListEventForHighschoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
 import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
+import HomePagePage from '../pages/HomePage/HomePage';
 
 const AppRouter = () => {
   return (
@@ -26,7 +26,7 @@ const AppRouter = () => {
       <HeaderContainer />
       <Switch>
         <Route path={PATH.INDEX} exact>
-          <HomePage />
+          <HomePagePage />
         </Route>
         <Route path={PATH.LOGIN} exact>
           <LoginPage />
