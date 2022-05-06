@@ -16,6 +16,7 @@ import PolicyPage from '../pages/policy/PolicyPage';
 import SchedulePage from '../pages/SchedulePage/SchedulePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
+import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
 
 const AppRouter = () => {
   return (
@@ -61,6 +62,9 @@ const AppRouter = () => {
         </Route>
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />
+        </Route>
+        <Route path={PATH.LIST_MAJOR_GROUP} exact>
+          <ListMajorGroupPage />
         </Route>
         <Route path='/index.html'>
           <Redirect to='/' />

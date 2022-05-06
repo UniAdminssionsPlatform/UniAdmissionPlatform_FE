@@ -7,7 +7,8 @@ export const PATH = {
   POLICY: '/policy',
   UPDATE_PROFILE: '/auth/update-profile',
   SCHEDULE_EVENT: '/schedule',
-  DETAIL_EVENT: '/detail-event'
+  DETAIL_EVENT: '/detail-event',
+  LIST_MAJOR_GROUP: '/list-major-group'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/'
