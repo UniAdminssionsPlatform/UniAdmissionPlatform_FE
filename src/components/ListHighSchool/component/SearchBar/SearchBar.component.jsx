@@ -1,4 +1,5 @@
 import { Form, Input, Select, Typography } from 'antd';
+import { getListDistrictByProvince } from '../../../../services/DistrictService';
 import { useDebouncedCallback } from 'use-debounce';
 import React, { useEffect, useState } from 'react';
 const SearchBarComponent = (props) => {
@@ -78,7 +79,7 @@ const SearchBarComponent = (props) => {
             }}
           />
         </Form.Item>
-        <Form.Item name='phoneNumber'>
+        <Form.Item name='phone_Number'>
           <Input
             placeholder='số điện thoại...'
             type='text'

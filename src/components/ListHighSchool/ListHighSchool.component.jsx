@@ -5,12 +5,11 @@ import { setSelectedHighSchool } from '../../redux-flow/selectedHighSchool/selec
 import HighSchoolTableComponent from './component/HighSchoolTable.component';
 import HighSchoolSmallInformationComponent from './component/HighSchoolSmallInformation.component';
 import { Button, Space, Modal } from 'antd';
-import { useState } from 'react';
 import ScheduleContainer from '../../containers/schedule/Schedule.container';
-
+import { useState } from 'react';
 const ListHighSchool = (props) => {
   const dispatch = useDispatch();
-  const { listHighSchool, isClicked, setIsClicked } = props;
+  const { listHighSchool, isClicked, setIsClicked, setDataSearch, provinces, onChange, districts } = props;
   const [selectedSchool, setSelectedSchool] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleSelectedSchool = (school) => {
@@ -39,20 +38,24 @@ const ListHighSchool = (props) => {
                 <Button type='primary' onClick={() => setIsClicked(false)}>
                   Chọn một trường khác
                 </Button>
-                {/*<Button type='primary' danger onClick={() => setIsModalOpen(true)}>*/}
-                {/*  Tạo Sự kiện*/}
-                {/*</Button>*/}
+                <Button type='primary' danger onClick={() => setIsModalOpen(true)}>
+                  Tạo Sự kiện
+                </Button>
               </Space>
             </div>
           ) : (
-            <SearchBarComponent />
+            <SearchBarComponent
+              setDataSearch={setDataSearch}
+              provinces={provinces}
+              onChange={onChange}
+              districts={districts}
+            />
           )}
         </div>
 
         {isClicked ? (
           <ScheduleContainer selectedSchool={selectedSchool} />
         ) : (
-          // <ScheduleComponent listSlot={listSlot} />
           <HighSchoolTableComponent listHighSchool={listHighSchool} handleSelectedSchool={handleSelectedSchool} />
         )}
       </div>
