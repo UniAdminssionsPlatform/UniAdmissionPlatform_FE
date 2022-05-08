@@ -1,7 +1,7 @@
+import { ListEvent } from '../../../services/event/GetListEvent/GetListEvent';
+import { handleNotification } from '../../../notification/ListEventNotification';
 import ListEventComponent from '../../../components/event/ListEvent/listEvent.component';
 import React, { useEffect, useState } from 'react';
-import { handleNotification } from '../../../notification/LoginNotification';
-import { ListEvent } from '../../../services/event/GetListEvent/GetListEvent';
 
 const ListEventContainer = () => {
   const [listevent, setListEvent] = useState([]);

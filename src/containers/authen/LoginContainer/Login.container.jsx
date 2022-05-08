@@ -24,7 +24,7 @@ const LoginContainer = () => {
   const history = useHistory();
 
   const handleRedirect = (user) => {
-    if (user.need_register === true) {
+    if (user.needRegister === true) {
       history.push(PATH.REGISTRATION);
     } else {
       if (user.roles === HIGH_SCHOOL_MANAGER) {
@@ -38,7 +38,7 @@ const LoginContainer = () => {
   };
 
   const handleLoginServer = (token, email) => {
-    loginByFirebase({ firebase_token: token })
+    loginByFirebase({ firebaseToken: token })
       .then((result) => {
         const user = result.data.data;
         dispatch(SigninHandler(user));

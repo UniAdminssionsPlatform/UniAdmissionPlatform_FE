@@ -60,8 +60,8 @@ const AppRouter = () => {
         <Route path={PATH.DETAIL_EVENT} exact>
           <DetailEventPage />
         </Route>
-        <Route path={PATH.LIST_EVENT_FOR_HIGHSCHOOL} exact>
-          <ListEventForHighschoolPage />
+        <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
+          <ListEventPage />
         </Route>
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />

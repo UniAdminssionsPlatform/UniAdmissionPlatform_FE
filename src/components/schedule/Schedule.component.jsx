@@ -1,7 +1,5 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
-import { Button } from 'antd';
-import moment from 'moment';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
@@ -14,41 +12,19 @@ import {
   AppointmentTooltip,
   DayView,
   MonthView,
-  AppointmentForm,
-  Resources,
   DateNavigator,
   TodayButton
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { appointments } from './fakeData';
 import { useState } from 'react';
 import { room } from './demo-data/task';
-const Appointment = ({ children, style, ...restProps }) => (
-  <Appointments.Appointment
-    {...restProps}
-    style={{
-      ...style,
-      backgroundColor: '#FFC107',
-      borderRadius: '8px'
-    }}>
-    <Button type='primary'> Delete</Button>
-    {children}
-  </Appointments.Appointment>
-);
-const header = ({ children, style, ...restProps }) => (
-  <AppointmentTooltip.Header {...restProps}>
-    Hello
-    {children}
-  </AppointmentTooltip.Header>
-);
-const content = ({ children, style, ...restProps }) => (
-  <AppointmentTooltip.Content {...restProps}>
-    Hello
-    {children}
-  </AppointmentTooltip.Content>
-);
-const ScheduleComponent = () => {
-  const [data, setData] = useState(appointments);
-  const currentDate = moment().toDate();
+import AppointmentHeaderComponent from './component/AppointmentHeader.component';
+import AppointmentContentComponent from './component/AppointmentContent.component';
+import { Typography } from 'antd';
+const ScheduleComponent = (props) => {
+  const { listSlot, setIsModalOpen } = props;
+  const [data, setData] = useState();
+  const { Title, Text } = Typography;
+
   const commitChanges = ({ added, changed, deleted }) => {
     if (added) setData([...data, { id: data.length > 0 ? data[data.length - 1].id + 1 : 0, ...added }]);
     if (changed) {
@@ -62,32 +38,58 @@ const ScheduleComponent = () => {
     }
     if (deleted !== undefined) setData(data.filter((appointment) => appointment.id !== deleted));
   };
-  const mock = {
-    data: appointments,
-    resources: [
-      {
-        fieldName: 'id',
-        title: 'Room',
-        instances: room
-      }
-    ]
-  };
+
+  const AppointmentComponent = ({ children, style, data, ...restProps }) => (
+    <Appointments.Appointment
+      {...restProps}
+      style={{
+        ...style,
+        backgroundColor: data?.status === 1 ? '#b2fab4' : '#ffebee',
+        borderRadius: '8px'
+      }}
+      data={data}
+      onDoubleClick={data?.status === 1 ? () => setIsModalOpen(true) : null}>
+      {data?.status === 0 ? (
+        <Text type='secondary' strong style={{ padding: '1px' }}>
+          Không khả dụng
+        </Text>
+      ) : (
+        <Text type='secondary' strong style={{ padding: '1px' }}>
+          Nhấp click chuột vào đây để đặt lịch
+        </Text>
+      )}
+      {children}
+    </Appointments.Appointment>
+  );
+  // const mock = {
+  //   data: appointments,
+  //   resources: [
+  //     {
+  //       fieldName: 'id',
+  //       title: 'Room',
+  //       instances: room
+  //     }
+  //   ]
+  // };
   return (
     <>
       <Paper>
-        <Scheduler data={data} height={660}>
+        <Scheduler data={listSlot} height={660}>
           <ViewState />
           <EditingState onCommitChanges={commitChanges} />
           <EditRecurrenceMenu />
+          <MonthView startDayHour={7} endDayHour={20} />
           <DayView startDayHour={7} endDayHour={20} />
           <WeekView startDayHour={7} endDayHour={20} />
-          <MonthView startDayHour={7} endDayHour={20} />
           <Toolbar />
           <ViewSwitcher />
-          <Appointments appointmentComponent={Appointment} />
-          <AppointmentTooltip showOpenButton headerComponent={header} contentComponent={content} />
-          <AppointmentForm />
-          <Resources data={mock.resources} mainResourceName='roomId' />
+          <Appointments appointmentComponent={AppointmentComponent} />
+          <AppointmentTooltip
+            headerComponent={AppointmentHeaderComponent}
+            contentComponent={AppointmentContentComponent}
+          />
+          {/*<AppointmentForm />*/}
+          {/*<Resources data={mock.resources} mainResourceName='roomId' />*/}
           <DateNavigator />
           <TodayButton />
           <DragDropProvider />

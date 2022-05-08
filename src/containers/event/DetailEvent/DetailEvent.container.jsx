@@ -1,5 +1,5 @@
 import { getDetailEvent } from '../../../services/EventService';
-import { handleNotification } from '../../../notification/LoginNotification';
+import { handleNotification } from '../../../notification/DetailEventNotification';
 import DetailEventComponent from '../../../components/event/DetailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
 
