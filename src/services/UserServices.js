@@ -1,8 +1,8 @@
 import { CallAPI } from './axiosBase';
 import {
+  PATH_CREATE_ACCOUNT_FOR_UNI,
   PATH_LOGIN_BY_FIREBASE,
   PATH_REGISTER_BY_FIREBASE,
-  PATH_CREATE_ACCOUNT_FOR_UNI,
   PATH_REGISTER_FOR_STUDENT
 } from '../constants/Endpoints/UsersEnpoint';
 
