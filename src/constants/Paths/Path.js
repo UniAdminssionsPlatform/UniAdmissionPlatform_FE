@@ -7,16 +7,14 @@ export const PATH = {
   POLICY: '/policy',
   UPDATE_PROFILE: '/auth/update-profile',
   SCHEDULE_EVENT: '/schedule',
-  DETAIL_EVENT: '/detail-event'
+  CREATE_EVENT: '/uni/create-event'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
-  NEW: '/uni/list-new',
-  PROFILE: '/uni/university-detail',
-  CREATE_EVENT: '/uni/create-event'
+  NEW: '/uni/list-new'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',

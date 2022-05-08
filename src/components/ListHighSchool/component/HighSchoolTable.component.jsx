@@ -3,7 +3,7 @@ import NcImage from '../../commons/NcImage/NcImage.component';
 import Pagination from '../../commons/Pagination/Pagination';
 
 const HighSchoolTableComponent = (props) => {
-  const { handleSelectedEvent, listHighSchool } = props;
+  const { handleSelectedSchool, listHighSchool } = props;
   return (
     <>
       <div className='flex-grow'>
@@ -68,7 +68,7 @@ const HighSchoolTableComponent = (props) => {
                         <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-neutral-300'>
                           <a
                             className='text-primary-800 dark:text-primary-500 hover:text-primary-900'
-                            onClick={() => handleSelectedEvent(item)}>
+                            onClick={() => handleSelectedSchool(item)}>
                             lựa chọn
                           </a>
                           {/*{item.status === 1 ? (*/}
