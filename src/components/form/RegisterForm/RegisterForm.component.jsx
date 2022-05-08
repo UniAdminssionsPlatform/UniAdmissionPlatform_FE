@@ -57,19 +57,19 @@ const RegisterForm = (props) => {
     <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
       <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish}>
         <div className='grid md:grid-cols-3 gap-6 block md:col-span-2'>
-          <Form.Item name='last_name' rules={lastname}>
+          <Form.Item name='lastName' rules={lastname}>
             <label className='block'>
               <Label>Họ</Label>
               <Input placeholder='Nguyễn, Trần, Lê,...' type='text' className='mt-1' />
             </label>
           </Form.Item>
-          <Form.Item name='middle_name' rules={middlename}>
+          <Form.Item name='middleName' rules={middlename}>
             <label className='block'>
               <Label>Tên đệm</Label>
               <Input placeholder='Thị, Văn,...' type='text' className='mt-1' />
             </label>
           </Form.Item>
-          <Form.Item name='first_name' rules={firstname}>
+          <Form.Item name='firstName' rules={firstname}>
             <label className='block'>
               <Label>Tên</Label>
               <Input placeholder='Tín, Đạt, Hào,...' type='text' className='mt-1' />
@@ -78,7 +78,7 @@ const RegisterForm = (props) => {
         </div>
 
         <div className='grid md:grid-cols-3 '>
-          <Form.Item name='date_of_birth'>
+          <Form.Item name='dateOfBirth'>
             <div>
               <Label>Ngày sinh</Label>
               <div className='mt-1'>
@@ -86,6 +86,7 @@ const RegisterForm = (props) => {
                   // defaultValue={moment('2015/01/01', dateFormat)}
                   // format={dateFormat}
                   onChange={handleDatePicker}
+                  placeholder='ngày tháng năm sinh'
                 />
               </div>
             </div>
@@ -105,7 +106,7 @@ const RegisterForm = (props) => {
           </div>
 
           <div>
-            <Form.Item name='place_of_birth'>
+            <Form.Item name='placeOfBirth'>
               <label className='block'>
                 <Label>nơi sinh</Label>
                 <div className='mt-1'>
@@ -127,7 +128,7 @@ const RegisterForm = (props) => {
         </div>
 
         <div className='mt-1'>
-          <Form.Item name='phone_number' rules={phone}>
+          <Form.Item name='phoneNumber' rules={phone}>
             <label className='block'>
               <Label>Số điện thoại</Label>
               <Input type='text' className='mt-1' />
@@ -222,7 +223,7 @@ const RegisterForm = (props) => {
               </label>
             </Form.Item>
 
-            <Form.Item name='ward_id'>
+            <Form.Item name='wardId'>
               <label className='block'>
                 <Label>Phường/Xã</Label>
                 <div className='mt-1'>
@@ -246,7 +247,7 @@ const RegisterForm = (props) => {
         <label className='block '>
           <div className='mt-1'>
             <div className='grid md:grid-cols-2 gap-6 block md:col-span-2 '>
-              <Form.Item name='id_card' rules={idcard}>
+              <Form.Item name='idCard' rules={idcard}>
                 <label className='block'>
                   <Label>CMND/CCCD</Label>
                   <Input type='text' />

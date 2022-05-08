@@ -78,7 +78,7 @@ const SearchBarComponent = (props) => {
             }}
           />
         </Form.Item>
-        <Form.Item name='phone_Number'>
+        <Form.Item name='phoneNumber'>
           <Input
             placeholder='số điện thoại...'
             type='text'
