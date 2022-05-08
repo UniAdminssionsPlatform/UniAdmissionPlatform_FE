@@ -16,7 +16,6 @@ import PolicyPage from '../pages/policy/PolicyPage';
 import SchedulePage from '../pages/SchedulePage/SchedulePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
-import ListEventForHighschoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
 
 const AppRouter = () => {
   return (
