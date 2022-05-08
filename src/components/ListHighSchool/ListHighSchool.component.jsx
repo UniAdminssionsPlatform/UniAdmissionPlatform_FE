@@ -44,19 +44,19 @@ const ListHighSchool = (props) => {
               </Space>
             </div>
           ) : (
-              <SearchBarComponent
-                  setDataSearch={setDataSearch}
-                  provinces={provinces}
-                  onChange={onChange}
-                  districts={districts}
-              />
+            <SearchBarComponent
+              setDataSearch={setDataSearch}
+              provinces={provinces}
+              onChange={onChange}
+              districts={districts}
+            />
           )}
         </div>
 
         {isClicked ? (
-            <ScheduleContainer selectedSchool={selectedSchool} />
+          <ScheduleContainer selectedSchool={selectedSchool} />
         ) : (
-          <HighSchoolTableComponent listHighSchool={listHighSchool} handleSelectedEvent={handleSelectedEvent} />
+          <HighSchoolTableComponent listHighSchool={listHighSchool} handleSelectedSchool={handleSelectedSchool} />
         )}
       </div>
     </LayoutPageWithout>
