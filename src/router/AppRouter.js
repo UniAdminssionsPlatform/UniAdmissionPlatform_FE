@@ -14,8 +14,6 @@ import ListNewContainer from '../containers/listNew/ListNew/ListNew.container';
 import CreateEventPage from '../pages/event/CreateEvent/CreateEventPage';
 import PolicyPage from '../pages/policy/PolicyPage';
 import SchedulePage from '../pages/SchedulePage/SchedulePage';
-import UniversityDetailPage from '../pages/university/UniversityDetailPage';
-import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
 
 const AppRouter = () => {
   return (
@@ -47,20 +45,11 @@ const AppRouter = () => {
         <Route path={PATH_UNIVERSITY_MANAGER.NEW} exact>
           <ListNewContainer />
         </Route>
-        <Route path={PATH_UNIVERSITY_MANAGER.CREATE_EVENT} exact>
+        <Route path={PATH.CREATE_EVENT} exact>
           <CreateEventPage />
-        </Route>
-        <Route path={PATH_UNIVERSITY_MANAGER.PROFILE} exact>
-          <UniversityDetailPage />
         </Route>
         <Route path={PATH.SCHEDULE_EVENT} exact>
           <SchedulePage />
-        </Route>
-        <Route path={PATH.DETAIL_EVENT} exact>
-          <DetailEventPage />
-        </Route>
-        <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
-          <ListEventPage />
         </Route>
         <Route path='/index.html'>
           <Redirect to='/' />
