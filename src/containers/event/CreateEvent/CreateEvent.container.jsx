@@ -19,7 +19,7 @@ const CreateEventContainer = () => {
         handleFailNotification('Lỗi khi lấy danh sách');
       });
   };
-  const { isSelected } = useSelector((state) => state.selectedHighSchool);
+  const { isSelected, highSchool } = useSelector((state) => state.selectedHighSchool);
   const [isClicked, setIsClicked] = useState(isSelected ? isSelected : false);
   useEffect(() => {
     getListHSchool(dataSearch);
