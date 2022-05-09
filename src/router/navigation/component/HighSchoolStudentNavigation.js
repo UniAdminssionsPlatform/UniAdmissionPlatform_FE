@@ -13,7 +13,7 @@ const eventManager = [
   {
     id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.CREATE_EVENT,
-    name: 'Tạo sự kiện'
+    name: 'Sự kiện'
   }
 ];
 
@@ -41,7 +41,6 @@ export const HighSchoolStudentNavigation = [
   },
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý sự kiện',
     type: 'dropdown',
     children: eventManager
@@ -49,14 +48,12 @@ export const HighSchoolStudentNavigation = [
 
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý học sinh',
     type: 'dropdown',
     children: eventMenu
   },
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý hồ sơ',
     type: 'dropdown',
     children: profile

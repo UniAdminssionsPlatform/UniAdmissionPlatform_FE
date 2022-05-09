@@ -1,4 +1,9 @@
-import { PATH, PATH_HIGH_SCHOOL_STUDENT, PATH_UNIVERSITY_MANAGER } from '../constants/Paths/Path';
+import {
+  PATH,
+  PATH_HIGH_SCHOOL_MANAGER,
+  PATH_HIGH_SCHOOL_STUDENT,
+  PATH_UNIVERSITY_MANAGER
+} from '../constants/Paths/Path';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import ChangePasswordPage from '../pages/authen/ChangePasswordPage/ChangePasswordPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
@@ -18,6 +23,8 @@ import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
+import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
+import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 
 const AppRouter = () => {
   return (
@@ -74,6 +81,12 @@ const AppRouter = () => {
           component={() => <ListEventPage />}
           path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
           key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
+          exact
+        />
+        <HighSchoolManagerRouter
+          component={() => <SlotManagerPage />}
+          path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
+          key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
           exact
         />
         <Route path='/index.html'>
