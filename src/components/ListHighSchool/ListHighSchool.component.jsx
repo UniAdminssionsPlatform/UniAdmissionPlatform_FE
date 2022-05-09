@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setSelectedHighSchool } from '../../redux-flow/selectedHighSchool/selectedHighSchool-action';
 import HighSchoolTableComponent from './component/HighSchoolTable.component';
 import HighSchoolSmallInformationComponent from './component/HighSchoolSmallInformation.component';
-import { Button, Space, Modal } from 'antd';
+import { Button, Space, Modal, Empty } from 'antd';
 import ScheduleContainer from '../../containers/schedule/Schedule.container';
 import { useState } from 'react';
 const ListHighSchool = (props) => {
