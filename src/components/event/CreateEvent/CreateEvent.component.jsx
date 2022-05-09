@@ -1,11 +1,84 @@
-import { Form, Input, Upload, Button, message, Typography, Select, DatePicker } from 'antd';
-import Label from '../../commons/Label/Label';
-import React from 'react';
+import { Button, DatePicker, Form, Input, Select, Typography, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import { createEvent } from '../../../services/event/CreateEvent/CreateEvent';
+import { getListDistrictByProvince } from '../../../services/DistrictService';
+import { getListProvinces } from '../../../services/ProvinceService';
+import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
+import Label from '../../commons/Label/Label';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 const CreateEventComponent = (props) => {
+  const { Option } = Select;
   const { Title } = Typography;
+
+  const [listProvinces, setListProvinces] = useState();
+  const [listDistricts, setListDistricts] = useState();
+
+  const [province, setProvince] = useState();
+  const [district, setDistrict] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+
+  const [isDisableProvince, setIsDisableProvince] = useState(true);
+  const [isDisableDistrict, setIsDisableDistrict] = useState(true);
+  const [isDisableAddress, setIsDisableAddress] = useState(true);
+  const [isDisableMeetURL, setIsDisableMeetURL] = useState(true);
+
+  const geAllProvince = () => {
+    getListProvinces()
+      .then((result) => {
+        setListProvinces(result.data.data.list);
+      })
+      .catch((err) => {
+        handleFailNotification('Lỗi Khi lấy danh sách tỉnh/thành');
+      });
+  };
+
+  useEffect(() => {
+    geAllProvince();
+  });
+
+  const onChangeProvince = (value) => {
+    setProvince(value);
+    getListDistrictByProvince(value)
+      .then((result) => {
+        setListDistricts(result.data.data.list);
+      })
+      .catch((err) => {
+        handleFailNotification('Lỗi Khi lấy danh sách quận');
+      });
+  };
+
+  const onChangeDistrict = (value) => {
+    setDistrict(value);
+  };
+
+  const onChangeType = (value) => {
+    if (value === 1) {
+      setIsDisableAddress(true);
+      setIsDisableProvince(true);
+      setIsDisableDistrict(true);
+      setIsDisableMeetURL(false);
+    } else {
+      setIsDisableAddress(false);
+      setIsDisableProvince(false);
+      setIsDisableDistrict(false);
+      setIsDisableMeetURL(true);
+    }
+  };
+
+  const onChangeStartDate = (date, dateString) => {
+    setStartDate(dateString);
+  };
+  const onChangeEndtDate = (date, dateString) => {
+    setEndDate(dateString);
+  };
+
+  const onSearch = (value) => {
+    console.log('search:', value);
+  };
+
   const uploadFile = {
     name: 'file',
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -21,7 +94,18 @@ const CreateEventComponent = (props) => {
   const dateFormat = 'YYYY/MM/DD';
   // const { onFinish } = props;
   const onFinish = (data) => {
+    data.event.districtId = district;
+    data.event.provinceId = province;
+    data.event.startDate = startDate;
+    data.event.endDate = endDate;
     console.log(data);
+    createEvent(data)
+      .then((result) => {
+        handleSuccessNotification();
+      })
+      .catch((error) => {
+        handleFailNotification(error);
+      });
   };
   return (
     <Form onFinish={onFinish}>
@@ -40,7 +124,7 @@ const CreateEventComponent = (props) => {
               <Title level={5}>Mô tả ngắn về sự kiện</Title>
             </Label>
             <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Mô tả</Label>
-            <Form.Item name={['event', 'short_description']}>
+            <Form.Item name={['event', 'shortDescription']}>
               <Input.TextArea className='mt-1' rows={4} />
             </Form.Item>
             <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
@@ -63,7 +147,7 @@ const CreateEventComponent = (props) => {
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
                   Diễn giả
                 </Label>
-                <Form.Item name={['event', 'host_name']}>
+                <Form.Item name={['event', 'hostName']}>
                   <Input className='mt-1' rows={4} />
                 </Form.Item>
               </div>
@@ -71,16 +155,21 @@ const CreateEventComponent = (props) => {
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
                   Số lượng học sinh
                 </Label>
-                <Form.Item name={['event', 'target_student']}>
-                  <Input className='mt-1' rows={4} style={{ width: 300 }} />
+                <Form.Item name={['event', 'targetStudent']}>
+                  <Input type='number' className='mt-1' rows={4} style={{ width: 300 }} />
                 </Form.Item>
               </div>
               <div>
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-                  Địa điểm tổ chức
+                  Loại sự kiện
                 </Label>
-                <Form.Item name={['event', 'address']}>
-                  <Input className='mt-1' rows={4} style={{ width: 300 }} />
+                <Form.Item name={['event', 'eventTypeId']}>
+                  <Select placeholder='Loại sự kiện' onChange={onChangeType}>
+                    <Option value={1}>Online</Option>
+                    <Option value={2}>Offline tại trường THPT</Option>
+                    <Option value={3}>Offline tại trường Đại học</Option>
+                    <Option value={4}>Offline tại địa điểm khác</Option>
+                  </Select>
                 </Form.Item>
               </div>
             </div>
@@ -90,7 +179,7 @@ const CreateEventComponent = (props) => {
                   Thời gian bắt đầu
                 </Label>
                 <Form.Item name={['event', 'startDate']}>
-                  <DatePicker defaultValue={moment(moment(), dateFormat)} format={dateFormat} style={{ width: 250 }} />
+                  <DatePicker style={{ width: 250 }} onChange={onChangeStartDate} />
                 </Form.Item>
               </div>
               <div className='flex-1 w-32'>
@@ -98,7 +187,59 @@ const CreateEventComponent = (props) => {
                   Thời gian kết thúc
                 </Label>
                 <Form.Item name={['event', 'endDate']}>
-                  <DatePicker defaultValue={moment(moment(), dateFormat)} format={dateFormat} style={{ width: 250 }} />
+                  <DatePicker style={{ width: 250 }} onChange={onChangeEndtDate} />
+                </Form.Item>
+              </div>
+              <div>
+                <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
+                  Meet URL
+                </Label>
+                <Form.Item name={['event', 'meetingUrl']}>
+                  <Input className='mt-1' rows={4} disabled={isDisableMeetURL} style={{ width: 300 }} />
+                </Form.Item>
+              </div>
+            </div>
+            <div className='grid gap-8 grid-cols-3'>
+              <Form.Item name={['event', 'provinceId']}>
+                <label className='block'>
+                  <Label>Tỉnh/thành phố</Label>
+                  <Select
+                    showSearch
+                    placeholder='Tỉnh/Thành phố'
+                    optionFilterProp='children'
+                    onChange={onChangeProvince}
+                    onSearch={onSearch}
+                    disabled={isDisableProvince}
+                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                    {listProvinces?.map((item) => (
+                      <Option value={item.id}>{item.name}</Option>
+                    ))}
+                  </Select>
+                </label>
+              </Form.Item>
+              <Form.Item name={['event', 'districtId']}>
+                <label className='block'>
+                  <Label>Quận/Huyện</Label>
+                  <Select
+                    showSearch
+                    placeholder='Quận/Huyện'
+                    optionFilterProp='children'
+                    onChange={onChangeDistrict}
+                    onSearch={onSearch}
+                    disabled={isDisableDistrict}
+                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                    {listDistricts?.map((item) => (
+                      <Option value={item.id}>{item.name}</Option>
+                    ))}
+                  </Select>
+                </label>
+              </Form.Item>
+              <div>
+                <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
+                  Địa điểm tổ chức
+                </Label>
+                <Form.Item name={['event', 'address']}>
+                  <Input className='mt-1' rows={4} disabled={isDisableAddress} style={{ width: 300 }} />
                 </Form.Item>
               </div>
             </div>

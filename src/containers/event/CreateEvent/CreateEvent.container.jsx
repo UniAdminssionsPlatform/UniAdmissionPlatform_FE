@@ -9,6 +9,7 @@ import { getListProvinces } from '../../../services/ProvinceService';
 import { getListHighSchool } from '../../../services/HighSchoolService';
 
 const CreateEventContainer = () => {
+  // SEARCH HIGH SCHOOL
   const [listHighSchool, setlistHighSchool] = useState();
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
@@ -70,7 +71,7 @@ const CreateEventContainer = () => {
         setIsClicked={setIsClicked}
         setDataSearch={setDataSeacrch}
       />
-      {/*<CreateEventComponent onFinish={onFinish} />*/}
+      {/* <CreateEventComponent  /> */}
     </>
   );
 };
