@@ -29,7 +29,7 @@ const CreateEventContainer = () => {
         setProvinces(result.data.data.list);
       })
       .catch((err) => {
-        handleSuccessNotification('Lỗi Khi lấy danh sách tỉnh/thành');
+        handleFailNotification('Lỗi Khi lấy danh sách tỉnh/thành');
       });
   };
   useEffect(() => {
@@ -39,6 +39,7 @@ const CreateEventContainer = () => {
   const getListHSchool = (data) => {
     getListHighSchool(data)
       .then((res) => {
+        console.log('list: ', res.data.data.list);
         setlistHighSchool(res.data.data.list);
         handleSuccessNotification('Danh sách các trường cấp 3');
       })
@@ -56,7 +57,7 @@ const CreateEventContainer = () => {
         setDistricts(result.data.data.list);
       })
       .catch((err) => {
-        handleSuccessNotification('Lỗi Khi lấy danh sách quận');
+        handleFailNotification('Lỗi Khi lấy danh sách quận');
       });
   }
 

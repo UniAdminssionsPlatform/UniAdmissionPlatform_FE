@@ -28,7 +28,7 @@ const SearchBarComponent = (props) => {
       });
     },
     // delay in ms
-    1000
+    3000
   );
 
   function onSearch(val) {
