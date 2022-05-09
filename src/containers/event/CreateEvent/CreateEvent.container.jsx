@@ -47,9 +47,6 @@ const CreateEventContainer = () => {
         handleFailNotification('Lỗi khi lấy danh sách');
       });
   };
-  useEffect(() => {
-    getListHSchool(dataSearch);
-  }, [dataSearch, isClicked]);
 
   function onChangeProvince(value) {
     getListDistrictByProvince(value)
