@@ -4,6 +4,7 @@ import { getListSlotBySchoolId } from '../../services/AdminUniversitySlotService
 import { handleFailNotification, handleSuccessNotification } from '../../notification/CreateEventNotification';
 import { Modal, Button, Space } from 'antd';
 import CreateEventContainer from '../../containers/event/CreateEvent/CreateEvent.container';
+import ListEventWaitingContainer from '../../containers/event/ListEvent/listEventWaiting.container';
 
 const ScheduleContainer = (props) => {
   const { selectedSchool } = props;
@@ -55,7 +56,7 @@ const ScheduleContainer = (props) => {
             </Button>
           </Space>
         ) : null}
-        {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : null : null}
+        {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : <ListEventWaitingContainer /> : null}
       </Modal>
       <ScheduleComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
     </>

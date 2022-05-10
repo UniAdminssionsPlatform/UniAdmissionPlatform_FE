@@ -48,6 +48,9 @@ const ScheduleComponent = (props) => {
         borderRadius: '8px'
       }}
       data={data}
+      onClick={() => {
+        console.log();
+      }}
       onDoubleClick={data?.status === 1 ? () => setIsModalOpen(true) : null}>
       {data?.status === 0 ? (
         <Text type='secondary' strong style={{ padding: '1px' }}>
