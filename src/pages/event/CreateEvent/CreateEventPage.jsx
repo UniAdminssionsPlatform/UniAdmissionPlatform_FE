@@ -1,9 +1,9 @@
-import CreateEventContainer from '../../../containers/event/CreateEvent/CreateEvent.container';
+import ListHighSchoolContainer from '../../../containers/event/CreateEvent/ListHighSchoolCanCreate.container';
 import React from 'react';
 
 const CreateEventPage = () => (
   <>
-    <CreateEventContainer />
+    <ListHighSchoolContainer />
   </>
 );
 
