@@ -1,12 +1,16 @@
-import ListEvent from '../../../components/event/ListEvent/listEventWaiting.component';
 import { EventWaiting } from '../../../services/event/GetListEvent/GetListEventWaiting';
-import React, { useEffect, useState } from 'react';
 import { handleNotification } from '../../../notification/ListEventNotification';
+import { useDebouncedCallback } from 'use-debounce';
+import ListEvent from '../../../components/event/ListEvent/listEventWaiting.component';
+import React, { useEffect, useState } from 'react';
 
 const ListEventWaitingContainer = () => {
   const [listEvent, setListEvent] = useState();
 
-  const [dataSearch, setDataSearch] = useState();
+  const [dataSearch, setDataSearch] = useState({
+    name: '',
+    type: ''
+  });
 
   useEffect(() => {
     getListEvent(dataSearch);
@@ -23,9 +27,34 @@ const ListEventWaitingContainer = () => {
       });
   };
 
+  const [searchName, setSearchName] = useState('');
+  const [searchType, setSearchType] = useState();
+
+  const onChangeType = (value) => {
+    setSearchType(value);
+    debounced();
+  };
+
+  const debounced = useDebouncedCallback(
+    // function
+    () => {
+      setDataSearch({
+        name: searchName,
+        type: searchType
+      });
+    },
+    // delay in ms
+    2000
+  );
+
   return (
     <>
-      <ListEvent listEvent={listEvent} />
+      <ListEvent
+        listEvent={listEvent}
+        setSearchName={setSearchName}
+        debounced={debounced}
+        onChangeType={onChangeType}
+      />
     </>
   );
 };

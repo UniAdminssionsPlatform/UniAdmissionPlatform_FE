@@ -1,13 +1,34 @@
-import React from 'react';
+import { Empty, Input, Select } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import NcImage from '../../commons/NcImage/NcImage.component';
 import Pagination from '../../commons/Pagination/Pagination';
-import { Empty } from 'antd';
+import React from 'react';
 
 const ListEventWaitingcomponent = (props) => {
-  const { handleSelectedSchool, listEvent } = props;
+  const { handleSelectedSchool, listEvent, setSearchName, debounced, onChangeType } = props;
+
+  const { Option } = Select;
+
   return (
     <>
-      <input type='text' />
+      <div className='grid md:grid-cols-3 gap-6 block md:col-span-2' style={{ marginBottom: 10 }}>
+        <Input
+          type='text'
+          placeholder='Tìm kiếm tên sự kiện...'
+          onChange={(e) => {
+            setSearchName(e.target.value);
+            debounced();
+          }}
+          prefix={<SearchOutlined style={{ marginRight: 15 }} />}
+          style={{ borderRadius: 5 }}
+        />
+        <Select placeholder='Loại sự kiện' style={{ width: 200, borderRadius: 5 }} onChange={onChangeType}>
+          <Option value={1}>Online</Option>
+          <Option value={2}>Offline tại trường THPT</Option>
+          <Option value={3}>Offline tại trường Đại học</Option>
+          <Option value={4}>Offline tại địa điểm khác</Option>
+        </Select>
+      </div>
       <div className='flex-grow'>
         <div className='flex flex-col space-y-8'>
           <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -52,13 +73,24 @@ const ListEventWaitingcomponent = (props) => {
                           </div>
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap'>
-                          {item.eventTypeId === 1 ? (
+                          {item.eventTypeId === 1 && (
                             <span className='px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-teal-100 text-teal-900 lg:text-sm'>
                               Online
                             </span>
-                          ) : (
+                          )}
+                          {item.eventTypeId === 2 && (
                             <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
-                              Offline
+                              Offline tại trường THPT
+                            </span>
+                          )}
+                          {item.eventTypeId === 3 && (
+                            <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
+                              Offline tại trường đại học
+                            </span>
+                          )}
+                          {item.eventTypeId === 4 && (
+                            <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
+                              Offline tại địa điểm khác
                             </span>
                           )}
                         </td>
@@ -69,9 +101,7 @@ const ListEventWaitingcomponent = (props) => {
                           <span> {item.targetStudent}</span>
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-neutral-300'>
-                          <a
-                            className='text-primary-800 dark:text-primary-500 hover:text-primary-900'
-                            onClick={() => handleSelectedSchool(item)}>
+                          <a className='text-primary-800 dark:text-primary-500 hover:text-primary-900' href='/#'>
                             lựa chọn
                           </a>
                           {/*{item.status === 1 ? (*/}
@@ -86,8 +116,8 @@ const ListEventWaitingcomponent = (props) => {
                           {/*  </a>*/}
                           {/*)}*/}
                           {` | `}
-                          <a href='/#' className='text-rose-600 hover:text-rose-900'>
-                            xem lịch sử
+                          <a onClick={() => handleSelectedSchool(item)} className='text-rose-600 hover:text-rose-900'>
+                            xem chi tiết
                           </a>
                         </td>
                       </tr>
