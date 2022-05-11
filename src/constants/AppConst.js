@@ -1,3 +1,9 @@
 export const TOKEN_KEY = 'token';
 export const TOKEN = '';
 export const USER_STORAGE = 'user';
+export const SLOT_01_START = 7;
+export const SLOT_01_END = 12;
+export const SLOT_02_START = 13;
+export const SLOT_02_END = 17;
+export const ALLDAY_START = 7;
+export const ALLDAY_END = 17;
