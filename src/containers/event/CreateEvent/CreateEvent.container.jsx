@@ -6,7 +6,9 @@ import { useSelector } from 'react-redux';
 import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
 import React, { useEffect, useState } from 'react';
 
-const CreateEventContainer = () => {
+const CreateEventContainer = (props) => {
+  const { event } = props;
+
   const [listProvinces, setListProvinces] = useState();
   const [listDistricts, setListDistricts] = useState();
 
@@ -31,6 +33,7 @@ const CreateEventContainer = () => {
   };
 
   useEffect(() => {
+    console.log(event);
     geAllProvince();
   }, []);
 
@@ -103,6 +106,7 @@ const CreateEventContainer = () => {
         listProvinces={listProvinces}
         listDistricts={listDistricts}
         onFinish={onFinish}
+        event={event}
       />
     </>
   );

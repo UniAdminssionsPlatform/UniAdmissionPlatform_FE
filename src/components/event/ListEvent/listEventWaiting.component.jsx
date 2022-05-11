@@ -5,7 +5,9 @@ import Pagination from '../../commons/Pagination/Pagination';
 import React from 'react';
 
 const ListEventWaitingcomponent = (props) => {
-  const { handleSelectedSchool, listEvent, setSearchName, debounced, onChangeType } = props;
+  const { handleSelectedEvent, listEvent, setSearchName, debounced, onChangeType } = props;
+
+  console.log('list: ', listEvent);
 
   const { Option } = Select;
 
@@ -58,47 +60,47 @@ const ListEventWaitingcomponent = (props) => {
 
                   <tbody className='bg-white dark:bg-neutral-900 divide-y divide-neutral-200 dark:divide-neutral-800'>
                     {listEvent?.map((item) => (
-                      <tr key={item.id}>
+                      <tr key={item.event.id}>
                         <td className='px-6 py-4'>
                           <div className='flex items-center w-96 lg:w-auto max-w-md overflow-hidden'>
                             <NcImage
                               containerClassName='flex-shrink-0 h-12 w-12 rounded-lg overflow-hidden lg:h-14 lg:w-14'
-                              src={item.thumbnailUrl}
+                              src={item.event.thumbnailUrl}
                             />
                             <div className='ml-4 flex-grow'>
                               <h2 className='inline-flex line-clamp-2 text-sm font-semibold  dark:text-neutral-300'>
-                                {item.name}
+                                {item.event.name}
                               </h2>
                             </div>
                           </div>
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap'>
-                          {item.eventTypeId === 1 && (
+                          {item.event.eventTypeId === 1 && (
                             <span className='px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-teal-100 text-teal-900 lg:text-sm'>
                               Online
                             </span>
                           )}
-                          {item.eventTypeId === 2 && (
+                          {item.event.eventTypeId === 2 && (
                             <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
                               Offline tại trường THPT
                             </span>
                           )}
-                          {item.eventTypeId === 3 && (
+                          {item.event.eventTypeId === 3 && (
                             <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
                               Offline tại trường đại học
                             </span>
                           )}
-                          {item.eventTypeId === 4 && (
+                          {item.event.eventTypeId === 4 && (
                             <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
                               Offline tại địa điểm khác
                             </span>
                           )}
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
-                          <span> {item.hostName}</span>
+                          <span> {item.event.hostName}</span>
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
-                          <span> {item.targetStudent}</span>
+                          <span> {item.event.targetStudent}</span>
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-neutral-300'>
                           <a className='text-primary-800 dark:text-primary-500 hover:text-primary-900' href='/#'>
@@ -116,7 +118,7 @@ const ListEventWaitingcomponent = (props) => {
                           {/*  </a>*/}
                           {/*)}*/}
                           {` | `}
-                          <a onClick={() => handleSelectedSchool(item)} className='text-rose-600 hover:text-rose-900'>
+                          <a onClick={() => handleSelectedEvent(item)} className='text-rose-600 hover:text-rose-900'>
                             xem chi tiết
                           </a>
                         </td>

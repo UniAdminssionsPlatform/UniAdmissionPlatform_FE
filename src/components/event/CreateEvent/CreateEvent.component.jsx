@@ -19,7 +19,8 @@ const CreateEventComponent = (props) => {
     isDisableAddress,
     listProvinces,
     listDistricts,
-    onFinish
+    onFinish,
+    event
   } = props;
 
   const { Option } = Select;
@@ -49,7 +50,12 @@ const CreateEventComponent = (props) => {
               <Title level={5}>Tên sự kiện *</Title>
             </Label>
             <Form.Item name={['event', 'name']} rules={name}>
-              <Input placeholder='Event Title' className='mt-1' />
+              <Input
+                placeholder='Event Title'
+                className='mt-1'
+                defaultValue={event === undefined ? '' : event.event.name}
+                value={event === undefined ? '' : event.event.name}
+              />
             </Form.Item>
           </label>
           <label className='block md:col-span-2'>
@@ -58,13 +64,21 @@ const CreateEventComponent = (props) => {
             </Label>
             <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Mô tả</Label>
             <Form.Item name={['event', 'shortDescription']} rules={shortdes}>
-              <Input.TextArea className='mt-1' rows={4} />
+              <Input.TextArea
+                className='mt-1'
+                rows={4}
+                defaultValue={event === undefined ? '' : event.event.shortDescription}
+              />
             </Form.Item>
             <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
               Mô tả chi tiết
             </Label>
             <Form.Item name={['event', 'description']} rules={des}>
-              <Input.TextArea className='mt-1' rows={4} />
+              <Input.TextArea
+                className='mt-1'
+                rows={4}
+                defaultValue={event === undefined ? '' : event.event.description}
+              />
             </Form.Item>
             <p className='mt-1 text-sm text-neutral-500'>
               Được viết dưới dạng Markdown, bạn có thể thêm bất cứ nội dung gì vào đoạn văn.
@@ -81,7 +95,7 @@ const CreateEventComponent = (props) => {
                   Diễn giả
                 </Label>
                 <Form.Item name={['event', 'hostName']} rules={hostname}>
-                  <Input className='mt-1' rows={4} />
+                  <Input className='mt-1' rows={4} defaultValue={event === undefined ? '' : event.event.hostName} />
                 </Form.Item>
               </div>
               <div>
@@ -89,7 +103,13 @@ const CreateEventComponent = (props) => {
                   Số lượng học sinh
                 </Label>
                 <Form.Item name={['event', 'targetStudent']} rules={targetstudent}>
-                  <Input type='number' className='mt-1' rows={4} style={{ width: 250 }} />
+                  <Input
+                    type='number'
+                    className='mt-1'
+                    rows={4}
+                    style={{ width: 250 }}
+                    defaultValue={event === undefined ? '' : event.event.targetStudent}
+                  />
                 </Form.Item>
               </div>
               <div>
@@ -97,7 +117,10 @@ const CreateEventComponent = (props) => {
                   Loại sự kiện
                 </Label>
                 <Form.Item name={['event', 'eventTypeId']}>
-                  <Select placeholder='Loại sự kiện' onChange={onChangeType}>
+                  <Select
+                    placeholder='Loại sự kiện'
+                    onChange={onChangeType}
+                    defaultValue={event === undefined ? '' : event.event.eventTypeId}>
                     <Option value={1}>Online</Option>
                     <Option value={2}>Offline tại trường THPT</Option>
                     <Option value={3}>Offline tại trường Đại học</Option>
@@ -128,7 +151,13 @@ const CreateEventComponent = (props) => {
                   Meet URL
                 </Label>
                 <Form.Item name={['event', 'meetingUrl']}>
-                  <Input className='mt-1' rows={4} disabled={isDisableMeetURL} style={{ width: 300 }} />
+                  <Input
+                    className='mt-1'
+                    rows={4}
+                    disabled={isDisableMeetURL}
+                    style={{ width: 300 }}
+                    defaultValue={event === undefined ? '' : event.event.meetingUrl}
+                  />
                 </Form.Item>
               </div>
             </div>
@@ -143,6 +172,7 @@ const CreateEventComponent = (props) => {
                     onChange={onChangeProvince}
                     onSearch={onSearch}
                     disabled={isDisableProvince}
+                    defaultValue={event === undefined ? '' : event.event.provinceId}
                     filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                     {listProvinces?.map((item) => (
                       <Option value={item.id}>{item.name}</Option>
@@ -160,6 +190,7 @@ const CreateEventComponent = (props) => {
                     onChange={onChangeDistrict}
                     onSearch={onSearch}
                     disabled={isDisableDistrict}
+                    defaultValue={event === undefined ? '' : event.event.districtId}
                     filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                     {listDistricts?.map((item) => (
                       <Option value={item.id}>{item.name}</Option>
@@ -172,7 +203,13 @@ const CreateEventComponent = (props) => {
                   Địa điểm tổ chức
                 </Label>
                 <Form.Item name={['event', 'address']}>
-                  <Input className='mt-1' rows={4} disabled={isDisableAddress} style={{ width: 300 }} />
+                  <Input
+                    className='mt-1'
+                    rows={4}
+                    disabled={isDisableAddress}
+                    style={{ width: 300 }}
+                    defaultValue={event === undefined ? '' : event.event.address}
+                  />
                 </Form.Item>
               </div>
             </div>
