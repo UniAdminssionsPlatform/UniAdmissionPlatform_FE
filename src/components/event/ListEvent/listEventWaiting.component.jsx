@@ -7,8 +7,6 @@ import React from 'react';
 const ListEventWaitingcomponent = (props) => {
   const { handleSelectedEvent, listEvent, setSearchName, debounced, onChangeType } = props;
 
-  console.log('list: ', listEvent);
-
   const { Option } = Select;
 
   return (

@@ -53,6 +53,7 @@ const CreateEventContainer = (props) => {
   };
 
   const onChangeType = (value) => {
+    console.log(value);
     if (value === 1) {
       setIsDisableAddress(true);
       setIsDisableProvince(true);
@@ -107,6 +108,10 @@ const CreateEventContainer = (props) => {
         listDistricts={listDistricts}
         onFinish={onFinish}
         event={event}
+        setIsDisableProvince={setIsDisableProvince}
+        setIsDisableDistrict={setIsDisableDistrict}
+        setIsDisableAddress={setIsDisableAddress}
+        setIsDisableMeetURL={setIsDisableMeetURL}
       />
     </>
   );

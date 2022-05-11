@@ -30,9 +30,11 @@ const ScheduleContainer = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleClickOkModal = () => {
     setIsModalOpen(false);
+    setIsButtonShow(true);
   };
   const handleCancelModal = () => {
     setIsModalOpen(false);
+    setIsButtonShow(true);
   };
   const handleClickButton = (choice) => {
     setIsButtonShow(false);

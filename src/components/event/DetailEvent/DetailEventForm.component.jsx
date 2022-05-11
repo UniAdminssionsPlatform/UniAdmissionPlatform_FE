@@ -2,29 +2,56 @@ import { Button, DatePicker, Form, Input, Select, Typography, Upload, message } 
 import { UploadOutlined } from '@ant-design/icons';
 import { des, hostname, name, shortdes, targetstudent } from '../../../validate/CreateEvent.validate';
 import Label from '../../commons/Label/Label';
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 
-const CreateEventComponent = (props) => {
-  const {
-    onChangeType,
-    onChangeStartDate,
-    onChangeEndtDate,
-    onChangeProvince,
-    onChangeDistrict,
-    onSearch,
-    isDisableMeetURL,
-    isDisableProvince,
-    isDisableDistrict,
-    isDisableAddress,
-    listProvinces,
-    listDistricts,
-    onFinish,
-    event
-  } = props;
+const DetailEventFormComponent = (props) => {
+  const { event, province, district } = props;
 
   const { Option } = Select;
   const { Title } = Typography;
+  const { TextArea } = Input;
+
+  const [isDisabledField, setIsDisabledField] = useState(true);
+
+  const field = [
+    {
+      name: ['name'],
+      value: event.name
+    },
+    {
+      name: ['shortDescription'],
+      value: event.shortDescription
+    },
+    {
+      name: ['hostName'],
+      value: event.hostName
+    },
+    {
+      name: ['targetStudent'],
+      value: event.targetStudent
+    },
+    {
+      name: ['description'],
+      value: event.description
+    },
+    {
+      name: ['eventTypeId'],
+      value: event.eventTypeId
+    },
+    {
+      name: ['meetingUrl'],
+      value: event.meetingUrl
+    },
+    {
+      name: ['address'],
+      value: `${event.address}, ${district}, ${province}`
+    }
+  ];
+
+  const handleEdit = () => {
+    setIsDisabledField(false);
+  };
 
   const uploadFile = {
     name: 'file',
@@ -38,19 +65,18 @@ const CreateEventComponent = (props) => {
       else if (info.file.status === 'error') message.error(`${info.file.name} file upload failed.`);
     }
   };
-  const dateFormat = 'YYYY/MM/DD';
-  // const { onFinish } = props;
 
   return (
-    <Form onFinish={onFinish}>
+    <Form fields={field}>
+      <Button onClick={handleEdit}>Sửa</Button>
       <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
         <div className='grid md:grid-cols-2 gap-6'>
           <label className='block md:col-span-2'>
             <Label>
               <Title level={5}>Tên sự kiện *</Title>
             </Label>
-            <Form.Item name={['event', 'name']} rules={name}>
-              <Input placeholder='Event Title' className='mt-1' />
+            <Form.Item name='name'>
+              <Input className='mt-1' rows={4} disabled={isDisabledField} />
             </Form.Item>
           </label>
           <label className='block md:col-span-2'>
@@ -58,18 +84,15 @@ const CreateEventComponent = (props) => {
               <Title level={5}>Mô tả ngắn về sự kiện</Title>
             </Label>
             <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Mô tả</Label>
-            <Form.Item name={['event', 'shortDescription']} rules={shortdes}>
-              <Input.TextArea className='mt-1' rows={4} />
+            <Form.Item name='shortDescription'>
+              <TextArea className='mt-1' rows={4} cols={150} disabled={isDisabledField} />
             </Form.Item>
             <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
               Mô tả chi tiết
             </Label>
-            <Form.Item name={['event', 'description']} rules={des}>
-              <Input.TextArea className='mt-1' rows={4} />
+            <Form.Item name='description'>
+              <TextArea className='mt-1' rows={4} cols={150} disabled={isDisabledField} />
             </Form.Item>
-            <p className='mt-1 text-sm text-neutral-500'>
-              Được viết dưới dạng Markdown, bạn có thể thêm bất cứ nội dung gì vào đoạn văn.
-            </p>
           </label>
 
           <label className='block md:col-span-2'>
@@ -81,24 +104,24 @@ const CreateEventComponent = (props) => {
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
                   Diễn giả
                 </Label>
-                <Form.Item name={['event', 'hostName']} rules={hostname}>
-                  <Input className='mt-1' rows={4} />
+                <Form.Item name='hostName'>
+                  <Input className='mt-1' rows={4} disabled={isDisabledField} />
                 </Form.Item>
               </div>
               <div>
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
                   Số lượng học sinh
                 </Label>
-                <Form.Item name={['event', 'targetStudent']} rules={targetstudent}>
-                  <Input type='number' className='mt-1' rows={4} style={{ width: 250 }} />
+                <Form.Item name='targetStudent'>
+                  <Input type='text' className='mt-1' rows={4} style={{ width: 250 }} disabled={isDisabledField} />
                 </Form.Item>
               </div>
               <div>
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
                   Loại sự kiện
                 </Label>
-                <Form.Item name={['event', 'eventTypeId']}>
-                  <Select placeholder='Loại sự kiện' onChange={onChangeType}>
+                <Form.Item name='eventTypeId'>
+                  <Select placeholder='Loại sự kiện' disabled={isDisabledField}>
                     <Option value={1}>Online</Option>
                     <Option value={2}>Offline tại trường THPT</Option>
                     <Option value={3}>Offline tại trường Đại học</Option>
@@ -112,71 +135,49 @@ const CreateEventComponent = (props) => {
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
                   Thời gian bắt đầu
                 </Label>
-                <Form.Item name={['event', 'startTime']}>
-                  <DatePicker style={{ width: 250 }} onChange={onChangeStartDate} />
+                <Form.Item name='startTime'>
+                  <Input
+                    type='text'
+                    className='mt-1'
+                    rows={4}
+                    style={{ width: 250 }}
+                    disabled={true}
+                    defaultValue='Chưa chọn'
+                  />
                 </Form.Item>
               </div>
               <div className='flex-1 w-32'>
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
                   Thời gian kết thúc
                 </Label>
-                <Form.Item name={['event', 'endTime']}>
-                  <DatePicker style={{ width: 250 }} onChange={onChangeEndtDate} />
+                <Form.Item name='endTime'>
+                  <Input
+                    type='text'
+                    className='mt-1'
+                    rows={4}
+                    style={{ width: 250 }}
+                    defaultValue='Chưa chọn'
+                    disabled={true}
+                  />
                 </Form.Item>
               </div>
               <div>
                 <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
                   Meet URL
                 </Label>
-                <Form.Item name={['event', 'meetingUrl']}>
-                  <Input className='mt-1' rows={4} disabled={isDisableMeetURL} style={{ width: 300 }} />
+                <Form.Item name='meetingUrl'>
+                  <Input className='mt-1' rows={4} disabled={isDisabledField} style={{ width: 300 }} />
                 </Form.Item>
               </div>
             </div>
-            <div className='grid gap-8 grid-cols-3'>
-              <Form.Item name={['event', 'provinceId']}>
-                <label className='block'>
-                  <Label>Tỉnh/thành phố</Label>
-                  <Select
-                    showSearch
-                    placeholder='Tỉnh/Thành phố'
-                    optionFilterProp='children'
-                    onChange={onChangeProvince}
-                    onSearch={onSearch}
-                    disabled={isDisableProvince}
-                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                    {listProvinces?.map((item) => (
-                      <Option value={item.id}>{item.name}</Option>
-                    ))}
-                  </Select>
-                </label>
+            <label className='block md:col-span-2'>
+              <Label>
+                <Title level={5}>Địa điểm tổ chức</Title>
+              </Label>
+              <Form.Item name='address'>
+                <Input className='mt-1' rows={4} disabled={isDisabledField} />
               </Form.Item>
-              <Form.Item name={['event', 'districtId']}>
-                <label className='block'>
-                  <Label>Quận/Huyện</Label>
-                  <Select
-                    showSearch
-                    placeholder='Quận/Huyện'
-                    optionFilterProp='children'
-                    onChange={onChangeDistrict}
-                    onSearch={onSearch}
-                    disabled={isDisableDistrict}
-                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                    {listDistricts?.map((item) => (
-                      <Option value={item.id}>{item.name}</Option>
-                    ))}
-                  </Select>
-                </label>
-              </Form.Item>
-              <div>
-                <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-                  Địa điểm tổ chức
-                </Label>
-                <Form.Item name={['event', 'address']}>
-                  <Input className='mt-1' rows={4} disabled={isDisableAddress} style={{ width: 300 }} />
-                </Form.Item>
-              </div>
-            </div>
+            </label>
           </label>
           <div className='block md:col-span-2'>
             <Label>Hình ảnh trang bìa</Label>
@@ -218,17 +219,10 @@ const CreateEventComponent = (props) => {
               </Upload>
             </div>
           </label>
-          <div className='md:col-span-2'>
-            <Form.Item>
-              <Button type='primary' htmlType='submit'>
-                Tạo sự kiện
-              </Button>
-            </Form.Item>
-          </div>
         </div>
       </div>
     </Form>
   );
 };
 
-export default CreateEventComponent;
+export default DetailEventFormComponent;

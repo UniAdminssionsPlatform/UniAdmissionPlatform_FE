@@ -1,7 +1,7 @@
 import { EventWaiting } from '../../../services/event/GetListEvent/GetListEventWaiting';
 import { handleNotification } from '../../../notification/ListEventNotification';
 import { useDebouncedCallback } from 'use-debounce';
-import CreateEventContainer from '../CreateEvent/CreateEvent.container';
+import DetailEventFormContainer from '../DetailEvent/DetailEventForm.container';
 import ListEvent from '../../../components/event/ListEvent/listEventWaiting.component';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -56,7 +56,8 @@ const ListEventWaitingContainer = () => {
   );
 
   const handleSelectedEvent = (event) => {
-    setEvent(event);
+    console.log('id: ', event.event.id);
+    setEvent(event.event.id);
     setIsClick(true);
   };
 
@@ -71,7 +72,7 @@ const ListEventWaitingContainer = () => {
           handleSelectedEvent={handleSelectedEvent}
         />
       ) : (
-        <CreateEventContainer event={event} />
+        <DetailEventFormContainer eventID={event} />
       )}
     </>
   );
