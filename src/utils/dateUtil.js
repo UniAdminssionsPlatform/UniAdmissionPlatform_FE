@@ -20,6 +20,7 @@ export const enumerateDaysBetweenDates = function (startDate, endDate) {
 };
 export const parseCorrectDateBaseSlot = (arr, slot) => {
   const result = [];
+  console.log(slot);
   arr.map((date) => {
     const currDate = moment(date).startOf('day');
     switch (slot) {
@@ -30,15 +31,20 @@ export const parseCorrectDateBaseSlot = (arr, slot) => {
         });
         break;
       case 2:
+        console.log('running');
         result.push({
-          startDate: currDate.add(SLOT_02_START, 'hours').format('YYYY-MM-DD HH:mm:ss'),
-          endDate: currDate.add(SLOT_02_END, 'hours').format('YYYY-MM-DD HH:mm:ss')
+          startDate: moment(currDate).add(SLOT_02_START, 'hours').format('YYYY-MM-DD HH:mm:ss'),
+          endDate: moment(currDate).add(SLOT_02_END, 'hours').format('YYYY-MM-DD HH:mm:ss')
         });
         break;
       case 3:
         result.push({
-          startDate: currDate.add(ALLDAY_START, 'hours').format('YYYY-MM-DD HH:mm:ss'),
-          endDate: currDate.add(ALLDAY_END, 'hours').format('YYYY-MM-DD HH:mm:ss')
+          startDate: moment(currDate).add(SLOT_01_START, 'hours').format('YYYY-MM-DD HH:mm:ss'),
+          endDate: moment(currDate).add(SLOT_01_END, 'hours').format('YYYY-MM-DD HH:mm:ss')
+        });
+        result.push({
+          startDate: moment(currDate).add(SLOT_02_START, 'hours').format('YYYY-MM-DD HH:mm:ss'),
+          endDate: moment(currDate).add(SLOT_02_END, 'hours').format('YYYY-MM-DD HH:mm:ss')
         });
         break;
     }

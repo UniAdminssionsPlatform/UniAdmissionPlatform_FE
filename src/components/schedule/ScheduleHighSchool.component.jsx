@@ -16,14 +16,17 @@ import {
   TodayButton
 } from '@devexpress/dx-react-scheduler-material-ui';
 import AppointmentHeaderComponent from './component/AppointmentHeader.component';
-import { Typography, Button } from 'antd';
+import { Typography, Button, Modal } from 'antd';
 import { useState } from 'react';
+import SlotComponent from './component/Slot.component';
+import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
+import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
+import SlotDetail from './component/SlotDetail.container';
 
 const ScheduleHighSchoolComponent = (props) => {
-  const { listSlot, setListSlot } = props;
+  const { listSlot, setListSlot, setReloadTrigger } = props;
   const [slotSelected, SetSlotSelected] = useState();
-  const { Title, Text } = Typography;
-
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const commitChanges = ({ added, changed, deleted }) => {
     if (added)
       setListSlot([...listSlot, { id: listSlot.length > 0 ? listSlot[listSlot.length - 1].id + 1 : 0, ...added }]);
@@ -42,24 +45,22 @@ const ScheduleHighSchoolComponent = (props) => {
       {...restProps}
       style={{
         ...style,
-        backgroundColor: data?.status === 1 ? '#b2fab4' : '#ffebee',
+        backgroundColor:
+          data?.status === SLOT_IS_OPEN
+            ? COLOR_SLOT_IS_OPEN
+            : data?.status === SLOT_IS_FULL
+            ? COLOR_SLOT_IS_FULL
+            : COLOR_SLOT_IS_CLOSE,
         borderRadius: '8px'
       }}
       data={data}
       onClick={(lol) => {
+        setIsModalVisible(true);
         SetSlotSelected(data);
       }}
       // onDoubleClick={data?.status === 1 ? () => setIsModalOpen(true) : null}
     >
-      {data?.status === 0 ? (
-        <Text type='secondary' strong style={{ padding: '1px' }}>
-          Slot đã được đặt
-        </Text>
-      ) : (
-        <Text type='secondary' strong style={{ padding: '1px' }}>
-          Slot đang trống
-        </Text>
-      )}
+      <SlotComponent data={data} />
       {children}
     </Appointments.Appointment>
   );
@@ -71,8 +72,20 @@ const ScheduleHighSchoolComponent = (props) => {
       {children}
     </AppointmentTooltip.Content>
   );
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
   return (
     <>
+      <Modal
+        title='Thông tin Slot'
+        visible={isModalVisible}
+        footer={<></>}
+        width={500}
+        onCancel={handleCloseModal}
+        onOk={handleCloseModal}>
+        <SlotDetail slotSelected={slotSelected} setReloadTrigger={setReloadTrigger} />
+      </Modal>
       <Paper>
         <Scheduler data={listSlot} height={660}>
           <ViewState />
@@ -90,7 +103,6 @@ const ScheduleHighSchoolComponent = (props) => {
           />
           <DateNavigator />
           <TodayButton />
-          <DragDropProvider />
         </Scheduler>
       </Paper>
     </>
