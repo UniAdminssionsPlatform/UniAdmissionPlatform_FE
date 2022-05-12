@@ -1,7 +1,7 @@
-import { Form, Input, Upload, Button, message, Typography, Select, DatePicker } from 'antd';
+import { Button, DatePicker, Form, Input, Select, Typography, Upload, message } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import Label from '../../commons/Label/Label';
 import React from 'react';
-import { UploadOutlined } from '@ant-design/icons';
 import moment from 'moment';
 
 const CreateEventComponent = (props) => {

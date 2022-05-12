@@ -22,5 +22,6 @@ export const PATH_UNIVERSITY_MANAGER = {
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',
   LIST_EVENT: '/event-list',
-  PROFILE: '/profile'
+  PROFILE: '/profile',
+  NEWS: '/news'
 };

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import ScheduleComponent from '../../components/schedule/Schedule.component';
+import { Button, Modal, Space } from 'antd';
 import { getListSlotBySchoolId } from '../../services/AdminUniversitySlotServices';
 import { handleFailNotification, handleSuccessNotification } from '../../notification/CreateEventNotification';
-import { Modal, Button, Space } from 'antd';
 import CreateEventComponent from '../../components/event/CreateEvent/CreateEvent.component';
+import React, { useEffect, useState } from 'react';
+import ScheduleComponent from '../../components/schedule/Schedule.component';
 
 const ScheduleContainer = (props) => {
   const { selectedSchool } = props;

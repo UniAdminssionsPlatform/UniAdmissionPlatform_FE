@@ -1,6 +1,6 @@
-import React from 'react';
 import NcImage from '../../commons/NcImage/NcImage.component';
 import Pagination from '../../commons/Pagination/Pagination';
+import React from 'react';
 
 const HighSchoolTableComponent = (props) => {
   const { handleSelectedSchool, listHighSchool } = props;

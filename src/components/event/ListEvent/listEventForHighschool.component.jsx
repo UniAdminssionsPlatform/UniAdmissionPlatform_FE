@@ -1,7 +1,7 @@
+import LayoutPageWithout from '../../commons/LayoutPage/LayoutPageWithout.component';
 import NcImage from '../../commons/NcImage/NcImage.component';
 import Pagination from '../../commons/Pagination/Pagination';
 import React from 'react';
-import LayoutPageWithout from '../../commons/LayoutPage/LayoutPageWithout.component';
 
 const ListEventForHighschoolComponent = (props) => {
   const { eventforhighschool } = props;

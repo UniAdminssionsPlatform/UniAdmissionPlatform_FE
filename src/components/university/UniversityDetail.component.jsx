@@ -1,6 +1,6 @@
-import React from 'react';
-import NcImage from '../commons/NcImage/NcImage.component';
 import Avatar from '../commons/Avatar/Avatar.component';
+import NcImage from '../commons/NcImage/NcImage.component';
+import React from 'react';
 import Sidebar from '../commons/SideBar/SideBar.component';
 
 const UniversityDetailComponent = (props) => {

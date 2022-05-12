@@ -1,25 +1,25 @@
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import {
-  Scheduler,
-  WeekView,
+  AppointmentTooltip,
   Appointments,
-  Toolbar,
-  ViewSwitcher,
+  DateNavigator,
+  DayView,
   DragDropProvider,
   EditRecurrenceMenu,
-  AppointmentTooltip,
-  DayView,
   MonthView,
-  DateNavigator,
-  TodayButton
+  Scheduler,
+  TodayButton,
+  Toolbar,
+  ViewSwitcher,
+  WeekView
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { useState } from 'react';
-import { room } from './demo-data/task';
-import AppointmentHeaderComponent from './component/AppointmentHeader.component';
-import AppointmentContentComponent from './component/AppointmentContent.component';
+import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import { Typography } from 'antd';
+import { room } from './demo-data/task';
+import { useState } from 'react';
+import AppointmentContentComponent from './component/AppointmentContent.component';
+import AppointmentHeaderComponent from './component/AppointmentHeader.component';
+import Paper from '@mui/material/Paper';
 const ScheduleComponent = (props) => {
   const { listSlot, setIsModalOpen } = props;
   const [data, setData] = useState();

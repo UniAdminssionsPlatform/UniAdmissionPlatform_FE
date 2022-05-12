@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import ListEventForHighschoolComponent from '../../../components/event/ListEvent/listEventForHighschool.component';
 import { EventForHighschool } from '../../../services/event/GetListEvent/GetListEventForHighschool';
+import ListEventForHighschoolComponent from '../../../components/event/ListEvent/listEventForHighschool.component';
+import React, { useEffect, useState } from 'react';
 
 const ListEventForHighschoolContainer = () => {
   const [eventforhighschool, setEventForHighschool] = useState([]);

@@ -1,6 +1,6 @@
-import UniversityDetailComponent from '../../components/university/UniversityDetail.component';
 import { UniversityDetail } from '../../services/university/UniversityDetail/UniversityDetail';
 import React, { useEffect, useState } from 'react';
+import UniversityDetailComponent from '../../components/university/UniversityDetail.component';
 
 const UniversityDetailContainer = () => {
   const [universitydetail, setuniversitydetail] = useState('');

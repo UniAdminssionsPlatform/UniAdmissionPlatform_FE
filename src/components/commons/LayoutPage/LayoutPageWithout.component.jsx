@@ -1,7 +1,7 @@
 import HeadBackgroundCommon from '../HeadBackgroundCommon/HeadBackgroundCommon.component';
 import Heading from '../Heading/Heading.component';
-import React from 'react';
 import HeadingWithDesc from '../Heading/HeadingWithDesc.component';
+import React from 'react';
 
 const LayoutPageWithout = ({ className = '', heading, subHeading, headingEmoji, children }) => (
   <div className={`nc-LayoutPage relative ${className}`} data-nc-id='LayoutPage'>

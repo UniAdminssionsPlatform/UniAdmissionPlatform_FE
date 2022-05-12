@@ -1,12 +1,12 @@
-import LayoutPageWithout from '../commons/LayoutPage/LayoutPageWithout.component';
-import SearchBarComponent from './component/SearchBar/SearchBar.component';
-import { useDispatch } from 'react-redux';
+import { Button, Modal, Space } from 'antd';
 import { setSelectedHighSchool } from '../../redux-flow/selectedHighSchool/selectedHighSchool-action';
-import HighSchoolTableComponent from './component/HighSchoolTable.component';
-import HighSchoolSmallInformationComponent from './component/HighSchoolSmallInformation.component';
-import { Button, Space, Modal } from 'antd';
-import ScheduleContainer from '../../containers/schedule/Schedule.container';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import HighSchoolSmallInformationComponent from './component/HighSchoolSmallInformation.component';
+import HighSchoolTableComponent from './component/HighSchoolTable.component';
+import LayoutPageWithout from '../commons/LayoutPage/LayoutPageWithout.component';
+import ScheduleContainer from '../../containers/schedule/Schedule.container';
+import SearchBarComponent from './component/SearchBar/SearchBar.component';
 const ListHighSchool = (props) => {
   const dispatch = useDispatch();
   const { listHighSchool, isClicked, setIsClicked, setDataSearch, provinces, onChange, districts } = props;

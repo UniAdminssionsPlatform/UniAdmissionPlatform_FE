@@ -1,7 +1,7 @@
+import { PATH } from '../../../constants/Paths/Path';
 import { getHighSchoolByCode, getHighSchoolByManagerCode } from '../../../services/HighSchoolService';
-import React, { useEffect, useState } from 'react';
-import RegisterForm from '../../../components/form/RegisterForm/RegisterForm.component';
 import { getListDistrictByProvince } from '../../../services/DistrictService';
+import { getListNation } from '../../../services/NationalityService';
 import { getListProvinces } from '../../../services/ProvinceService';
 import { getListWardByDistrictId } from '../../../services/WardService';
 import { getUniversityByCode } from '../../../services/UniversityService';
@@ -11,10 +11,10 @@ import {
   registerForStudent,
   registerForUniversityManager
 } from '../../../services/UserServices';
-import { getListNation } from '../../../services/NationalityService';
 import { useDebouncedCallback } from 'use-debounce';
 import { useHistory } from 'react-router-dom';
-import { PATH } from '../../../constants/Paths/Path';
+import React, { useEffect, useState } from 'react';
+import RegisterForm from '../../../components/form/RegisterForm/RegisterForm.component';
 
 const RegisterFormContainer = (props) => {
   const { role } = props;
