@@ -1,7 +1,6 @@
 import { getHighSchoolByCode, getHighSchoolByManagerCode } from '../../../services/HighSchoolService';
 import React, { useEffect, useState } from 'react';
 import RegisterForm from '../../../components/form/RegisterForm/RegisterForm.component';
-
 import { getListDistrictByProvince } from '../../../services/DistrictService';
 import { getListProvinces } from '../../../services/ProvinceService';
 import { getListWardByDistrictId } from '../../../services/WardService';
@@ -14,10 +13,11 @@ import {
 } from '../../../services/UserServices';
 import { getListNation } from '../../../services/NationalityService';
 import { useDebouncedCallback } from 'use-debounce';
+import { useHistory } from 'react-router-dom';
+import { PATH } from '../../../constants/Paths/Path';
 
 const RegisterFormContainer = (props) => {
   const { role } = props;
-
   const [code, setCode] = useState('');
   const [wardId, setWardId] = useState('');
   const [dob, setDob] = useState('');
@@ -25,18 +25,15 @@ const RegisterFormContainer = (props) => {
   const [placeofbirth, setPlaceofbirth] = useState('');
   const [religion, setReligion] = useState('');
   const [nation, setNation] = useState('');
-
   const [schoolName, setSchoolName] = useState();
-
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
   const [nationalities, setNationalities] = useState();
   const [isDisableDistrict, setIsDisableDistrict] = useState(true);
   const [wards, setWards] = useState();
   const [isDisableWard, setIsDisableWard] = useState(true);
-
   const [codeWithRole, setCodeWithRole] = useState();
-
+  const history = useHistory();
   useEffect(() => {
     getAllProvinces();
     getAllNation();
@@ -137,15 +134,15 @@ const RegisterFormContainer = (props) => {
     values.genderId = sex;
     values.religion = religion;
     values.nationality = nation;
-
     values.placeOfBirth = placeofbirth;
 
     if (role === 'st') {
       registerForStudent(values)
         .then((result) => {
           handleNotification('success', result.message);
+          history.push(PATH.INDEX);
         })
-        .then((err) => {
+        .catch((err) => {
           handleNotification('error', err);
         });
     }
@@ -154,7 +151,7 @@ const RegisterFormContainer = (props) => {
         .then((result) => {
           handleNotification('success', result.message);
         })
-        .then((err) => {
+        .catch((err) => {
           handleNotification('error', err);
         });
     }
@@ -164,12 +161,10 @@ const RegisterFormContainer = (props) => {
         .then((result) => {
           handleNotification('success', result.message);
         })
-        .then((err) => {
+        .catch((err) => {
           handleNotification('error', err);
         });
     }
-
-    console.log('Success:', values);
   };
 
   return (

@@ -7,12 +7,18 @@ import { useSelector } from 'react-redux';
 import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
 import ListHighSchool from '../../../components/ListHighSchool/ListHighSchool.component';
 import React, { useEffect, useState } from 'react';
+import ListHighSchool from '../../../components/ListHighSchool/ListHighSchool.component';
+import { people } from './Data/FakeData';
+import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
+import { useSelector } from 'react-redux';
+import { getListDistrictByProvince } from '../../../services/DistrictService';
+import { getListProvinces } from '../../../services/ProvinceService';
+import { getListHighSchool } from '../../../services/HighSchoolService';
 
 const CreateEventContainer = () => {
   const [listHighSchool, setlistHighSchool] = useState();
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
-  const [isDisableDistrict, setIsDisableDistrict] = useState(true);
   const [dataSearch, setDataSeacrch] = useState({
     name: '',
     address: '',
@@ -21,44 +27,44 @@ const CreateEventContainer = () => {
     status: '',
     district: ''
   });
-  const getListHSchool = (data) => {
-    getListHighSchool(data)
-      .then((res) => {
-        const hightschools = res.data.data.list;
-        setlistHighSchool(hightschools);
-        if (hightschools.length > 0) handleSuccessNotification('Danh sách các trường cấp 3');
-        if (hightschools.length === 0) handleSuccessNotification('Không tìm thấy trường cấp 3 theo yêu cầu');
-      })
-      .catch((err) => {
-        handleFailNotification('Lỗi khi lấy danh sách');
-      });
-  };
+  const { isSelected, highSchool } = useSelector((state) => state.selectedHighSchool);
+  const [isClicked, setIsClicked] = useState(isSelected ? isSelected : false);
+
   const geAllProvince = () => {
     getListProvinces()
       .then((result) => {
         setProvinces(result.data.data.list);
       })
       .catch((err) => {
-        handleSuccessNotification('Lỗi Khi lấy danh sách tỉnh/thành');
+        handleFailNotification('Lỗi Khi lấy danh sách tỉnh/thành');
       });
   };
-  function onChangeProvince(value) {
-    getListDistrictByProvince(value)
-      .then((result) => {
-        setDistricts(result.data.data.list);
-        setIsDisableDistrict(false);
-      })
-      .catch((err) => {
-        handleSuccessNotification('Lỗi Khi lấy danh sách quận');
-      });
-  }
-
-  const { isSelected } = useSelector((state) => state.selectedHighSchool);
-  const [isClicked, setIsClicked] = useState(isSelected ? isSelected : false);
   useEffect(() => {
     getListHSchool(dataSearch);
     geAllProvince();
   }, [dataSearch, isClicked]);
+  const getListHSchool = (data) => {
+    getListHighSchool(data)
+      .then((res) => {
+        console.log('list: ', res.data.data.list);
+        setlistHighSchool(res.data.data.list);
+        handleSuccessNotification('Danh sách các trường cấp 3');
+      })
+      .catch((err) => {
+        handleFailNotification('Lỗi khi lấy danh sách');
+      });
+  };
+
+  function onChangeProvince(value) {
+    getListDistrictByProvince(value)
+      .then((result) => {
+        setDistricts(result.data.data.list);
+      })
+      .catch((err) => {
+        handleFailNotification('Lỗi Khi lấy danh sách quận');
+      });
+  }
+
   return (
     <>
       <ListHighSchool
@@ -70,7 +76,6 @@ const CreateEventContainer = () => {
         isClicked={isClicked}
         setIsClicked={setIsClicked}
         setDataSearch={setDataSeacrch}
-        isDisableDistrict={isDisableDistrict}
       />
       {/*<CreateEventComponent onFinish={onFinish} />*/}
     </>
