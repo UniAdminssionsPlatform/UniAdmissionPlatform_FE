@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import MajorMedia from '../PostFeaturedMedia/MajorMedia.component';
 import React, { useState } from 'react';
+import { PATH } from '../../../../constants/Paths/Path';
+import DetailMajorGroupContaoner from '../../../../containers/majorGroup/DetailMajorGroup/DetailMajorGroup.container';
 
 const CardMajor = ({ className = 'h-full', post, ratio = 'aspect-w-4 aspect-h-3' }) => {
   const [isHover, setIsHover] = useState(false);
+
+  const handleonClick = (value) => {
+    return <DetailMajorGroupContaoner />;
+  };
 
   return (
     <div
@@ -21,7 +27,14 @@ const CardMajor = ({ className = 'h-full', post, ratio = 'aspect-w-4 aspect-h-3'
 
       <div className='p-4 flex flex-col flex-grow space-y-3'>
         <h2 className='nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100 '>
-          <Link to='#' className='line-clamp-2' title={post.name}>
+          <Link
+            to={{
+              pathname: PATH.DETAIL_MAJOR_GROUP,
+              state: {
+                majorGroupId: post.id
+              }
+            }}
+            className='line-clamp-2'>
             {post.name}
           </Link>
         </h2>

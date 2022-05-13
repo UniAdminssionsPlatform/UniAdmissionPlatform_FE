@@ -1,10 +1,11 @@
 import { useLocation } from 'react-router-dom';
+import { SINGLE } from '../../../../data/single';
 import React, { FC, useEffect, useRef } from 'react';
-import SingleContentDemo from './SingleContentDemo';
-import Tag from 'components/Tag/Tag';
+import SingleContentDemo from '../../../commons/SingleContentDemo/SingleContentDemo.component';
+import Tag from '../../../commons/Tag/Tag.component';
 
 const DetailContent = ({ data }) => {
-  const { tags, author, commentCount, comments } = data;
+  const { description } = data;
   const commentRef = useRef < HTMLDivElement > null;
   //
   const location = useLocation();
@@ -34,7 +35,7 @@ const DetailContent = ({ data }) => {
 
       {/* TAGS */}
       <div className='max-w-screen-md mx-auto flex flex-wrap'>
-        {tags.map((item) => (
+        {SINGLE.tags.map((item) => (
           <Tag hideCount key={item.id} tag={item} className='mr-2 mb-2' />
         ))}
       </div>

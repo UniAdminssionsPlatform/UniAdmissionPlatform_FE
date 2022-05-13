@@ -9,7 +9,8 @@ export const PATH = {
   SCHEDULE_EVENT: '/schedule',
   DETAIL_EVENT: '/detail-event',
   LIST_EVENT_FOR_HIGHSCHOOL: '/event-for-highschool',
-  LIST_MAJOR_GROUP: '/major-groups'
+  LIST_MAJOR_GROUP: '/major-groups',
+  DETAIL_MAJOR_GROUP: '/major-group-detail'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/'

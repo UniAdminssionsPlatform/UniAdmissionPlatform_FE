@@ -19,6 +19,7 @@ import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
+import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 
 const AppRouter = () => {
   return (
@@ -52,6 +53,9 @@ const AppRouter = () => {
         </Route>
         <Route path={PATH.LIST_MAJOR_GROUP} exact>
           <ListMajorGroupPage />
+        </Route>
+        <Route path={PATH.DETAIL_MAJOR_GROUP} exact>
+          <DetailMajorGroupPage />
         </Route>
         <UniversityManagerRouter
           component={() => <ListNewContainer />}
