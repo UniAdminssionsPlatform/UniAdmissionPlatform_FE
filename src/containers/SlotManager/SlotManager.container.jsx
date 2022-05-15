@@ -34,16 +34,14 @@ const SlotManagerContainer = () => {
   const createListSLotEvent = (listSlot) => {
     if (listSlot !== undefined && listSlot.length > 0) {
       setReloadTrigger(false);
-      setIsLoading(true);
       createNewSlot(listSlot)
         .then((res) => {
-          setIsLoading(false);
           setIsButtonCreateSlotClicked(false);
           handleCreateNotification('success', res);
           setReloadTrigger(true);
         })
-        .catch((err) => {
-          handleCreateNotification('error', err.messages);
+        .catch((error) => {
+          handleCreateNotification('error', error.response.data.msg);
         });
     }
   };

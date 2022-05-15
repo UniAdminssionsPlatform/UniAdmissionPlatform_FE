@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Button, Select, Space, DatePicker, Radio } from 'antd';
+import { Typography, Button, Select, Space, DatePicker, Radio, Divider } from 'antd';
 import moment from 'moment';
 import { enumerateDaysBetweenDates, parseCorrectDateBaseSlot } from '../../../utils/dateUtil';
 
@@ -19,7 +19,6 @@ const LeftBarComponent = (props) => {
   };
   const { RangePicker } = DatePicker;
   const handleClickButton = () => {
-    console.log(parseCorrectDateBaseSlot(arraySlot, slot));
     setListAddingSlot(parseCorrectDateBaseSlot(arraySlot, slot));
   };
   function disabledDate(current) {
@@ -28,7 +27,9 @@ const LeftBarComponent = (props) => {
   return (
     <>
       <Title level={2}>Quản Lý Slot</Title>
-      <Text strong> Thêm mới slot </Text>
+      <Divider orientation='left'>Tìm kiếm slot</Divider>
+
+      <Divider orientation='left'>Thêm mới slot</Divider>
       <Space direction='vertical'>
         <RangePicker
           ranges={{
@@ -37,10 +38,16 @@ const LeftBarComponent = (props) => {
           }}
           disabledDate={disabledDate}
           onChange={onChangeRage}
+          onPanelChange={() => {
+            setIsButtonCreateSlotClicked(true);
+          }}
+          onOk={() => {
+            setIsButtonCreateSlotClicked(true);
+          }}
         />
         <div>
           <Text type='secondary'> Thời điểm diễn ra </Text>
-          <Select defaultValue='1' style={{ width: 120 }} onChange={handleChange}>
+          <Select defaultValue={1} style={{ width: 120 }} onChange={handleChange}>
             <Option value={1}>Buổi Sáng</Option>
             <Option value={2}>Buổi Chiều</Option>
             <Option value={3}>Cả ngày</Option>

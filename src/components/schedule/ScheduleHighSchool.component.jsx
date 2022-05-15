@@ -22,6 +22,7 @@ import SlotComponent from './component/Slot.component';
 import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
 import SlotDetail from './component/SlotDetail.container';
+import { PlusCircleOutlined } from '@ant-design/icons';
 
 const ScheduleHighSchoolComponent = (props) => {
   const { listSlot, setListSlot, setReloadTrigger } = props;
@@ -87,6 +88,9 @@ const ScheduleHighSchoolComponent = (props) => {
         <SlotDetail slotSelected={slotSelected} setReloadTrigger={setReloadTrigger} />
       </Modal>
       <Paper>
+        <Button type='prime' danger className='float:right'>
+          Tạo mới slot
+        </Button>
         <Scheduler data={listSlot} height={660}>
           <ViewState />
           <EditingState onCommitChanges={commitChanges} />
