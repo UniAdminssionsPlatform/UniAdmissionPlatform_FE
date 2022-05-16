@@ -41,7 +41,7 @@ const HighSchoolTableComponent = (props) => {
                           <div className='flex items-center w-96 lg:w-auto max-w-md overflow-hidden'>
                             <NcImage
                               containerClassName='flex-shrink-0 h-12 w-12 rounded-lg overflow-hidden lg:h-14 lg:w-14'
-                              src={item.thumbnail_url}
+                              src={item.thumbnailUrl}
                             />
                             <div className='ml-4 flex-grow'>
                               <h2 className='inline-flex line-clamp-2 text-sm font-semibold  dark:text-neutral-300'>

@@ -10,17 +10,16 @@ const CreateEventComponent = (props) => {
     onChangeType,
     onChangeStartDate,
     onChangeEndtDate,
+    isDisableMeetURL,
     onChangeProvince,
     onChangeDistrict,
     onSearch,
-    isDisableMeetURL,
     isDisableProvince,
     isDisableDistrict,
     isDisableAddress,
     listProvinces,
     listDistricts,
-    onFinish,
-    event
+    onFinish
   } = props;
 
   const { Option } = Select;

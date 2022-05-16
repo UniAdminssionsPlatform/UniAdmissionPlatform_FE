@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import ScheduleComponent from '../../components/schedule/Schedule.component';
+import ScheduleUniversityComponent from '../../components/schedule/ScheduleUniversity.component';
 import { getListSlotBySchoolId } from '../../services/AdminUniversitySlotServices';
 import { handleFailNotification, handleSuccessNotification } from '../../notification/CreateEventNotification';
 import { Modal, Button, Space } from 'antd';
 import CreateEventContainer from '../../containers/event/CreateEvent/CreateEvent.container';
-import ListEventWaitingContainer from '../../containers/event/ListEvent/listEventWaiting.container';
 
 const ScheduleContainer = (props) => {
   const { selectedSchool } = props;
@@ -30,11 +29,9 @@ const ScheduleContainer = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleClickOkModal = () => {
     setIsModalOpen(false);
-    setIsButtonShow(true);
   };
   const handleCancelModal = () => {
     setIsModalOpen(false);
-    setIsButtonShow(true);
   };
   const handleClickButton = (choice) => {
     setIsButtonShow(false);
@@ -58,9 +55,9 @@ const ScheduleContainer = (props) => {
             </Button>
           </Space>
         ) : null}
-        {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : <ListEventWaitingContainer /> : null}
+        {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : null : null}
       </Modal>
-      <ScheduleComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
+      <ScheduleUniversityComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
     </>
   );
 };

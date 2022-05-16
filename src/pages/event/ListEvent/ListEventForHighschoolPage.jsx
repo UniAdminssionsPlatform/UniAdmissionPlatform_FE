@@ -1,10 +1,10 @@
 import React from 'react';
-import ListEventForHighschoolContainer from '../../../containers/event/ListEvent/listEventForHighschool.container';
+import ListEventForHighSchoolContainer from '../../../containers/event/ListEvent/listEventForHighSchool.container';
 
-const ListEventForHighschoolPage = () => (
+const ListEventForHighSchoolPage = () => (
   <>
-    <ListEventForHighschoolContainer />
+    <ListEventForHighSchoolContainer />
   </>
 );
 
-export default ListEventForHighschoolPage;
+export default ListEventForHighSchoolPage;
