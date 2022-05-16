@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SingleContentDemo = () => (
+const PolicyContentDemo = () => (
   <>
     <h1>Privacy Policy for UAP</h1>
 
@@ -182,4 +182,4 @@ const SingleContentDemo = () => (
   </>
 );
 
-export default SingleContentDemo;
+export default PolicyContentDemo;

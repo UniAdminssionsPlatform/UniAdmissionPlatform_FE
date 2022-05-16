@@ -3,9 +3,11 @@ import { authenticationActions } from './authentication-slice';
 import { TOKEN_KEY, USER_STORAGE } from '../../constants/AppConst';
 
 export const SigninHandler = (data) => (dispatch) => {
-  Cookies.set(TOKEN_KEY, data.accessToken);
+  Cookies.set(TOKEN_KEY, data.token);
   localStorage.setItem(USER_STORAGE, JSON.stringify(data));
-  dispatch(authenticationActions.fetchingLoginSuccess(data));
+  if (data?.roles != '') {
+    dispatch(authenticationActions.fetchingLoginSuccess(data));
+  }
 };
 
 export const logoutHandler = () => (dispatch) => {

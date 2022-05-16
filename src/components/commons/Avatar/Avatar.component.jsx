@@ -6,7 +6,7 @@ const Avatar = ({
   containerClassName = 'ring-1 ring-white dark:ring-neutral-900',
   sizeClass = 'h-6 w-6 text-sm',
   radius = 'rounded-md',
-  imgUrl = _getAvatarRd(),
+  imgUrl,
   userName
 }) => {
   const url = imgUrl || '';
