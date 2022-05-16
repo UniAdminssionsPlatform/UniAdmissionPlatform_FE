@@ -13,11 +13,14 @@ export const PATH = {
   DETAIL_MAJOR_GROUP: '/major-group-detail'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
-  INDEX: '/'
+  INDEX: '/',
+  SLOT_MANAGER: '/high-school/slot-manage',
+  LIST_EVENT: '/high-school/events'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
   NEW: '/uni/list-new',
+  LIST_EVENT: '/uni/events',
   CREATE_EVENT: '/uni/create-event',
   PROFILE: '/uni/university-detail'
 };
