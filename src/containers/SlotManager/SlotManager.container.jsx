@@ -10,11 +10,12 @@ const SlotManagerContainer = () => {
   const [isButtonCreateSlotClicked, setIsButtonCreateSlotClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [reloadTrigger, setReloadTrigger] = useState(false);
+  const [dataSearch, setDataSearch] = useState();
   const [listSlot, setListSlot] = useState();
   const [listAddingSlot, setListAddingSlot] = useState([]);
   const getListSlot = () => {
     setIsLoading(true);
-    getListSlotHighSchool()
+    getListSlotHighSchool(dataSearch)
       .then((res) => {
         setReloadTrigger(false);
         setIsLoading(false);
@@ -27,7 +28,7 @@ const SlotManagerContainer = () => {
   };
   useEffect(() => {
     getListSlot();
-  }, [reloadTrigger]);
+  }, [reloadTrigger, dataSearch]);
   useEffect(() => {
     createListSLotEvent(listAddingSlot);
   }, [listAddingSlot]);
@@ -47,31 +48,26 @@ const SlotManagerContainer = () => {
   };
 
   return (
-    <LayoutPageWithout
-      LayoutPage
-      subHeading='Danh sách các trường cấp 3 có thể tổ chức sự kiện tuyển sinh'
-      headingEmoji='⚙'
-      heading='Dash board'>
-      <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
-        <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
-          <LeftBarComponent
-            setListAddingSlot={setListAddingSlot}
-            isButtonCreateSlotClicked={isButtonCreateSlotClicked}
-            setIsButtonCreateSlotClicked={setIsButtonCreateSlotClicked}
-          />
-        </div>
-        {isLoading ? (
-          <Spin />
-        ) : (
-          <ScheduleHighSchoolComponent
-            listSlot={listSlot}
-            setListSlot={setListSlot}
-            setListAddingSlot={setListAddingSlot}
-            setReloadTrigger={setReloadTrigger}
-          />
-        )}
+    <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
+      <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
+        <LeftBarComponent
+          setListAddingSlot={setListAddingSlot}
+          isButtonCreateSlotClicked={isButtonCreateSlotClicked}
+          setIsButtonCreateSlotClicked={setIsButtonCreateSlotClicked}
+          setDataSearch={setDataSearch}
+        />
       </div>
-    </LayoutPageWithout>
+      {isLoading ? (
+        <Spin />
+      ) : (
+        <ScheduleHighSchoolComponent
+          listSlot={listSlot}
+          setListSlot={setListSlot}
+          setListAddingSlot={setListAddingSlot}
+          setReloadTrigger={setReloadTrigger}
+        />
+      )}
+    </div>
   );
 };
 export default SlotManagerContainer;

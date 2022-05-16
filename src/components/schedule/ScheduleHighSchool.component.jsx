@@ -88,16 +88,13 @@ const ScheduleHighSchoolComponent = (props) => {
         <SlotDetail slotSelected={slotSelected} setReloadTrigger={setReloadTrigger} />
       </Modal>
       <Paper>
-        <Button type='prime' danger className='float:right'>
-          Tạo mới slot
-        </Button>
-        <Scheduler data={listSlot} height={660}>
+        <Scheduler data={listSlot} height={935}>
           <ViewState />
           <EditingState onCommitChanges={commitChanges} />
           <EditRecurrenceMenu />
+          <WeekView startDayHour={7} endDayHour={20} />
           <MonthView startDayHour={7} endDayHour={20} />
           <DayView startDayHour={7} endDayHour={20} />
-          <WeekView startDayHour={7} endDayHour={20} />
           <Toolbar />
           <ViewSwitcher />
           <Appointments appointmentComponent={AppointmentComponent} />
