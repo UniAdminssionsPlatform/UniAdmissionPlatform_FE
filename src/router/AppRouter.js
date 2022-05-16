@@ -21,11 +21,11 @@ import PolicyPage from '../pages/policy/PolicyPage';
 import SchedulePage from '../pages/SchedulePage/SchedulePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
-import ListEventForHighschoolPage from "../pages/event/ListEvent/ListEventForHighschoolPage";
-import UniversityManagerRouter from "./components/UniversityManagerRouter";
-import HighSchoolStudentRouter from "./components/HighSchoolStudentRouter";
-import HighSchoolManagerRouter from "./components/HighSchoolManagerRouter";
+import UniversityManagerRouter from './components/UniversityManagerRouter';
+import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
+import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
+import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
 
 const AppRouter = () => {
   return (
@@ -69,41 +69,44 @@ const AppRouter = () => {
         <Route path={PATH.DETAIL_EVENT} exact>
           <DetailEventPage />
         </Route>
-        <Route path={PATH.LIST_EVENT_FOR_HIGHSCHOOL} exact>
-          <ListEventForHighschoolPage />
-        </Route>
+        <HighSchoolManagerRouter
+          component={() => <ListEventForHighSchoolPage />}
+          path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+          key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+          exact
+        />
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />
         </Route>
         <UniversityManagerRouter
-            component={() => <ListNewContainer />}
-            path={PATH_UNIVERSITY_MANAGER.NEW}
-            key={PATH_UNIVERSITY_MANAGER.NEW}
-            exact
+          component={() => <ListNewContainer />}
+          path={PATH_UNIVERSITY_MANAGER.NEW}
+          key={PATH_UNIVERSITY_MANAGER.NEW}
+          exact
         />
         <UniversityManagerRouter
-            component={() => <CreateEventPage />}
-            path={PATH_UNIVERSITY_MANAGER.CREATE_EVENT}
-            key={PATH_UNIVERSITY_MANAGER.CREATE_EVENT}
-            exact
+          component={() => <CreateEventPage />}
+          path={PATH_UNIVERSITY_MANAGER.CREATE_EVENT}
+          key={PATH_UNIVERSITY_MANAGER.CREATE_EVENT}
+          exact
         />
         <UniversityManagerRouter
-            component={() => <UniversityDetailPage />}
-            path={PATH_UNIVERSITY_MANAGER.PROFILE}
-            key={PATH_UNIVERSITY_MANAGER.PROFILE}
-            exact
+          component={() => <UniversityDetailPage />}
+          path={PATH_UNIVERSITY_MANAGER.PROFILE}
+          key={PATH_UNIVERSITY_MANAGER.PROFILE}
+          exact
         />
         <HighSchoolStudentRouter
-            component={() => <ListEventPage />}
-            path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
-            key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
-            exact
+          component={() => <ListEventPage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
+          key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
+          exact
         />
         <HighSchoolManagerRouter
-            component={() => <SlotManagerPage />}
-            path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
-            key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
-            exact
+          component={() => <SlotManagerPage />}
+          path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
+          key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
+          exact
         />
         <Route path='/index.html'>
           <Redirect to='/' />

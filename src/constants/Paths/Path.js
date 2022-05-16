@@ -12,7 +12,8 @@ export const PATH = {
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/',
-  SLOT_MANAGER: '/slot-manage'
+  SLOT_MANAGER: '/high-school/slot-manage',
+  LIST_EVENT: '/high-school/events'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
