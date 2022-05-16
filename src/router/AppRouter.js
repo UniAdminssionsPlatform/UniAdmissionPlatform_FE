@@ -1,9 +1,15 @@
-import { PATH, PATH_HIGH_SCHOOL_STUDENT, PATH_UNIVERSITY_MANAGER } from '../constants/Paths/Path';
+import {
+  PATH,
+  PATH_HIGH_SCHOOL_MANAGER,
+  PATH_HIGH_SCHOOL_STUDENT,
+  PATH_UNIVERSITY_MANAGER
+} from '../constants/Paths/Path';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import ChangePasswordPage from '../pages/authen/ChangePasswordPage/ChangePasswordPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ForgotPasswordPage from '../pages/authen/ForgotPasswordPage/ForgotPasswordPage';
 import HeaderContainer from '../containers/Header/Header.container';
+import HomePage from '../pages/HomePage/HomePage';
 import LoginPage from '../pages/authen/LoginPage/Login.page';
 import React from 'react';
 import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
@@ -15,9 +21,14 @@ import PolicyPage from '../pages/policy/PolicyPage';
 import SchedulePage from '../pages/SchedulePage/SchedulePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
-import ListEventForHighschoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
+import UniversityManagerRouter from './components/UniversityManagerRouter';
+import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
+import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
+import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
+import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
 import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
-import HomePagePage from '../pages/HomePage/HomePage';
+import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
+import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 
 const AppRouter = () => {
   return (
@@ -26,7 +37,7 @@ const AppRouter = () => {
       <HeaderContainer />
       <Switch>
         <Route path={PATH.INDEX} exact>
-          <HomePagePage />
+          <HomePage />
         </Route>
         <Route path={PATH.LOGIN} exact>
           <LoginPage />
@@ -61,15 +72,58 @@ const AppRouter = () => {
         <Route path={PATH.DETAIL_EVENT} exact>
           <DetailEventPage />
         </Route>
-        <Route path={PATH.LIST_EVENT_FOR_HIGHSCHOOL} exact>
-          <ListEventForHighschoolPage />
+        <Route path={PATH.LIST_MAJOR_GROUP} exact>
+          <ListMajorGroupPage />
         </Route>
-        <Route path={PATH.LIST_EVENT_FOR_UNIVERSITY} exact>
-          <ListEventForUniversityPage />
+        <Route path={PATH.DETAIL_MAJOR_GROUP} exact>
+          <DetailMajorGroupPage />
         </Route>
+        <HighSchoolManagerRouter
+          component={() => <ListEventForHighSchoolPage />}
+          path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+          key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+          exact
+        />
+
+        <UniversityManagerRouter
+          component={() => <ListEventForUniversityPage />}
+          path={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
+          key={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
+          exact
+        />
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />
         </Route>
+        <UniversityManagerRouter
+          component={() => <ListNewContainer />}
+          path={PATH_UNIVERSITY_MANAGER.NEW}
+          key={PATH_UNIVERSITY_MANAGER.NEW}
+          exact
+        />
+        <UniversityManagerRouter
+          component={() => <CreateEventPage />}
+          path={PATH_UNIVERSITY_MANAGER.CREATE_EVENT}
+          key={PATH_UNIVERSITY_MANAGER.CREATE_EVENT}
+          exact
+        />
+        <UniversityManagerRouter
+          component={() => <UniversityDetailPage />}
+          path={PATH_UNIVERSITY_MANAGER.PROFILE}
+          key={PATH_UNIVERSITY_MANAGER.PROFILE}
+          exact
+        />
+        <HighSchoolStudentRouter
+          component={() => <ListEventPage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
+          key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
+          exact
+        />
+        <HighSchoolManagerRouter
+          component={() => <SlotManagerPage />}
+          path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
+          key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
+          exact
+        />
         <Route path='/index.html'>
           <Redirect to='/' />
         </Route>

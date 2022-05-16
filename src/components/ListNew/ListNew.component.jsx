@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet';
-
 import { DEMO_AUTHORS } from '../../data/authors';
 import { DEMO_CATEGORIES } from '../../data/taxonomies';
 import { DEMO_POSTS } from '../../data/posts';

@@ -1,7 +1,7 @@
 import { selectedHighSchoolActions } from './selectedHighSchool-slice';
-export const SetSelectedEvent = (data) => (dispatch) => {
+export const setSelectedHighSchool = (data) => (dispatch) => {
   dispatch(selectedHighSchoolActions.selectedHighSchool(data));
 };
-export const CancelSelectedEvent = () => (dispatch) => {
+export const CancelSelectedHighSchool = () => (dispatch) => {
   dispatch(selectedHighSchoolActions.cancel());
 };

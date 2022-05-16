@@ -15,6 +15,7 @@ export const NavigationSystem = (role) => {
       break;
     case UNIVERSITY_MANAGER:
       supperNavigation = UniversityManagerNavigation;
+      break;
     default:
       supperNavigation = DefaultNavigation;
   }
