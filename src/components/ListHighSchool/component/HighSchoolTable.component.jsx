@@ -1,9 +1,10 @@
 import React from 'react';
 import NcImage from '../../commons/NcImage/NcImage.component';
 import Pagination from '../../commons/Pagination/Pagination';
+import { Empty } from 'antd';
 
 const HighSchoolTableComponent = (props) => {
-  const { handleSelectedEvent, listHighSchool } = props;
+  const { handleSelectedSchool, listHighSchool } = props;
   return (
     <>
       <div className='flex-grow'>
@@ -32,6 +33,7 @@ const HighSchoolTableComponent = (props) => {
                       </th>
                     </tr>
                   </thead>
+
                   <tbody className='bg-white dark:bg-neutral-900 divide-y divide-neutral-200 dark:divide-neutral-800'>
                     {listHighSchool?.map((item) => (
                       <tr key={item.id}>
@@ -68,7 +70,7 @@ const HighSchoolTableComponent = (props) => {
                         <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-neutral-300'>
                           <a
                             className='text-primary-800 dark:text-primary-500 hover:text-primary-900'
-                            onClick={() => handleSelectedEvent(item)}>
+                            onClick={() => handleSelectedSchool(item)}>
                             lựa chọn
                           </a>
                           {/*{item.status === 1 ? (*/}
@@ -89,6 +91,11 @@ const HighSchoolTableComponent = (props) => {
                         </td>
                       </tr>
                     ))}
+                    {listHighSchool?.length === 0 && (
+                      <div style={{ textAlign: 'center', padding: 15, paddingLeft: 50 }}>
+                        <Empty style={{ textAlign: 'center' }} />
+                      </div>
+                    )}
                   </tbody>
                 </table>
               </div>
