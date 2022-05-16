@@ -21,6 +21,7 @@ export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
   NEW: '/uni/list-new',
   LIST_EVENT: '/uni/events',
+  REGIS_EVENT: '/uni/register-event',
   CREATE_EVENT: '/uni/create-event',
   PROFILE: '/uni/university-detail'
 };

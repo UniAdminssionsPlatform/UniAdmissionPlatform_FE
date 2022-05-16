@@ -1,6 +1,7 @@
 import NcImage from '../../../components/commons/NcImage/NcImage.component';
 import Pagination from '../../../components/commons/Pagination/Pagination';
 import React from 'react';
+import { Button } from 'antd';
 
 const ListEventForUniversity = (props) => {
   const { eventforuniversity } = props;
@@ -13,22 +14,22 @@ const ListEventForUniversity = (props) => {
               <thead className='bg-neutral-50 dark:bg-neutral-800'>
                 <tr className='text-left text-xs font-medium text-neutral-500 dark:text-neutral-300 uppercase tracking-wider'>
                   <th scope='col' className='px-6 py-3'>
-                    Events
+                    Tên sự kiện
                   </th>
                   <th scope='col' className='px-6 py-3'>
-                    Description
+                    Chú giải
                   </th>
                   <th scope='col' className='px-6 py-3'>
-                    Status
+                    Trạng thái
                   </th>
                   <th scope='col' className='px-6 py-3'>
-                    Event Type
+                    Loại sự kiện
                   </th>
                   <th scope='col' className='px-6 py-3'>
-                    Address
+                    Địa chỉ
                   </th>
                   <th scope='col' className='px-6 py-3'>
-                    Host Name
+                    Hành động
                   </th>
                 </tr>
               </thead>
@@ -52,7 +53,11 @@ const ListEventForUniversity = (props) => {
                     <td className='px-6 py-4 whitespace-nowrap'>{item.event.status}</td>
                     <td className='px-6 py-4 whitespace-nowrap'>{item.event.event_type_id}</td>
                     <td className='px-6 py-4 whitespace-nowrap'>{item.event.address}</td>
-                    <td className='px-6 py-4 whitespace-nowrap'>{item.event.host_name}</td>
+                    <td className='px-6 py-4 whitespace-nowrap'>
+                      <Button type='primary' danger>
+                        Lựa chọn
+                      </Button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

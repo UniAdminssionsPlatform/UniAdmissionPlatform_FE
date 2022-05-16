@@ -13,7 +13,7 @@ const major = [
   {
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_MANAGER.INDEX,
-    name: 'Tạo sự kiện'
+    name: 'Đăng ký sự kiện'
   }
 ];
 

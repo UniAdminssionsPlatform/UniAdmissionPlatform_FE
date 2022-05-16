@@ -19,21 +19,21 @@ import { useState } from 'react';
 import AppointmentHeaderComponent from './component/AppointmentHeader.component';
 import AppointmentContentComponent from './component/AppointmentContent.component';
 import { Typography } from 'antd';
-const ScheduleUniversityComponent = (props) => {
-  const { listSlot, setIsModalOpen } = props;
-  const [data, setData] = useState();
-  const { Title, Text } = Typography;
+import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
+import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
+import SlotComponent from './component/Slot.component';
 
+const ScheduleUniversityComponent = (props) => {
+  const { listSlot, setIsModalOpen, setTriggerLoadEvent } = props;
+  const [data, setData] = useState();
   const commitChanges = ({ added, changed, deleted }) => {
     if (added) setData([...data, { id: data.length > 0 ? data[data.length - 1].id + 1 : 0, ...added }]);
     if (changed) {
-      console.log(data);
       setData(
         data.map((appointment) =>
           changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
         )
       );
-      console.log(data);
     }
     if (deleted !== undefined) setData(data.filter((appointment) => appointment.id !== deleted));
   };
@@ -43,36 +43,40 @@ const ScheduleUniversityComponent = (props) => {
       {...restProps}
       style={{
         ...style,
-        backgroundColor: data?.status === 1 ? '#b2fab4' : '#ffebee',
+        backgroundColor:
+          data?.status === SLOT_IS_OPEN
+            ? COLOR_SLOT_IS_OPEN
+            : data?.status === SLOT_IS_FULL
+            ? COLOR_SLOT_IS_FULL
+            : COLOR_SLOT_IS_CLOSE,
         borderRadius: '8px'
       }}
       data={data}
-      onClick={() => {
-        console.log();
-      }}
-      onDoubleClick={data?.status === 1 ? () => setIsModalOpen(true) : null}>
-      {data?.status === 0 ? (
-        <Text type='secondary' strong style={{ padding: '1px' }}>
-          Không khả dụng
-        </Text>
-      ) : (
-        <Text type='secondary' strong style={{ padding: '1px' }}>
-          Nhấp click chuột vào đây để đặt lịch
-        </Text>
-      )}
+      onClick={() => {}}
+      onDoubleClick={
+        data?.status === SLOT_IS_OPEN
+          ? () => {
+              setIsModalOpen(true);
+              setTriggerLoadEvent(true);
+            }
+          : data?.status === SLOT_IS_FULL
+          ? null
+          : null
+      }>
+      <SlotComponent data={data} />
       {children}
     </Appointments.Appointment>
   );
   return (
     <>
       <Paper>
-        <Scheduler data={listSlot} height={660}>
+        <Scheduler data={listSlot} height={945}>
           <ViewState />
           <EditingState onCommitChanges={commitChanges} />
           <EditRecurrenceMenu />
+          <WeekView startDayHour={7} endDayHour={20} />
           <MonthView startDayHour={7} endDayHour={20} />
           <DayView startDayHour={7} endDayHour={20} />
-          <WeekView startDayHour={7} endDayHour={20} />
           <Toolbar />
           <ViewSwitcher />
           <Appointments appointmentComponent={AppointmentComponent} />
@@ -80,8 +84,6 @@ const ScheduleUniversityComponent = (props) => {
             headerComponent={AppointmentHeaderComponent}
             contentComponent={AppointmentContentComponent}
           />
-          {/*<AppointmentForm />*/}
-          {/*<Resources data={mock.resources} mainResourceName='roomId' />*/}
           <DateNavigator />
           <TodayButton />
         </Scheduler>

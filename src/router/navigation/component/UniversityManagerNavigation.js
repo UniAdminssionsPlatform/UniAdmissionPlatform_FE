@@ -12,6 +12,11 @@ const homePage = [
 const eventManager = [
   {
     id: ncNanoId(),
+    href: PATH_UNIVERSITY_MANAGER.REGIS_EVENT,
+    name: 'Đăng ký sự kiện'
+  },
+  {
+    id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.CREATE_EVENT,
     name: 'Tạo sự kiện'
   }
