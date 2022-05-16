@@ -4,16 +4,12 @@ import MainNav from '../commons/NavBar/NavBar.component';
 import PostCardLikeContainer from '../../containers/commons/PostCardLikeContainer/PostCardLikeContainer.container';
 import React, { useEffect, useRef, useState } from 'react';
 import SocialsShare from '../commons/SocialsShare/SocialsShare.component';
-
 const Header = ({ currentPage }) => {
   const containerRef = useRef();
   const mainMenuRef = useRef();
   const progressBarRef = useRef();
-  //
   let prevScrollpos = window.pageYOffset;
-  //
   const showSingleMenu = currentPage?.type === '/single/:slug';
-  //
   const [isSingleHeaderShowing, setIsSingleHeaderShowing] = useState(false);
   const [isTop, setIsTop] = useState(true);
 
