@@ -18,6 +18,7 @@ export const PATH_HIGH_SCHOOL_MANAGER = {
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
   NEW: '/uni/list-new',
+  LIST_EVENT: '/uni/events',
   CREATE_EVENT: '/uni/create-event',
   PROFILE: '/uni/university-detail'
 };

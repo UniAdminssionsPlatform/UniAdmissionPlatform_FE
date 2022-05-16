@@ -26,6 +26,7 @@ import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
 import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
+import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
 
 const AppRouter = () => {
   return (
@@ -73,6 +74,13 @@ const AppRouter = () => {
           component={() => <ListEventForHighSchoolPage />}
           path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
           key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+          exact
+        />
+
+        <UniversityManagerRouter
+          component={() => <ListEventForUniversityPage />}
+          path={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
+          key={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
           exact
         />
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
