@@ -2,10 +2,10 @@ import { Helmet } from 'react-helmet';
 import { Tag, Typography } from 'antd';
 import LayoutPage from '../../commons/LayoutPage/LayoutPage.component';
 import React, { useState } from 'react';
+import RegisterFormContainer from '../../../containers/authen/RegistrationContainer/RegisterForm.container';
 import highschool from '../../../images/highschool.svg';
 import student from '../../../images/student.svg';
 import university from '../../../images/university.svg';
-import RegisterFormContainer from '../../../containers/authen/RegistrationContainer/RegisterForm.container';
 const loginSocials = [
   {
     name: 'Tài khoản quản lý đại học',

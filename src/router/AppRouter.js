@@ -29,6 +29,7 @@ import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHig
 import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
 import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
+import NewsPage from '../pages/news/newsPage';
 
 const AppRouter = () => {
   return (
@@ -122,6 +123,12 @@ const AppRouter = () => {
           component={() => <SlotManagerPage />}
           path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
           key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
+          exact
+        />
+        <HighSchoolStudentRouter
+          component={() => <NewsPage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.NEWS}
+          key={PATH_HIGH_SCHOOL_STUDENT.NEWS}
           exact
         />
         <Route path='/index.html'>

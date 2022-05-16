@@ -1,5 +1,5 @@
-import React from 'react';
 import PolicyContent from './PolicyContent.component';
+import React from 'react';
 
 const PolicyComponent = ({ className }) => (
   // DEMO DATA

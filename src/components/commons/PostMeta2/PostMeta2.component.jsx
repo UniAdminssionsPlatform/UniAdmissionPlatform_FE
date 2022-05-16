@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { SINGLE } from '../../../data/single';
 import Avatar from '../Avatar/Avatar.component';
 import React from 'react';
-import { SINGLE } from '../../../data/single';
 
 const PostMeta2 = ({ className = 'leading-none', meta, hiddenCategories = false, size = 'normal', avatarRounded }) => {
   const { date, author, categories, readingTime } = meta;

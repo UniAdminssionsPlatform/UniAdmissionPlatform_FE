@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useRef } from 'react';
 import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
 import ButtonSecondary from '../../field/ButtonSecondary/ButtonSecondary.component';
 import NcModal from '../NcModal/NcModal.component';
+import React, { FC, useEffect, useRef } from 'react';
 
 const ModalHideAuthor = ({ auhthor, show, onCloseModalHideAuthor }) => {
   const textareaRef = useRef(null);

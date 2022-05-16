@@ -1,5 +1,5 @@
-import React from 'react';
 import PolicyContentDemo from './PolicyContentDemo.component';
+import React from 'react';
 
 const PolicyContent = ({ data }) => (
   <div className='nc-SingleContent space-y-10'>

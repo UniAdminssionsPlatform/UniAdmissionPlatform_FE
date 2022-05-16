@@ -1,7 +1,7 @@
+import { Input } from 'antd';
 import ButtonPrimary from '../../field/ButtonPrimary/ButtonPrimary.component';
 import ButtonSecondary from '../../field/ButtonSecondary/ButtonSecondary.component';
 import React from 'react';
-import { Input } from 'antd';
 
 const { TextArea } = Input;
 

@@ -1,6 +1,6 @@
+import { SINGLE } from '../../../data/single';
 import PostCardCommentBtn from '../PostCardCommentBtn/PostCardCommentBtn.component';
 import React from 'react';
-import { SINGLE } from '../../../data/single';
 
 const PostCardLikeAndComment = ({
   className = '',
