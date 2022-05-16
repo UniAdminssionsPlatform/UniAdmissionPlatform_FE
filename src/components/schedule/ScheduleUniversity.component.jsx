@@ -16,11 +16,10 @@ import {
   TodayButton
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { useState } from 'react';
-import { room } from './demo-data/task';
 import AppointmentHeaderComponent from './component/AppointmentHeader.component';
 import AppointmentContentComponent from './component/AppointmentContent.component';
 import { Typography } from 'antd';
-const ScheduleComponent = (props) => {
+const ScheduleUniversityComponent = (props) => {
   const { listSlot, setIsModalOpen } = props;
   const [data, setData] = useState();
   const { Title, Text } = Typography;
@@ -92,10 +91,9 @@ const ScheduleComponent = (props) => {
           {/*<Resources data={mock.resources} mainResourceName='roomId' />*/}
           <DateNavigator />
           <TodayButton />
-          <DragDropProvider />
         </Scheduler>
       </Paper>
     </>
   );
 };
-export default ScheduleComponent;
+export default ScheduleUniversityComponent;
