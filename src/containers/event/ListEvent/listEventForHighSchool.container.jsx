@@ -2,7 +2,7 @@ import { EventForHighschool } from '../../../services/event/GetListEvent/GetList
 import ListEventForHighschoolComponent from '../../../components/event/ListEvent/listEventForHighschool.component';
 import React, { useEffect, useState } from 'react';
 
-const ListEventForHighschoolContainer = () => {
+const ListEventForHighSchoolContainer = () => {
   const [eventforhighschool, setEventForHighschool] = useState([]);
 
   useEffect(() => {
@@ -17,4 +17,4 @@ const ListEventForHighschoolContainer = () => {
 
   return <ListEventForHighschoolComponent eventforhighschool={eventforhighschool} />;
 };
-export default ListEventForHighschoolContainer;
+export default ListEventForHighSchoolContainer;

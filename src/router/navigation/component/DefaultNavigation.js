@@ -34,8 +34,8 @@ export const DefaultNavigation = [
   },
   {
     id: ncNanoId(),
-    href: '#',
-    name: 'Chuyên Ngành Đào Tạo',
+    href: PATH.LIST_MAJOR_GROUP,
+    name: 'Nhóm Ngành Đào Tạo',
     children: major
   },
 

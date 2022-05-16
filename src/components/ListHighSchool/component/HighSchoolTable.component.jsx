@@ -1,6 +1,7 @@
+import React from 'react';
 import NcImage from '../../commons/NcImage/NcImage.component';
 import Pagination from '../../commons/Pagination/Pagination';
-import React from 'react';
+import { Empty } from 'antd';
 
 const HighSchoolTableComponent = (props) => {
   const { handleSelectedSchool, listHighSchool } = props;
@@ -32,6 +33,7 @@ const HighSchoolTableComponent = (props) => {
                       </th>
                     </tr>
                   </thead>
+
                   <tbody className='bg-white dark:bg-neutral-900 divide-y divide-neutral-200 dark:divide-neutral-800'>
                     {listHighSchool?.map((item) => (
                       <tr key={item.id}>
@@ -39,7 +41,7 @@ const HighSchoolTableComponent = (props) => {
                           <div className='flex items-center w-96 lg:w-auto max-w-md overflow-hidden'>
                             <NcImage
                               containerClassName='flex-shrink-0 h-12 w-12 rounded-lg overflow-hidden lg:h-14 lg:w-14'
-                              src={item.thumbnail_url}
+                              src={item.thumbnailUrl}
                             />
                             <div className='ml-4 flex-grow'>
                               <h2 className='inline-flex line-clamp-2 text-sm font-semibold  dark:text-neutral-300'>
@@ -89,6 +91,11 @@ const HighSchoolTableComponent = (props) => {
                         </td>
                       </tr>
                     ))}
+                    {listHighSchool?.length === 0 && (
+                      <div style={{ textAlign: 'center', padding: 15, paddingLeft: 50 }}>
+                        <Empty style={{ textAlign: 'center' }} />
+                      </div>
+                    )}
                   </tbody>
                 </table>
               </div>

@@ -93,7 +93,7 @@ const RegisterForm = (props) => {
           </Form.Item>
 
           <div>
-            <Form.Item name='gender_id' hasFeedback>
+            <Form.Item name='genderId' hasFeedback>
               <Label>Giới tính</Label>
               <div className='mt-1'>
                 <Select placeholder='Giới tính' style={{ width: 150 }} onChange={onChangeSex}>

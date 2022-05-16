@@ -35,14 +35,13 @@ const profile = [
 export const UniversityManagerNavigation = [
   {
     id: ncNanoId(),
-    href: '/',
+    href: PATH.INDEX,
     name: 'Trang chủ',
     type: '',
     children: homePage
   },
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý sự kiện',
     type: 'dropdown',
     children: eventManager
@@ -50,14 +49,12 @@ export const UniversityManagerNavigation = [
 
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý news',
     type: 'dropdown',
     children: eventMenu
   },
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý hồ sơ',
     type: 'dropdown',
     children: profile

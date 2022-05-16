@@ -1,9 +1,9 @@
-import { Button, Modal, Space } from 'antd';
+import React, { useEffect, useState } from 'react';
+import ScheduleUniversityComponent from '../../components/schedule/ScheduleUniversity.component';
 import { getListSlotBySchoolId } from '../../services/AdminUniversitySlotServices';
 import { handleFailNotification, handleSuccessNotification } from '../../notification/CreateEventNotification';
-import CreateEventComponent from '../../components/event/CreateEvent/CreateEvent.component';
-import React, { useEffect, useState } from 'react';
-import ScheduleComponent from '../../components/schedule/Schedule.component';
+import { Modal, Button, Space } from 'antd';
+import CreateEventContainer from '../../containers/event/CreateEvent/CreateEvent.container';
 
 const ScheduleContainer = (props) => {
   const { selectedSchool } = props;
@@ -55,9 +55,9 @@ const ScheduleContainer = (props) => {
             </Button>
           </Space>
         ) : null}
-        {!isButtonShow ? isNewEvent ? <CreateEventComponent /> : null : null}
+        {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : null : null}
       </Modal>
-      <ScheduleComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
+      <ScheduleUniversityComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
     </>
   );
 };

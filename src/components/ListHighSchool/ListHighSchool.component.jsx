@@ -1,21 +1,21 @@
-import { Button, Modal, Space } from 'antd';
-import { setSelectedHighSchool } from '../../redux-flow/selectedHighSchool/selectedHighSchool-action';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import HighSchoolSmallInformationComponent from './component/HighSchoolSmallInformation.component';
-import HighSchoolTableComponent from './component/HighSchoolTable.component';
 import LayoutPageWithout from '../commons/LayoutPage/LayoutPageWithout.component';
-import ScheduleContainer from '../../containers/schedule/Schedule.container';
 import SearchBarComponent from './component/SearchBar/SearchBar.component';
+import { useDispatch } from 'react-redux';
+import { setSelectedHighSchool } from '../../redux-flow/selectedHighSchool/selectedHighSchool-action';
+import HighSchoolTableComponent from './component/HighSchoolTable.component';
+import HighSchoolSmallInfomationComponent from './component/HighSchoolSmallInfomation.component';
+import { Button, Space, Modal } from 'antd';
+import { useState } from 'react';
+import CreateEventComponent from '../event/CreateEvent/CreateEvent.component';
+import ScheduleUniversityComponent from '../schedule/ScheduleUniversity.component';
 const ListHighSchool = (props) => {
   const dispatch = useDispatch();
-  const { listHighSchool, isClicked, setIsClicked, setDataSearch, provinces, onChange, districts } = props;
-  const [selectedSchool, setSelectedSchool] = useState({});
+  const { listHighSchool, isClicked, setIsClicked, setDataSearch, provinces, onChange, districts, isDisableDistrict } =
+    props;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleSelectedSchool = (school) => {
-    setSelectedSchool(school);
+  const handleSelectedSchool = (HighSchool) => {
     setIsClicked(true);
-    dispatch(setSelectedHighSchool(school));
+    dispatch(setSelectedHighSchool(HighSchool));
   };
   const handleClickOkModal = () => {
     setIsModalOpen(false);
@@ -23,6 +23,7 @@ const ListHighSchool = (props) => {
   const handleCancelModal = () => {
     setIsModalOpen(false);
   };
+
   return (
     <LayoutPageWithout
       LayoutPage
@@ -33,7 +34,7 @@ const ListHighSchool = (props) => {
         <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
           {isClicked ? (
             <div>
-              <HighSchoolSmallInformationComponent />
+              <HighSchoolSmallInfomationComponent />
               <Space direction='vertical' size='middle' style={{ display: 'flex' }}>
                 <Button type='primary' onClick={() => setIsClicked(false)}>
                   Chọn một trường khác
@@ -41,6 +42,14 @@ const ListHighSchool = (props) => {
                 <Button type='primary' danger onClick={() => setIsModalOpen(true)}>
                   Tạo Sự kiện
                 </Button>
+                <Modal
+                  title='Tạo sự kiện tuyển sinh'
+                  visible={isModalOpen}
+                  onOk={handleClickOkModal}
+                  onCancel={handleCancelModal}
+                  width={'1000px'}>
+                  <CreateEventComponent />
+                </Modal>
               </Space>
             </div>
           ) : (
@@ -49,12 +58,13 @@ const ListHighSchool = (props) => {
               provinces={provinces}
               onChange={onChange}
               districts={districts}
+              isDisableDistrict={isDisableDistrict}
             />
           )}
         </div>
 
         {isClicked ? (
-          <ScheduleContainer selectedSchool={selectedSchool} />
+          <ScheduleUniversityComponent />
         ) : (
           <HighSchoolTableComponent listHighSchool={listHighSchool} handleSelectedSchool={handleSelectedSchool} />
         )}

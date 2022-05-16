@@ -1,26 +1,25 @@
 import * as React from 'react';
+import Paper from '@mui/material/Paper';
+import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import {
-  AppointmentTooltip,
-  Appointments,
-  DateNavigator,
-  DayView,
-  DragDropProvider,
-  EditRecurrenceMenu,
-  MonthView,
   Scheduler,
-  TodayButton,
+  WeekView,
+  Appointments,
   Toolbar,
   ViewSwitcher,
-  WeekView
+  DragDropProvider,
+  EditRecurrenceMenu,
+  AppointmentTooltip,
+  DayView,
+  MonthView,
+  DateNavigator,
+  TodayButton
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
-import { Typography } from 'antd';
-import { room } from './demo-data/task';
 import { useState } from 'react';
-import AppointmentContentComponent from './component/AppointmentContent.component';
 import AppointmentHeaderComponent from './component/AppointmentHeader.component';
-import Paper from '@mui/material/Paper';
-const ScheduleComponent = (props) => {
+import AppointmentContentComponent from './component/AppointmentContent.component';
+import { Typography } from 'antd';
+const ScheduleUniversityComponent = (props) => {
   const { listSlot, setIsModalOpen } = props;
   const [data, setData] = useState();
   const { Title, Text } = Typography;
@@ -61,16 +60,6 @@ const ScheduleComponent = (props) => {
       {children}
     </Appointments.Appointment>
   );
-  // const mock = {
-  //   data: appointments,
-  //   resources: [
-  //     {
-  //       fieldName: 'id',
-  //       title: 'Room',
-  //       instances: room
-  //     }
-  //   ]
-  // };
   return (
     <>
       <Paper>
@@ -92,10 +81,9 @@ const ScheduleComponent = (props) => {
           {/*<Resources data={mock.resources} mainResourceName='roomId' />*/}
           <DateNavigator />
           <TodayButton />
-          <DragDropProvider />
         </Scheduler>
       </Paper>
     </>
   );
 };
-export default ScheduleComponent;
+export default ScheduleUniversityComponent;
