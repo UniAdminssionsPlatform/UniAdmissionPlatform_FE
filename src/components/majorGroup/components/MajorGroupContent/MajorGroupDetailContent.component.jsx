@@ -1,11 +1,10 @@
 import { useLocation } from 'react-router-dom';
 import { SINGLE } from '../../../../data/single';
 import React, { FC, useEffect, useRef } from 'react';
-import SingleContentDemo from '../../../commons/SingleContentDemo/SingleContentDemo.component';
+import MajorGroupContentDemo from './MajorGroupData.component';
 import Tag from '../../../commons/Tag/Tag.component';
 
 const DetailContent = ({ data }) => {
-  const { description } = data;
   const commentRef = useRef < HTMLDivElement > null;
   //
   const location = useLocation();
@@ -30,7 +29,7 @@ const DetailContent = ({ data }) => {
         className='prose prose-sm !max-w-screen-md sm:prose lg:prose-lg mx-auto dark:prose-invert'>
         {/* THIS IS THE DEMP CONTENT */}
         {/* IF YOUR DATA IS JSON, YOU CAN USE render with html-react-parser (https://www.npmjs.com/package/html-react-parser) */}
-        <SingleContentDemo />
+        <MajorGroupContentDemo data={data} />
       </div>
 
       {/* TAGS */}
