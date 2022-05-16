@@ -15,7 +15,7 @@ import {
 } from '../../../validate/RegisterForm.validate';
 
 import Label from '../../commons/Label/Label.component';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 const RegisterForm = (props) => {
@@ -86,6 +86,7 @@ const RegisterForm = (props) => {
                   // defaultValue={moment('2015/01/01', dateFormat)}
                   // format={dateFormat}
                   onChange={handleDatePicker}
+                  placeholder='ngày tháng năm sinh'
                 />
               </div>
             </div>

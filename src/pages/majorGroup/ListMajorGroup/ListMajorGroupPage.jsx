@@ -1,9 +1,9 @@
 import ListMajorContainer from '../../../containers/majorGroup/ListMajorGroup/ListMajorGroup.container';
 import React from 'react';
 
-const ListMajorPage = () => (
+const ListMajorGroupPage = () => (
   <>
     <ListMajorContainer />
   </>
 );
-export default ListMajorPage;
+export default ListMajorGroupPage;

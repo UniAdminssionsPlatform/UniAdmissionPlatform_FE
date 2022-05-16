@@ -2,8 +2,11 @@ import Card2 from '../Card/Card2/Card2.component';
 import Card6 from '../Card/Card6/Card6.component';
 import HeaderFilter from './HeaderFilter.component';
 import React, { useState } from 'react';
-const SectionMagazine = ({ posts, tabs, heading = 'Thông tin tuyển sinh🎈 ', className = '' }) => {
-  const [tabActive, setTabActive] = useState(tabs[0]);
+
+const SectionMagazine = (props) => {
+  const MAGAZINE1_TABS = ['Tất cả', 'Trường học ưu thích', 'Trường gợi ý', 'trường top'];
+  const { viewnews, viewlistnews } = props;
+  const [tabActive, setTabActive] = useState(MAGAZINE1_TABS[0]);
   const handleClickTab = (item) => {
     if (item === tabActive) return;
 
@@ -11,17 +14,19 @@ const SectionMagazine = ({ posts, tabs, heading = 'Thông tin tuyển sinh🎈 '
   };
 
   return (
-    <div className={`nc-SectionMagazine1 ${className}`}>
-      <HeaderFilter tabActive={tabActive} tabs={tabs} heading={heading} onClickTab={handleClickTab} />
-      {!posts.length && <span>Nothing we found!</span>}
+    <div className={`nc-SectionMagazine1`}>
+      <HeaderFilter
+        tabActive={tabActive}
+        tabs={MAGAZINE1_TABS}
+        heading={'Những bài viết🎈'}
+        onClickTab={handleClickTab}
+      />
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8'>
-        {posts[0] && <Card2 size='large' post={posts[0]} />}
+        <Card2 size='large' viewnews={viewnews} />
         <div className='grid gap-6 md:gap-8'>
-          {posts
-            .filter((_, i) => i < 4 && i > 0)
-            .map((item, index) => (
-              <Card6 key={index} post={item} />
-            ))}
+          {viewlistnews?.map((item) => (
+            <Card6 key={viewlistnews.id} viewlistnews={item} />
+          ))}
         </div>
       </div>
     </div>

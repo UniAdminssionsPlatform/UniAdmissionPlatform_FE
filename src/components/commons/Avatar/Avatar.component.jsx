@@ -1,4 +1,3 @@
-import { _getAvatarRd } from '../../../constants/fakeData';
 import { avatarColors } from '../../../constants/contants';
 import React from 'react';
 

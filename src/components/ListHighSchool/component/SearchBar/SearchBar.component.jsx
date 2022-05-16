@@ -1,11 +1,11 @@
 import { Form, Input, Select, Typography } from 'antd';
 import { useDebouncedCallback } from 'use-debounce';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 const SearchBarComponent = (props) => {
   const { Option } = Select;
   const { Title } = Typography;
 
-  const { setDataSearch, provinces, onChange, districts, isDisableDistrict } = props;
+  const { setDataSearch, provinces, onChange, districts } = props;
 
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
@@ -27,7 +27,7 @@ const SearchBarComponent = (props) => {
       });
     },
     // delay in ms
-    1000
+    3000
   );
 
   function onSearch(val) {
@@ -110,7 +110,6 @@ const SearchBarComponent = (props) => {
             optionFilterProp='children'
             onChange={onChangeDistrict}
             onSearch={onSearch}
-            disabled={isDisableDistrict}
             filterOption={(input, option) => option.children.indexOf(input) >= 0}>
             {districts?.map((item) => (
               <Option key={item.id} value={item.id}>
