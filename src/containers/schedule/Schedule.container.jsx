@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ScheduleComponent from '../../components/schedule/Schedule.component';
+import ScheduleUniversityComponent from '../../components/schedule/ScheduleUniversity.component';
 import { getListSlotBySchoolId } from '../../services/AdminUniversitySlotServices';
 import { handleFailNotification, handleSuccessNotification } from '../../notification/CreateEventNotification';
 import { Modal, Button, Space } from 'antd';
@@ -57,7 +57,7 @@ const ScheduleContainer = (props) => {
         ) : null}
         {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : null : null}
       </Modal>
-      <ScheduleComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
+      <ScheduleUniversityComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
     </>
   );
 };

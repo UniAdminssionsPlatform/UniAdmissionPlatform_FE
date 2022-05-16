@@ -6,7 +6,6 @@ import React from 'react';
 
 const DetailEventComponent = (props, { className = '' }) => {
   const { event } = props;
-  console.log('event: ', event);
   return (
     <>
       <div className={`nc-PageSingleTemplate3 ${className}`} data-nc-id='PageSingleTemplate3'>

@@ -12,8 +12,8 @@ const homePage = [
 const eventManager = [
   {
     id: ncNanoId(),
-    href: PATH_HIGH_SCHOOL_MANAGER.INDEX,
-    name: 'Tạo sự kiện'
+    href: PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER,
+    name: 'Đăng ký slot'
   }
 ];
 
@@ -41,7 +41,6 @@ export const HighSchoolManagerNavigation = [
   },
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý sự kiện',
     type: 'dropdown',
     children: eventManager
@@ -49,14 +48,12 @@ export const HighSchoolManagerNavigation = [
 
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý học sinh',
     type: 'dropdown',
     children: eventMenu
   },
   {
     id: ncNanoId(),
-    href: '#',
     name: 'Quản lý hồ sơ',
     type: 'dropdown',
     children: profile
