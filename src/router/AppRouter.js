@@ -27,6 +27,8 @@ import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
 import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
 import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
+import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
+import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 
 const AppRouter = () => {
   return (
@@ -69,6 +71,12 @@ const AppRouter = () => {
         </Route>
         <Route path={PATH.DETAIL_EVENT} exact>
           <DetailEventPage />
+        </Route>
+        <Route path={PATH.LIST_MAJOR_GROUP} exact>
+          <ListMajorGroupPage />
+        </Route>
+        <Route path={PATH.DETAIL_MAJOR_GROUP} exact>
+          <DetailMajorGroupPage />
         </Route>
         <HighSchoolManagerRouter
           component={() => <ListEventForHighSchoolPage />}

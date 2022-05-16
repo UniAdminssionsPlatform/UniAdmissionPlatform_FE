@@ -1,12 +1,11 @@
-import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
-import React, { useEffect, useState } from 'react';
-import ListHighSchool from '../../../components/ListHighSchool/ListHighSchool.component';
-import { people } from './Data/FakeData';
-import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
-import { useSelector } from 'react-redux';
 import { getListDistrictByProvince } from '../../../services/DistrictService';
-import { getListProvinces } from '../../../services/ProvinceService';
 import { getListHighSchool } from '../../../services/HighSchoolService';
+import { getListProvinces } from '../../../services/ProvinceService';
+import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
+import { people } from './Data/FakeData';
+import { useSelector } from 'react-redux';
+import ListHighSchool from '../../../components/ListHighSchool/ListHighSchool.component';
+import React, { useEffect, useState } from 'react';
 
 const CreateEventContainer = () => {
   const [listHighSchool, setlistHighSchool] = useState();

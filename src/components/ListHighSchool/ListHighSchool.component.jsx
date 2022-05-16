@@ -23,6 +23,7 @@ const ListHighSchool = (props) => {
   const handleCancelModal = () => {
     setIsModalOpen(false);
   };
+
   return (
     <LayoutPageWithout
       LayoutPage
