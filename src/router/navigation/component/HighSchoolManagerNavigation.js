@@ -1,34 +1,6 @@
-import __megamenu from '../../../data/jsons/__megamenu.json';
+import { PATH, PATH_HIGH_SCHOOL_MANAGER, PATH_UNIVERSITY_MANAGER } from '../../../constants/Paths/Path';
 import ncNanoId from '../../../utils/ncNanoId';
-import { PATH } from '../../../constants/Paths/Path';
 
-const majorMenu = [
-  {
-    id: ncNanoId(),
-    image:
-      'https://images.unsplash.com/photo-1497215842964-222b430dc094?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNvbXBhbnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60',
-    title: 'Chuyên ngành',
-    items: __megamenu.map((i) => ({
-      id: ncNanoId(),
-      href: '#',
-      name: i.Company
-    }))
-  }
-];
-
-const megaMenu3ItemDemo = [
-  {
-    id: ncNanoId(),
-    image:
-      'http://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29ycG9yYXRlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60',
-    title: 'Corporate',
-    items: __megamenu.map((i) => ({
-      id: ncNanoId(),
-      href: '#',
-      name: i.Corporate
-    }))
-  }
-];
 const homePage = [
   {
     id: ncNanoId(),
@@ -37,52 +9,53 @@ const homePage = [
   }
 ];
 
-const templateChilds = [
+const eventManager = [
   {
     id: ncNanoId(),
-    href: '/single-gallery/this-is-single-slug',
-    name: 'Single Gallery'
-  },
-  {
-    id: ncNanoId(),
-    href: '/single-audio/this-is-single-slug',
-    name: 'Single Audio'
-  },
-  {
-    id: ncNanoId(),
-    href: '/single-video/this-is-single-slug',
-    name: 'Single Video'
+    href: PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER,
+    name: 'Đăng ký slot'
   }
 ];
 
+const eventMenu = [
+  {
+    id: ncNanoId(),
+    href: PATH_UNIVERSITY_MANAGER.NEW,
+    name: 'Danh sách news'
+  }
+];
+const profile = [
+  {
+    id: ncNanoId(),
+    href: PATH_UNIVERSITY_MANAGER.PROFILE,
+    name: 'Hồ sơ trường'
+  }
+];
 export const HighSchoolManagerNavigation = [
   {
     id: ncNanoId(),
-    href: '/',
+    href: PATH_HIGH_SCHOOL_MANAGER.INDEX,
     name: 'Trang chủ',
-    type: 'dropdown',
+    type: '',
     children: homePage
   },
   {
     id: ncNanoId(),
-    href: '#',
-    name: 'Chuyên Ngành Đào Tạo',
-    type: 'megaMenu',
-    megaMenu: majorMenu
+    name: 'Quản lý sự kiện',
+    type: 'dropdown',
+    children: eventManager
   },
 
   {
     id: ncNanoId(),
-    href: '#',
-    name: 'Tin tức về nhập học',
-    type: 'megaMenu',
-    megaMenu: megaMenu3ItemDemo
+    name: 'Quản lý học sinh',
+    type: 'dropdown',
+    children: eventMenu
   },
   {
     id: ncNanoId(),
-    href: '#',
-    name: 'Sự kiện',
+    name: 'Quản lý hồ sơ',
     type: 'dropdown',
-    children: templateChilds
+    children: profile
   }
 ];

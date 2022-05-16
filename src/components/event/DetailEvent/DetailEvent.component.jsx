@@ -1,22 +1,12 @@
 import { SINGLE } from '../../../data/single';
-import { changeCurrentPage } from '../../../app/pages/pages';
-import { useAppDispatch } from '../../../app/hook';
 import DetailEventContent from './DetailEventContent.component';
 import DetailEventHeader from './DetailEventHeader.component';
 import DetailEventRelatedPosts from './DetailEventRelatedPosts.component';
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const PageSingleTemplate3 = ({ className = '' }) => {
-  const dispatch = useAppDispatch();
-
-  // UPDATE CURRENTPAGE DATA IN PAGEREDUCERS
-  useEffect(() => {
-    dispatch(changeCurrentPage({ type: '/single/:slug', data: SINGLE }));
-    return () => {
-      dispatch(changeCurrentPage({ type: '/', data: {} }));
-    };
-  }, []);
-
+const DetailEventComponent = (props, { className = '' }) => {
+  const { event } = props;
+  console.log('event: ', event);
   return (
     <>
       <div className={`nc-PageSingleTemplate3 ${className}`} data-nc-id='PageSingleTemplate3'>
@@ -24,7 +14,7 @@ const PageSingleTemplate3 = ({ className = '' }) => {
           {/* SINGLE HEADER */}
           <div className='dark container relative z-10'>
             <div className='max-w-screen-md'>
-              <DetailEventHeader hiddenDesc metaActionStyle='style2' pageData={SINGLE} />
+              <DetailEventHeader hiddenDesc metaActionStyle='style2' pageData={event} />
             </div>
           </div>
 
@@ -51,4 +41,4 @@ const PageSingleTemplate3 = ({ className = '' }) => {
   );
 };
 
-export default PageSingleTemplate3;
+export default DetailEventComponent;

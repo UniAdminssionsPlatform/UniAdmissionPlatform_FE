@@ -1,10 +1,25 @@
-import { SINGLE } from '../../../data/single';
-import { changeCurrentPage } from '../../../app/pages/pages';
-import { useAppDispatch } from '../../../app/hook';
+import { getDetailEvent } from '../../../services/EventService';
+import { handleNotification } from '../../../notification/DetailEventNotification';
 import DetailEventComponent from '../../../components/event/DetailEvent/DetailEvent.component';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DetailEventContainer = () => {
-  return <DetailEventComponent />;
+  const [event, setEvent] = useState('');
+
+  useEffect(() => {
+    getEvent(1);
+  }, []);
+
+  const getEvent = (eventID) => {
+    getDetailEvent(eventID)
+      .then((result) => {
+        setEvent(result.data.data);
+      })
+      .catch((err) => {
+        handleNotification('error', err);
+      });
+  };
+
+  return <DetailEventComponent event={event} />;
 };
 export default DetailEventContainer;

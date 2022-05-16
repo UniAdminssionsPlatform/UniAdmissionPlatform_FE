@@ -1,8 +1,8 @@
-import { HIGH_SCHOOL_MANAGER, HIGH_SCHOOL_STUDENT, UNIVERSITY_MANAGER } from '../../constants/RoleType';
-import { HighSchoolStudentNavigation } from './component/HighSchoolStudentNavigation';
-import { HighSchoolManagerNavigation } from './component/HighSchoolManagerNavigation';
-import { UniversityManagerNavigation } from './component/UniversityManagerNavigation';
 import { DefaultNavigation } from './component/DefaultNavigation';
+import { HIGH_SCHOOL_MANAGER, HIGH_SCHOOL_STUDENT, UNIVERSITY_MANAGER } from '../../constants/RoleType';
+import { HighSchoolManagerNavigation } from './component/HighSchoolManagerNavigation';
+import { HighSchoolStudentNavigation } from './component/HighSchoolStudentNavigation';
+import { UniversityManagerNavigation } from './component/UniversityManagerNavigation';
 
 export const NavigationSystem = (role) => {
   let supperNavigation = [];
@@ -15,6 +15,7 @@ export const NavigationSystem = (role) => {
       break;
     case UNIVERSITY_MANAGER:
       supperNavigation = UniversityManagerNavigation;
+      break;
     default:
       supperNavigation = DefaultNavigation;
   }
