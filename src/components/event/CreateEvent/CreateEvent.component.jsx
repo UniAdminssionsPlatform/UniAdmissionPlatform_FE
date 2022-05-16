@@ -3,7 +3,6 @@ import { UploadOutlined } from '@ant-design/icons';
 import { des, hostname, name, shortdes, targetstudent } from '../../../validate/CreateEvent.validate';
 import Label from '../../commons/Label/Label';
 import React from 'react';
-import moment from 'moment';
 
 const CreateEventComponent = (props) => {
   const {

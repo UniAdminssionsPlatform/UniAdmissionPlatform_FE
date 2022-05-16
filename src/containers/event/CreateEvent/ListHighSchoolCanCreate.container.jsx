@@ -35,7 +35,7 @@ const ListHighSchoolContainer = () => {
   useEffect(() => {
     getListHSchool(dataSearch);
     geAllProvince();
-  }, [dataSearch, isClicked]);
+  }, [dataSearch]);
   const getListHSchool = (data) => {
     getListHighSchool(data)
       .then((res) => {

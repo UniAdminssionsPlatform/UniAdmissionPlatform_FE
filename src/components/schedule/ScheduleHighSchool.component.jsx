@@ -16,13 +16,12 @@ import {
   TodayButton
 } from '@devexpress/dx-react-scheduler-material-ui';
 import AppointmentHeaderComponent from './component/AppointmentHeader.component';
-import { Typography, Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import { useState } from 'react';
 import SlotComponent from './component/Slot.component';
 import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
 import SlotDetail from './component/SlotDetail.container';
-import { PlusCircleOutlined } from '@ant-design/icons';
 
 const ScheduleHighSchoolComponent = (props) => {
   const { listSlot, setListSlot, setReloadTrigger } = props;
@@ -55,7 +54,7 @@ const ScheduleHighSchoolComponent = (props) => {
         borderRadius: '8px'
       }}
       data={data}
-      onClick={(lol) => {
+      onClick={() => {
         setIsModalVisible(true);
         SetSlotSelected(data);
       }}

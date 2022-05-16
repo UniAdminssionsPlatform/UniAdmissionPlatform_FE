@@ -8,7 +8,7 @@ const selectedHighSchoolSlice = createSlice({
     isSelected: false
   },
   reducers: {
-    fetchingSelectedHighSchool: (state, action) => {
+    setSelectedHighSchool: (state, action) => {
       state = {
         ...state,
         data: [],

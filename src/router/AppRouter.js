@@ -4,7 +4,7 @@ import {
   PATH_HIGH_SCHOOL_STUDENT,
   PATH_UNIVERSITY_MANAGER
 } from '../constants/Paths/Path';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import ChangePasswordPage from '../pages/authen/ChangePasswordPage/ChangePasswordPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ForgotPasswordPage from '../pages/authen/ForgotPasswordPage/ForgotPasswordPage';
@@ -16,7 +16,7 @@ import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage'
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import ListEventPage from '../pages/event/ListEvent/ListeventPage';
 import ListNewContainer from '../containers/listNew/ListNew/ListNew.container';
-import CreateEventPage from '../pages/event/CreateEvent/CreateEventPage';
+import RegisEventPage from '../pages/event/RegisEventPage';
 import PolicyPage from '../pages/policy/PolicyPage';
 import SchedulePage from '../pages/SchedulePage/SchedulePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
@@ -30,6 +30,7 @@ import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUni
 import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 import NewsPage from '../pages/news/newsPage';
+import CreateEventPage from '../pages/event/CreateEventPage';
 
 const AppRouter = () => {
   return (
@@ -102,9 +103,9 @@ const AppRouter = () => {
           exact
         />
         <UniversityManagerRouter
-          component={() => <CreateEventPage />}
-          path={PATH_UNIVERSITY_MANAGER.CREATE_EVENT}
-          key={PATH_UNIVERSITY_MANAGER.CREATE_EVENT}
+          component={() => <RegisEventPage />}
+          path={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
+          key={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
           exact
         />
         <UniversityManagerRouter

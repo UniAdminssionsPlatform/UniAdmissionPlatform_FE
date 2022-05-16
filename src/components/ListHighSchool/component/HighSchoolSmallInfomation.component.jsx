@@ -1,14 +1,12 @@
-import { Typography } from 'antd';
 import { useSelector } from 'react-redux';
 
 const HighSchoolSmallInformationComponent = () => {
-  const { Title, Text } = Typography;
   const { highSchool } = useSelector((state) => state.selectedHighSchool);
   const data = [
     { name: 'Địa chỉ', content: highSchool.address },
-    { name: 'Số Điện Thoại', content: highSchool.phone_number },
+    { name: 'Số Điện Thoại', content: highSchool.phoneNumber },
     { name: 'Email', content: highSchool.email },
-    { name: 'Trang Web', content: highSchool.website_url }
+    { name: 'Trang Web', content: highSchool.websiteUrl }
   ];
   return (
     <>

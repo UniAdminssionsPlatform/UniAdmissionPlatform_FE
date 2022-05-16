@@ -4,12 +4,14 @@ import { getListSlotBySchoolId } from '../../services/AdminUniversitySlotService
 import { handleFailNotification, handleSuccessNotification } from '../../notification/CreateEventNotification';
 import { Modal, Button, Space } from 'antd';
 import CreateEventContainer from '../../containers/event/CreateEvent/CreateEvent.container';
+import ListEventForUniversityContainer from '../event/ListEvent/listEventForUniversity.container';
 
 const ScheduleContainer = (props) => {
   const { selectedSchool } = props;
   const [listSlot, setListSlot] = useState();
   const [isButtonShow, setIsButtonShow] = useState(true);
   const [isNewEvent, setIsNewEvent] = useState();
+  const [triggerLoadEvent, setTriggerLoadEvent] = useState(false);
   useEffect(() => {
     getListSlot(selectedSchool?.id);
   }, [selectedSchool]);
@@ -18,7 +20,6 @@ const ScheduleContainer = (props) => {
       getListSlotBySchoolId(id)
         .then((res) => {
           handleSuccessNotification('Danh sách các slot trống');
-          console.log(res.data.data.list);
           setListSlot(res.data.data.list);
         })
         .catch((err) => {
@@ -26,6 +27,7 @@ const ScheduleContainer = (props) => {
         });
     }
   };
+  const getListEventByHighSchoolId = (id) => {};
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleClickOkModal = () => {
     setIsModalOpen(false);
@@ -40,24 +42,23 @@ const ScheduleContainer = (props) => {
   return (
     <>
       <Modal
-        title='Tạo sự kiện tuyển sinh'
+        title='Đăng ký event'
         visible={isModalOpen}
         onOk={handleClickOkModal}
         onCancel={handleCancelModal}
         width={'1000px'}>
         {isButtonShow ? (
           <Space>
-            <Button type='primary' onClick={() => handleClickButton(1)} danger>
-              Tạo mới một event
-            </Button>
-            <Button type='primary' onClick={() => handleClickButton(0)}>
-              Đặt lịch bằng event đã tạo
-            </Button>
+            <ListEventForUniversityContainer />
           </Space>
         ) : null}
         {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : null : null}
       </Modal>
-      <ScheduleUniversityComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
+      <ScheduleUniversityComponent
+        listSlot={listSlot}
+        setIsModalOpen={setIsModalOpen}
+        setTriggerLoadEvent={setTriggerLoadEvent}
+      />
     </>
   );
 };
