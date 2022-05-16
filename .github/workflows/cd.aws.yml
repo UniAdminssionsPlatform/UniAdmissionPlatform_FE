@@ -8,6 +8,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Clear useless artifacts
+        uses: c-hive/gha-remove-artifacts@v1.2.0
+        with:
+          age: '5 days'
+          
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -47,5 +52,5 @@ jobs:
         with:
           name: frontend
           path: build
-      - run: aws s3 sync ./build s3://s3-fe-uap/ --acl public-read
+      - run: aws s3 sync ./build s3://s3-fe-uap-dev/ --acl public-read
 

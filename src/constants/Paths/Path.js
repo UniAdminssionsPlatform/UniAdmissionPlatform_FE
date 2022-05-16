@@ -8,17 +8,18 @@ export const PATH = {
   UPDATE_PROFILE: '/auth/update-profile',
   SCHEDULE_EVENT: '/schedule',
   DETAIL_EVENT: '/detail-event',
-  LIST_EVENT_FOR_HIGHSCHOOL: '/event-for-highschool',
-  LIST_EVENT_FOR_UNIVERSITY: '/event-for-university'
+  LIST_EVENT_FOR_HIGHSCHOOL: '/event-for-highschool'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
-  INDEX: '/'
+  INDEX: '/',
+  SLOT_MANAGER: '/high-school/slot-manage',
+  LIST_EVENT: '/high-school/events'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
   NEW: '/uni/list-new',
-  PROFILE: '/uni/university-detail',
-  CREATE_EVENT: '/uni/create-event'
+  CREATE_EVENT: '/uni/create-event',
+  PROFILE: '/uni/university-detail'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',
