@@ -1,10 +1,10 @@
 import { Form, Input, Upload, Button, message, Typography, Select, DatePicker } from 'antd';
-import { excerpt, title } from '../../../validate/CreateEvent.validate';
 import Label from '../../commons/Label/Label';
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import moment from 'moment';
-const CreateEventFormComponent = (props) => {
+
+const CreateEventComponent = (props) => {
   const { Title } = Typography;
   const uploadFile = {
     name: 'file',
@@ -31,22 +31,22 @@ const CreateEventFormComponent = (props) => {
             <Label>
               <Title level={5}>Tên sự kiện *</Title>
             </Label>
-            <Form.Item name='eventName' rules={excerpt}>
-              <Input placeholder='Event Title' rules={title} className='mt-1' />
+            <Form.Item name={['event', 'eventName']}>
+              <Input placeholder='Event Title' className='mt-1' />
             </Form.Item>
           </label>
           <label className='block md:col-span-2'>
             <Label>
               <Title level={5}>Mô tả ngắn về sự kiện</Title>
             </Label>
-            <Form.Item name='short_description' rules={excerpt}>
-              <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Mô tả</Label>
+            <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Mô tả</Label>
+            <Form.Item name={['event', 'short_description']}>
               <Input.TextArea className='mt-1' rows={4} />
             </Form.Item>
-            <Form.Item name='description' rules={excerpt}>
-              <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-                Mô tả chi tiết
-              </Label>
+            <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
+              Mô tả chi tiết
+            </Label>
+            <Form.Item name={['event', 'description']}>
               <Input.TextArea className='mt-1' rows={4} />
             </Form.Item>
             <p className='mt-1 text-sm text-neutral-500'>
@@ -58,71 +58,51 @@ const CreateEventFormComponent = (props) => {
             <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
               <Title level={5}>Thông tin sự kiện</Title>
             </Label>
-            <div className='flex'>
-              <div className='flex-1 w-64'>
-                <Form.Item name='host_name' rules={excerpt}>
-                  <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-                    Diễn giả
-                  </Label>
-                  <Input className='mt-1' rows={4} style={{ width: 400 }} />
+            <div className='grid gap-8 grid-cols-3'>
+              <div>
+                <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
+                  Diễn giả
+                </Label>
+                <Form.Item name={['event', 'host_name']}>
+                  <Input className='mt-1' rows={4} />
                 </Form.Item>
               </div>
-              <div className='flex-1 w-32'>
-                <Form.Item name='target_student' rules={excerpt}>
-                  <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-                    Số lượng học sinh
-                  </Label>
-                  <Input className='mt-1' rows={4} style={{ width: 200 }} />
+              <div>
+                <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
+                  Số lượng học sinh
+                </Label>
+                <Form.Item name={['event', 'target_student']}>
+                  <Input className='mt-1' rows={4} style={{ width: 300 }} />
                 </Form.Item>
               </div>
-            </div>
-            <div className='flex'>
-              <div className='flex-1 w-32'>
-                <Form.Item name='start_time'>
-                  <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-                    Thời gian bắt đầu
-                  </Label>
-                  <DatePicker defaultValue={moment(moment(), dateFormat)} format={dateFormat} style={{ width: 250 }} />
-                </Form.Item>
-              </div>
-              <div className='flex-1 w-32'>
-                <Form.Item name='end_time'>
-                  <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-                    Thời gian kết thúc
-                  </Label>
-                  <DatePicker defaultValue={moment(moment(), dateFormat)} format={dateFormat} style={{ width: 250 }} />
-                </Form.Item>
-              </div>
-              <div className='flex-1 w-32'>
-                <Form.Item name='address' rules={excerpt}>
-                  <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-                    Địa điểm tổ chức
-                  </Label>
+              <div>
+                <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
+                  Địa điểm tổ chức
+                </Label>
+                <Form.Item name={['event', 'address']}>
                   <Input className='mt-1' rows={4} style={{ width: 300 }} />
                 </Form.Item>
               </div>
             </div>
+            <div className='flex'>
+              <div className='flex-1 w-32'>
+                <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
+                  Thời gian bắt đầu
+                </Label>
+                <Form.Item name={['event', 'startDate']}>
+                  <DatePicker defaultValue={moment(moment(), dateFormat)} format={dateFormat} style={{ width: 250 }} />
+                </Form.Item>
+              </div>
+              <div className='flex-1 w-32'>
+                <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
+                  Thời gian kết thúc
+                </Label>
+                <Form.Item name={['event', 'endDate']}>
+                  <DatePicker defaultValue={moment(moment(), dateFormat)} format={dateFormat} style={{ width: 250 }} />
+                </Form.Item>
+              </div>
+            </div>
           </label>
-          <label className='block'>
-            <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>
-              Loại sự kiện
-            </Label>
-            <Form.Item name='event_type_id' rules={excerpt}>
-              <Select className='mt-1' style={{ width: 300 }}>
-                <Select.Option value='-1'>– select –</Select.Option>
-                <Select.Option value='1'>Tư vấn tại trường</Select.Option>
-                <Select.Option value='2'>Mời tham quan trường</Select.Option>
-                <Select.Option value='3'>Địa điểm ngoài</Select.Option>
-                <Select.Option value='4'>Online</Select.Option>
-              </Select>
-            </Form.Item>
-          </label>
-          <label className='block'>
-            <Label className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Tags</Label>
-            <Input placeholder='Tags' />
-            {/* <Input type='text' className='mt-1' /> */}
-          </label>
-
           <div className='block md:col-span-2'>
             <Label>Hình ảnh trang bìa</Label>
 
@@ -176,4 +156,4 @@ const CreateEventFormComponent = (props) => {
   );
 };
 
-export default CreateEventFormComponent;
+export default CreateEventComponent;

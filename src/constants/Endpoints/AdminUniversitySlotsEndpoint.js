@@ -1,1 +1,1 @@
-export const PATH_GET_LIST_SLOT = '/api/v1/admin-university/slots';
+export const GET_LIST_SLOTS_ENDPOINT = '/api/v1/admin-university/slots';
