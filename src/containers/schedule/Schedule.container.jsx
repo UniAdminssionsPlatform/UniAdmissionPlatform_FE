@@ -3,7 +3,7 @@ import ScheduleUniversityComponent from '../../components/schedule/ScheduleUnive
 import { getListSlotBySchoolId } from '../../services/AdminUniversitySlotServices';
 import { handleFailNotification, handleSuccessNotification } from '../../notification/CreateEventNotification';
 import { Modal, Button, Space } from 'antd';
-import CreateEventComponent from '../../components/event/CreateEvent/CreateEvent.component';
+import CreateEventContainer from '../../containers/event/CreateEvent/CreateEvent.container';
 
 const ScheduleContainer = (props) => {
   const { selectedSchool } = props;
@@ -55,7 +55,7 @@ const ScheduleContainer = (props) => {
             </Button>
           </Space>
         ) : null}
-        {!isButtonShow ? isNewEvent ? <CreateEventComponent /> : null : null}
+        {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : null : null}
       </Modal>
       <ScheduleUniversityComponent listSlot={listSlot} setIsModalOpen={setIsModalOpen} />
     </>

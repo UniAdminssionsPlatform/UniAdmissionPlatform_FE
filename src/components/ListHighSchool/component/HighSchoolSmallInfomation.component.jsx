@@ -1,8 +1,7 @@
-import React from 'react';
-import { Select, Typography } from 'antd';
+import { Typography } from 'antd';
 import { useSelector } from 'react-redux';
 
-const HighSchoolSmallInfomationComponent = () => {
+const HighSchoolSmallInformationComponent = () => {
   const { Title, Text } = Typography;
   const { highSchool } = useSelector((state) => state.selectedHighSchool);
   const data = [
@@ -38,4 +37,4 @@ const HighSchoolSmallInfomationComponent = () => {
     </>
   );
 };
-export default HighSchoolSmallInfomationComponent;
+export default HighSchoolSmallInformationComponent;
