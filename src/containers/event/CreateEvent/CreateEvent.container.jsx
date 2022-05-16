@@ -2,10 +2,13 @@ import { createEvent } from '../../../services/event/CreateEvent/CreateEvent';
 import { getListDistrictByProvince } from '../../../services/DistrictService';
 import { getListProvinces } from '../../../services/ProvinceService';
 import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
+import { useSelector } from 'react-redux';
 import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
 import React, { useEffect, useState } from 'react';
 
-const CreateEventContainer = () => {
+const CreateEventContainer = (props) => {
+  const { event } = props;
+
   const [listProvinces, setListProvinces] = useState();
   const [listDistricts, setListDistricts] = useState();
 
@@ -30,6 +33,7 @@ const CreateEventContainer = () => {
   };
 
   useEffect(() => {
+    console.log(event);
     geAllProvince();
   }, []);
 
@@ -49,6 +53,7 @@ const CreateEventContainer = () => {
   };
 
   const onChangeType = (value) => {
+    console.log(value);
     if (value === 1) {
       setIsDisableAddress(true);
       setIsDisableProvince(true);
@@ -102,6 +107,11 @@ const CreateEventContainer = () => {
         listProvinces={listProvinces}
         listDistricts={listDistricts}
         onFinish={onFinish}
+        event={event}
+        setIsDisableProvince={setIsDisableProvince}
+        setIsDisableDistrict={setIsDisableDistrict}
+        setIsDisableAddress={setIsDisableAddress}
+        setIsDisableMeetURL={setIsDisableMeetURL}
       />
     </>
   );
