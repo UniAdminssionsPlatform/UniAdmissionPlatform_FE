@@ -60,16 +60,6 @@ const ScheduleUniversityComponent = (props) => {
       {children}
     </Appointments.Appointment>
   );
-  // const mock = {
-  //   data: appointments,
-  //   resources: [
-  //     {
-  //       fieldName: 'id',
-  //       title: 'Room',
-  //       instances: room
-  //     }
-  //   ]
-  // };
   return (
     <>
       <Paper>

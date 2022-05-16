@@ -4,7 +4,6 @@ import { getListProvinces } from '../../../services/ProvinceService';
 import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
 import { people } from './Data/FakeData';
 import { useSelector } from 'react-redux';
-import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
 import ListHighSchool from '../../../components/ListHighSchool/ListHighSchool.component';
 import React, { useEffect, useState } from 'react';
 

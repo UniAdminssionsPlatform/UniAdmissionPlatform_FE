@@ -1,21 +1,21 @@
 import LayoutPageWithout from '../commons/LayoutPage/LayoutPageWithout.component';
 import SearchBarComponent from './component/SearchBar/SearchBar.component';
 import { useDispatch } from 'react-redux';
-import { SetSelectedEvent } from '../../redux-flow/selectedHighSchool/selectedHighSchool-action';
+import { setSelectedHighSchool } from '../../redux-flow/selectedHighSchool/selectedHighSchool-action';
 import HighSchoolTableComponent from './component/HighSchoolTable.component';
-import ScheduleComponent from '../schedule/Schedule.component';
 import HighSchoolSmallInfomationComponent from './component/HighSchoolSmallInfomation.component';
 import { Button, Space, Modal } from 'antd';
 import { useState } from 'react';
 import CreateEventComponent from '../event/CreateEvent/CreateEvent.component';
+import ScheduleUniversityComponent from '../schedule/ScheduleUniversity.component';
 const ListHighSchool = (props) => {
   const dispatch = useDispatch();
   const { listHighSchool, isClicked, setIsClicked, setDataSearch, provinces, onChange, districts, isDisableDistrict } =
     props;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleSelectedEvent = (event) => {
+  const handleSelectedEvent = (HighSchool) => {
     setIsClicked(true);
-    dispatch(SetSelectedEvent(event));
+    dispatch(setSelectedHighSchool(HighSchool));
   };
   const handleClickOkModal = () => {
     setIsModalOpen(false);
@@ -64,7 +64,7 @@ const ListHighSchool = (props) => {
         </div>
 
         {isClicked ? (
-          <ScheduleComponent />
+          <ScheduleUniversityComponent />
         ) : (
           <HighSchoolTableComponent listHighSchool={listHighSchool} handleSelectedEvent={handleSelectedEvent} />
         )}
