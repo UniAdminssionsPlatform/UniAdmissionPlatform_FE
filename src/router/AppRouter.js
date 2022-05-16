@@ -4,7 +4,7 @@ import {
   PATH_HIGH_SCHOOL_STUDENT,
   PATH_UNIVERSITY_MANAGER
 } from '../constants/Paths/Path';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import ChangePasswordPage from '../pages/authen/ChangePasswordPage/ChangePasswordPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ForgotPasswordPage from '../pages/authen/ForgotPasswordPage/ForgotPasswordPage';
@@ -23,8 +23,9 @@ import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
-import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
+import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
+import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
 
 const AppRouter = () => {
   return (
@@ -50,14 +51,32 @@ const AppRouter = () => {
         <Route path={PATH.POLICY} exact>
           <PolicyPage />
         </Route>
+        <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
+          <ListEventPage />
+        </Route>
+        <Route path={PATH_UNIVERSITY_MANAGER.NEW} exact>
+          <ListNewContainer />
+        </Route>
+        <Route path={PATH_UNIVERSITY_MANAGER.CREATE_EVENT} exact>
+          <CreateEventPage />
+        </Route>
+        <Route path={PATH_UNIVERSITY_MANAGER.PROFILE} exact>
+          <UniversityDetailPage />
+        </Route>
         <Route path={PATH.SCHEDULE_EVENT} exact>
           <SchedulePage />
         </Route>
         <Route path={PATH.DETAIL_EVENT} exact>
           <DetailEventPage />
         </Route>
-        <Route path={PATH.DETAIL_EVENT} exact>
-          <DetailEventPage />
+        <HighSchoolManagerRouter
+          component={() => <ListEventForHighSchoolPage />}
+          path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+          key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+          exact
+        />
+        <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
+          <ListEventPage />
         </Route>
         <UniversityManagerRouter
           component={() => <ListNewContainer />}
