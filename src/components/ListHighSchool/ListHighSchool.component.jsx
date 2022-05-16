@@ -13,7 +13,7 @@ const ListHighSchool = (props) => {
   const { listHighSchool, isClicked, setIsClicked, setDataSearch, provinces, onChange, districts, isDisableDistrict } =
     props;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleSelectedEvent = (HighSchool) => {
+  const handleSelectedSchool = (HighSchool) => {
     setIsClicked(true);
     dispatch(setSelectedHighSchool(HighSchool));
   };
@@ -66,7 +66,7 @@ const ListHighSchool = (props) => {
         {isClicked ? (
           <ScheduleUniversityComponent />
         ) : (
-          <HighSchoolTableComponent listHighSchool={listHighSchool} handleSelectedEvent={handleSelectedEvent} />
+          <HighSchoolTableComponent listHighSchool={listHighSchool} handleSelectedSchool={handleSelectedSchool} />
         )}
       </div>
     </LayoutPageWithout>
