@@ -2,6 +2,7 @@ import { createEvent } from '../../../services/event/CreateEvent/CreateEvent';
 import { getListDistrictByProvince } from '../../../services/DistrictService';
 import { getListProvinces } from '../../../services/ProvinceService';
 import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
+import { useSelector } from 'react-redux';
 import CreateEventComponent from '../../../components/event/CreateEvent/CreateEvent.component';
 import React, { useEffect, useState } from 'react';
 
