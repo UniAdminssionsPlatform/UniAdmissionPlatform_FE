@@ -31,6 +31,7 @@ import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGrou
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 import NewsPage from '../pages/news/newsPage';
 import CreateEventPage from '../pages/event/CreateEventPage';
+import ListStudentForSchoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
 
 const AppRouter = () => {
   return (
@@ -84,6 +85,12 @@ const AppRouter = () => {
           component={() => <ListEventForHighSchoolPage />}
           path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
           key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+          exact
+        />
+        <HighSchoolManagerRouter
+          component={() => <ListStudentForSchoolPage />}
+          path={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
+          key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
           exact
         />
 
