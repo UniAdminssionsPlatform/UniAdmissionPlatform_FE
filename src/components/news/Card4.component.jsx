@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NcImage from '../commons/NcImage/NcImage.component';
+import { PATH_HIGH_SCHOOL_STUDENT } from '../../constants/Paths/Path';
 
 const Card4 = (props) => {
   const { post } = props;
@@ -13,7 +14,14 @@ const Card4 = (props) => {
         <NcImage containerClassName='absolute inset-0' src={post.thumbnailUrl} />
       </span>
 
-      <Link to='#' className='absolute inset-0'></Link>
+      <Link
+        to={{
+          pathname: PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL,
+          state: {
+            newsId: post?.id
+          }
+        }}
+        className='absolute inset-0'></Link>
 
       <div className='p-4 flex flex-col flex-grow'>
         <div className='space-y-2.5 mb-4'>
