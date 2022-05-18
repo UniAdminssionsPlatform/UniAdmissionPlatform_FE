@@ -14,7 +14,7 @@ const TableStudentComponent = (props) => {
               <div className='shadow dark:border dark:border-neutral-800 overflow-hidden sm:rounded-lg'>
                 <table className='min-w-full divide-y divide-neutral-200 dark:divide-neutral-800'>
                   <div style={{ textAlign: 'center', padding: 15, paddingLeft: 50, width: 'auto' }}>
-                    <Skeleton avatar paragraph={{ rows: 3 }} active loading={true} />
+                    <Skeleton avatar paragraph={{ rows: 3 }} active loading={loading} />
                   </div>
 
                   <thead className='bg-neutral-50 dark:bg-neutral-800'>
