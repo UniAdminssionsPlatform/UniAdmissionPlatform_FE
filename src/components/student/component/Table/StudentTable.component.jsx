@@ -1,10 +1,19 @@
-import React from 'react';
+import { Empty, Skeleton } from 'antd';
+import DetailStudentContainer from '../../../../containers/student/DetailStudent/DetailStudent.container';
 import NcImage from '../../../commons/NcImage/NcImage.component';
 import Pagination from '../../../commons/Pagination/Pagination';
-import { Empty, Skeleton } from 'antd';
+import React, { useState } from 'react';
 
 const TableStudentComponent = (props) => {
   const { listStudent, loading } = props;
+  const [visible, setVisible] = useState(false);
+  const [studentID, setStudentID] = useState('');
+
+  const handleVisible = (id) => {
+    setStudentID(id);
+    setVisible(true);
+  };
+
   return (
     <>
       <div className='flex-grow'>
@@ -26,7 +35,7 @@ const TableStudentComponent = (props) => {
                         Email
                       </th>
                       <th scope='col' className='px-6 py-3'>
-                        Giới tính
+                        Trạng thái
                       </th>
                       <th scope='col' className='px-6 py-3'>
                         Số điện thoại
@@ -49,7 +58,9 @@ const TableStudentComponent = (props) => {
                             />
                             <div className='ml-4 flex-grow'>
                               <h2 className='inline-flex line-clamp-2 text-sm font-semibold  dark:text-neutral-300'>
-                                {item.lastName} {item.middleName} {item.firstName}
+                                <a onClick={() => handleVisible(item.id)}>
+                                  {item.lastName} {item.middleName} {item.firstName}
+                                </a>
                               </h2>
                             </div>
                           </div>
@@ -58,13 +69,13 @@ const TableStudentComponent = (props) => {
                           <span> {item.emailContact}</span>
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap'>
-                          {item.genderId === 1 ? (
-                            <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
-                              Nam
+                          {item.status === 2 ? (
+                            <span className='px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-teal-100 text-teal-900 lg:text-sm'>
+                              Đang hoạt động
                             </span>
                           ) : (
-                            <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
-                              Nữ
+                            <span className='px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-red-100 text-teal-900 lg:text-sm'>
+                              Đã khóa
                             </span>
                           )}
                         </td>
@@ -94,6 +105,7 @@ const TableStudentComponent = (props) => {
           <Pagination />
         </div>
       </div>
+      <DetailStudentContainer visible={visible} studentID={studentID} setVisible={setVisible} />
     </>
   );
 };

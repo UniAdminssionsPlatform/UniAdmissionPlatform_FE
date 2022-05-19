@@ -12,6 +12,7 @@ const SearchBarComponent = (props) => {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [status, setStatus] = useState('');
 
   const debounced = useDebouncedCallback(
     // function
@@ -20,12 +21,17 @@ const SearchBarComponent = (props) => {
         firstName,
         email,
         phone,
+        status,
         highschoolID: user.highSchoolId
       });
     },
     // delay in ms
     3000
   );
+  const onChangeStatus = (value) => {
+    setStatus(value);
+    debounced();
+  };
   return (
     <>
       <Title level={2}>Tìm kiếm</Title>
@@ -63,9 +69,10 @@ const SearchBarComponent = (props) => {
         </Form.Item>
 
         <Form.Item name='status'>
-          <Select placeholder='Trạng thái'>
+          <Select placeholder='Trạng thái' onChange={onChangeStatus}>
             <Option value={1}>Đang hoạt động</Option>
             <Option value={0}>Đã khóa</Option>
+            <Option value=''>Tất cả</Option>
           </Select>
         </Form.Item>
       </Form>

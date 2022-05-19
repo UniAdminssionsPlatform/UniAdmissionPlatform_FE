@@ -12,6 +12,7 @@ const ListStudentForHighschoolContainer = () => {
     firstName: '',
     phone: '',
     email: '',
+    status: '',
     highschoolID: user.highSchoolId
   });
 
