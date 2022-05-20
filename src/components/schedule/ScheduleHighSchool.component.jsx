@@ -97,9 +97,6 @@ const ScheduleHighSchoolComponent = (props) => {
           <EditRecurrenceMenu />
           <MonthView startDayHour={7} endDayHour={20} />
           <DayView startDayHour={7} endDayHour={20} />
-          <WeekView startDayHour={7} endDayHour={20} />
-          <Toolbar />
-          <ViewSwitcher />
           <Appointments appointmentComponent={AppointmentComponent} />
           <DateNavigator />
           <TodayButton />
