@@ -101,10 +101,6 @@ const ScheduleHighSchoolComponent = (props) => {
           <Toolbar />
           <ViewSwitcher />
           <Appointments appointmentComponent={AppointmentComponent} />
-          <AppointmentTooltip
-            headerComponent={AppointmentHeaderComponent}
-            contentComponent={AppointmentContentComponent}
-          />
           <DateNavigator />
           <TodayButton />
         </Scheduler>
