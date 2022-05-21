@@ -4,6 +4,7 @@ import MainNav from '../commons/NavBar/NavBar.component';
 import PostCardLikeContainer from '../../containers/commons/PostCardLikeContainer/PostCardLikeContainer.container';
 import React, { useEffect, useRef, useState } from 'react';
 import SocialsShare from '../commons/SocialsShare/SocialsShare.component';
+
 const Header = ({ currentPage }) => {
   const containerRef = useRef();
   const mainMenuRef = useRef();
