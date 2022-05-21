@@ -2,6 +2,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 import * as helmet from 'helmet';
 
 const { REACT_APP_API_URL } = process.env;
+//setup meta to pass security
 module.exports = function (app) {
   app.use(
     '/api',
