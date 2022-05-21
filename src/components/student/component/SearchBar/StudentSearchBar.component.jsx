@@ -26,7 +26,7 @@ const SearchBarComponent = (props) => {
       });
     },
     // delay in ms
-    3000
+    2000
   );
   const onChangeStatus = (value) => {
     setStatus(value);
@@ -70,8 +70,8 @@ const SearchBarComponent = (props) => {
 
         <Form.Item name='status'>
           <Select placeholder='Trạng thái' onChange={onChangeStatus}>
-            <Option value={1}>Đang hoạt động</Option>
-            <Option value={0}>Đã khóa</Option>
+            <Option value={2}>Đang hoạt động</Option>
+            <Option value={3}>Đã khóa</Option>
             <Option value=''>Tất cả</Option>
           </Select>
         </Form.Item>

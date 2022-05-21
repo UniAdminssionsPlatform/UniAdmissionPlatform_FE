@@ -9,14 +9,10 @@ const DetailStudentContainer = (props) => {
   const [student, setStudent] = useState('');
 
   const loadData = (id) => {
-    getDetailStudent(id)
-      .then((result) => {
-        setStudent(result.data.data);
-        handleNotification('success');
-      })
-      .catch((error) => {
-        handleNotification('error');
-      });
+    getDetailStudent(id).then((result) => {
+      setStudent(result.data.data);
+      handleNotification('success');
+    });
   };
 
   useEffect(() => {

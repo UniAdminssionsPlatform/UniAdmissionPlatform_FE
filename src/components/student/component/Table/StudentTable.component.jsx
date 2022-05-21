@@ -1,12 +1,14 @@
-import { Empty, Skeleton } from 'antd';
+import { Button, Empty, Skeleton, Tooltip } from 'antd';
+import { LockOutlined, UnlockOutlined } from '@ant-design/icons';
 import DetailStudentContainer from '../../../../containers/student/DetailStudent/DetailStudent.container';
 import NcImage from '../../../commons/NcImage/NcImage.component';
 import Pagination from '../../../commons/Pagination/Pagination';
 import React, { useState } from 'react';
 
 const TableStudentComponent = (props) => {
-  const { listStudent, loading } = props;
+  const { listStudent, loading, confirm } = props;
   const [visible, setVisible] = useState(false);
+
   const [studentID, setStudentID] = useState('');
 
   const handleVisible = (id) => {
@@ -40,9 +42,8 @@ const TableStudentComponent = (props) => {
                       <th scope='col' className='px-6 py-3'>
                         Số điện thoại
                       </th>
-
-                      <th scope='col' className='relative px-6 py-3'>
-                        <span className='sr-only'>Edit</span>
+                      <th scope='col' className='px-6 py-3'>
+                        Hành động
                       </th>
                     </tr>
                   </thead>
@@ -68,7 +69,7 @@ const TableStudentComponent = (props) => {
                         <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
                           <span> {item.emailContact}</span>
                         </td>
-                        <td className='px-6 py-4 whitespace-nowrap'>
+                        <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
                           {item.status === 2 ? (
                             <span className='px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-teal-100 text-teal-900 lg:text-sm'>
                               Đang hoạt động
@@ -83,12 +84,34 @@ const TableStudentComponent = (props) => {
                         <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
                           <span> {item.phoneNumber}</span>
                         </td>
-                        <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-neutral-300'>
-                          <a className='text-primary-800 dark:text-primary-500 hover:text-primary-900'>Mở khóa</a>
-                          {` | `}
-                          <a href='/#' className='text-rose-600 hover:text-rose-900'>
-                            Khóa
+                        <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
+                          {item.status === 2 && (
+                            <Tooltip title='Khóa'>
+                              <Button
+                                onClick={() => {
+                                  confirm(item);
+                                }}
+                                icon={<LockOutlined style={{ color: 'red' }} />}
+                              />
+                            </Tooltip>
+                          )}
+                          {item.status === 3 && (
+                            <Tooltip title='Mở Khóa'>
+                              <Button
+                                onClick={() => {
+                                  confirm(item);
+                                }}
+                                icon={<UnlockOutlined style={{ color: 'green' }} />}
+                              />
+                            </Tooltip>
+                          )}
+                          {/* <a className='text-primary-800 dark:text-primary-500 hover:text-primary-900' href='/#'>
+                            lựa chọn
                           </a>
+
+                          <a onClick={() => handleLockActive} className='text-rose-600 hover:text-rose-900'>
+                            xem chi tiết
+                          </a> */}
                         </td>
                       </tr>
                     ))}
