@@ -35,12 +35,10 @@ const SearchBarComponent = (props) => {
   }
 
   function onChangeDistrict(value) {
-    console.log('changeDistrict:', value);
     setDistrict(value);
     debounced();
   }
   function onChangeStatus(value) {
-    console.log('status:', value);
     setStatus(value);
     debounced();
   }
