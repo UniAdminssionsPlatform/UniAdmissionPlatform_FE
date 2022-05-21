@@ -1,7 +1,7 @@
 import { Form, Input, Select, Typography } from 'antd';
 import { useDebouncedCallback } from 'use-debounce';
 import { useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 const SearchBarComponent = (props) => {
   const { Option } = Select;
   const { Title } = Typography;
