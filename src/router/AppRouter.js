@@ -32,6 +32,7 @@ import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMaj
 import NewsPage from '../pages/news/newsPage';
 import CreateEventPage from '../pages/event/CreateEventPage';
 import ListStudentForSchoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
+import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
 
 const AppRouter = () => {
   return (
@@ -137,6 +138,12 @@ const AppRouter = () => {
           component={() => <NewsPage />}
           path={PATH_HIGH_SCHOOL_STUDENT.NEWS}
           key={PATH_HIGH_SCHOOL_STUDENT.NEWS}
+          exact
+        />
+        <HighSchoolStudentRouter
+          component={() => <NewsDetailPage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
+          key={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
           exact
         />
         <Route path='/index.html'>
