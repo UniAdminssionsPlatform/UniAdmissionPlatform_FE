@@ -30,5 +30,6 @@ export const PATH_HIGH_SCHOOL_STUDENT = {
   LIST_EVENT: '/student/event-list',
   PROFILE: '/student/profile',
   NEWS: '/student/news',
-  NEWS_DETAIL: '/student/news-detail'
+  NEWS_DETAIL: '/student/news-detail',
+  UPDATE_PROFILE: '/student/update-profile'
 };
