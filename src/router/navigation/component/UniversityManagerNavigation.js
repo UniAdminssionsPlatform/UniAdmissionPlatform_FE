@@ -12,8 +12,8 @@ const homePage = [
 const eventManager = [
   {
     id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.REGIS_EVENT,
-    name: 'Đăng ký sự kiện'
+    href: PATH_UNIVERSITY_MANAGER.CALENDAR,
+    name: 'Lịch'
   },
   {
     id: ncNanoId(),

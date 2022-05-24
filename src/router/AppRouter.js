@@ -33,6 +33,7 @@ import NewsPage from '../pages/news/newsPage';
 import CreateEventPage from '../pages/event/CreateEventPage';
 import ListStudentForSchoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
 import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
+import CalendarPage from '../pages/Calendar/CalendarPage';
 
 const AppRouter = () => {
   return (
@@ -108,6 +109,12 @@ const AppRouter = () => {
           component={() => <ListNewContainer />}
           path={PATH_UNIVERSITY_MANAGER.NEW}
           key={PATH_UNIVERSITY_MANAGER.NEW}
+          exact
+        />
+        <UniversityManagerRouter
+          component={() => <CalendarPage />}
+          path={PATH_UNIVERSITY_MANAGER.CALENDAR}
+          key={PATH_UNIVERSITY_MANAGER.CALENDAR}
           exact
         />
         <UniversityManagerRouter

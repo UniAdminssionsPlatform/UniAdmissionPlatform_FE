@@ -7,7 +7,6 @@ import {
   Appointments,
   Toolbar,
   ViewSwitcher,
-  DragDropProvider,
   EditRecurrenceMenu,
   AppointmentTooltip,
   DayView,
@@ -18,13 +17,12 @@ import {
 import { useState } from 'react';
 import AppointmentHeaderComponent from './component/AppointmentHeader.component';
 import AppointmentContentComponent from './component/AppointmentContent.component';
-import { Typography } from 'antd';
 import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
 import SlotComponent from './component/Slot.component';
 
-const ScheduleUniversityComponent = (props) => {
-  const { listSlot, setIsModalOpen, setTriggerLoadEvent } = props;
+const ScheduleEventComponent = (props) => {
+  const { listSlot } = props;
   const [data, setData] = useState();
   const commitChanges = ({ added, changed, deleted }) => {
     if (added) setData([...data, { id: data.length > 0 ? data[data.length - 1].id + 1 : 0, ...added }]);
@@ -52,17 +50,7 @@ const ScheduleUniversityComponent = (props) => {
         borderRadius: '8px'
       }}
       data={data}
-      onClick={() => {}}
-      onDoubleClick={
-        data?.status === SLOT_IS_OPEN
-          ? () => {
-              setIsModalOpen(true);
-              setTriggerLoadEvent(true);
-            }
-          : data?.status === SLOT_IS_FULL
-          ? null
-          : null
-      }>
+      onClick={() => {}}>
       <SlotComponent data={data} />
       {children}
     </Appointments.Appointment>
@@ -70,12 +58,12 @@ const ScheduleUniversityComponent = (props) => {
   return (
     <>
       <Paper>
-        <Scheduler data={listSlot} height={945}>
+        <Scheduler data={listSlot} height={750}>
           <ViewState />
           <EditingState onCommitChanges={commitChanges} />
           <EditRecurrenceMenu />
-          <WeekView startDayHour={7} endDayHour={20} />
           <MonthView startDayHour={7} endDayHour={20} />
+          <WeekView startDayHour={7} endDayHour={20} />
           <DayView startDayHour={7} endDayHour={20} />
           <Toolbar />
           <ViewSwitcher />
@@ -91,4 +79,4 @@ const ScheduleUniversityComponent = (props) => {
     </>
   );
 };
-export default ScheduleUniversityComponent;
+export default ScheduleEventComponent;
