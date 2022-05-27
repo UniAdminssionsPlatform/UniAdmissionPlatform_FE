@@ -1,4 +1,4 @@
-import { PATH, PATH_UNIVERSITY_MANAGER } from '../../../constants/Paths/Path';
+import { PATH, PATH_UNIVERSITY_MANAGER, PATH_HIGH_SCHOOL_STUDENT } from '../../../constants/Paths/Path';
 import ncNanoId from '../../../utils/ncNanoId';
 
 const homePage = [
@@ -29,6 +29,11 @@ const profile = [
     id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.PROFILE,
     name: 'Hồ sơ trường'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.SCORE,
+    name: 'Điểm'
   }
 ];
 export const HighSchoolStudentNavigation = [
@@ -41,17 +46,16 @@ export const HighSchoolStudentNavigation = [
   },
   {
     id: ncNanoId(),
-    name: 'Quản lý sự kiện',
-    type: 'dropdown',
-    children: eventManager
+    href: PATH.LIST_MAJOR_GROUP,
+    name: 'Nhóm Ngành Đào Tạo'
   },
 
-  {
-    id: ncNanoId(),
-    name: 'Quản lý học sinh',
-    type: 'dropdown',
-    children: eventMenu
-  },
+  // {
+  //   id: ncNanoId(),
+  //   name: 'Quản lý học sinh',
+  //   type: 'dropdown',
+  //   children: eventMenu
+  // },
   {
     id: ncNanoId(),
     name: 'Quản lý hồ sơ',
