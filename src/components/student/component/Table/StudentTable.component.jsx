@@ -105,13 +105,6 @@ const TableStudentComponent = (props) => {
                               />
                             </Tooltip>
                           )}
-                          {/* <a className='text-primary-800 dark:text-primary-500 hover:text-primary-900' href='/#'>
-                            lựa chọn
-                          </a>
-
-                          <a onClick={() => handleLockActive} className='text-rose-600 hover:text-rose-900'>
-                            xem chi tiết
-                          </a> */}
                         </td>
                       </tr>
                     ))}

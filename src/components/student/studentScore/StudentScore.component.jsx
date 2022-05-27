@@ -1,64 +1,27 @@
-import { Button, Select } from 'antd';
 import { Helmet } from 'react-helmet';
+import FilterScore from './component/filter/FilterScore.component';
 import LayoutPage from '../../commons/LayoutPage/LayoutPageWithout.component';
 import React from 'react';
+import TableScore from './component/table/TableScore.component';
 
 const StudentScoreComponent = (props) => {
   const { className } = props;
-  const { Option } = Select;
+
   return (
     <>
-      <div className={`nc-PageLogin ${className}`} data-nc-id='ScorePage'>
+      <div className={`nc-PageScore ${className}`} data-nc-id='ScorePage'>
         <Helmet>
           <title>Quản lí điểm</title>
         </Helmet>
         <LayoutPage subHeading='' headingEmoji='🔑' heading=''>
           <div>
-            <div>Họ và tên: Nguyễn Thành Tín</div>
-            <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
-              <div style={{ marginBottom: 20 }}>
-                <div>
-                  <div>
-                    {' '}
-                    Khối thi
-                    <Select
-                      showSearch
-                      defaultValue='1'
-                      style={{
-                        width: 120,
-                        marginLeft: 10
-                      }}
-                      placeholder='Khối ngành'
-                      optionFilterProp='children'
-                      filterOption={(input, option) => option.children.includes(input)}
-                      filterSort={(optionA, optionB) =>
-                        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                      }>
-                      <Option value='1'>A00</Option>
-                      <Option value='2'>A01</Option>
-                      <Option value='3'>A02</Option>
-                    </Select>
-                  </div>
-                </div>
+            <div className='flex flex-col space-y-6 xl:space-y-0 xl:flex-row'>
+              <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
+                <FilterScore />
               </div>
-              <div>
-                <div>
-                  <Button>Chỉnh sửa điểm</Button>
-                </div>
-                <table style={{ textAlign: 'center', border: '3px solid #ddd', width: '100%' }}>
-                  <tr>
-                    <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>Toán</th>
-                    <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>Văn</th>
-                    <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>Anh</th>
-                    <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>Tổng</th>
-                  </tr>
-                  <tr>
-                    <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>8.5</td>
-                    <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>9.0</td>
-                    <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>9.0</td>
-                    <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>26.5</td>
-                  </tr>
-                </table>
+              <div className='border border-neutral-100 dark:border-neutral-800 md:hidden'></div>
+              <div className='flex-grow'>
+                <TableScore />
               </div>
             </div>
           </div>
