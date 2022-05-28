@@ -1,11 +1,19 @@
 import { Helmet } from 'react-helmet';
-import FilterScore from './component/filter/FilterScore.component';
+import FilterScoreComponent from '../../../components/student/studentScore/component/filter/FilterScore.component';
 import LayoutPage from '../../commons/LayoutPage/LayoutPageWithout.component';
 import React from 'react';
-import TableScore from './component/table/TableScore.component';
+import TableScoreContainer from '../../../containers/student/StudentScore/table/TableScore.container';
 
 const StudentScoreComponent = (props) => {
-  const { className } = props;
+  const {
+    className,
+    subjectGroup,
+    onChangeSubjectGroup,
+    selectedSubjectGroup,
+    selectedSchoolYear,
+    schoolYear,
+    onChangeSchoolyear
+  } = props;
 
   return (
     <>
@@ -17,11 +25,16 @@ const StudentScoreComponent = (props) => {
           <div>
             <div className='flex flex-col space-y-6 xl:space-y-0 xl:flex-row'>
               <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
-                <FilterScore />
+                <FilterScoreComponent
+                  schoolYear={schoolYear}
+                  subjectGroup={subjectGroup}
+                  onChangeSubjectGroup={onChangeSubjectGroup}
+                  onChangeSchoolyear={onChangeSchoolyear}
+                />
               </div>
               <div className='border border-neutral-100 dark:border-neutral-800 md:hidden'></div>
               <div className='flex-grow'>
-                <TableScore />
+                <TableScoreContainer subjectGroup={selectedSubjectGroup} schoolYear={selectedSchoolYear} />
               </div>
             </div>
           </div>

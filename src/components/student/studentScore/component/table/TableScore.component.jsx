@@ -1,9 +1,9 @@
-import { Button } from 'antd';
+import { Button, Skeleton } from 'antd';
 import ModalEditContainer from '../../../../../containers/student/StudentScore/modal/modalEdit.container';
 import React, { useState } from 'react';
 
 const TableScoreComponent = (props) => {
-  const { score } = props;
+  const { data, loading } = props;
   const [visible, setVisible] = useState(false);
   const handleVisible = () => {
     setVisible(true);
@@ -14,19 +14,22 @@ const TableScoreComponent = (props) => {
         <div>
           <Button onClick={() => handleVisible()}>Chỉnh sửa điểm</Button>
         </div>
+
         <table style={{ textAlign: 'center', border: '3px solid #ddd', width: '100%' }}>
-          <tr>
-            <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>Toán</th>
-            <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>Văn</th>
-            <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>Anh</th>
-            <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>Tổng</th>
-          </tr>
-          <tr>
-            <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>8.5</td>
-            <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>9.0</td>
-            <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>9.0</td>
-            <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>26.5</td>
-          </tr>
+          <thead>
+            <tr>
+              {data?.map((item) => (
+                <th style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>{item.subject.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {data?.map((item) => (
+                <td style={{ textAlign: 'center', border: '3px solid #ddd', padding: '5px' }}>{item.score}</td>
+              ))}
+            </tr>
+          </tbody>
         </table>
       </div>
       <ModalEditContainer visible={visible} setVisible={setVisible} />
