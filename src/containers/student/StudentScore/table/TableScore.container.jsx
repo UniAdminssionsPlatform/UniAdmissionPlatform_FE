@@ -4,8 +4,7 @@ import React, { useEffect, useState } from 'react';
 import TableScoreComponent from '../../../../components/student/studentScore/component/table/TableScore.component';
 
 const TableScoreContainer = (props) => {
-  const { subjectGroup, schoolYear } = props;
-  const [loading, setLoading] = useState(true);
+  const { subjectGroup, schoolYear, loading, setLoading } = props;
   const [data, setData] = useState();
 
   useEffect(() => {

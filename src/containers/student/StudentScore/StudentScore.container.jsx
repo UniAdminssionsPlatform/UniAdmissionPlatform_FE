@@ -9,11 +9,13 @@ const StudentScoreContainer = () => {
   const [schoolYear, setSchoolYear] = useState();
   const [selectedSubjectGroup, setSelectedSubjectGroup] = useState(1);
   const [selectedSchoolYear, setSelectedSchoolYear] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const onChangeSubjectGroup = useDebouncedCallback(
     // function
     (values) => {
       setSelectedSubjectGroup(values);
+      setLoading(true);
     },
     // delay in ms
     2000
@@ -23,6 +25,7 @@ const StudentScoreContainer = () => {
     // function
     (values) => {
       setSelectedSchoolYear(values);
+      setLoading(true);
     },
     // delay in ms
     2000
@@ -54,6 +57,8 @@ const StudentScoreContainer = () => {
         onChangeSchoolyear={onChangeSchoolyear}
         selectedSubjectGroup={selectedSubjectGroup}
         selectedSchoolYear={selectedSchoolYear}
+        loading={loading}
+        setLoading={setLoading}
       />
     </>
   );

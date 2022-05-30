@@ -12,7 +12,9 @@ const StudentScoreComponent = (props) => {
     selectedSubjectGroup,
     selectedSchoolYear,
     schoolYear,
-    onChangeSchoolyear
+    onChangeSchoolyear,
+    loading,
+    setLoading
   } = props;
 
   return (
@@ -34,7 +36,12 @@ const StudentScoreComponent = (props) => {
               </div>
               <div className='border border-neutral-100 dark:border-neutral-800 md:hidden'></div>
               <div className='flex-grow'>
-                <TableScoreContainer subjectGroup={selectedSubjectGroup} schoolYear={selectedSchoolYear} />
+                <TableScoreContainer
+                  subjectGroup={selectedSubjectGroup}
+                  schoolYear={selectedSchoolYear}
+                  loading={loading}
+                  setLoading={setLoading}
+                />
               </div>
             </div>
           </div>
