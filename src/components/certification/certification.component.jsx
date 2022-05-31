@@ -1,13 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NcImage from '../commons/NcImage/NcImage.component';
 import { Helmet } from 'react-helmet';
 import Pagination from '../commons/Pagination/Pagination';
-import { Input, Button, Form, Image, Row, Col, Space } from 'antd';
+import { Input, Button, Form, Image, Space, Modal, Select } from 'antd';
 import LayoutPage from '../commons/LayoutPage/LayoutPageWithout.component';
-import { EditOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { description, imgUrl, name, score } from '../../validate/Addcertification.validate';
 
 const CertificationComponent = (props) => {
-  const { certificates, certificatedetail, onFinish, handleonclick } = props;
+  const {
+    certificates,
+    certificatedetail,
+    certificateadmin,
+    onFinish,
+    handleonclick,
+    handlecreate,
+    handleChange,
+    showModal,
+    handleOk,
+    handleCancel,
+    isModalVisible,
+    handledelete,
+    handleconfirmdelete,
+    form
+  } = props;
+  const { Option } = Select;
+
+  // console.log('ceradmin: ', certificateadmin);
+
+  const style1 = {
+    paddingTop: '10px'
+  };
+  const style2 = {
+    paddingBottom: '20px',
+    paddingTop: '10px'
+  };
+  const style3 = {
+    paddingLeft: '20px'
+  };
+
   const field = [
     {
       name: ['imageUrl'],
@@ -96,11 +127,72 @@ const CertificationComponent = (props) => {
                                 handleonclick(item.certificationId);
                               }}
                             />
+                            <DeleteOutlined
+                              style={style3}
+                              onClick={() => {
+                                // console.log('đụ mẹ mày');
+                                handleconfirmdelete(item.certificationId);
+                                // handledelete(item.certificationId);
+                              }}
+                            />
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
+                </div>
+                <div style={style1}>
+                  <Button type='primary' onClick={showModal} style={{ backgroundColor: 'green' }}>
+                    Tạo một chứng chỉ mới
+                  </Button>
+                  <Modal
+                    okButtonProps={{ form: 'add-certificate-form', key: 'submit', htmlType: 'submit' }}
+                    title='Thêm một chứng chỉ mới'
+                    visible={isModalVisible}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    okText='Thêm'
+                    cancelText='Đóng'>
+                    <Form
+                      form={form}
+                      initialValues={{
+                        remember: false
+                      }}
+                      onFinish={handlecreate}
+                      id='add-certificate-form'
+                      name='basic'
+                      // onFinish={onFinish}
+                      // onFinishFailed={onFinishFailed}
+                      autoComplete='off'
+                      layout='vertical'>
+                      <label>Loại chứng chỉ</label> <br />
+                      <div style={style2}>
+                        <Select
+                          defaultValue={1}
+                          style={{
+                            width: 250
+                          }}
+                          onChange={handleChange}>
+                          {certificateadmin?.map((item) => (
+                            <Option value={item.id}>{item.name}</Option>
+                          ))}
+                          {/* <Option value='jack'>Jack</Option> */}
+                        </Select>
+                      </div>
+                      <Form.Item label='Link hình ảnh' name='imageUrl' rules={imgUrl}>
+                        <Input />
+                      </Form.Item>
+                      <Form.Item label='Mô tả' name='description' rules={description}>
+                        <Input />
+                      </Form.Item>
+                      <Form.Item label='Tên' name='name' rules={name}>
+                        <Input />
+                      </Form.Item>
+                      <Form.Item label='Điểm' name='score' rules={score}>
+                        <Input type='number' />
+                      </Form.Item>
+                    </Form>
+                  </Modal>
                 </div>
               </div>
             </div>
@@ -147,7 +239,6 @@ const CertificationComponent = (props) => {
                   <Form.Item label='Mô Tả' name='description'>
                     <Input />
                   </Form.Item>
-
                   <Form.Item label='Tên' name='name'>
                     <Input />
                   </Form.Item>
