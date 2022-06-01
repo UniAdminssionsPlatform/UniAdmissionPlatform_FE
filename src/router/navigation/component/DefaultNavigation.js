@@ -35,8 +35,7 @@ export const DefaultNavigation = [
   {
     id: ncNanoId(),
     href: PATH.LIST_MAJOR_GROUP,
-    name: 'Nhóm Ngành Đào Tạo',
-    children: major
+    name: 'Nhóm Ngành Đào Tạo'
   },
 
   {
@@ -45,5 +44,10 @@ export const DefaultNavigation = [
     name: 'Sự kiện',
     type: 'dropdown',
     children: eventMenu
+  },
+  {
+    id: ncNanoId(),
+    href: PATH.ABOUT_US,
+    name: 'Giới thiệu'
   }
 ];

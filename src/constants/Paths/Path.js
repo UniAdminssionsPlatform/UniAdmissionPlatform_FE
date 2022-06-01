@@ -10,7 +10,8 @@ export const PATH = {
   DETAIL_EVENT: '/detail-event',
   LIST_EVENT_FOR_HIGHSCHOOL: '/event-for-highschool',
   LIST_MAJOR_GROUP: '/major-groups',
-  DETAIL_MAJOR_GROUP: '/major-group-detail'
+  DETAIL_MAJOR_GROUP: '/major-group-detail',
+  ABOUT_US: '/about-us'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/',
@@ -32,5 +33,6 @@ export const PATH_HIGH_SCHOOL_STUDENT = {
   NEWS: '/student/news',
   NEWS_DETAIL: '/student/news-detail',
   UPDATE_PROFILE: '/student/update-profile',
-  CERTIFICATION: '/student/certification'
+  CERTIFICATION: '/student/certification',
+  SCORE: '/student/score'
 };
