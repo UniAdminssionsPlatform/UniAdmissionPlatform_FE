@@ -9,26 +9,28 @@ const homePage = [
   }
 ];
 
-const eventManager = [
-  {
-    id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.CREATE_EVENT,
-    name: 'Sự kiện'
-  }
-];
-
-const eventMenu = [
-  {
-    id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.NEW,
-    name: 'Danh sách news'
-  }
-];
+// const eventMenu = [
+//   {
+//     id: ncNanoId(),
+//     href: PATH_UNIVERSITY_MANAGER.NEW,
+//     name: 'Danh sách news'
+//   }
+// ];
 const profile = [
   {
     id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.PROFILE,
     name: 'Hồ sơ trường'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE,
+    name: 'Chỉnh Sửa Hồ Sơ Cá Nhân'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION,
+    name: 'Chứng Chỉ'
   },
   {
     id: ncNanoId(),
@@ -44,18 +46,17 @@ export const HighSchoolStudentNavigation = [
     type: '',
     children: homePage
   },
+
+  {
+    id: ncNanoId(),
+    name: 'Tổng hợp bài viết',
+    href: PATH_HIGH_SCHOOL_STUDENT.NEWS
+  },
   {
     id: ncNanoId(),
     href: PATH.LIST_MAJOR_GROUP,
     name: 'Nhóm Ngành Đào Tạo'
   },
-
-  // {
-  //   id: ncNanoId(),
-  //   name: 'Quản lý học sinh',
-  //   type: 'dropdown',
-  //   children: eventMenu
-  // },
   {
     id: ncNanoId(),
     name: 'Quản lý hồ sơ',
