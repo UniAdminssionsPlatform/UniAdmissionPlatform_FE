@@ -9,6 +9,14 @@ const homePage = [
   }
 ];
 
+const studentManager = [
+  {
+    id: ncNanoId(),
+    name: 'Home Page',
+    href: PATH.INDEX
+  }
+];
+
 const eventManager = [
   {
     id: ncNanoId(),
@@ -48,9 +56,10 @@ export const HighSchoolManagerNavigation = [
 
   {
     id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT,
     name: 'Quản lý học sinh',
-    type: 'dropdown',
-    children: eventMenu
+    type: '',
+    children: studentManager
   },
   {
     id: ncNanoId(),

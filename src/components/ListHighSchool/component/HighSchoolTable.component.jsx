@@ -27,10 +27,6 @@ const HighSchoolTableComponent = (props) => {
                       <th scope='col' className='px-6 py-3'>
                         Số điện thoại
                       </th>
-
-                      <th scope='col' className='relative px-6 py-3'>
-                        <span className='sr-only'>Edit</span>
-                      </th>
                     </tr>
                   </thead>
 
@@ -56,7 +52,7 @@ const HighSchoolTableComponent = (props) => {
                               Đã Kích Hoạt
                             </span>
                           ) : (
-                            <span className='px-2 inline-flex text-sm text-neutral-500 dark:text-neutral-400 rounded-full'>
+                            <span className='px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-red-100 text-teal-900 lg:text-sm'>
                               Đang Bị Đóng
                             </span>
                           )}

@@ -31,6 +31,11 @@ const profile = [
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION,
     name: 'Chứng Chỉ'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.SCORE,
+    name: 'Điểm'
   }
 ];
 export const HighSchoolStudentNavigation = [
@@ -41,11 +46,15 @@ export const HighSchoolStudentNavigation = [
     type: '',
     children: homePage
   },
-
   {
     id: ncNanoId(),
     name: 'Tổng hợp bài viết',
     href: PATH_HIGH_SCHOOL_STUDENT.NEWS
+  },
+  {
+    id: ncNanoId(),
+    href: PATH.LIST_MAJOR_GROUP,
+    name: 'Nhóm Ngành Đào Tạo'
   },
   {
     id: ncNanoId(),

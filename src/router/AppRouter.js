@@ -34,7 +34,8 @@ import CreateEventPage from '../pages/event/CreateEventPage';
 import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
 import ManageProfilePage from '../pages/profile/manageProfilePage';
 import CertificationPage from '../pages/certification/certificationPage';
-
+import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
+import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
 const AppRouter = () => {
   return (
     <>
@@ -153,6 +154,15 @@ const AppRouter = () => {
           key={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
           exact
         />
+        <HighSchoolStudentRouter
+          component={() => <StudentScorePage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+          key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+          exact
+        />
+        <Route path={PATH.ABOUT_US} exact>
+          <AboutUsPage />
+        </Route>
         <Route path='/index.html'>
           <Redirect to='/' />
         </Route>
