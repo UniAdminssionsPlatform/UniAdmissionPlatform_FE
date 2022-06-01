@@ -125,7 +125,7 @@
     "require-yield": "error",
     "template-curly-spacing": "error",
     "yield-star-spacing": "error",
-    "no-useless-concat": "error",
+    "no-useless-concat": "warn",
     "no-useless-call": "error",
     "no-useless-escape": "error",
     "no-void": "error",

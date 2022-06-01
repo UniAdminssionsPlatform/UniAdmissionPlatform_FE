@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import ScheduleEventComponent from '../../components/schedule/ScheduleEvent.component';
 import { getListSlotBySchoolId } from '../../services/AdminUniversitySlotServices';
 import { handleFailNotification, handleSuccessNotification } from '../../notification/CreateEventNotification';
-import { Modal, Button, Space } from 'antd';
+import { Modal, Space, Drawer } from 'antd';
 import CreateEventContainer from '../../containers/event/CreateEvent/CreateEvent.container';
-import ListEventForUniversityContainer from '../event/ListEvent/listEventForUniversity.container';
+import ListEventForRegisterUniversityContainer from '../event/ListEvent/ListEventForRegisterUniversity.container';
+import ScheduleUniversityComponent from '../../components/schedule/ScheduleUniversity.component';
+import UniversityDrawerComponent from '../../components/Drawer/University.drawer.component';
 
-const ScheduleContainer = (props) => {
+const ScheduleUniversityContainer = (props) => {
   const { selectedSchool } = props;
   const [listSlot, setListSlot] = useState();
   const [isButtonShow, setIsButtonShow] = useState(true);
   const [isNewEvent, setIsNewEvent] = useState();
-  const [triggerLoadEvent, setTriggerLoadEvent] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   useEffect(() => {
     getListSlot(selectedSchool?.id);
   }, [selectedSchool]);
@@ -27,7 +28,6 @@ const ScheduleContainer = (props) => {
         });
     }
   };
-  const getListEventByHighSchoolId = (id) => {};
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleClickOkModal = () => {
     setIsModalOpen(false);
@@ -49,17 +49,18 @@ const ScheduleContainer = (props) => {
         width={'1000px'}>
         {isButtonShow ? (
           <Space>
-            <ListEventForUniversityContainer />
+            <ListEventForRegisterUniversityContainer />
           </Space>
         ) : null}
         {!isButtonShow ? isNewEvent ? <CreateEventContainer /> : null : null}
       </Modal>
-      <ScheduleEventComponent
-        listSlot={listSlot}
-        setIsModalOpen={setIsModalOpen}
-        setTriggerLoadEvent={setTriggerLoadEvent}
+      <UniversityDrawerComponent
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+        selectedSchool={selectedSchool}
       />
+      <ScheduleUniversityComponent listSlot={listSlot} setIsSidebarOpen={setIsSidebarOpen} />
     </>
   );
 };
-export default ScheduleContainer;
+export default ScheduleUniversityContainer;

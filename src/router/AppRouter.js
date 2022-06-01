@@ -26,7 +26,7 @@ import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
 import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
-import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
+import ListEventForRegisterUniversity from '../pages/event/ListEvent/ListEventForRegisterUniversity';
 import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 import NewsPage from '../pages/news/newsPage';
@@ -97,7 +97,7 @@ const AppRouter = () => {
         />
 
         <UniversityManagerRouter
-          component={() => <ListEventForUniversityPage />}
+          component={() => <ListEventForRegisterUniversity />}
           path={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
           key={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
           exact

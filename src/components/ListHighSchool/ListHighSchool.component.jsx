@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import HighSchoolTableComponent from './component/HighSchoolTable.component';
 import HighSchoolSmallInformationComponent from './component/HighSchoolSmallInfomation.component';
 import { Button, Space } from 'antd';
-import ScheduleContainer from '../../containers/schedule/Schedule.container';
+import ScheduleUniversityContainer from '../../containers/schedule/ScheduleUniversity.container';
 import { useState } from 'react';
 import { setSelectedHighSchool } from '../../redux-flow/selectedHighSchool/selectedHighSchool-action';
 const ListHighSchool = (props) => {
@@ -41,7 +41,7 @@ const ListHighSchool = (props) => {
       </div>
 
       {isClicked ? (
-        <ScheduleContainer selectedSchool={currentHighSchoolSelected} />
+        <ScheduleUniversityContainer selectedSchool={currentHighSchoolSelected} />
       ) : (
         <HighSchoolTableComponent listHighSchool={listHighSchool} handleSelectedSchool={handleSelectedSchool} />
       )}

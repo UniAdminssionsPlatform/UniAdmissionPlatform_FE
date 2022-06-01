@@ -1,4 +1,4 @@
 import React from 'react';
-import ScheduleContainer from '../../containers/schedule/Schedule.container';
-const SchedulePage = () => <ScheduleContainer />;
+import ScheduleUniversityContainer from '../../containers/schedule/ScheduleUniversity.container';
+const SchedulePage = () => <ScheduleUniversityContainer />;
 export default SchedulePage;

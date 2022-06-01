@@ -8,13 +8,6 @@ const selectedHighSchoolSlice = createSlice({
     isSelected: false
   },
   reducers: {
-    setSelectedHighSchool: (state, action) => {
-      state = {
-        ...state,
-        data: [],
-        isSelected: true
-      };
-    },
     selectedHighSchool: (state, action) => {
       return { ...state, isSelected: true, highSchool: action.payload };
     },

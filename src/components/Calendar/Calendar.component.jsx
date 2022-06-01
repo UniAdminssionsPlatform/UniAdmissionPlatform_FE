@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import ScheduleEventComponent from '../schedule/ScheduleEvent.component';
 import LayoutPageWithout from '../commons/LayoutPage/LayoutPageWithout.component';
 import { Button, Select, Skeleton, Space, Tag, Typography } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { UNIVERSITY_MANAGER } from '../../constants/RoleType';
+import { PATH_UNIVERSITY_MANAGER } from '../../constants/Paths/Path';
 
 const CalendarComponent = (props) => {
   const { listSlot, handleChangeSelection, isLoading } = props;
   const { Title, Text } = Typography;
+  const history = useHistory();
+  const handleRedirect = () => {
+    history.push(PATH_UNIVERSITY_MANAGER.REGIS_EVENT);
+  };
   return (
     <>
       <LayoutPageWithout subHeading='Quản lý lịch trình tổ chức sự kiện tuyển sinh'>
@@ -15,7 +22,7 @@ const CalendarComponent = (props) => {
               <Title level={3} strong>
                 CALENDAR
               </Title>
-              <Button type='primary' danger size={'large'} style={{ width: '15rem' }}>
+              <Button type='primary' danger size={'large'} style={{ width: '15rem' }} onClick={handleRedirect}>
                 Đăng ký sự kiện
               </Button>
               <Text secondary>Nhấp chuột vào một ngày bất kỳ để xem chi tiết sự kiện đã apply!</Text>
