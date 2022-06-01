@@ -31,9 +31,9 @@ import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGrou
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 import NewsPage from '../pages/news/newsPage';
 import CreateEventPage from '../pages/event/CreateEventPage';
-import ListStudentForSchoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
 import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
 import ManageProfilePage from '../pages/profile/manageProfilePage';
+import CertificationPage from '../pages/certification/certificationPage';
 
 const AppRouter = () => {
   return (
@@ -87,12 +87,6 @@ const AppRouter = () => {
           component={() => <ListEventForHighSchoolPage />}
           path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
           key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
-          exact
-        />
-        <HighSchoolManagerRouter
-          component={() => <ListStudentForSchoolPage />}
-          path={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
-          key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
           exact
         />
 
@@ -151,6 +145,12 @@ const AppRouter = () => {
           component={() => <ManageProfilePage />}
           path={PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE}
           key={PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE}
+          exact
+        />
+        <HighSchoolStudentRouter
+          component={() => <CertificationPage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
+          key={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
           exact
         />
         <Route path='/index.html'>
