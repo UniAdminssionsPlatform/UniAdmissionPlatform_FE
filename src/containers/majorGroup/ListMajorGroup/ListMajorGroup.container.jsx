@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 const ListMajorContainer = () => {
   const [listMajorGroup, setListMajorGroup] = useState();
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getListMajorGroup();
   }, []);
@@ -11,12 +13,13 @@ const ListMajorContainer = () => {
   const getListMajorGroup = () => {
     getAllMajorGroup().then((result) => {
       setListMajorGroup(result.data.data.list);
+      setLoading(false);
     });
   };
 
   return (
     <>
-      <ListMajorComponent data={listMajorGroup} />
+      <ListMajorComponent data={listMajorGroup} loading={loading} />
     </>
   );
 };

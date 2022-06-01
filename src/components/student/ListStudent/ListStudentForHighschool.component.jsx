@@ -3,7 +3,7 @@ import StudetnSearchBar from '../component/SearchBar/StudentSearchBar.component'
 import StudentTable from '../component/Table/StudentTable.component';
 
 const ListStudentForHighschoolComponent = (props) => {
-  const { data, setDataSearch, loading, handleLockActive, confirm } = props;
+  const { data, setDataSearch, loading, confirm } = props;
   return (
     <>
       <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
