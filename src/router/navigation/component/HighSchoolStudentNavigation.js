@@ -1,4 +1,4 @@
-import { PATH, PATH_UNIVERSITY_MANAGER } from '../../../constants/Paths/Path';
+import { PATH, PATH_UNIVERSITY_MANAGER, PATH_HIGH_SCHOOL_STUDENT } from '../../../constants/Paths/Path';
 import ncNanoId from '../../../utils/ncNanoId';
 
 const homePage = [
@@ -29,6 +29,11 @@ const profile = [
     id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.PROFILE,
     name: 'Hồ sơ trường'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE,
+    name: 'Chỉnh Sửa Hồ Sơ Cá Nhân'
   }
 ];
 export const HighSchoolStudentNavigation = [

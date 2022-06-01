@@ -5,7 +5,6 @@ import SocialsShare from '../../SocialsShare/SocialsShare.component';
 import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
 const Card2 = (props) => {
   const { viewnews, className } = props;
-  console.log('card2viewnews: ', props);
   // console.log('viewnews: ', viewnews);
   // console.log('title :', title);
   // console.log('featuredImage :', featuredImage);

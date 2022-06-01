@@ -33,6 +33,7 @@ import NewsPage from '../pages/news/newsPage';
 import CreateEventPage from '../pages/event/CreateEventPage';
 import ListStudentForSchoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
 import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
+import ManageProfilePage from '../pages/profile/manageProfilePage';
 
 const AppRouter = () => {
   return (
@@ -144,6 +145,12 @@ const AppRouter = () => {
           component={() => <NewsDetailPage />}
           path={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
           key={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
+          exact
+        />
+        <HighSchoolStudentRouter
+          component={() => <ManageProfilePage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE}
+          key={PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE}
           exact
         />
         <Route path='/index.html'>
