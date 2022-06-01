@@ -160,11 +160,9 @@ const AppRouter = () => {
           key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
           exact
         />
-
         <Route path={PATH.ABOUT_US} exact>
           <AboutUsPage />
         </Route>
-
         <Route path='/index.html'>
           <Redirect to='/' />
         </Route>

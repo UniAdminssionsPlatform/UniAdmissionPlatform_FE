@@ -46,7 +46,6 @@ export const HighSchoolStudentNavigation = [
     type: '',
     children: homePage
   },
-
   {
     id: ncNanoId(),
     name: 'Tổng hợp bài viết',
