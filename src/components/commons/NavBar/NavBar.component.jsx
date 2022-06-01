@@ -13,6 +13,7 @@ import Logo from '../Logo/Logo.component';
 import MenuBar from '../MenuBar/MenuBar.component';
 import Navigation from '../Navigation/Navigation.component';
 import SearchDropdown from '../Navigation/SearchDropdown.component';
+
 const MainNav = ({ isTop }) => {
   const { Text } = Typography;
   const dispatch = useDispatch();

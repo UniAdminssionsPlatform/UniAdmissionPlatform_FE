@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import ForgotPasswordComponent from '../../../components/authen/ForgotPasswordComponent/ForgotPassword.component';
 
