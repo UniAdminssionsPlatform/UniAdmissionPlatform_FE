@@ -31,10 +31,9 @@ import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGrou
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 import NewsPage from '../pages/news/newsPage';
 import CreateEventPage from '../pages/event/CreateEventPage';
-import ListStudentForSchoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
 import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
-import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
-import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
+import ManageProfilePage from '../pages/profile/manageProfilePage';
+import CertificationPage from '../pages/certification/certificationPage';
 
 const AppRouter = () => {
   return (
@@ -84,19 +83,10 @@ const AppRouter = () => {
         <Route path={PATH.DETAIL_MAJOR_GROUP} exact>
           <DetailMajorGroupPage />
         </Route>
-        <Route path={PATH.ABOUT_US} exact>
-          <AboutUsPage />
-        </Route>
         <HighSchoolManagerRouter
           component={() => <ListEventForHighSchoolPage />}
           path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
           key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
-          exact
-        />
-        <HighSchoolManagerRouter
-          component={() => <ListStudentForSchoolPage />}
-          path={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
-          key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
           exact
         />
 
@@ -152,9 +142,15 @@ const AppRouter = () => {
           exact
         />
         <HighSchoolStudentRouter
-          component={() => <StudentScorePage />}
-          path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
-          key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+          component={() => <ManageProfilePage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE}
+          key={PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE}
+          exact
+        />
+        <HighSchoolStudentRouter
+          component={() => <CertificationPage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
+          key={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
           exact
         />
         <Route path='/index.html'>
