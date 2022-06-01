@@ -97,47 +97,49 @@ const CertificationComponent = (props) => {
                       </tr>
                     </thead>
                     <tbody className='bg-white dark:bg-neutral-900 divide-y divide-neutral-200 dark:divide-neutral-800'>
-                      {certificates?.map((item) => (
-                        <tr key={item.id}>
-                          {/* <td className='px-6 py-4'>
+                      {certificates
+                        ? certificates?.map((item) => (
+                            <tr key={item.id}>
+                              {/* <td className='px-6 py-4'>
                             <span>{item.certificationId}</span>
                           </td> */}
-                          <td className='px-6 py-4 whitespace-nowrap'>
-                            <td className='px-6 py-4'>
-                              <div className='flex items-center w-96 lg:w-auto max-w-md overflow-hidden'>
-                                <NcImage
-                                  containerClassName='flex-shrink-0 h-12 w-12 rounded-lg overflow-hidden lg:h-10 lg:w-10'
-                                  src={item.imageUrl}
+                              <td className='px-6 py-4 whitespace-nowrap'>
+                                <td className='px-6 py-4'>
+                                  <div className='flex items-center w-96 lg:w-auto max-w-md overflow-hidden'>
+                                    <NcImage
+                                      containerClassName='flex-shrink-0 h-12 w-12 rounded-lg overflow-hidden lg:h-10 lg:w-10'
+                                      src={item.imageUrl}
+                                    />
+                                  </div>
+                                </td>
+                              </td>
+                              <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
+                                <span> {item.description}</span>
+                              </td>
+                              <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
+                                <span> {item.name}</span>
+                              </td>
+                              <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
+                                <span> {item.score}</span>
+                              </td>
+                              <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
+                                <EditOutlined
+                                  onClick={() => {
+                                    handleonclick(item.certificationId);
+                                  }}
                                 />
-                              </div>
-                            </td>
-                          </td>
-                          <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
-                            <span> {item.description}</span>
-                          </td>
-                          <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
-                            <span> {item.name}</span>
-                          </td>
-                          <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
-                            <span> {item.score}</span>
-                          </td>
-                          <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
-                            <EditOutlined
-                              onClick={() => {
-                                handleonclick(item.certificationId);
-                              }}
-                            />
-                            <DeleteOutlined
-                              style={style3}
-                              onClick={() => {
-                                // console.log('đụ mẹ mày');
-                                handleconfirmdelete(item.certificationId);
-                                // handledelete(item.certificationId);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                                <DeleteOutlined
+                                  style={style3}
+                                  onClick={() => {
+                                    // console.log('đụ mẹ mày');
+                                    handleconfirmdelete(item.certificationId);
+                                    // handledelete(item.certificationId);
+                                  }}
+                                />
+                              </td>
+                            </tr>
+                          ))
+                        : null}
                     </tbody>
                   </table>
                 </div>
@@ -173,9 +175,9 @@ const CertificationComponent = (props) => {
                             width: 250
                           }}
                           onChange={handleChange}>
-                          {certificateadmin?.map((item) => (
-                            <Option value={item.id}>{item.name}</Option>
-                          ))}
+                          {certificateadmin
+                            ? certificateadmin?.map((item) => <Option value={item.id}>{item.name}</Option>)
+                            : null}
                           {/* <Option value='jack'>Jack</Option> */}
                         </Select>
                       </div>

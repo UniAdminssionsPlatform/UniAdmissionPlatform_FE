@@ -21,14 +21,13 @@ import {
   deleteCertification
 } from '../../services/certification/CertificationService';
 
-const CertificationContainer = (props) => {
+const CertificationContainer = () => {
   const [isloading, setIsloading] = useState(true);
   const [certificates, setCertificates] = useState();
   const [certificatedetail, setCertificatedetail] = useState('');
   const [certificateadmin, setCertificateAdmin] = useState('');
   const [certificateadminid, setCertificateadminid] = useState(1);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { certificateId } = props;
   const [form] = Form.useForm();
   const { user } = useSelector((state) => state.authentication);
   const handleChange = (value) => {
@@ -100,8 +99,7 @@ const CertificationContainer = (props) => {
   };
 
   // UPDATE CERTIFICATE
-  const handleonclick = (value) => {
-    console.log(value);
+  const handleOnClick = (value) => {
     getCertificate(value);
   };
 
@@ -130,19 +128,12 @@ const CertificationContainer = (props) => {
     });
   };
 
-  // GET CERTIFICATE BY ID
-  useEffect(() => {
-    getCertificate(certificateId);
-  }, [certificateId]);
-
   const getCertificate = (certificateID) => {
     getCertification(certificateID).then((result) => {
       setCertificatedetail(result.data.data);
       setIsloading(false);
     });
   };
-
-  // GET CERTIFICATE NAME FOR MODAL CREATE
 
   const getCertificateAdmin = () => {
     getCertificationName().then((result) => {
@@ -159,7 +150,7 @@ const CertificationContainer = (props) => {
           certificatedetail={certificatedetail}
           certificateadmin={certificateadmin}
           onFinish={onFinish}
-          handleonclick={handleonclick}
+          handleonclick={handleOnClick}
           handlecreate={handlecreate}
           handleChange={handleChange}
           showModal={showModal}
