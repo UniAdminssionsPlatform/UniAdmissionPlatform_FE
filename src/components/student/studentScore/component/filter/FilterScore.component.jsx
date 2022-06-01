@@ -30,7 +30,6 @@ const FilterScoreComponent = (props) => {
         <div style={{ marginBottom: 20 }}>
           Năm học
           <Select
-            showSearch
             defaultValue={1}
             onChange={onChangeSchoolyear}
             style={{
@@ -39,10 +38,7 @@ const FilterScoreComponent = (props) => {
             }}
             placeholder='Năm học'
             optionFilterProp='children'
-            filterOption={(input, option) => option.children.includes(input)}
-            filterSort={(optionA, optionB) =>
-              optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-            }>
+            filterOption={(input, option) => option.children.includes(input)}>
             {schoolYear?.map((item) => (
               <Option value={item.id}>{item.year}</Option>
             ))}

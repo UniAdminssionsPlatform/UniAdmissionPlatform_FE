@@ -54,15 +54,11 @@ const ModalEditComponent = (props) => {
           <Label>Năm học</Label>
           <Form.Item>
             <Select
-              showSearch
               defaultValue={1}
               onChange={onChangeSchoolyear}
               placeholder='Năm học'
               optionFilterProp='children'
-              filterOption={(input, option) => option.children.includes(input)}
-              filterSort={(optionA, optionB) =>
-                optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-              }>
+              filterOption={(input, option) => option.children.includes(input)}>
               {schoolYear?.map((item) => (
                 <Option value={item.id}>{item.year}</Option>
               ))}
