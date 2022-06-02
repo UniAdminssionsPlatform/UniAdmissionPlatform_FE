@@ -26,7 +26,6 @@ import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
 import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
-import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
 import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 import NewsPage from '../pages/news/newsPage';
@@ -90,13 +89,6 @@ const AppRouter = () => {
           key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
           exact
         />
-
-        <UniversityManagerRouter
-          component={() => <ListEventForUniversityPage />}
-          path={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
-          key={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
-          exact
-        />
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
           <ListEventPage />
         </Route>
@@ -158,6 +150,12 @@ const AppRouter = () => {
           component={() => <StudentScorePage />}
           path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
           key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+          exact
+        />
+        <UniversityManagerRouter
+          component={() => <CalendarPage />}
+          path={PATH_UNIVERSITY_MANAGER.CALENDAR}
+          key={PATH_UNIVERSITY_MANAGER.CALENDAR}
           exact
         />
         <Route path={PATH.ABOUT_US} exact>
