@@ -1,1 +1,1 @@
-export const PATH_GET_NEWS = '/api/v1/news';
+export const GET_NEWS_ENDPOINT = '/api/v1/news';

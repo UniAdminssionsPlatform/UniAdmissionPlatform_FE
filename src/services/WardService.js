@@ -1,5 +1,5 @@
 import { CallAPI } from './axiosBase';
-import { PATH_GET_LIST_WARD_BY_DISTRICT_ID } from '../constants/Endpoints/WardEndpoint';
+import { GET_LIST_WARD_BY_DISTRICT_ID_ENDPOINT } from '../constants/Endpoints/WardEndpoint';
 
 export const getListWardByDistrictId = (data) =>
-  CallAPI(`${PATH_GET_LIST_WARD_BY_DISTRICT_ID}?district-id=${data}`, 'get', data);
+  CallAPI(`${GET_LIST_WARD_BY_DISTRICT_ID_ENDPOINT}?district-id=${data}`, 'get', data);

@@ -22,7 +22,7 @@ const RegisterFormContainer = (props) => {
   const [wardId, setWardId] = useState('');
   const [dob, setDob] = useState('');
   const [sex, setSex] = useState('');
-  const [placeofbirth, setPlaceofbirth] = useState('');
+  const [placeOfBirth, setPlaceOfBirth] = useState('');
   const [religion, setReligion] = useState('');
   const [nation, setNation] = useState('');
   const [schoolName, setSchoolName] = useState();
@@ -71,7 +71,7 @@ const RegisterFormContainer = (props) => {
     setWardId(value);
   }
   function onChangePlaceOfBirth(value) {
-    setPlaceofbirth(value);
+    setPlaceOfBirth(value);
   }
 
   const onChangeSex = (value) => {
@@ -91,7 +91,6 @@ const RegisterFormContainer = (props) => {
   };
 
   const handleCode = useDebouncedCallback(
-    // function
     (value) => {
       if (role === 'st') {
         getHighSchoolByCode(value)
@@ -134,7 +133,7 @@ const RegisterFormContainer = (props) => {
     values.genderId = sex;
     values.religion = religion;
     values.nationality = nation;
-    values.placeOfBirth = placeofbirth;
+    values.placeOfBirth = placeOfBirth;
 
     if (role === 'st') {
       registerForStudent(values)

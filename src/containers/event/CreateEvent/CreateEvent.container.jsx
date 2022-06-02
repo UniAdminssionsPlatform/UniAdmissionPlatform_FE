@@ -1,4 +1,4 @@
-import { createEvent } from '../../../services/event/CreateEvent/CreateEvent';
+import { createEvent } from '../../../services/CreateEvent';
 import { getListDistrictByProvince } from '../../../services/DistrictService';
 import { getListProvinces } from '../../../services/ProvinceService';
 import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';

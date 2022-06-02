@@ -1,4 +1,4 @@
-import { addScore, getScore, modifyScore } from '../../../../services/student/Score/StudentScoreService';
+import { addScore, getScore, modifyScore } from '../../../../services/StudentScoreService';
 import { getAllSchoolYear } from '../../../../services/SchoolYearService';
 import { getAllSubjectGroup } from '../../../../services/SubjectGroupService';
 import { handleModifyNotification, handleNotification } from '../../../../notification/StudentScoreNotification';

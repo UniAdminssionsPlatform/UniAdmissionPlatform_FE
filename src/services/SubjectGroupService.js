@@ -1,4 +1,4 @@
 import { CallAPI } from './axiosBase';
-import { PATH_GET_ALL_SUBJECT_GROUP } from '../constants/Endpoints/SubjectGroupEndpoint';
+import { GET_ALL_SUBJECT_GROUP_ENDPOINT } from '../constants/Endpoints/SubjectGroupEndpoint';
 
-export const getAllSubjectGroup = (data) => CallAPI(`${PATH_GET_ALL_SUBJECT_GROUP}?limit=200`, 'get', data);
+export const getAllSubjectGroup = (data) => CallAPI(`${GET_ALL_SUBJECT_GROUP_ENDPOINT}?limit=200`, 'get', data);

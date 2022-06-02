@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HomePageComponent from '../../components/homepage/HomePage.component';
-import { ViewListNews } from '../../services/news/ViewListNews';
-import { ViewNews } from '../../services/news/ViewNews';
+import { ViewListNews } from '../../services/ViewListNews';
+import { ViewNews } from '../../services/ViewNews';
 
 const ViewNewsContainer = () => {
   const [viewnews, setViewNews] = useState('');

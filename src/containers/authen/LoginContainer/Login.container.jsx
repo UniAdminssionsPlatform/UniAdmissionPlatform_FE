@@ -17,7 +17,7 @@ import { HIGH_SCHOOL_MANAGER, HIGH_SCHOOL_STUDENT, UNIVERSITY_MANAGER } from '..
 import { handleNotification } from '../../../notification/LoginNotification';
 
 const googleProvider = new GoogleAuthProvider();
-const facebookProvier = new FacebookAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
 const LoginContainer = () => {
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const LoginContainer = () => {
           handleNotification('error', err);
         });
     } else if (option === 'facebook') {
-      signInWithPopup(auth, facebookProvier)
+      signInWithPopup(auth, facebookProvider)
         .then((userCredential) => {
           const token = userCredential?.accessToken;
           handleLoginServer(token, 'null');

@@ -1,4 +1,4 @@
-import { EventWaiting } from '../../../services/event/GetListEvent/GetListEventWaiting';
+import { EventWaiting } from '../../../services/GetListEventWaiting';
 import { handleNotification } from '../../../notification/ListEventNotification';
 import { useDebouncedCallback } from 'use-debounce';
 import DetailEventFormContainer from '../DetailEvent/DetailEventForm.container';

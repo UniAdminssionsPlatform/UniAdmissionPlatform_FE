@@ -1,5 +1,5 @@
 import { CallAPI } from './axiosBase';
-import { PATH_GET_LIST_PROVINCE } from '../constants/Endpoints/ProvinceEndpoint';
+import { LIST_PROVINCE_ENDPOINT } from '../constants/Endpoints/ProvinceEndpoint';
 
-export const getListProvinces = (data) => CallAPI(PATH_GET_LIST_PROVINCE, 'get', data);
-export const getProvinceByid = (data) => CallAPI(`${PATH_GET_LIST_PROVINCE}/${data}`, 'get', data);
+export const getListProvinces = (data) => CallAPI(LIST_PROVINCE_ENDPOINT, 'get', data);
+export const getProvinceByid = (data) => CallAPI(`${LIST_PROVINCE_ENDPOINT}/${data}`, 'get', data);

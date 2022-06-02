@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NewsDetailComponent from '../../components/newsdetail/newsDetail.component';
-import { ViewNewsDetail } from '../../services/newsdetail/NewsDetailService';
+import { ViewNewsDetail } from '../../services/NewsDetailService';
 
 const NewsDetailContainer = (props) => {
   const [newsdetail, setnewsdetail] = useState('');

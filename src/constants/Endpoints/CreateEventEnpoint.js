@@ -1,1 +1,1 @@
-export const PATH_CREATE_EVENT = '/api/v1/admin-university/events';
+export const CREATE_EVENT_ENDPOINT = '/api/v1/admin-university/events';

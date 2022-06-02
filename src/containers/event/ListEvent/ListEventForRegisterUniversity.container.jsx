@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getListEventForUniversity } from '../../../services/event/GetListEvent/GetListEventForUniversity';
+import { getListEventForUniversity } from '../../../services/GetListEventForUniversity';
 import { useSelector } from 'react-redux';
 import ListEventForRegisterUniversityComponent from '../../../components/event/ListEvent/ListEventForRegisterUniversity.component';
 import { bookASlotInAdminUniversity } from '../../../services/AdminUniversitySlotServices';

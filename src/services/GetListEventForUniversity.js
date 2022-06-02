@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { PATH_GET_LIST_EVENT_FOR_UNIVERSITY } from '../../../constants/Endpoints/GetListEventForUniversity';
-import { CallAPI } from '../../axiosBase';
+import { GET_LIST_EVENT_FOR_UNIVERSITY_ENDPOINT } from '../constants/Endpoints/GetListEventForUniversity';
+import { CallAPI } from './axiosBase';
 
 const refactorEndPoint = (data) => {
   let result;
@@ -20,7 +20,7 @@ const refactorEndPoint = (data) => {
 };
 export const getListEventForUniversity = (data) =>
   CallAPI(
-    `${PATH_GET_LIST_EVENT_FOR_UNIVERSITY}/${data.universityID}/list-event?${refactorEndPoint(data)}`,
+    `${GET_LIST_EVENT_FOR_UNIVERSITY_ENDPOINT}/${data.universityID}/list-event?${refactorEndPoint(data)}`,
     'get',
     data
   );

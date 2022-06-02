@@ -1,4 +1,4 @@
-import { getScore } from '../../../../services/student/Score/StudentScoreService';
+import { getScore } from '../../../../services/StudentScoreService';
 import { handleNotification } from '../../../../notification/StudentScoreNotification';
 import React, { useEffect, useState } from 'react';
 import TableScoreComponent from '../../../../components/student/studentScore/component/table/TableScore.component';
