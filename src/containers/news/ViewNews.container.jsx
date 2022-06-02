@@ -14,7 +14,6 @@ const ViewNewsContainer = () => {
   const getListViewNews = () => {
     ViewListNews()
       .then((result) => {
-        console.log('viewnewslist: ', result.data.data.list);
         setViewListNews(result.data.data.list);
       })
       .catch((err) => console.log(err));

@@ -7,6 +7,7 @@ const DetailMajorGroupContainer = (props) => {
   const { majorGroupId } = props;
 
   const [majorGroup, setMajorGroup] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadData(majorGroupId);
@@ -15,9 +16,10 @@ const DetailMajorGroupContainer = (props) => {
   const loadData = (id) => {
     getDetailMajorGroup(id).then((result) => {
       setMajorGroup(result.data.data);
+      setLoading(false);
     });
   };
 
-  return <DetailMajorGroupComponent majorGroup={majorGroup} />;
+  return <DetailMajorGroupComponent majorGroup={majorGroup} loading={loading} />;
 };
 export default DetailMajorGroupContainer;

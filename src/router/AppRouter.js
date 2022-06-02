@@ -26,15 +26,16 @@ import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
 import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
-import ListEventForRegisterUniversity from '../pages/event/ListEvent/ListEventForRegisterUniversity';
+import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
 import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 import NewsPage from '../pages/news/newsPage';
 import CreateEventPage from '../pages/event/CreateEventPage';
-import ListStudentForSchoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
 import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
-import CalendarPage from '../pages/Calendar/CalendarPage';
-
+import ManageProfilePage from '../pages/profile/manageProfilePage';
+import CertificationPage from '../pages/certification/certificationPage';
+import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
+import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
 const AppRouter = () => {
   return (
     <>
@@ -89,15 +90,9 @@ const AppRouter = () => {
           key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
           exact
         />
-        <HighSchoolManagerRouter
-          component={() => <ListStudentForSchoolPage />}
-          path={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
-          key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
-          exact
-        />
 
         <UniversityManagerRouter
-          component={() => <ListEventForRegisterUniversity />}
+          component={() => <ListEventForUniversityPage />}
           path={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
           key={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
           exact
@@ -109,12 +104,6 @@ const AppRouter = () => {
           component={() => <ListNewContainer />}
           path={PATH_UNIVERSITY_MANAGER.NEW}
           key={PATH_UNIVERSITY_MANAGER.NEW}
-          exact
-        />
-        <UniversityManagerRouter
-          component={() => <CalendarPage />}
-          path={PATH_UNIVERSITY_MANAGER.CALENDAR}
-          key={PATH_UNIVERSITY_MANAGER.CALENDAR}
           exact
         />
         <UniversityManagerRouter
@@ -153,6 +142,27 @@ const AppRouter = () => {
           key={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
           exact
         />
+        <HighSchoolStudentRouter
+          component={() => <ManageProfilePage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE}
+          key={PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE}
+          exact
+        />
+        <HighSchoolStudentRouter
+          component={() => <CertificationPage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
+          key={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
+          exact
+        />
+        <HighSchoolStudentRouter
+          component={() => <StudentScorePage />}
+          path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+          key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+          exact
+        />
+        <Route path={PATH.ABOUT_US} exact>
+          <AboutUsPage />
+        </Route>
         <Route path='/index.html'>
           <Redirect to='/' />
         </Route>
