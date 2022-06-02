@@ -35,6 +35,7 @@ import ManageProfilePage from '../pages/profile/manageProfilePage';
 import CertificationPage from '../pages/certification/certificationPage';
 import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
+import CalendarPage from '../pages/Calendar/CalendarPage';
 const AppRouter = () => {
   return (
     <>
