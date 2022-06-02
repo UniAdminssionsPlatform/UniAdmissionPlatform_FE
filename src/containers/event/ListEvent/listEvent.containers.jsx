@@ -1,4 +1,4 @@
-import { ListEvent } from '../../../services/event/GetListEvent/GetListEvent';
+import { ListEvent } from '../../../services/GetListEvent';
 import { handleNotification } from '../../../notification/ListEventNotification';
 import React, { useEffect, useState } from 'react';
 

@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import UpdaterForm from '../../components/profile/contentProfile.component';
-import { getAccountInfor, updateAccount } from '../../services/manageProfile/ManageProfileService';
 import { getListNation } from '../../services/NationalityService';
 import { getListProvinces } from '../../services/ProvinceService';
 import { handleNotification } from '../../notification/UpdateAccountNotification';
 import { Skeleton } from 'antd';
+import { updateAccount } from '../../services/Accounts/Accounts.service';
+import { getAccountInfor } from '../../services/ManageProfileService';
 
 const ManageProfileContainer = () => {
-  const [isloading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [dob, setDob] = useState('');
-  const [accountinfor, setaccountinfor] = useState('');
+  const [accountInformation, setAccountInformation] = useState('');
   const [provinces, setProvinces] = useState();
   const [nationalities, setNationalities] = useState();
   const { user } = useSelector((state) => state.authentication);
 
   const onFinish = (values) => {
     values.dateOfBirth = dob;
-    values.wardId = accountinfor.wardId;
+    values.wardId = accountInformation.wardId;
     console.log('values container: ', values);
     updateAccount(values)
       .then((result) => {
@@ -36,8 +37,8 @@ const ManageProfileContainer = () => {
 
   const accountDetail = (accountId) => {
     getAccountInfor(accountId).then((result) => {
-      setaccountinfor(result.data.data);
-      setIsloading(false);
+      setAccountInformation(result.data.data);
+      setIsLoading(false);
     });
   };
 
@@ -69,11 +70,11 @@ const ManageProfileContainer = () => {
 
           {/* CONTENT */}
           <div className='p-5 mx-auto bg-white rounded-[40px] shadow-lg sm:p-10 mt-10 lg:mt-20 lg:p-16 dark:bg-neutral-900'>
-            {isloading ? (
+            {isLoading ? (
               <Skeleton />
             ) : (
               <UpdaterForm
-                accountinfor={accountinfor}
+                accountinfor={accountInformation}
                 onFinish={onFinish}
                 provinces={provinces}
                 nation={nationalities}

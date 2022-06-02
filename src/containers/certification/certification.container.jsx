@@ -1,5 +1,5 @@
-import { AlertOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import { Form, message, Modal, Popconfirm, Skeleton } from 'antd';
+import { AlertOutlined } from '@ant-design/icons';
+import { Form, Modal, Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import CertificationComponent from '../../components/certification/certification.component';
@@ -19,19 +19,19 @@ import {
   getCertificationName,
   createCertification,
   deleteCertification
-} from '../../services/certification/CertificationService';
+} from '../../services/CertificationService';
 
 const CertificationContainer = () => {
-  const [isloading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [certificates, setCertificates] = useState();
-  const [certificatedetail, setCertificatedetail] = useState('');
-  const [certificateadmin, setCertificateAdmin] = useState('');
-  const [certificateadminid, setCertificateadminid] = useState(1);
+  const [certificateDetail, setCertificateDetail] = useState('');
+  const [certificateAdmin, setCertificateAdmin] = useState('');
+  const [certificateAdminId, setCertificateAdminId] = useState(1);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
   const { user } = useSelector((state) => state.authentication);
   const handleChange = (value) => {
-    setCertificateadminid(value);
+    setCertificateAdminId(value);
   };
   const showModal = () => {
     setIsModalVisible(true);
@@ -54,10 +54,10 @@ const CertificationContainer = () => {
   //   message.error('Click on No');
   // };
 
-  const handleconfirmdelete = (value) => {
+  const handleConfirmDelete = (value) => {
     Modal.confirm({
       onOk() {
-        handledelete(value);
+        handleDelete(value);
       },
       onCancel() {
         handleCancel();
@@ -70,7 +70,7 @@ const CertificationContainer = () => {
     });
   };
 
-  const handledelete = (value) => {
+  const handleDelete = (value) => {
     deleteCertification(user.userId, value)
       .then((result) => {
         handleDeleteSuccessNotification('success');
@@ -83,8 +83,8 @@ const CertificationContainer = () => {
   };
 
   //CREATE CERTIFICATE
-  const handlecreate = (values) => {
-    values.certificationId = certificateadminid;
+  const handleCreate = (values) => {
+    values.certificationId = certificateAdminId;
     form.resetFields();
 
     createCertification(values)
@@ -105,7 +105,7 @@ const CertificationContainer = () => {
 
   const onFinish = (values) => {
     values.studentid = user.userId;
-    values.certificationid = certificatedetail.certificationId;
+    values.certificationid = certificateDetail.certificationId;
     updateCertification(values)
       .then((result) => {
         handleNotification('success');
@@ -124,14 +124,14 @@ const CertificationContainer = () => {
   const getListCertificate = (accountId) => {
     getListCertification(accountId).then((result) => {
       setCertificates(result.data.data.list);
-      setIsloading(false);
+      setIsLoading(false);
     });
   };
 
   const getCertificate = (certificateID) => {
     getCertification(certificateID).then((result) => {
-      setCertificatedetail(result.data.data);
-      setIsloading(false);
+      setCertificateDetail(result.data.data);
+      setIsLoading(false);
     });
   };
 
@@ -142,23 +142,23 @@ const CertificationContainer = () => {
   };
   return (
     <>
-      {isloading ? (
+      {isLoading ? (
         <Skeleton />
       ) : (
         <CertificationComponent
           certificates={certificates}
-          certificatedetail={certificatedetail}
-          certificateadmin={certificateadmin}
+          certificatedetail={certificateDetail}
+          certificateadmin={certificateAdmin}
           onFinish={onFinish}
           handleonclick={handleOnClick}
-          handlecreate={handlecreate}
+          handlecreate={handleCreate}
           handleChange={handleChange}
           showModal={showModal}
           handleOk={handleOk}
           handleCancel={handleCancel}
           isModalVisible={isModalVisible}
-          handledelete={handledelete}
-          handleconfirmdelete={handleconfirmdelete}
+          handledelete={handleDelete}
+          handleconfirmdelete={handleConfirmDelete}
           form={form}
         />
       )}

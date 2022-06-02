@@ -1,6 +1,6 @@
 import NewsComponent from '../../components/news/News.component';
 import React, { useEffect, useState } from 'react';
-import { getNews } from '../../services/news/NewsService';
+import { getNews } from '../../services/NewsService';
 
 const NewsContainer = () => {
   const [news, setnews] = useState();

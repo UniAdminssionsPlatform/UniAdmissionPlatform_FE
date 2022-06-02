@@ -1,4 +1,4 @@
-import { EventForHighschool } from '../../../services/event/GetListEvent/GetListEventForHighschool';
+import { EventForHighschool } from '../../../services/GetListEventForHighschool';
 import ListEventForHighschoolComponent from '../../../components/event/ListEvent/listEventForHighschool.component';
 import React, { useEffect, useState } from 'react';
 

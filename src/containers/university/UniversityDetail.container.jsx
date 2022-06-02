@@ -1,4 +1,4 @@
-import { UniversityDetail } from '../../services/university/UniversityDetail/UniversityDetail';
+import { UniversityDetail } from '../../services/UniversityDetail';
 import React, { useEffect, useState } from 'react';
 import UniversityDetailComponent from '../../components/university/UniversityDetail.component';
 

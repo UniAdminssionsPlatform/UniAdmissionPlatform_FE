@@ -2,7 +2,7 @@ import { CallAPI } from './axiosBase';
 import {
   CLOSE_A_SLOT_ENDPOINT,
   CREATE_NEW_SLOTS_ENDPOINT,
-  ENDPOINT_GET_LIST_SLOTS
+  GET_LIST_SLOTS_ENDPOINT
 } from '../constants/Endpoints/AdminHighSchoolSlotsEndpoint';
 const bindingData = (data) => {
   console.log(data);
@@ -12,6 +12,6 @@ const bindingData = (data) => {
   if (data?.status) endPoint = `${endPoint}&status=${data?.status}`;
   return `${endPoint}&limit=100`;
 };
-export const getListSlotHighSchool = (data) => CallAPI(`${ENDPOINT_GET_LIST_SLOTS}${bindingData(data)}`, 'get');
+export const getListSlotHighSchool = (data) => CallAPI(`${GET_LIST_SLOTS_ENDPOINT}${bindingData(data)}`, 'get');
 export const createNewSlot = (data) => CallAPI(`${CREATE_NEW_SLOTS_ENDPOINT}`, 'post', data);
 export const closeASlot = (data) => CallAPI(CLOSE_A_SLOT_ENDPOINT, `PUT`, data);

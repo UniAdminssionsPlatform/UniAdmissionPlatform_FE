@@ -1,7 +1,6 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Modal } from 'antd';
-import { changeStatus } from '../../../services/student/Confirm/ChangeStatusService';
-import { getListStudentByHighschool } from '../../../services/student/ListStudent/ListStudentService';
+import { changeStatus } from '../../../services/ChangeStatusService';
 import {
   handActiveNotification,
   handleLockNotification
@@ -10,6 +9,7 @@ import { handleNotification } from '../../../notification/ListStudentForHighscho
 import { useSelector } from 'react-redux';
 import ListStudentForHighschoolComponent from '../../../components/student/ListStudent/ListStudentForHighschool.component';
 import React, { useEffect, useState } from 'react';
+import { getListStudentByHighSchool } from '../../../services/Accounts/Accounts.service';
 
 const ListStudentForHighschoolContainer = () => {
   const { user } = useSelector((state) => state.authentication);
@@ -29,7 +29,7 @@ const ListStudentForHighschoolContainer = () => {
   }, [dataSearch]);
 
   const loadData = (data) => {
-    getListStudentByHighschool(data)
+    getListStudentByHighSchool(data)
       .then((result) => {
         setStudents(result.data.data.list);
         setLoading(false);

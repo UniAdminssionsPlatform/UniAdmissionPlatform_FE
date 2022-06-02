@@ -1,1 +1,1 @@
-export const PATH_GET_LIST_PROVINCE = '/api/v1/provinces';
+export const LIST_PROVINCE_ENDPOINT = '/api/v1/provinces';

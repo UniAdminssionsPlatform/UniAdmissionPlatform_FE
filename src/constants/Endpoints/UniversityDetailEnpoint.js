@@ -1,1 +1,1 @@
-export const PATH_UNIVERSITY_DETAIL = '/api/v1/universities';
+export const UNIVERSITY_DETAIL_ENDPOINT = '/api/v1/universities';

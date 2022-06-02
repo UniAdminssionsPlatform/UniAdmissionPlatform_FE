@@ -1,4 +1,4 @@
-import { getDetailStudent } from '../../../services/student/DetailStudent/DetailStudentService';
+import { getDetailStudent } from '../../../services/DetailStudentService';
 import { handleNotification } from '../../../notification/DetailStudentNotification';
 import DetailStudentComponent from '../../../components/student/DetailStudent/DetailStudent.component';
 import React, { useEffect, useState } from 'react';

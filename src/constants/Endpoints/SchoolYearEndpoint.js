@@ -1,1 +1,1 @@
-export const PATH_GET_LIST_YEAR = '/api/v1/student/school-years';
+export const GET_LIST_YEAR_ENDPOINT = '/api/v1/student/school-years';
