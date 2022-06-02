@@ -12,7 +12,6 @@ const SearchBarComponent = (props) => {
   const [eventtype, setEventType] = useState('');
   const [status, setStatus] = useState('');
   const { user } = useSelector((state) => state.authentication);
-
   const debounced = useDebouncedCallback(
     // function
     () => {

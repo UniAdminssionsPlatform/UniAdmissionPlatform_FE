@@ -1,9 +1,26 @@
+/* eslint-disable */
 import { PATH_GET_LIST_EVENT_FOR_UNIVERSITY } from '../../../constants/Endpoints/GetListEventForUniversity';
 import { CallAPI } from '../../axiosBase';
 
-export const EventForUniversity = (data) =>
+const refactorEndPoint = (data) => {
+  let result;
+  if (data.name !== undefined && data.name !== '') result = `event-name=${data.name}`;
+
+  if (data.status !== undefined && data.status !== '') result = result + `&status-event=${data.status}`;
+
+  if (data.hostname !== undefined && data.hostname !== '') result = result + `&event-host-name=${data.hostname}`;
+
+  if (data.eventtype !== undefined && data.eventtype !== '') result = result + `&event-type-id=${data.eventtype}`;
+
+  return result !== undefined
+    ? result
+    : '' +
+        `&data=${data.page !== undefined && data.page !== '' ? data.page : 1}` +
+        `&limit=${data.limit !== undefined && data.limit !== '' ? data.limit : 10}`;
+};
+export const getListEventForUniversity = (data) =>
   CallAPI(
-    `${PATH_GET_LIST_EVENT_FOR_UNIVERSITY}/${data.universityID}/list-events?event-name=${data.name}&status-event=${data.status}&event-host-name=${data.hostname}&event-type-id=${data.eventtype}&limit=50`,
+    `${PATH_GET_LIST_EVENT_FOR_UNIVERSITY}/${data.universityID}/list-event?${refactorEndPoint(data)}`,
     'get',
     data
   );

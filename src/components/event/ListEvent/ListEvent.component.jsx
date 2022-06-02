@@ -3,8 +3,8 @@ import Pagination from '../../../components/commons/Pagination/Pagination';
 import React from 'react';
 import { Button } from 'antd';
 
-const ListEventForUniversity = (props) => {
-  const { eventforuniversity } = props;
+const ListEvent = (props) => {
+  const { listEventRegister, handleBookingSlot } = props;
   return (
     <div className='flex flex-col space-y-8'>
       <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -34,7 +34,7 @@ const ListEventForUniversity = (props) => {
                 </tr>
               </thead>
               <tbody className='bg-white dark:bg-neutral-900 divide-y divide-neutral-200 dark:divide-neutral-800'>
-                {eventforuniversity?.map((item) => (
+                {listEventRegister?.map((item) => (
                   <tr key={item.event.id}>
                     <td className='px-6 py-4'>
                       <div className='flex items-center w-96 lg:w-auto max-w-md overflow-hidden'>
@@ -54,7 +54,12 @@ const ListEventForUniversity = (props) => {
                     <td className='px-6 py-4 whitespace-nowrap'>{item.event.event_type_id}</td>
                     <td className='px-6 py-4 whitespace-nowrap'>{item.event.address}</td>
                     <td className='px-6 py-4 whitespace-nowrap'>
-                      <Button type='primary' danger>
+                      <Button
+                        type='primary'
+                        danger
+                        onClick={() => {
+                          handleBookingSlot(item.event.id);
+                        }}>
                         Lựa chọn
                       </Button>
                     </td>
@@ -70,4 +75,4 @@ const ListEventForUniversity = (props) => {
   );
 };
 
-export default ListEventForUniversity;
+export default ListEvent;

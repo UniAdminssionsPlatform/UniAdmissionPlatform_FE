@@ -5,7 +5,7 @@ import React from 'react';
 const LayoutPage = ({ className = '', heading, subHeading, headingEmoji, children }) => (
   <div className={`nc-LayoutPage relative ${className}`} data-nc-id='LayoutPage'>
     <HeadBackgroundCommon />
-    <div className='container relative pt-10 pb-16 lg:pt-20 lg:pb-28'>
+    <div className='container relative pt-10 pb-16  lg:pb-28'>
       {/* HEADER */}
       <header className='text-center max-w-2xl mx-auto'>
         <Heading emoji={headingEmoji}>{heading}</Heading>

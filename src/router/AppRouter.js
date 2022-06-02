@@ -26,7 +26,6 @@ import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
 import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
-import ListEventForUniversityPage from '../pages/event/ListEvent/ListEventForUniversityPage';
 import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
 import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
 import NewsPage from '../pages/news/newsPage';
@@ -36,6 +35,7 @@ import ManageProfilePage from '../pages/profile/manageProfilePage';
 import CertificationPage from '../pages/certification/certificationPage';
 import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
+import CalendarPage from '../pages/Calendar/CalendarPage';
 const AppRouter = () => {
   return (
     <>
@@ -88,13 +88,6 @@ const AppRouter = () => {
           component={() => <ListEventForHighSchoolPage />}
           path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
           key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
-          exact
-        />
-
-        <UniversityManagerRouter
-          component={() => <ListEventForUniversityPage />}
-          path={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
-          key={PATH_UNIVERSITY_MANAGER.LIST_EVENT}
           exact
         />
         <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
@@ -158,6 +151,12 @@ const AppRouter = () => {
           component={() => <StudentScorePage />}
           path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
           key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+          exact
+        />
+        <UniversityManagerRouter
+          component={() => <CalendarPage />}
+          path={PATH_UNIVERSITY_MANAGER.CALENDAR}
+          key={PATH_UNIVERSITY_MANAGER.CALENDAR}
           exact
         />
         <Route path={PATH.ABOUT_US} exact>

@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import Paper from '@mui/material/Paper';
+import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import {
-  Appointments,
-  AppointmentTooltip,
-  DateNavigator,
-  DayView,
-  EditRecurrenceMenu,
-  MonthView,
   Scheduler,
-  TodayButton,
+  WeekView,
+  Appointments,
   Toolbar,
   ViewSwitcher,
-  WeekView
+  EditRecurrenceMenu,
+  AppointmentTooltip,
+  DayView,
+  MonthView,
+  DateNavigator,
+  TodayButton
 } from '@devexpress/dx-react-scheduler-material-ui';
+import { useState } from 'react';
+import AppointmentHeaderComponent from './component/AppointmentHeader.component';
+import AppointmentContentComponent from './component/AppointmentContent.component';
 import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
 import SlotComponent from './component/Slot.component';
-import Paper from '@mui/material/Paper';
-import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
-import AppointmentHeaderComponent from './component/AppointmentHeader.component';
-import AppointmentContentComponent from './component/AppointmentContent.component';
-import { useDispatch } from 'react-redux';
-import { setSelectedSlot } from '../../redux-flow/slot/selectedSlot-action';
 
-const ScheduleUniversityComponent = (props) => {
-  const dispatch = useDispatch();
-  const { listSlot, setIsSidebarOpen } = props;
+const ScheduleEventComponent = (props) => {
+  const { listSlot } = props;
   const [data, setData] = useState();
   const commitChanges = ({ added, changed, deleted }) => {
     if (added) setData([...data, { id: data.length > 0 ? data[data.length - 1].id + 1 : 0, ...added }]);
@@ -52,10 +50,7 @@ const ScheduleUniversityComponent = (props) => {
         borderRadius: '8px'
       }}
       data={data}
-      onClick={() => {
-        setIsSidebarOpen(true);
-        dispatch(setSelectedSlot({ data }));
-      }}>
+      onClick={() => {}}>
       <SlotComponent data={data} />
       {children}
     </Appointments.Appointment>
@@ -84,4 +79,4 @@ const ScheduleUniversityComponent = (props) => {
     </>
   );
 };
-export default ScheduleUniversityComponent;
+export default ScheduleEventComponent;

@@ -6,6 +6,7 @@ import { people } from './Data/FakeData';
 import { useSelector } from 'react-redux';
 import ListHighSchool from '../../../components/ListHighSchool/ListHighSchool.component';
 import React, { useEffect, useState } from 'react';
+import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
 
 const ListHighSchoolContainer = () => {
   // SEARCH HIGH SCHOOL
@@ -60,16 +61,18 @@ const ListHighSchoolContainer = () => {
 
   return (
     <>
-      <ListHighSchool
-        people={people}
-        provinces={provinces}
-        districts={districts}
-        listHighSchool={listHighSchool}
-        onChange={onChangeProvince}
-        isClicked={isClicked}
-        setIsClicked={setIsClicked}
-        setDataSearch={setDataSeacrch}
-      />
+      <LayoutPageWithout subHeading='Chọn một trường để đăng ký sự kiện'>
+        <ListHighSchool
+          people={people}
+          provinces={provinces}
+          districts={districts}
+          listHighSchool={listHighSchool}
+          onChange={onChangeProvince}
+          isClicked={isClicked}
+          setIsClicked={setIsClicked}
+          setDataSearch={setDataSeacrch}
+        />
+      </LayoutPageWithout>
     </>
   );
 };

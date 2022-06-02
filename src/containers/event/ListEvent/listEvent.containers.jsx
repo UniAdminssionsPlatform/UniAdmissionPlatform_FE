@@ -1,10 +1,9 @@
 import { ListEvent } from '../../../services/event/GetListEvent/GetListEvent';
 import { handleNotification } from '../../../notification/ListEventNotification';
-import ListEventComponent from '../../../components/event/ListEvent/listEvent.component';
 import React, { useEffect, useState } from 'react';
 
 const ListEventContainer = () => {
-  const [listevent, setListEvent] = useState([]);
+  const [listEvent, setListEvent] = useState([]);
 
   useEffect(() => {
     getListEvent();
@@ -21,7 +20,7 @@ const ListEventContainer = () => {
   };
   return (
     <>
-      <ListEventComponent listevent={listevent} />
+      <ListEvent listevent={listEvent} />
     </>
   );
 };

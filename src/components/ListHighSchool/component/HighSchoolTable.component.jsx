@@ -27,6 +27,9 @@ const HighSchoolTableComponent = (props) => {
                       <th scope='col' className='px-6 py-3'>
                         Số điện thoại
                       </th>
+                      <th scope='col' className='px-6 py-3'>
+                        Hành Động
+                      </th>
                     </tr>
                   </thead>
 
@@ -34,7 +37,7 @@ const HighSchoolTableComponent = (props) => {
                     {listHighSchool?.map((item) => (
                       <tr key={item.id}>
                         <td className='px-6 py-4'>
-                          <div className='flex items-center w-96 lg:w-auto max-w-md overflow-hidden'>
+                          <div className='flex items-center w-auto lg:w-auto max-w-md overflow-hidden'>
                             <NcImage
                               containerClassName='flex-shrink-0 h-12 w-12 rounded-lg overflow-hidden lg:h-14 lg:w-14'
                               src={item.thumbnailUrl}
@@ -61,28 +64,25 @@ const HighSchoolTableComponent = (props) => {
                           <span> {item.email}</span>
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400'>
-                          <span> {item.phone_number}</span>
+                          <span> {item.phoneNumber}</span>
                         </td>
                         <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-neutral-300'>
-                          <a
-                            className='text-primary-800 dark:text-primary-500 hover:text-primary-900'
-                            onClick={() => handleSelectedSchool(item)}>
-                            lựa chọn
-                          </a>
-                          {/*{item.status === 1 ? (*/}
-                          {/*  <a*/}
-                          {/*    className='text-primary-800 dark:text-primary-500 hover:text-primary-900'*/}
-                          {/*    onClick={() => handleSelectedEvent(item)}>*/}
-                          {/*    lựa chọn*/}
-                          {/*  </a>*/}
-                          {/*) : (*/}
-                          {/*  <a className='text-primary-800/25 dark:text-primary-500 cursor-not-allowed'>*/}
-                          {/*    không khả dụng*/}
-                          {/*  </a>*/}
-                          {/*)}*/}
-                          {` | `}
+                          {item.status === 1 ? (
+                            <a
+                              className='text-primary-800 dark:text-primary-500 hover:text-primary-900'
+                              onClick={() => handleSelectedSchool(item)}>
+                              lựa chọn
+                            </a>
+                          ) : (
+                            <a
+                              className='text-primary-800/25 dark:text-primary-500 cursor-not-allowed'
+                              onClick={() => handleSelectedSchool(item)}>
+                              không khả dụng
+                            </a>
+                          )}
+
                           <a href='/#' className='text-rose-600 hover:text-rose-900'>
-                            xem lịch sử
+                            | xem lịch sử
                           </a>
                         </td>
                       </tr>

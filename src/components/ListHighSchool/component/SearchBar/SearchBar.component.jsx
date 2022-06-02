@@ -27,7 +27,7 @@ const SearchBarComponent = (props) => {
       });
     },
     // delay in ms
-    3000
+    1000
   );
 
   function onSearch(val) {
@@ -45,8 +45,8 @@ const SearchBarComponent = (props) => {
   return (
     <>
       <Title level={2}>Tìm kiếm</Title>
-      <Form>
-        <Form.Item name='name'>
+      <Form layout='vertical'>
+        <Form.Item name='name' label='Tên trường cấp 3'>
           <Input
             placeholder='Tên trường...'
             type='text'
@@ -56,7 +56,7 @@ const SearchBarComponent = (props) => {
             }}
           />
         </Form.Item>
-        <Form.Item name='address'>
+        <Form.Item name='address' label='Địa chỉ'>
           <Input
             placeholder='Địa chỉ..'
             type='text'
@@ -66,7 +66,7 @@ const SearchBarComponent = (props) => {
             }}
           />
         </Form.Item>
-        <Form.Item name='email'>
+        <Form.Item name='email' label='Email liên lạc'>
           <Input
             placeholder='email...'
             type='text'
@@ -76,7 +76,7 @@ const SearchBarComponent = (props) => {
             }}
           />
         </Form.Item>
-        <Form.Item name='phone_Number'>
+        <Form.Item name='phone_Number' label='Số điện thoại'>
           <Input
             placeholder='số điện thoại...'
             type='text'
@@ -86,7 +86,7 @@ const SearchBarComponent = (props) => {
             }}
           />
         </Form.Item>
-        <Form.Item name='provine'>
+        <Form.Item name='provine' label='Thành phố'>
           <Select
             showSearch
             placeholder='Tỉnh/Thành phố'
@@ -101,7 +101,7 @@ const SearchBarComponent = (props) => {
             ))}
           </Select>
         </Form.Item>
-        <Form.Item name='districts'>
+        <Form.Item name='districts' label='Quận huyện'>
           <Select
             showSearch
             placeholder='Quận/Huyện'
@@ -116,7 +116,7 @@ const SearchBarComponent = (props) => {
             ))}
           </Select>
         </Form.Item>
-        <Form.Item name='status'>
+        <Form.Item name='status' label='Trạng thái'>
           <Select placeholder='Trạng thái' onChange={onChangeStatus}>
             <Option value={1}>Đã kích hoạt</Option>
             <Option value={0}>Đang bị đóng</Option>

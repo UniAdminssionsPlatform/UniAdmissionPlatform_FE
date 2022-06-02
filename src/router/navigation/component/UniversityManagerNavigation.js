@@ -12,13 +12,30 @@ const homePage = [
 const eventManager = [
   {
     id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.REGIS_EVENT,
-    name: 'Đăng ký sự kiện'
+    href: PATH_UNIVERSITY_MANAGER.CALENDAR,
+    name: 'Lịch'
   },
   {
     id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.CREATE_EVENT,
-    name: 'Tạo sự kiện'
+    name: 'Quản lý tuyển sinh',
+    type: 'dropdown',
+    children: [
+      {
+        id: ncNanoId(),
+        href: PATH_UNIVERSITY_MANAGER.CREATE_EVENT,
+        name: 'Tạo sự kiện'
+      },
+      {
+        id: ncNanoId(),
+        href: PATH_UNIVERSITY_MANAGER.REGIS_EVENT,
+        name: 'Đăng ký sự kiện'
+      },
+      {
+        id: ncNanoId(),
+        href: PATH_UNIVERSITY_MANAGER.LIST_EVENT,
+        name: 'Sự kiện đã đăng ký'
+      }
+    ]
   }
 ];
 
@@ -26,7 +43,7 @@ const eventMenu = [
   {
     id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.NEW,
-    name: 'Danh sách news'
+    name: 'Danh sách tin tức'
   }
 ];
 const profile = [
@@ -54,7 +71,7 @@ export const UniversityManagerNavigation = [
 
   {
     id: ncNanoId(),
-    name: 'Quản lý news',
+    name: 'Quản lý tin tức',
     type: 'dropdown',
     children: eventMenu
   },
