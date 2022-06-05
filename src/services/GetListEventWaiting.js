@@ -1,5 +1,5 @@
-import { GET_LIST_EVENT_WAITING_ENDPOINT } from '../constants/Endpoints/GetListEventWaitingEndpoint';
 import { CallAPI } from './axiosBase';
+import { GET_LIST_EVENT_WAITING_ENDPOINT } from '../constants/Endpoints/GetListEventWaitingEndpoint';
 
 export const EventWaiting = (data) =>
   CallAPI(

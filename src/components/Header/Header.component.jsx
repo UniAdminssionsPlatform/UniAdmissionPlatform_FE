@@ -1,7 +1,7 @@
 import Avatar from '../commons/Avatar/Avatar.component';
-import BookmarkContainer from '../../containers/commons/BookmarkContainer/BookmarkContainer.container';
+import BookmarkContainer from '../../commons/BookmarkContainer/BookmarkContainer.container';
 import MainNav from '../commons/NavBar/NavBar.component';
-import PostCardLikeContainer from '../../containers/commons/PostCardLikeContainer/PostCardLikeContainer.container';
+import PostCardLikeContainer from '../../commons/PostCardLikeContainer/PostCardLikeContainer.container';
 import React, { useEffect, useRef, useState } from 'react';
 import SocialsShare from '../commons/SocialsShare/SocialsShare.component';
 

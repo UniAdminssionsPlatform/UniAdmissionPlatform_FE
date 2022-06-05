@@ -1,9 +1,9 @@
-import ForgotPasswordContainer from '../../../containers/authen/ForgotPasswordContainer/ForgotPassword.container';
 import React from 'react';
+import ResetPasswordContainer from '../../../features/auth/resetPassword/ResetPassword.container';
 
 const ForgetPasswordPage = () => (
   <>
-    <ForgotPasswordContainer />
+    <ResetPasswordContainer />
   </>
 );
 export default ForgetPasswordPage;

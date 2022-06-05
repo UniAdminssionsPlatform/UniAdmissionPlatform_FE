@@ -1,7 +1,7 @@
 import { CallAPI } from './axiosBase';
 import {
-  GET_LIST_DISTRICT_BY_PROVINCE_ENDPOINT,
-  GET_DISTRICT_BY_ID_ENDPOINT
+  GET_DISTRICT_BY_ID_ENDPOINT,
+  GET_LIST_DISTRICT_BY_PROVINCE_ENDPOINT
 } from '../constants/Endpoints/DistrictEndpoint';
 
 export const getListDistrictByProvince = (data) =>

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
+import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
 import CategoryBadgeList from '../../CategoryBadgeList/CategoryBadgeList.component';
 import NcImage from '../../NcImage/NcImage.component';
 import PostCardSaveAction from '../../PostCardSaveAction/PostCardSaveAction.component';
 import PostTypeFeaturedIcon from '../../PostTypeFeaturedIcon/PostTypeFeaturedIcon.component';
 import React from 'react';
-import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
 const Card6 = (props) => {
   const { categories, postType, viewlistnews, className } = props;
   // console.log('post: ', post);

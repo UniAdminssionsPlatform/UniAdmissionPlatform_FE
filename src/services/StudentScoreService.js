@@ -1,10 +1,10 @@
-import { CallAPI } from './axiosBase';
 import {
   ADD_STUDENT_SCORE_ENDPOINT,
   GET_STUDENT_SCORE_ENDPOINT,
   MODIFY_STUDENT_SCORE_ENDPOINT,
   PATH_MODIFY_STUDENT_SCORE
 } from '../constants/Endpoints/StudentEndpoint';
+import { CallAPI } from './axiosBase';
 
 export const getScore = (subjectGroupId, schoolYear) =>
   CallAPI(`${GET_STUDENT_SCORE_ENDPOINT}/${subjectGroupId}/get-score?school-year-id=${schoolYear}`, 'get');

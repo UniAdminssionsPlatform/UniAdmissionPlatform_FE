@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
+import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
 import NcImage from '../../NcImage/NcImage.component';
 import React from 'react';
 import SocialsShare from '../../SocialsShare/SocialsShare.component';
-import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
 const Card2 = (props) => {
   const { viewnews, className } = props;
   // console.log('viewnews: ', viewnews);

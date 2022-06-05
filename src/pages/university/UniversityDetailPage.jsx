@@ -1,9 +1,9 @@
 import React from 'react';
-import UniversityDetailContainer from '../../containers/university/UniversityDetail.container';
+import UniversityProfileContainer from '../../features/public/universityProfile/UniversityProfile.container';
 
 const UniversityDetailPage = () => (
   <>
-    <UniversityDetailContainer />
+    <UniversityProfileContainer />
   </>
 );
 

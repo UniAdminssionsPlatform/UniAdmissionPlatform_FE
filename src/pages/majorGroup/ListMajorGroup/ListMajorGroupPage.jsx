@@ -1,4 +1,4 @@
-import ListMajorContainer from '../../../containers/majorGroup/ListMajorGroup/ListMajorGroup.container';
+import ListMajorContainer from '../../../features/highschoolStudent/majorGroupManager/ListMajorGroup.container';
 import React from 'react';
 
 const ListMajorGroupPage = () => (

@@ -1,4 +1,4 @@
-import ChangePasswordContainer from '../../../components/authen/ChangePasswordComponent/ChangePasswordComponent';
+import ChangePasswordContainer from '../../../features/auth/changePassword/components/ChangePasswordComponent';
 import React from 'react';
 
 const ChangePasswordPage = () => (

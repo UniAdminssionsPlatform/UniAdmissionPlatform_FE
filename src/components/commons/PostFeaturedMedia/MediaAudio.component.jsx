@@ -1,4 +1,4 @@
-import ButtonPlayMusicRunningContainer from '../../../containers/commons/ButtonPlayMusicRunningContainer/ButtonPlayMusicRunningContainer.container';
+import ButtonPlayMusicRunningContainer from '../../../commons/ButtonPlayMusicRunningContainer/ButtonPlayMusicRunningContainer.container';
 import React from 'react';
 
 const MediaAudio = ({ post }) => (

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Avatar from '../Avatar/Avatar.component';
-import CommentCardLikeReplyContainer from '../../../containers/commons/CommentCardLikeReplyContainer/CommentCardLikeReplyContainer.container';
+import CommentCardLikeReplyContainer from '../../../commons/CommentCardLikeReplyContainer/CommentCardLikeReplyContainer.container';
 import ModalDeleteComment from '../CommentCard/ModalDeleteComment.component';
 import ModalEditComment from '../CommentCard/ModalEditComment.component';
 import ModalReportItem from '../ModalReportItem/ModalReportItem.component';

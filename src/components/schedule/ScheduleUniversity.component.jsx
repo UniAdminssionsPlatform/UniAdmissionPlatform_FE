@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
 import {
-  Appointments,
   AppointmentTooltip,
+  Appointments,
   DateNavigator,
   DayView,
   EditRecurrenceMenu,
@@ -12,15 +11,16 @@ import {
   ViewSwitcher,
   WeekView
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
-import SlotComponent from './component/Slot.component';
-import Paper from '@mui/material/Paper';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
-import AppointmentHeaderComponent from './component/AppointmentHeader.component';
-import AppointmentContentComponent from './component/AppointmentContent.component';
-import { useDispatch } from 'react-redux';
+import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
 import { setSelectedSlot } from '../../redux-flow/slot/selectedSlot-action';
+import { useDispatch } from 'react-redux';
+import AppointmentContentComponent from './component/AppointmentContent.component';
+import AppointmentHeaderComponent from './component/AppointmentHeader.component';
+import Paper from '@mui/material/Paper';
+import React, { useState } from 'react';
+import SlotComponent from './component/Slot.component';
 
 const ScheduleUniversityComponent = (props) => {
   const dispatch = useDispatch();
