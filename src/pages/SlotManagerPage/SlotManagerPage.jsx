@@ -1,6 +1,4 @@
-import SlotManagerContainer from '../../containers/SlotManager/SlotManager.container';
+import SlotContainer from '../../features/highSchoolManager/slot/Slot.container';
 
-const SlotManagerPage = () => {
-  return <SlotManagerContainer />;
-};
+const SlotManagerPage = () => <SlotContainer />;
 export default SlotManagerPage;

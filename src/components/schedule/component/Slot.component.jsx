@@ -1,6 +1,6 @@
-import React from 'react';
-import { Space, Tag, Typography } from 'antd';
 import { SLOT_IS_CLOSE, SLOT_IS_OPEN } from '../../../constants/AppConst';
+import { Space, Tag, Typography } from 'antd';
+import React from 'react';
 import moment from 'moment';
 
 const { Text, Title } = Typography;

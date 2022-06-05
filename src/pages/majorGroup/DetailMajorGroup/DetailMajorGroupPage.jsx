@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import DetailMajorGroupContainer from '../../../containers/majorGroup/DetailMajorGroup/DetailMajorGroup.container';
+import DetailMajorGroupContainer from '../../../features/highschoolStudent/majorGroupManager/DetailMajorGroup.container';
 import React from 'react';
 
 const DetailMajorGroupPage = () => {

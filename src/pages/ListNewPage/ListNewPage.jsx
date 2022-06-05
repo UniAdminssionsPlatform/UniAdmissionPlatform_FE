@@ -1,4 +1,4 @@
-import ListNewContainer from '../../containers/listNew/ListNew/ListNew.container';
+import ListNewContainer from '../../features/public/news/ListNew.container';
 import React from 'react';
 
 const ListNewPage = () => (

@@ -1,9 +1,9 @@
+import ProfileContainer from '../../features/auth/profile/Profile.container';
 import React from 'react';
-import ManageProfileContainer from '../../containers/profile/manageProfile.container';
 
 const ManageProfilePage = () => (
   <>
-    <ManageProfileContainer />
+    <ProfileContainer />
   </>
 );
 

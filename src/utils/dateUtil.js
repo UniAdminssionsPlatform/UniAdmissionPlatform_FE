@@ -1,4 +1,3 @@
-import moment from 'moment';
 import {
   ALLDAY_END,
   ALLDAY_START,
@@ -7,6 +6,7 @@ import {
   SLOT_02_END,
   SLOT_02_START
 } from '../constants/AppConst';
+import moment from 'moment';
 
 export const enumerateDaysBetweenDates = function (startDate, endDate) {
   const dates = [];

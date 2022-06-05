@@ -1,4 +1,4 @@
-import PolicyContainer from '../../containers/policy/Policy.container';
+import PolicyContainer from '../../features/public/policy/Policy.container';
 import React from 'react';
 
 const PolicyPage = () => (

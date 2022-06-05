@@ -1,24 +1,24 @@
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import {
-  Scheduler,
-  WeekView,
+  AppointmentTooltip,
   Appointments,
+  DateNavigator,
+  DayView,
+  EditRecurrenceMenu,
+  MonthView,
+  Scheduler,
+  TodayButton,
   Toolbar,
   ViewSwitcher,
-  EditRecurrenceMenu,
-  AppointmentTooltip,
-  DayView,
-  MonthView,
-  DateNavigator,
-  TodayButton
+  WeekView
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { useState } from 'react';
-import AppointmentHeaderComponent from './component/AppointmentHeader.component';
-import AppointmentContentComponent from './component/AppointmentContent.component';
-import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
+import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
+import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
+import { useState } from 'react';
+import AppointmentContentComponent from './component/AppointmentContent.component';
+import AppointmentHeaderComponent from './component/AppointmentHeader.component';
+import Paper from '@mui/material/Paper';
 import SlotComponent from './component/Slot.component';
 
 const ScheduleEventComponent = (props) => {

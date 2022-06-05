@@ -1,5 +1,5 @@
+import ListHighSchoolContainer from '../../features/universityManager/event/ListHighSchoolCanCreate.container';
 import React from 'react';
-import ListHighSchoolContainer from '../../containers/event/CreateEvent/ListHighSchoolCanCreate.container';
 
 const RegisEventPage = () => (
   <div className='p-4'>

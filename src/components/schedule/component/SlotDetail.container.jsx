@@ -1,7 +1,7 @@
-import React from 'react';
-import SlotDetailComponent from './SlotDetail.component';
 import { closeASlot } from '../../../services/AdminHighSchoolSlotsService';
 import { handleSlotNotification } from '../../../notification/CreateSlotNotification';
+import React from 'react';
+import SlotDetailComponent from './SlotDetail.component';
 const SlotDetailContainer = (props) => {
   const { slotSelected, setReloadTrigger } = props;
   const handleUpdateOpenSlot = (id) => {

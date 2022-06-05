@@ -1,11 +1,9 @@
+import ListStudentForHighschoolContainer from '../../../features/highSchoolManager/students/ListStudentForHighSchool.container';
 import React from 'react';
-import ListStudentForHighschoolContainer from '../../../containers/student/ListStudent/ListStudentForHighSchool.container';
 
-const ListStudentForHighschoolPage = () => {
-  return (
-    <>
-      <ListStudentForHighschoolContainer />
-    </>
-  );
-};
+const ListStudentForHighschoolPage = () => (
+  <>
+    <ListStudentForHighschoolContainer />
+  </>
+);
 export default ListStudentForHighschoolPage;

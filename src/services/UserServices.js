@@ -1,4 +1,3 @@
-import { CallAPI } from './axiosBase';
 import {
   CREATE_ACCOUNT_FOR_UNI_ENDPOINT,
   LOGIN_BY_FIREBASE_ENDPOINT,
@@ -7,6 +6,7 @@ import {
   REGISTER_FOR_STUDENT_ENDPOINT,
   REGISTER_FOR_UNIVERSITY_MANAGER_ENDPOINT
 } from '../constants/Endpoints/UsersEnpoint';
+import { CallAPI } from './axiosBase';
 
 export const loginByFirebase = (data) => CallAPI(LOGIN_BY_FIREBASE_ENDPOINT, 'post', data);
 export const registerByFirebase = (data) => CallAPI(REGISTER_BY_FIREBASE_ENDPOINT, 'post', data);

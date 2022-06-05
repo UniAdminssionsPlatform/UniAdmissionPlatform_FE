@@ -1,26 +1,26 @@
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import {
-  Scheduler,
-  WeekView,
+  AppointmentTooltip,
   Appointments,
-  Toolbar,
-  ViewSwitcher,
+  DateNavigator,
+  DayView,
   DragDropProvider,
   EditRecurrenceMenu,
-  AppointmentTooltip,
-  DayView,
   MonthView,
-  DateNavigator,
-  TodayButton
+  Scheduler,
+  TodayButton,
+  Toolbar,
+  ViewSwitcher,
+  WeekView
 } from '@devexpress/dx-react-scheduler-material-ui';
-import AppointmentHeaderComponent from './component/AppointmentHeader.component';
-import { Modal } from 'antd';
-import { useState } from 'react';
-import SlotComponent from './component/Slot.component';
-import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
+import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
+import { Modal } from 'antd';
+import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
+import { useState } from 'react';
+import AppointmentHeaderComponent from './component/AppointmentHeader.component';
+import Paper from '@mui/material/Paper';
+import SlotComponent from './component/Slot.component';
 import SlotDetail from './component/SlotDetail.container';
 
 const ScheduleHighSchoolComponent = (props) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterContainer from '../../../containers/authen/RegistrationContainer/Registration.Container';
+import RegisterContainer from '../../../features/auth/registration/Registration.container';
 
 const RegistrationPage = () => <RegisterContainer />;
 export default RegistrationPage;

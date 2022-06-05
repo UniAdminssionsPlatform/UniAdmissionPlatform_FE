@@ -1,8 +1,8 @@
-import React from 'react';
 import { Tabs } from 'antd';
-import CreateEventContainer from '../../containers/event/CreateEvent/CreateEvent.container';
-import ListEventForRegisterUniversityContainer from '../../containers/event/ListEvent/ListEventForRegisterUniversity.container';
+import CreateEventContainer from '../../features/universityManager/event/CreateEvent.container';
 import LayoutPageWithout from '../../components/commons/LayoutPage/LayoutPageWithout.component';
+import ListEventForRegisterUniversityContainer from '../../features/universityManager/event/ListEventForRegisterUniversity.container';
+import React from 'react';
 
 const CreateEventPage = () => {
   const { TabPane } = Tabs;

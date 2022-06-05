@@ -1,5 +1,5 @@
+import ListEventForHighSchoolContainer from '../../../features/universityManager/event/listEventForHighSchool.container';
 import React from 'react';
-import ListEventForHighSchoolContainer from '../../../containers/event/ListEvent/listEventForHighSchool.container';
 
 const ListEventForHighSchoolPage = () => (
   <>

@@ -1,6 +1,6 @@
-import React from 'react';
 import { Button, Descriptions, Tag } from 'antd';
 import { SLOT_IS_CLOSE, SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../constants/AppConst';
+import React from 'react';
 import moment from 'moment';
 
 const SlotDetailComponent = (props) => {

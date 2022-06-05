@@ -1,7 +1,7 @@
 import { CallAPI } from './axiosBase';
 import {
-  GET_LIST_MAJOR_GROUP_ENDPOINT,
-  GET_DETAIL_MAJOR_GROUP_ENDPOINT
+  GET_DETAIL_MAJOR_GROUP_ENDPOINT,
+  GET_LIST_MAJOR_GROUP_ENDPOINT
 } from '../constants/Endpoints/MajorGroupEndPoint';
 
 export const getAllMajorGroup = (data) => CallAPI(`${GET_LIST_MAJOR_GROUP_ENDPOINT}?limit=12`, 'get', data);

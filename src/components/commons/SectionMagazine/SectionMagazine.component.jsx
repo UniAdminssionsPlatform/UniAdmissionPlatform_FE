@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 const SectionMagazine = (props) => {
   const MAGAZINE1_TABS = ['Tất cả', 'Trường học ưu thích', 'Trường gợi ý', 'trường top'];
-  const { viewnews, viewlistnews } = props;
+  const { viewNews, viewListNewState } = props;
   const [tabActive, setTabActive] = useState(MAGAZINE1_TABS[0]);
   const handleClickTab = (item) => {
     if (item === tabActive) return;
@@ -22,10 +22,10 @@ const SectionMagazine = (props) => {
         onClickTab={handleClickTab}
       />
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8'>
-        <Card2 size='large' viewnews={viewnews} />
+        <Card2 size='large' viewnews={viewNews} />
         <div className='grid gap-6 md:gap-8'>
-          {viewlistnews?.map((item) => (
-            <Card6 key={viewlistnews.id} viewlistnews={item} />
+          {viewListNewState?.map((item) => (
+            <Card6 key={viewListNewState.id} viewlistnews={item} />
           ))}
         </div>
       </div>

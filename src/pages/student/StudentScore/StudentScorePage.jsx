@@ -1,11 +1,9 @@
 import React from 'react';
-import StudentScoreContainer from '../../../containers/student/StudentScore/StudentScore.container';
+import StudentScoreContainer from '../../../features/highschoolStudent/score/StudentScore.container';
 
-const StudentScorePage = () => {
-  return (
-    <>
-      <StudentScoreContainer />
-    </>
-  );
-};
+const StudentScorePage = () => (
+  <>
+    <StudentScoreContainer />
+  </>
+);
 export default StudentScorePage;

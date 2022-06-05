@@ -1,13 +1,13 @@
-import React from 'react';
-import NewsDetailContainer from '../../containers/newsDetail/newsDetail.container';
 import { useLocation } from 'react-router-dom';
+import DetailNewContainer from '../../features/public/news/DetailNew.container';
+import React from 'react';
 
 const NewsDetailPage = () => {
   const location = useLocation();
   const { newsId } = location.state;
   return (
     <>
-      <NewsDetailContainer newsId={newsId} />
+      <DetailNewContainer newsId={newsId} />
     </>
   );
 };

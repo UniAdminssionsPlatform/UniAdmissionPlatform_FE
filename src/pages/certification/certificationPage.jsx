@@ -1,5 +1,5 @@
+import CertificationContainer from '../../features/highschoolStudent/certificationManager/certification.container';
 import React from 'react';
-import CertificationContainer from '../../containers/certification/certification.container';
 
 const CertificationPage = () => (
   <>
