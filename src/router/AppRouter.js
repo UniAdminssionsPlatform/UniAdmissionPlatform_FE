@@ -13,6 +13,7 @@ import CreateEventPage from '../pages/universityManager/CreateEventPage';
 import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import EventRegistrationPage from '../pages/universityManager/EventRegistrationPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
@@ -28,7 +29,6 @@ import NewsDetailPage from '../pages/public/NewsDetailPage';
 import NewsPage from '../pages/public/NewsPage';
 import PolicyPage from '../pages/public/PolicyPage';
 import React from 'react';
-import RegisEventPage from '../pages/universityManager/RegisEventPage';
 import RegistrationPage from '../pages/auth/RegistrationPage';
 import SchedulePage from '../pages/universityManager/SchedulePage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
@@ -99,7 +99,7 @@ const AppRouter = () => (
         exact
       />
       <UniversityManagerRouter
-        component={() => <RegisEventPage />}
+        component={() => <EventRegistrationPage />}
         path={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
         key={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
         exact

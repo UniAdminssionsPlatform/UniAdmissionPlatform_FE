@@ -1,12 +1,12 @@
 import { Button, Space } from 'antd';
-import { setSelectedHighSchool } from '../../../../redux-flow/selectedHighSchool/selectedHighSchool-action';
+import { setSelectedHighSchool } from '../../../../../../redux-flow/selectedHighSchool/selectedHighSchool-action';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import HighSchoolSmallInformationComponent from './HighSchoolSmallInfomation.component';
-import HighSchoolTableComponent from './HighSchoolTable.component';
-import ScheduleUniversityContainer from '../../event/ScheduleUniversity.container';
+import HighSchoolSmallInformationComponent from '../../../../highSchool/components/HighSchoolSmallInfomation.component';
+import HighSchoolTableComponent from '../../../../highSchool/components/HighSchoolTable.component';
+import ScheduleUniversityContainer from '../../../ScheduleUniversity.container';
 import SearchBarComponent from './searchBar/components/SearchBar.component';
-const ListHighSchool = (props) => {
+const HighSchoolComponent = (props) => {
   const dispatch = useDispatch();
   const { listHighSchool, isClicked, setIsClicked, setDataSearch, provinces, onChange, districts, isDisableDistrict } =
     props;
@@ -49,4 +49,4 @@ const ListHighSchool = (props) => {
   );
 };
 
-export default ListHighSchool;
+export default HighSchoolComponent;

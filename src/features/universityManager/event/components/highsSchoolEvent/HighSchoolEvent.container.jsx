@@ -1,17 +1,17 @@
-import { getListDistrictByProvince } from '../../../services/DistrictService';
-import { getListHighSchool } from '../../../services/HighSchoolService';
-import { getListProvinces } from '../../../services/ProvinceService';
-import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
+import { getListDistrictByProvince } from '../../../../../services/DistrictService';
+import { getListHighSchool } from '../../../../../services/HighSchoolService';
+import { getListProvinces } from '../../../../../services/ProvinceService';
+import { handleFailNotification, handleSuccessNotification } from '../../../../../notification/CreateEventNotification';
 import { useSelector } from 'react-redux';
-import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
-import ListHighSchool from '../highSchool/components/ListHighSchool.component';
+import HighSchoolComponent from './components/HighSchoolEvent.component';
+import LayoutPageWithout from '../../../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import React, { useEffect, useState } from 'react';
 
-const ListHighSchoolContainer = () => {
-  const [listHighSchool, setlistHighSchool] = useState();
+const HighSchoolEventContainer = () => {
+  const [listHighSchool, setListHighSchool] = useState();
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
-  const [dataSearch, setDataSeacrch] = useState({
+  const [dataSearch, setDataSearch] = useState({
     name: '',
     address: '',
     email: '',
@@ -38,8 +38,7 @@ const ListHighSchoolContainer = () => {
   const getListHSchool = (data) => {
     getListHighSchool(data)
       .then((res) => {
-        console.log('list: ', res.data.data.list);
-        setlistHighSchool(res.data.data.list);
+        setListHighSchool(res.data.data.list);
         handleSuccessNotification('Danh sách các trường cấp 3');
       })
       .catch((err) => {
@@ -60,18 +59,17 @@ const ListHighSchoolContainer = () => {
   return (
     <>
       <LayoutPageWithout subHeading='Chọn một trường để đăng ký sự kiện'>
-        <ListHighSchool
+        <HighSchoolComponent
           provinces={provinces}
           districts={districts}
           listHighSchool={listHighSchool}
           onChange={onChangeProvince}
           isClicked={isClicked}
           setIsClicked={setIsClicked}
-          setDataSearch={setDataSeacrch}
+          setDataSearch={setDataSearch}
         />
       </LayoutPageWithout>
     </>
   );
 };
-
-export default ListHighSchoolContainer;
+export default HighSchoolEventContainer;
