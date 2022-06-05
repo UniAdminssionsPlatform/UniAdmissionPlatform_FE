@@ -1,7 +1,6 @@
 import { Collapse, Divider, Input, Select, Typography } from 'antd';
 import { useDebouncedCallback } from 'use-debounce';
 import React, { useState } from 'react';
-
 const SearchBarComponent = (props) => {
   const { Option } = Select;
   const { Title, Text } = Typography;
@@ -23,21 +22,14 @@ const SearchBarComponent = (props) => {
       district
     });
   }, 1000);
-
-  function onSearch(val) {
-    console.log('search:', val);
-  }
-
   function onChangeDistrict(value) {
     setDistrict(value);
     debounced();
   }
-
   function onChangeStatus(value) {
     setStatus(value);
     debounced();
   }
-
   return (
     <>
       <Title level={2}>Tìm kiếm</Title>
@@ -87,7 +79,6 @@ const SearchBarComponent = (props) => {
             placeholder='Tỉnh/Thành phố'
             optionFilterProp='children'
             onChange={onChange}
-            onSearch={onSearch}
             filterOption={(input, option) => option.children.indexOf(input) >= 0}
             style={{ width: '200px' }}>
             {provinces?.map((item) => (
@@ -102,7 +93,6 @@ const SearchBarComponent = (props) => {
             placeholder='Quận/Huyện'
             optionFilterProp='children'
             onChange={onChangeDistrict}
-            onSearch={onSearch}
             filterOption={(input, option) => option.children.indexOf(input) >= 0}
             style={{ width: '200px' }}>
             {districts?.map((item) => (

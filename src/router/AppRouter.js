@@ -13,9 +13,9 @@ import CreateEventPage from '../pages/universityManager/CreateEventPage';
 import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
-import EventRegistrationPage from '../pages/universityManager/EventRegistrationPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
+import HighSchoolBookingPage from '../pages/universityManager/HighSchoolBookingPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
@@ -32,6 +32,7 @@ import React from 'react';
 import RegistrationPage from '../pages/auth/RegistrationPage';
 import SchedulePage from '../pages/universityManager/SchedulePage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
+import SelectHighSchoolPage from '../pages/universityManager/SelectHighSchoolPage';
 import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
@@ -99,7 +100,7 @@ const AppRouter = () => (
         exact
       />
       <UniversityManagerRouter
-        component={() => <EventRegistrationPage />}
+        component={() => <SelectHighSchoolPage />}
         path={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
         key={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
         exact
@@ -108,6 +109,12 @@ const AppRouter = () => (
         component={() => <UniversityDetailPage />}
         path={PATH_UNIVERSITY_MANAGER.PROFILE}
         key={PATH_UNIVERSITY_MANAGER.PROFILE}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <HighSchoolBookingPage />}
+        path={PATH_UNIVERSITY_MANAGER.BOOKING_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.BOOKING_EVENT}
         exact
       />
       <HighSchoolStudentRouter
