@@ -1,4 +1,4 @@
-import LoginContainer from '../../../features/auth/login/Login.container';
+import LoginContainer from '../../features/auth/login/Login.container';
 import React from 'react';
 
 const LoginPage = () => (

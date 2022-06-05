@@ -1,10 +1,10 @@
 import { Button, Select, Skeleton, Space, Tag, Typography } from 'antd';
-import { PATH_UNIVERSITY_MANAGER } from '../../../../constants/Paths/Path';
-import { UNIVERSITY_MANAGER } from '../../../../constants/RoleType';
+import { PATH_UNIVERSITY_MANAGER } from '../../../../../../constants/Paths/Path';
+import { UNIVERSITY_MANAGER } from '../../../../../../constants/RoleType';
 import { useHistory } from 'react-router-dom';
-import LayoutPageWithout from '../../../../components/commons/LayoutPage/LayoutPageWithout.component';
+import LayoutPageWithout from '../../../../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import React, { useState } from 'react';
-import ScheduleEventComponent from '../../../../components/schedule/ScheduleEvent.component';
+import ScheduleEventComponent from '../../../../../../components/schedule/ScheduleEvent.component';
 
 const CalendarComponent = (props) => {
   const { listSlot, handleChangeSelection, isLoading } = props;

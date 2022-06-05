@@ -1,5 +1,5 @@
 import React from 'react';
-import ResetPasswordContainer from '../../../features/auth/resetPassword/ResetPassword.container';
+import ResetPasswordContainer from '../../features/auth/resetPassword/ResetPassword.container';
 
 const ForgetPasswordPage = () => (
   <>
