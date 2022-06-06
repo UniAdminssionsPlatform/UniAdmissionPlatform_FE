@@ -22,6 +22,7 @@ import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHig
 import ListEventPage from '../pages/event/ListEvent/ListeventPage';
 import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
 import ListNewContainer from '../features/public/news/ListNew.container';
+import ListStudentForHighschoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
 import LoginPage from '../pages/authen/LoginPage/Login.page';
 import ManageProfilePage from '../pages/profile/manageProfilePage';
 import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
@@ -87,6 +88,12 @@ const AppRouter = () => (
         component={() => <ListEventForHighSchoolPage />}
         path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
         key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <ListStudentForHighschoolPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
+        key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
         exact
       />
       <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>

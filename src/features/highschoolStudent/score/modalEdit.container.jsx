@@ -12,7 +12,7 @@ const ModalEditContainer = (props) => {
   const [subjectGroup, setSubjectGroup] = useState();
   const [schoolYear, setSchoolYear] = useState();
   const [selectedSubjectGroup, setSelectedSubjectGroup] = useState(1);
-  const [selectedSchoolYear, setSelectedSchoolYear] = useState(1);
+  const [selectedSchoolYear, setSelectedSchoolYear] = useState(6);
 
   const [loading, setLoading] = useState(true);
 
