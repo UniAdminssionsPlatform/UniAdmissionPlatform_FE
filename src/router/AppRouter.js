@@ -30,7 +30,6 @@ import NewsPage from '../pages/public/NewsPage';
 import PolicyPage from '../pages/public/PolicyPage';
 import React from 'react';
 import RegistrationPage from '../pages/auth/RegistrationPage';
-import SchedulePage from '../pages/universityManager/SchedulePage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import SelectHighSchoolPage from '../pages/universityManager/SelectHighSchoolPage';
 import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
@@ -71,9 +70,6 @@ const AppRouter = () => (
       </Route>
       <Route path={PATH_UNIVERSITY_MANAGER.PROFILE} exact>
         <UniversityDetailPage />
-      </Route>
-      <Route path={PATH.SCHEDULE_EVENT} exact>
-        <SchedulePage />
       </Route>
       <Route path={PATH.DETAIL_EVENT} exact>
         <DetailEventPage />
