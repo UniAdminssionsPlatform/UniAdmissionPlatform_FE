@@ -1,5 +1,4 @@
-import { Button, Empty, Skeleton, Table, Tag, Tooltip } from 'antd';
-import { LockOutlined, UnlockOutlined } from '@ant-design/icons';
+import { Skeleton, Table, Tag, Tooltip, Switch } from 'antd';
 import DetailStudentContainer from './DetailStudent.container';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React, { useState } from 'react';
@@ -56,30 +55,17 @@ const TableStudentComponent = (props) => {
       )
     },
     {
-      title: 'Action',
-      key: 'action',
+      title: 'Thao tác',
       render: (_, record) => (
         <>
-          {record.status === 2 && (
-            <Tooltip title='Khóa'>
-              <Button
-                onClick={() => {
-                  confirm(record);
-                }}
-                icon={<LockOutlined style={{ color: 'red' }} />}
-              />
-            </Tooltip>
-          )}
-          {record.status === 3 && (
-            <Tooltip title='Mở Khóa'>
-              <Button
-                onClick={() => {
-                  confirm(record);
-                }}
-                icon={<UnlockOutlined style={{ color: 'green' }} />}
-              />
-            </Tooltip>
-          )}
+          <Tooltip title={record.status === 2 ? 'Khóa' : 'Mở khóa'}>
+            <Switch
+              defaultChecked={record.status === 2 ? true : false}
+              onChange={() => {
+                confirm(record);
+              }}
+            />
+          </Tooltip>
         </>
       )
     }

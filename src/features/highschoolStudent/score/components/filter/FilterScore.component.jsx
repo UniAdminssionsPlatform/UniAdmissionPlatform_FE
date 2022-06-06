@@ -1,7 +1,7 @@
 import { Select } from 'antd';
 import React from 'react';
 const FilterScoreComponent = (props) => {
-  const { subjectGroup, onChangeSubjectGroup, schoolYear, onChangeSchoolyear } = props;
+  const { subjectGroup, onChangeSubjectGroup, schoolYear, onChangeSchoolYear } = props;
   const { Option } = Select;
   return (
     <>
@@ -31,14 +31,11 @@ const FilterScoreComponent = (props) => {
           Năm học
           <Select
             defaultValue={6}
-            onChange={onChangeSchoolyear}
             style={{
               width: 120,
               marginLeft: 10
             }}
-            placeholder='Năm học'
-            optionFilterProp='children'
-            filterOption={(input, option) => option.children.includes(input)}>
+            onChange={onChangeSchoolYear}>
             {schoolYear?.map((item) => (
               <Option value={item.id}>{item.year}</Option>
             ))}

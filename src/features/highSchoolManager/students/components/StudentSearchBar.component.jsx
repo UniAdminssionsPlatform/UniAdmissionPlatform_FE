@@ -6,7 +6,7 @@ const SearchBarComponent = (props) => {
   const { Option } = Select;
   const { Title } = Typography;
 
-  const { setDataSearch } = props;
+  const { setDataSearch, setLoading } = props;
 
   const { user } = useSelector((state) => state.authentication);
   const [firstName, setFirstName] = useState('');
@@ -17,6 +17,7 @@ const SearchBarComponent = (props) => {
   const debounced = useDebouncedCallback(
     // function
     () => {
+      setLoading(true);
       setDataSearch({
         firstName,
         email,
