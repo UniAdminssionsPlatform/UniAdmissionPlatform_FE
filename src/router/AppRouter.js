@@ -34,6 +34,7 @@ import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage'
 import SchedulePage from '../pages/SchedulePage/SchedulePage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
+import StudentProfilePage from '../pages/student/StudentProfile/StudentProfilePage';
 import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
@@ -121,6 +122,12 @@ const AppRouter = () => (
         component={() => <ListEventPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
         key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <StudentProfilePage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.PROFILE}
+        key={PATH_HIGH_SCHOOL_STUDENT.PROFILE}
         exact
       />
       <HighSchoolManagerRouter
