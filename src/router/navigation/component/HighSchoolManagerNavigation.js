@@ -35,8 +35,18 @@ const eventMenu = [
 const profile = [
   {
     id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE,
+    name: 'Hồ sơ trường cấp 3'
+  },
+  {
+    id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.PROFILE,
-    name: 'Hồ sơ trường'
+    name: 'Hồ sơ trường đại học'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE,
+    name: 'Chỉnh sửa hồ sơ'
   }
 ];
 export const HighSchoolManagerNavigation = [

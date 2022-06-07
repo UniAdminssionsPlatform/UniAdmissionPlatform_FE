@@ -36,6 +36,11 @@ const profile = [
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_STUDENT.SCORE,
     name: 'Điểm'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.HIGHSCHOOL_PROFILE,
+    name: 'Hồ sơ trường cấp 3'
   }
 ];
 export const HighSchoolStudentNavigation = [

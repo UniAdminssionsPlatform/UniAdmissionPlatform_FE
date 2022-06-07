@@ -36,6 +36,8 @@ import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
 import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
 import UniversityDetailPage from '../pages/university/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
+import HighSchoolProfilePage from '../pages/HighschoolProfilePage/HighschoolProfilePage';
+import UpdateHighSchoolPage from '../pages/HighschoolProfilePage/UpdateHighschoolProfilePage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -122,6 +124,18 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
         exact
       />
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <UpdateHighSchoolPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
+        exact
+      />
       <HighSchoolStudentRouter
         component={() => <NewsPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.NEWS}
@@ -150,6 +164,12 @@ const AppRouter = () => (
         component={() => <StudentScorePage />}
         path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.HIGHSCHOOL_PROFILE}
+        key={PATH_HIGH_SCHOOL_STUDENT.HIGHSCHOOL_PROFILE}
         exact
       />
       <UniversityManagerRouter
