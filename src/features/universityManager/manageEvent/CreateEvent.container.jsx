@@ -2,25 +2,19 @@ import { createEvent } from '../../../services/CreateEvent';
 import { getListDistrictByProvince } from '../../../services/DistrictService';
 import { getListProvinces } from '../../../services/ProvinceService';
 import { handleFailNotification, handleSuccessNotification } from '../../../notification/CreateEventNotification';
-import CreateEventComponent from './components/CreateEvent/CreateEvent.component';
+import CreateEventComponent from './components/CreateEvent.component';
 import React, { useEffect, useState } from 'react';
 
 const CreateEventContainer = (props) => {
   const { event } = props;
-
   const [listProvinces, setListProvinces] = useState();
   const [listDistricts, setListDistricts] = useState();
-
   const [province, setProvince] = useState();
   const [district, setDistrict] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-
-  const [isDisableProvince, setIsDisableProvince] = useState(true);
-  const [isDisableDistrict, setIsDisableDistrict] = useState(true);
-  const [isDisableAddress, setIsDisableAddress] = useState(true);
-  const [isDisableMeetURL, setIsDisableMeetURL] = useState(true);
-
+  const [describe, setDescribe] = useState('');
+  const [shortDescribe, setShortDescribe] = useState('');
   const geAllProvince = () => {
     getListProvinces()
       .then((result) => {
@@ -51,25 +45,10 @@ const CreateEventContainer = (props) => {
     setDistrict(value);
   };
 
-  const onChangeType = (value) => {
-    console.log(value);
-    if (value === 1) {
-      setIsDisableAddress(true);
-      setIsDisableProvince(true);
-      setIsDisableDistrict(true);
-      setIsDisableMeetURL(false);
-    } else {
-      setIsDisableAddress(false);
-      setIsDisableProvince(false);
-      setIsDisableDistrict(false);
-      setIsDisableMeetURL(true);
-    }
-  };
-
   const onChangeStartDate = (date, dateString) => {
     setStartDate(dateString);
   };
-  const onChangeEndtDate = (date, dateString) => {
+  const onChangeEndDate = (date, dateString) => {
     setEndDate(dateString);
   };
 
@@ -93,24 +72,19 @@ const CreateEventContainer = (props) => {
   return (
     <>
       <CreateEventComponent
-        onChangeType={onChangeType}
         onChangeStartDate={onChangeStartDate}
-        onChangeEndtDate={onChangeEndtDate}
+        onChangeEndDate={onChangeEndDate}
         onChangeProvince={onChangeProvince}
         onChangeDistrict={onChangeDistrict}
         onSearch={onSearch}
-        isDisableProvince={isDisableProvince}
-        isDisableDistrict={isDisableDistrict}
-        isDisableAddress={isDisableAddress}
-        isDisableMeetURL={isDisableMeetURL}
         listProvinces={listProvinces}
         listDistricts={listDistricts}
         onFinish={onFinish}
         event={event}
-        setIsDisableProvince={setIsDisableProvince}
-        setIsDisableDistrict={setIsDisableDistrict}
-        setIsDisableAddress={setIsDisableAddress}
-        setIsDisableMeetURL={setIsDisableMeetURL}
+        describe={describe}
+        setDescribe={setDescribe}
+        shortDescribe={shortDescribe}
+        setShortDescribe={setShortDescribe}
       />
     </>
   );

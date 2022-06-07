@@ -1,5 +1,5 @@
 import { Tabs } from 'antd';
-import CreateEventContainer from '../../features/universityManager/event/CreateEvent.container';
+import CreateEventContainer from '../../features/universityManager/manageEvent/CreateEvent.container';
 import LayoutPageWithout from '../../components/commons/LayoutPage/LayoutPageWithout.component';
 import ListEventForRegisterUniversityContainer from '../../features/universityManager/event/ListEventForRegisterUniversity.container';
 import React from 'react';
