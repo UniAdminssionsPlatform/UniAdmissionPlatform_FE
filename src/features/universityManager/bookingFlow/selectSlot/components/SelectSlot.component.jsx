@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   AppointmentTooltip,
   Appointments,
@@ -12,19 +11,17 @@ import {
   ViewSwitcher,
   WeekView
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
+import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../../../../constants/Color';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
-import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
-import { useState } from 'react';
-import AppointmentContentComponent from './component/AppointmentContent.component';
-import AppointmentHeaderComponent from './component/AppointmentHeader.component';
+import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../../../constants/AppConst';
+import AppointmentContentComponent from '../../../../../components/schedule/component/AppointmentContent.component';
+import AppointmentHeaderComponent from '../../../../../components/schedule/component/AppointmentHeader.component';
 import Paper from '@mui/material/Paper';
-import SlotComponent from './component/Slot.component';
+import React from 'react';
+import SlotComponent from '../../../../../components/schedule/component/Slot.component';
 
-const ScheduleEventComponent = (props) => {
-  //for schedule event
-  //View only
-  const { listSlot } = props;
+const SelectSlotComponent = (props) => {
+  const { listSlot, setCurrentSlotSelected } = props;
   const AppointmentComponent = ({ children, style, data, ...restProps }) => (
     <Appointments.Appointment
       {...restProps}
@@ -39,7 +36,9 @@ const ScheduleEventComponent = (props) => {
         borderRadius: '8px'
       }}
       data={data}
-      onClick={() => {}}>
+      onClick={() => {
+        setCurrentSlotSelected(data);
+      }}>
       <SlotComponent data={data} />
       {children}
     </Appointments.Appointment>
@@ -51,8 +50,8 @@ const ScheduleEventComponent = (props) => {
           <ViewState />
           <EditingState />
           <EditRecurrenceMenu />
-          <WeekView startDayHour={7} endDayHour={20} />
           <MonthView startDayHour={7} endDayHour={20} />
+          <WeekView startDayHour={7} endDayHour={20} />
           <DayView startDayHour={7} endDayHour={20} />
           <Toolbar />
           <ViewSwitcher />
@@ -68,4 +67,4 @@ const ScheduleEventComponent = (props) => {
     </>
   );
 };
-export default ScheduleEventComponent;
+export default SelectSlotComponent;

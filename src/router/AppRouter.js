@@ -5,36 +5,36 @@ import {
   PATH_UNIVERSITY_MANAGER
 } from '../constants/Paths/Path';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
-import CalendarPage from '../pages/Calendar/CalendarPage';
-import CertificationPage from '../pages/certification/certificationPage';
-import ChangePasswordPage from '../pages/authen/ChangePasswordPage/ChangePasswordPage';
-import CreateEventPage from '../pages/event/CreateEventPage';
-import DetailEventPage from '../pages/event/DetailEvent/DetailEventPage';
-import DetailMajorGroupPage from '../pages/majorGroup/DetailMajorGroup/DetailMajorGroupPage';
+import AboutUsPage from '../pages/public/AboutUsPage';
+import CalendarPage from '../pages/universityManager/CalendarPage';
+import CertificationPage from '../pages/highSchoolStudent/CertificationPage';
+import ChangePasswordPage from '../pages/auth/ChangePasswordPage';
+import CreateEventPage from '../pages/universityManager/CreateEventPage';
+import DetailEventPage from '../pages/universityManager/DetailEventPage';
+import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
-import ForgotPasswordPage from '../pages/authen/ForgotPasswordPage/ForgotPasswordPage';
+import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
+import HighSchoolBookingPage from '../pages/universityManager/HighSchoolBookingPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
-import HomePage from '../pages/HomePage/HomePage';
-import ListEventForHighSchoolPage from '../pages/event/ListEvent/ListEventForHighschoolPage';
-import ListEventPage from '../pages/event/ListEvent/ListeventPage';
-import ListMajorGroupPage from '../pages/majorGroup/ListMajorGroup/ListMajorGroupPage';
+import HomePage from '../pages/public/HomePage';
+import ListEventForHighSchoolPage from '../pages/universityManager/ListEventForHighschoolPage';
+import ListEventPage from '../pages/universityManager/ListeventPage';
+import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
 import ListNewContainer from '../features/public/news/ListNew.container';
-import LoginPage from '../pages/authen/LoginPage/Login.page';
-import ManageProfilePage from '../pages/profile/manageProfilePage';
-import NewsDetailPage from '../pages/newsDetail/newsDetailPage';
-import NewsPage from '../pages/news/newsPage';
-import PolicyPage from '../pages/policy/PolicyPage';
+import LoginPage from '../pages/auth/Login.page';
+import ManageProfilePage from '../pages/auth/manageProfilePage';
+import NewsDetailPage from '../pages/public/NewsDetailPage';
+import NewsPage from '../pages/public/NewsPage';
+import PolicyPage from '../pages/public/PolicyPage';
 import React from 'react';
-import RegisEventPage from '../pages/event/RegisEventPage';
-import RegistrationPage from '../pages/authen/RegistrationPage/RegistrationPage';
-import SchedulePage from '../pages/SchedulePage/SchedulePage';
+import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
-import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
-import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
-import UniversityDetailPage from '../pages/university/UniversityDetailPage';
+import SelectHighSchoolPage from '../pages/universityManager/SelectHighSchoolPage';
+import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
+import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage';
+import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import HighSchoolProfilePage from '../pages/HighschoolProfilePage/HighschoolProfilePage';
 import UpdateHighSchoolPage from '../pages/HighschoolProfilePage/UpdateHighschoolProfilePage';
@@ -73,9 +73,6 @@ const AppRouter = () => (
       <Route path={PATH_UNIVERSITY_MANAGER.PROFILE} exact>
         <UniversityDetailPage />
       </Route>
-      <Route path={PATH.SCHEDULE_EVENT} exact>
-        <SchedulePage />
-      </Route>
       <Route path={PATH.DETAIL_EVENT} exact>
         <DetailEventPage />
       </Route>
@@ -101,7 +98,7 @@ const AppRouter = () => (
         exact
       />
       <UniversityManagerRouter
-        component={() => <RegisEventPage />}
+        component={() => <SelectHighSchoolPage />}
         path={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
         key={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
         exact
@@ -110,6 +107,12 @@ const AppRouter = () => (
         component={() => <UniversityDetailPage />}
         path={PATH_UNIVERSITY_MANAGER.PROFILE}
         key={PATH_UNIVERSITY_MANAGER.PROFILE}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <HighSchoolBookingPage />}
+        path={PATH_UNIVERSITY_MANAGER.BOOKING_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.BOOKING_EVENT}
         exact
       />
       <HighSchoolStudentRouter

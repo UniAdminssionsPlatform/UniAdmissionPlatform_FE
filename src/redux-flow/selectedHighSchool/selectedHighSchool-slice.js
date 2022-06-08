@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {SCHOOL_KEY, USER_STORAGE} from "../../constants/AppConst";
 
 const selectedHighSchoolSlice = createSlice({
   name: 'selectedHighSchool',
   initialState: {
     data: [],
-    highSchool: {},
+    highSchool: JSON.parse(localStorage.getItem(SCHOOL_KEY)) || {},
     isSelected: false
   },
   reducers: {
@@ -12,7 +13,7 @@ const selectedHighSchoolSlice = createSlice({
       return { ...state, isSelected: true, highSchool: action.payload };
     },
     cancel: (state) => {
-      return { ...state, isSelected: false, user: {} };
+      return { ...state, isSelected: false, highSchool: {} };
     }
   }
 });
