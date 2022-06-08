@@ -23,7 +23,7 @@ import ListEventForHighSchoolPage from '../pages/universityManager/ListEventForH
 import ListEventPage from '../pages/universityManager/ListeventPage';
 import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
 import ListNewContainer from '../features/public/news/ListNew.container';
-import ListStudentForHighschoolPage from '../pages/student/ListStudent/ListStudentForHighschoolPage';
+import ListStudentForHighschoolPage from '../pages/highSchoolManager/ListStudentForHighschoolPage';
 import LoginPage from '../pages/auth/Login.page';
 import ManageProfilePage from '../pages/auth/manageProfilePage';
 import NewsDetailPage from '../pages/public/NewsDetailPage';
@@ -34,7 +34,8 @@ import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import SelectHighSchoolPage from '../pages/universityManager/SelectHighSchoolPage';
 import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
-import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
+import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
+import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 const AppRouter = () => (
