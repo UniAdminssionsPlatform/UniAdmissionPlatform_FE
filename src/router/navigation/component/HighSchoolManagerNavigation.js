@@ -35,7 +35,7 @@ const eventMenu = [
 const profile = [
   {
     id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.PROFILE,
+    href: PATH_HIGH_SCHOOL_MANAGER.PROFILE,
     name: 'Hồ sơ trường'
   }
 ];

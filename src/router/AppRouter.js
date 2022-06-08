@@ -38,6 +38,7 @@ import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
+import HighSchoolProfilePage from '../pages/public/HighSchoolProfilePage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -89,6 +90,12 @@ const AppRouter = () => (
         exact
       />
       <HighSchoolManagerRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
+        exact
+      />
+      <HighSchoolManagerRouter
         component={() => <ListStudentForHighschoolPage />}
         path={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
         key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
@@ -131,6 +138,12 @@ const AppRouter = () => (
         component={() => <StudentProfilePage />}
         path={PATH_HIGH_SCHOOL_STUDENT.PROFILE}
         key={PATH_HIGH_SCHOOL_STUDENT.PROFILE}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
+        key={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
         exact
       />
       <HighSchoolManagerRouter

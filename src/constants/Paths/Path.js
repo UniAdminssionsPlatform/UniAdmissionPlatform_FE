@@ -17,7 +17,8 @@ export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/',
   SLOT_MANAGER: '/high-school/slot-manage',
   LIST_EVENT: '/high-school/events',
-  LIST_STUDENT: '/high-school/students'
+  LIST_STUDENT: '/high-school/students',
+  PROFILE: '/high-school/profile'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
@@ -37,5 +38,6 @@ export const PATH_HIGH_SCHOOL_STUDENT = {
   NEWS_DETAIL: '/student/news-detail',
   UPDATE_PROFILE: '/student/update-profile',
   CERTIFICATION: '/student/certification',
-  SCORE: '/student/score'
+  SCORE: '/student/score',
+  HIGH_SCHOOL_PROFILE: '/student/high-school'
 };
