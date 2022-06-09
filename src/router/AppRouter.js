@@ -17,6 +17,7 @@ import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolBookingPage from '../pages/universityManager/manageEvent/HighSchoolBookingPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
+import HighSchoolProfilePage from '../pages/public/HighSchoolProfilePage';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
 import ListEventForHighSchoolPage from '../pages/universityManager/ListEventForHighschoolPage';
@@ -190,6 +191,19 @@ const AppRouter = () => (
         key={PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT}
         exact
       />
+      <HighSchoolStudentRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
+        key={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
+        exact
+      />
+
       <Route path={PATH.ABOUT_US} exact>
         <AboutUsPage />
       </Route>
