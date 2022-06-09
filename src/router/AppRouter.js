@@ -41,6 +41,8 @@ import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
+import UpdateHighSchoolPage from '../pages/HighschoolProfilePage/UpdateHighschoolProfilePage';
+import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -203,7 +205,30 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
         exact
       />
-
+      <HighSchoolStudentRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
+        key={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <UpdateUniversityProfilePage />}
+        path={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
+        key={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <UpdateHighSchoolPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
+        exact
+      />
       <Route path={PATH.ABOUT_US} exact>
         <AboutUsPage />
       </Route>

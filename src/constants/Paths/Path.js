@@ -19,7 +19,9 @@ export const PATH_HIGH_SCHOOL_MANAGER = {
   LIST_EVENT: '/high-school/events',
   VIEW_PROFILE: '/high-school/view-profile',
   EDIT_PROFILE: '/high-school/edit-profile',
-  REGISTERED_EVENT: '/high-school/registered-events'
+  REGISTERED_EVENT: '/high-school/registered-events',
+  LIST_STUDENT: '/high-school/students',
+  PROFILE: '/high-school/profile'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
