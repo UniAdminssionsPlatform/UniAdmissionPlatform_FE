@@ -1,4 +1,4 @@
-import HighSchoolProfileContainer from '../../features/public/highschoolProfile/HighSchoolProfile.container';
+import HighSchoolProfileContainer from '../../features/public/highschoolProfile/HighschoolProfile.container';
 import React from 'react';
 
 const HighSchoolProfilePage = () => (
@@ -6,4 +6,5 @@ const HighSchoolProfilePage = () => (
     <HighSchoolProfileContainer />
   </>
 );
+
 export default HighSchoolProfilePage;
