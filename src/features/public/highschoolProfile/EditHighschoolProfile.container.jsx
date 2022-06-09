@@ -7,6 +7,9 @@ import { handleNotification } from '../../../notification/EditHighschoolProfileN
 import UpdateHighSchoolProfileComponent from './components/EditHighschoolProfile.component';
 
 const UpdateHighSchoolProfileContainer = () => {
+  const [value, setValue] = useState('');
+  const [avatar, setImageUrl] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [highschoolInformation, setHighschoolInformation] = useState('');
   const { user } = useSelector((state) => state.authentication);
@@ -20,6 +23,9 @@ const UpdateHighSchoolProfileContainer = () => {
   };
 
   const onFinish = (values) => {
+    values.description = value;
+    values.profileImageUrl = avatar;
+    values.thumbnailUrl = thumbnail;
     UpdateHighschoolProfile(values)
       .then((result) => {
         handleNotification('success');
@@ -27,6 +33,7 @@ const UpdateHighSchoolProfileContainer = () => {
       .catch((error) => {
         handleNotification('error');
       });
+    // console.log('values: ', values);
   };
 
   useEffect(() => {
@@ -36,6 +43,9 @@ const UpdateHighSchoolProfileContainer = () => {
   const ProfileDetail = () => {
     HighschoolDetail(user.highSchoolId).then((result) => {
       setHighschoolInformation(result.data.data);
+      setValue(result.data.data.description);
+      setImageUrl(result.data.data.profileImageUrl);
+      setThumbnail(result.data.data.thumbnailUrl);
       setIsLoading(false);
     });
   };
@@ -58,7 +68,16 @@ const UpdateHighSchoolProfileContainer = () => {
                 <Spin tip='Đang tải...'></Spin>
               </div>
             ) : (
-              <UpdateHighSchoolProfileComponent highschoolInformation={highschoolInformation} onFinish={onFinish} />
+              <UpdateHighSchoolProfileComponent
+                highschoolInformation={highschoolInformation}
+                onFinish={onFinish}
+                setValue={setValue}
+                value={value}
+                setImageUrl={setImageUrl}
+                setThumbnail={setThumbnail}
+                // avatar={avatar}
+                avatar={avatar}
+              />
             )}
           </div>
         </div>

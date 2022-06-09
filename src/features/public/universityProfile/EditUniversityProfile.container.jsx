@@ -7,6 +7,9 @@ import { UpdateUniversityProfile } from '../../../services/EditUniversityProfile
 import { UniversityDetail } from '../../../services/UniversityDetail';
 
 const UpdateUniversityProfileContainer = () => {
+  const [value, setValue] = useState('');
+  const [avatar, setImageUrl] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [universityInformation, setUniversityInformation] = useState('');
   const { user } = useSelector((state) => state.authentication);
@@ -20,6 +23,9 @@ const UpdateUniversityProfileContainer = () => {
   };
 
   const onFinish = (values) => {
+    values.description = value;
+    values.profileImageUrl = avatar;
+    values.thumbnailUrl = thumbnail;
     UpdateUniversityProfile(values)
       .then((result) => {
         handleNotification('success');
@@ -36,6 +42,9 @@ const UpdateUniversityProfileContainer = () => {
   const ProfileDetail = () => {
     UniversityDetail(user.universityId).then((result) => {
       setUniversityInformation(result.data.data);
+      setValue(result.data.data.description);
+      setImageUrl(result.data.data.profileImageUrl);
+      setThumbnail(result.data.data.thumbnailUrl);
       setIsLoading(false);
     });
   };
@@ -58,7 +67,14 @@ const UpdateUniversityProfileContainer = () => {
                 <Spin tip='Đang tải...'></Spin>
               </div>
             ) : (
-              <UpdateUniversityProfileComponent universityInformation={universityInformation} onFinish={onFinish} />
+              <UpdateUniversityProfileComponent
+                universityInformation={universityInformation}
+                onFinish={onFinish}
+                setValue={setValue}
+                setImageUrl={setImageUrl}
+                setThumbnail={setThumbnail}
+                value={value}
+              />
             )}
           </div>
         </div>

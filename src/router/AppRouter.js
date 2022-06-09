@@ -32,9 +32,8 @@ import React from 'react';
 import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import SelectHighSchoolPage from '../pages/universityManager/SelectHighSchoolPage';
-import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
-import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
-import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
+// import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
+// import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import HighSchoolProfilePage from '../pages/HighschoolProfilePage/HighschoolProfilePage';
 import UpdateHighSchoolPage from '../pages/HighschoolProfilePage/UpdateHighschoolProfilePage';
@@ -72,9 +71,9 @@ const AppRouter = () => (
       <Route path={PATH_UNIVERSITY_MANAGER.CREATE_EVENT} exact>
         <CreateEventPage />
       </Route>
-      <Route path={PATH_UNIVERSITY_MANAGER.PROFILE} exact>
+      {/* <Route path={PATH_UNIVERSITY_MANAGER.PROFILE} exact>
         <UniversityDetailPage />
-      </Route>
+      </Route> */}
       <Route path={PATH.DETAIL_EVENT} exact>
         <DetailEventPage />
       </Route>
@@ -123,12 +122,12 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
         exact
       />
-      <HighSchoolManagerRouter
+      {/* <HighSchoolManagerRouter
         component={() => <SlotManagerPage />}
         path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
         key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
         exact
-      />
+      /> */}
       <HighSchoolManagerRouter
         component={() => <HighSchoolProfilePage />}
         path={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
@@ -165,12 +164,12 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
         exact
       />
-      <HighSchoolStudentRouter
+      {/* <HighSchoolStudentRouter
         component={() => <StudentScorePage />}
         path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         exact
-      />
+      /> */}
       <HighSchoolStudentRouter
         component={() => <HighSchoolProfilePage />}
         path={PATH_HIGH_SCHOOL_STUDENT.HIGHSCHOOL_PROFILE}
