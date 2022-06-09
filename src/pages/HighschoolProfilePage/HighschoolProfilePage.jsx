@@ -1,5 +1,5 @@
-import React from 'react';
 import HighSchoolProfileContainer from '../../features/public/highschoolProfile/HighschoolProfile.container';
+import React from 'react';
 
 const HighSchoolProfilePage = () => (
   <>

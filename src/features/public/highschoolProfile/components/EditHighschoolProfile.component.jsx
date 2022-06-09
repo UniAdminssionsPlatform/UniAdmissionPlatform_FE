@@ -1,9 +1,9 @@
 import { Button, Form, Image, Input, Tooltip } from 'antd';
 import { InfoCircleOutlined, PhoneOutlined } from '@ant-design/icons';
-import Label from '../../../../components/commons/Label/Label.component';
-import React from 'react';
 import { email, name, phone } from '../../../../validate/EditHighSchoolProfile.validate';
+import Label from '../../../../components/commons/Label/Label.component';
 import MarkdownEditorComponent from '../../../../components/MarkdownEditor/MarkdownEditor.component';
+import React from 'react';
 import SingleUploadWithPreviewContainer from '../../../../components/UploadImage/SingleUpload/SingleUploadWithPreview.container';
 
 const UpdateHighSchoolProfileComponent = (props) => {

@@ -1,10 +1,10 @@
+import { Spin } from 'antd';
+import { UniversityDetail } from '../../../services/UniversityDetail';
+import { UpdateUniversityProfile } from '../../../services/EditUniversityProfileService';
+import { handleNotification } from '../../../notification/EditUniversityProfileNotification';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { Spin } from 'antd';
-import { handleNotification } from '../../../notification/EditUniversityProfileNotification';
 import UpdateUniversityProfileComponent from './components/EditUniversityProfile.component';
-import { UpdateUniversityProfile } from '../../../services/EditUniversityProfileService';
-import { UniversityDetail } from '../../../services/UniversityDetail';
 
 const UpdateUniversityProfileContainer = () => {
   const [value, setValue] = useState('');

@@ -1,8 +1,8 @@
-import { Spin } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { HighschoolDetail } from '../../../services/HighSchoolProfileService';
+import { Spin } from 'antd';
+import { useSelector } from 'react-redux';
 import HighSchoolProfileComponent from './components/HighschoolProfile.component';
+import React, { useEffect, useState } from 'react';
 
 const HighSchoolProfileContainer = () => {
   const stylespin = {

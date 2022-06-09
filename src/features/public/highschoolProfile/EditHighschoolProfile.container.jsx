@@ -1,9 +1,9 @@
-import { UpdateHighschoolProfile } from '../../../services/EditHighschoolProfileService';
-import { useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
 import { HighschoolDetail } from '../../../services/HighSchoolProfileService';
 import { Spin } from 'antd';
+import { UpdateHighschoolProfile } from '../../../services/EditHighschoolProfileService';
 import { handleNotification } from '../../../notification/EditHighschoolProfileNotification';
+import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import UpdateHighSchoolProfileComponent from './components/EditHighschoolProfile.component';
 
 const UpdateHighSchoolProfileContainer = () => {

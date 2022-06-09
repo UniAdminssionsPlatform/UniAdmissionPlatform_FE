@@ -1,10 +1,10 @@
 import { Button, DatePicker, Form, Input, Select, Tooltip } from 'antd';
 import { address, email, firstname, idcard, lastname, phone } from '../../../../validate/RegisterForm.validate';
 
+import { IdcardOutlined, InfoCircleOutlined, PhoneOutlined } from '@ant-design/icons';
 import Label from '../../../../components/commons/Label/Label.component';
 import React from 'react';
 import moment from 'moment';
-import { IdcardOutlined, InfoCircleOutlined, PhoneOutlined } from '@ant-design/icons';
 
 const UpdaterForm = (props) => {
   const {
