@@ -1,14 +1,14 @@
-import { UpdateHighschoolProfile } from '../../../services/EditHighschoolProfileService';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { HighschoolDetail } from '../../../services/HighSchoolProfileService';
 import { Spin } from 'antd';
-import { handleNotification } from '../../../notification/EditHighschoolProfileNotification';
-import UpdateHighSchoolProfileComponent from './components/EditHighschoolProfile.component';
+import { handleNotification } from '../../../notification/EditUniversityProfileNotification';
+import UpdateUniversityProfileComponent from './components/EditUniversityProfile.component';
+import { UpdateUniversityProfile } from '../../../services/EditUniversityProfileService';
+import { UniversityDetail } from '../../../services/UniversityDetail';
 
-const UpdateHighSchoolProfileContainer = () => {
+const UpdateUniversityProfileContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [highschoolInformation, setHighschoolInformation] = useState('');
+  const [universityInformation, setUniversityInformation] = useState('');
   const { user } = useSelector((state) => state.authentication);
   const stylespin = {
     margin: '20px 0',
@@ -20,7 +20,7 @@ const UpdateHighSchoolProfileContainer = () => {
   };
 
   const onFinish = (values) => {
-    UpdateHighschoolProfile(values)
+    UpdateUniversityProfile(values)
       .then((result) => {
         handleNotification('success');
       })
@@ -34,8 +34,8 @@ const UpdateHighSchoolProfileContainer = () => {
   }, []);
 
   const ProfileDetail = () => {
-    HighschoolDetail(user.highSchoolId).then((result) => {
-      setHighschoolInformation(result.data.data);
+    UniversityDetail(user.universityId).then((result) => {
+      setUniversityInformation(result.data.data);
       setIsLoading(false);
     });
   };
@@ -58,7 +58,7 @@ const UpdateHighSchoolProfileContainer = () => {
                 <Spin tip='Đang tải...'></Spin>
               </div>
             ) : (
-              <UpdateHighSchoolProfileComponent highschoolInformation={highschoolInformation} onFinish={onFinish} />
+              <UpdateUniversityProfileComponent universityInformation={universityInformation} onFinish={onFinish} />
             )}
           </div>
         </div>
@@ -67,4 +67,4 @@ const UpdateHighSchoolProfileContainer = () => {
   );
 };
 
-export default UpdateHighSchoolProfileContainer;
+export default UpdateUniversityProfileContainer;

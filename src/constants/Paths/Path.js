@@ -27,8 +27,9 @@ export const PATH_UNIVERSITY_MANAGER = {
   REGIS_EVENT: '/uni/register-event',
   CREATE_EVENT: '/uni/create-event',
   PROFILE: '/uni/university-detail',
-  CALENDAR: '/uni/calendar',
   BOOKING_EVENT: '/uni/event-booking'
+  CALENDAR: '/uni/calendar',
+  UPDATE_PROFILE: '/uni/update-profile'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',

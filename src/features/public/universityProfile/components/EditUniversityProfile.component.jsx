@@ -4,49 +4,45 @@ import Label from '../../../../components/commons/Label/Label.component';
 import React from 'react';
 import { email, name, phone } from '../../../../validate/EditHighSchoolProfile.validate';
 
-const UpdateHighSchoolProfileComponent = (props) => {
+const UpdateUniversityProfileComponent = (props) => {
   const { TextArea } = Input;
-  const { onFinish, highschoolInformation } = props;
+  const { onFinish, universityInformation } = props;
   const field = [
     {
       name: ['name'],
-      value: highschoolInformation.name
+      value: universityInformation.name
     },
     {
       name: ['address'],
-      value: highschoolInformation.address
+      value: universityInformation.address
     },
     {
       name: ['phoneNumber'],
-      value: highschoolInformation.phoneNumber
+      value: universityInformation.phoneNumber
     },
     {
       name: ['profileImageUrl'],
-      value: highschoolInformation.profileImageUrl
+      value: universityInformation.profileImageUrl
     },
     {
       name: ['thumbnailUrl'],
-      value: highschoolInformation.thumbnailUrl
+      value: universityInformation.thumbnailUrl
     },
     {
       name: ['shortDescription'],
-      value: highschoolInformation.shortDescription
+      value: universityInformation.shortDescription
     },
     {
       name: ['websiteUrl'],
-      value: highschoolInformation.websiteUrl
+      value: universityInformation.websiteUrl
     },
     {
       name: ['email'],
-      value: highschoolInformation.email
+      value: universityInformation.email
     },
     {
-      name: ['highSchoolCode'],
-      value: highschoolInformation.highSchoolCode
-    },
-    {
-      name: ['highSchoolManagerCode'],
-      value: highschoolInformation.highSchoolManagerCode
+      name: ['universityCode'],
+      value: universityInformation.highSchoolManagerCode
     }
   ];
 
@@ -151,29 +147,14 @@ const UpdateHighSchoolProfileComponent = (props) => {
                 </Form.Item>
               </label>
               <label className='block'>
-                <Label>Code học sinh</Label>
-                <Form.Item name='highSchoolCode'>
-                  <Input
-                    type='text'
-                    className='mt-1'
-                    placeholder='abc@gmail.com'
-                    suffix={
-                      <Tooltip title='Mã code để học sinh nhập'>
-                        <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
-                      </Tooltip>
-                    }
-                  />
-                </Form.Item>
-              </label>
-              <label className='block'>
                 <Label>Code quản lí</Label>
-                <Form.Item name='highSchoolManagerCode'>
+                <Form.Item name='universityCode'>
                   <Input
                     type='text'
                     className='mt-1'
-                    placeholder='abc@gmail.com'
+                    placeholder='FPT-ABC, UEF-CDE,...'
                     suffix={
-                      <Tooltip title='Mã code để quản lí trường cấp 3 nhập'>
+                      <Tooltip title='Mã code để quản lí trường cấp 3 nhập và phải viết hoa tất cả'>
                         <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
                       </Tooltip>
                     }
@@ -190,4 +171,4 @@ const UpdateHighSchoolProfileComponent = (props) => {
     </div>
   );
 };
-export default UpdateHighSchoolProfileComponent;
+export default UpdateUniversityProfileComponent;

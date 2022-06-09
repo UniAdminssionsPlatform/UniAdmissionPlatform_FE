@@ -32,12 +32,14 @@ import React from 'react';
 import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import SelectHighSchoolPage from '../pages/universityManager/SelectHighSchoolPage';
-import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
-import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
+import SlotManagerPage from '../pages/SlotManagerPage/SlotManagerPage';
+import StudentScorePage from '../pages/student/StudentScore/StudentScorePage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import HighSchoolProfilePage from '../pages/HighschoolProfilePage/HighschoolProfilePage';
 import UpdateHighSchoolPage from '../pages/HighschoolProfilePage/UpdateHighschoolProfilePage';
+import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
+import UniversityDetailPage from '../pages/UniversityProfilePage/UniversityDetailPage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -179,6 +181,12 @@ const AppRouter = () => (
         component={() => <CalendarPage />}
         path={PATH_UNIVERSITY_MANAGER.CALENDAR}
         key={PATH_UNIVERSITY_MANAGER.CALENDAR}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <UpdateUniversityProfilePage />}
+        path={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
+        key={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
         exact
       />
       <Route path={PATH.ABOUT_US} exact>
