@@ -6,7 +6,7 @@ import React from 'react';
 const ListEvent = (props) => {
   const { listEventRegister, handleBookingSlot } = props;
   return (
-    <div className='flex flex-col space-y-8'>
+    <div className='flex flex-col space-y-8 w-full'>
       <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
         <div className='py-2 align-middle inline-block min-w-full px-1 sm:px-6 lg:px-8'>
           <div className='shadow dark:border dark:border-neutral-800 overflow-hidden sm:rounded-lg'>
@@ -20,13 +20,7 @@ const ListEvent = (props) => {
                     Chú giải
                   </th>
                   <th scope='col' className='px-6 py-3'>
-                    Trạng thái
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
                     Loại sự kiện
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
-                    Địa chỉ
                   </th>
                   <th scope='col' className='px-6 py-3'>
                     Hành động
@@ -50,9 +44,7 @@ const ListEvent = (props) => {
                       </div>
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>{item.event.short_description}</td>
-                    <td className='px-6 py-4 whitespace-nowrap'>{item.event.status}</td>
                     <td className='px-6 py-4 whitespace-nowrap'>{item.event.event_type_id}</td>
-                    <td className='px-6 py-4 whitespace-nowrap'>{item.event.address}</td>
                     <td className='px-6 py-4 whitespace-nowrap'>
                       <Button
                         type='primary'

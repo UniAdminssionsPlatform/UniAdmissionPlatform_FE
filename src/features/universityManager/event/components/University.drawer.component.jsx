@@ -1,5 +1,5 @@
 import { Button, Drawer, Space } from 'antd';
-import ListEventForRegisterUniversityContainer from '../ListEventForRegisterUniversity.container';
+import ListEventForRegisterUniversityContainer from '../../manageEvent/ListEventForRegisterUniversity.container';
 import React from 'react';
 const UniversityDrawerComponent = (props) => {
   const { isSidebarOpen, setIsSidebarOpen } = props;

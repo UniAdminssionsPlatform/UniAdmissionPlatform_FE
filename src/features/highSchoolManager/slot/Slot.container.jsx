@@ -4,7 +4,7 @@ import { handleCreateNotification, handleQueryNotification } from '../../../noti
 import { useEffect, useState } from 'react';
 import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import LeftBarComponent from './components/LeftBar.component';
-import ScheduleHighSchoolComponent from '../../../components/schedule/ScheduleHighSchool.component';
+import ScheduleHighSchoolComponent from './components/ScheduleHighSchool.component';
 
 const SlotContainer = () => {
   const [isButtonCreateSlotClicked, setIsButtonCreateSlotClicked] = useState(false);
@@ -48,26 +48,29 @@ const SlotContainer = () => {
   };
 
   return (
-    <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
-      <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
-        <LeftBarComponent
-          setListAddingSlot={setListAddingSlot}
-          isButtonCreateSlotClicked={isButtonCreateSlotClicked}
-          setIsButtonCreateSlotClicked={setIsButtonCreateSlotClicked}
-          setDataSearch={setDataSearch}
-        />
+    <LayoutPageWithout>
+      {' '}
+      <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
+        <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
+          <LeftBarComponent
+            setListAddingSlot={setListAddingSlot}
+            isButtonCreateSlotClicked={isButtonCreateSlotClicked}
+            setIsButtonCreateSlotClicked={setIsButtonCreateSlotClicked}
+            setDataSearch={setDataSearch}
+          />
+        </div>
+        {isLoading ? (
+          <Spin />
+        ) : (
+          <ScheduleHighSchoolComponent
+            listSlot={listSlot}
+            setListSlot={setListSlot}
+            setListAddingSlot={setListAddingSlot}
+            setReloadTrigger={setReloadTrigger}
+          />
+        )}
       </div>
-      {isLoading ? (
-        <Spin />
-      ) : (
-        <ScheduleHighSchoolComponent
-          listSlot={listSlot}
-          setListSlot={setListSlot}
-          setListAddingSlot={setListAddingSlot}
-          setReloadTrigger={setReloadTrigger}
-        />
-      )}
-    </div>
+    </LayoutPageWithout>
   );
 };
 export default SlotContainer;
