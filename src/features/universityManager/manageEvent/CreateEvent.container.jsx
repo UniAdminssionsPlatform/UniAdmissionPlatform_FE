@@ -59,6 +59,10 @@ const CreateEventContainer = (props) => {
   const onFinish = (data) => {
     data.event.districtId = district;
     data.event.provinceId = province;
+    data.event.description = describe;
+    data.event.shortDescription = shortDescribe;
+    data.event.eventTypeId = data.event.eventTypeId ? data.event.eventTypeId : 2;
+    data.event.districtId = 1;
     console.log(data);
     createEvent(data)
       .then((result) => {

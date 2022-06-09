@@ -1,6 +1,6 @@
 import ListEvent from './ListEvent.component';
 import React from 'react';
-import SearchBarComponent from './SearchBar.component';
+import SearchBarComponent from '../../../manageEvent/components/SearchBar.component';
 const ListEventForRegisterUniversityComponent = (props) => {
   const { listEventRegister, setDataSearch, handleBookingSlot } = props;
   return (

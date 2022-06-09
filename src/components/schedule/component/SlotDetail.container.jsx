@@ -1,11 +1,20 @@
-import { closeASlot } from '../../../services/AdminHighSchoolSlotsService';
+import { closeASlot, fullASlot } from '../../../services/AdminHighSchoolSlotsService';
 import { handleSlotNotification } from '../../../notification/CreateSlotNotification';
 import React from 'react';
 import SlotDetailComponent from './SlotDetail.component';
 const SlotDetailContainer = (props) => {
   const { slotSelected, setReloadTrigger } = props;
-  const handleUpdateOpenSlot = (id) => {
-    console.log(id);
+  const handleUpdateFullSlot = (id) => {
+    if (id != null) {
+      fullASlot({ 'slot-id': id })
+        .then((res) => {
+          handleSlotNotification('success', 'Chuyển trạng thái slot full thành công', 'Hành động đóng slot thành công');
+          setReloadTrigger(true);
+        })
+        .catch((err) => {
+          handleSlotNotification('error', 'Chuyển trạng thái slot full thất bại', 'Hành động đóng slot thất bại');
+        });
+    }
     setReloadTrigger(true);
   };
   const handleUpdateCloseSlot = (id) => {
@@ -16,7 +25,6 @@ const SlotDetailContainer = (props) => {
           setReloadTrigger(true);
         })
         .catch((err) => {
-          console.log('bị lỗi');
           handleSlotNotification('error', 'Đóng slot thất bại', 'Hành động đóng slot thất bại');
         });
     }
@@ -25,7 +33,7 @@ const SlotDetailContainer = (props) => {
     <>
       <SlotDetailComponent
         slotSelected={slotSelected}
-        handleUpdateOpenSlot={handleUpdateOpenSlot}
+        handleUpdateFullSlot={handleUpdateFullSlot}
         handleUpdateCloseSlot={handleUpdateCloseSlot}
       />
     </>
