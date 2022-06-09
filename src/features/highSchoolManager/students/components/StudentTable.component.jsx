@@ -1,4 +1,4 @@
-import { Skeleton, Table, Tag, Tooltip, Switch } from 'antd';
+import { Skeleton, Switch, Table, Tag, Tooltip } from 'antd';
 import DetailStudentContainer from './DetailStudent.container';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React, { useState } from 'react';

@@ -1,12 +1,12 @@
 import { Button, Card, Skeleton } from 'antd';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../../constants/Paths/Path';
 import Avatar from '../../../../../components/commons/Avatar/Avatar.component';
 import LayoutPage from '../../../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import NcImage from '../../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 import moment from 'moment';
-import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../../constants/Paths/Path';
 
 const StudentProfileComponent = (props) => {
   const { student, loading } = props;
