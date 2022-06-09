@@ -1,7 +1,7 @@
 import { getDetailHighSchool } from '../../../services/HighSchoolService';
 import { useSelector } from 'react-redux';
 import HighSchoolProfileComponent from './components/HighSchoolProfile.component';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const HighSchoolProfileContainer = () => {
   const [highSchool, setHighSchool] = useState();
