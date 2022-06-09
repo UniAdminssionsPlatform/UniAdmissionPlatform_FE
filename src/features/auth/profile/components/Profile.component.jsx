@@ -1,4 +1,5 @@
 import { Button, DatePicker, Form, Input, Select } from 'antd';
+import { Helmet } from 'react-helmet';
 import { address, email, firstname, idcard, lastname, phone } from '../../../../validate/RegisterForm.validate';
 
 import Label from '../../../../components/commons/Label/Label.component';
@@ -76,6 +77,9 @@ const UpdaterForm = (props) => {
 
   return (
     <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
+      <Helmet>
+        <title>Chỉnh sửa thông tin cá nhân</title>
+      </Helmet>
       <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish} fields={field}>
         <div className='grid md:grid-cols-3 gap-6 block md:col-span-2'>
           <label className='block'>

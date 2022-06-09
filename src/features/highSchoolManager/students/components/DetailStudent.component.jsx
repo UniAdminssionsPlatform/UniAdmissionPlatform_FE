@@ -1,5 +1,4 @@
-import { Button, Card, Modal } from 'antd';
-import { DEMO_AUTHORS } from '../../../../data/authors';
+import { Card, Modal } from 'antd';
 import Avatar from '../../../../components/commons/Avatar/Avatar.component';
 import HeadBackgroundCommon from '../../../../components/commons/HeadBackgroundCommon/HeadBackgroundCommon.component';
 import React from 'react';

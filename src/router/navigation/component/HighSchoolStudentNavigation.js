@@ -24,6 +24,11 @@ const profile = [
   },
   {
     id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.PROFILE,
+    name: 'Hồ sơ cá nhân'
+  },
+  {
+    id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_STUDENT.UPDATE_PROFILE,
     name: 'Chỉnh Sửa Hồ Sơ Cá Nhân'
   },
