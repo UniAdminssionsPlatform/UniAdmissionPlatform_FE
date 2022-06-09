@@ -13,15 +13,15 @@ import {
   ViewSwitcher,
   WeekView
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
+import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../../../constants/Color';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import { Modal } from 'antd';
-import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
+import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../../constants/AppConst';
 import { useState } from 'react';
-import AppointmentHeaderComponent from './component/AppointmentHeader.component';
+import AppointmentHeaderComponent from '../../../../components/schedule/component/AppointmentHeader.component';
 import Paper from '@mui/material/Paper';
-import SlotComponent from './component/Slot.component';
-import SlotDetail from './component/SlotDetail.container';
+import SlotComponent from '../../../../components/schedule/component/Slot.component';
+import SlotDetail from '../../../../components/schedule/component/SlotDetail.container';
 
 const ScheduleHighSchoolComponent = (props) => {
   const { listSlot, setListSlot, setReloadTrigger } = props;
@@ -91,8 +91,8 @@ const ScheduleHighSchoolComponent = (props) => {
           <ViewState />
           <EditingState onCommitChanges={commitChanges} />
           <EditRecurrenceMenu />
-          <WeekView startDayHour={7} endDayHour={20} />
           <MonthView startDayHour={7} endDayHour={20} />
+          <WeekView startDayHour={7} endDayHour={20} />
           <DayView startDayHour={7} endDayHour={20} />
           <Toolbar />
           <ViewSwitcher />

@@ -1,57 +1,36 @@
 import { Avatar, Button, Input, Pagination, Space, Table } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { getListEventForUniversity } from '../../../../services/GetListEventForUniversity';
+import { refactorData } from '../../../../utils/common';
 import { useSelector } from 'react-redux';
 import Highlighter from 'react-highlight-words';
 import React, { useEffect, useRef, useState } from 'react';
 const SelectEventContainer = (props) => {
   const { setCurrentEventSelected } = props;
-  const { highSchool } = useSelector((state) => state.selectedHighSchool);
+  const { user } = useSelector((state) => state.authentication);
   const [isLoading, setIsLoading] = useState(true);
   const [listEvent, setListEvent] = useState([]);
   const [dataSearch, setDataSearch] = useState({
     name: '',
     hostname: '',
-    eventType: '3',
+    eventType: '2',
     status: '',
-    universityID: highSchool.id
+    universityID: user.universityId ? user.universityId : 1,
+    page: 1,
+    limit: 10
   });
   useEffect(() => {
     getEventForUniversity(dataSearch);
   }, [dataSearch]);
 
-  const getEventForUniversity = (data) => {
-    getListEventForUniversity(data)
+  const getEventForUniversity = (dataSearch) => {
+    getListEventForUniversity(dataSearch)
       .then((result) => {
-        console.log(result);
         setListEvent(result.data.data.list);
         setIsLoading(false);
       })
       .catch((err) => {});
   };
-
-  const mockData = [
-    {
-      event: {
-        id: 1,
-        name: 'Event so 1',
-        shortDescription: 'string',
-        description: 'string',
-        thumbnailUrl: 'string',
-        fileUrl: 'string',
-        status: 2,
-        hostName: 'string',
-        eventTypeId: 3,
-        address: 'string',
-        provinceId: null,
-        meetingUrl: 'string',
-        districtId: 270,
-        startTime: '2022-05-27T06:39:58',
-        endTime: '2022-05-28T06:39:58'
-      },
-      universityId: 1
-    }
-  ];
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
@@ -65,13 +44,6 @@ const SelectEventContainer = (props) => {
     setSearchText('');
   };
 
-  const refactorData = (listData) => {
-    const result = [];
-    listData.map((data) => {
-      result.push(data.event);
-    });
-    return result;
-  };
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div
@@ -173,21 +145,6 @@ const SelectEventContainer = (props) => {
       width: '20%'
     },
     {
-      title: 'Trạng thái',
-      dataIndex: 'status',
-      render: (status, data) =>
-        status === 1 ? (
-          <span className='px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-teal-100 text-teal-900 lg:text-sm'>
-            Đã Kích Hoạt
-          </span>
-        ) : (
-          <span className='px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-red-100 text-teal-900 lg:text-sm'>
-            Đang Bị Đóng
-          </span>
-        ),
-      width: '12%'
-    },
-    {
       title: 'Hành Động',
       render: (status, data) => (
         <Button onClick={() => setCurrentEventSelected(data)} type={'primary'} danger>
@@ -197,19 +154,24 @@ const SelectEventContainer = (props) => {
       width: '12%'
     }
   ];
+  const onShowSizeChange = (page, PageSize) => {
+    setDataSearch({ ...dataSearch, page, limit: PageSize });
+  };
   return (
     <>
-      <Table
-        columns={column}
-        dataSource={refactorData(mockData)}
-        bordered={true}
-        size='middle'
-        style={{ width: '70rem' }}
-        pagination={false}
-        loading={isLoading}
-        scroll={{ y: 600 }}
-      />
-      {/*<Pagination showSizeChanger onChange={onShowSizeChange} total={listHighSchool?.total} />*/}
+      <Space direction={'vertical'}>
+        <Table
+          columns={column}
+          dataSource={refactorData(listEvent)}
+          bordered={true}
+          size='middle'
+          style={{ width: '70rem' }}
+          pagination={false}
+          loading={isLoading}
+          scroll={{ y: 600 }}
+        />
+        <Pagination showSizeChanger onChange={onShowSizeChange} total={listEvent?.total} />
+      </Space>
     </>
   );
 };

@@ -56,7 +56,6 @@ const BookingFlowContainer = () => {
           message: err,
           description: `Đăng ký thất bại !`
         });
-        setCurrentStep(4);
       });
   };
   const handleFinish = () => {

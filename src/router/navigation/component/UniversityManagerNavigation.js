@@ -32,7 +32,7 @@ const eventManager = [
       },
       {
         id: ncNanoId(),
-        href: PATH_UNIVERSITY_MANAGER.LIST_EVENT,
+        href: PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT,
         name: 'Sự kiện đã đăng ký'
       }
     ]
