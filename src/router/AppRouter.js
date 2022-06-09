@@ -15,7 +15,7 @@ import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPag
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
-import HighSchoolBookingPage from '../pages/universityManager/HighSchoolBookingPage';
+import HighSchoolBookingPage from '../pages/universityManager/manageEvent/HighSchoolBookingPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
@@ -30,15 +30,16 @@ import NewsDetailPage from '../pages/public/NewsDetailPage';
 import NewsPage from '../pages/public/NewsPage';
 import PolicyPage from '../pages/public/PolicyPage';
 import React from 'react';
+import RegisteredEventHighSchoolPage from '../pages/highSchoolManager/RegisteredEventHighSchoolPage';
+import RegisteredEventPage from '../pages/universityManager/manageEvent/RegisteredEventPage';
 import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
-import SelectHighSchoolPage from '../pages/universityManager/SelectHighSchoolPage';
+import SelectHighSchoolPage from '../pages/universityManager/manageEvent/SelectHighSchoolPage';
 import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
 import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
-import HighSchoolProfilePage from '../pages/public/HighSchoolProfilePage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -90,12 +91,6 @@ const AppRouter = () => (
         exact
       />
       <HighSchoolManagerRouter
-        component={() => <HighSchoolProfilePage />}
-        path={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
-        key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
-        exact
-      />
-      <HighSchoolManagerRouter
         component={() => <ListStudentForHighschoolPage />}
         path={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
         key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
@@ -140,10 +135,10 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_STUDENT.PROFILE}
         exact
       />
-      <HighSchoolStudentRouter
-        component={() => <HighSchoolProfilePage />}
-        path={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
-        key={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
+      <HighSchoolManagerRouter
+        component={() => <RegisteredEventHighSchoolPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.REGISTERED_EVENT}
+        key={PATH_HIGH_SCHOOL_MANAGER.REGISTERED_EVENT}
         exact
       />
       <HighSchoolManagerRouter
@@ -182,10 +177,17 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         exact
       />
+
       <UniversityManagerRouter
         component={() => <CalendarPage />}
         path={PATH_UNIVERSITY_MANAGER.CALENDAR}
         key={PATH_UNIVERSITY_MANAGER.CALENDAR}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <RegisteredEventPage />}
+        path={PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT}
         exact
       />
       <Route path={PATH.ABOUT_US} exact>

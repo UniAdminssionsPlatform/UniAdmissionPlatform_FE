@@ -22,6 +22,11 @@ const eventManager = [
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER,
     name: 'Đăng ký slot'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_MANAGER.REGISTERED_EVENT,
+    name: 'Sự kiện đăng ký'
   }
 ];
 
