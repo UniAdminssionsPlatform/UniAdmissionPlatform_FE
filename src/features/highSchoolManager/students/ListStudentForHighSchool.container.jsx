@@ -72,7 +72,7 @@ const ListStudentForHighschoolContainer = () => {
         handleOk(value);
       },
       onCancel() {
-        console.log('Cancel');
+        window.location.reload();
       }
     });
   };
@@ -83,6 +83,7 @@ const ListStudentForHighschoolContainer = () => {
         data={students}
         setDataSearch={setDataSearch}
         loading={loading}
+        setLoading={setLoading}
         confirm={confirm}
       />
     </>

@@ -1,4 +1,4 @@
-import { addScore, getScore, modifyScore } from '../../../services/StudentScoreService';
+import { addScore, getBaseScore, modifyScore } from '../../../services/StudentScoreService';
 import { getAllSchoolYear } from '../../../services/SchoolYearService';
 import { getAllSubjectGroup } from '../../../services/SubjectGroupService';
 import { handleModifyNotification, handleNotification } from '../../../notification/StudentScoreNotification';
@@ -9,72 +9,11 @@ import React, { useEffect, useState } from 'react';
 const ModalEditContainer = (props) => {
   const { visible, setVisible } = props;
 
-  const [subjectGroup, setSubjectGroup] = useState();
   const [schoolYear, setSchoolYear] = useState();
-  const [selectedSubjectGroup, setSelectedSubjectGroup] = useState(1);
-  const [selectedSchoolYear, setSelectedSchoolYear] = useState(1);
+  const [selectedSchoolYear, setSelectedSchoolYear] = useState(6);
+  const [baseScore, setBaseScore] = useState();
 
   const [loading, setLoading] = useState(true);
-
-  const [subject1, setSubject1] = useState({
-    id: 0,
-    subjectId: 0,
-    schoolRecordId: 0,
-    subjectName: '',
-    score: 0
-  });
-  const [subject2, setSubject2] = useState({
-    id: 0,
-    subjectId: 0,
-    schoolRecordId: 0,
-    subjectName: '',
-    score: 0
-  });
-  const [subject3, setSubject3] = useState({
-    id: 0,
-    subjectId: 0,
-    schoolRecordId: 0,
-    subjectName: '',
-    score: 0
-  });
-
-  const loadData = (subjectGroup, schoolYear) => {
-    getScore(subjectGroup, schoolYear)
-      .then((result) => {
-        const editData = result.data.studentRecordItems;
-        setSubject1({
-          id: editData[0].id,
-          subjectId: editData[0].subject.id,
-          subjectName: editData[0].subject.name,
-          schoolRecordId: result.data.id,
-          score: editData[0].score
-        });
-        setSubject2({
-          id: editData[1].id,
-          subjectId: editData[1].subject.id,
-          subjectName: editData[1].subject.name,
-          schoolRecordId: result.data.id,
-          score: editData[1].score
-        });
-        setSubject3({
-          id: editData[2].id,
-          subjectId: editData[2].subject.id,
-          subjectName: editData[2].subject.name,
-          schoolRecordId: result.data.id,
-          score: editData[2].score
-        });
-        handleNotification('success');
-        setLoading(false);
-      })
-      .catch((error) => {
-        handleNotification('error');
-      });
-  };
-
-  const onChangeSubjectGroup = useDebouncedCallback((values) => {
-    setLoading(true);
-    setSelectedSubjectGroup(values);
-  }, 1000);
 
   const onChangeSchoolYear = useDebouncedCallback(
     // function
@@ -86,21 +25,22 @@ const ModalEditContainer = (props) => {
     1000
   );
 
+  const loadData = () => {
+    getBaseScore().then((result) => {
+      setBaseScore(result.data.data);
+      setLoading(false);
+    });
+  };
+
   useEffect(() => {
-    getSubjectGroup();
     getSchoolyear();
-    loadData(selectedSubjectGroup, selectedSchoolYear);
-  }, [selectedSubjectGroup, selectedSchoolYear]);
+    loadData();
+  }, []);
 
   const getSchoolyear = () => {
     getAllSchoolYear().then((result) => {
       setSchoolYear(result.data.data.list);
-    });
-  };
-
-  const getSubjectGroup = () => {
-    getAllSubjectGroup().then((result) => {
-      setSubjectGroup(result.data.data.list);
+      setLoading(false);
     });
   };
 
@@ -131,23 +71,48 @@ const ModalEditContainer = (props) => {
   const handleOk = () => {
     // setVisible(false);
   };
+  class recordItems {
+    constructor(score, subjectId) {
+      this.subjectId = subjectId;
+      this.score = score;
+    }
+  }
+
+  class score {
+    constructor(score, name) {
+      this.name = name;
+      this.score = score;
+    }
+  }
+  const [recordItemList, setRecordItemList] = useState([]);
+  const [scoreList, setScoreList] = useState([]);
+  const subjectList = ['Toán', 'Lý', 'Anh', 'Sinh', 'Sử', 'Địa', 'Hóa', 'Văn', 'GDCD'];
 
   const handleEdit = (values) => {
-    subject1.score = values.subject1;
-    subject2.score = values.subject2;
-    subject3.score = values.subject3;
-    if (subject1.id === 0) add(subject1);
-    else editScore(subject1);
-    if (subject1.id === 0) add(subject1);
-    else editScore(subject1);
+    setScoreList(scoreList.push(new score(values.Toán, subjectList[0])));
+    setScoreList(scoreList.push(new score(values.Lý, subjectList[1])));
+    setScoreList(scoreList.push(new score(values.Anh, subjectList[2])));
+    setScoreList(scoreList.push(new score(values.Sinh, subjectList[3])));
+    setScoreList(scoreList.push(new score(values.Sử, subjectList[4])));
+    setScoreList(scoreList.push(new score(values.Địa, subjectList[5])));
+    setScoreList(scoreList.push(new score(values.Hóa, subjectList[6])));
+    setScoreList(scoreList.push(new score(values.Văn, subjectList[7])));
+    setScoreList(scoreList.push(new score(values.GDCD, subjectList[8])));
 
-    if (subject2.id === 0) add(subject2);
-    else editScore(subject2);
+    for (let i = 0; i < baseScore.length; i++) {
+      for (let j = 0; j < scoreList.length; j++) {
+        if (baseScore?.[i].name === scoreList?.[j].name)
+          setRecordItemList(recordItemList.push(new recordItems(scoreList?.[j].score, baseScore?.[i].id)));
+      }
+    }
 
-    if (subject3.id === 0) add(subject3);
-    else editScore(subject3);
+    values.name = 'Học bạ';
+    values.schoolYearId = selectedSchoolYear;
+    values.recordItems = recordItemList;
 
-    loadData(selectedSubjectGroup, selectedSchoolYear);
+    add(values);
+
+    console.log('diem hoc ba: ', values);
   };
 
   const handleCancel = () => {
@@ -163,14 +128,10 @@ const ModalEditContainer = (props) => {
         handleCancel={handleCancel}
         handleEdit={handleEdit}
         isModalVisible={visible}
-        subjectGroup={subjectGroup}
         schoolYear={schoolYear}
-        onChangeSubjectGroup={onChangeSubjectGroup}
         onChangeSchoolYear={onChangeSchoolYear}
-        subject1={subject1}
-        subject2={subject2}
-        subject3={subject3}
         loading={loading}
+        baseScore={baseScore}
       />
     </>
   );

@@ -1,11 +1,9 @@
 import { CallAPI } from './axiosBase';
 import {
   GET_HIGH_SCHOOL_BY_CODE_ENDPOINT,
+  GET_HIGH_SCHOOL_BY_ID,
   GET_HIGH_SCHOOL_BY_MANAGER_CODE_ENDPOINT,
-  GET_LIST_HIGH_SCHOOL_ENDPOINT,
-  PATH_GET_HIGH_SCHOOL_BY_CODE,
-  PATH_GET_HIGH_SCHOOL_BY_MANAGER_CODE,
-  PATH_GET_LIST_HIGH_SCHOOL
+  GET_LIST_HIGH_SCHOOL_ENDPOINT
 } from '../constants/Endpoints/HighSchoolEndpoint';
 
 export const getHighSchoolByCode = (data) =>
@@ -19,3 +17,5 @@ export const getListHighSchool = (data) =>
   );
 export const getHighSchoolByManagerCode = (data) =>
   CallAPI(`${GET_HIGH_SCHOOL_BY_MANAGER_CODE_ENDPOINT}?high-school-manager-code=${data}`, 'get', data);
+
+export const getDetailHighSchool = (data) => CallAPI(`${GET_HIGH_SCHOOL_BY_ID}/${data}`, 'get', data);

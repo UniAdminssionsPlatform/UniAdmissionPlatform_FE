@@ -19,8 +19,13 @@ const homePage = [
 const profile = [
   {
     id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.PROFILE,
+    href: PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE,
     name: 'Hồ sơ trường'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.PROFILE,
+    name: 'Hồ sơ cá nhân'
   },
   {
     id: ncNanoId(),

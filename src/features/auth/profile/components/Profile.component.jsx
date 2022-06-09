@@ -1,7 +1,7 @@
-import { Button, DatePicker, Form, Input, Select, Tooltip } from 'antd';
+import { Button, DatePicker, Form, Input, Select } from 'antd';
+import { Helmet } from 'react-helmet';
 import { address, email, firstname, idcard, lastname, phone } from '../../../../validate/RegisterForm.validate';
 
-import { IdcardOutlined, InfoCircleOutlined, PhoneOutlined } from '@ant-design/icons';
 import Label from '../../../../components/commons/Label/Label.component';
 import React from 'react';
 import moment from 'moment';
@@ -77,6 +77,9 @@ const UpdaterForm = (props) => {
 
   return (
     <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
+      <Helmet>
+        <title>Chỉnh sửa thông tin cá nhân</title>
+      </Helmet>
       <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish} fields={field}>
         <div className='grid md:grid-cols-3 gap-6 block md:col-span-2'>
           <label className='block'>
@@ -162,16 +165,7 @@ const UpdaterForm = (props) => {
           <label className='block'>
             <Label>Số điện thoại</Label>
             <Form.Item name='phoneNumber' rules={phone}>
-              <Input
-                type='text'
-                className='mt-1'
-                prefix={<PhoneOutlined className='site-form-item-icon' />}
-                suffix={
-                  <Tooltip title='Số điện thoại bao gồm 10-11 số và không có dấu cách'>
-                    <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
-                  </Tooltip>
-                }
-              />
+              <Input type='text' className='mt-1' />
             </Form.Item>
           </label>
         </div>
@@ -229,22 +223,13 @@ const UpdaterForm = (props) => {
               <label className='block'>
                 <Label>CMND/CCCD</Label>
                 <Form.Item name='idCard' rules={idcard}>
-                  <Input type='text' prefix={<IdcardOutlined className='site-form-item-icon' />} />
+                  <Input type='text' />
                 </Form.Item>
               </label>
               <label className='block'>
                 <Label>Email liên hệ</Label>
                 <Form.Item name='emailContact' rules={email}>
-                  <Input
-                    type='text'
-                    className='mt-1'
-                    placeholder='abc@gmail.com'
-                    suffix={
-                      <Tooltip title='Email phải đúng cú pháp. Ví dụ : abc@gmail.com'>
-                        <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
-                      </Tooltip>
-                    }
-                  />
+                  <Input type='text' className='mt-1' placeholder='abc@gmail.com' />
                 </Form.Item>
               </label>
             </div>
