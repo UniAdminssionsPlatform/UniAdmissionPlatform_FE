@@ -27,3 +27,17 @@ export const handleModifyNotification = (status) => {
     });
   }
 };
+
+export const handleAddNotification = (status) => {
+  if (status === 'success') {
+    notification.success({
+      message: 'Truy vấn thành công!',
+      description: `Tạo học bạ thành công`
+    });
+  } else if (status === 'error') {
+    notification.error({
+      message: 'Truy vấn thất bại!',
+      description: `Lỗi khi tạo học bạ`
+    });
+  }
+};

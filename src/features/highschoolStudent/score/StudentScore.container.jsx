@@ -10,6 +10,7 @@ const StudentScoreContainer = () => {
   const [selectedSubjectGroup, setSelectedSubjectGroup] = useState(1);
   const [selectedSchoolYear, setSelectedSchoolYear] = useState(6);
   const [loading, setLoading] = useState(true);
+  const [searchLoading, setSearchLoading] = useState(true);
 
   const onChangeSubjectGroup = useDebouncedCallback((values) => {
     setSelectedSubjectGroup(values);
@@ -29,12 +30,14 @@ const StudentScoreContainer = () => {
   const getSchoolYear = () => {
     getAllSchoolYear().then((result) => {
       setSchoolYear(result.data.data.list);
+      setSearchLoading(false);
     });
   };
 
   const getSubjectGroup = () => {
     getAllSubjectGroup().then((result) => {
       setSubjectGroup(result.data.data.list);
+      setSearchLoading(false);
     });
   };
 
@@ -49,6 +52,8 @@ const StudentScoreContainer = () => {
         selectedSchoolYear={selectedSchoolYear}
         loading={loading}
         setLoading={setLoading}
+        searchLoading={searchLoading}
+        setSearchLoading={setSearchLoading}
       />
     </>
   );

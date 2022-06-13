@@ -1,20 +1,29 @@
-import { Button, Skeleton } from 'antd';
+import { Button, Skeleton, Space } from 'antd';
+import ModalAddContainer from '../../modalAdd.container';
 import ModalEditContainer from '../../modalEdit.container';
 import React, { useState } from 'react';
 
 const TableScoreComponent = (props) => {
   const { data, loading } = props;
-  const [visible, setVisible] = useState(false);
-  const [schoolRecordId, setSchoolRecordId] = useState(0);
+  console.log('data in Table component: ', data);
+  const [visibleAdd, setVisibleAdd] = useState(false);
+  const [visibleEdit, setVisibleEdit] = useState(false);
 
   return (
     <>
       <Skeleton active loading={loading}>
         <div className='rounded-xl min-h-full text-sm border border-neutral-100 dark:border-neutral-800 p-6 md:text-base'>
-          <Button type='primary' style={{ marginBottom: '10px', borderRadius: 5 }} onClick={() => setVisible(true)}>
-            Tạo phiếu điểm
-          </Button>
-
+          <Space>
+            <Button
+              type='primary'
+              style={{ marginBottom: '10px', borderRadius: 5 }}
+              onClick={() => setVisibleAdd(true)}>
+              Tạo học bạ
+            </Button>
+            <Button style={{ marginBottom: '10px', borderRadius: 5 }} onClick={() => setVisibleEdit(true)}>
+              Chỉnh sửa điểm
+            </Button>
+          </Space>
           <table style={{ textAlign: 'center', border: '3px solid #ddd', width: '100%' }}>
             <thead>
               <tr>
@@ -32,7 +41,8 @@ const TableScoreComponent = (props) => {
             </tbody>
           </table>
         </div>
-        {visible === true ? <ModalEditContainer visible={visible} setVisible={setVisible} /> : ''}
+        {visibleAdd === true ? <ModalAddContainer visible={visibleAdd} setVisible={setVisibleAdd} /> : ''}
+        {visibleEdit === true ? <ModalEditContainer visible={visibleEdit} setVisible={setVisibleEdit} /> : ''}
       </Skeleton>
     </>
   );

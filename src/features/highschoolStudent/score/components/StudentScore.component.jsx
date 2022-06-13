@@ -14,7 +14,8 @@ const StudentScoreComponent = (props) => {
     schoolYear,
     onChangeSchoolYear,
     loading,
-    setLoading
+    setLoading,
+    searchLoading
   } = props;
 
   return (
@@ -28,6 +29,7 @@ const StudentScoreComponent = (props) => {
             <div className='flex flex-col space-y-6 xl:space-y-0 xl:flex-row'>
               <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
                 <FilterScoreComponent
+                  loading={searchLoading}
                   schoolYear={schoolYear}
                   subjectGroup={subjectGroup}
                   onChangeSubjectGroup={onChangeSubjectGroup}
