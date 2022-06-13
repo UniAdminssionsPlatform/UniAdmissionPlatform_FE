@@ -13,18 +13,22 @@ const ModalEditContainer = (props) => {
   const [selectedSchoolYear, setSelectedSchoolYear] = useState(6);
 
   const [listSubject, setListSubject] = useState();
+  const [isDisableScoreField, setIsDisableScoreField] = useState(true);
 
   const [loading, setLoading] = useState(true);
 
   const onChangeSchoolYear = useDebouncedCallback(
     // function
     (values) => {
-      setLoading(true);
       setSelectedSchoolYear(values);
     },
     // delay in ms
     1000
   );
+
+  const onChangeSubject = () => {
+    setIsDisableScoreField(false);
+  };
 
   const loadListSubject = () => {
     getAllSubject().then((result) => {
@@ -54,6 +58,7 @@ const ModalEditContainer = (props) => {
   const subjectList = ['Toán', 'Lý', 'Anh', 'Sinh', 'Sử', 'Địa', 'Hóa', 'Văn', 'GDCD'];
 
   const handleEdit = (values) => {
+    values.schoolYearId = selectedSchoolYear;
     console.log('diem hoc ba: ', values);
   };
 
@@ -72,7 +77,10 @@ const ModalEditContainer = (props) => {
         isModalVisible={visible}
         schoolYear={schoolYear}
         onChangeSchoolYear={onChangeSchoolYear}
+        onChangeSubject={onChangeSubject}
+        isDisableScoreField={isDisableScoreField}
         loading={loading}
+        baseScore={subjectList}
       />
     </>
   );
