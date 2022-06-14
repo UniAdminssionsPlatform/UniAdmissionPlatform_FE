@@ -10,6 +10,7 @@ import CalendarPage from '../pages/universityManager/CalendarPage';
 import CertificationPage from '../pages/highSchoolStudent/CertificationPage';
 import ChangePasswordPage from '../pages/auth/ChangePasswordPage';
 import CreateEventPage from '../pages/universityManager/CreateEventPage';
+import CreateNewPage from '../pages/highSchoolManager/CreateNewPage';
 import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
@@ -17,7 +18,7 @@ import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolBookingPage from '../pages/universityManager/manageEvent/HighSchoolBookingPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
-import HighSchoolProfilePage from '../pages/public/HighSchoolProfilePage';
+import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfilePage';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
 import ListEventForHighSchoolPage from '../pages/universityManager/ListEventForHighschoolPage';
@@ -41,13 +42,15 @@ import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
-import UpdateHighSchoolPage from '../pages/HighschoolProfilePage/UpdateHighschoolProfilePage';
+import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
+
 const AppRouter = () => (
   <>
     <ScrollToTop />
     <HeaderContainer />
     <Switch>
+      //Publish Page
       <Route path={PATH.INDEX} exact>
         <HomePage />
       </Route>
@@ -87,6 +90,10 @@ const AppRouter = () => (
       <Route path={PATH.DETAIL_MAJOR_GROUP} exact>
         <DetailMajorGroupPage />
       </Route>
+      <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
+        <ListEventPage />
+      </Route>
+      // HighSchool Page
       <HighSchoolManagerRouter
         component={() => <ListEventForHighSchoolPage />}
         path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
@@ -99,33 +106,37 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
         exact
       />
-      <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
-        <ListEventPage />
-      </Route>
-      <UniversityManagerRouter
-        component={() => <ListNewContainer />}
-        path={PATH_UNIVERSITY_MANAGER.NEW}
-        key={PATH_UNIVERSITY_MANAGER.NEW}
+      <HighSchoolManagerRouter
+        component={() => <RegisteredEventHighSchoolPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.REGISTERED_EVENT}
+        key={PATH_HIGH_SCHOOL_MANAGER.REGISTERED_EVENT}
         exact
       />
-      <UniversityManagerRouter
-        component={() => <SelectHighSchoolPage />}
-        path={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
-        key={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
+      <HighSchoolManagerRouter
+        component={() => <SlotManagerPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
+        key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
         exact
       />
-      <UniversityManagerRouter
-        component={() => <UniversityDetailPage />}
-        path={PATH_UNIVERSITY_MANAGER.PROFILE}
-        key={PATH_UNIVERSITY_MANAGER.PROFILE}
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
         exact
       />
-      <UniversityManagerRouter
-        component={() => <HighSchoolBookingPage />}
-        path={PATH_UNIVERSITY_MANAGER.BOOKING_EVENT}
-        key={PATH_UNIVERSITY_MANAGER.BOOKING_EVENT}
+      <HighSchoolManagerRouter
+        component={() => <UpdateHighSchoolPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
         exact
       />
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
+        exact
+      />
+      //Student
       <HighSchoolStudentRouter
         component={() => <ListEventPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
@@ -138,16 +149,10 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_STUDENT.PROFILE}
         exact
       />
-      <HighSchoolManagerRouter
-        component={() => <RegisteredEventHighSchoolPage />}
-        path={PATH_HIGH_SCHOOL_MANAGER.REGISTERED_EVENT}
-        key={PATH_HIGH_SCHOOL_MANAGER.REGISTERED_EVENT}
-        exact
-      />
-      <HighSchoolManagerRouter
-        component={() => <SlotManagerPage />}
-        path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
-        key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
+      <HighSchoolStudentRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
+        key={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
         exact
       />
       <HighSchoolStudentRouter
@@ -180,7 +185,31 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         exact
       />
-
+      //University Page
+      <UniversityManagerRouter
+        component={() => <ListNewContainer />}
+        path={PATH_UNIVERSITY_MANAGER.NEW}
+        key={PATH_UNIVERSITY_MANAGER.NEW}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <SelectHighSchoolPage />}
+        path={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <UniversityDetailPage />}
+        path={PATH_UNIVERSITY_MANAGER.PROFILE}
+        key={PATH_UNIVERSITY_MANAGER.PROFILE}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <HighSchoolBookingPage />}
+        path={PATH_UNIVERSITY_MANAGER.BOOKING_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.BOOKING_EVENT}
+        exact
+      />
       <UniversityManagerRouter
         component={() => <CalendarPage />}
         path={PATH_UNIVERSITY_MANAGER.CALENDAR}
@@ -193,42 +222,19 @@ const AppRouter = () => (
         key={PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT}
         exact
       />
-      <HighSchoolStudentRouter
-        component={() => <HighSchoolProfilePage />}
-        path={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
-        key={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
-        exact
-      />
-      <HighSchoolManagerRouter
-        component={() => <HighSchoolProfilePage />}
-        path={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
-        key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
-        exact
-      />
-      <HighSchoolStudentRouter
-        component={() => <HighSchoolProfilePage />}
-        path={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
-        key={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
-        exact
-      />
       <UniversityManagerRouter
         component={() => <UpdateUniversityProfilePage />}
         path={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
         key={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
         exact
       />
-      <HighSchoolManagerRouter
-        component={() => <HighSchoolProfilePage />}
-        path={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
-        key={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
+      <UniversityManagerRouter
+        component={() => <CreateNewPage />}
+        path={PATH_UNIVERSITY_MANAGER.CREATE_NEW}
+        key={PATH_UNIVERSITY_MANAGER.CREATE_NEW}
         exact
       />
-      <HighSchoolManagerRouter
-        component={() => <UpdateHighSchoolPage />}
-        path={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
-        key={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
-        exact
-      />
+      //Index Page
       <Route path={PATH.ABOUT_US} exact>
         <AboutUsPage />
       </Route>
