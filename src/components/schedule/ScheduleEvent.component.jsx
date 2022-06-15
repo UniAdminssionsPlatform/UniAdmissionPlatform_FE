@@ -22,8 +22,6 @@ import Paper from '@mui/material/Paper';
 import SlotComponent from './component/Slot.component';
 
 const ScheduleEventComponent = (props) => {
-  //for schedule event
-  //View only
   const { listSlot } = props;
   const AppointmentComponent = ({ children, style, data, ...restProps }) => (
     <Appointments.Appointment

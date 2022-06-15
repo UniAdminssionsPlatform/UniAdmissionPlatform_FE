@@ -44,6 +44,7 @@ import UniversityDetailPage from '../pages/universityManager/UniversityDetailPag
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
+import ManageBookingPage from "../pages/universityManager/manageBookingPage";
 
 const AppRouter = () => (
   <>
@@ -74,9 +75,6 @@ const AppRouter = () => (
       </Route>
       <Route path={PATH_UNIVERSITY_MANAGER.NEW} exact>
         <ListNewContainer />
-      </Route>
-      <Route path={PATH_UNIVERSITY_MANAGER.CREATE_EVENT} exact>
-        <CreateEventPage />
       </Route>
       <Route path={PATH_UNIVERSITY_MANAGER.PROFILE} exact>
         <UniversityDetailPage />
@@ -191,6 +189,12 @@ const AppRouter = () => (
         path={PATH_UNIVERSITY_MANAGER.NEW}
         key={PATH_UNIVERSITY_MANAGER.NEW}
         exact
+      />
+      <UniversityManagerRouter
+          component={() => <ManageBookingPage />}
+          path={PATH_UNIVERSITY_MANAGER.MANAGE_BOOKING}
+          key={PATH_UNIVERSITY_MANAGER.MANAGE_BOOKING}
+          exact
       />
       <UniversityManagerRouter
         component={() => <SelectHighSchoolPage />}

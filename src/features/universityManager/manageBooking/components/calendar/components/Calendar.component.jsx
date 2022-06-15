@@ -11,11 +11,10 @@ const CalendarComponent = (props) => {
   const { Title, Text } = Typography;
   const history = useHistory();
   const handleRedirect = () => {
-    history.push(PATH_UNIVERSITY_MANAGER.REGIS_EVENT);
+
   };
   return (
     <>
-      <LayoutPageWithout subHeading='Quản lý lịch trình tổ chức sự kiện tuyển sinh'>
         <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
           <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
             <Space direction='vertical' size='small' style={{ display: 'flex' }}>
@@ -76,7 +75,6 @@ const CalendarComponent = (props) => {
             {isLoading ? <Skeleton active /> : <ScheduleEventComponent listSlot={listSlot} />}
           </div>
         </div>
-      </LayoutPageWithout>
     </>
   );
 };

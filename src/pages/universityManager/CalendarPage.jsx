@@ -1,4 +1,4 @@
-import CalendarContainer from '../../features/universityManager/event/components/calendar/Calendar.container';
+import CalendarContainer from '../../features/universityManager/manageBooking/components/calendar/Calendar.container';
 import React from 'react';
 
 const CalendarPage = () => <CalendarContainer />;
