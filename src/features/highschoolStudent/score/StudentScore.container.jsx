@@ -1,21 +1,16 @@
 import { getAllSchoolYear } from '../../../services/SchoolYearService';
-import { getAllSubjectGroup } from '../../../services/SubjectGroupService';
+import { getScore } from '../../../services/StudentScoreService';
+import { handleNotification } from '../../../notification/StudentScoreNotification';
 import { useDebouncedCallback } from 'use-debounce';
 import React, { useEffect, useState } from 'react';
 import StudentScoreComponent from './components/StudentScore.component';
 
 const StudentScoreContainer = () => {
-  const [subjectGroup, setSubjectGroup] = useState();
   const [schoolYear, setSchoolYear] = useState();
-  const [selectedSubjectGroup, setSelectedSubjectGroup] = useState(1);
   const [selectedSchoolYear, setSelectedSchoolYear] = useState(6);
   const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(true);
-
-  const onChangeSubjectGroup = useDebouncedCallback((values) => {
-    setSelectedSubjectGroup(values);
-    setLoading(true);
-  }, 2000);
+  const [data, setData] = useState();
 
   const onChangeSchoolYear = useDebouncedCallback((values) => {
     setSelectedSchoolYear(values);
@@ -23,9 +18,25 @@ const StudentScoreContainer = () => {
   }, 2000);
 
   useEffect(() => {
-    getSubjectGroup();
+    loadData(selectedSchoolYear);
     getSchoolYear();
-  }, []);
+  }, [selectedSchoolYear]);
+
+  const loadData = (schoolYear) => {
+    getScore(schoolYear)
+      .then((result) => {
+        console.log('diem hoc ba: ', result.data.data.studentRecordItems);
+        setData(result.data.data.studentRecordItems);
+        setLoading(false);
+        if (result.data.data.studentRecordItems.length === 0) handleNotification('error', 'Học bạ hiện chưa có điểm');
+        else handleNotification('success');
+      })
+      .catch((error) => {
+        setData([]);
+        setLoading(false);
+        handleNotification('error', 'Không tìm thấy học bạ');
+      });
+  };
 
   const getSchoolYear = () => {
     getAllSchoolYear().then((result) => {
@@ -34,26 +45,17 @@ const StudentScoreContainer = () => {
     });
   };
 
-  const getSubjectGroup = () => {
-    getAllSubjectGroup().then((result) => {
-      setSubjectGroup(result.data.data.list);
-      setSearchLoading(false);
-    });
-  };
-
   return (
     <>
       <StudentScoreComponent
-        subjectGroup={subjectGroup}
         schoolYear={schoolYear}
-        onChangeSubjectGroup={onChangeSubjectGroup}
         onChangeSchoolYear={onChangeSchoolYear}
-        selectedSubjectGroup={selectedSubjectGroup}
         selectedSchoolYear={selectedSchoolYear}
         loading={loading}
         setLoading={setLoading}
         searchLoading={searchLoading}
         setSearchLoading={setSearchLoading}
+        data={data}
       />
     </>
   );
