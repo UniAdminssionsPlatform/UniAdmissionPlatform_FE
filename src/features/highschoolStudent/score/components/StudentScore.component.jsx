@@ -1,14 +1,12 @@
 import { Button, Col, Row, Select, Skeleton, Space, Table } from 'antd';
 import { Helmet } from 'react-helmet';
-import FilterScoreComponent from './filter/FilterScore.component';
 import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import ModalAddContainer from '../modalAdd.container';
 import ModalEditContainer from '../modalEdit.container';
 import React, { useState } from 'react';
-import TableScoreContainer from '../TableScore.container';
 
 const StudentScoreComponent = (props) => {
-  const { className, schoolYear, onChangeSchoolYear, loading, setLoading, searchLoading, data } = props;
+  const { className, schoolYear, onChangeSchoolYear, loading, data, selectedSchoolYear } = props;
 
   const { Option } = Select;
 
@@ -33,25 +31,6 @@ const StudentScoreComponent = (props) => {
         </Helmet>
         <LayoutPage subHeading='' headingEmoji='🔑' heading=''>
           <div>
-            {/* <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
-                <FilterScoreComponent
-                  loading={searchLoading}
-                  schoolYear={schoolYear}
-                  subjectGroup={subjectGroup}
-                  onChangeSubjectGroup={onChangeSubjectGroup}
-                  onChangeSchoolYear={onChangeSchoolYear}
-                />
-              </div>
-              <div className='border border-neutral-100 dark:border-neutral-800 md:hidden'></div>
-              <div className='flex-grow'>
-                <TableScoreContainer
-                  subjectGroup={selectedSubjectGroup}
-                  schoolYear={selectedSchoolYear}
-                  loading={loading}
-                  setLoading={setLoading}
-                />
-              </div> */}
-
             <Row justify='space-between'>
               <Col span={4}>
                 <Space>
@@ -89,7 +68,15 @@ const StudentScoreComponent = (props) => {
               <Table pagination={false} dataSource={data} columns={columns} bordered />
             </Skeleton>
             {visibleAdd === true ? <ModalAddContainer visible={visibleAdd} setVisible={setVisibleAdd} /> : ''}
-            {visibleEdit === true ? <ModalEditContainer visible={visibleEdit} setVisible={setVisibleEdit} /> : ''}
+            {visibleEdit === true ? (
+              <ModalEditContainer
+                visible={visibleEdit}
+                setVisible={setVisibleEdit}
+                selectedSchoolYear={selectedSchoolYear}
+              />
+            ) : (
+              ''
+            )}
           </div>
         </LayoutPage>
       </div>

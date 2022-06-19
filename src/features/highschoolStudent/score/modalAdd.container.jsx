@@ -17,7 +17,7 @@ const ModalAddContainer = (props) => {
   const onChangeSchoolYear = useDebouncedCallback(
     // function
     (values) => {
-      setLoading(true);
+      setLoading(false);
       setSelectedSchoolYear(values);
     },
     // delay in ms
@@ -50,7 +50,8 @@ const ModalAddContainer = (props) => {
         setVisible(false);
       })
       .catch((err) => {
-        handleAddNotification('error');
+        handleAddNotification('error', err.response.data.msg);
+        setVisible(false);
       });
   };
 
@@ -101,8 +102,7 @@ const ModalAddContainer = (props) => {
     values.recordItems = recordItemList;
 
     add(values);
-
-    console.log('diem hoc ba: ', values);
+    // window.location.reload();
   };
 
   const handleCancel = () => {

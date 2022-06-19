@@ -28,7 +28,7 @@ export const handleModifyNotification = (status) => {
   }
 };
 
-export const handleAddNotification = (status) => {
+export const handleAddNotification = (status, input) => {
   if (status === 'success') {
     notification.success({
       message: 'Truy vấn thành công!',
@@ -37,7 +37,8 @@ export const handleAddNotification = (status) => {
   } else if (status === 'error') {
     notification.error({
       message: 'Truy vấn thất bại!',
-      description: `Lỗi khi tạo học bạ`
+      description: `${input}`,
+      duration: 3
     });
   }
 };

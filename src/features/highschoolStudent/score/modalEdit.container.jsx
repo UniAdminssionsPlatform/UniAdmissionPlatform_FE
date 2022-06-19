@@ -1,30 +1,22 @@
-import { addScore, getBaseScore } from '../../../services/StudentScoreService';
-import { getAllSchoolYear } from '../../../services/SchoolYearService';
+import { getScore } from '../../../services/StudentScoreService';
+import { getSchoolYear } from '../../../services/SchoolYearService';
 import { getAllSubject } from '../../../services/SubjectService';
-import { handleAddNotification } from '../../../notification/StudentScoreNotification';
+import { handleModifyNotification, handleNotification } from '../../../notification/StudentScoreNotification';
 import { useDebouncedCallback } from 'use-debounce';
 import ModalEditComponent from './components/modal/modalEdit.component';
 import React, { useEffect, useState } from 'react';
 
 const ModalEditContainer = (props) => {
-  const { visible, setVisible } = props;
-
-  const [schoolYear, setSchoolYear] = useState();
-  const [selectedSchoolYear, setSelectedSchoolYear] = useState(6);
+  const { visible, setVisible, selectedSchoolYear } = props;
 
   const [listSubject, setListSubject] = useState();
+  const [listScore, setListScore] = useState();
+  const [schoolYear, setSchoolYear] = useState('');
+  const [schoolRecordId, setSchoolRecordId] = useState(0);
+
   const [isDisableScoreField, setIsDisableScoreField] = useState(true);
 
   const [loading, setLoading] = useState(true);
-
-  const onChangeSchoolYear = useDebouncedCallback(
-    // function
-    (values) => {
-      setSelectedSchoolYear(values);
-    },
-    // delay in ms
-    1000
-  );
 
   const onChangeSubject = () => {
     setIsDisableScoreField(false);
@@ -37,15 +29,30 @@ const ModalEditContainer = (props) => {
   };
 
   useEffect(() => {
-    getSchoolyear();
     loadListSubject();
-  }, []);
+    getYear(selectedSchoolYear);
+    loadData(selectedSchoolYear);
+  }, [selectedSchoolYear]);
 
-  const getSchoolyear = () => {
-    getAllSchoolYear().then((result) => {
-      setSchoolYear(result.data.data.list);
-      setLoading(false);
+  const getYear = (data) => {
+    getSchoolYear(data).then((result) => {
+      setSchoolYear(result.data.data.year);
     });
+  };
+  const loadData = (schoolYear) => {
+    getScore(schoolYear)
+      .then((result) => {
+        setListScore(result.data.data.studentRecordItems);
+        setSchoolRecordId(result.data.data.id);
+        setLoading(false);
+        if (result.data.data.studentRecordItems.length === 0) handleNotification('error', 'Học bạ hiện chưa có điểm');
+        else handleNotification('success');
+      })
+      .catch((error) => {
+        setListScore([]);
+        setLoading(false);
+        handleNotification('error', 'Năm học này chưa có học bạ');
+      });
   };
 
   const showModal = () => {
@@ -55,10 +62,21 @@ const ModalEditContainer = (props) => {
   const handleOk = () => {
     // setVisible(false);
   };
-  const subjectList = ['Toán', 'Lý', 'Anh', 'Sinh', 'Sử', 'Địa', 'Hóa', 'Văn', 'GDCD'];
+
+  class update {
+    constructor(studentRecordItemId, score, subjectId) {
+      this.studentRecordItemId = studentRecordItemId;
+      this.subjectId = subjectId;
+      this.score = score;
+    }
+  }
+
+  const [updateList, setUpdateList] = useState([]);
 
   const handleEdit = (values) => {
+    values.schoolRecordId = schoolRecordId;
     values.schoolYearId = selectedSchoolYear;
+
     console.log('diem hoc ba: ', values);
   };
 
@@ -74,13 +92,12 @@ const ModalEditContainer = (props) => {
         handleCancel={handleCancel}
         handleEdit={handleEdit}
         listSubject={listSubject}
+        listScore={listScore}
         isModalVisible={visible}
         schoolYear={schoolYear}
-        onChangeSchoolYear={onChangeSchoolYear}
         onChangeSubject={onChangeSubject}
         isDisableScoreField={isDisableScoreField}
         loading={loading}
-        baseScore={subjectList}
       />
     </>
   );

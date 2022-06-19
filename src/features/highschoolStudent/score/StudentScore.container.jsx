@@ -25,7 +25,6 @@ const StudentScoreContainer = () => {
   const loadData = (schoolYear) => {
     getScore(schoolYear)
       .then((result) => {
-        console.log('diem hoc ba: ', result.data.data.studentRecordItems);
         setData(result.data.data.studentRecordItems);
         setLoading(false);
         if (result.data.data.studentRecordItems.length === 0) handleNotification('error', 'Học bạ hiện chưa có điểm');
@@ -34,7 +33,7 @@ const StudentScoreContainer = () => {
       .catch((error) => {
         setData([]);
         setLoading(false);
-        handleNotification('error', 'Không tìm thấy học bạ');
+        handleNotification('error', 'Năm học này chưa có học bạ');
       });
   };
 
