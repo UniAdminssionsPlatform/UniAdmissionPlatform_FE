@@ -136,7 +136,6 @@ const SelectHighSchoolContainer = () => {
   };
   return (
     <>
-      <LayoutPageWithout subHeading='Chọn một trường để đăng ký sự kiện'>
         <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
           <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
             <SearchBarComponent
@@ -153,15 +152,14 @@ const SelectHighSchoolContainer = () => {
               dataSource={listHighSchool?.list}
               bordered={true}
               size='middle'
-              style={{ width: '70rem' }}
+              style={{ width: '80rem' }}
               pagination={false}
               loading={isLoading}
-              scroll={{ y: 600 }}
+              scroll={{ y: 700 }}
             />
             <Pagination showSizeChanger onChange={onShowSizeChange} total={listHighSchool?.total} />
           </Space>
         </div>
-      </LayoutPageWithout>
     </>
   );
 };

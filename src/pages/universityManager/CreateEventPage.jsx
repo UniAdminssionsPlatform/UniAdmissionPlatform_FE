@@ -12,7 +12,6 @@ const CreateEventPage = () => {
   };
   return (
     <>
-      <LayoutPageWithout subHeading='Quản lý tạo event'>
         <Tabs defaultActiveKey='1' onChange={onChange}>
           <TabPane tab='Tạo sự kiện' key='1'>
             <CreateEventContainer />
@@ -21,7 +20,6 @@ const CreateEventPage = () => {
             <ListEventForRegisterUniversityContainer forceLoad={forceLoad} />
           </TabPane>
         </Tabs>
-      </LayoutPageWithout>
     </>
   );
 };

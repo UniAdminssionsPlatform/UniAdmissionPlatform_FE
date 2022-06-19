@@ -1,4 +1,4 @@
-import { Button, Pagination, Space, Table } from 'antd';
+import {Button, Pagination, Space, Table, Tag} from 'antd';
 import { bookASlotInAdminUniversity } from '../../../services/AdminUniversitySlotServices';
 import { getListEventForUniversity } from '../../../services/GetListEventForUniversity';
 import { refactorData } from '../../../utils/common';
@@ -7,6 +7,7 @@ import ListEvent from '../event/components/ListEvent/ListEvent.component';
 import ListEventForRegisterUniversityComponent from '../event/components/ListEvent/ListEventForRegisterUniversity.component';
 import React, { useEffect, useState } from 'react';
 import SearchBarComponent from './components/SearchBar.component';
+import {EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI} from "../../../constants/AppConst";
 
 const ListEventForRegisterUniversityContainer = (props) => {
   const { forceLoad } = props;
@@ -50,11 +51,23 @@ const ListEventForRegisterUniversityContainer = (props) => {
       width: '10%'
     },
     {
+      title: 'Loại sự kiện',
+      dataIndex: 'eventTypeId',
+      render: (type) => {
+        if(type===EVENT_ONLINE) return(<Tag color="blue">Sự kiện onlne</Tag>)
+        if(type===EVENT_HS) return(<Tag color="green">Sự kiện tổ chức tại trường cấp 3</Tag>)
+        if(type===EVENT_UNI) return(<Tag color="purple">Sự kiện tổ chức tại trường đại học</Tag>)
+        if(type===EVENT_ORG) return(<Tag color="magenta">Sự kiện tổ chức tại doanh nghiệp</Tag>)
+      },
+      width: '20%'
+    },
+    {
       title: 'Chú giải',
       dataIndex: 'shortDescription',
       render: (name) => `${name}`,
       width: '20%'
     },
+
     {
       title: 'Hành Động',
       render: (status, data) => (
@@ -88,7 +101,7 @@ const ListEventForRegisterUniversityContainer = (props) => {
           dataSource={refactorData(listEventRegister?.list)}
           bordered={true}
           size='middle'
-          style={{ width: '70rem' }}
+          style={{ width: '80rem' }}
           pagination={false}
           loading={isLoading}
           scroll={{ y: 600 }}
