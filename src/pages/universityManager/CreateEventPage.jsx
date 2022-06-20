@@ -1,7 +1,7 @@
 import { Tabs } from 'antd';
 import CreateEventContainer from '../../features/universityManager/manageEvent/CreateEvent.container';
 import LayoutPageWithout from '../../components/commons/LayoutPage/LayoutPageWithout.component';
-import ListEventForRegisterUniversityContainer from '../../features/universityManager/manageEvent/ListEventForRegisterUniversity.container';
+import ListEventCreatedContainer from '../../features/universityManager/manageEvent/ListEventCreated.container';
 import React, { useState } from 'react';
 
 const CreateEventPage = () => {
@@ -17,7 +17,7 @@ const CreateEventPage = () => {
             <CreateEventContainer />
           </TabPane>
           <TabPane tab='Danh sách các sự kiện đã tạo' key='2'>
-            <ListEventForRegisterUniversityContainer forceLoad={forceLoad} />
+            <ListEventCreatedContainer forceLoad={forceLoad} />
           </TabPane>
         </Tabs>
     </>
