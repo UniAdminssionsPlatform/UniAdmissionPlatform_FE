@@ -75,7 +75,7 @@ const ModalEditComponent = (props) => {
                   </div>
                 </div>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit'>
+                  <Button type='primary' htmlType='submit' style={{ marginTop: 10, borderRadius: 5 }}>
                     Lưu
                   </Button>
                 </Form.Item>
@@ -154,7 +154,7 @@ const ModalEditComponent = (props) => {
                   </div>
                 </div>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit'>
+                  <Button type='primary' htmlType='submit' style={{ marginTop: 10, borderRadius: 5 }}>
                     Lưu
                   </Button>
                 </Form.Item>
