@@ -5,11 +5,9 @@ import React from 'react';
 const ModalEditComponent = (props) => {
   const {
     isModalVisible,
-    handleOk,
     handleCancel,
     schoolYear,
     loading,
-    editScore,
     handleEditTab1,
     handleEditTab2,
     listSubject,
@@ -18,8 +16,6 @@ const ModalEditComponent = (props) => {
     onChangeSubject
   } = props;
   const { Option } = Select;
-
-  const [form] = Form.useForm();
   const { TabPane } = Tabs;
 
   const fieldScore = listScore?.map((item) => ({

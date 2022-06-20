@@ -11,11 +11,13 @@ const StudentScoreContainer = () => {
   const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(true);
   const [data, setData] = useState();
+  const [disableAddButton, setDisableAddButton] = useState(false);
+  const [disableEditButton, setDisableEditButton] = useState(false);
 
   const onChangeSchoolYear = useDebouncedCallback((values) => {
     setSelectedSchoolYear(values);
     setLoading(true);
-  }, 2000);
+  }, 1000);
 
   useEffect(() => {
     loadData(selectedSchoolYear);
@@ -27,6 +29,8 @@ const StudentScoreContainer = () => {
       .then((result) => {
         setData(result.data.data.studentRecordItems);
         setLoading(false);
+        setDisableEditButton(false);
+        setDisableAddButton(true);
         if (result.data.data.studentRecordItems.length === 0) handleNotification('error', 'Học bạ hiện chưa có điểm');
         else handleNotification('success');
       })
@@ -34,6 +38,8 @@ const StudentScoreContainer = () => {
         setData([]);
         setLoading(false);
         handleNotification('error', 'Năm học này chưa có học bạ');
+        setDisableAddButton(false);
+        setDisableEditButton(true);
       });
   };
 
@@ -55,6 +61,8 @@ const StudentScoreContainer = () => {
         searchLoading={searchLoading}
         setSearchLoading={setSearchLoading}
         data={data}
+        disableAddButton={disableAddButton}
+        disableEditButton={disableEditButton}
       />
     </>
   );

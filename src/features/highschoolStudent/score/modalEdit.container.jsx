@@ -1,6 +1,6 @@
 import { getAllSubject } from '../../../services/SubjectService';
 import { getSchoolYear } from '../../../services/SchoolYearService';
-import { getScore } from '../../../services/StudentScoreService';
+import { getScore, modifyScore } from '../../../services/StudentScoreService';
 import { handleModifyNotification, handleNotification } from '../../../notification/StudentScoreNotification';
 import { useDebouncedCallback } from 'use-debounce';
 import ModalEditComponent from './components/modal/modalEdit.component';
@@ -70,22 +70,32 @@ const ModalEditContainer = (props) => {
     }
   }
 
-  class newScoreObj {
-    constructor(subjectId, score) {
-      this.subjectId = subjectId;
-      this.score = score;
-    }
-  }
-
   const [update, setUpdate] = useState([]);
-  const [newList, setNewList] = useState([]);
 
+  const reload = () => {
+    window.location.reload();
+    setVisible(false);
+  };
+
+  const updateScoreAPI = (data) => {
+    modifyScore(data)
+      .then((result) => {
+        handleModifyNotification('success', result.data.msg);
+        setTimeout(reload, 2000);
+      })
+      .catch((error) => {
+        handleModifyNotification('error', error.response.data.msg);
+      });
+  };
+
+  // edit existing score in school record
   const handleEditTab1 = (values) => {
+    //convert object to array
     const scoreArray = Object.entries(values.scoreList);
-
     scoreArray.forEach(([id, score]) => {
       setUpdate(update.push(new updateScoreObj(id, score)));
     });
+    //set value for 'updateList' in recordItems
     const recordItem = {
       updateList: update
     };
@@ -93,14 +103,23 @@ const ModalEditContainer = (props) => {
     values.schoolYearId = selectedSchoolYear;
     values.recordItems = recordItem;
 
-    console.log('Tab 1: ', values);
+    setLoading(true);
+    updateScoreAPI(values);
   };
 
+  // add more score to school record
   const handleEditTab2 = (values) => {
+    // set value for 'newList' in recordItems
+    const recordItem = {
+      newList: values.newList
+    };
+
     values.schoolRecordId = schoolRecordId;
     values.schoolYearId = selectedSchoolYear;
+    values.recordItems = recordItem;
 
-    console.log('Tab 2: ', values);
+    setLoading(true);
+    updateScoreAPI(values);
   };
 
   const handleCancel = () => {

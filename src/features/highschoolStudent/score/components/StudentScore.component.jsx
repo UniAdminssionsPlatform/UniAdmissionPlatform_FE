@@ -6,7 +6,16 @@ import ModalEditContainer from '../modalEdit.container';
 import React, { useState } from 'react';
 
 const StudentScoreComponent = (props) => {
-  const { className, schoolYear, onChangeSchoolYear, loading, data, selectedSchoolYear } = props;
+  const {
+    className,
+    schoolYear,
+    onChangeSchoolYear,
+    loading,
+    data,
+    selectedSchoolYear,
+    disableEditButton,
+    disableAddButton
+  } = props;
 
   const { Option } = Select;
 
@@ -54,12 +63,16 @@ const StudentScoreComponent = (props) => {
                 <Space>
                   <Button
                     type='primary'
+                    disabled={disableAddButton}
                     style={{ marginBottom: '10px', borderRadius: 5 }}
                     onClick={() => setVisibleAdd(true)}>
                     Tạo học bạ
                   </Button>
-                  <Button style={{ marginBottom: '10px', borderRadius: 5 }} onClick={() => setVisibleEdit(true)}>
-                    Chỉnh sửa điểm
+                  <Button
+                    disabled={disableEditButton}
+                    style={{ marginBottom: '10px', borderRadius: 5 }}
+                    onClick={() => setVisibleEdit(true)}>
+                    Chỉnh sửa học bạ
                   </Button>
                 </Space>
               </Col>
@@ -67,7 +80,15 @@ const StudentScoreComponent = (props) => {
             <Skeleton active loading={loading}>
               <Table pagination={false} dataSource={data} columns={columns} bordered />
             </Skeleton>
-            {visibleAdd === true ? <ModalAddContainer visible={visibleAdd} setVisible={setVisibleAdd} /> : ''}
+            {visibleAdd === true ? (
+              <ModalAddContainer
+                visible={visibleAdd}
+                setVisible={setVisibleAdd}
+                selectedSchoolYear={selectedSchoolYear}
+              />
+            ) : (
+              ''
+            )}
             {visibleEdit === true ? (
               <ModalEditContainer
                 visible={visibleEdit}

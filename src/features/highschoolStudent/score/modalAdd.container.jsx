@@ -1,28 +1,38 @@
 import { addScore, getBaseScore } from '../../../services/StudentScoreService';
-import { getAllSchoolYear } from '../../../services/SchoolYearService';
+import { getSchoolYear } from '../../../services/SchoolYearService';
 import { handleAddNotification } from '../../../notification/StudentScoreNotification';
 import { useDebouncedCallback } from 'use-debounce';
 import ModalAddComponent from './components/modal/modalAdd.component';
 import React, { useEffect, useState } from 'react';
 
 const ModalAddContainer = (props) => {
-  const { visible, setVisible } = props;
+  const { visible, setVisible, selectedSchoolYear } = props;
 
-  const [schoolYear, setSchoolYear] = useState();
-  const [selectedSchoolYear, setSelectedSchoolYear] = useState(6);
   const [baseScore, setBaseScore] = useState();
+  const [schoolYear, setSchoolYear] = useState('');
 
   const [loading, setLoading] = useState(true);
 
-  const onChangeSchoolYear = useDebouncedCallback(
-    // function
-    (values) => {
-      setLoading(false);
-      setSelectedSchoolYear(values);
-    },
-    // delay in ms
-    1000
-  );
+  useEffect(() => {
+    loadData();
+    getYear(selectedSchoolYear);
+  }, [selectedSchoolYear]);
+
+  const reload = () => {
+    window.location.reload();
+    setVisible(false);
+  };
+
+  const add = (values) => {
+    addScore(values)
+      .then((result) => {
+        handleAddNotification('success');
+        setTimeout(reload, 2000);
+      })
+      .catch((err) => {
+        handleAddNotification('error', err.response.data.msg);
+      });
+  };
 
   const loadData = () => {
     getBaseScore().then((result) => {
@@ -31,28 +41,10 @@ const ModalAddContainer = (props) => {
     });
   };
 
-  useEffect(() => {
-    getSchoolyear();
-    loadData();
-  }, []);
-
-  const getSchoolyear = () => {
-    getAllSchoolYear().then((result) => {
-      setSchoolYear(result.data.data.list);
-      setLoading(false);
+  const getYear = (data) => {
+    getSchoolYear(data).then((result) => {
+      setSchoolYear(result.data.data.year);
     });
-  };
-
-  const add = (data) => {
-    addScore(data)
-      .then((result) => {
-        handleAddNotification('success');
-        setVisible(false);
-      })
-      .catch((err) => {
-        handleAddNotification('error', err.response.data.msg);
-        setVisible(false);
-      });
   };
 
   const showModal = () => {
@@ -62,53 +54,30 @@ const ModalAddContainer = (props) => {
   const handleOk = () => {
     // setVisible(false);
   };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
   class recordItems {
     constructor(score, subjectId) {
       this.subjectId = subjectId;
       this.score = score;
     }
   }
-
-  class score {
-    constructor(score, name) {
-      this.name = name;
-      this.score = score;
-    }
-  }
   const [recordItemList, setRecordItemList] = useState([]);
-  const [scoreList, setScoreList] = useState([]);
-  const subjectList = ['Toán', 'Lý', 'Anh', 'Sinh', 'Sử', 'Địa', 'Hóa', 'Văn', 'GDCD'];
 
   const handleEdit = (values) => {
-    setScoreList(scoreList.push(new score(values.Toán, subjectList[0])));
-    setScoreList(scoreList.push(new score(values.Lý, subjectList[1])));
-    setScoreList(scoreList.push(new score(values.Anh, subjectList[2])));
-    setScoreList(scoreList.push(new score(values.Sinh, subjectList[3])));
-    setScoreList(scoreList.push(new score(values.Sử, subjectList[4])));
-    setScoreList(scoreList.push(new score(values.Địa, subjectList[5])));
-    setScoreList(scoreList.push(new score(values.Hóa, subjectList[6])));
-    setScoreList(scoreList.push(new score(values.Văn, subjectList[7])));
-    setScoreList(scoreList.push(new score(values.GDCD, subjectList[8])));
+    const scoreArray = Object.entries(values.scoreList);
+    scoreArray.forEach(([id, score]) => {
+      setRecordItemList(recordItemList.push(new recordItems(score, id)));
+    });
 
-    for (let i = 0; i < baseScore.length; i++) {
-      for (let j = 0; j < scoreList.length; j++) {
-        if (baseScore?.[i].name === scoreList?.[j].name)
-          setRecordItemList(recordItemList.push(new recordItems(scoreList?.[j].score, baseScore?.[i].id)));
-      }
-    }
-
-    values.name = 'Học bạ';
+    values.name = `Học bạ năm ${schoolYear}`;
     values.schoolYearId = selectedSchoolYear;
     values.recordItems = recordItemList;
 
-    console.log('add: ', values);
-
+    setLoading(true);
     add(values);
-    // window.location.reload();
-  };
-
-  const handleCancel = () => {
-    setVisible(false);
   };
 
   return (
@@ -120,7 +89,6 @@ const ModalAddContainer = (props) => {
         handleEdit={handleEdit}
         isModalVisible={visible}
         schoolYear={schoolYear}
-        onChangeSchoolYear={onChangeSchoolYear}
         loading={loading}
         baseScore={baseScore}
       />
