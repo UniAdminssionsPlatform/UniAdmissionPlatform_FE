@@ -101,6 +101,8 @@ const ModalAddContainer = (props) => {
     values.schoolYearId = selectedSchoolYear;
     values.recordItems = recordItemList;
 
+    console.log('add: ', values);
+
     add(values);
     // window.location.reload();
   };

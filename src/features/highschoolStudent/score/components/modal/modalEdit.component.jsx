@@ -10,7 +10,8 @@ const ModalEditComponent = (props) => {
     schoolYear,
     loading,
     editScore,
-    handleEdit,
+    handleEditTab1,
+    handleEditTab2,
     listSubject,
     listScore,
     isDisableScoreField,
@@ -22,72 +23,73 @@ const ModalEditComponent = (props) => {
   const { TabPane } = Tabs;
 
   const fieldScore = listScore?.map((item) => ({
-    name: [`${item.subject.name}`],
-    value: item.score
+    id: `${item.id}`,
+    name: `${item.subject.name}`,
+    subjectId: `${item.subject.id}`,
+    score: item.score
   }));
-
   return (
     <>
-      <Modal
-        title='Chỉnh sửa điểm'
-        visible={isModalVisible}
-        okButtonProps={
-          ({ form: 'edit-score-form', key: 'submit', htmlType: 'submit' },
-          { form: 'edit-score-form-2', key: 'submit', htmlType: 'submit' })
-        }
-        onOk={handleOk}
-        onCancel={handleCancel}
-        okText='Lưu'
-        cancelText='Đóng'>
+      <Modal title='Chỉnh sửa điểm' visible={isModalVisible} footer={null} onCancel={handleCancel}>
         <Tabs defaultActiveKey='1'>
           <TabPane tab='Chỉnh sửa điểm có sẵn trong học bạ' key='1'>
             <Spin tip='đang tải...' spinning={loading}>
               <h2>Năm học: {schoolYear}</h2>
-              <Form form={form} id='edit-score-form-2' onFinish={handleEdit} fields={fieldScore}>
+              <Form id='edit-score-form-2' onFinish={handleEditTab1} initialValue={fieldScore}>
                 <Label>Điểm</Label>
                 <div className='rounded-xl min-h-full text-sm border border-neutral-100 dark:border-neutral-800 p-3 md:text-base'>
                   <div className='grid md:grid-cols-3 gap-6 block md:col-span-2'>
-                    <Form.List name='updateList' initialValue={fieldScore}>
-                      {() => (
-                        <>
-                          {listScore?.map((item) => (
-                            <label className='block'>
-                              <Label>{item.subject.name}</Label>
-                              <Form.Item
-                                {...item}
-                                defaultValue={item.score}
-                                name={[item.subject.name]}
-                                rules={[
-                                  {
-                                    required: true,
-                                    message: 'Vui lòng nhập điểm '
-                                  },
-                                  () => ({
-                                    validator(_, value) {
-                                      if (value < 0) return Promise.reject('Điểm không hợp lệ');
+                    {fieldScore !== null && fieldScore !== undefined ? (
+                      <Form.List name='scoreList'>
+                        {() => (
+                          <>
+                            {fieldScore?.map((item) => (
+                              <label className='block'>
+                                <Label>{item.name}</Label>
+                                <Form.Item
+                                  // {...item}
+                                  initialValue={+item.score}
+                                  name={item.id}
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: 'Vui lòng nhập điểm '
+                                    },
+                                    () => ({
+                                      validator(_, value) {
+                                        if (value < 0) return Promise.reject('Điểm không hợp lệ');
 
-                                      if (value > 10) return Promise.reject('Điểm không hợp lệ');
+                                        if (value > 10) return Promise.reject('Điểm không hợp lệ');
 
-                                      return Promise.resolve();
-                                    }
-                                  })
-                                ]}>
-                                <Input type='number' className='mt-1' />
-                              </Form.Item>
-                            </label>
-                          ))}
-                        </>
-                      )}
-                    </Form.List>
+                                        return Promise.resolve();
+                                      }
+                                    })
+                                  ]}>
+                                  <Input type='number' className='mt-1' />
+                                </Form.Item>
+                                <Form.Item noStyle name={item.id} initialValue={item.subjectId}>
+                                  <Input type='hidden' />
+                                </Form.Item>
+                              </label>
+                            ))}
+                          </>
+                        )}
+                      </Form.List>
+                    ) : null}
                   </div>
                 </div>
+                <Form.Item>
+                  <Button type='primary' htmlType='submit'>
+                    Lưu
+                  </Button>
+                </Form.Item>
               </Form>
             </Spin>
           </TabPane>
           <TabPane tab='Thêm điểm vào học bạ' key='2'>
             <Spin tip='đang tải...' spinning={loading}>
               <h2>Năm học: {schoolYear}</h2>
-              <Form form={form} id='edit-score-form' onFinish={handleEdit}>
+              <Form id='edit-score-form' onFinish={handleEditTab2}>
                 <Label>Điểm</Label>
                 <div className='rounded-xl min-h-full text-sm border border-neutral-100 dark:border-neutral-800 p-3 md:text-base'>
                   <div className='grid md:grid-cols-1 gap-6 block md:col-span-2'>
@@ -155,6 +157,11 @@ const ModalEditComponent = (props) => {
                     </Form.List>
                   </div>
                 </div>
+                <Form.Item>
+                  <Button type='primary' htmlType='submit'>
+                    Lưu
+                  </Button>
+                </Form.Item>
               </Form>
             </Spin>
           </TabPane>

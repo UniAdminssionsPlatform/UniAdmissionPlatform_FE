@@ -1,6 +1,6 @@
-import { getScore } from '../../../services/StudentScoreService';
-import { getSchoolYear } from '../../../services/SchoolYearService';
 import { getAllSubject } from '../../../services/SubjectService';
+import { getSchoolYear } from '../../../services/SchoolYearService';
+import { getScore } from '../../../services/StudentScoreService';
 import { handleModifyNotification, handleNotification } from '../../../notification/StudentScoreNotification';
 import { useDebouncedCallback } from 'use-debounce';
 import ModalEditComponent from './components/modal/modalEdit.component';
@@ -63,21 +63,44 @@ const ModalEditContainer = (props) => {
     // setVisible(false);
   };
 
-  class update {
-    constructor(studentRecordItemId, score, subjectId) {
-      this.studentRecordItemId = studentRecordItemId;
+  class updateScoreObj {
+    constructor(id, score) {
+      this.id = id;
+      this.score = score;
+    }
+  }
+
+  class newScoreObj {
+    constructor(subjectId, score) {
       this.subjectId = subjectId;
       this.score = score;
     }
   }
 
-  const [updateList, setUpdateList] = useState([]);
+  const [update, setUpdate] = useState([]);
+  const [newList, setNewList] = useState([]);
 
-  const handleEdit = (values) => {
+  const handleEditTab1 = (values) => {
+    const scoreArray = Object.entries(values.scoreList);
+
+    scoreArray.forEach(([id, score]) => {
+      setUpdate(update.push(new updateScoreObj(id, score)));
+    });
+    const recordItem = {
+      updateList: update
+    };
+    values.schoolRecordId = schoolRecordId;
+    values.schoolYearId = selectedSchoolYear;
+    values.recordItems = recordItem;
+
+    console.log('Tab 1: ', values);
+  };
+
+  const handleEditTab2 = (values) => {
     values.schoolRecordId = schoolRecordId;
     values.schoolYearId = selectedSchoolYear;
 
-    console.log('diem hoc ba: ', values);
+    console.log('Tab 2: ', values);
   };
 
   const handleCancel = () => {
@@ -90,7 +113,8 @@ const ModalEditContainer = (props) => {
         showModal={showModal}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        handleEdit={handleEdit}
+        handleEditTab1={handleEditTab1}
+        handleEditTab2={handleEditTab2}
         listSubject={listSubject}
         listScore={listScore}
         isModalVisible={visible}
