@@ -33,16 +33,15 @@ const UniversityManager = () => {
     const items = [
         getItem('Lịch', '1', <CalendarOutlined/>),
         getItem('Sự kiện', '2', <BookOutlined/>, [
-            getItem('Tạo sự kiện', '3'),
+            getItem('Quản lý sự kiện', '3'),
             getItem('Đăng ký sự kiện', '4'),
-            getItem('Quản lý sự kiện', '5'),
-            getItem('Lịch sử sự kiện', '6'),
+            getItem('Lịch sử sự kiện', '5'),
         ]),
-        getItem('Bài viết', '7', <StarOutlined/>, [
-            getItem('Tạo bài viết', '8'),
-            getItem('Quản lý bài viết', '9'),
+        getItem('Bài viết', '6', <StarOutlined/>, [
+            getItem('Tạo bài viết', '7'),
+            getItem('Quản lý bài viết', '8'),
         ]),
-        getItem('Tiêu chí tuyển sinh', '10', <WalletOutlined/>)
+        getItem('Tiêu chí tuyển sinh', '9', <WalletOutlined/>)
     ]
     const handleOnSelectBarComponent = (data) => {
         const {item, key, keyPath, selectedKeys, domEvent} = data;

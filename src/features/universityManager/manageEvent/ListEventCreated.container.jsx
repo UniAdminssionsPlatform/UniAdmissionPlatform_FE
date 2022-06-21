@@ -1,4 +1,4 @@
-import {Button, Form, Input, Pagination, Select, Space, Table, Tag, Typography} from 'antd';
+import {Button, Form, Input, notification, Pagination, Select, Space, Table, Tag, Typography} from 'antd';
 import {bookASlotInAdminUniversity} from '../../../services/AdminUniversitySlotServices';
 import {getListEventForUniversity} from '../../../services/GetListEventForUniversity';
 import {refactorData} from '../../../utils/common';
@@ -29,10 +29,10 @@ const ListEventCreatedContainer = (props) => {
         limit: 10
     });
     const handleOnFinish = (data) => {
-        if (data.eventType !== undefined && data.eventType !== 5) {
-            setDataSearch({...dataSearch,"evenType":data.eventType})
+        if (data.eventType !== undefined) {
+            setDataSearch({...dataSearch,"eventType":data.eventType})
         }else{
-            setDataSearch({...dataSearch,"evenType":""})
+            setDataSearch({...dataSearch,"eventType":""})
         }
         if (data.status !== undefined && data.status !== 5) {
             setDataSearch({...dataSearch,"status":data.status})
@@ -42,10 +42,10 @@ const ListEventCreatedContainer = (props) => {
     }
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
         if(dataIndex === 'name'){
-            setDataSearch({...dataSearch,"name":selectedKeys[0]})
+            setDataSearch({...dataSearch,"name":selectedKeys[0] ? selectedKeys[0] : ''})
         }
         if(dataIndex === 'hostname'){
-            setDataSearch({...dataSearch,"hostname":selectedKeys[0]})
+            setDataSearch({...dataSearch,"hostname":selectedKeys[0]? selectedKeys[0] : ''})
         }
         confirm();
     };
@@ -119,6 +119,15 @@ const ListEventCreatedContainer = (props) => {
         getListEventForUniversity(data).then((result) => {
             setListEventRegister(result.data.data);
             setIsLoading(false);
+            notification.success({
+                message: "Lấy danh sách thành công",
+                description: `Trạng thái truy vấn: Thành công!`
+            });
+        }).catch((err)=>{
+            notification.error({
+                message: "Lấy danh sách thất bại",
+                description: `Lỗi: ${err.message}`
+            });
         });
     };
     const column = [
@@ -144,6 +153,17 @@ const ListEventCreatedContainer = (props) => {
                 if (type === EVENT_HS) return (<Tag color="green">Sự kiện tổ chức tại trường cấp 3</Tag>)
                 if (type === EVENT_UNI) return (<Tag color="purple">Sự kiện tổ chức tại trường đại học</Tag>)
                 if (type === EVENT_ORG) return (<Tag color="magenta">Sự kiện tổ chức tại doanh nghiệp</Tag>)
+            },
+            width: '20%'
+        },
+        {
+            title: 'Trạng thái',
+            dataIndex: 'status',
+            render: (type) => {
+                if (type === EVENT_ENUM.INIT) return (<Tag color="#f50">Sự kiện được khởi tạo</Tag>)
+                if (type === EVENT_ENUM.ON_GOING) return (<Tag color="#2db7f5">Sự kiện sắp diễn ra</Tag>)
+                if (type === EVENT_ENUM.DONE) return (<Tag color="#87d068">Sự kiện đã kết thúc</Tag>)
+                if (type === EVENT_ENUM.CANCEL) return (<Tag color="#108ee9">Sự kiện bị hủy</Tag>)
             },
             width: '20%'
         },
