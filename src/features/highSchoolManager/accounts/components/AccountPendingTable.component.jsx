@@ -62,9 +62,6 @@ const TableAccountPending = (props) => {
               }}>
               Chấp nhận
             </Button>
-            <Button type='primary' danger size='small'>
-              Từ chối
-            </Button>
           </Space>
         </>
       )
