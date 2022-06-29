@@ -76,16 +76,17 @@ export const HighSchoolManagerNavigation = [
     type: '',
     children: studentManager
   },
-  {
-    id: ncNanoId(),
-    href: PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING,
-    name: 'Xét duyệt tài khoản',
-    type: ''
-  },
+
   {
     id: ncNanoId(),
     name: 'Quản lý hồ sơ',
     type: 'dropdown',
     children: profile
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING,
+    name: 'Xét duyệt tài khoản',
+    type: ''
   }
 ];

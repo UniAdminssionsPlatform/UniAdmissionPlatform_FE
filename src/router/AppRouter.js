@@ -44,6 +44,7 @@ import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/HighschoolProfilePage/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import HighSchoolManagerPendingPage from '../pages/highSchoolManager/ListAccountPendingPage';
+import UniversityManagerPendingPage from '../pages/universityManager/ListAccountPendingPage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -125,6 +126,12 @@ const AppRouter = () => (
         component={() => <UniversityDetailPage />}
         path={PATH_UNIVERSITY_MANAGER.PROFILE}
         key={PATH_UNIVERSITY_MANAGER.PROFILE}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <UniversityManagerPendingPage />}
+        path={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
+        key={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
         exact
       />
       <UniversityManagerRouter

@@ -85,5 +85,11 @@ export const UniversityManagerNavigation = [
     name: 'Quản lý hồ sơ',
     type: 'dropdown',
     children: profile
+  },
+  {
+    id: ncNanoId(),
+    name: 'Xét duyệt tài khoản',
+    type: '',
+    href: PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING
   }
 ];
