@@ -43,11 +43,11 @@ const profile = [
     href: PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE,
     name: 'Hồ sơ trường cấp 3'
   },
-  {
-    id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.PROFILE,
-    name: 'Hồ sơ trường đại học'
-  },
+  // {
+  //   id: ncNanoId(),
+  //   href: PATH_UNIVERSITY_MANAGER.PROFILE,
+  //   name: 'Hồ sơ trường đại học'
+  // },
   {
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE,
@@ -75,6 +75,12 @@ export const HighSchoolManagerNavigation = [
     name: 'Quản lý học sinh',
     type: '',
     children: studentManager
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING,
+    name: 'Xét duyệt tài khoản',
+    type: ''
   },
   {
     id: ncNanoId(),

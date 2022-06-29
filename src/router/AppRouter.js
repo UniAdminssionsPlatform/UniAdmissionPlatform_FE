@@ -43,6 +43,7 @@ import UniversityDetailPage from '../pages/universityManager/UniversityDetailPag
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/HighschoolProfilePage/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
+import HighSchoolManagerPendingPage from '../pages/highSchoolManager/ListAccountPendingPage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -91,6 +92,12 @@ const AppRouter = () => (
         component={() => <ListEventForHighSchoolPage />}
         path={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
         key={PATH_HIGH_SCHOOL_MANAGER.LIST_EVENT}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolManagerPendingPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING}
+        key={PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING}
         exact
       />
       <HighSchoolManagerRouter

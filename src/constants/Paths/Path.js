@@ -21,7 +21,8 @@ export const PATH_HIGH_SCHOOL_MANAGER = {
   EDIT_PROFILE: '/high-school/edit-profile',
   REGISTERED_EVENT: '/high-school/registered-events',
   LIST_STUDENT: '/high-school/students',
-  PROFILE: '/high-school/profile'
+  PROFILE: '/high-school/profile',
+  LIST_ACCOUNT_PENDING: '/high-school/account'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
