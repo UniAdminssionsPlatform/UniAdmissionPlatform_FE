@@ -1,18 +1,30 @@
-import { getAllPendingAccount } from '../../../services/HighSchoolRepresentativesSerive';
+import {
+  GetListNotification,
+  ActiveNotification
+} from '../../../notification/HighSchoolRepresentativesPendingNotification';
+import { getAllPendingAccount, activeAccount } from '../../../services/HighSchoolRepresentativesSerive';
 import AccountPendinglComponent from './components/AccountPending.component';
 import React, { useEffect, useState } from 'react';
-import { GetListNotification } from '../../../notification/HighSchoolRepresentativesPendingNotification';
 
 const AccountPendingContainer = () => {
   const [data, setData] = useState([]);
+  const [dataSearch, setDataSearch] = useState({
+    firstName: '',
+    email: '',
+    phone: ''
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadData();
-  }, []);
+    loadData({
+      'first-name': dataSearch.firstName ? dataSearch.firstName : '',
+      'email-contact': dataSearch.email ? dataSearch.email : '',
+      'phone-number': dataSearch.phone ? dataSearch.phone : ''
+    });
+  }, [dataSearch]);
 
-  const loadData = () => {
-    getAllPendingAccount()
+  const loadData = (value) => {
+    getAllPendingAccount(value)
       .then((result) => {
         setData(result.data.data.list);
         GetListNotification('success');
@@ -23,9 +35,37 @@ const AccountPendingContainer = () => {
       });
   };
 
+  const reload = () => {
+    loadData({
+      'first-name': dataSearch.firstName ? dataSearch.firstName : '',
+      'email-contact': dataSearch.email ? dataSearch.email : '',
+      'phone-number': dataSearch.phone ? dataSearch.phone : ''
+    });
+  };
+
+  const handleOk = (value) => {
+    activeAccount({
+      'user-id': value.id
+    })
+      .then((result) => {
+        setLoading(true);
+        ActiveNotification('success', result.data.msg);
+        setTimeout(reload, 2000);
+      })
+      .catch((error) => {
+        ActiveNotification('error', error.response.data.msg);
+      });
+  };
+
   return (
     <>
-      <AccountPendinglComponent data={data} loading={loading} />
+      <AccountPendinglComponent
+        data={data}
+        loading={loading}
+        setDataSearch={setDataSearch}
+        setLoading={setLoading}
+        handleOk={handleOk}
+      />
     </>
   );
 };

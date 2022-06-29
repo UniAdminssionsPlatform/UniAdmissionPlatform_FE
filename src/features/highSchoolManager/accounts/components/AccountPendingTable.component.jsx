@@ -1,9 +1,23 @@
-import { Button, Divider, Skeleton, Space, Table, Tag } from 'antd';
+import { Button, Divider, Modal, Skeleton, Space, Table } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 
 const TableAccountPending = (props) => {
-  const { data, loading } = props;
+  const { data, loading, handleOk } = props;
+  const confirm = (value) => {
+    Modal.confirm({
+      title: 'Xác thực',
+      icon: <ExclamationCircleOutlined />,
+      content: `Phê duyệt cho ${value.lastName} ${value.middleName} ${value.firstName}`,
+      okText: 'Có',
+      cancelText: 'Không',
+      onOk() {
+        handleOk(value);
+      },
+      onCancel() {}
+    });
+  };
   const columns = [
     {
       title: 'Họ và tên',
@@ -40,7 +54,12 @@ const TableAccountPending = (props) => {
       render: (record) => (
         <>
           <Space split={<Divider type='vertical' />}>
-            <Button type='primary' size='small'>
+            <Button
+              type='primary'
+              size='small'
+              onClick={() => {
+                confirm(record);
+              }}>
               Chấp nhận
             </Button>
             <Button type='primary' danger size='small'>
@@ -51,6 +70,7 @@ const TableAccountPending = (props) => {
       )
     }
   ];
+
   return (
     <>
       <div className='flex-grow'>
