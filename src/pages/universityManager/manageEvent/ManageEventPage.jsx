@@ -1,10 +1,11 @@
 import { Tabs, Typography } from 'antd';
-import CreateEventContainer from '../../features/universityManager/manageEvent/CreateEvent.container';
-import LayoutPageWithout from '../../components/commons/LayoutPage/LayoutPageWithout.component';
-import ListEventCreatedContainer from '../../features/universityManager/manageEvent/ListEventCreated.container';
+import CreateEventContainer from '../../../features/universityManager/manageEvent/CreateEvent.container';
+import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
+import ListEventCreatedContainer from '../../../features/universityManager/manageEvent/ListEventCreated.container';
+import ListEventRegisteredContainer from '../../../features/universityManager/manageEvent/ListEventRegisted.container';
 import React, { useState } from 'react';
 
-const CreateEventPage = () => {
+const ManageEventPage = () => {
   const { TabPane } = Tabs;
   const { Title, Text } = Typography;
   return (
@@ -15,11 +16,11 @@ const CreateEventPage = () => {
         kiện truyền thông hay đóng một sự kiện
       </Text>
       <Tabs defaultActiveKey='1' type='card'>
-        <TabPane tab='Tất cả sự kiện' key='1'>
+        <TabPane tab='Tất cả sự kiện' key='1' forceRender={true}>
           <ListEventCreatedContainer />
         </TabPane>
-        <TabPane tab='Sự kiện đang đăng ký' key='2'>
-          {/*<ListEventCreatedContainer/>*/}
+        <TabPane tab='Sự kiện đang đăng ký' key='2' forceRender={true}>
+          <ListEventRegisteredContainer />
         </TabPane>
         <TabPane tab='Sự kiện sắp diễn ra' key='3'>
           {/*<ListEventCreatedContainer/>*/}
@@ -34,4 +35,4 @@ const CreateEventPage = () => {
     </>
   );
 };
-export default CreateEventPage;
+export default ManageEventPage;

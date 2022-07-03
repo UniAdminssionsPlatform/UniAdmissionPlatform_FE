@@ -29,7 +29,7 @@ export const PATH_UNIVERSITY_MANAGER = {
   NEW: '/uni/list-new',
   LIST_EVENT: '/uni/events',
   REGIS_EVENT: '/uni/register-event',
-  CREATE_EVENT: '/uni/create-event',
+  MANAGE_EVENT: '/uni/manage-event',
   PROFILE: '/uni/university-detail',
   BOOKING_EVENT: '/uni/event-booking',
   CALENDAR: '/uni/calendar',
