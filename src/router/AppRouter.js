@@ -35,9 +35,9 @@ import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
 import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
+import UniversityManager from './UniversityManager';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
-import UniversityManager from "./UniversityManager";
 
 const AppRouter = () => (
   <>
@@ -171,7 +171,7 @@ const AppRouter = () => (
         exact
       />
       //University Pagea
-      <UniversityManager/>
+      <UniversityManager />
       //Index Page
       <Route path={PATH.ABOUT_US} exact>
         <AboutUsPage />
