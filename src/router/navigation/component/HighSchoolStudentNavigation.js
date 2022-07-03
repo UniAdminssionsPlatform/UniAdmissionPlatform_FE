@@ -40,7 +40,7 @@ const profile = [
   {
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_STUDENT.SCORE,
-    name: 'Điểm'
+    name: 'Học bạ'
   },
   {
     id: ncNanoId(),
