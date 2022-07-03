@@ -69,21 +69,13 @@ export const UniversityManagerNavigation = [
   },
   {
     id: ncNanoId(),
-    name: 'Quản lý sự kiện',
-    type: 'dropdown',
-    children: eventManager
-  },
-
-  {
-    id: ncNanoId(),
-    name: 'Quản lý tin tức',
-    type: 'dropdown',
-    children: eventMenu
-  },
-  {
-    id: ncNanoId(),
-    name: 'Quản lý hồ sơ',
+    name: 'Trang trường',
     type: 'dropdown',
     children: profile
+  },
+  {
+    id: ncNanoId(),
+    name: 'Trang quản lý',
+    href: PATH_UNIVERSITY_MANAGER.CALENDAR
   }
 ];

@@ -1,10 +1,9 @@
 import { Helmet } from 'react-helmet';
-import { SinglePageType } from './PageSingleTemp3Sidebar';
 import CategoryBadgeList from '../../../../components/commons/CategoryBadgeList/CategoryBadgeList.component';
-import PostMeta2 from 'components/PostMeta2/PostMeta2';
-import React, { FC } from 'react';
-import SingleMetaAction2 from './SingleMetaAction2';
-import SingleTitle from './SingleTitle';
+import PostMeta2 from '../../../universityManager/event/components/DetailEvent/DetailEventPostMeta2.component';
+import React from 'react';
+import SingleMetaAction2 from '../../../../components/commons/SingleMetaAction2/SingleMetaAction2.component';
+import SingleTitle from '../../../../components/commons/SingleTitle/SingleTitle.component';
 
 const SingleHeader = ({ pageData, titleMainClass, hiddenDesc = false, className = '', metaActionStyle = 'style1' }) => {
   const { categories, desc, title } = pageData;
@@ -21,7 +20,6 @@ const SingleHeader = ({ pageData, titleMainClass, hiddenDesc = false, className 
           {!!desc && !hiddenDesc && (
             <span className='block text-base text-neutral-500 md:text-lg dark:text-neutral-400 pb-1'>{desc}</span>
           )}
-          <div className='w-full border-b border-neutral-100 dark:border-neutral-800'></div>
           <div className='flex flex-col sm:flex-row justify-between sm:items-end space-y-5 sm:space-y-0 sm:space-x-5'>
             <PostMeta2
               size='large'

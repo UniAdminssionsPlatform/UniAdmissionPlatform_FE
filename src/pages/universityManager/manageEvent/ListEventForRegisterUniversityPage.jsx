@@ -1,9 +1,9 @@
-import ListEventForRegisterUniversityContainer from '../../../features/universityManager/manageEvent/ListEventForRegisterUniversity.container';
+import ListEventCreatedContainer from '../../../features/universityManager/manageEvent/ListEventCreated.container';
 import React from 'react';
 
 const ListEventForRegisterUniversityPage = () => (
   <>
-    <ListEventForRegisterUniversityContainer />
+    <ListEventCreatedContainer />
   </>
 );
 

@@ -4,7 +4,7 @@ import { refactorData } from '../../../utils/common';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import SearchBarComponent from './components/SearchBar.component';
-const ListEventRegisteredContainer = () => {
+const ManageEventContainer = () => {
   const [listEvent, setListEvent] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
@@ -92,4 +92,4 @@ const ListEventRegisteredContainer = () => {
     </div>
   );
 };
-export default ListEventRegisteredContainer;
+export default ManageEventContainer;

@@ -15,6 +15,7 @@ const CreateEventContainer = (props) => {
   const [endDate, setEndDate] = useState();
   const [describe, setDescribe] = useState('');
   const [shortDescribe, setShortDescribe] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const geAllProvince = () => {
     getListProvinces()
       .then((result) => {
@@ -57,13 +58,14 @@ const CreateEventContainer = (props) => {
   };
 
   const onFinish = (data) => {
+    data.event.name = data.event.name ? data.event.name : '';
     data.event.districtId = district;
     data.event.provinceId = province;
     data.event.description = describe;
     data.event.shortDescription = shortDescribe;
+    data.event.thumbnailUrl = imageUrl;
     data.event.eventTypeId = data.event.eventTypeId ? data.event.eventTypeId : 2;
     data.event.districtId = 1;
-    console.log(data);
     createEvent(data)
       .then((result) => {
         handleSuccessNotification(result.msg);
@@ -89,6 +91,7 @@ const CreateEventContainer = (props) => {
         setDescribe={setDescribe}
         shortDescribe={shortDescribe}
         setShortDescribe={setShortDescribe}
+        setImageUrl={setImageUrl}
       />
     </>
   );
