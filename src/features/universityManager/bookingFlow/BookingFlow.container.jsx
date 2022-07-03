@@ -62,38 +62,38 @@ const BookingFlowContainer = () => {
     history.push();
   };
   return (
-      <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
-        <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
-          <HighSchoolInforComponent highSchool={highSchool} />
-          <Divider>Trạng thái</Divider>
-          <Steps current={currentStep} onChange={onChangeStatus} direction='vertical'>
-            <Step title='Bước 1' description='Đăng ký trường cấp 3' />
-            <Step title='Bước 2' description='Đăng ký slot' />
-            <Step title='Bước 3' description='Lựa chọn event muốn đăng ký' />
-            <Step title='Bước 4' description='Xác nhận' />
-            {currentStep === 4 ? <Step status='process' title='Đang chờ xác nhận' icon={<LoadingOutlined />} /> : null}
-          </Steps>
-        </div>
-        {currentStep === 1 ? (
-          <SelectSlotContainer setCurrentSlotSelected={setCurrentSlotSelected} />
-        ) : currentStep === 2 ? (
-          <SelectEventContainer setCurrentEventSelected={setCurrentEventSelected} />
-        ) : currentStep === 3 ? (
-          <ConfirmBookingComponent
-            currenSlotSelected={currenSlotSelected}
-            currentEventSelected={currentEventSelected}
-            handleSubmit={handleSubmit}
-          />
-        ) : (
-          <Space direction={'vertical'}>
-            <Title title={1}>Đăng ký hoàn tất</Title>
-            <Text strong>Cần một lượng thời gian để trường đại học đánh giá và xác nhận thông tin event!</Text>
-            <Button onClick={handleFinish} type='primary'>
-              Hoàn tất
-            </Button>
-          </Space>
-        )}
+    <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
+      <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
+        <HighSchoolInforComponent highSchool={highSchool} />
+        <Divider>Trạng thái</Divider>
+        <Steps current={currentStep} onChange={onChangeStatus} direction='vertical'>
+          <Step title='Bước 1' description='Đăng ký trường cấp 3' />
+          <Step title='Bước 2' description='Đăng ký slot' />
+          <Step title='Bước 3' description='Lựa chọn event muốn đăng ký' />
+          <Step title='Bước 4' description='Xác nhận' />
+          {currentStep === 4 ? <Step status='process' title='Đang chờ xác nhận' icon={<LoadingOutlined />} /> : null}
+        </Steps>
       </div>
+      {currentStep === 1 ? (
+        <SelectSlotContainer setCurrentSlotSelected={setCurrentSlotSelected} />
+      ) : currentStep === 2 ? (
+        <SelectEventContainer setCurrentEventSelected={setCurrentEventSelected} />
+      ) : currentStep === 3 ? (
+        <ConfirmBookingComponent
+          currenSlotSelected={currenSlotSelected}
+          currentEventSelected={currentEventSelected}
+          handleSubmit={handleSubmit}
+        />
+      ) : (
+        <Space direction={'vertical'}>
+          <Title title={1}>Đăng ký hoàn tất</Title>
+          <Text strong>Cần một lượng thời gian để trường đại học đánh giá và xác nhận thông tin event!</Text>
+          <Button onClick={handleFinish} type='primary'>
+            Hoàn tất
+          </Button>
+        </Space>
+      )}
+    </div>
   );
 };
 export default BookingFlowContainer;

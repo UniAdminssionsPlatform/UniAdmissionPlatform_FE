@@ -18,24 +18,24 @@ export const EVENT_UNI = 3;
 export const EVENT_ORG = 4;
 //=======================================================
 export const ACCOUNT_STATUS = {
-    NEW: 0 ,
-    PENDING: 1,
-    ACTIVE: 2,
-    LOCK: 3
-}
+  NEW: 0,
+  PENDING: 1,
+  ACTIVE: 2,
+  LOCK: 3
+};
 export const EVENT = {
-    INIT: 0,
-    ON_GOING: 1,
-    CANCEL: 2,
-    DONE: 3
-}
+  INIT: 0,
+  ON_GOING: 1,
+  CANCEL: 2,
+  DONE: 3
+};
 export const EVENT_CHECK = {
-    PENDING: 0,
-    Approved: 1,
-    REJECT: 2,
-}
+  PENDING: 0,
+  Approved: 1,
+  REJECT: 2
+};
 export const SLOT = {
-    OPEN: 0,
-    FULL: 1,
-    CLOSE: 2
-}
+  OPEN: 0,
+  FULL: 1,
+  CLOSE: 2
+};

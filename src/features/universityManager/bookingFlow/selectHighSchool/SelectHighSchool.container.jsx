@@ -136,30 +136,30 @@ const SelectHighSchoolContainer = () => {
   };
   return (
     <>
-        <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
-          <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
-            <SearchBarComponent
-              setDataSearch={setDataSearch}
-              provinces={provinces}
-              districts={districts}
-              isDisableDistrict={isDisableDistrict}
-              onChange={onChangeProvince}
-            />
-          </div>
-          <Space direction={'vertical'}>
-            <Table
-              columns={column}
-              dataSource={listHighSchool?.list}
-              bordered={true}
-              size='middle'
-              style={{ width: '80rem' }}
-              pagination={false}
-              loading={isLoading}
-              scroll={{ y: 700 }}
-            />
-            <Pagination showSizeChanger onChange={onShowSizeChange} total={listHighSchool?.total} />
-          </Space>
+      <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
+        <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
+          <SearchBarComponent
+            setDataSearch={setDataSearch}
+            provinces={provinces}
+            districts={districts}
+            isDisableDistrict={isDisableDistrict}
+            onChange={onChangeProvince}
+          />
         </div>
+        <Space direction={'vertical'}>
+          <Table
+            columns={column}
+            dataSource={listHighSchool?.list}
+            bordered={true}
+            size='middle'
+            style={{ width: '80rem' }}
+            pagination={false}
+            loading={isLoading}
+            scroll={{ y: 700 }}
+          />
+          <Pagination showSizeChanger onChange={onShowSizeChange} total={listHighSchool?.total} />
+        </Space>
+      </div>
     </>
   );
 };
