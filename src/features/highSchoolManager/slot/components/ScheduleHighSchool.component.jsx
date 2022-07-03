@@ -87,7 +87,7 @@ const ScheduleHighSchoolComponent = (props) => {
         <SlotDetail slotSelected={slotSelected} setReloadTrigger={setReloadTrigger} />
       </Modal>
       <Paper>
-        <Scheduler data={listSlot} height={935}>
+        <Scheduler data={listSlot} height={700}>
           <ViewState />
           <EditingState onCommitChanges={commitChanges} />
           <EditRecurrenceMenu />

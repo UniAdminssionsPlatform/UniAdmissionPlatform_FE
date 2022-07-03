@@ -10,6 +10,7 @@ import { handleNotification } from '../../../notification/ListStudentForHighscho
 import { useSelector } from 'react-redux';
 import ListStudentForHighschoolComponent from './components/ListStudentForHighschool.component';
 import React, { useEffect, useState } from 'react';
+import TitlePageComponent from '../../../components/decorator/TitlePage.component';
 
 const ListStudentForHighschoolContainer = () => {
   const { user } = useSelector((state) => state.authentication);
@@ -79,6 +80,12 @@ const ListStudentForHighschoolContainer = () => {
 
   return (
     <>
+      <TitlePageComponent
+        title={'Quản lý  học sinh'}
+        subTitle={
+          'Bạn có thể tìm kiếm tài khoản học sinh bằng tên, email và số điện thoại. Thực hiện thao tác thay đổi trạng thái trong panel dưới đây'
+        }
+      />
       <ListStudentForHighschoolComponent
         data={students}
         setDataSearch={setDataSearch}
