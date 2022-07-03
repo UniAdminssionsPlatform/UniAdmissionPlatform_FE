@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useStateWithCallback } from '../../../components/CustomHOOK/SyncUseState';
 import Highlighter from 'react-highlight-words';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import moment from 'moment';
 
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
@@ -94,6 +95,18 @@ const ListEventCreatedContainer = (props) => {
         if (type === EVENT.DONE) return <Tag color='#87d068'>Sự kiện đã kết thúc</Tag>;
         if (type === EVENT.CANCEL) return <Tag color='#108ee9'>Sự kiện bị hủy</Tag>;
       },
+      width: '20%'
+    },
+    {
+      title: 'Thời gian bắt đầu',
+      dataIndex: 'startTime',
+      render: (startTime) => moment(startTime).locale('vi').format('LLL'),
+      width: '20%'
+    },
+    {
+      title: 'Thời gian kết thúc',
+      dataIndex: 'endTime',
+      render: (endTime) => `${moment(endTime).locale('vi').format('LLL')}`,
       width: '20%'
     },
     {
