@@ -1,11 +1,11 @@
 import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
-import ListEventRegisteredContainer from '../../../features/universityManager/manageEvent/ListEventRegistered.container';
+import ManageEventContainer from '../../../features/universityManager/manageEvent/ManageEvent.container';
 import React from 'react';
 
 const RegisteredEventPage = () => (
   <>
     <LayoutPageWithout subHeading='Các sự kiện đã đăng ký'>
-      <ListEventRegisteredContainer />
+      <ManageEventContainer />
     </LayoutPageWithout>
   </>
 );

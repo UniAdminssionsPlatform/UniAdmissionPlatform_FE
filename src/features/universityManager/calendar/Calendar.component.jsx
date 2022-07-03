@@ -1,21 +1,20 @@
 import { Button, Select, Skeleton, Space, Tag, Typography } from 'antd';
-import { PATH_UNIVERSITY_MANAGER } from '../../../../../../constants/Paths/Path';
-import { UNIVERSITY_MANAGER } from '../../../../../../constants/RoleType';
+import { PATH_UNIVERSITY_MANAGER } from '../../../constants/Paths/Path';
+import { UNIVERSITY_MANAGER } from '../../../constants/RoleType';
 import { useHistory } from 'react-router-dom';
-import LayoutPageWithout from '../../../../../../components/commons/LayoutPage/LayoutPageWithout.component';
+import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import React, { useState } from 'react';
-import ScheduleEventComponent from '../../../../../../components/schedule/ScheduleEvent.component';
+import ScheduleEventComponent from '../../../components/schedule/ScheduleEvent.component';
 
 const CalendarComponent = (props) => {
   const { listSlot, handleChangeSelection, isLoading } = props;
   const { Title, Text } = Typography;
   const history = useHistory();
   const handleRedirect = () => {
-    history.push(PATH_UNIVERSITY_MANAGER.REGIS_EVENT);
+    history.push(PATH_UNIVERSITY_MANAGER.CREATE_EVENT)
   };
   return (
     <>
-      <LayoutPageWithout subHeading='Quản lý lịch trình tổ chức sự kiện tuyển sinh'>
         <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
           <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
             <Space direction='vertical' size='small' style={{ display: 'flex' }}>
@@ -76,7 +75,6 @@ const CalendarComponent = (props) => {
             {isLoading ? <Skeleton active /> : <ScheduleEventComponent listSlot={listSlot} />}
           </div>
         </div>
-      </LayoutPageWithout>
     </>
   );
 };

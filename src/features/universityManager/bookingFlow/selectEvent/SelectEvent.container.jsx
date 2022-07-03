@@ -24,6 +24,9 @@ const SelectEventContainer = (props) => {
   }, [dataSearch]);
 
   const getEventForUniversity = (dataSearch) => {
+    const query = {
+      name: dataSearch.name ? dataSearch.name : ''
+    };
     getListEventForUniversity(dataSearch)
       .then((result) => {
         setListEvent(result.data.data.list);

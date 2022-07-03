@@ -1,5 +1,5 @@
 import { Button, Drawer, Space } from 'antd';
-import ListEventForRegisterUniversityContainer from '../../manageEvent/ListEventForRegisterUniversity.container';
+import ListEventCreatedContainer from '../../manageEvent/ListEventCreated.container';
 import React from 'react';
 const UniversityDrawerComponent = (props) => {
   const { isSidebarOpen, setIsSidebarOpen } = props;
@@ -15,7 +15,7 @@ const UniversityDrawerComponent = (props) => {
           <Button onClick={() => setIsSidebarOpen(false)}>Cancel</Button>
         </Space>
       }>
-      <ListEventForRegisterUniversityContainer />
+      <ListEventCreatedContainer />
     </Drawer>
   );
 };
