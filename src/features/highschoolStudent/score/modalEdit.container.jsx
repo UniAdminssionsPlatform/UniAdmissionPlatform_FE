@@ -1,66 +1,57 @@
-import { addScore, getBaseScore, modifyScore } from '../../../services/StudentScoreService';
-import { getAllSchoolYear } from '../../../services/SchoolYearService';
-import { getAllSubjectGroup } from '../../../services/SubjectGroupService';
+import { getAllSubject } from '../../../services/SubjectService';
+import { getSchoolYear } from '../../../services/SchoolYearService';
+import { getScore, modifyScore } from '../../../services/StudentScoreService';
 import { handleModifyNotification, handleNotification } from '../../../notification/StudentScoreNotification';
 import { useDebouncedCallback } from 'use-debounce';
 import ModalEditComponent from './components/modal/modalEdit.component';
 import React, { useEffect, useState } from 'react';
 
 const ModalEditContainer = (props) => {
-  const { visible, setVisible } = props;
+  const { visible, setVisible, selectedSchoolYear } = props;
 
-  const [schoolYear, setSchoolYear] = useState();
-  const [selectedSchoolYear, setSelectedSchoolYear] = useState(6);
-  const [baseScore, setBaseScore] = useState();
+  const [listSubject, setListSubject] = useState();
+  const [listScore, setListScore] = useState();
+  const [schoolYear, setSchoolYear] = useState('');
+  const [schoolRecordId, setSchoolRecordId] = useState(0);
+
+  const [isDisableScoreField, setIsDisableScoreField] = useState(true);
 
   const [loading, setLoading] = useState(true);
 
-  const onChangeSchoolYear = useDebouncedCallback(
-    // function
-    (values) => {
-      setLoading(true);
-      setSelectedSchoolYear(values);
-    },
-    // delay in ms
-    1000
-  );
+  const onChangeSubject = () => {
+    setIsDisableScoreField(false);
+  };
 
-  const loadData = () => {
-    getBaseScore().then((result) => {
-      setBaseScore(result.data.data);
-      setLoading(false);
+  const loadListSubject = () => {
+    getAllSubject().then((result) => {
+      setListSubject(result.data.data.list);
     });
   };
 
   useEffect(() => {
-    getSchoolyear();
-    loadData();
-  }, []);
+    loadListSubject();
+    getYear(selectedSchoolYear);
+    loadData(selectedSchoolYear);
+  }, [selectedSchoolYear]);
 
-  const getSchoolyear = () => {
-    getAllSchoolYear().then((result) => {
-      setSchoolYear(result.data.data.list);
-      setLoading(false);
+  const getYear = (data) => {
+    getSchoolYear(data).then((result) => {
+      setSchoolYear(result.data.data.year);
     });
   };
-
-  const editScore = (data) => {
-    modifyScore(data)
+  const loadData = (schoolYear) => {
+    getScore(schoolYear)
       .then((result) => {
-        handleModifyNotification('success');
+        setListScore(result.data.data.studentRecordItems);
+        setSchoolRecordId(result.data.data.id);
+        setLoading(false);
+        if (result.data.data.studentRecordItems.length === 0) handleNotification('error', 'Học bạ hiện chưa có điểm');
+        else handleNotification('success');
       })
-      .catch((err) => {
-        handleModifyNotification('error');
-      });
-  };
-
-  const add = (data) => {
-    addScore(data)
-      .then((result) => {
-        handleModifyNotification('success');
-      })
-      .catch((err) => {
-        handleModifyNotification('error');
+      .catch((error) => {
+        setListScore([]);
+        setLoading(false);
+        handleNotification('error', 'Năm học này chưa có học bạ');
       });
   };
 
@@ -71,52 +62,67 @@ const ModalEditContainer = (props) => {
   const handleOk = () => {
     // setVisible(false);
   };
-  class recordItems {
-    constructor(score, subjectId) {
-      this.subjectId = subjectId;
+
+  class updateScoreObj {
+    constructor(id, score) {
+      this.id = id;
       this.score = score;
     }
   }
 
-  class score {
-    constructor(score, name) {
-      this.name = name;
-      this.score = score;
-    }
-  }
-  const [recordItemList, setRecordItemList] = useState([]);
-  const [scoreList, setScoreList] = useState([]);
-  const subjectList = ['Toán', 'Lý', 'Anh', 'Sinh', 'Sử', 'Địa', 'Hóa', 'Văn', 'GDCD'];
+  const [update, setUpdate] = useState([]);
 
-  const handleEdit = (values) => {
-    setScoreList(scoreList.push(new score(values.Toán, subjectList[0])));
-    setScoreList(scoreList.push(new score(values.Lý, subjectList[1])));
-    setScoreList(scoreList.push(new score(values.Anh, subjectList[2])));
-    setScoreList(scoreList.push(new score(values.Sinh, subjectList[3])));
-    setScoreList(scoreList.push(new score(values.Sử, subjectList[4])));
-    setScoreList(scoreList.push(new score(values.Địa, subjectList[5])));
-    setScoreList(scoreList.push(new score(values.Hóa, subjectList[6])));
-    setScoreList(scoreList.push(new score(values.Văn, subjectList[7])));
-    setScoreList(scoreList.push(new score(values.GDCD, subjectList[8])));
+  const reload = () => {
+    window.location.reload();
+    setVisible(false);
+  };
 
-    for (let i = 0; i < baseScore.length; i++) {
-      for (let j = 0; j < scoreList.length; j++) {
-        if (baseScore?.[i].name === scoreList?.[j].name)
-          setRecordItemList(recordItemList.push(new recordItems(scoreList?.[j].score, baseScore?.[i].id)));
-      }
-    }
+  const updateScoreAPI = (data) => {
+    modifyScore(data)
+      .then((result) => {
+        handleModifyNotification('success', result.data.msg);
+        setTimeout(reload, 2000);
+      })
+      .catch((error) => {
+        handleModifyNotification('error', error.response.data.msg);
+      });
+  };
 
-    values.name = 'Học bạ';
+  // edit existing score in school record
+  const handleEditTab1 = (values) => {
+    //convert object to array
+    const scoreArray = Object.entries(values.scoreList);
+    scoreArray.forEach(([id, score]) => {
+      setUpdate(update.push(new updateScoreObj(id, score)));
+    });
+    //set value for 'updateList' in recordItems
+    const recordItem = {
+      updateList: update
+    };
+    values.schoolRecordId = schoolRecordId;
     values.schoolYearId = selectedSchoolYear;
-    values.recordItems = recordItemList;
+    values.recordItems = recordItem;
 
-    add(values);
+    setLoading(true);
+    updateScoreAPI(values);
+  };
 
-    console.log('diem hoc ba: ', values);
+  // add more score to school record
+  const handleEditTab2 = (values) => {
+    // set value for 'newList' in recordItems
+    const recordItem = {
+      newList: values.newList
+    };
+
+    values.schoolRecordId = schoolRecordId;
+    values.schoolYearId = selectedSchoolYear;
+    values.recordItems = recordItem;
+
+    setLoading(true);
+    updateScoreAPI(values);
   };
 
   const handleCancel = () => {
-    window.location.reload();
     setVisible(false);
   };
 
@@ -126,12 +132,15 @@ const ModalEditContainer = (props) => {
         showModal={showModal}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        handleEdit={handleEdit}
+        handleEditTab1={handleEditTab1}
+        handleEditTab2={handleEditTab2}
+        listSubject={listSubject}
+        listScore={listScore}
         isModalVisible={visible}
         schoolYear={schoolYear}
-        onChangeSchoolYear={onChangeSchoolYear}
+        onChangeSubject={onChangeSubject}
+        isDisableScoreField={isDisableScoreField}
         loading={loading}
-        baseScore={baseScore}
       />
     </>
   );
