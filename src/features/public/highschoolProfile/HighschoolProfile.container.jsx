@@ -1,5 +1,6 @@
 import { getDetailHighSchool } from '../../../services/HighSchoolService';
 import { useSelector } from 'react-redux';
+import HighSchoolProfileComponent from './components/HighschoolProfile.component';
 import React, { useEffect, useState } from 'react';
 import HighSchoolProfileComponent from "./components/HighschoolProfile.component";
 
