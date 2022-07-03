@@ -28,6 +28,8 @@ const CertificationContainer = () => {
   const [certificateAdmin, setCertificateAdmin] = useState('');
   const [certificateAdminId, setCertificateAdminId] = useState(1);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [imgeUrl, setImageUrl] = useState();
+  const [imageUrlEdit, setImageUrlEdit] = useState();
   const [form] = Form.useForm();
   const { user } = useSelector((state) => state.authentication);
   const handleChange = (value) => {
@@ -74,6 +76,7 @@ const CertificationContainer = () => {
   //CREATE CERTIFICATE
   const handleCreate = (values) => {
     values.certificationId = certificateAdminId;
+    values.imageUrl = imgeUrl;
     form.resetFields();
 
     createCertification(values)
@@ -95,13 +98,19 @@ const CertificationContainer = () => {
   const onFinish = (values) => {
     values.studentid = user.userId;
     values.certificationid = certificateDetail.certificationId;
+    values.imageUrl = imageUrlEdit;
     updateCertification(values)
       .then((result) => {
         handleNotification('success');
+        setTimeout(reload, 200);
       })
       .catch((error) => {
         handleNotification('error');
       });
+  };
+
+  const reload = () => {
+    window.location.reload();
   };
 
   // GET LIST CERTIFICATE FOR STUDENT ID
@@ -120,6 +129,7 @@ const CertificationContainer = () => {
   const getCertificate = (certificateID) => {
     getCertification(certificateID).then((result) => {
       setCertificateDetail(result.data.data);
+      setImageUrlEdit(result.data.data.imageUrl);
       setIsLoading(false);
     });
   };
@@ -149,6 +159,9 @@ const CertificationContainer = () => {
           handleDelete={handleDelete}
           handleConfirmDelete={handleConfirmDelete}
           form={form}
+          setImageUrl={setImageUrl}
+          imageUrlEdit={imageUrlEdit}
+          setImageUrlEdit={setImageUrlEdit}
         />
       )}
     </>

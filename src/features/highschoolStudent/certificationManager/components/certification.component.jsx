@@ -6,6 +6,7 @@ import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPageWith
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import Pagination from '../../../../components/commons/Pagination/Pagination';
 import React from 'react';
+import SingleUploadWithPreviewContainer from '../../../../components/UploadImage/SingleUpload/SingleUploadWithPreview.container';
 
 const CertificationComponent = (props) => {
   const {
@@ -20,8 +21,11 @@ const CertificationComponent = (props) => {
     handleOk,
     handleCancel,
     isModalVisible,
-    handleconfirmDelete,
-    form
+    handleConfirmDelete,
+    form,
+    setImageUrl,
+    imageUrlEdit,
+    setImageUrlEdit
   } = props;
   const { Option } = Select;
 
@@ -124,7 +128,7 @@ const CertificationComponent = (props) => {
                                 <DeleteOutlined
                                   style={style3}
                                   onClick={() => {
-                                    handleconfirmDelete(item.certificationId);
+                                    handleConfirmDelete(item.certificationId);
                                   }}
                                 />
                               </td>
@@ -172,8 +176,8 @@ const CertificationComponent = (props) => {
                           {/* <Option value='jack'>Jack</Option> */}
                         </Select>
                       </div>
-                      <Form.Item label='Link hình ảnh' name='imageUrl' rules={imgUrl}>
-                        <Input />
+                      <Form.Item name='imageUrl' label='Hình ảnh : ( bắt buộc )'>
+                        <SingleUploadWithPreviewContainer setImageUrl={setImageUrl} />
                       </Form.Item>
                       <Form.Item label='Mô tả' name='description' rules={description}>
                         <Input />
@@ -219,8 +223,8 @@ const CertificationComponent = (props) => {
                   layout='vertical'
                   fields={field}
                   onFinish={onFinish}>
-                  <Form.Item label='Link ảnh' name='imageUrl'>
-                    <Input />
+                  <Form.Item name='imageUrl' label='Hình ảnh :'>
+                    <SingleUploadWithPreviewContainer setImageUrl={setImageUrlEdit} imageUrlEdit={imageUrlEdit} />
                   </Form.Item>
                   <Form.Item label='Mô Tả' name='description'>
                     <Input />
