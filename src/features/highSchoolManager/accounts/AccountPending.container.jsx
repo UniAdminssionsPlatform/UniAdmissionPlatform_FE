@@ -1,8 +1,8 @@
 import {
-  GetListNotification,
-  ActiveNotification
+  ActiveNotification,
+  GetListNotification
 } from '../../../notification/HighSchoolRepresentativesPendingNotification';
-import { getAllPendingAccount, activeAccount } from '../../../services/HighSchoolRepresentativesSerive';
+import { activeAccount, getAllPendingAccount } from '../../../services/HighSchoolRepresentativesSerive';
 import AccountPendinglComponent from './components/AccountPending.component';
 import React, { useEffect, useState } from 'react';
 

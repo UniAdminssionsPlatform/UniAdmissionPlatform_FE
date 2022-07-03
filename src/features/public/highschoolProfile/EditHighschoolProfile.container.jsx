@@ -3,8 +3,8 @@ import { Spin } from 'antd';
 import { UpdateHighschoolProfile } from '../../../services/EditHighschoolProfileService';
 import { handleNotification } from '../../../notification/EditHighschoolProfileNotification';
 import { useSelector } from 'react-redux';
+import EditHighSchoolProfileComponent from './components/EditHighschoolProfile.component';
 import React, { useEffect, useState } from 'react';
-import UpdateHighSchoolProfileComponent from './components/EditHighschoolProfile.component';
 
 const UpdateHighSchoolProfileContainer = () => {
   const [value, setValue] = useState('');
@@ -68,7 +68,7 @@ const UpdateHighSchoolProfileContainer = () => {
                 <Spin tip='Đang tải...'></Spin>
               </div>
             ) : (
-              <UpdateHighSchoolProfileComponent
+              <EditHighSchoolProfileComponent
                 highschoolInformation={highschoolInformation}
                 onFinish={onFinish}
                 setValue={setValue}

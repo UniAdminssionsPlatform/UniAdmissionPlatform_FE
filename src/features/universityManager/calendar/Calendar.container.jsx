@@ -1,5 +1,5 @@
-import { getListEventFromDateToDateApi } from '../../../../../services/AdminUniversityEventService';
-import CalendarComponent from './components/Calendar.component';
+import { getListEventFromDateToDateApi } from '../../../services/AdminUniversityEventService';
+import CalendarComponent from './Calendar.component';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 

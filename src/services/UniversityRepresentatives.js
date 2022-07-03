@@ -1,8 +1,8 @@
-import { CallAPI } from './axiosBase';
 import {
-  GET_UNIVERSITY_REPRESENTATIVES_PENDING_ENDPOINT,
-  ACTIVE_UNIVERSITY_REPRESENTATIVES_ACCOUNT_ENDPOINT
+  ACTIVE_UNIVERSITY_REPRESENTATIVES_ACCOUNT_ENDPOINT,
+  GET_UNIVERSITY_REPRESENTATIVES_PENDING_ENDPOINT
 } from '../constants/Endpoints/UniversityRepresentativesEndpoint';
+import { CallAPI } from './axiosBase';
 
 export const getAllPendingAccount = (data) =>
   CallAPI(`${GET_UNIVERSITY_REPRESENTATIVES_PENDING_ENDPOINT}`, 'get', '', data);

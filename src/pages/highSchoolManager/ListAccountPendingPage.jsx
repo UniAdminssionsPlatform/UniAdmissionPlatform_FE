@@ -1,11 +1,9 @@
-import React from 'react';
 import AccountPendingContainer from '../../features/highSchoolManager/accounts/AccountPending.container';
+import React from 'react';
 
-const ListAccountPending = () => {
-  return (
-    <>
-      <AccountPendingContainer />
-    </>
-  );
-};
-export default ListAccountPending;
+const HighSchoolListAccountPendingPage = () => (
+  <>
+    <AccountPendingContainer />
+  </>
+);
+export default HighSchoolListAccountPendingPage;

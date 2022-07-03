@@ -6,7 +6,7 @@ import MarkdownEditorComponent from '../../../../components/MarkdownEditor/Markd
 import React from 'react';
 import SingleUploadWithPreviewContainer from '../../../../components/UploadImage/SingleUpload/SingleUploadWithPreview.container';
 
-const UpdateHighSchoolProfileComponent = (props) => {
+const EditHighSchoolProfileComponent = (props) => {
   const { TextArea } = Input;
   const { onFinish, highschoolInformation, value, setValue, avatar, setImageUrl, setThumbnail } = props;
   const stylelabel = {
@@ -245,4 +245,4 @@ const UpdateHighSchoolProfileComponent = (props) => {
     </div>
   );
 };
-export default UpdateHighSchoolProfileComponent;
+export default EditHighSchoolProfileComponent;
