@@ -1,4 +1,4 @@
-import { Button, Form, Input, Pagination, Select, Space, Table, Tag, Typography, notification } from 'antd';
+import { Button, Form, Input, Modal, Pagination, Select, Space, Table, Tag, Typography, notification } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
 import { SearchOutlined } from '@ant-design/icons';
 import { bookASlotInAdminUniversity } from '../../../services/AdminUniversitySlotServices';
@@ -15,8 +15,17 @@ const ListEventCreatedContainer = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
   const { slot } = useSelector((state) => state.selectedSlot);
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   const { Search } = Input;
   const { Option } = Select;
   const { Title } = Typography;
@@ -132,6 +141,11 @@ const ListEventCreatedContainer = (props) => {
   };
   return (
     <div>
+      <Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
       <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />
         <Search placeholder='Nhập tên diễn giả' style={{ width: 300 }} onSearch={handleChangeEventHost} />

@@ -23,6 +23,7 @@ import ListEventForHighSchoolPage from '../pages/universityManager/ListEventForH
 import ListNewContainer from '../features/public/news/ListNew.container';
 import ListStudentForHighschoolPage from '../pages/highSchoolManager/ListStudentForHighschoolPage';
 import ManageEventPage from '../pages/universityManager/manageEvent/ManageEventPage';
+import ManageNewPage from '../pages/universityManager/manageNew/manageNewPage';
 import React, { useState } from 'react';
 import RegisteredEventHighSchoolPage from '../pages/highSchoolManager/RegisteredEventHighSchoolPage';
 import RegisteredEventPage from '../pages/universityManager/manageEvent/RegisteredEventPage';
@@ -78,8 +79,8 @@ const ManagementRouter = () => {
       case '5':
         history.push(PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT);
         break;
-      case '6':
-        history.push('');
+      case '7':
+        history.push(PATH_UNIVERSITY_MANAGER.MANAGE_NEWS);
     }
   };
   const handleOnSelectBarHighSchoolComponent = (data) => {
@@ -192,6 +193,12 @@ const ManagementRouter = () => {
                 component={() => <ListNewContainer />}
                 path={PATH_UNIVERSITY_MANAGER.NEW}
                 key={PATH_UNIVERSITY_MANAGER.NEW}
+                exact
+              />
+              <UniversityManagerRouter
+                component={() => <ManageNewPage />}
+                path={PATH_UNIVERSITY_MANAGER.MANAGE_NEWS}
+                key={PATH_UNIVERSITY_MANAGER.MANAGE_NEWS}
                 exact
               />
               <HighSchoolManagerRouter
