@@ -1,5 +1,5 @@
 import React from 'react';
-import UpdateHighSchoolProfileContainer from '../../features/public/highSchoolProfile/EditHighschoolProfile.container';
+import UpdateHighSchoolProfileContainer from '../../features/public/highschoolProfile/EditHighschoolProfile.container';
 
 const UpdateHighSchoolPage = () => (
   <>

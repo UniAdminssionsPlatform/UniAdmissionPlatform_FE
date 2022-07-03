@@ -13,6 +13,7 @@ import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPag
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
+import HighSchoolListAccountPendingPage from '../pages/highSchoolManager/ListAccountPendingPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfilePage';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
@@ -20,7 +21,6 @@ import HomePage from '../pages/public/HomePage';
 import ListEventForHighSchoolPage from '../pages/universityManager/ListEventForHighschoolPage';
 import ListEventPage from '../pages/universityManager/ListeventPage';
 import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
-import ListNewContainer from '../features/public/news/ListNew.container';
 import ListStudentForHighschoolPage from '../pages/highSchoolManager/ListStudentForHighschoolPage';
 import LoginPage from '../pages/auth/Login.page';
 import ManageProfilePage from '../pages/auth/manageProfilePage';
@@ -34,7 +34,7 @@ import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps
 import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
 import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
-import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
+import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManager from './UniversityManager';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
@@ -89,6 +89,18 @@ const AppRouter = () => (
         component={() => <ListStudentForHighschoolPage />}
         path={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
         key={PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <UniversityListAccountPendingPage />}
+        path={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
+        key={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolListAccountPendingPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING}
+        key={PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING}
         exact
       />
       <HighSchoolManagerRouter

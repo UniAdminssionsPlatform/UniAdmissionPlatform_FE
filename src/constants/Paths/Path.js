@@ -21,7 +21,8 @@ export const PATH_HIGH_SCHOOL_MANAGER = {
   EDIT_PROFILE: '/high-school/edit-profile',
   REGISTERED_EVENT: '/high-school/registered-events',
   LIST_STUDENT: '/high-school/students',
-  PROFILE: '/high-school/profile'
+  PROFILE: '/high-school/profile',
+  LIST_ACCOUNT_PENDING: '/high-school/account'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
@@ -35,7 +36,8 @@ export const PATH_UNIVERSITY_MANAGER = {
   UPDATE_PROFILE: '/uni/update-profile',
   REGISTERED_EVENT: '/uni/registered-event',
   CREATE_NEW: '/uni/create-new',
-  MANAGE_BOOKING: '/uni/event'
+  MANAGE_BOOKING: '/uni/event',
+  LIST_ACCOUNT_PENDING: '/uni/account'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',
