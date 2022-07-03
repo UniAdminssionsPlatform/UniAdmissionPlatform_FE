@@ -6,7 +6,6 @@ import MarkdownEditorComponent from '../../../../components/MarkdownEditor/Markd
 import React, {useState} from 'react';
 import SingleUploadWithPreviewContainer
     from '../../../../components/UploadImage/SingleUpload/SingleUploadWithPreview.container';
-
 const CreateEventComponent = (props) => {
     const {
         setImageUrl,
