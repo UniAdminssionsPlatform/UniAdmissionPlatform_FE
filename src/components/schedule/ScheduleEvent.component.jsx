@@ -23,19 +23,6 @@ import SlotComponent from './component/Slot.component';
 
 const ScheduleEventComponent = (props) => {
   const { listSlot } = props;
-  const [data, setData] = useState();
-  const commitChanges = ({ added, changed, deleted }) => {
-    if (added) setData([...data, { id: data.length > 0 ? data[data.length - 1].id + 1 : 0, ...added }]);
-    if (changed) {
-      setData(
-        data.map((appointment) =>
-          changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
-        )
-      );
-    }
-    if (deleted !== undefined) setData(data.filter((appointment) => appointment.id !== deleted));
-  };
-
   const AppointmentComponent = ({ children, style, data, ...restProps }) => (
     <Appointments.Appointment
       {...restProps}
@@ -60,10 +47,10 @@ const ScheduleEventComponent = (props) => {
       <Paper>
         <Scheduler data={listSlot} height={750}>
           <ViewState />
-          <EditingState onCommitChanges={commitChanges} />
+          <EditingState />
           <EditRecurrenceMenu />
-          <MonthView startDayHour={7} endDayHour={20} />
           <WeekView startDayHour={7} endDayHour={20} />
+          <MonthView startDayHour={7} endDayHour={20} />
           <DayView startDayHour={7} endDayHour={20} />
           <Toolbar />
           <ViewSwitcher />

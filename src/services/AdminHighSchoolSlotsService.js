@@ -14,4 +14,5 @@ const bindingData = (data) => {
 };
 export const getListSlotHighSchool = (data) => CallAPI(`${GET_LIST_SLOTS_ENDPOINT}${bindingData(data)}`, 'get');
 export const createNewSlot = (data) => CallAPI(`${CREATE_NEW_SLOTS_ENDPOINT}`, 'post', data);
-export const closeASlot = (data) => CallAPI(CLOSE_A_SLOT_ENDPOINT, `PUT`, data);
+export const closeASlot = (data) => CallAPI(`${CLOSE_A_SLOT_ENDPOINT}?slot-id=${data['slot-id']}`, `PUT`, data);
+export const fullASlot = (data) => CallAPI(`${CLOSE_A_SLOT_ENDPOINT}?slot-id=${data['slot-id']}`, `PUT`, data);

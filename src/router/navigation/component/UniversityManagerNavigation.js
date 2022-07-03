@@ -32,7 +32,7 @@ const eventManager = [
       },
       {
         id: ncNanoId(),
-        href: PATH_UNIVERSITY_MANAGER.LIST_EVENT,
+        href: PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT,
         name: 'Sự kiện đã đăng ký'
       }
     ]
@@ -51,6 +51,11 @@ const profile = [
     id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.PROFILE,
     name: 'Hồ sơ trường'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE,
+    name: 'Cập nhật trang cá nhân của trường'
   }
 ];
 
@@ -64,21 +69,13 @@ export const UniversityManagerNavigation = [
   },
   {
     id: ncNanoId(),
-    name: 'Quản lý sự kiện',
-    type: 'dropdown',
-    children: eventManager
-  },
-
-  {
-    id: ncNanoId(),
-    name: 'Quản lý tin tức',
-    type: 'dropdown',
-    children: eventMenu
-  },
-  {
-    id: ncNanoId(),
-    name: 'Quản lý hồ sơ',
+    name: 'Trang trường',
     type: 'dropdown',
     children: profile
+  },
+  {
+    id: ncNanoId(),
+    name: 'Trang quản lý',
+    href: PATH_UNIVERSITY_MANAGER.CALENDAR
   }
 ];

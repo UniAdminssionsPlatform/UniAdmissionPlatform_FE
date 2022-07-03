@@ -1,10 +1,10 @@
-import { Button, Descriptions, Tag } from 'antd';
+import { Button, Descriptions, Space, Tag } from 'antd';
 import { SLOT_IS_CLOSE, SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../constants/AppConst';
 import React from 'react';
 import moment from 'moment';
 
 const SlotDetailComponent = (props) => {
-  const { slotSelected, handleUpdateOpenSlot, handleUpdateCloseSlot } = props;
+  const { slotSelected, handleUpdateFullSlot, handleUpdateCloseSlot } = props;
   return (
     <>
       <Descriptions bordered>
@@ -29,28 +29,47 @@ const SlotDetailComponent = (props) => {
             <Tag color='success'>Slot đang trống</Tag>
           )}
         </Descriptions.Item>
-        {slotSelected.status === SLOT_IS_CLOSE ? (
-          <Descriptions.Item label='Hành động' span={3}>
-            <Button
-              type='primary'
-              onClick={() => {
-                handleUpdateOpenSlot(slotSelected.id);
-              }}>
-              Mở Lại Slot
-            </Button>
-          </Descriptions.Item>
-        ) : slotSelected.status === SLOT_IS_OPEN ? (
-          <Descriptions.Item label='Hành động' span={3}>
-            <Button
-              type='primary'
-              danger
-              onClick={() => {
-                handleUpdateCloseSlot(slotSelected.id);
-              }}>
-              Đóng Slot
-            </Button>
-          </Descriptions.Item>
-        ) : null}
+        <Descriptions.Item label='Hành động' span={3}>
+          <Space>
+            {slotSelected.status === SLOT_IS_FULL ? (
+              <Button
+                type='primary'
+                disabled={true}
+                onClick={() => {
+                  handleUpdateFullSlot(slotSelected.id);
+                }}>
+                Trạng thái hiện đang đầy
+              </Button>
+            ) : (
+              <Button
+                type='primary'
+                onClick={() => {
+                  handleUpdateFullSlot(slotSelected.id);
+                }}>
+                Chuyển trạng thái đầy
+              </Button>
+            )}
+            {slotSelected.status === SLOT_IS_CLOSE ? (
+              <Button
+                type='primary'
+                danger
+                onClick={() => {
+                  handleUpdateCloseSlot(slotSelected.id);
+                }}>
+                Slot hiện đang đóng
+              </Button>
+            ) : (
+              <Button
+                type='primary'
+                danger
+                onClick={() => {
+                  handleUpdateCloseSlot(slotSelected.id);
+                }}>
+                Đóng Slot
+              </Button>
+            )}
+          </Space>
+        </Descriptions.Item>
       </Descriptions>
     </>
   );
