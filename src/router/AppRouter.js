@@ -31,6 +31,7 @@ import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
+import GoalAdminPage from '../pages/universityManager/GoalAdmissionPage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -77,6 +78,12 @@ const AppRouter = () => (
         key={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
         exact
       />
+      {/* <UniversityManagerRouter
+        component={() => <GoalAdminPage />}
+        path={PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION}
+        key={PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION}
+        exact
+      /> */}
       //Student
       <HighSchoolStudentRouter
         component={() => <ListEventPage />}
