@@ -93,7 +93,7 @@ const ManagementRouter = () => {
         history.push(PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER);
         break;
       case '4':
-        history.push(PATH_UNIVERSITY_MANAGER.REGIS_EVENT);
+        history.push(PATH_HIGH_SCHOOL_MANAGER.REGISTERED_EVENT);
         break;
       case '5':
         history.push(PATH_HIGH_SCHOOL_MANAGER.LIST_STUDENT);
