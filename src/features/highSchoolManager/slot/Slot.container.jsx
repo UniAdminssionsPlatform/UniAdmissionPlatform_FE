@@ -50,7 +50,6 @@ const SlotContainer = () => {
 
   return (
     <>
-      {' '}
       <TitlePageComponent
         title={'Xét duyệt tài khoản'}
         subTitle={

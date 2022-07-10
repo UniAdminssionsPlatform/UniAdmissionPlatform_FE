@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 const CreateEventComponent = (props) => {
   const [form] = Form.useForm();
   const { Option } = Select;
-  const { data, onFinish, onFinishFailed } = props;
-  const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters'];
+  const { data, onFinish, onFinishFailed, listTag } = props;
+  console.log(listTag);
   const [selectedItems, setSelectedItems] = useState([]);
-  const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
+  const filteredOptions = listTag?.list.filter((o) => !selectedItems.includes(o));
   return (
     <>
       <Form form={form} layout='vertical' onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete='off'>
@@ -29,9 +29,9 @@ const CreateEventComponent = (props) => {
               value={selectedItems}
               onChange={setSelectedItems}
               style={{ width: '100%' }}>
-              {filteredOptions.map((item) => (
-                <Select.Option key={item} value={item}>
-                  {item}
+              {listTag?.list.map((item) => (
+                <Select.Option key={item.id} value={item.name}>
+                  {item.name}
                 </Select.Option>
               ))}
             </Select>
