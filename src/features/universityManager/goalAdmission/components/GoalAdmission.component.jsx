@@ -56,26 +56,25 @@ const GoalAdmissionComponent = (props) => {
         <Helmet>
           <title>Tiêu chí tuyển sinh</title>
         </Helmet>
-        <LayoutPage subHeading='' headingEmoji='🔑' heading=''>
-          <div>
-            <Row justify='space-between'>
-              <Col span={4}>
-                <Space>
-                  Năm học
-                  <Select
-                    defaultValue={6}
-                    style={{
-                      width: 120,
-                      marginLeft: 10
-                    }}
-                    onChange={onChangeYear}>
-                    {listSchoolYear?.map((item) => (
-                      <Option value={item.id}>{item.year}</Option>
-                    ))}
-                  </Select>
-                </Space>
-              </Col>
-              {/* <Col span={2}></Col>
+        <div>
+          <Row justify='space-between'>
+            <Col span={4}>
+              <Space>
+                Năm học
+                <Select
+                  defaultValue={6}
+                  style={{
+                    width: 120,
+                    marginLeft: 10
+                  }}
+                  onChange={onChangeYear}>
+                  {listSchoolYear?.map((item) => (
+                    <Option value={item.id}>{item.year}</Option>
+                  ))}
+                </Select>
+              </Space>
+            </Col>
+            {/* <Col span={2}></Col>
               <Col span={2}></Col>
               <Col span={4}>
                 <Space>
@@ -94,11 +93,11 @@ const GoalAdmissionComponent = (props) => {
                   </Button>
                 </Space>
               </Col> */}
-            </Row>
-            <Skeleton active loading={loading}>
-              <Table pagination={false} dataSource={data} columns={columns} bordered />
-            </Skeleton>
-            {/* {visibleAdd === true ? (
+          </Row>
+          <Skeleton active loading={loading}>
+            <Table pagination={false} dataSource={data} columns={columns} bordered />
+          </Skeleton>
+          {/* {visibleAdd === true ? (
               <ModalAddContainer
                 visible={visibleAdd}
                 setVisible={setVisibleAdd}
@@ -116,8 +115,7 @@ const GoalAdmissionComponent = (props) => {
             ) : (
               ''
             )} */}
-          </div>
-        </LayoutPage>
+        </div>
       </div>
     </>
   );
