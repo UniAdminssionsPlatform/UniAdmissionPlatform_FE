@@ -18,7 +18,6 @@ import RegisterForm from './components/RegisterForm.component';
 
 const RegisterFormContainer = (props) => {
   const { role } = props;
-  const [setCode] = useState('');
   const [wardId, setWardId] = useState('');
   const [dob, setDob] = useState('');
   const [sex, setSex] = useState('');
@@ -97,7 +96,6 @@ const RegisterFormContainer = (props) => {
     if (role === 'st') {
       getHighSchoolByCode(value)
         .then((result) => {
-          setCode(result.data.data.id);
           setSchoolName(result.data.data.name);
         })
         .catch(() => {
@@ -107,7 +105,6 @@ const RegisterFormContainer = (props) => {
     if (role === 'uni') {
       getUniversityByCode(value)
         .then((result) => {
-          setCode(result.data.data.id);
           setSchoolName(result.data.data.name);
         })
         .catch(() => {
@@ -117,7 +114,6 @@ const RegisterFormContainer = (props) => {
     if (role === 'hs') {
       getHighSchoolByManagerCode(value)
         .then((result) => {
-          setCode(result.data.data.id);
           setSchoolName(result.data.data.name);
         })
         .catch(() => {
@@ -166,7 +162,6 @@ const RegisterFormContainer = (props) => {
         });
     }
   };
-
   return (
     <>
       <RegisterForm

@@ -82,10 +82,15 @@ const ManagementRouter = () => {
         break;
       case '6':
         history.push('');
-      case '9':
-        history.push(PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION);
       case '7':
         history.push(PATH_UNIVERSITY_MANAGER.MANAGE_NEWS);
+        break;
+      case '8':
+        history.push(PATH_UNIVERSITY_MANAGER.MANAGE_NEWS);
+        break;
+      case '9':
+        history.push(PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION);
+        break;
     }
   };
   const handleOnSelectBarHighSchoolComponent = (data) => {
