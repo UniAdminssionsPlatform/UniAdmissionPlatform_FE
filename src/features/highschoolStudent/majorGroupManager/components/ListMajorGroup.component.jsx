@@ -1,12 +1,11 @@
 import { Helmet } from 'react-helmet';
-import { Spin } from 'antd';
+import { Spin, Pagination } from 'antd';
 import CardMajor from './Card/CardMajor.component';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
-import Pagination from '../../../../components/commons/Pagination/Pagination';
 import React from 'react';
 
 const ListMajorComponent = (props) => {
-  const { data, loading } = props;
+  const { data, loading, totalPage, onChangePage, dataSearch } = props;
   return (
     <div className={`nc-PageArchive overflow-hidden `} data-nc-id='PageArchive'>
       <Helmet>
@@ -35,7 +34,7 @@ const ListMajorComponent = (props) => {
               ))}
             </div>
             <div className='flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center'>
-              <Pagination />
+              <Pagination total={totalPage} onChange={onChangePage} pageSize={dataSearch.limit} />
             </div>
           </div>
         </div>

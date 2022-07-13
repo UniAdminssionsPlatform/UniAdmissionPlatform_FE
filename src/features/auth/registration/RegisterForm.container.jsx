@@ -148,6 +148,7 @@ const RegisterFormContainer = (props) => {
       registerForSchoolManager(values)
         .then((result) => {
           handleNotification('success', result.message);
+          history.push(PATH.ACCOUNT_WAITING_APPROVE);
         })
         .catch((err) => {
           handleNotification('error', err);
@@ -158,6 +159,7 @@ const RegisterFormContainer = (props) => {
       registerForUniversityManager(values)
         .then((result) => {
           handleNotification('success', result.message);
+          history.push(PATH.ACCOUNT_WAITING_APPROVE);
         })
         .catch((err) => {
           handleNotification('error', err);

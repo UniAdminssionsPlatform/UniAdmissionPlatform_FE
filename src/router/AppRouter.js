@@ -31,6 +31,7 @@ import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
+import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -42,6 +43,9 @@ const AppRouter = () => (
       </Route>
       <Route path={PATH.LOGIN} exact>
         <LoginPage />
+      </Route>
+      <Route path={PATH.ACCOUNT_WAITING_APPROVE} exact>
+        <WaitingApprovePage />
       </Route>
       <Route path={PATH.FORGOT_PASSWORD} exact>
         <ForgotPasswordPage />
