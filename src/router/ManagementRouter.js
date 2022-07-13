@@ -33,6 +33,7 @@ import UniversityDetailPage from '../pages/universityManager/UniversityDetailPag
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
+import GoalAdmissionPage from '../pages/universityManager/GoalAdmissionPage';
 
 const ManagementRouter = () => {
   const { Header, Content, Sider } = Layout;
@@ -144,6 +145,12 @@ const ManagementRouter = () => {
               height: '80vh'
             }}>
             <Switch>
+              <UniversityManagerRouter
+                component={() => <GoalAdmissionPage />}
+                path={PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION}
+                key={PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION}
+                exact
+              />
               <UniversityManagerRouter
                 component={() => <SelectHighSchoolPage />}
                 path={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
