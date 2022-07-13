@@ -38,7 +38,7 @@ export const PATH_UNIVERSITY_MANAGER = {
   REGISTERED_EVENT: '/uni/registered-event',
   CREATE_NEW: '/uni/create-new',
   MANAGE_BOOKING: '/uni/event',
-  GOAL_ADMISSION: '/uni/goal-admission'
+  LIST_ACCOUNT_PENDING: '/uni/account',
   MANAGE_NEWS: '/uni/new'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
