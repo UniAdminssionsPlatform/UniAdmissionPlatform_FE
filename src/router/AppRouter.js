@@ -32,7 +32,6 @@ import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
-import GoalAdminPage from '../pages/universityManager/GoalAdmissionPage';
 const AppRouter = () => (
   <>
     <ScrollToTop />
