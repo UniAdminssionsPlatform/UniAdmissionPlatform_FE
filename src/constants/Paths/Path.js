@@ -40,7 +40,7 @@ export const PATH_UNIVERSITY_MANAGER = {
   MANAGE_BOOKING: '/uni/event',
   GOAL_ADMISSION: '/uni/goal-admission',
   MANAGE_NEWS: '/uni/new',
-  LIST_ACCOUNT_PENDING: 'uni/account'
+  LIST_ACCOUNT_PENDING: '/uni/account'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',

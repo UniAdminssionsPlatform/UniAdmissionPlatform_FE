@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const SearchBarComponent = (props) => {
   const { Title } = Typography;
 
-  const { setDataSearch, setLoading } = props;
+  const { setDataSearch, setLoading, dataSearch } = props;
 
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -15,6 +15,7 @@ const SearchBarComponent = (props) => {
     () => {
       setLoading(true);
       setDataSearch({
+        ...dataSearch,
         firstName,
         email,
         phone
