@@ -71,5 +71,10 @@ export const HighSchoolStudentNavigation = [
     name: 'Quản lý hồ sơ',
     type: 'dropdown',
     children: profile
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY,
+    name: 'Danh Sách Trường Đại Học'
   }
 ];

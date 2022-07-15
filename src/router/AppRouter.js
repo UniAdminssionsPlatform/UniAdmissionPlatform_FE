@@ -38,6 +38,9 @@ import UniversityListAccountPendingPage from '../pages/universityManager/Univers
 import UniversityManager from './UniversityManager';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
+import ListUniversityPage from '../pages/highSchoolStudent/ListUniversityPage';
+import PublicEventPage from '../pages/universityManager/PublicEventPage';
+import UnpublicEventPage from '../pages/universityManager/UnpublicEventPage';
 
 const AppRouter = () => (
   <>
@@ -95,6 +98,18 @@ const AppRouter = () => (
         component={() => <UniversityListAccountPendingPage />}
         path={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
         key={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <PublicEventPage />}
+        path={PATH_UNIVERSITY_MANAGER.PUBLIC_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.PUBLIC_EVENT}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <UnpublicEventPage />}
+        path={PATH_UNIVERSITY_MANAGER.UNPUBLIC_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.UNPUBLIC_EVENT}
         exact
       />
       <HighSchoolManagerRouter
@@ -180,6 +195,12 @@ const AppRouter = () => (
         component={() => <StudentScorePage />}
         path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <ListUniversityPage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY}
+        key={PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY}
         exact
       />
       //University Pagea

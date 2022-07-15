@@ -37,7 +37,9 @@ export const PATH_UNIVERSITY_MANAGER = {
   REGISTERED_EVENT: '/uni/registered-event',
   CREATE_NEW: '/uni/create-new',
   MANAGE_BOOKING: '/uni/event',
-  LIST_ACCOUNT_PENDING: '/uni/account'
+  LIST_ACCOUNT_PENDING: '/uni/account',
+  PUBLIC_EVENT: '/uni/public-event',
+  UNPUBLIC_EVENT: '/uni/unpublic-event'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',
@@ -48,5 +50,6 @@ export const PATH_HIGH_SCHOOL_STUDENT = {
   UPDATE_PROFILE: '/student/update-profile',
   CERTIFICATION: '/student/certification',
   SCORE: '/student/score',
-  HIGH_SCHOOL_PROFILE: '/student/highschool-profile'
+  HIGH_SCHOOL_PROFILE: '/student/highschool-profile',
+  LIST_UNIVERSITY: '/student/list-university'
 };
