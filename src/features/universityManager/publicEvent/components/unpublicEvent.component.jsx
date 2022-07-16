@@ -1,8 +1,8 @@
-import { Button, Table, Image, Input, Pagination, Modal, Tag } from 'antd';
-import React from 'react';
+import { Button, Image, Input, Modal, Pagination, Table, Tag } from 'antd';
 import { CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../../constants/AppConst';
 import { refactorData } from '../../../../utils/common';
+import React from 'react';
 
 const UnpublicEventComponent = (props) => {
   const { event2, onChange, handleChangeEventName, handlePublicButton, handleChangeEventHost } = props;

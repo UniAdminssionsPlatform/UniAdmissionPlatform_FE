@@ -18,12 +18,14 @@ import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
 import ListEventPage from '../pages/universityManager/ListeventPage';
 import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
+import ListUniversityPage from '../pages/highSchoolStudent/ListUniversityPage';
 import LoginPage from '../pages/auth/Login.page';
 import ManageProfilePage from '../pages/auth/manageProfilePage';
 import ManagementRouter from './ManagementRouter';
 import NewsDetailPage from '../pages/public/NewsDetailPage';
 import NewsPage from '../pages/public/NewsPage';
 import PolicyPage from '../pages/public/PolicyPage';
+import PublicEventPage from '../pages/universityManager/PublicEventPage';
 import React from 'react';
 import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
@@ -31,6 +33,7 @@ import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
+import UnpublicEventPage from '../pages/universityManager/UnpublicEventPage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
 const AppRouter = () => (
   <>
@@ -122,6 +125,24 @@ const AppRouter = () => (
         component={() => <CertificationPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
         key={PATH_HIGH_SCHOOL_STUDENT.CERTIFICATION}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <PublicEventPage />}
+        path={PATH_UNIVERSITY_MANAGER.PUBLIC_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.PUBLIC_EVENT}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <UnpublicEventPage />}
+        path={PATH_UNIVERSITY_MANAGER.UN_PUBLIC_EVENT}
+        key={PATH_UNIVERSITY_MANAGER.UN_PUBLIC_EVENT}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <ListUniversityPage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY}
+        key={PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY}
         exact
       />
       <HighSchoolStudentRouter

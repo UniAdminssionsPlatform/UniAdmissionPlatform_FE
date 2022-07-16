@@ -1,8 +1,8 @@
-import { Button, Table, Image, Input, Pagination, Modal, Tag, Space } from 'antd';
-import React from 'react';
+import { Button, Image, Input, Modal, Pagination, Space, Table, Tag } from 'antd';
 import { CheckOutlined, ExclamationCircleOutlined, StarOutlined } from '@ant-design/icons';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../../constants/AppConst';
 import { refactorData } from '../../../../utils/common';
+import React from 'react';
 
 const PublicEventComponent = (props) => {
   const { event134, onChange, handleChangeEventName, handlePublicButton, handleChangeEventHost } = props;

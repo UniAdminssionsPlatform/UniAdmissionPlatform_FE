@@ -1,6 +1,6 @@
-import { Button, Table, Image, Input, Pagination, Modal } from 'antd';
-import React from 'react';
+import { Button, Image, Input, Modal, Pagination, Table } from 'antd';
 import { ExclamationCircleOutlined, StarOutlined } from '@ant-design/icons';
+import React from 'react';
 
 const ListUniversityComponent = (props) => {
   const { universities, onChange, handleChangeEventName, handleFollowButton } = props;

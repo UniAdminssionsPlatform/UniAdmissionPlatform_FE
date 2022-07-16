@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import CalendarContainer from '../features/universityManager/calendar/Calendar.container';
 import CalendarPage from '../pages/universityManager/CalendarPage';
 import CreateNewPage from '../pages/highSchoolManager/CreateNewPage';
+import GoalAdmissionPage from '../pages/universityManager/GoalAdmissionPage';
 import HighSchoolBookingPage from '../pages/universityManager/manageEvent/HighSchoolBookingPage';
 import HighSchoolListAccountPendingPage from '../pages/highSchoolManager/ListAccountPendingPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
@@ -33,7 +34,6 @@ import UniversityDetailPage from '../pages/universityManager/UniversityDetailPag
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
-import GoalAdmissionPage from '../pages/universityManager/GoalAdmissionPage';
 
 const ManagementRouter = () => {
   const { Header, Content, Sider } = Layout;

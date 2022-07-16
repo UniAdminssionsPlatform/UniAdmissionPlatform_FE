@@ -1,12 +1,10 @@
-import React from 'react';
 import ListUniversityContainer from '../../features/highschoolStudent/followUniversity/listUniversity.container';
+import React from 'react';
 
-const ListUniversityPage = () => {
-  return (
-    <>
-      <ListUniversityContainer />
-    </>
-  );
-};
+const ListUniversityPage = () => (
+  <>
+    <ListUniversityContainer />
+  </>
+);
 
 export default ListUniversityPage;

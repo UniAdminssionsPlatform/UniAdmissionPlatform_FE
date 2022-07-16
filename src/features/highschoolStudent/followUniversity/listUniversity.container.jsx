@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import ListUniversityComponent from './components/listUniversity.component';
-import { Skeleton } from 'antd';
-import { FollowUniversity, ListUniversityPaging } from '../../../services/FollowUniversityService';
 import { FollowSuccessNotification } from '../../../notification/FollowNotification';
+import { FollowUniversity, ListUniversityPaging } from '../../../services/FollowUniversityService';
+import { Skeleton } from 'antd';
+import ListUniversityComponent from './components/listUniversity.component';
+import React, { useEffect, useState } from 'react';
 
 const ListUniversityContainer = () => {
   const [isLoading, setIsLoading] = useState(true);

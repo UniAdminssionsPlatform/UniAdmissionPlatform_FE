@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Skeleton } from 'antd';
-import { useSelector } from 'react-redux';
 import { ListEventToPublic, PublicEvent } from '../../../services/PublicService';
 import { PublicSuccessNotification } from '../../../notification/PublicNotification';
+import { Skeleton } from 'antd';
+import { useSelector } from 'react-redux';
 import PublicEventComponent from './components/publicEvent.component';
+import React, { useEffect, useState } from 'react';
 
 const PublicEventContainer = () => {
   const [isLoading, setIsLoading] = useState(true);

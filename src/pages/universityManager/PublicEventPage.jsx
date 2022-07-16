@@ -1,12 +1,10 @@
-import React from 'react';
 import PublicEventContainer from '../../features/universityManager/publicEvent/publicEvent.container';
+import React from 'react';
 
-const PublicEventPage = () => {
-  return (
-    <>
-      <PublicEventContainer />
-    </>
-  );
-};
+const PublicEventPage = () => (
+  <>
+    <PublicEventContainer />
+  </>
+);
 
 export default PublicEventPage;

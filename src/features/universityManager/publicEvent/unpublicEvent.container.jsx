@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Skeleton } from 'antd';
-import { useSelector } from 'react-redux';
 import { ListEventToUnpublic, PublicEvent } from '../../../services/PublicService';
 import { PublicSuccessNotification } from '../../../notification/PublicNotification';
+import { Skeleton } from 'antd';
+import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import UnpublicEventComponent from './components/unpublicEvent.component';
 
 const UnpublicEventContainer = () => {
