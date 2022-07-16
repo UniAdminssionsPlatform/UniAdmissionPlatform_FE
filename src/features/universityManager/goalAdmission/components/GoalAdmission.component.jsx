@@ -1,4 +1,4 @@
-import { Button, Col, Row, Select, Skeleton, Space, Table, Divider } from 'antd';
+import { Button, Col, Divider, Row, Select, Skeleton, Space, Table } from 'antd';
 import { Helmet } from 'react-helmet';
 import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import React from 'react';

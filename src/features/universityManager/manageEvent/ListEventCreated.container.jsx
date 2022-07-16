@@ -47,8 +47,8 @@ const ListEventCreatedContainer = (props) => {
     else setDataSearch({ ...dataSearch, name: '' });
   };
   const handleChangeEventHost = (data) => {
-    if (data !== undefined) setDataSearch({ ...dataSearch, name: data });
-    else setDataSearch({ ...dataSearch, name: '' });
+    if (data !== undefined) setDataSearch({ ...dataSearch, hostname: data });
+    else setDataSearch({ ...dataSearch, hostname: '' });
   };
   useEffect(() => {
     getEventForUniversity(dataSearch);

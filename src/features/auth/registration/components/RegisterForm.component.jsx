@@ -1,13 +1,13 @@
 import { Button, DatePicker, Form, Input, Select } from 'antd';
 import {
   address,
+  email,
   firstname,
   idcard,
   lastname,
   middlename,
   phone,
-  vcode,
-  email
+  vcode
 } from '../../../../validate/RegisterForm.validate';
 
 import Label from '../../../../components/commons/Label/Label.component';

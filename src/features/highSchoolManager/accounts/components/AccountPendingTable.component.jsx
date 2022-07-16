@@ -1,4 +1,4 @@
-import { Button, Divider, Modal, Skeleton, Space, Table, Pagination } from 'antd';
+import { Button, Divider, Modal, Pagination, Skeleton, Space, Table } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';

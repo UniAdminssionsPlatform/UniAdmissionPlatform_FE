@@ -1,4 +1,4 @@
-import { Skeleton, Switch, Table, Tag, Tooltip, Pagination } from 'antd';
+import { Pagination, Skeleton, Switch, Table, Tag, Tooltip } from 'antd';
 import DetailStudentContainer from './DetailStudent.container';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React, { useState } from 'react';

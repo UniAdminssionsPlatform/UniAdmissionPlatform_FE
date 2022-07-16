@@ -1,8 +1,8 @@
 import { Button, Result } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { PATH } from '../../constants/Paths/Path';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
-import { PATH } from '../../constants/Paths/Path';
 
 const WaitingApprovePage = () => {
   const history = useHistory();

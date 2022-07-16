@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { Spin, Pagination } from 'antd';
+import { Pagination, Spin } from 'antd';
 import CardMajor from './Card/CardMajor.component';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
