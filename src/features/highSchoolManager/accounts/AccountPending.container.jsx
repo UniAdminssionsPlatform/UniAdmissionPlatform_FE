@@ -13,15 +13,20 @@ const AccountPendingContainer = () => {
   const [dataSearch, setDataSearch] = useState({
     firstName: '',
     email: '',
-    phone: ''
+    phone: '',
+    page: 1,
+    limit: 10
   });
   const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState();
 
   useEffect(() => {
     loadData({
       'first-name': dataSearch.firstName ? dataSearch.firstName : '',
       'email-contact': dataSearch.email ? dataSearch.email : '',
-      'phone-number': dataSearch.phone ? dataSearch.phone : ''
+      'phone-number': dataSearch.phone ? dataSearch.phone : '',
+      page: dataSearch.page,
+      limit: dataSearch.limit
     });
   }, [dataSearch]);
 
@@ -29,6 +34,7 @@ const AccountPendingContainer = () => {
     getAllPendingAccount(value)
       .then((result) => {
         setData(result.data.data.list);
+        setTotal(result.data.data.total);
         GetListNotification('success');
         setLoading(false);
       })
@@ -41,7 +47,9 @@ const AccountPendingContainer = () => {
     loadData({
       'first-name': dataSearch.firstName ? dataSearch.firstName : '',
       'email-contact': dataSearch.email ? dataSearch.email : '',
-      'phone-number': dataSearch.phone ? dataSearch.phone : ''
+      'phone-number': dataSearch.phone ? dataSearch.phone : '',
+      page: dataSearch.page,
+      limit: dataSearch.limit
     });
   };
 
@@ -59,6 +67,10 @@ const AccountPendingContainer = () => {
       });
   };
 
+  const onChangePage = (page) => {
+    setDataSearch({ ...dataSearch, page, limit: 10 });
+  };
+
   return (
     <>
       <TitlePageComponent
@@ -70,9 +82,12 @@ const AccountPendingContainer = () => {
       <AccountPendinglComponent
         data={data}
         loading={loading}
+        dataSearch={dataSearch}
         setDataSearch={setDataSearch}
         setLoading={setLoading}
         handleOk={handleOk}
+        total={total}
+        onChangePage={onChangePage}
       />
     </>
   );

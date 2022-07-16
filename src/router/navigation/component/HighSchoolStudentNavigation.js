@@ -9,13 +9,13 @@ const homePage = [
   }
 ];
 
-// const eventMenu = [
-//   {
-//     id: ncNanoId(),
-//     href: PATH_UNIVERSITY_MANAGER.NEW,
-//     name: 'Danh sách news'
-//   }
-// ];
+const eventMenu = [
+  {
+    id: ncNanoId(),
+    href: PATH_UNIVERSITY_MANAGER.NEW,
+    name: 'Danh sách news'
+  }
+];
 const profile = [
   {
     id: ncNanoId(),

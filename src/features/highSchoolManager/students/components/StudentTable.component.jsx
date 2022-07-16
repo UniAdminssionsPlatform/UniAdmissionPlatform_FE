@@ -1,10 +1,10 @@
-import { Skeleton, Switch, Table, Tag, Tooltip } from 'antd';
+import { Skeleton, Switch, Table, Tag, Tooltip, Pagination } from 'antd';
 import DetailStudentContainer from './DetailStudent.container';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React, { useState } from 'react';
 
 const TableStudentComponent = (props) => {
-  const { listStudent, loading, confirm } = props;
+  const { listStudent, loading, confirm, onChangePage, total } = props;
   const [visible, setVisible] = useState(false);
 
   const [studentID, setStudentID] = useState('');
@@ -79,14 +79,19 @@ const TableStudentComponent = (props) => {
             <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
               <div className='py-2 align-middle inline-block min-w-full px-1 sm:px-6 lg:px-8'>
                 <div className='shadow dark:border dark:border-neutral-800 overflow-hidden sm:rounded-lg'>
-                  <Table columns={columns} dataSource={listStudent} />
+                  <Table columns={columns} dataSource={listStudent} pagination={false} />
                 </div>
+                <Pagination onChange={onChangePage} total={total} />
               </div>
             </div>
           </div>
         </Skeleton>
       </div>
-      <DetailStudentContainer visible={visible} studentID={studentID} setVisible={setVisible} />
+      {visible === true ? (
+        <DetailStudentContainer visible={visible} studentID={studentID} setVisible={setVisible} />
+      ) : (
+        ''
+      )}
     </>
   );
 };

@@ -53,7 +53,7 @@ const MainNav = ({ isTop }) => {
                 </Text>
               </div>
             ) : (
-              <ButtonPrimary href={PATH.LOGIN}>Sign in</ButtonPrimary>
+              <ButtonPrimary href={PATH.LOGIN}>Đăng nhập</ButtonPrimary>
             )}
           </div>
           <div className='flex items-center xl:hidden'>
@@ -68,7 +68,7 @@ const MainNav = ({ isTop }) => {
                 </Text>
               </div>
             ) : (
-              <ButtonPrimary href={PATH.LOGIN}>Sign in</ButtonPrimary>
+              <ButtonPrimary href={PATH.LOGIN}>Đăng nhập</ButtonPrimary>
             )}
             <div className='px-1' />
             <MenuBar />

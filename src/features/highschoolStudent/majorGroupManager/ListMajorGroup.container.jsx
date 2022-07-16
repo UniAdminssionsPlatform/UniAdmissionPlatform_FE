@@ -6,18 +6,35 @@ const ListMajorContainer = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const [dataSearch, setDataSearch] = useState({
+    limit: 12,
+    page: 1
+  });
+
+  const [totalPage, setTotalPage] = useState();
+
   useEffect(() => {
-    getListMajorGroup();
-  }, []);
-  const getListMajorGroup = () => {
-    getAllMajorGroup().then((result) => {
+    getListMajorGroup(dataSearch);
+  }, [dataSearch]);
+  const getListMajorGroup = (data) => {
+    getAllMajorGroup(data).then((result) => {
       setListMajorGroup(result.data.data.list);
+      setTotalPage(result.data.data.total);
       setLoading(false);
     });
   };
+  const onChangePage = (page) => {
+    setDataSearch({ ...dataSearch, page, limit: 12 });
+  };
   return (
     <>
-      <ListMajorComponent data={listMajorGroup} loading={loading} />
+      <ListMajorComponent
+        data={listMajorGroup}
+        loading={loading}
+        totalPage={totalPage}
+        onChangePage={onChangePage}
+        dataSearch={dataSearch}
+      />
     </>
   );
 };

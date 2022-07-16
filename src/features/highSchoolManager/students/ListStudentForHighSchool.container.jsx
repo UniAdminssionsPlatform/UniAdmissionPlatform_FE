@@ -22,17 +22,31 @@ const ListStudentForHighschoolContainer = () => {
     phone: '',
     email: '',
     status: '',
-    highschoolID: user.highSchoolId
+    limit: 5,
+    page: 1,
+    highschoolID: user.highSchoolId,
+    role: 'student'
   });
+  const [total, setTotal] = useState();
 
   useEffect(() => {
-    loadData(dataSearch);
+    loadData({
+      'first-name': dataSearch.firstName ? dataSearch.firstName : '',
+      'phone-number': dataSearch.phoneNumber ? dataSearch.phoneNumber : '',
+      'email-contact': dataSearch.email ? dataSearch.email : '',
+      'high-school-id': dataSearch.highschoolID,
+      'role-id': dataSearch.role,
+      status: dataSearch.status ? dataSearch.status : '',
+      limit: dataSearch.limit,
+      page: dataSearch.page
+    });
   }, [dataSearch]);
 
   const loadData = (data) => {
     getListStudentByHighSchool(data)
       .then((result) => {
         setStudents(result.data.data.list);
+        setTotal(result.data.data.total);
         setLoading(false);
         handleNotification('success');
       })
@@ -44,7 +58,16 @@ const ListStudentForHighschoolContainer = () => {
   const handleOk = (student) => {
     changeStatus(student.id)
       .then((result) => {
-        loadData(dataSearch);
+        loadData({
+          'first-name': dataSearch.firstName ? dataSearch.firstName : '',
+          'phone-number': dataSearch.phoneNumber ? dataSearch.phoneNumber : '',
+          'email-contact': dataSearch.email ? dataSearch.email : '',
+          'high-school-id': dataSearch.highschoolID,
+          'role-id': dataSearch.role,
+          status: dataSearch.status ? dataSearch.status : '',
+          limit: dataSearch.limit,
+          page: dataSearch.page
+        });
         if (student.status === 2)
           handleLockNotification('success', `${student.lastName} ${student.middleName} ${student.firstName}`);
 
@@ -78,6 +101,10 @@ const ListStudentForHighschoolContainer = () => {
     });
   };
 
+  const onChangePage = (page) => {
+    setDataSearch({ ...dataSearch, page, limit: 10 });
+  };
+
   return (
     <>
       <TitlePageComponent
@@ -92,6 +119,9 @@ const ListStudentForHighschoolContainer = () => {
         loading={loading}
         setLoading={setLoading}
         confirm={confirm}
+        onChangePage={onChangePage}
+        total={total}
+        dataSearch={dataSearch}
       />
     </>
   );

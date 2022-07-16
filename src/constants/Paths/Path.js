@@ -11,7 +11,8 @@ export const PATH = {
   LIST_EVENT_FOR_HIGHSCHOOL: '/event-for-highschool',
   LIST_MAJOR_GROUP: '/major-groups',
   DETAIL_MAJOR_GROUP: '/major-group-detail',
-  ABOUT_US: '/about-us'
+  ABOUT_US: '/about-us',
+  ACCOUNT_WAITING_APPROVE: '/auth/pending'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/',
@@ -37,8 +38,9 @@ export const PATH_UNIVERSITY_MANAGER = {
   REGISTERED_EVENT: '/uni/registered-event',
   CREATE_NEW: '/uni/create-new',
   MANAGE_BOOKING: '/uni/event',
-  LIST_ACCOUNT_PENDING: '/uni/account',
-  MANAGE_NEWS: '/uni/new'
+  GOAL_ADMISSION: '/uni/goal-admission',
+  MANAGE_NEWS: '/uni/new',
+  LIST_ACCOUNT_PENDING: '/uni/account'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',

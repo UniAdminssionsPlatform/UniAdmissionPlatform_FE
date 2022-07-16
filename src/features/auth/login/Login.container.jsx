@@ -46,7 +46,11 @@ const LoginContainer = () => {
         handleRedirect(user);
       })
       .catch((err) => {
-        handleNotification('error', err);
+        if(err.response.data.msg === 'Đăng nhập thất bại. Tài khoản này đang đợi được duyệt.'){
+          history.push(PATH.ACCOUNT_WAITING_APPROVE);
+        }
+        handleNotification('error', err.response.data.msg);
+        
       });
   };
   const signInWithPopupOption = (option) => {
@@ -55,6 +59,7 @@ const LoginContainer = () => {
         .then((userCredential) => {
           const user = userCredential?.user;
           const token = userCredential?.user.accessToken;
+          console.log('user login: ', user);
           handleLoginServer(token, user.displayName);
         })
         .catch((err) => {

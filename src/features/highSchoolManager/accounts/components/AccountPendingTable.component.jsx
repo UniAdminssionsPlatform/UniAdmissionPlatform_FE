@@ -1,10 +1,10 @@
-import { Button, Divider, Modal, Skeleton, Space, Table } from 'antd';
+import { Button, Divider, Modal, Skeleton, Space, Table, Pagination } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 
 const TableAccountPending = (props) => {
-  const { data, loading, handleOk } = props;
+  const { data, loading, handleOk, total, onChangePage } = props;
   const confirm = (value) => {
     Modal.confirm({
       title: 'Xác thực',
@@ -78,6 +78,7 @@ const TableAccountPending = (props) => {
                 <div className='shadow dark:border dark:border-neutral-800 overflow-hidden sm:rounded-lg'>
                   <Table columns={columns} dataSource={data} pagination={false} />
                 </div>
+                <Pagination onChange={onChangePage} total={total} />
               </div>
             </div>
           </div>
