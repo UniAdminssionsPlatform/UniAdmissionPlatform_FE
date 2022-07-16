@@ -6,7 +6,8 @@ import {
   lastname,
   middlename,
   phone,
-  vcode
+  vcode,
+  email
 } from '../../../../validate/RegisterForm.validate';
 
 import Label from '../../../../components/commons/Label/Label.component';
@@ -107,14 +108,26 @@ const RegisterForm = (props) => {
           </div>
         </div>
 
-        <div className='mt-1'>
-          <Form.Item name='phoneNumber' rules={phone}>
-            <label className='block'>
-              <Label>Số điện thoại</Label>
-              <Input type='text' className='mt-1' />
-            </label>
-          </Form.Item>
-        </div>
+        <label className='block '>
+          <div className='grid md:grid-cols-2 gap-6 block md:col-span-2 '>
+            <div className='mt-1'>
+              <Form.Item name='phoneNumber' rules={phone}>
+                <label className='block'>
+                  <Label>Số điện thoại</Label>
+                  <Input type='text' className='mt-1' />
+                </label>
+              </Form.Item>
+            </div>
+            <div className='mt-1'>
+              <Form.Item name='emailContact' rules={email}>
+                <label className='block'>
+                  <Label>Email</Label>
+                  <Input type='text' className='mt-1' />
+                </label>
+              </Form.Item>
+            </div>
+          </div>
+        </label>
         <label className='block '>
           <div className='grid md:grid-cols-1 gap-6 block md:col-span-2 '>
             <div className='mt-1'>

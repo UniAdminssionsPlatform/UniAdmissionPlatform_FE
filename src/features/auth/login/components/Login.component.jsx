@@ -9,13 +9,13 @@ import googleSvg from '../../../../images/Google.svg';
 
 const loginSocials = [
   {
-    name: 'Continue with Facebook',
+    name: 'Đăng nhập bằng Facebook',
     href: '#',
     icon: facebookSvg,
     action: 'facebook'
   },
   {
-    name: 'Continue with Google',
+    name: 'Đăng nhập bằng Google',
     href: '#',
     icon: googleSvg,
     action: 'google'
@@ -26,9 +26,9 @@ const LoginComponent = (props) => {
   return (
     <div className={`nc-PageLogin ${className}`} data-nc-id='PageLogin'>
       <Helmet>
-        <title>Login || Blog Magazine React Template</title>
+        <title>Đăng nhập</title>
       </Helmet>
-      <LayoutPage subHeading='Welcome to UniAdmissionPlatform' headingEmoji='🔑' heading='Login'>
+      <LayoutPage subHeading='Chào mừng đến với UniAdmissionPlatform' headingEmoji='🔑' heading='Đăng nhập'>
         <div className='max-w-md mx-auto space-y-6'>
           <div className='grid gap-3'>
             {loginSocials.map((item, index) => (
@@ -48,7 +48,7 @@ const LoginComponent = (props) => {
           {/* OR */}
           <div className='relative text-center'>
             <span className='relative z-10 inline-block px-4 font-medium text-sm bg-white dark:text-neutral-400 dark:bg-neutral-900'>
-              OR
+              HOẶC
             </span>
           </div>
           <Form
@@ -60,7 +60,7 @@ const LoginComponent = (props) => {
             onFinish={onFinish}>
             <Form.Item name='email' rules={username}>
               <label className='block'>
-                <span className='text-neutral-800 dark:text-neutral-200'>Email address</span>
+                <span className='text-neutral-800 dark:text-neutral-200'>Email</span>
                 <Input
                   prefix={<UserOutlined className='site-form-item-icon' />}
                   placeholder='email'
@@ -68,7 +68,7 @@ const LoginComponent = (props) => {
                 />
               </label>
             </Form.Item>
-            <span className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Password</span>
+            <span className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Mật khẩu</span>
             <Form.Item name='password' rules={password}>
               <label className='block'>
                 <Input
@@ -82,17 +82,17 @@ const LoginComponent = (props) => {
 
             <Form.Item>
               <Form.Item name='remember' valuePropName='checked' noStyle>
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox>Ghi nhớ tôi</Checkbox>
               </Form.Item>
 
               <a className='login-form-forgot' href='/'>
-                Forgot password
+                Quên mật khẩu ?
               </a>
             </Form.Item>
             <span className='block text-center text-neutral-700 dark:text-neutral-300'>
               <Form.Item>
                 <Button type='danger' htmlType='submit' className='login-form-button w-3/6'>
-                  Log in
+                  Đăng nhập
                 </Button>
               </Form.Item>
             </span>

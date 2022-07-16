@@ -1,14 +1,12 @@
 import { Form, Input, Select, Typography } from 'antd';
 import { useDebouncedCallback } from 'use-debounce';
-import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 const SearchBarComponent = (props) => {
   const { Option } = Select;
   const { Title } = Typography;
 
-  const { setDataSearch, setLoading } = props;
+  const { setDataSearch, setLoading, dataSearch } = props;
 
-  const { user } = useSelector((state) => state.authentication);
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -19,11 +17,11 @@ const SearchBarComponent = (props) => {
     () => {
       setLoading(true);
       setDataSearch({
+        ...dataSearch,
         firstName,
         email,
         phone,
-        status,
-        highschoolID: user.highSchoolId
+        status
       });
     },
     // delay in ms

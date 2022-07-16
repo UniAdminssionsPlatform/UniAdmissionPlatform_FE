@@ -2,24 +2,31 @@ import {
   ActiveNotification,
   GetListNotification
 } from '../../../notification/HighSchoolRepresentativesPendingNotification';
+import { Typography } from 'antd';
 import { activeAccount, getAllPendingAccount } from '../../../services/HighSchoolRepresentativesSerive';
 import AccountPendinglComponent from './components/AccountPending.component';
 import React, { useEffect, useState } from 'react';
+import TitlePageComponent from '../../../components/decorator/TitlePage.component';
 
 const AccountPendingContainer = () => {
   const [data, setData] = useState([]);
   const [dataSearch, setDataSearch] = useState({
     firstName: '',
     email: '',
-    phone: ''
+    phone: '',
+    page: 1,
+    limit: 10
   });
   const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState();
 
   useEffect(() => {
     loadData({
       'first-name': dataSearch.firstName ? dataSearch.firstName : '',
       'email-contact': dataSearch.email ? dataSearch.email : '',
-      'phone-number': dataSearch.phone ? dataSearch.phone : ''
+      'phone-number': dataSearch.phone ? dataSearch.phone : '',
+      page: dataSearch.page,
+      limit: dataSearch.limit
     });
   }, [dataSearch]);
 
@@ -27,6 +34,7 @@ const AccountPendingContainer = () => {
     getAllPendingAccount(value)
       .then((result) => {
         setData(result.data.data.list);
+        setTotal(result.data.data.total);
         GetListNotification('success');
         setLoading(false);
       })
@@ -39,7 +47,9 @@ const AccountPendingContainer = () => {
     loadData({
       'first-name': dataSearch.firstName ? dataSearch.firstName : '',
       'email-contact': dataSearch.email ? dataSearch.email : '',
-      'phone-number': dataSearch.phone ? dataSearch.phone : ''
+      'phone-number': dataSearch.phone ? dataSearch.phone : '',
+      page: dataSearch.page,
+      limit: dataSearch.limit
     });
   };
 
@@ -57,14 +67,27 @@ const AccountPendingContainer = () => {
       });
   };
 
+  const onChangePage = (page) => {
+    setDataSearch({ ...dataSearch, page, limit: 10 });
+  };
+
   return (
     <>
+      <TitlePageComponent
+        title={'Xét duyệt tài khoản'}
+        subTitle={
+          'Bạn có thể tìm kiếm tài khoản cần được xét duyệt bằng tên, email và số điện thoại. Thực hiện thao tác xét duyệt trong panel dưới đây'
+        }
+      />
       <AccountPendinglComponent
         data={data}
         loading={loading}
+        dataSearch={dataSearch}
         setDataSearch={setDataSearch}
         setLoading={setLoading}
         handleOk={handleOk}
+        total={total}
+        onChangePage={onChangePage}
       />
     </>
   );

@@ -1,4 +1,4 @@
-import { Button, Form, Input, Pagination, Select, Space, Table, Tag, Typography, notification } from 'antd';
+import { Button, Form, Input, Modal, Pagination, Select, Space, Table, Tag, Typography, notification } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
 import { SearchOutlined } from '@ant-design/icons';
 import { bookASlotInAdminUniversity } from '../../../services/AdminUniversitySlotServices';
@@ -8,14 +8,24 @@ import { useSelector } from 'react-redux';
 import { useStateWithCallback } from '../../../components/CustomHOOK/SyncUseState';
 import Highlighter from 'react-highlight-words';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import moment from 'moment';
 
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
   const { slot } = useSelector((state) => state.selectedSlot);
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   const { Search } = Input;
   const { Option } = Select;
   const { Title } = Typography;
@@ -97,6 +107,18 @@ const ListEventCreatedContainer = (props) => {
       width: '20%'
     },
     {
+      title: 'Thời gian bắt đầu',
+      dataIndex: 'startTime',
+      render: (startTime) => moment(startTime).locale('vi').format('LLL'),
+      width: '20%'
+    },
+    {
+      title: 'Thời gian kết thúc',
+      dataIndex: 'endTime',
+      render: (endTime) => `${moment(endTime).locale('vi').format('LLL')}`,
+      width: '20%'
+    },
+    {
       title: 'Chú giải',
       dataIndex: 'shortDescription',
       render: (name) => `${name}`,
@@ -119,6 +141,11 @@ const ListEventCreatedContainer = (props) => {
   };
   return (
     <div>
+      <Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
       <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />
         <Search placeholder='Nhập tên diễn giả' style={{ width: 300 }} onSearch={handleChangeEventHost} />
