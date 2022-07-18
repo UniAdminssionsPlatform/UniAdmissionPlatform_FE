@@ -134,16 +134,10 @@ const ManagementRouter = () => {
         </Sider>
         <Layout
           style={{
-            padding: '24px 24px 24px'
+            padding: '24px 24px'
           }}>
           <Content
-            className='site-layout-background'
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-              height: '80vh'
-            }}>
+            className='site-layout-background'>
             <Switch>
               <UniversityManagerRouter
                 component={() => <GoalAdmissionPage />}

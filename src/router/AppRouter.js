@@ -151,15 +151,15 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         exact
       />
-      <ManagementRouter />
-      //Index Page
       <Route path={PATH.ABOUT_US} exact>
         <AboutUsPage />
       </Route>
       <Route path='/index.html'>
         <Redirect to='/' />
       </Route>
+      <ManagementRouter />
       <Route path='*' component={() => <ErrorPage code={404} />} />
+      //Index Page
     </Switch>
   </>
 );
