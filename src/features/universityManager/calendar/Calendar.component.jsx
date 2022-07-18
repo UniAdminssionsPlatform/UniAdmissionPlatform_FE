@@ -1,9 +1,7 @@
 import { Button, Select, Skeleton, Space, Tag, Typography } from 'antd';
 import { PATH_UNIVERSITY_MANAGER } from '../../../constants/Paths/Path';
-import { UNIVERSITY_MANAGER } from '../../../constants/RoleType';
 import { useHistory } from 'react-router-dom';
-import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
-import React, { useState } from 'react';
+import React from 'react';
 import ScheduleEventComponent from '../../../components/schedule/ScheduleEvent.component';
 
 const CalendarComponent = (props) => {
@@ -11,7 +9,7 @@ const CalendarComponent = (props) => {
   const { Title, Text } = Typography;
   const history = useHistory();
   const handleRedirect = () => {
-    history.push(PATH_UNIVERSITY_MANAGER.CREATE_EVENT);
+    history.push(PATH_UNIVERSITY_MANAGER.REGIS_EVENT);
   };
   return (
     <>

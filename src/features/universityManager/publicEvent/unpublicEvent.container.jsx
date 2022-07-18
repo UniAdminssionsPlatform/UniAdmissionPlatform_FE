@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import UnpublicEventComponent from './components/unpublicEvent.component';
 
-const UnpublicEventContainer = () => {
+const UnPublicEventContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [event2, setEvent2] = useState();
   const { user } = useSelector((state) => state.authentication);
@@ -88,4 +88,4 @@ const UnpublicEventContainer = () => {
   );
 };
 
-export default UnpublicEventContainer;
+export default UnPublicEventContainer;

@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 
 const HighSchoolInforComponent = () => {
   const { highSchool } = useSelector((state) => state.selectedHighSchool);
+  console.log(highSchool);
   const data = [
     { name: 'Địa chỉ', content: highSchool.address },
     { name: 'Số Điện Thoại', content: highSchool.phoneNumber },
@@ -12,7 +13,7 @@ const HighSchoolInforComponent = () => {
     <>
       <div className='px-4 py-2 sm:px-6'>
         <h3 className='text-lg leading-6 font-medium text-neutral-900 dark:text-neutral-200'>{highSchool.name}</h3>
-        <p className='mt-1 max-w-2xl text-sm text-neutral-500 dark:text-neutral-400'>{highSchool.description}</p>
+        <p className='mt-1 max-w-2xl text-sm text-neutral-500 dark:text-neutral-400'>{highSchool.highSchoolCode}</p>
       </div>
       <div className='border-t border-neutral-200 dark:border-neutral-900'>
         <dl>

@@ -1,9 +1,9 @@
-import { SLOT_IS_CLOSE, SLOT_IS_OPEN } from '../../../constants/AppConst';
-import { Space, Tag, Typography } from 'antd';
+import { SLOT } from '../../../constants/AppConst';
+import { Tag, Typography } from 'antd';
 import React from 'react';
 import moment from 'moment';
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 const CloseSlotComponent = (props) => {
   const { data } = props;
   return (
@@ -45,11 +45,12 @@ const FullSlotComponent = (props) => {
 };
 const SlotComponent = (props) => {
   const { data } = props;
+  console.log(data);
   return (
     <>
-      {data.status === SLOT_IS_OPEN ? (
+      {data.status === SLOT.OPEN ? (
         <OpenSlotComponent data={data} />
-      ) : data.status === SLOT_IS_CLOSE ? (
+      ) : data.status === SLOT.CLOSE ? (
         <CloseSlotComponent data={data} />
       ) : (
         <FullSlotComponent data={data} />
