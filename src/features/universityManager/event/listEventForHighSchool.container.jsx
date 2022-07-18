@@ -3,18 +3,18 @@ import ListEventForHighschoolComponent from './components/ListEvent/listEventFor
 import React, { useEffect, useState } from 'react';
 
 const ListEventForHighSchoolContainer = () => {
-  const [eventforhighschool, setEventForHighschool] = useState([]);
+  const [listEvent, setListEvent] = useState([]);
 
   useEffect(() => {
-    getEventForHighschool(1);
+    getListEvent(1);
   }, []);
 
-  const getEventForHighschool = (highschoolID) => {
-    EventForHighschool(highschoolID).then((result) => {
-      setEventForHighschool(result.data.data.list);
+  const getListEvent = (id) => {
+    EventForHighschool(id).then((result) => {
+      setListEvent(result.data.data.list);
     });
   };
 
-  return <ListEventForHighschoolComponent eventforhighschool={eventforhighschool} />;
+  return <ListEventForHighschoolComponent eventforhighschool={listEvent} />;
 };
 export default ListEventForHighSchoolContainer;

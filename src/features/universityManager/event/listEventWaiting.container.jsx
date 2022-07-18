@@ -56,7 +56,6 @@ const ListEventWaitingContainer = () => {
   );
 
   const handleSelectedEvent = (event) => {
-    console.log('id: ', event.event.id);
     setEvent(event.event.id);
     setIsClick(true);
   };

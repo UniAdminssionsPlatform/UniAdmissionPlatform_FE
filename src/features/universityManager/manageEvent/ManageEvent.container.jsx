@@ -60,13 +60,6 @@ const ManageEventContainer = () => {
     }
   ];
   const handleEditEvent = (data) => {
-    // bookASlotInAdminUniversity({ eventId: data, slotId: slot.data.id })
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
   const onShowSizeChange = (page, PageSize) => {
     setDataSearch({ ...dataSearch, page, limit: PageSize });
