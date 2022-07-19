@@ -1,10 +1,10 @@
 import React from 'react';
-import UnpublicEventContainer from '../../features/universityManager/publicEvent/unpublicEvent.container';
+import UnPublicEventContainer from '../../features/universityManager/publicEvent/unpublicEvent.container';
 
-const UnpublicEventPage = () => (
+const UnPublicEventPage = () => (
   <>
-    <UnpublicEventContainer />
+    <UnPublicEventContainer />
   </>
 );
 
-export default UnpublicEventPage;
+export default UnPublicEventPage;

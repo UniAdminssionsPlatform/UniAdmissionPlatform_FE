@@ -1,11 +1,11 @@
+import { SINGLE } from '../../../../../data/single';
 import { useLocation } from 'react-router-dom';
+import MakeDownView from '../../../../../components/MarkdownView/MarkdownView.component';
 import React, { useEffect, useRef } from 'react';
 import SingleAuthor from '../../../../../components/commons/SingleAuthor/SingleAuthor.component';
 import SingleCommentForm from '../../../../../components/commons/SingleCommentForm/SingleCommentForm.component';
 import SingleCommentLists from '../../../../../components/commons/SingleCommentLists/SingleCommentLists.component';
 import SingleContentDemo from '../../../../../components/commons/SingleContentDemo/SingleContentDemo.component';
-import { SINGLE } from '../../../../../data/single';
-import MakeDownView from '../../../../../components/MarkdownView/MarkdownView.component';
 const DetailEventContent = ({ data }) => {
   const { description, fileUrl, hostName, meetingUrl, address, startTime, endTime } = data;
   const commentRef = useRef();

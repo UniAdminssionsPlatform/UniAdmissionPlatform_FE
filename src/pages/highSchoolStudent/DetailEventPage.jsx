@@ -1,6 +1,6 @@
-import React from 'react';
-import DetailEventContainer from '../../features/highschoolStudent/event/DetailEvent.container';
 import { useLocation } from 'react-router-dom';
+import DetailEventContainer from '../../features/highschoolStudent/event/DetailEvent.container';
+import React from 'react';
 
 const DetailEventForStudentPage = () => {
   const location = useLocation();

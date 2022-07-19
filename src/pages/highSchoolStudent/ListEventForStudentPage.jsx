@@ -1,11 +1,9 @@
-import React from 'react';
 import ListEventContainer from '../../features/highschoolStudent/event/ListEvent.container';
+import React from 'react';
 
-const ListEventForStudentPage = () => {
-  return (
-    <>
-      <ListEventContainer />
-    </>
-  );
-};
+const ListEventForStudentPage = () => (
+  <>
+    <ListEventContainer />
+  </>
+);
 export default ListEventForStudentPage;
