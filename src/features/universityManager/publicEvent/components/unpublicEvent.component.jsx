@@ -1,4 +1,4 @@
-import { Button, Image, Input, Modal, Pagination, Table, Tag } from 'antd';
+import { Button, Input, Modal, Pagination, Space, Table, Tag } from 'antd';
 import { CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../../constants/AppConst';
 import { refactorData } from '../../../../utils/common';
@@ -90,25 +90,15 @@ const UnPublicEventComponent = (props) => {
     }
   ];
   return (
-    <div class='flex flex-row'>
-      <div class='basis-1/4 pl-5 pr-10'>
-        <h2 class='ant-typography pb-10'>Tìm Kiếm</h2>
-        <span class='ant-typography'>
-          <strong>Tên Sự Kiện</strong>
-        </span>
+    <div>
+      <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />
-        <span className='ant-typography'>
-          <strong>Tên Diễn Giả</strong>
-        </span>
         <Search placeholder='Nhập tên diễn giả' style={{ width: 300 }} onSearch={handleChangeEventHost} />
-      </div>
-      <div class='flex-initial '>
-        <h2 className='ant-typography pb-10'>Danh Sách</h2>
-        <Table columns={columns} dataSource={refactorData(event2?.list)} pagination={false} />
-        <div style={stylePaging}>
-          <Pagination showSizeChanger onChange={onChange} total={event2?.total} />
-        </div>
-      </div>
+      </Space>
+      <Space direction={'vertical'}>
+        <Table columns={columns} dataSource={refactorData(event2?.list)} pagination={false} style={{ width: '80vw' }} />
+        <Pagination showSizeChanger onChange={onChange} total={event2?.total} bordered={true} />
+      </Space>
     </div>
   );
 };

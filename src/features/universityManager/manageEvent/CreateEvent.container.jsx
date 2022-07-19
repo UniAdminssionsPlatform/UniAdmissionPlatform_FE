@@ -6,7 +6,7 @@ import CreateEventComponent from './components/CreateEvent.component';
 import React, { useEffect, useState } from 'react';
 
 const CreateEventContainer = (props) => {
-  const { event } = props;
+  const { event, handleChangeActiveKey } = props;
   const [listProvinces, setListProvinces] = useState();
   const [listDistricts, setListDistricts] = useState();
   const [province, setProvince] = useState();
@@ -69,6 +69,7 @@ const CreateEventContainer = (props) => {
     createEvent(data)
       .then((result) => {
         handleSuccessNotification(result.msg);
+        handleChangeActiveKey('1');
       })
       .catch((error) => {
         handleFailNotification(error.msg);

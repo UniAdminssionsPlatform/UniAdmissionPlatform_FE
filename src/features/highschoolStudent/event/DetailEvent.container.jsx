@@ -1,6 +1,6 @@
 import { getDetailEvent } from '../../../services/EventService';
 import { handleNotification } from '../../../notification/DetailEventNotification';
-import DetailEventComponent from './components/detailEvent/DetailEvent.component';
+import DetailEventComponent from '../../../components/detailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
 
 const DetailEventContainer = (props) => {
