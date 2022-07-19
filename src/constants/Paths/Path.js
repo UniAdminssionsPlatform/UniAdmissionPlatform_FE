@@ -47,6 +47,7 @@ export const PATH_UNIVERSITY_MANAGER = {
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',
   LIST_EVENT: '/student/events',
+  DETAIL_EVENT: '/student/event-detail',
   PROFILE: '/student/profile',
   NEWS: '/student/news',
   NEWS_DETAIL: '/student/news-detail',

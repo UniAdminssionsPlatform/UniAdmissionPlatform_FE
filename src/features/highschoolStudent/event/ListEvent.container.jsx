@@ -1,6 +1,6 @@
 import { getListEvent } from '../../../services/EventService';
 import { useDebouncedCallback } from 'use-debounce';
-import ListEventComponent from './components/ListEvent.component';
+import ListEventComponent from './components/listEvent/ListEvent.component';
 import React, { useEffect, useState } from 'react';
 
 const ListEventContainer = () => {

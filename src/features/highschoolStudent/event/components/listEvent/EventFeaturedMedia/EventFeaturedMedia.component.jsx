@@ -1,4 +1,4 @@
-import NcImage from '../../../../../components/commons/NcImage/NcImage.component';
+import NcImage from '../../../../../../components/commons/NcImage/NcImage.component';
 import React, { useRef } from 'react';
 
 const EventFeaturedMedia = ({ className = ' w-full h-full ', post }) => {

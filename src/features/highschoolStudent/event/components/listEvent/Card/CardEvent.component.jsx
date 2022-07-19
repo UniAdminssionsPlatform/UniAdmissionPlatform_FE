@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../../../constants/Paths/Path';
 import EventFeaturedMedia from '../EventFeaturedMedia/EventFeaturedMedia.component';
 import React, { useState } from 'react';
 
@@ -18,14 +19,28 @@ const EventCard = ({ event }) => {
           <EventFeaturedMedia post={event} isHover={isHover} />
         </div>
       </div>
-      <Link to='/#' className='absolute inset-0'></Link>
+      <Link
+        to={{
+          pathname: PATH_HIGH_SCHOOL_STUDENT.DETAIL_EVENT,
+          state: {
+            eventId: id
+          }
+        }}
+        className='absolute inset-0'></Link>
 
       <div className='p-4 flex flex-col flex-grow space-y-3'>
         <span className='text-xs text-neutral-500'>
           {startTime} - {endTime}
         </span>
         <h2 className='nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100 '>
-          <Link to='/#' className='line-clamp-2' title={name}>
+          <Link
+            to={{
+              pathname: PATH_HIGH_SCHOOL_STUDENT.DETAIL_EVENT,
+              state: {
+                eventId: id
+              }
+            }}
+            className='line-clamp-2'>
             {name}
           </Link>
         </h2>

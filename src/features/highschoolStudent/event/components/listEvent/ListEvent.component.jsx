@@ -1,7 +1,7 @@
+import { Empty, Input, Pagination, Skeleton } from 'antd';
 import { Helmet } from 'react-helmet';
-import { Input, Pagination, Skeleton, Empty } from 'antd';
-import CardEvent from './Card/CardEvent.component';
-import HeadBackgroundCommon from '../../../../components/commons/HeadBackgroundCommon/HeadBackgroundCommon.component';
+import CardEvent from '../listEvent/Card/CardEvent.component';
+import HeadBackgroundCommon from '../../../../../components/commons/HeadBackgroundCommon/HeadBackgroundCommon.component';
 import React from 'react';
 
 const ListEventComponent = (props) => {

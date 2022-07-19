@@ -16,8 +16,9 @@ import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfilePage';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
-import ListEventPage from '../pages/universityManager/ListeventPage';
 import ListEventGorStudentPage from '../pages/highSchoolStudent/ListEventForStudentPage';
+import DetailEventForStudentPage from '../pages/highSchoolStudent/DetailEventPage';
+import ListEventPage from '../pages/universityManager/ListeventPage';
 import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
 import ListUniversityPage from '../pages/highSchoolStudent/ListUniversityPage';
 import LoginPage from '../pages/auth/Login.page';
@@ -92,6 +93,12 @@ const AppRouter = () => (
         component={() => <ListEventGorStudentPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
         key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <DetailEventForStudentPage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.DETAIL_EVENT}
+        key={PATH_HIGH_SCHOOL_STUDENT.DETAIL_EVENT}
         exact
       />
       <HighSchoolStudentRouter
