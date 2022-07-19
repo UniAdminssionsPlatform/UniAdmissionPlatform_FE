@@ -14,7 +14,7 @@ import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
 import ListEventGorStudentPage from '../pages/highSchoolStudent/ListEventForStudentPage';
 import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
-import ListUniversityPage from '../pages/highSchoolStudent/ListUniversityPage';
+import ListUniversityToFollowPage from '../pages/highSchoolStudent/ListUniversityToFollowPage';
 import LoginPage from '../pages/auth/Login.page';
 import ManageProfilePage from '../pages/auth/manageProfilePage';
 import ManagementRouter from './ManagementRouter';
@@ -29,10 +29,12 @@ import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UnPublicEventPage from '../pages/universityManager/UnpublicEventPage';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
+import UniversityDetailToFollowPage from '../pages/UniversityProfilePage/UniversityDetailToFollowPage';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
+
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -144,7 +146,7 @@ const AppRouter = () => (
         exact
       />
       <HighSchoolStudentRouter
-        component={() => <ListUniversityPage />}
+        component={() => <ListUniversityToFollowPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY}
         key={PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY}
         exact
@@ -153,6 +155,12 @@ const AppRouter = () => (
         component={() => <StudentScorePage />}
         path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <UniversityDetailToFollowPage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.PROFILE_UNIVERSITY}
+        key={PATH_HIGH_SCHOOL_STUDENT.PROFILE_UNIVERSITY}
         exact
       />
       //public profile University

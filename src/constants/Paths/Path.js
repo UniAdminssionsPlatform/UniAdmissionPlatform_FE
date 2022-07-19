@@ -55,5 +55,6 @@ export const PATH_HIGH_SCHOOL_STUDENT = {
   CERTIFICATION: '/student/certification',
   SCORE: '/student/score',
   HIGH_SCHOOL_PROFILE: '/student/highschool-profile',
-  LIST_UNIVERSITY: '/student/list-university'
+  LIST_UNIVERSITY: '/student/list-university',
+  PROFILE_UNIVERSITY: '/student/university-detail'
 };
