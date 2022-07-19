@@ -7,7 +7,7 @@ import { handleFailNotification, handleSuccessNotification } from '../../../../n
 import { setSelectedHighSchool } from '../../../../redux-flow/selectedHighSchool/selectedHighSchool-action';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import LayoutPageWithout from '../../../../components/commons/LayoutPage/LayoutPageWithout.component';
+import Layout from '../../../../components/Layout';
 import React, { useEffect, useState } from 'react';
 import SearchBarComponent from './SearchBar.component';
 
@@ -34,14 +34,14 @@ const SelectHighSchoolContainer = () => {
       title: 'Ảnh nền',
       dataIndex: 'thumbnailUrl',
       render: (name) => <Avatar shape='square' size='large' src={name} />,
-      width: '7%'
+      width: '10%'
     },
     {
       title: 'Tên trường',
       dataIndex: 'name',
       sorter: (a, b) => a.name.length - b.name.length,
       render: (name) => `${name}`,
-      width: '25%'
+      width: '20%'
     },
     {
       title: 'Trạng thái',
@@ -56,7 +56,7 @@ const SelectHighSchoolContainer = () => {
             Đang Bị Đóng
           </span>
         ),
-      width: '12%'
+      width: '10%'
     },
     {
       title: 'Email',
@@ -89,7 +89,7 @@ const SelectHighSchoolContainer = () => {
           </a>
         </Space>
       ),
-      width: '22%'
+      width: '20%'
     }
   ];
   const handleBookHighSchool = (data) => {
@@ -135,7 +135,7 @@ const SelectHighSchoolContainer = () => {
     setDataSearch({ ...dataSearch, page, limit: PageSize });
   };
   return (
-    <>
+    <Layout>
       <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
         <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
           <SearchBarComponent
@@ -151,8 +151,9 @@ const SelectHighSchoolContainer = () => {
             columns={column}
             dataSource={listHighSchool?.list}
             bordered={true}
-            size='middle'
-            style={{ width: '80rem' }}
+            size='small'
+            style={{ width: '65vw' }}
+            breakpoints={'450px'}
             pagination={false}
             loading={isLoading}
             scroll={{ y: 700 }}
@@ -160,7 +161,7 @@ const SelectHighSchoolContainer = () => {
           <Pagination showSizeChanger onChange={onShowSizeChange} total={listHighSchool?.total} />
         </Space>
       </div>
-    </>
+    </Layout>
   );
 };
 export default SelectHighSchoolContainer;

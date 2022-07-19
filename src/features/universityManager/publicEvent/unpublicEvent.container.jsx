@@ -3,7 +3,7 @@ import { PublicSuccessNotification } from '../../../notification/PublicNotificat
 import { Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import UnpublicEventComponent from './components/unpublicEvent.component';
+import UnPublicEventComponent from './components/unpublicEvent.component';
 
 const UnPublicEventContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -73,7 +73,7 @@ const UnPublicEventContainer = () => {
       {isLoading ? (
         <Skeleton />
       ) : (
-        <UnpublicEventComponent
+        <UnPublicEventComponent
           event2={event2}
           onChange={onChange}
           setDataSearch={setDataSearch}

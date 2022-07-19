@@ -3,7 +3,7 @@ import { handleNotification } from '../../../notification/ListEventNotification'
 import { useDebouncedCallback } from 'use-debounce';
 import { useSelector } from 'react-redux';
 import DetailEventFormContainer from './DetailEventForm.container';
-import ListEvent from './components/ListEvent/listEventWaiting.component';
+import ListEventWaitingComponent from './components/ListEvent/listEventWaiting.component';
 import React, { useEffect, useState } from 'react';
 
 const ListEventWaitingContainer = () => {
@@ -63,7 +63,7 @@ const ListEventWaitingContainer = () => {
   return (
     <>
       {isClick === false ? (
-        <ListEvent
+        <ListEventWaitingComponent
           listEvent={listEvent}
           setSearchName={setSearchName}
           debounced={debounced}

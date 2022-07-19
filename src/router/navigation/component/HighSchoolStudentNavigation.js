@@ -58,6 +58,11 @@ export const HighSchoolStudentNavigation = [
   },
   {
     id: ncNanoId(),
+    name: 'Tổng hợp sự kiện',
+    href: PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT
+  },
+  {
+    id: ncNanoId(),
     name: 'Tổng hợp bài viết',
     href: PATH_HIGH_SCHOOL_STUDENT.NEWS
   },
