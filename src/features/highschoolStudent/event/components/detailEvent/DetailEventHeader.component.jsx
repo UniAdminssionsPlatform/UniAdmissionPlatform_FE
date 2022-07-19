@@ -20,13 +20,14 @@ const DetailEventHeader = ({ pageData, titleMainClass, className = '' }) => {
           </span>
           <div className='w-full border-b border-neutral-100 dark:border-neutral-800'></div>
           <div className='flex flex-col sm:flex-row justify-between sm:items-end space-y-5 sm:space-y-0 sm:space-x-5'>
-            <PostMeta2
+            {/* <PostMeta2
               size='large'
               className='leading-none flex-shrink-0'
               meta={pageData}
               hiddenCategories
               avatarRounded='rounded-full shadow-inner'
-            />
+            /> */}
+            {startTime} - {endTime}
           </div>
         </div>
       </div>

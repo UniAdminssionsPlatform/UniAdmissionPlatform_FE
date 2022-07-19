@@ -7,7 +7,7 @@ import SingleContentDemo from '../../../../../components/commons/SingleContentDe
 import { SINGLE } from '../../../../../data/single';
 import MakeDownView from '../../../../../components/MarkdownView/MarkdownView.component';
 const DetailEventContent = ({ data }) => {
-  const { description } = data;
+  const { description, fileUrl, hostName, meetingUrl, address, startTime, endTime } = data;
   const commentRef = useRef();
   //
   const location = useLocation();
@@ -32,7 +32,10 @@ const DetailEventContent = ({ data }) => {
         className='prose prose-sm !max-w-screen-md sm:prose lg:prose-lg mx-auto dark:prose-invert'>
         {/* THIS IS THE DEMP CONTENT */}
         {/* IF YOUR DATA IS JSON, YOU CAN USE render with html-react-parser (https://www.npmjs.com/package/html-react-parser) */}
+        Người dẫn chương trình: {hostName}
         <MakeDownView str={description} />
+        File đính kèm: {fileUrl} <br />
+        Link meeting: {meetingUrl}
       </div>
 
       {/* AUTHOR */}
