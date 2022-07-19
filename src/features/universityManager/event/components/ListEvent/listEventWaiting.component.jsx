@@ -4,7 +4,7 @@ import NcImage from '../../../../../components/commons/NcImage/NcImage.component
 import Pagination from '../../../../../components/commons/Pagination/Pagination';
 import React from 'react';
 
-const ListEventWaitingcomponent = (props) => {
+const ListEventWaitingComponent = (props) => {
   const { handleSelectedEvent, listEvent, setSearchName, debounced, onChangeType } = props;
 
   const { Option } = Select;
@@ -138,4 +138,4 @@ const ListEventWaitingcomponent = (props) => {
     </>
   );
 };
-export default ListEventWaitingcomponent;
+export default ListEventWaitingComponent;

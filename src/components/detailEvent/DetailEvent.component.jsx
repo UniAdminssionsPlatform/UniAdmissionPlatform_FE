@@ -1,4 +1,3 @@
-import { SINGLE } from '../../../../../data/single';
 import { Spin } from 'antd';
 import DetailEventContent from './DetailEventContent.component';
 import DetailEventHeader from './DetailEventHeader.component';

@@ -1,7 +1,7 @@
 import { Button, DatePicker, Form, Input, Select, Typography, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import { des, hostname, name, shortdes, targetstudent } from '../../../../../validate/CreateEvent.validate';
-import Label from '../../../../../components/commons/Label/Label';
+import { des, hostname, name, shortdes, targetstudent } from '../../validate/CreateEvent.validate';
+import Label from '../commons/Label/Label';
 import React, { useState } from 'react';
 import moment from 'moment';
 

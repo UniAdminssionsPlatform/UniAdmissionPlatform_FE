@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet';
-import { SINGLE } from '../../../../../data/single';
+import { SINGLE } from '../../data/single';
 import PostMeta2 from './DetailEventPostMeta2.component';
 import React from 'react';
-import SingleTitle from '../../../../../components/commons/SingleTitle/SingleTitle.component';
+import SingleTitle from '../commons/SingleTitle/SingleTitle.component';
 
 const DetailEventHeader = ({ pageData, titleMainClass, className = '' }) => {
   const { name, shortDescription, startTime, endTime } = pageData;

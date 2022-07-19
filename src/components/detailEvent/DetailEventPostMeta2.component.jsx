@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import { SINGLE } from '../../../../../data/single';
-import Avatar from '../../../../../components/commons/Avatar/Avatar.component';
+import { SINGLE } from '../../data/single';
+import Avatar from '../commons/Avatar/Avatar.component';
 import React from 'react';
 
 const PostMeta2 = ({ className = 'leading-none', meta, hiddenCategories = false, size = 'normal', avatarRounded }) => {

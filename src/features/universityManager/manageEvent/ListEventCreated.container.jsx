@@ -1,19 +1,21 @@
-import { Button, Form, Input, Modal, Pagination, Select, Space, Table, Tag, Typography, notification } from 'antd';
+import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
 import { getListEventForUniversity } from '../../../services/GetListEventForUniversity';
 import { refactorData } from '../../../utils/common';
 import { useSelector } from 'react-redux';
 import { useStateWithCallback } from '../../../components/CustomHOOK/SyncUseState';
+import DetailEventComponent from '../../../components/detailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
+  const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
-  const { slot } = useSelector((state) => state.selectedSlot);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const showModal = () => {
+  const showModal = (data) => {
+    setCurrentSelectedEvent(data);
     setIsModalVisible(true);
   };
   const handleOk = () => {
@@ -25,7 +27,6 @@ const ListEventCreatedContainer = (props) => {
   };
   const { Search } = Input;
   const { Option } = Select;
-  const { Title } = Typography;
   const [dataSearch, setDataSearch] = useStateWithCallback({
     name: '',
     hostname: '',
@@ -85,7 +86,7 @@ const ListEventCreatedContainer = (props) => {
       title: 'Loại sự kiện',
       dataIndex: 'eventTypeId',
       render: (type) => {
-        if (type === EVENT_ONLINE) return <Tag color='#f50'>Sự kiện onlne</Tag>;
+        if (type === EVENT_ONLINE) return <Tag color='#f50'>Sự kiện online</Tag>;
         if (type === EVENT_HS) return <Tag color='#2db7f5'>Sự kiện tổ chức tại trường cấp 3</Tag>;
         if (type === EVENT_UNI) return <Tag color='#87d068'>Sự kiện tổ chức tại trường đại học</Tag>;
         if (type === EVENT_ORG) return <Tag color='#108ee9'>Sự kiện tổ chức tại doanh nghiệp</Tag>;
@@ -97,37 +98,36 @@ const ListEventCreatedContainer = (props) => {
       dataIndex: 'status',
       render: (type) => {
         if (type === EVENT.INIT) return <Tag color='green'>Sự kiện được khởi tạo</Tag>;
-        if (type === EVENT.ON_GOING) return <Tag color='#2db7f5'>Sự kiện sắp diễn ra</Tag>;
-        if (type === EVENT.DONE) return <Tag color='#87d068'>Sự kiện đã kết thúc</Tag>;
-        if (type === EVENT.CANCEL) return <Tag color='#108ee9'>Sự kiện bị hủy</Tag>;
+        if (type === EVENT.ON_GOING) return <Tag color='cyan'>Sự kiện sắp diễn ra</Tag>;
+        if (type === EVENT.DONE) return <Tag color='purple'>Sự kiện đã kết thúc</Tag>;
+
+        if (type === EVENT.CANCEL) return <Tag color='orange'>Sự kiện bị hủy</Tag>;
       },
       width: '10%'
     },
     {
       title: 'Thời gian bắt đầu',
       dataIndex: 'startTime',
-      render: (startTime) => moment(startTime).locale('vi').format('LLL'),
+      render: (startTime) => `${startTime ? moment(startTime).locale('vi').format('LLL') : ''}`,
       width: '10%'
     },
     {
       title: 'Thời gian kết thúc',
       dataIndex: 'endTime',
-      render: (endTime) => `${moment(endTime).locale('vi').format('LLL')}`,
+      render: (endTime) => `${endTime ? moment(endTime).locale('vi').format('LLL') : ''}`,
       width: '10%'
     },
     {
-      title: 'Chú giải',
-      dataIndex: 'shortDescription',
-      render: (name) => `${name}`,
-      width: '20%'
-    },
-
-    {
       title: 'Hành Động',
       render: (status, data) => (
-        <Button type={'primary'} danger>
-          Xem chi tiết
-        </Button>
+        <Space>
+          <Button type={'primary'} danger onClick={() => showModal(data)}>
+            Xem chi tiết
+          </Button>
+          <Button type={'primary'} onClick={() => showModal(data)}>
+            Cập nhật
+          </Button>
+        </Space>
       ),
       width: '12%'
     }
@@ -138,10 +138,8 @@ const ListEventCreatedContainer = (props) => {
   };
   return (
     <div>
-      <Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
+        <DetailEventComponent event={currentSelectedEvent} loading={false} />
       </Modal>
       <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />

@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 import PublicEventComponent from './components/publicEvent.component';
 import React, { useEffect, useState } from 'react';
 
-const PublicEventContainer = () => {
+const PublicEventContainer = (props) => {
+  const { handleChangeActiveKey } = props;
   const [isLoading, setIsLoading] = useState(true);
   const [event134, setEvent134] = useState();
   const { user } = useSelector((state) => state.authentication);
@@ -18,10 +19,6 @@ const PublicEventContainer = () => {
     limit: 10
   });
 
-  const reload = () => {
-    window.location.reload();
-  };
-
   //Public button
   const handlePublicButton = (value) => {
     PublicEvent({
@@ -30,7 +27,7 @@ const PublicEventContainer = () => {
     })
       .then((result) => {
         PublicSuccessNotification('success', result.data.msg);
-        setTimeout(reload, 1000);
+        handleChangeActiveKey('3');
       })
       .catch((error) => {
         PublicSuccessNotification('error', error.response.data.msg);

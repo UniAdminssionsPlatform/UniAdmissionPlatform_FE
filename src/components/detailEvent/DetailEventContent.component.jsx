@@ -1,11 +1,10 @@
-import { SINGLE } from '../../../../../data/single';
+import { SINGLE } from '../../data/single';
 import { useLocation } from 'react-router-dom';
-import MakeDownView from '../../../../../components/MarkdownView/MarkdownView.component';
+import MakeDownView from '../MarkdownView/MarkdownView.component';
 import React, { useEffect, useRef } from 'react';
-import SingleAuthor from '../../../../../components/commons/SingleAuthor/SingleAuthor.component';
-import SingleCommentForm from '../../../../../components/commons/SingleCommentForm/SingleCommentForm.component';
-import SingleCommentLists from '../../../../../components/commons/SingleCommentLists/SingleCommentLists.component';
-import SingleContentDemo from '../../../../../components/commons/SingleContentDemo/SingleContentDemo.component';
+import SingleAuthor from '../commons/SingleAuthor/SingleAuthor.component';
+import SingleCommentForm from '../commons/SingleCommentForm/SingleCommentForm.component';
+import SingleCommentLists from '../commons/SingleCommentLists/SingleCommentLists.component';
 const DetailEventContent = ({ data }) => {
   const { description, fileUrl, hostName, meetingUrl, address, startTime, endTime } = data;
   const commentRef = useRef();
@@ -51,7 +50,6 @@ const DetailEventContent = ({ data }) => {
         </h3>
         <SingleCommentForm onClickSubmit={(id) => console.log(id)} onClickCancel={(id) => console.log(id)} />
       </div>
-
       {/* COMMENTS LIST */}
       <div className='max-w-screen-md mx-auto'>
         <SingleCommentLists comments={SINGLE.comments} />

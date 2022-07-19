@@ -1,7 +1,7 @@
-import { DEMO_POSTS } from '../../../../../data/posts';
-import Card11 from '../../../../../components/commons/Card/Card11/Card11.component';
-import Card9 from '../../../../../components/commons/Card/Card9/Card9';
-import Heading from '../../../../../components/commons/Heading/Heading.component';
+import { DEMO_POSTS } from '../../data/posts';
+import Card11 from '../commons/Card/Card11/Card11.component';
+import Card9 from '../commons/Card/Card9/Card9';
+import Heading from '../commons/Heading/Heading.component';
 import React from 'react';
 
 // DEMO DATA
