@@ -1,12 +1,10 @@
-import React from 'react';
 import ListUniversityToFollowContainer from '../../features/highschoolStudent/listUniversity/listUniversityToFollow.container';
+import React from 'react';
 
-const ListUniversityToFollowPage = () => {
-  return (
-    <>
-      <ListUniversityToFollowContainer />
-    </>
-  );
-};
+const ListUniversityToFollowPage = () => (
+  <>
+    <ListUniversityToFollowContainer />
+  </>
+);
 
 export default ListUniversityToFollowPage;

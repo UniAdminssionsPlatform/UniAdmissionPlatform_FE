@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Input, Pagination } from 'antd';
-import NcImage from '../../../components/commons/NcImage/NcImage.component';
 import { ListUniversityPaging } from '../../../services/FollowUniversityService';
 import CardUniversityComponent from './components/CardUniversity.component';
+import NcImage from '../../../components/commons/NcImage/NcImage.component';
+import React, { useEffect, useState } from 'react';
 
 const { Search } = Input;
 const ListUniversityToFollowContainer = () => {

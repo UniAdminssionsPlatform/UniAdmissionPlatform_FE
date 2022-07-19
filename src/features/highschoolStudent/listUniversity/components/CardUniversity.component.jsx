@@ -1,7 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
+import React from 'react';
 
 const CardUniversityComponent = (props) => {
   const { item } = props;

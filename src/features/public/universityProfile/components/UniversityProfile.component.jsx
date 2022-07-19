@@ -1,9 +1,9 @@
+import { Button, Modal, Tag } from 'antd';
+import { CheckOutlined, CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import Avatar from '../../../../components/commons/Avatar/Avatar.component';
 import MarkdownViewComponent from '../../../../components/MarkdownView/MarkdownView.component';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
-import { Button, Modal, Tag } from 'antd';
-import { CheckOutlined, ExclamationCircleOutlined, CloseOutlined } from '@ant-design/icons';
 const UniversityProfileComponent = (props) => {
   const { universityDetail, followed, handleFollowButton, handleUnFollowButton } = props;
   console.log(followed);

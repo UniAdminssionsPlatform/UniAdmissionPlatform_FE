@@ -1,8 +1,8 @@
+import { FollowSuccessNotification, UnFollowSuccessNotification } from '../../../notification/FollowNotification';
+import { FollowUniversity, Following } from '../../../services/FollowUniversityService';
 import { UniversityDetail } from '../../../services/UniversityDetail';
 import React, { useEffect, useState } from 'react';
 import UniversityProfileComponent from '../../../features/public/universityProfile/components/UniversityProfile.component';
-import { Following, FollowUniversity } from '../../../services/FollowUniversityService';
-import { FollowSuccessNotification, UnFollowSuccessNotification } from '../../../notification/FollowNotification';
 
 const UniversityProfileToFollowContainer = (props) => {
   const { universityID } = props;
