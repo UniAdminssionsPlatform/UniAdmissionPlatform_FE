@@ -4,7 +4,7 @@ import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../..
 import { refactorData } from '../../../../utils/common';
 import React from 'react';
 
-const UnpublicEventComponent = (props) => {
+const UnPublicEventComponent = (props) => {
   const { event2, onChange, handleChangeEventName, handlePublicButton, handleChangeEventHost } = props;
   const { Search } = Input;
   const stylePaging = {
@@ -113,4 +113,4 @@ const UnpublicEventComponent = (props) => {
   );
 };
 
-export default UnpublicEventComponent;
+export default UnPublicEventComponent;

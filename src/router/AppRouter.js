@@ -1,13 +1,9 @@
-import {
-  PATH,
-  PATH_HIGH_SCHOOL_MANAGER,
-  PATH_HIGH_SCHOOL_STUDENT,
-  PATH_UNIVERSITY_MANAGER
-} from '../constants/Paths/Path';
+import { PATH, PATH_HIGH_SCHOOL_STUDENT, PATH_UNIVERSITY_MANAGER } from '../constants/Paths/Path';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import AboutUsPage from '../pages/public/AboutUsPage';
 import CertificationPage from '../pages/highSchoolStudent/CertificationPage';
 import ChangePasswordPage from '../pages/auth/ChangePasswordPage';
+import DetailEventForStudentPage from '../pages/highSchoolStudent/DetailEventPage';
 import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
@@ -16,7 +12,7 @@ import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfilePage';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
-import ListEventPage from '../pages/universityManager/ListeventPage';
+import ListEventGorStudentPage from '../pages/highSchoolStudent/ListEventForStudentPage';
 import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
 import ListUniversityPage from '../pages/highSchoolStudent/ListUniversityPage';
 import LoginPage from '../pages/auth/Login.page';
@@ -31,10 +27,10 @@ import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
+import UnPublicEventPage from '../pages/universityManager/UnpublicEventPage';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
-import UnpublicEventPage from '../pages/universityManager/UnpublicEventPage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
 const AppRouter = () => (
@@ -65,7 +61,7 @@ const AppRouter = () => (
         <PolicyPage />
       </Route>
       <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
-        <ListEventPage />
+        <ListEventGorStudentPage />
       </Route>
       <Route path={PATH.DETAIL_EVENT} exact>
         <DetailEventPage />
@@ -77,7 +73,7 @@ const AppRouter = () => (
         <DetailMajorGroupPage />
       </Route>
       <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
-        <ListEventPage />
+        <ListEventGorStudentPage />
       </Route>
       // HighSchool Page
       <UniversityManagerRouter
@@ -88,9 +84,15 @@ const AppRouter = () => (
       />
       //Student
       <HighSchoolStudentRouter
-        component={() => <ListEventPage />}
+        component={() => <ListEventGorStudentPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
         key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <DetailEventForStudentPage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.DETAIL_EVENT}
+        key={PATH_HIGH_SCHOOL_STUDENT.DETAIL_EVENT}
         exact
       />
       <HighSchoolStudentRouter
@@ -136,7 +138,7 @@ const AppRouter = () => (
         exact
       />
       <UniversityManagerRouter
-        component={() => <UnpublicEventPage />}
+        component={() => <UnPublicEventPage />}
         path={PATH_UNIVERSITY_MANAGER.UN_PUBLIC_EVENT}
         key={PATH_UNIVERSITY_MANAGER.UN_PUBLIC_EVENT}
         exact
