@@ -17,6 +17,7 @@ import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfileP
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
 import ListEventPage from '../pages/universityManager/ListeventPage';
+import ListEventGorStudentPage from '../pages/highSchoolStudent/ListEventForStudentPage';
 import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
 import ListUniversityPage from '../pages/highSchoolStudent/ListUniversityPage';
 import LoginPage from '../pages/auth/Login.page';
@@ -65,7 +66,7 @@ const AppRouter = () => (
         <PolicyPage />
       </Route>
       <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
-        <ListEventPage />
+        <ListEventGorStudentPage />
       </Route>
       <Route path={PATH.DETAIL_EVENT} exact>
         <DetailEventPage />
@@ -77,7 +78,7 @@ const AppRouter = () => (
         <DetailMajorGroupPage />
       </Route>
       <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
-        <ListEventPage />
+        <ListEventGorStudentPage />
       </Route>
       // HighSchool Page
       <UniversityManagerRouter
@@ -88,7 +89,7 @@ const AppRouter = () => (
       />
       //Student
       <HighSchoolStudentRouter
-        component={() => <ListEventPage />}
+        component={() => <ListEventGorStudentPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
         key={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT}
         exact
