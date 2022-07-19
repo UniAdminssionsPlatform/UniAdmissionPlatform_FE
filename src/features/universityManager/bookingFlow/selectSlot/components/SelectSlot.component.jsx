@@ -13,7 +13,7 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../../../../constants/Color';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
-import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../../../constants/AppConst';
+import { SLOT, SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../../../constants/AppConst';
 import AppointmentContentComponent from '../../../../../components/schedule/component/AppointmentContent.component';
 import AppointmentHeaderComponent from '../../../../../components/schedule/component/AppointmentHeader.component';
 import Paper from '@mui/material/Paper';
@@ -37,7 +37,7 @@ const SelectSlotComponent = (props) => {
       }}
       data={data}
       onClick={() => {
-        setCurrentSlotSelected(data);
+        if (data?.status === SLOT.OPEN) setCurrentSlotSelected(data);
       }}>
       <SlotComponent data={data} />
       {children}

@@ -14,8 +14,7 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../constants/Color';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
-import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../constants/AppConst';
-import { useState } from 'react';
+import { SLOT } from '../../constants/AppConst';
 import AppointmentContentComponent from './component/AppointmentContent.component';
 import AppointmentHeaderComponent from './component/AppointmentHeader.component';
 import Paper from '@mui/material/Paper';
@@ -29,9 +28,9 @@ const ScheduleEventComponent = (props) => {
       style={{
         ...style,
         backgroundColor:
-          data?.status === SLOT_IS_OPEN
+          data?.status === SLOT.OPEN
             ? COLOR_SLOT_IS_OPEN
-            : data?.status === SLOT_IS_FULL
+            : data?.status === SLOT.FULL
             ? COLOR_SLOT_IS_FULL
             : COLOR_SLOT_IS_CLOSE,
         borderRadius: '8px'

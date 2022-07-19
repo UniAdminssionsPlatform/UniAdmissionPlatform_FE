@@ -59,8 +59,7 @@ const ManageEventContainer = () => {
       width: '12%'
     }
   ];
-  const handleEditEvent = (data) => {
-  };
+  const handleEditEvent = (data) => {};
   const onShowSizeChange = (page, PageSize) => {
     setDataSearch({ ...dataSearch, page, limit: PageSize });
   };

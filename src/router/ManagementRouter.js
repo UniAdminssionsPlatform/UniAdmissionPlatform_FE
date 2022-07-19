@@ -136,8 +136,7 @@ const ManagementRouter = () => {
           style={{
             padding: '24px 24px'
           }}>
-          <Content
-            className='site-layout-background'>
+          <Content className='site-layout-background'>
             <Switch>
               <UniversityManagerRouter
                 component={() => <GoalAdmissionPage />}
@@ -149,12 +148,6 @@ const ManagementRouter = () => {
                 component={() => <SelectHighSchoolPage />}
                 path={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
                 key={PATH_UNIVERSITY_MANAGER.REGIS_EVENT}
-                exact
-              />
-              <UniversityManagerRouter
-                component={() => <UniversityDetailPage />}
-                path={PATH_UNIVERSITY_MANAGER.PROFILE}
-                key={PATH_UNIVERSITY_MANAGER.PROFILE}
                 exact
               />
               <UniversityManagerRouter
@@ -179,12 +172,6 @@ const ManagementRouter = () => {
                 component={() => <RegisteredEventPage />}
                 path={PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT}
                 key={PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT}
-                exact
-              />
-              <UniversityManagerRouter
-                component={() => <UpdateUniversityProfilePage />}
-                path={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
-                key={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
                 exact
               />
               <UniversityManagerRouter

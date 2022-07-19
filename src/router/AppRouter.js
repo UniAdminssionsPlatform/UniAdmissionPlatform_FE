@@ -31,9 +31,11 @@ import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
+import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UnpublicEventPage from '../pages/universityManager/UnpublicEventPage';
+import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
 const AppRouter = () => (
   <>
@@ -151,6 +153,20 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         exact
       />
+      //public profile University
+      <UniversityManagerRouter
+        component={() => <UniversityDetailPage />}
+        path={PATH_UNIVERSITY_MANAGER.PROFILE}
+        key={PATH_UNIVERSITY_MANAGER.PROFILE}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <UpdateUniversityProfilePage />}
+        path={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
+        key={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
+        exact
+      />
+      //University
       <Route path={PATH.ABOUT_US} exact>
         <AboutUsPage />
       </Route>

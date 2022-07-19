@@ -31,17 +31,13 @@ const PublicEventComponent = (props) => {
       title: 'Tên Sự Kiện',
       dataIndex: 'name',
       key: 'name',
-      width: '30%'
+      width: '10%'
     },
     {
       title: 'Địa Chỉ',
       dataIndex: 'address',
-      key: 'address'
-    },
-    {
-      title: 'Tên Diễn Giả',
-      dataIndex: 'hostName',
-      key: 'hostName'
+      key: 'address',
+      width: '10%'
     },
     {
       title: 'Loại sự kiện',
@@ -52,7 +48,7 @@ const PublicEventComponent = (props) => {
         if (type === EVENT_UNI) return <Tag color='#87d068'>Sự kiện tổ chức tại trường đại học</Tag>;
         if (type === EVENT_ORG) return <Tag color='#108ee9'>Sự kiện tổ chức tại doanh nghiệp</Tag>;
       },
-      width: '20%'
+      width: '10%'
     },
     {
       title: 'Trạng thái',
