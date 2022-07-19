@@ -17,7 +17,7 @@ const HighSchoolProfileComponent = (props) => {
               className='object-cover w-full h-full'
             />
           </div>
-          <div className='relative container -mt-20 lg:-mt-48'>
+          <div className='relative container -mt-20 lg:-mt-10'>
             <div className=' bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 p-5 lg:p-16 rounded-[40px] shadow-2xl flex flex-col sm:flex-row sm:items-center'>
               <Avatar
                 containerClassName='ring-4 ring-white dark:ring-0 shadow-2xl'

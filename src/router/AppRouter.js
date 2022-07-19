@@ -37,6 +37,9 @@ import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UnpublicEventPage from '../pages/universityManager/UnpublicEventPage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
+import ListUniversityToFollowPage from '../pages/highSchoolStudent/ListUniversityToFollowPage';
+import UniversityDetailToFollowPage from '../pages/UniversityProfilePage/UniversityDetailToFollowPage';
+
 const AppRouter = () => (
   <>
     <ScrollToTop />
@@ -142,7 +145,7 @@ const AppRouter = () => (
         exact
       />
       <HighSchoolStudentRouter
-        component={() => <ListUniversityPage />}
+        component={() => <ListUniversityToFollowPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY}
         key={PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY}
         exact
@@ -151,6 +154,12 @@ const AppRouter = () => (
         component={() => <StudentScorePage />}
         path={PATH_HIGH_SCHOOL_STUDENT.SCORE}
         key={PATH_HIGH_SCHOOL_STUDENT.SCORE}
+        exact
+      />
+      <HighSchoolStudentRouter
+        component={() => <UniversityDetailToFollowPage />}
+        path={PATH_HIGH_SCHOOL_STUDENT.PROFILE_UNIVERSITY}
+        key={PATH_HIGH_SCHOOL_STUDENT.PROFILE_UNIVERSITY}
         exact
       />
       //public profile University
