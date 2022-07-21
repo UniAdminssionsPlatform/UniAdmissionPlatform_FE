@@ -1,5 +1,5 @@
+import { Count, FollowUniversity, Following } from '../../../services/FollowUniversityService';
 import { FollowSuccessNotification, UnFollowSuccessNotification } from '../../../notification/FollowNotification';
-import { FollowUniversity, Following } from '../../../services/FollowUniversityService';
 import { UniversityDetail } from '../../../services/UniversityDetail';
 import React, { useEffect, useState } from 'react';
 import UniversityProfileComponent from '../../../features/public/universityProfile/components/UniversityProfile.component';
@@ -8,9 +8,17 @@ const UniversityProfileToFollowContainer = (props) => {
   const { universityID } = props;
   const [universityDetail, setUniversityDetail] = useState('');
   const [followed, setFollowed] = useState('');
+  const [countStudent, setCountStudent] = useState();
 
   const reload = () => {
     window.location.reload();
+  };
+
+  //Count
+  const CountStudentFollowed = (universityID) => {
+    Count(universityID).then((result) => {
+      setCountStudent(result.data.data);
+    });
   };
 
   //Follow Button
@@ -49,6 +57,7 @@ const UniversityProfileToFollowContainer = (props) => {
 
   useEffect(() => {
     checkFollowed(universityID);
+    CountStudentFollowed(universityID);
   }, [universityID]);
 
   useEffect(() => {
@@ -67,6 +76,7 @@ const UniversityProfileToFollowContainer = (props) => {
         followed={followed}
         handleFollowButton={handleFollowButton}
         handleUnFollowButton={handleUnFollowButton}
+        countStudent={countStudent}
       />
     </>
   );

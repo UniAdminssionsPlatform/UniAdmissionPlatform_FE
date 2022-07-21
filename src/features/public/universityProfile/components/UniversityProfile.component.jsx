@@ -5,8 +5,8 @@ import MarkdownViewComponent from '../../../../components/MarkdownView/MarkdownV
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 const UniversityProfileComponent = (props) => {
-  const { universityDetail, followed, handleFollowButton, handleUnFollowButton } = props;
-  console.log(followed);
+  const { universityDetail, followed, handleFollowButton, handleUnFollowButton, countStudent } = props;
+  console.log(countStudent);
 
   const confirmFollow = (value) => {
     Modal.confirm({
@@ -61,7 +61,7 @@ const UniversityProfileComponent = (props) => {
               </span>
             </div>
             <div>
-              <Tag color='orange'>Hiện có ... người theo dõi</Tag>
+              <Tag color='orange'>Hiện có {countStudent} người theo dõi</Tag>
               {followed?.status === 1 ? (
                 <Button
                   style={{ background: 'green', color: 'white' }}

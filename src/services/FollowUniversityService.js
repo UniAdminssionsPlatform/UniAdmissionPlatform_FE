@@ -1,6 +1,7 @@
 /* eslint-disable */
 import {CallAPI} from './axiosBase';
 import {
+    COUNT,
     FOLLOW_UNIVERSITY,
     FOLLOWING,
     GET_LIST_UNIVERSITY_TO_FOLLOW
@@ -18,3 +19,5 @@ export const ListUniversityPaging = (data) =>
 export const FollowUniversity = (data) => CallAPI(`${FOLLOW_UNIVERSITY}/${data.universityId}`, 'put', data);
 
 export const Following = (data) => CallAPI(`${FOLLOWING}/${data}`, 'get', data);
+
+export const Count = (data) => CallAPI(`${COUNT}/${data}/follow`, 'get', data);

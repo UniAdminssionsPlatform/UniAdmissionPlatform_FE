@@ -7,6 +7,7 @@ import DetailEventForStudentPage from '../pages/highSchoolStudent/DetailEventPag
 import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import EventCheckPage from '../pages/universityManager/EventCheckPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfilePage';
@@ -174,6 +175,12 @@ const AppRouter = () => (
         component={() => <UpdateUniversityProfilePage />}
         path={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
         key={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <EventCheckPage />}
+        path={PATH_UNIVERSITY_MANAGER.EVENT_CHECK}
+        key={PATH_UNIVERSITY_MANAGER.EVENT_CHECK}
         exact
       />
       //University
