@@ -1,8 +1,9 @@
 import { Button, Input, Modal, Pagination, Space, Table, Tag } from 'antd';
 import { CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../../constants/AppConst';
-import { refactorData } from '../../../../utils/common';
+import { refactorData, refactorDataSlot } from '../../../../utils/common';
 import React from 'react';
+import moment from 'moment';
 
 const UnPublicEventComponent = (props) => {
   const { event2, onChange, handleChangeEventName, handlePublicButton, handleChangeEventHost } = props;
@@ -31,17 +32,19 @@ const UnPublicEventComponent = (props) => {
       title: 'Tên Sự Kiện',
       dataIndex: 'name',
       key: 'name',
-      width: '30%'
+      width: '10%'
     },
     {
       title: 'Địa Chỉ',
       dataIndex: 'address',
-      key: 'address'
+      key: 'address',
+      width: '10%'
     },
     {
       title: 'Tên Diễn Giả',
       dataIndex: 'hostName',
-      key: 'hostName'
+      key: 'hostName',
+      width: '15%'
     },
     {
       title: 'Loại sự kiện',
@@ -52,7 +55,7 @@ const UnPublicEventComponent = (props) => {
         if (type === EVENT_UNI) return <Tag color='#87d068'>Sự kiện tổ chức tại trường đại học</Tag>;
         if (type === EVENT_ORG) return <Tag color='#108ee9'>Sự kiện tổ chức tại doanh nghiệp</Tag>;
       },
-      width: '20%'
+      width: '15%'
     },
     {
       title: 'Trạng thái',
@@ -63,15 +66,19 @@ const UnPublicEventComponent = (props) => {
         if (type === EVENT.DONE) return <Tag color='#87d068'>Sự kiện đã kết thúc</Tag>;
         if (type === EVENT.CANCEL) return <Tag color='#108ee9'>Sự kiện bị hủy</Tag>;
       },
-      width: '20%'
+      width: '10%'
     },
     {
       title: 'Thời gian bắt đầu',
-      dataIndex: 'startTime'
+      dataIndex: 'startTime',
+      render: (time) => `${time ? moment(time).format('LLL') : ''}`,
+      width: '10%'
     },
     {
       title: 'Thời gian kết thúc',
-      dataIndex: 'endTime'
+      dataIndex: 'endTime',
+      render: (time) => `${time ? moment(time).format('LLL') : ''}`,
+      width: '10%'
     },
     {
       title: 'Thao Tác',
@@ -86,7 +93,8 @@ const UnPublicEventComponent = (props) => {
             Hủy công khai sự kiện
           </Button>
         </>
-      )
+      ),
+      width: '20%'
     }
   ];
   return (

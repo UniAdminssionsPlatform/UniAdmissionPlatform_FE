@@ -3,6 +3,7 @@ import { CheckOutlined, ExclamationCircleOutlined, StarOutlined } from '@ant-des
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../../constants/AppConst';
 import { refactorData } from '../../../../utils/common';
 import React from 'react';
+import moment from 'moment';
 
 const PublicEventComponent = (props) => {
   const { event134, onChange, handleChangeEventName, handlePublicButton, handleChangeEventHost } = props;
@@ -59,11 +60,13 @@ const PublicEventComponent = (props) => {
     },
     {
       title: 'Thời gian bắt đầu',
-      dataIndex: 'startTime'
+      dataIndex: 'startTime',
+      render: (time) => `${time ? moment(time).format('LLL') : ''}`
     },
     {
       title: 'Thời gian kết thúc',
-      dataIndex: 'endTime'
+      dataIndex: 'endTime',
+      render: (time) => `${time ? moment(time).format('LLL') : ''}`
     },
     {
       title: 'Thao Tác',
@@ -75,7 +78,14 @@ const PublicEventComponent = (props) => {
               onClick={() => {
                 confirm(record);
               }}>
-              <CheckOutlined />
+              Công Khai Sự Kiện
+            </Button>
+          ) : record.status === EVENT.INIT ? (
+            <Button
+              style={{ background: 'green', color: 'white' }}
+              onClick={() => {
+                confirm(record);
+              }}>
               Công Khai Sự Kiện
             </Button>
           ) : (

@@ -3,7 +3,6 @@ import { useState } from 'react';
 import CreateEventContainer from '../../../features/universityManager/manageEvent/CreateEvent.container';
 import Layout from '../../../components/Layout';
 import ListEventCreatedContainer from '../../../features/universityManager/manageEvent/ListEventCreated.container';
-import ListEventRegisteredContainer from '../../../features/universityManager/manageEvent/ListEventRegisted.container';
 import PublicEventContainer from '../../../features/universityManager/publicEvent/publicEvent.container';
 import UnPublicEventContainer from '../../../features/universityManager/publicEvent/unpublicEvent.container';
 
