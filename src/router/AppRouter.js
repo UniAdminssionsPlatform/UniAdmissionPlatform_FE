@@ -34,6 +34,7 @@ import UniversityListAccountPendingPage from '../pages/universityManager/Univers
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
+import EventCheckPage from '../pages/universityManager/EventCheckPage';
 
 const AppRouter = () => (
   <>
@@ -174,6 +175,12 @@ const AppRouter = () => (
         component={() => <UpdateUniversityProfilePage />}
         path={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
         key={PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE}
+        exact
+      />
+      <UniversityManagerRouter
+        component={() => <EventCheckPage />}
+        path={PATH_UNIVERSITY_MANAGER.EVENT_CHECK}
+        key={PATH_UNIVERSITY_MANAGER.EVENT_CHECK}
         exact
       />
       //University
