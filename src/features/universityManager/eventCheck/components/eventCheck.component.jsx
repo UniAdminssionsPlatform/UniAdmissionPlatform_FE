@@ -1,6 +1,7 @@
-import { EVENT } from '../../../../constants/AppConst';
-import { Input, Pagination, Space, Table, Tag, Typography } from 'antd';
+import { EVENT_CHECK } from '../../../../constants/AppConst';
+import { Input, Pagination, Space, Table, Tag } from 'antd';
 import React from 'react';
+import moment from 'moment';
 
 const EventCheckComponent = (props) => {
   const { eventCheck, onChange } = props;
@@ -10,21 +11,28 @@ const EventCheckComponent = (props) => {
     {
       title: 'Tên Sự Kiện',
       render: (record) => <p>{record.event.name}</p>,
+      width: '20%'
+    },
+    {
+      title: 'Thời gian diễn ra',
+      render: (record) => <p>{moment(record.slot.startDate).format('LLL')}</p>,
+      width: '10%'
+    },
+    {
+      title: 'Thời gian kết thúc',
+      render: (record) => <p>{moment(record.slot.endDate).format('LLL')}</p>,
       width: '10%'
     },
     {
       title: 'Trạng thái',
       render: (record) => {
-        if (record.event.status === EVENT.INIT) return <Tag color='green'>Sự kiện được khởi tạo</Tag>;
-        if (record.event.status === EVENT.ON_GOING) return <Tag color='#2db7f5'>Sự kiện sắp diễn ra</Tag>;
-        if (record.event.status === EVENT.DONE) return <Tag color='#87d068'>Sự kiện đã kết thúc</Tag>;
-        if (record.event.status === EVENT.CANCEL) return <Tag color='#108ee9'>Sự kiện bị hủy</Tag>;
+        if (record.status === EVENT_CHECK.Approved) return <Tag color='green'>Sự kiện đã chấp nhận</Tag>;
+        if (record.status === EVENT_CHECK.PENDING) return <Tag color='cyan'>Sự kiện đang chờ duyệt</Tag>;
+        if (record.status === EVENT_CHECK.REJECT) return <Tag color='purple'>Sự kiện đã từ chối</Tag>;
       },
       width: '20%'
     }
   ];
-  const { Title, Text } = Typography;
-
   return (
     <div>
       <Space>

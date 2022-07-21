@@ -7,6 +7,7 @@ import DetailEventForStudentPage from '../pages/highSchoolStudent/DetailEventPag
 import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import EventCheckPage from '../pages/universityManager/EventCheckPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfilePage';
@@ -34,7 +35,6 @@ import UniversityListAccountPendingPage from '../pages/universityManager/Univers
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
-import EventCheckPage from '../pages/universityManager/EventCheckPage';
 
 const AppRouter = () => (
   <>

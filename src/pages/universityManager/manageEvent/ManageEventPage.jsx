@@ -1,6 +1,7 @@
 import { Tabs, Typography } from 'antd';
 import { useState } from 'react';
 import CreateEventContainer from '../../../features/universityManager/manageEvent/CreateEvent.container';
+import EventCheckContainer from '../../../features/universityManager/eventCheck/eventCheck.container';
 import Layout from '../../../components/Layout';
 import ListEventCreatedContainer from '../../../features/universityManager/manageEvent/ListEventCreated.container';
 import PublicEventContainer from '../../../features/universityManager/publicEvent/publicEvent.container';
@@ -30,8 +31,11 @@ const ManageEventPage = () => {
         <TabPane tab='Tất cả sự kiện' key='1'>
           <ListEventCreatedContainer />
         </TabPane>
-        <TabPane tab='Sự kiện đang đăng ký' key='2'>
+        <TabPane tab='Công khai sự kiện' key='2'>
           <PublicEventContainer handleChangeActiveKey={handleChangeActiveKey} />
+        </TabPane>
+        <TabPane tab='Sự kiện đang đăng ký' key='5'>
+          <EventCheckContainer />
         </TabPane>
         <TabPane tab='Sự kiện sắp diễn ra' key='3'>
           <UnPublicEventContainer />
