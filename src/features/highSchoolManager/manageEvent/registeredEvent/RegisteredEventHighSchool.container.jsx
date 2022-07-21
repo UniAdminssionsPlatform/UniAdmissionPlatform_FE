@@ -1,15 +1,20 @@
 import { Button, Form, Modal, Pagination, Space, Table, Tag, Typography, notification } from 'antd';
-import { EVENT_CHECK } from '../../../../constants/AppConst';
+import { EVENT, EVENT_CHECK } from '../../../../constants/AppConst';
 import { approveAEvent, getListEventCheck, rejectAEvent } from '../../../../services/AdminHighSchoolEventCheck';
 import { refactorData } from '../../../../utils/common';
+import DetailEventComponent from '../../../../components/detailEvent/DetailEvent.component';
+import Layout from '../../../../components/Layout';
 import React, { useEffect, useState } from 'react';
 import TextArea from 'antd/es/input/TextArea';
 import TitlePageComponent from '../../../../components/decorator/TitlePage.component';
+import moment from 'moment';
 
 const RegisteredEventHighSchoolContainer = () => {
   const [requestPayload, setRequestPayload] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isSecondModalVisible, setIsSecondModalVisible] = useState(false);
+  const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
   const [idEventCheck, setIdEventCheck] = useState();
   const [data, setData] = useState();
   const payload = {
@@ -20,11 +25,8 @@ const RegisteredEventHighSchoolContainer = () => {
     getListEventCheck(payload)
       .then((res) => {
         setData(res.data.data);
-        console.log(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
   const handleOpenModal = (data, value) => {
     setIsModalVisible(true);
@@ -45,35 +47,49 @@ const RegisteredEventHighSchoolContainer = () => {
         })
       );
   };
+  const handelDetailEvent = (data) => {
+    setCurrentSelectedEvent(data);
+    setIsSecondModalVisible(true);
+  };
   const column = [
     {
       title: 'Tên Sự kiện',
       dataIndex: 'name',
       render: (name) => `${name}`,
-      width: '20%'
+      width: '15%'
     },
     {
       title: 'Diễn giả',
       dataIndex: 'hostName',
       render: (name) => `${name}`,
-      width: '10%'
-    },
-    {
-      title: 'Mô tả',
-      dataIndex: 'description',
-      render: (name) => `${name}`,
-      width: '10%'
+      width: '5%'
     },
     {
       title: 'Thời gian bắt đầu',
       dataIndex: 'startDate',
-      render: (time) => `${time}`,
+      render: (time) => `${time ? moment(time).format('LLL') : ''}`,
       width: '10%'
     },
     {
       title: 'Thời gian kết thúc',
       dataIndex: 'endDate',
-      render: (time) => `${time}`,
+      render: (time) => `${time ? moment(time).format('LLL') : ''}`,
+      width: '10%'
+    },
+    {
+      title: 'Trạng thái',
+      dataIndex: 'status',
+      render: (type) => {
+        if (type === EVENT_CHECK.Approved) return <Tag color='green'>Sự kiện đã chấp nhận</Tag>;
+        if (type === EVENT_CHECK.PENDING) return <Tag color='cyan'>Sự kiện đang chờ duyệt</Tag>;
+        if (type === EVENT_CHECK.REJECT) return <Tag color='purple'>Sự kiện đã từ chối</Tag>;
+      },
+      width: '10%'
+    },
+    {
+      title: 'Xem chi tiết',
+      dataIndex: 'status',
+      render: (index, data) => <Button onClick={() => handelDetailEvent(data)}>Xem chi tiết</Button>,
       width: '10%'
     },
     {
@@ -101,7 +117,12 @@ const RegisteredEventHighSchoolContainer = () => {
   const handleOk = () => {
     setIsModalVisible(false);
   };
-
+  const handleOkSecondModal = () => {
+    setIsSecondModalVisible(false);
+  };
+  const handleCancelSecondModal = () => {
+    setIsSecondModalVisible(false);
+  };
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -128,7 +149,16 @@ const RegisteredEventHighSchoolContainer = () => {
       );
   };
   return (
-    <>
+    <Layout>
+      <Modal
+        title='Thôn tin chi tiết sự kiện'
+        visible={isSecondModalVisible}
+        onOk={handleOkSecondModal}
+        onCancel={handleCancelSecondModal}
+        footer={null}
+        width={'80vw'}>
+        <DetailEventComponent event={currentSelectedEvent} loading={false} />
+      </Modal>
       <Modal
         title='Từ chối tổ chức sự kiện'
         visible={isModalVisible}
@@ -166,7 +196,7 @@ const RegisteredEventHighSchoolContainer = () => {
         />
         {data?.total > 10 ? <Pagination showSizeChanger onChange={onShowSizeChange} total={data?.total} /> : null}
       </Space>
-    </>
+    </Layout>
   );
 };
 

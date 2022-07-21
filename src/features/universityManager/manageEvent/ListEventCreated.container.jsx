@@ -100,7 +100,6 @@ const ListEventCreatedContainer = (props) => {
         if (type === EVENT.INIT) return <Tag color='green'>Sự kiện được khởi tạo</Tag>;
         if (type === EVENT.ON_GOING) return <Tag color='cyan'>Sự kiện sắp diễn ra</Tag>;
         if (type === EVENT.DONE) return <Tag color='purple'>Sự kiện đã kết thúc</Tag>;
-
         if (type === EVENT.CANCEL) return <Tag color='orange'>Sự kiện bị hủy</Tag>;
       },
       width: '10%'

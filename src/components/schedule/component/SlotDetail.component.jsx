@@ -9,7 +9,7 @@ const SlotDetailComponent = (props) => {
     <>
       <Descriptions bordered>
         <Descriptions.Item label='Thời gian bắt đầu' span={3}>
-          {moment(slotSelected.startDate).format('MMMM Do YYYY, h:mm:ss a')}
+          {moment(slotSelected?.startDate).format('MMMM Do YYYY, h:mm:ss a')}
         </Descriptions.Item>
         <Descriptions.Item label='Thời gian kết thúc' span={3}>
           {moment(slotSelected.endDate).format('MMMM Do YYYY, h:mm:ss a')}

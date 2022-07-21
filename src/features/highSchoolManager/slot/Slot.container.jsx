@@ -1,6 +1,7 @@
 import { Spin } from 'antd';
 import { createNewSlot, getListSlotHighSchool } from '../../../services/AdminHighSchoolSlotsService';
 import { handleCreateNotification, handleQueryNotification } from '../../../notification/CreateSlotNotification';
+import Layout from '../../../components/Layout';
 import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import LeftBarComponent from './components/LeftBar.component';
 import React, { useEffect, useState } from 'react';
@@ -49,7 +50,7 @@ const SlotContainer = () => {
   };
 
   return (
-    <>
+    <Layout>
       <TitlePageComponent
         title={'Xét duyệt tài khoản'}
         subTitle={
@@ -76,7 +77,7 @@ const SlotContainer = () => {
           />
         )}
       </div>
-    </>
+    </Layout>
   );
 };
 export default SlotContainer;
