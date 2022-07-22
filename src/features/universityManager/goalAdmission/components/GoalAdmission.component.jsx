@@ -1,12 +1,21 @@
-import { Button, Col, Divider, Row, Select, Skeleton, Space, Table } from 'antd';
+import { Button, Col, Divider, Drawer, Row, Select, Skeleton, Space, Table } from 'antd';
 import { Helmet } from 'react-helmet';
-import AddGoalAdmissionModalContainer from '../AddGoalAdmissionModal.container';
 import React, { useState } from 'react';
+import AddGoalAdmissionFormContainer from '../AddGoalAdmissionForm.container';
 
 const GoalAdmissionComponent = (props) => {
   const { listSchoolYear, data, onChangeYear, loading, selectedSchoolYear } = props;
   const { Option } = Select;
   const [visibleAdd, setVisibleAdd] = useState(false);
+
+  const onCloseDrawer = () => {
+    setVisibleAdd(false);
+  };
+
+  const showLargeDrawer = () => {
+    setVisibleAdd(true);
+  };
+
   const columns = [
     {
       title: 'Ngành',
@@ -83,7 +92,7 @@ const GoalAdmissionComponent = (props) => {
                   type='primary'
                   // disabled={disableAddButton}
                   style={{ marginBottom: '10px', borderRadius: 5 }}
-                  onClick={() => setVisibleAdd(true)}>
+                  onClick={showLargeDrawer}>
                   Tạo tiêu chí tuyển sinh
                 </Button>
                 {/* <Button
@@ -100,15 +109,14 @@ const GoalAdmissionComponent = (props) => {
           </Skeleton>
         </div>
       </div>
-      {visibleAdd === true ? (
-        <AddGoalAdmissionModalContainer
-          isVisible={visibleAdd}
-          setVisible={setVisibleAdd}
-          selectedSchoolYear={selectedSchoolYear}
-        />
-      ) : (
-        ''
-      )}
+      <Drawer
+        title='Tạo tiêu chí tuyển sinh'
+        placement='right'
+        size='large'
+        onClose={onCloseDrawer}
+        visible={visibleAdd}>
+        <AddGoalAdmissionFormContainer selectedSchoolYear={selectedSchoolYear} />
+      </Drawer>
     </>
   );
 };
