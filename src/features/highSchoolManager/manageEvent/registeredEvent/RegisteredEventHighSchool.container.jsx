@@ -1,7 +1,8 @@
 import { Button, Form, Modal, Pagination, Space, Table, Tag, Typography, notification } from 'antd';
-import { EVENT, EVENT_CHECK } from '../../../../constants/AppConst';
+import { CheckCircleTwoTone, CloseCircleTwoTone } from '@ant-design/icons';
+import { EVENT_CHECK } from '../../../../constants/AppConst';
 import { approveAEvent, getListEventCheck, rejectAEvent } from '../../../../services/AdminHighSchoolEventCheck';
-import { refactorData } from '../../../../utils/common';
+import { refactorData, refactorDataSlotEventCheckID } from '../../../../utils/common';
 import DetailEventComponent from '../../../../components/detailEvent/DetailEvent.component';
 import Layout from '../../../../components/Layout';
 import React, { useEffect, useState } from 'react';
@@ -11,6 +12,7 @@ import moment from 'moment';
 
 const RegisteredEventHighSchoolContainer = () => {
   const [requestPayload, setRequestPayload] = useState();
+  const [forceLoad, setForceLoad] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isSecondModalVisible, setIsSecondModalVisible] = useState(false);
@@ -30,15 +32,16 @@ const RegisteredEventHighSchoolContainer = () => {
   };
   const handleOpenModal = (data, value) => {
     setIsModalVisible(true);
-    setIdEventCheck(data.id);
+    setIdEventCheck(data.eventCheckId);
   };
   const handleApproveEvent = (data) => {
-    approveAEvent(data.id)
+    approveAEvent(data.eventCheckId)
       .then((res) => {
         notification.success({
           message: 'Thành công',
           description: 'Chấp nhận sự kiện thành công'
         });
+        setForceLoad(Math.random());
       })
       .catch((err) =>
         notification.error({
@@ -78,7 +81,7 @@ const RegisteredEventHighSchoolContainer = () => {
     },
     {
       title: 'Trạng thái',
-      dataIndex: 'status',
+      dataIndex: 'eventCheckStatus',
       render: (type) => {
         if (type === EVENT_CHECK.Approved) return <Tag color='green'>Sự kiện đã chấp nhận</Tag>;
         if (type === EVENT_CHECK.PENDING) return <Tag color='cyan'>Sự kiện đang chờ duyệt</Tag>;
@@ -95,11 +98,15 @@ const RegisteredEventHighSchoolContainer = () => {
     {
       title: 'Hành động',
       dataIndex: 'status',
-      render: (status, data) => (
+      render: (eventCheckStatus, data) => (
         <Space>
-          {status === EVENT_CHECK.Approved ? <Tag>Event đã chấp nhận</Tag> : null}
-          {status === EVENT_CHECK.REJECT ? <Tag>Event đã từ chối</Tag> : null}
-          {status === EVENT_CHECK.PENDING ? (
+          {data.eventCheckStatus === EVENT_CHECK.Approved ? (
+            <CheckCircleTwoTone style={{ fontSize: '2rem' }} twoToneColor='green' />
+          ) : null}
+          {data.eventCheckStatus === EVENT_CHECK.REJECT ? (
+            <CloseCircleTwoTone style={{ fontSize: '2rem' }} twoToneColor='red' />
+          ) : null}
+          {data.eventCheckStatus === EVENT_CHECK.PENDING ? (
             <>
               <Button type={'primary'} onClick={() => handleApproveEvent(data)}>
                 Chấp nhận
@@ -126,8 +133,14 @@ const RegisteredEventHighSchoolContainer = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-  useEffect(() => getListEventCheckRegistered(), []);
-  const onShowSizeChange = () => {};
+  useEffect(() => getListEventCheckRegistered(), [requestPayload, forceLoad]);
+  const onShowSizeChange = (page, limit) => {
+    setRequestPayload({
+      ...requestPayload,
+      page,
+      limit
+    });
+  };
   const { Title, Text } = Typography;
   const onFinish = (data) => {
     const payload = {
@@ -140,6 +153,7 @@ const RegisteredEventHighSchoolContainer = () => {
           message: 'Thành công',
           description: 'Từ chối sự kiện thành công'
         });
+        setForceLoad(Math.random());
       })
       .catch((err) =>
         notification.error({
@@ -186,7 +200,7 @@ const RegisteredEventHighSchoolContainer = () => {
         />
         <Table
           columns={column}
-          dataSource={refactorData(data?.list)}
+          dataSource={refactorDataSlotEventCheckID(data?.list)}
           bordered={true}
           size='middle'
           style={{ width: '100rem' }}
