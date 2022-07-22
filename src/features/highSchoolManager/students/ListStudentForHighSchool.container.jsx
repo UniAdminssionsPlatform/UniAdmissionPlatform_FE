@@ -8,6 +8,7 @@ import {
 } from '../../../notification/ChangeStatusStudentNotification.js';
 import { handleNotification } from '../../../notification/ListStudentForHighschoolNotification';
 import { useSelector } from 'react-redux';
+import Layout from '../../../components/Layout';
 import ListStudentForHighschoolComponent from './components/ListStudentForHighschool.component';
 import React, { useEffect, useState } from 'react';
 import TitlePageComponent from '../../../components/decorator/TitlePage.component';
@@ -106,7 +107,7 @@ const ListStudentForHighschoolContainer = () => {
   };
 
   return (
-    <>
+    <Layout>
       <TitlePageComponent
         title={'Quản lý  học sinh'}
         subTitle={
@@ -123,7 +124,7 @@ const ListStudentForHighschoolContainer = () => {
         total={total}
         dataSearch={dataSearch}
       />
-    </>
+    </Layout>
   );
 };
 export default ListStudentForHighschoolContainer;

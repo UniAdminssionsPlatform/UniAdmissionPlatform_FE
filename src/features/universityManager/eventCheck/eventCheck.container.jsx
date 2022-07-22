@@ -6,15 +6,17 @@ const EventCheckContainer = () => {
   const [eventCheck, setEventCheck] = useState();
   const [dataSearch, setDataSearch] = useState({
     page: 1,
-    limit: 10
+    limit: 10,
+    sortBy: 'CreatedAt',
+    sort: 'desc'
   });
 
   //Paging
   const onChange = (page, limit) => {
     setDataSearch({
       ...dataSearch,
-      page,
-      limit
+      page: page ? page : '',
+      limit: limit ? limit : ''
     });
   };
 
@@ -25,7 +27,7 @@ const EventCheckContainer = () => {
 
   const getEventCheck = (data) => {
     GetListEventCheck(data).then((result) => {
-      setEventCheck(result.data.data.list);
+      setEventCheck(result.data.data);
     });
   };
 

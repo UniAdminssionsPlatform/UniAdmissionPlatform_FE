@@ -30,8 +30,8 @@ export const EVENT = {
   DONE: 3
 };
 export const EVENT_CHECK = {
-  PENDING: 1,
-  Approved: 0,
+  PENDING: 0,
+  Approved: 1,
   REJECT: 2
 };
 export const SLOT = {

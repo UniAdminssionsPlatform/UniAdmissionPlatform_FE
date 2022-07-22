@@ -56,7 +56,7 @@ const ManagementRouter = () => {
       getItem('Đăng ký sự kiện', '4'),
       getItem('Lịch sử sự kiện', '5')
     ]),
-    getItem('Bài viết', '6', <StarOutlined />, [getItem('Tạo bài viết', '7'), getItem('Quản lý bài viết', '8')]),
+    getItem('Quản lý Bài viết', '6', <StarOutlined />),
     getItem('Tiêu chí tuyển sinh', '9', <WalletOutlined />)
   ];
   const itemsHighSchool = [
@@ -226,24 +226,6 @@ const ManagementRouter = () => {
                 component={() => <SlotManagerPage />}
                 path={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
                 key={PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER}
-                exact
-              />
-              <HighSchoolManagerRouter
-                component={() => <HighSchoolProfilePage />}
-                path={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
-                key={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
-                exact
-              />
-              <HighSchoolManagerRouter
-                component={() => <UpdateHighSchoolPage />}
-                path={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
-                key={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
-                exact
-              />
-              <HighSchoolManagerRouter
-                component={() => <HighSchoolProfilePage />}
-                path={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
-                key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
                 exact
               />
             </Switch>
