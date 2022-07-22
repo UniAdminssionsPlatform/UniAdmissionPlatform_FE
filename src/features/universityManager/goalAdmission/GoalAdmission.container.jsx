@@ -1,3 +1,4 @@
+import { GetGoalAdmisisonsNotification } from '../../../notification/GoalAdmisisonNotification';
 import { getAllSchoolYear } from '../../../services/SchoolYearService';
 import { getGoalAdmission } from '../../../services/GoalAdmissionService';
 import { useDebouncedCallback } from 'use-debounce';
@@ -25,10 +26,16 @@ const GoalAdmissionContainer = () => {
   const loadData = (value) => {
     getGoalAdmission(value)
       .then((result) => {
-        setData(result.data.data.universityProgramAdmissions);
+        if (result.data.data.universityProgramAdmissions.length === 0) {
+          setData([]);
+          GetGoalAdmisisonsNotification('success', 'Năm học này chưa có tiêu chí tuyển sinh');
+        } else {
+          setData(result.data.data.universityProgramAdmissions);
+          GetGoalAdmisisonsNotification('success', 'Lấy tiêu chí tuyển sinh thành công');
+        }
       })
       .catch((err) => {
-        console.log(err.responses.data.msg);
+        GetGoalAdmisisonsNotification('error');
       });
   };
 
@@ -52,6 +59,7 @@ const GoalAdmissionContainer = () => {
       />
       <GoalAdmissionComponent
         listSchoolYear={listSchoolYear}
+        selectedSchoolYear={selectedSchoolYear}
         data={data}
         onChangeYear={onChangeYear}
         loading={loading}

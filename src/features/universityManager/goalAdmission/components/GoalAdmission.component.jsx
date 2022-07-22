@@ -1,11 +1,12 @@
 import { Button, Col, Divider, Row, Select, Skeleton, Space, Table } from 'antd';
 import { Helmet } from 'react-helmet';
-import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPageWithout.component';
-import React from 'react';
+import AddGoalAdmissionModalContainer from '../AddGoalAdmissionModal.container';
+import React, { useState } from 'react';
 
 const GoalAdmissionComponent = (props) => {
-  const { listSchoolYear, data, onChangeYear, loading } = props;
+  const { listSchoolYear, data, onChangeYear, loading, selectedSchoolYear } = props;
   const { Option } = Select;
+  const [visibleAdd, setVisibleAdd] = useState(false);
   const columns = [
     {
       title: 'Ngành',
@@ -74,49 +75,40 @@ const GoalAdmissionComponent = (props) => {
                 </Select>
               </Space>
             </Col>
-            {/* <Col span={2}></Col>
-              <Col span={2}></Col>
-              <Col span={4}>
-                <Space>
-                  <Button
-                    type='primary'
-                    disabled={disableAddButton}
-                    style={{ marginBottom: '10px', borderRadius: 5 }}
-                    onClick={() => setVisibleAdd(true)}>
-                    Tạo học bạ
-                  </Button>
-                  <Button
-                    disabled={disableEditButton}
-                    style={{ marginBottom: '10px', borderRadius: 5 }}
-                    onClick={() => setVisibleEdit(true)}>
-                    Chỉnh sửa học bạ
-                  </Button>
-                </Space>
-              </Col> */}
+            <Col span={2}></Col>
+            <Col span={2}></Col>
+            <Col span={4}>
+              <Space>
+                <Button
+                  type='primary'
+                  // disabled={disableAddButton}
+                  style={{ marginBottom: '10px', borderRadius: 5 }}
+                  onClick={() => setVisibleAdd(true)}>
+                  Tạo tiêu chí tuyển sinh
+                </Button>
+                {/* <Button
+                  disabled={disableEditButton}
+                  style={{ marginBottom: '10px', borderRadius: 5 }}
+                  onClick={() => setVisibleEdit(true)}>
+                  Chỉnh sửa học bạ
+                </Button> */}
+              </Space>
+            </Col>
           </Row>
           <Skeleton active loading={loading}>
             <Table pagination={false} dataSource={data} columns={columns} bordered />
           </Skeleton>
-          {/* {visibleAdd === true ? (
-              <ModalAddContainer
-                visible={visibleAdd}
-                setVisible={setVisibleAdd}
-                selectedSchoolYear={selectedSchoolYear}
-              />
-            ) : (
-              ''
-            )}
-            {visibleEdit === true ? (
-              <ModalEditContainer
-                visible={visibleEdit}
-                setVisible={setVisibleEdit}
-                selectedSchoolYear={selectedSchoolYear}
-              />
-            ) : (
-              ''
-            )} */}
         </div>
       </div>
+      {visibleAdd === true ? (
+        <AddGoalAdmissionModalContainer
+          isVisible={visibleAdd}
+          setVisible={setVisibleAdd}
+          selectedSchoolYear={selectedSchoolYear}
+        />
+      ) : (
+        ''
+      )}
     </>
   );
 };
