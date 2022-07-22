@@ -14,7 +14,7 @@ import { UNIVERSITY_MANAGER } from '../constants/RoleType';
 import { useSelector } from 'react-redux';
 import CalendarContainer from '../features/universityManager/calendar/Calendar.container';
 import CalendarPage from '../pages/universityManager/CalendarPage';
-import CreateNewPage from '../pages/highSchoolManager/CreateNewPage';
+import NewManagementPage from '../pages/universityManager/NewManagementPage';
 import GoalAdmissionPage from '../pages/universityManager/GoalAdmissionPage';
 import HighSchoolBookingPage from '../pages/universityManager/manageEvent/HighSchoolBookingPage';
 import HighSchoolListAccountPendingPage from '../pages/highSchoolManager/ListAccountPendingPage';
@@ -175,7 +175,7 @@ const ManagementRouter = () => {
                 exact
               />
               <UniversityManagerRouter
-                component={() => <CreateNewPage />}
+                component={() => <NewManagementPage />}
                 path={PATH_UNIVERSITY_MANAGER.CREATE_NEW}
                 key={PATH_UNIVERSITY_MANAGER.CREATE_NEW}
                 exact
