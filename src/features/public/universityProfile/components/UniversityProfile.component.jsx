@@ -6,7 +6,7 @@ import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 const UniversityProfileComponent = (props) => {
   const { universityDetail, followed, handleFollowButton, handleUnFollowButton, countStudent } = props;
-  console.log(countStudent);
+  console.log(followed);
 
   const confirmFollow = (value) => {
     Modal.confirm({
@@ -64,20 +64,20 @@ const UniversityProfileComponent = (props) => {
               <Tag color='orange'>Hiện có {countStudent} người theo dõi</Tag>
               {followed?.status === 1 ? (
                 <Button
+                  style={{ background: 'gray', color: 'white' }}
+                  onClick={() => {
+                    confirmFollow(universityDetail);
+                  }}>
+                  Theo Dõi
+                </Button>
+              ) : (
+                <Button
                   style={{ background: 'green', color: 'white' }}
                   onClick={() => {
                     confirmUnfollow(universityDetail);
                   }}>
                   <CheckOutlined />
                   Đã Theo Dõi
-                </Button>
-              ) : (
-                <Button
-                  style={{ background: 'gray', color: 'white' }}
-                  onClick={() => {
-                    confirmFollow(universityDetail);
-                  }}>
-                  Theo Dõi
                 </Button>
               )}
             </div>
