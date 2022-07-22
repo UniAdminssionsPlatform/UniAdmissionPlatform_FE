@@ -1,4 +1,9 @@
-import { PATH, PATH_HIGH_SCHOOL_STUDENT, PATH_UNIVERSITY_MANAGER } from '../constants/Paths/Path';
+import {
+  PATH,
+  PATH_HIGH_SCHOOL_MANAGER,
+  PATH_HIGH_SCHOOL_STUDENT,
+  PATH_UNIVERSITY_MANAGER
+} from '../constants/Paths/Path';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import AboutUsPage from '../pages/public/AboutUsPage';
 import CertificationPage from '../pages/highSchoolStudent/CertificationPage';
@@ -10,6 +15,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import EventCheckPage from '../pages/universityManager/EventCheckPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
+import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfilePage';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
@@ -33,6 +39,7 @@ import UniversityDetailPage from '../pages/universityManager/UniversityDetailPag
 import UniversityDetailToFollowPage from '../pages/UniversityProfilePage/UniversityDetailToFollowPage';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
+import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
 
@@ -79,6 +86,25 @@ const AppRouter = () => (
         <ListEventGorStudentPage />
       </Route>
       // HighSchool Page
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <UpdateHighSchoolPage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE}
+        exact
+      />
+      <HighSchoolManagerRouter
+        component={() => <HighSchoolProfilePage />}
+        path={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
+        key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
+        exact
+      />
+      //Univer
       <UniversityManagerRouter
         component={() => <UniversityListAccountPendingPage />}
         path={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}

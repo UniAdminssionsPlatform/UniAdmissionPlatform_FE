@@ -1,5 +1,6 @@
 import { Skeleton } from 'antd';
 import Avatar from '../../../../components/commons/Avatar/Avatar.component';
+import MarkdownViewComponent from '../../../../components/MarkdownView/MarkdownView.component';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 import Sidebar from '../../../../components/commons/SideBar/SideBar.component';
@@ -35,7 +36,9 @@ const HighSchoolProfileComponent = (props) => {
           </div>
         </div>
         <div className='container flex flex-col my-10 lg:flex-row '>
-          <div className='w-full lg:w-3/5 xl:w-2/3 xl:pr-20'>{highSchool?.description}</div>
+          <div className='w-full lg:w-3/5 xl:w-2/3 xl:pr-20'>
+            <MarkdownViewComponent str={highSchool?.description} />
+          </div>
           <div className='w-full mt-12 lg:mt-0 lg:w-2/5 lg:pl-10 xl:pl-0 xl:w-1/3'>
             <Sidebar />
           </div>

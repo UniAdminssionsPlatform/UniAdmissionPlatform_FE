@@ -5,6 +5,7 @@ import {
 import { Typography } from 'antd';
 import { activeAccount, getAllPendingAccount } from '../../../services/HighSchoolRepresentativesSerive';
 import AccountPendinglComponent from './components/AccountPending.component';
+import Layout from '../../../components/Layout';
 import React, { useEffect, useState } from 'react';
 import TitlePageComponent from '../../../components/decorator/TitlePage.component';
 
@@ -72,7 +73,7 @@ const AccountPendingContainer = () => {
   };
 
   return (
-    <>
+    <Layout>
       <TitlePageComponent
         title={'Xét duyệt tài khoản'}
         subTitle={
@@ -89,7 +90,7 @@ const AccountPendingContainer = () => {
         total={total}
         onChangePage={onChangePage}
       />
-    </>
+    </Layout>
   );
 };
 export default AccountPendingContainer;

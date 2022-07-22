@@ -39,7 +39,7 @@ const EventCheckComponent = (props) => {
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} />
       </Space>
       <Space direction={'vertical'}>
-        <Table columns={columns} dataSource={eventCheck} pagination={false} style={{ width: '80vw' }} />
+        <Table columns={columns} dataSource={eventCheck?.list} pagination={false} style={{ width: '80vw' }} />
         <Pagination showSizeChanger onChange={onChange} total={eventCheck?.total} bordered={true} />
       </Space>
     </div>
