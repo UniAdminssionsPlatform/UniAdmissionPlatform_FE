@@ -1,12 +1,17 @@
-import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
+import Layout from '../../../components/Layout';
 import ManageEventContainer from '../../../features/universityManager/manageEvent/ManageEvent.container';
 import React from 'react';
+import TitlePageComponent from '../../../components/decorator/TitlePage.component';
 
 const RegisteredEventPage = () => (
   <>
-    <LayoutPageWithout subHeading='Các sự kiện đã đăng ký'>
+    <Layout>
+      <TitlePageComponent
+        title={'Sự kiện đã diễn ra'}
+        subTitle={'Bạn có thể tìm kiếm, xem chi tiết các sự kiện đã được diễn ra'}
+      />
       <ManageEventContainer />
-    </LayoutPageWithout>
+    </Layout>
   </>
 );
 export default RegisteredEventPage;

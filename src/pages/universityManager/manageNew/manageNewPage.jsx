@@ -1,9 +1,9 @@
-import CreateNewContainer from '../../../features/universityManager/news/CreateNew.container';
+import NewManagementContainer from '../../../features/universityManager/news/NewManagement.container';
 import React from 'react';
 
 const ManageNewPage = () => (
   <>
-    <CreateNewContainer />
+    <NewManagementContainer />
   </>
 );
 export default ManageNewPage;
