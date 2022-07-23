@@ -1,4 +1,4 @@
-import { getListEventFromDateToDateApi } from '../../../services/AdminUniversityEventService';
+import { getListEventFromDateToDateApi } from '../../../services/AdminUniversityService/AdminUniversityEventService';
 import { useSelector } from 'react-redux';
 import CalendarComponent from './Calendar.component';
 import Layout from '../../../components/Layout';

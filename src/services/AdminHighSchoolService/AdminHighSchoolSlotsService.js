@@ -2,8 +2,8 @@ import {
   CLOSE_A_SLOT_ENDPOINT,
   CREATE_NEW_SLOTS_ENDPOINT,
   GET_LIST_SLOTS_ENDPOINT
-} from '../constants/Endpoints/AdminHighSchoolSlotsEndpoint';
-import { CallAPI } from './axiosBase';
+} from '../../constants/Endpoints/AdminHighSchoolSlotsEndpoint';
+import { CallAPI } from '../axiosBase';
 const bindingData = (data) => {
   console.log(data);
   let endPoint = '?';

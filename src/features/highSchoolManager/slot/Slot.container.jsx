@@ -1,5 +1,8 @@
 import { Spin } from 'antd';
-import { createNewSlot, getListSlotHighSchool } from '../../../services/AdminHighSchoolSlotsService';
+import {
+  createNewSlot,
+  getListSlotHighSchool
+} from '../../../services/AdminHighSchoolService/AdminHighSchoolSlotsService';
 import { handleCreateNotification, handleQueryNotification } from '../../../notification/CreateSlotNotification';
 import Layout from '../../../components/Layout';
 import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';

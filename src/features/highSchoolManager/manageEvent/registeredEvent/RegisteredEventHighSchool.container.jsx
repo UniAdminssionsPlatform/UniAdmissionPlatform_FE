@@ -1,7 +1,11 @@
 import { Button, Form, Modal, Pagination, Space, Table, Tag, Typography, notification } from 'antd';
 import { CheckCircleTwoTone, CloseCircleTwoTone } from '@ant-design/icons';
 import { EVENT_CHECK } from '../../../../constants/AppConst';
-import { approveAEvent, getListEventCheck, rejectAEvent } from '../../../../services/AdminHighSchoolEventCheck';
+import {
+  approveAEvent,
+  getListEventCheck,
+  rejectAEvent
+} from '../../../../services/AdminHighSchoolService/AdminHighSchoolEventCheck';
 import { refactorData, refactorDataSlotEventCheckID } from '../../../../utils/common';
 import DetailEventComponent from '../../../../components/detailEvent/DetailEvent.component';
 import Layout from '../../../../components/Layout';

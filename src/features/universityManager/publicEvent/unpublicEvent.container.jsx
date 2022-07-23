@@ -1,4 +1,4 @@
-import { ListEventToUnpublic, PublicEvent } from '../../../services/PublicService';
+import { PublicEvent, getListEventUnPublishService } from '../../../services/EventManagementService';
 import { PublicSuccessNotification } from '../../../notification/PublicNotification';
 import { Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
@@ -62,7 +62,7 @@ const UnPublicEventContainer = () => {
   }, [dataSearch]);
 
   const getList = (data) => {
-    ListEventToUnpublic(data).then((result) => {
+    getListEventUnPublishService(data).then((result) => {
       setEvent2(result.data.data);
       setIsLoading(false);
     });
