@@ -1,7 +1,7 @@
 import { CallAPI } from './axiosBase';
 import {
   CREATE_A_NEW_ENDPOINT,
-  GET_LIST_NEW_FOR_UNIVERSITY_ENDPOINT, SET_TAG_IS_PUBLISH_ENDPOINT
+  GET_LIST_NEW_FOR_UNIVERSITY_ENDPOINT, SET_TAG_IS_PUBLISH_ENDPOINT, UPDATE_A_NEW
 } from '../constants/Endpoints/AdminUniversityNewsEndpoint';
 export const getListNewsForUniversityService = (data) =>
   CallAPI(
@@ -10,3 +10,4 @@ export const getListNewsForUniversityService = (data) =>
   );
 export const createANewService = (data) => CallAPI(`${CREATE_A_NEW_ENDPOINT}`, 'POST', data);
 export const setNewPublishService = (data) => CallAPI(`${SET_TAG_IS_PUBLISH_ENDPOINT}${data.id}/set-publish`,'PUT',data.payload)
+export const uploadANewService = (data) => CallAPI(`${UPDATE_A_NEW}${data.id}`,'PUT',data.payload)

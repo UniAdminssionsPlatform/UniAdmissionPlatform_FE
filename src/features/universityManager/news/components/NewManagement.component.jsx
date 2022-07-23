@@ -1,4 +1,4 @@
-import { Button, Divider, Image, Layout, Space, Switch, Table, Tag, Typography } from 'antd';
+import { Button, Divider, Image, Layout, Pagination, Space, Switch, Table, Tag, Typography } from 'antd';
 import { EditOutlined } from '@mui/icons-material';
 import CreateNewComponent from './CreateNew.compomnent';
 import ListTagComponent from '../../../../components/ListTag.component';
@@ -24,7 +24,10 @@ const NewManagementComponent = (props) => {
     isLoading,
     changeStatusNew,
     initValueForm,
-    handleUpdateANew
+    handleUpdateANew,
+    isUpdate,
+    handleUpdateNew,
+    handlePaging
   } = props;
   console.log(props);
   const layoutTable = [
@@ -33,7 +36,7 @@ const NewManagementComponent = (props) => {
       dataIndex: 'title',
       key: 'title',
       render: (data) => <Text strong>{data}</Text>,
-      width: '15%'
+      width: '13%'
     },
     {
       title: 'Hình nền sự kiện',
@@ -97,13 +100,20 @@ const NewManagementComponent = (props) => {
       dataIndex: '',
       key: 'key',
       render: (index, record) => (
-        <Space direction={'horizontal'} style={{ marginLeft: '2rem' }}>
+        <Space direction={'horizontal'} style={{ marginLeft: '1rem' }}>
           <VisibilityIcon />
           <EditOutlined onClick={() => handleUpdateANew(record)} style={{ cursor: 'pointer' }} />
         </Space>
       ),
       width: '3%'
-    }
+    },
+    {
+      title: '',
+      dataIndex: '',
+      key: 'createDate',
+      render: (data) => '',
+      width: '0.5%'
+    },
   ];
 
   return (
@@ -129,6 +139,8 @@ const NewManagementComponent = (props) => {
           setThumbnailUrl={setThumbnailUrl}
           handleCreateNew={handleCreateNew}
           initValueForm={initValueForm}
+          isUpdate={isUpdate}
+          handleUpdateNew={handleUpdateNew}
         />
         <Table
           size={'small'}
@@ -137,7 +149,10 @@ const NewManagementComponent = (props) => {
           columns={layoutTable}
           bordered
           loading={isLoading}
+          style={{ width: '100vw' }}
+          scroll={{ x: 700, y: 650 }}
         />
+        <Pagination onChange={handlePaging} total={data.total} showSizeChanger />
       </Space>
     </Layout>
   );

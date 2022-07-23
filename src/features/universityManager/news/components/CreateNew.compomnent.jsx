@@ -1,4 +1,4 @@
-import { Button, Col, Drawer, Form, Input, Row, Select, Typography } from 'antd';
+import { Button, Col, Drawer, Form, Image, Input, Row, Select, Space, Typography } from 'antd';
 import React from 'react';
 import { newShortDescriptionValidate, newTagValidate, newTitleValidate } from '../../../../validate/CreateNew.validate';
 import MarkdownEditorComponent from '../../../../components/MarkdownEditor/MarkdownEditor.component';
@@ -14,9 +14,11 @@ const CreateNewComponent = (props) => {
     newDescription,
     setThumbnailUrl,
     handleCreateNew,
-    initValueForm
+    initValueForm,
+    isUpdate,
+    handleUpdateNew
   } = props;
-  console.log(initValueForm)
+  console.log(initValueForm);
   const { Option } = Select;
   const { Text, Title } = Typography;
   const onClose = () => {
@@ -38,7 +40,7 @@ const CreateNewComponent = (props) => {
     <>
       <Drawer
         title={
-          initValueForm[0] !== undefined ? (
+          isUpdate ? (
             <Title level={3}>
               Cập nhật bài viết <ArticleIcon />
             </Title>
@@ -57,7 +59,7 @@ const CreateNewComponent = (props) => {
         <Form
           form={form}
           layout='vertical'
-          onFinish={handleCreateNew}
+          onFinish={isUpdate ? handleUpdateNew : handleCreateNew}
           onFinishFailed={onFinishFailed}
           autoComplete='off'
           fields={initValueForm}>
@@ -82,20 +84,33 @@ const CreateNewComponent = (props) => {
             placeholder={'Nhập phụ đề của bài viết'}>
             <Input.TextArea allowClear showCount />
           </Form.Item>
-          <Form.Item
-            name='wallpaper'
-            label={<Text strong>Ảnh đại diện bài viết</Text>}
-            valuePropName='fileList'
-            getValueFromEvent={normFile}
-            noStyle>
-            <SingleImageUploadWithReviewContainer setImageUrl={setThumbnailUrl} />
-          </Form.Item>
-          <MarkdownEditorComponent value={newDescription} setValue={setNewDescription} />
-          <Form.Item>
-            <Button type='primary' htmlType='submit'>
-              Tạo mới
-            </Button>
-          </Form.Item>
+          <Row>
+            <Col span={6}>
+              <Form.Item
+                name='wallpaper'
+                label={<Text strong>Ảnh đại diện bài viết</Text>}
+                valuePropName='fileList'
+                getValueFromEvent={normFile}
+                noStyle>
+                <SingleImageUploadWithReviewContainer setImageUrl={setThumbnailUrl} />
+              </Form.Item>
+            </Col>
+            <Col span={6}>{isUpdate ? <Image width={100} height={100} src={initValueForm[3]?.value} /> : null}</Col>
+          </Row>
+          <Space direction={'vertical'}>
+            <MarkdownEditorComponent value={newDescription} setValue={setNewDescription} />
+            <Form.Item>
+              {isUpdate ? (
+                <Button type='primary' htmlType='submit'>
+                  Cập nhật
+                </Button>
+              ) : (
+                <Button type='primary' htmlType='submit'>
+                  Tạo mới
+                </Button>
+              )}
+            </Form.Item>
+          </Space>
         </Form>
       </Drawer>
     </>

@@ -1,7 +1,8 @@
 import {
   createANewService,
   getListNewsForUniversityService,
-  setNewPublishService
+  setNewPublishService,
+  uploadANewService
 } from '../../../services/AdminUniversityNewsService';
 import { getListTagService } from '../../../services/TagService';
 import { notification } from 'antd';
@@ -17,6 +18,8 @@ const NewManagementContainer = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState();
   const [forceReloadTable, setForceReloadTable] = useState();
   const [initValueForm, setInitValueForm] = useState();
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [selectedNew, setSelectedNew] = useState();
   //payload
   const [payload, setPayload] = useState({
     sort: 'CreateDate desc',
@@ -47,11 +50,6 @@ const NewManagementContainer = () => {
       .then((res) => {
         setData(res.data.data);
         setIsLoading(false);
-        notification.success({
-          message: 'Truy vấn thành công!',
-          description: `Lấy thông tin các bài viết thành công!`,
-          duration: 2
-        });
       })
       .catch((err) => {
         setIsLoading(true);
@@ -141,8 +139,8 @@ const NewManagementContainer = () => {
   };
   //handle update new
   const handleUpdateANew = (data) => {
-    console.log(data);
     const updateTag = [];
+    setSelectedNew(data);
     data.tagList.map((res) => {
       updateTag.push(res.name);
     });
@@ -164,13 +162,56 @@ const NewManagementContainer = () => {
         value: data.thumbnailUrl
       }
     ];
+    setIsUpdate(true);
     setNewDescription(data.description);
     setInitValueForm(updateValue);
     setVisibleDrawer(true);
   };
   const handleCreateNews = () => {
-    resetForm()
+    resetForm();
+    setIsUpdate(false);
     setVisibleDrawer(true);
+  };
+  const handleUpdateNew = (data) => {
+    console.log(data);
+    const uploadNewPayload = {
+      title: data.title,
+      shortDescription: data.shortDescription,
+      description: newDescription,
+      thumbnailUrl: thumbnailUrl ? thumbnailUrl : selectedNew.thumbnailUrl,
+      tagIds: data.tagId,
+      isPublish: false
+    };
+    const request = {
+      id: selectedNew.id,
+      payload: uploadNewPayload
+    };
+    funcUpdateANew(request);
+  };
+  const funcUpdateANew = (data) => {
+    uploadANewService(data)
+      .then((res) => {
+        setIsLoading(false);
+        setVisibleDrawer(false);
+        reloadTable();
+        notification.success({
+          message: 'Cập nhật thành công!',
+          description: `Cập nhật bài viết thành công!`,
+          duration: 2
+        });
+      })
+      .catch((err) => {
+        setIsLoading(true);
+        notification.error({
+          message: 'Thay đổi thất bại thất bại!',
+          description: `${err.message}`,
+          duration: 2
+        });
+      });
+  };
+  //handle paging
+  const handlePaging = (page, PageSize) => {
+    setPayload({ ...payload, page, limit: PageSize });
   };
   //side effect handler
   useEffect(() => getListTag(), []);
@@ -192,6 +233,9 @@ const NewManagementContainer = () => {
       initValueForm={initValueForm}
       handleUpdateANew={handleUpdateANew}
       handleCreateNews={handleCreateNews}
+      isUpdate={isUpdate}
+      handleUpdateNew={handleUpdateNew}
+      handlePaging={handlePaging}
     />
   );
 };
