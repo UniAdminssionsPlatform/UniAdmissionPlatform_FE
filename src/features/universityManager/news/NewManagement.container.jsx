@@ -4,7 +4,7 @@ import {
   getListNewsForUniversityService,
   setNewPublishService,
   uploadANewService
-} from '../../../services/AdminUniversityNewsService';
+} from '../../../services/AdminUniversityService/AdminUniversityNewsService';
 import { getListTagService } from '../../../services/TagService';
 import { initFormNewValue } from './components/initNewValue';
 import Layout from '../../../components/Layout';

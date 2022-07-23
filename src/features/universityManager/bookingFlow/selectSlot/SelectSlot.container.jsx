@@ -1,5 +1,5 @@
 import { Skeleton } from 'antd';
-import { getListSlotBySchoolId } from '../../../../services/AdminUniversitySlotServices';
+import { getListSlotBySchoolId } from '../../../../services/AdminUniversityService/AdminUniversitySlotServices';
 import { handleFailNotification, handleSuccessNotification } from '../../../../notification/CreateEventNotification';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';

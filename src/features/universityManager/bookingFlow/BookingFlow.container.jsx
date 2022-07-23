@@ -5,7 +5,7 @@ import {
 } from '../../../redux-flow/selectedHighSchool/selectedHighSchool-action';
 import { LoadingOutlined } from '@ant-design/icons';
 import { PATH_UNIVERSITY_MANAGER } from '../../../constants/Paths/Path';
-import { bookASlotInAdminUniversity } from '../../../services/AdminUniversitySlotServices';
+import { bookASlotInAdminUniversity } from '../../../services/AdminUniversityService/AdminUniversitySlotServices';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ConfirmBookingComponent from './confirmBooking/ConfirmBooking.component';

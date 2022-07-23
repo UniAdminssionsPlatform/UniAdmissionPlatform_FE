@@ -1,4 +1,4 @@
-import { ListEventToPublic, PublicEvent } from '../../../services/PublicService';
+import { PublicEvent, getListEventPublishService } from '../../../services/EventManagementService';
 import { PublicSuccessNotification } from '../../../notification/PublicNotification';
 import { Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
@@ -59,7 +59,7 @@ const PublicEventContainer = (props) => {
   }, [dataSearch]);
 
   const getList = (data) => {
-    ListEventToPublic(data).then((result) => {
+    getListEventPublishService(data).then((result) => {
       setEvent134(result.data.data);
       setIsLoading(false);
     });

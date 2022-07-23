@@ -12,7 +12,9 @@ export const PATH = {
   LIST_MAJOR_GROUP: '/major-groups',
   DETAIL_MAJOR_GROUP: '/major-group-detail',
   ABOUT_US: '/about-us',
-  ACCOUNT_WAITING_APPROVE: '/auth/pending'
+  ACCOUNT_WAITING_APPROVE: '/auth/pending',
+  EVENT_PAGE: '/event/:eventId',
+  PAGE_NOT_FOUND: '/404'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/',

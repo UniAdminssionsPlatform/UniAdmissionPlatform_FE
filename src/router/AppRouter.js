@@ -13,6 +13,7 @@ import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import EventCheckPage from '../pages/universityManager/EventCheckPage';
+import EventPage from '../pages/public/EventPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
@@ -48,6 +49,10 @@ const AppRouter = () => (
     <ScrollToTop />
     <HeaderContainer />
     <Switch>
+      //Manage show page publish
+      <Route path={PATH.EVENT_PAGE} exact>
+        <EventPage />
+      </Route>
       //Publish Page
       <Route path={PATH.INDEX} exact>
         <HomePage />
@@ -216,9 +221,12 @@ const AppRouter = () => (
       <Route path='/index.html'>
         <Redirect to='/' />
       </Route>
-      <ManagementRouter />
+      <Route path={PATH.PAGE_NOT_FOUND} exact>
+        <ErrorPage code={404} />
+      </Route>
       <Route path='*' component={() => <ErrorPage code={404} />} />
       //Index Page
+      <ManagementRouter />
     </Switch>
   </>
 );

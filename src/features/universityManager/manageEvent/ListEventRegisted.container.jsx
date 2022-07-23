@@ -1,6 +1,6 @@
 import { Button, Pagination, Space, Table, Tag } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
-import { getListEventCheck } from '../../../services/AdminUniversityEventService';
+import { getListEventCheck } from '../../../services/AdminUniversityService/AdminUniversityEventService';
 import { refactorData } from '../../../utils/common';
 import { useSelector } from 'react-redux';
 import { useStateWithCallback } from '../../../components/CustomHOOK/SyncUseState';
