@@ -1,4 +1,5 @@
 import { Button, Divider, Image, Layout, Pagination, Space, Switch, Table, Tag, Typography } from 'antd';
+import { COLOR_HOVER, COLOR_ICON } from '../../../../constants/Color';
 import { EditOutlined } from '@mui/icons-material';
 import CreateNewComponent from './CreateNew.compomnent';
 import ListTagComponent from '../../../../components/ListTag.component';
@@ -27,9 +28,9 @@ const NewManagementComponent = (props) => {
     handleUpdateANew,
     isUpdate,
     handleUpdateNew,
-    handlePaging
+    handlePaging,
+    handleViewNew
   } = props;
-  console.log(props);
   const layoutTable = [
     {
       title: 'Đề mục sự kiện',
@@ -84,7 +85,7 @@ const NewManagementComponent = (props) => {
             </>
           );
         }
-        if (data !== true)
+        if (data !== true) {
           return (
             <Space>
               <Switch onClick={() => changeStatusNew(true, record.id)} />
@@ -92,6 +93,7 @@ const NewManagementComponent = (props) => {
               <Text type={'secondary'}>Chưa công khai</Text>
             </Space>
           );
+        }
       },
       width: '7%'
     },
@@ -101,8 +103,16 @@ const NewManagementComponent = (props) => {
       key: 'key',
       render: (index, record) => (
         <Space direction={'horizontal'} style={{ marginLeft: '1rem' }}>
-          <VisibilityIcon />
-          <EditOutlined onClick={() => handleUpdateANew(record)} style={{ cursor: 'pointer' }} />
+          <VisibilityIcon
+            onClick={() => handleViewNew(record)}
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            className={`hover:fill-neutral-100`}
+          />
+          <EditOutlined
+            onClick={() => handleUpdateANew(record)}
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            className={`hover:fill-neutral-100`}
+          />
         </Space>
       ),
       width: '3%'
@@ -113,7 +123,7 @@ const NewManagementComponent = (props) => {
       key: 'createDate',
       render: (data) => '',
       width: '0.5%'
-    },
+    }
   ];
 
   return (
@@ -150,7 +160,7 @@ const NewManagementComponent = (props) => {
           bordered
           loading={isLoading}
           style={{ width: '100vw' }}
-          scroll={{ x: 700, y: 650 }}
+          scroll={{ x: 700, y: 544 }}
         />
         <Pagination onChange={handlePaging} total={data.total} showSizeChanger />
       </Space>

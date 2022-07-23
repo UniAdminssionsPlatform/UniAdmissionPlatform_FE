@@ -1,8 +1,8 @@
 import 'antd/dist/antd.css';
-import { Upload, message, Modal } from 'antd';
+import { Modal, Upload, message } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import { TOKEN_KEY } from '../../../constants/AppConst';
 import { UPLOAD_A_NEW_IMAGE_ENDPOINT } from '../../../constants/Endpoints/FilesEndpoint';
-import { PlusOutlined } from '@ant-design/icons';
 import Cookies from 'js-cookie';
 import React, { useState } from 'react';
 
@@ -43,9 +43,7 @@ const SingleImageUploadWithReviewContainer = (props) => {
     }
   };
   const handlePreview = async (file) => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
+    if (!file.url && !file.preview) file.preview = await getBase64(file.originFileObj);
 
     setPreviewImage(file.url || file.preview);
     setPreviewVisible(true);

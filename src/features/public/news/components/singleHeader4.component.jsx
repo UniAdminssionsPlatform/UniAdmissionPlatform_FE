@@ -5,7 +5,6 @@ import SingleTitle from './singleTitle.component';
 
 const SingleHeader4 = (props) => {
   const { newDetail } = props;
-
   return (
     <>
       <Helmet>

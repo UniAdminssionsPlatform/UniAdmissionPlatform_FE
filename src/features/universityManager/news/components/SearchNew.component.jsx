@@ -1,10 +1,10 @@
+import './SearchNew.style.css';
 import { DatePicker, Divider, Select, Space } from 'antd';
 import React from 'react';
 import Search from 'antd/lib/input/Search';
 import moment from 'moment';
 const SearchNewComponent = (props) => {
   const { payload, setPayload, listTag } = props;
-  console.log(props);
   const { Option } = Select;
   const handleSearchName = (data) => {
     setPayload({ ...payload, title: data });
@@ -12,12 +12,8 @@ const SearchNewComponent = (props) => {
   const dataSelect = [];
   listTag?.map((tag) => dataSelect.push(<Option key={tag.id}>{tag.name}</Option>));
   const handleSearchByDate = (data) => {
-    console.log(data);
-    if (data !== null) {
-      setPayload({ ...payload, createDate: moment(data).format() });
-    } else {
-      setPayload({ ...payload, createDate: '' });
-    }
+    if (data !== null) setPayload({ ...payload, createDate: moment(data).format() });
+    else setPayload({ ...payload, createDate: '' });
   };
   const handleSelectStatus = (data) => {
     setPayload({ ...payload, isPublish: data });
@@ -28,23 +24,16 @@ const SearchNewComponent = (props) => {
       pd = '%5B';
       data.map((dt) => {
         if (data.length > 1) {
-          if (data[data.length - 1] === dt) {
-            pd = pd + dt;
-          } else {
-            pd = pd + dt + '%2C';
-          }
-        } else {
-          pd = pd + dt;
-        }
+          if (data[data.length - 1] === dt) pd = pd + dt;
+          else pd = `${pd + dt}%2C`;
+        } else pd = pd + dt;
       });
-      pd = pd + '%5D';
+      pd = `${pd}%5D`;
       setPayload({ ...payload, tags: pd });
-    } else {
-      setPayload({ ...payload, tags: '' });
-    }
+    } else setPayload({ ...payload, tags: '' });
   };
   return (
-    <>
+    <div>
       <Space>
         <Search placeholder='Nhập tên' allowClear enterButton='Tìm theo tên' onSearch={handleSearchName} />
         <DatePicker onChange={handleSearchByDate} picker='date' placeholder={'Nhập ngày tạo'} />
@@ -62,7 +51,7 @@ const SearchNewComponent = (props) => {
           {dataSelect}
         </Select>
       </Space>
-    </>
+    </div>
   );
 };
 export default SearchNewComponent;

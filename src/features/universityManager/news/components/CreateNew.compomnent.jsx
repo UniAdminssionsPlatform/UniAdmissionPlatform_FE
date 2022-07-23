@@ -1,8 +1,8 @@
 import { Button, Col, Drawer, Form, Image, Input, Row, Select, Space, Typography } from 'antd';
-import React from 'react';
 import { newShortDescriptionValidate, newTagValidate, newTitleValidate } from '../../../../validate/CreateNew.validate';
-import MarkdownEditorComponent from '../../../../components/MarkdownEditor/MarkdownEditor.component';
 import ArticleIcon from '@mui/icons-material/Article';
+import MarkdownEditorComponent from '../../../../components/MarkdownEditor/MarkdownEditor.component';
+import React from 'react';
 import SingleImageUploadWithReviewContainer from '../../../../components/UploadImage/SingleUpload/SingImageUploadWithReview.container';
 
 const CreateNewComponent = (props) => {
@@ -18,22 +18,18 @@ const CreateNewComponent = (props) => {
     isUpdate,
     handleUpdateNew
   } = props;
-  console.log(initValueForm);
   const { Option } = Select;
   const { Text, Title } = Typography;
   const onClose = () => {
     setVisibleDrawer(false);
   };
   const [form] = Form.useForm();
-  const onFinishFailed = (data) => {
-    console.log(data);
-  };
+  const onFinishFailed = (data) => {};
   const dataSelect = [];
   listTag?.map((tag) => dataSelect.push(<Option key={tag.id}>{tag.name}</Option>));
   const normFile = (e) => {
-    if (Array.isArray(e)) {
-      return e;
-    }
+    if (Array.isArray(e)) return e;
+
     return e?.fileList;
   };
   return (

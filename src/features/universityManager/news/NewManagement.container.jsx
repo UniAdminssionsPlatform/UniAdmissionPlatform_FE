@@ -1,3 +1,4 @@
+import { Modal, notification } from 'antd';
 import {
   createANewService,
   getListNewsForUniversityService,
@@ -5,10 +6,11 @@ import {
   uploadANewService
 } from '../../../services/AdminUniversityNewsService';
 import { getListTagService } from '../../../services/TagService';
-import { notification } from 'antd';
+import { initFormNewValue } from './components/initNewValue';
+import Layout from '../../../components/Layout';
+import NewDetailComponent from '../../public/news/components/NewDetail.component';
 import NewManagementComponent from './components/NewManagement.component';
 import React, { useEffect, useState } from 'react';
-import { initFormNewValue } from './components/initNewValue';
 const NewManagementContainer = () => {
   const [data, setData] = useState([]);
   const [listTag, setListTag] = useState([]);
@@ -20,6 +22,7 @@ const NewManagementContainer = () => {
   const [initValueForm, setInitValueForm] = useState();
   const [isUpdate, setIsUpdate] = useState(false);
   const [selectedNew, setSelectedNew] = useState();
+  const [isModalVisible, setIsModalVisible] = useState(false);
   //payload
   const [payload, setPayload] = useState({
     sort: 'CreateDate desc',
@@ -73,7 +76,7 @@ const NewManagementContainer = () => {
       title: data.title,
       shortDescription: data.shortDescription,
       description: newDescription,
-      thumbnailUrl: thumbnailUrl,
+      thumbnailUrl,
       tagIds: data.tagId,
       isPublish: false
     };
@@ -110,7 +113,7 @@ const NewManagementContainer = () => {
   //handle change status news
   const changeStatusNew = (data, id) => {
     const changeStatusPayload = {
-      id: id,
+      id,
       payload: {
         isPublish: data
       }
@@ -173,7 +176,6 @@ const NewManagementContainer = () => {
     setVisibleDrawer(true);
   };
   const handleUpdateNew = (data) => {
-    console.log(data);
     const uploadNewPayload = {
       title: data.title,
       shortDescription: data.shortDescription,
@@ -216,27 +218,48 @@ const NewManagementContainer = () => {
   //side effect handler
   useEffect(() => getListTag(), []);
   useEffect(() => funcGetListNew(), [payload, forceReloadTable]);
+  const handleViewNew = (data) => {
+    setSelectedNew(data);
+    setIsModalVisible(true);
+  };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
-    <NewManagementComponent
-      data={data}
-      listTag={listTag}
-      setPayload={setPayload}
-      payload={payload}
-      visibleDrawer={visibleDrawer}
-      setVisibleDrawer={setVisibleDrawer}
-      newDescription={newDescription}
-      setNewDescription={setNewDescription}
-      setThumbnailUrl={setThumbnailUrl}
-      handleCreateNew={handleCreateNew}
-      changeStatusNew={changeStatusNew}
-      isLoading={isLoading}
-      initValueForm={initValueForm}
-      handleUpdateANew={handleUpdateANew}
-      handleCreateNews={handleCreateNews}
-      isUpdate={isUpdate}
-      handleUpdateNew={handleUpdateNew}
-      handlePaging={handlePaging}
-    />
+    <>
+      <Modal title='' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
+        <NewDetailComponent newDetail={selectedNew} loading={false} />
+      </Modal>
+      <NewManagementComponent
+        data={data}
+        listTag={listTag}
+        setPayload={setPayload}
+        payload={payload}
+        visibleDrawer={visibleDrawer}
+        setVisibleDrawer={setVisibleDrawer}
+        newDescription={newDescription}
+        setNewDescription={setNewDescription}
+        setThumbnailUrl={setThumbnailUrl}
+        handleCreateNew={handleCreateNew}
+        changeStatusNew={changeStatusNew}
+        isLoading={isLoading}
+        initValueForm={initValueForm}
+        handleUpdateANew={handleUpdateANew}
+        handleCreateNews={handleCreateNews}
+        isUpdate={isUpdate}
+        handleUpdateNew={handleUpdateNew}
+        handlePaging={handlePaging}
+        handleViewNew={handleViewNew}
+      />
+    </>
   );
 };
 export default NewManagementContainer;
