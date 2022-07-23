@@ -3,10 +3,13 @@ import React from 'react';
 import WidgetTags from '../WidgetTags/WidgetTags.component';
 
 const tags = DEMO_TAGS.filter((_, i) => i > 5);
-const Sidebar = ({ className = 'space-y-6 ' }) => (
-  <div className={`nc-SingleSidebar ${className}`}>
-    <WidgetTags tags={tags} />
-  </div>
-);
+const Sidebar = (props) => {
+  const { newDetail } = props;
+  return (
+    <div className={`nc-SingleSidebar`}>
+      <WidgetTags tags={newDetail.tagList} />
+    </div>
+  );
+};
 
 export default Sidebar;

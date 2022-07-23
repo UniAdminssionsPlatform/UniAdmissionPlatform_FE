@@ -16,7 +16,7 @@ const SingleImageUploadContainer = (props) => {
       if (info.file.status === 'done') {
         message.success(`${info.file.name} Tải hình ảnh lên thành công`);
         setImageUrl(info.file.response.data.fileUrl);
-      } else if (info.file.status === 'error') message.error(`${info.file.name} Tỉa hình ảnh thất bại`);
+      } else if (info.file.status === 'error') message.error(`${info.file.name} Tải hình ảnh thất bại`);
     },
     progress: {
       strokeColor: {
