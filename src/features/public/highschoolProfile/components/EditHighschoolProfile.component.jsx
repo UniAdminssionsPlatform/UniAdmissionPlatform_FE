@@ -8,7 +8,7 @@ import SingleUploadWithPreviewContainer from '../../../../components/UploadImage
 
 const EditHighSchoolProfileComponent = (props) => {
   const { TextArea } = Input;
-  const { onFinish, highschoolInformation, value, setValue, avatar, setImageUrl, setThumbnail } = props;
+  const { onFinish, highschoolInformation, value, setValue, avatar, setImageUrl, setThumbnail} = props;
   const stylelabel = {
     paddingRight: '1px'
   };
@@ -61,7 +61,7 @@ const EditHighSchoolProfileComponent = (props) => {
 
   return (
     <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
-      <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish} fields={field}>
+      <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish} fields={field} initialValues={initValueForm}>
         <div className='grid md:grid-cols-3 gap-6 block md:col-span-2'>
           <label className='block'>
             <Label>Tên *</Label>

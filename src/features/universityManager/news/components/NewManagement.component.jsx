@@ -9,7 +9,24 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import moment from 'moment';
 const NewManagementComponent = (props) => {
   const { Text, title } = Typography;
-  const { data, listTag, visibleDrawer, setVisibleDrawer } = props;
+  const {
+    data,
+    listTag,
+    visibleDrawer,
+    handleCreateNews,
+    setVisibleDrawer,
+    newDescription,
+    setNewDescription,
+    setThumbnailUrl,
+    handleCreateNew,
+    setPayload,
+    payload,
+    isLoading,
+    changeStatusNew,
+    initValueForm,
+    handleUpdateANew
+  } = props;
+  console.log(props);
   const layoutTable = [
     {
       title: 'Đề mục sự kiện',
@@ -34,8 +51,8 @@ const NewManagementComponent = (props) => {
     },
     {
       title: 'Mô tả',
-      dataIndex: 'description',
-      key: 'description',
+      dataIndex: 'shortDescription',
+      key: 'shortDescription',
       render: (data) => <Text>{data}</Text>,
       width: '15%'
     },
@@ -50,15 +67,28 @@ const NewManagementComponent = (props) => {
       title: 'Trạng thái công khai',
       dataIndex: 'isPublish',
       key: 'isPublish',
-      render: (data) => {
+      render: (data, record) => {
         if (data === true) {
           return (
             <>
-              <Switch defaultChecked />
+              <Space>
+                <Switch defaultChecked onClick={() => changeStatusNew(false, record.id)} />
+                <Divider type={'vertical'} />
+                <Text strong style={{ color: 'green' }}>
+                  Công khai
+                </Text>
+              </Space>
             </>
           );
         }
-        if (data !== true) return <Switch />;
+        if (data !== true)
+          return (
+            <Space>
+              <Switch onClick={() => changeStatusNew(true, record.id)} />
+              <Divider type={'vertical'} />
+              <Text type={'secondary'}>Chưa công khai</Text>
+            </Space>
+          );
       },
       width: '7%'
     },
@@ -66,18 +96,16 @@ const NewManagementComponent = (props) => {
       title: 'Hành động',
       dataIndex: '',
       key: 'key',
-      render: (index, data) => (
+      render: (index, record) => (
         <Space direction={'horizontal'} style={{ marginLeft: '2rem' }}>
           <VisibilityIcon />
-          <EditOutlined />
+          <EditOutlined onClick={() => handleUpdateANew(record)} style={{ cursor: 'pointer' }} />
         </Space>
       ),
       width: '3%'
     }
   ];
-  const handleCreateNews = () => {
-    setVisibleDrawer(true);
-  };
+
   return (
     <Layout>
       <TitlePageComponent
@@ -86,14 +114,30 @@ const NewManagementComponent = (props) => {
       />
       <Space direction={'vertical'}>
         <Space>
-          <SearchNewComponent listTag={listTag} />
+          <SearchNewComponent listTag={listTag} setPayload={setPayload} payload={payload} />
           <Divider type='vertical' />
           <Button type={'primary'} onClick={handleCreateNews}>
             Tạo mới một bài viết
           </Button>
         </Space>
-        <CreateNewComponent visibleDrawer={visibleDrawer} setVisibleDrawer={setVisibleDrawer} />
-        <Table size={'small'} pagination={false} dataSource={data?.list} columns={layoutTable} bordered />
+        <CreateNewComponent
+          visibleDrawer={visibleDrawer}
+          setVisibleDrawer={setVisibleDrawer}
+          listTag={listTag}
+          newDescription={newDescription}
+          setNewDescription={setNewDescription}
+          setThumbnailUrl={setThumbnailUrl}
+          handleCreateNew={handleCreateNew}
+          initValueForm={initValueForm}
+        />
+        <Table
+          size={'small'}
+          pagination={false}
+          dataSource={data?.list}
+          columns={layoutTable}
+          bordered
+          loading={isLoading}
+        />
       </Space>
     </Layout>
   );
