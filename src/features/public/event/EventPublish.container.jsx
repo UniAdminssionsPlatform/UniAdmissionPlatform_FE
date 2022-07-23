@@ -20,6 +20,6 @@ const EventPublishContainer = (props) => {
       });
   };
   useEffect(() => getEventByEventId(), []);
-  return <EventPublishComponent event={event} />;
+  return <EventPublishComponent event={event} eventId={eventId} />;
 };
 export default EventPublishContainer;
