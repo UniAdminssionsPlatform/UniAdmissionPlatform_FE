@@ -4,6 +4,7 @@ import { getAllMajor } from '../../../services/MajorService';
 import { getAllMajorDepartment } from '../../../services/MajorDepartmentService';
 import { getSchoolYear } from '../../../services/SchoolYearService';
 import { useSelector } from 'react-redux';
+import { getAllSubjectGroup } from '../../../services/SubjectGroupService';
 
 const AddGoalAdmissionFormContainer = (props) => {
   const { user } = useSelector((state) => state.authentication);
@@ -12,11 +13,15 @@ const AddGoalAdmissionFormContainer = (props) => {
   const [schoolYear, setSchoolYear] = useState('');
   const [listMajorDepartment, setListMajorDepartment] = useState([]);
   const [listMajor, setListMajor] = useState([]);
+  const [listSubjectGroup, setListSubjectGroup] = useState([]);
+
+  const [visibleSubjectGroup, setVisibleSubjectGroup] = useState(true);
 
   useEffect(() => {
     getYear(selectedSchoolYear);
-    getMajor({
-      limit: 500
+    getMajorDepartments({
+      'university-id': user.universityId,
+      limit: 1000
     });
   }, [selectedSchoolYear]);
 
@@ -38,20 +43,30 @@ const AddGoalAdmissionFormContainer = (props) => {
     });
   };
 
-  const onChangeMajor = (value) => {
-    getMajorDepartments({
-      'university-id': user.universityId,
-      'major-parent-id': 190,
-      limit: 1000
+  const getSubjectGroups = (data) => {
+    getAllSubjectGroup(data).then((result) => {
+      setListSubjectGroup(result.data.data.list);
+      setVisibleSubjectGroup(false);
     });
+  };
+
+  const onChangeMajor = (value) => {
+    console.log('onChangeMajor: ', value);
+    getSubjectGroups();
+  };
+
+  const onChangeSubjectGroup = (value) => {
+    console.log('onChangeSubjectGroup: ', value);
   };
   return (
     <>
       <AddGoalAdmisisonFormComponent
-        listMajor={listMajor}
         listMajorDepartment={listMajorDepartment}
+        listSubjectGroup={listSubjectGroup}
         schoolYear={schoolYear}
+        visibleSubjectGroup={visibleSubjectGroup}
         onChangeMajor={onChangeMajor}
+        onChangeSubjectGroup={onChangeSubjectGroup}
       />
     </>
   );
