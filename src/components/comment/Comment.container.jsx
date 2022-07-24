@@ -5,18 +5,18 @@ import React, { useEffect, useState } from 'react';
 const CommentContainer = (props) => {
   const { eventId } = props;
   const [isCommentLoading, setIsCommentLoading] = useState(true);
-  const [forceReder, setForceRender] = useState();
+  const [forceRender, setForceRender] = useState();
   const [listComment, setListComment] = useState();
   const [initValue, setInitValue] = useState({});
+  const [request, setRequest] = useState({
+    eventId,
+    limit: 3,
+    page: 1
+  });
   const reRender = () => {
     setForceRender(Math.random());
   };
   const getCommentByEventId = () => {
-    const request = {
-      eventId,
-      limit: 10,
-      page: 1
-    };
     getCommentByEventIdService(request)
       .then((res) => {
         setListComment(res.data.data);
@@ -29,12 +29,15 @@ const CommentContainer = (props) => {
   const handleComment = (data) => {
     commentToTheEvent(data);
   };
+  const handleShowAllMessage = () => {
+    setRequest({ ...request, limit: listComment?.total });
+  };
   const commentToTheEvent = (data) => {
-    const request = {
+    const eventRequest = {
       eventId,
       content: data.content
     };
-    commentToTheEventService(request)
+    commentToTheEventService(eventRequest)
       .then(() => {
         notification.success({
           message: 'Bình luận thành công',
@@ -51,13 +54,14 @@ const CommentContainer = (props) => {
       })
       .catch(() => setIsCommentLoading(true));
   };
-  useEffect(() => getCommentByEventId(), [forceReder]);
+  useEffect(() => getCommentByEventId(), [forceRender, request]);
   return (
     <CommentComponent
       listComment={listComment}
       isCommentLoading={isCommentLoading}
       handleComment={handleComment}
       initValue={initValue}
+      handleShowAllMessage={handleShowAllMessage}
     />
   );
 };
