@@ -1,8 +1,7 @@
 import ButtonPrimary from '../../field/Button/Button.component';
 import React from 'react';
-// import DarkModeContainer from "containers/DarkModeContainer/DarkModeContainer";
 import { PATH } from '../../../constants/Paths/Path';
-import { Tag, Typography } from 'antd';
+import { Button, Divider, Space, Tag, Typography } from 'antd';
 import { auth } from '../../../firebase/firebaseConfig';
 import { handleNotification } from '../../../notification/SignOutNotification';
 import { logoutHandler } from '../../../redux-flow/authentication/authentication-action';
@@ -12,8 +11,6 @@ import { useHistory } from 'react-router-dom';
 import Logo from '../Logo/Logo.component';
 import MenuBar from '../MenuBar/MenuBar.component';
 import Navigation from '../Navigation/Navigation.component';
-import SearchDropdown from '../Navigation/SearchDropdown.component';
-
 const MainNav = ({ isTop }) => {
   const { Text } = Typography;
   const dispatch = useDispatch();
@@ -39,21 +36,24 @@ const MainNav = ({ isTop }) => {
         </div>
         <div className='flex-shrink-0 flex items-center justify-end text-neutral-700 dark:text-neutral-100 space-x-1'>
           <div className='hidden items-center xl:flex space-x-1'>
-            {/*<DarkModeContainer/>*/}
-            <SearchDropdown />
             <div className='px-1' />
             {isAuthUser ? (
-              <div>
-                Xin chào.{' '}
-                <Text type='success' strong>
-                  {user.user_id}{' '}
-                  <Tag color='geekblue' onClick={() => handleSighOut()}>
-                    Đăng xuất
-                  </Tag>
+              <Space>
+                <Text>
+                  Xin chào <Divider type={'vertical'} />
+                  <Text strong>{user.roles}</Text>
                 </Text>
-              </div>
+                <Text type='success' strong>
+                  {user.user_id}
+                  <Button type='primary' shape='round' onClick={() => handleSighOut()}>
+                    Đăng xuất
+                  </Button>
+                </Text>
+              </Space>
             ) : (
-              <ButtonPrimary href={PATH.LOGIN}>Đăng nhập</ButtonPrimary>
+              <Button type='primary' shape='round' onClick={() => history.push(PATH.LOGIN)}>
+                Đăng nhập
+              </Button>
             )}
           </div>
           <div className='flex items-center xl:hidden'>
@@ -68,7 +68,9 @@ const MainNav = ({ isTop }) => {
                 </Text>
               </div>
             ) : (
-              <ButtonPrimary href={PATH.LOGIN}>Đăng nhập</ButtonPrimary>
+              <Button type='primary' shape='round' onClick={() => history.push(PATH.LOGIN)}>
+                Đăng nhập
+              </Button>
             )}
             <div className='px-1' />
             <MenuBar />
