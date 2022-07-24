@@ -4,20 +4,11 @@ import MediaVideo from './MediaVideo.component';
 import NcImage from '../NcImage/NcImage.component';
 import PostTypeFeaturedIcon from '../../commons/PostTypeFeaturedIcon/PostTypeFeaturedIcon.component';
 import React, { useRef } from 'react';
-
-// CHECK FOR VIDEO CARD ON VIEW
-let PREV_RATIO = 0.0;
-
 const PostFeaturedMedia = ({ className = ' w-full h-full ', post, isHover = false }) => {
   const { featuredImage, postType, videoUrl, galleryImgs, audioUrl, id } = post;
-
   const videoRef = useRef(null);
-
   let IS_MOBILE = false;
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) IS_MOBILE = true;
-
-  const IN_VIEW = (cardIntersectionObserver?.intersectionRatio || -1) > PREV_RATIO;
-  PREV_RATIO = cardIntersectionObserver?.intersectionRatio || 0;
 
   const isPostMedia = () => postType === 'video' || postType === 'audio';
 
@@ -31,8 +22,7 @@ const PostFeaturedMedia = ({ className = ' w-full h-full ', post, isHover = fals
     if (postType === 'gallery') return renderGallerySlider();
 
     // VIDEO
-    if (postType === 'video' && !!videoUrl && (!IS_MOBILE ? isHover : !!IN_VIEW))
-      return <MediaVideo isHover videoUrl={videoUrl} />;
+    if (postType === 'video' && !!videoUrl) return <MediaVideo isHover videoUrl={videoUrl} />;
 
     // AUDIO
     if (postType === 'audio' && !!audioUrl) return <MediaAudio post={post} />;
