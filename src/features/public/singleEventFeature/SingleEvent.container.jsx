@@ -2,8 +2,8 @@ import { PATH } from '../../../constants/Paths/Path';
 import { getAEventPublishByIdService } from '../../../services/PublishService';
 import { notification } from 'antd';
 import { useHistory } from 'react-router-dom';
-import SingleEventComponent from './components/SingleEvent.component';
 import React, { useEffect, useState } from 'react';
+import SingleEventComponent from './components/SingleEvent.component';
 const SingleEventContainer = (props) => {
   const { eventId } = props;
   const history = useHistory();
@@ -20,6 +20,6 @@ const SingleEventContainer = (props) => {
       });
   };
   useEffect(() => getEventByEventId(), []);
-  return <SingleEventComponent event={event} eventId={eventId} />;
+  return event ? <SingleEventComponent event={event} eventId={eventId} /> : null;
 };
 export default SingleEventContainer;
