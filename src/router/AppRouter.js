@@ -13,7 +13,7 @@ import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import EventCheckPage from '../pages/universityManager/EventCheckPage';
-import EventPage from '../pages/public/EventPage';
+import SingleEventPage from '../pages/public/SingleEventPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
@@ -26,8 +26,8 @@ import ListUniversityToFollowPage from '../pages/highSchoolStudent/ListUniversit
 import LoginPage from '../pages/auth/Login.page';
 import ManageProfilePage from '../pages/auth/manageProfilePage';
 import ManagementRouter from './ManagementRouter';
-import NewsDetailPage from '../pages/public/NewsDetailPage';
-import NewsPage from '../pages/public/NewsPage';
+import NewsDetailStudentPage from '../pages/highSchoolStudent/NewsDetailStudentPage';
+import NewsPageStudent from '../pages/highSchoolStudent/NewsPageStudent';
 import PolicyPage from '../pages/public/PolicyPage';
 import PublicEventPage from '../pages/universityManager/PublicEventPage';
 import React from 'react';
@@ -43,15 +43,19 @@ import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
+import SingleNewPage from '../pages/public/SingleNewPage';
 
 const AppRouter = () => (
   <>
     <ScrollToTop />
     <HeaderContainer />
     <Switch>
-      //Manage show page publish
+      //Manage publish page
       <Route path={PATH.EVENT_PAGE} exact>
-        <EventPage />
+        <SingleEventPage />
+      </Route>
+      <Route path={PATH.NEW_PAGE} exact>
+        <SingleNewPage />
       </Route>
       //Publish Page
       <Route path={PATH.INDEX} exact>
@@ -142,13 +146,13 @@ const AppRouter = () => (
         exact
       />
       <HighSchoolStudentRouter
-        component={() => <NewsPage />}
+        component={() => <NewsPageStudent />}
         path={PATH_HIGH_SCHOOL_STUDENT.NEWS}
         key={PATH_HIGH_SCHOOL_STUDENT.NEWS}
         exact
       />
       <HighSchoolStudentRouter
-        component={() => <NewsDetailPage />}
+        component={() => <NewsDetailStudentPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
         key={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
         exact

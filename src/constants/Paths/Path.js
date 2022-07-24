@@ -8,12 +8,13 @@ export const PATH = {
   UPDATE_PROFILE: '/auth/update-profile',
   SCHEDULE_EVENT: '/schedule',
   DETAIL_EVENT: '/detail-event',
-  LIST_EVENT_FOR_HIGHSCHOOL: '/event-for-highschool',
+  LIST_EVENT_FOR_HIGH_SCHOOL: '/event-for-highschool',
   LIST_MAJOR_GROUP: '/major-groups',
   DETAIL_MAJOR_GROUP: '/major-group-detail',
   ABOUT_US: '/about-us',
   ACCOUNT_WAITING_APPROVE: '/auth/pending',
   EVENT_PAGE: '/event/:eventId',
+  NEW_PAGE: '/new/:newId',
   PAGE_NOT_FOUND: '/404'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {

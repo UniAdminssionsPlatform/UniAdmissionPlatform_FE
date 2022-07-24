@@ -1,24 +1,20 @@
 import { Spin } from 'antd';
 import React from 'react';
 import Sidebar from '../../../../components/commons/SideBar/SideBar.component';
-import SingleContent from './singleContent.component.jsx';
-import SingleHeader4 from './singleHeader4.component';
-
-const NewDetailComponent = (props) => {
+import SingleContent from '../../news/components/singleContent.component.jsx';
+import SingleHeader4 from '../../news/components/singleHeader4.component';
+const SingleNewComponent = (props) => {
   const { newDetail, loading } = props;
   return (
     <>
       <div>
         <Spin size='large' spinning={loading}>
           <div className={`nc-PageSingleTemp4Sidebar relative pt-10 lg:pt-16`} data-nc-id='PageSingleTemp4Sidebar'>
-            {/*  */}
             <div className='absolute top-0 inset-x-0 bg-emerald-900	 dark:bg-black/30 h-[480px] md:h-[600px] lg:h-[700px] xl:h-[95vh]'></div>
             <div className='relative'>
-              {/* SINGLE HEADER */}
               <header className='container rounded-xl '>
                 <SingleHeader4 newDetail={newDetail} />
               </header>
-              {/* SINGLE MAIN CONTENT */}
               <div className='container flex flex-col my-10 lg:flex-row '>
                 <div className='w-full lg:w-3/5 xl:w-2/3 xl:pr-20'>
                   <SingleContent newDetail={newDetail} />
@@ -35,4 +31,4 @@ const NewDetailComponent = (props) => {
   );
 };
 
-export default NewDetailComponent;
+export default SingleNewComponent;
