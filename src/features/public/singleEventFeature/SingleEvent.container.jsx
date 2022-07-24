@@ -1,15 +1,15 @@
 import { PATH } from '../../../constants/Paths/Path';
-import { getEventPublishByIdService } from '../../../services/PublishService';
+import { getAEventPublishByIdService } from '../../../services/PublishService';
 import { notification } from 'antd';
 import { useHistory } from 'react-router-dom';
-import EventPublishComponent from './EventPublish.component';
+import SingleEventComponent from './components/SingleEvent.component';
 import React, { useEffect, useState } from 'react';
-const EventPublishContainer = (props) => {
+const SingleEventContainer = (props) => {
   const { eventId } = props;
   const history = useHistory();
   const [event, setEvent] = useState({});
   const getEventByEventId = () => {
-    getEventPublishByIdService(eventId)
+    getAEventPublishByIdService(eventId)
       .then((res) => setEvent(res.data))
       .catch(() => {
         notification.error({
@@ -20,6 +20,6 @@ const EventPublishContainer = (props) => {
       });
   };
   useEffect(() => getEventByEventId(), []);
-  return <EventPublishComponent event={event} eventId={eventId} />;
+  return <SingleEventComponent event={event} eventId={eventId} />;
 };
-export default EventPublishContainer;
+export default SingleEventContainer;

@@ -2,7 +2,7 @@ import { getNews } from '../../../services/NewsService';
 import NewsComponent from '../../universityManager/news/components/CardNewsStyle1/News.component';
 import React, { useEffect, useState } from 'react';
 
-const NewsContainer = () => {
+const SingleNewContainer = () => {
   const [news, setNews] = useState();
 
   useEffect(() => {
@@ -21,4 +21,4 @@ const NewsContainer = () => {
   );
 };
 
-export default NewsContainer;
+export default SingleNewContainer;
