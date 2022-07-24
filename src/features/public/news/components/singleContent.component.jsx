@@ -1,16 +1,20 @@
+import { Typography } from 'antd';
+import MarkdownViewComponent from '../../../../components/MarkdownView/MarkdownView.component';
 import React from 'react';
-import SingleContentDemo from '../../../../components/commons/SingleContentDemo/SingleContentDemo.component';
 
-const SingleContent = () => (
-  <div className='nc-SingleContent space-y-10'>
-    <div
-      id='single-entry-content'
-      className='prose prose-sm !max-w-screen-md sm:prose lg:prose-lg mx-auto dark:prose-invert'>
-      {/* THIS IS THE DEMP CONTENT */}
-      {/* IF YOUR DATA IS JSON, YOU CAN USE render with html-react-parser (https://www.npmjs.com/package/html-react-parser) */}
-      <SingleContentDemo />
+const SingleContent = (props) => {
+  const { Text, Title } = Typography;
+  const { newDetail } = props;
+  return (
+    <div className='nc-SingleContent space-y-10'>
+      <Title level={3}>{newDetail.shortDescription}</Title>
+      <div
+        id='single-entry-content'
+        className='prose prose-sm !max-w-screen-md sm:prose lg:prose-lg mx-auto dark:prose-invert'>
+        <MarkdownViewComponent str={newDetail.description} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default SingleContent;

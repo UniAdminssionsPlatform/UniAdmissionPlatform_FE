@@ -1,4 +1,4 @@
-import { closeASlot, fullASlot } from '../../../services/AdminHighSchoolSlotsService';
+import { closeASlot, fullASlot } from '../../../services/AdminHighSchoolService/AdminHighSchoolSlotsService';
 import { handleSlotNotification } from '../../../notification/CreateSlotNotification';
 import React from 'react';
 import SlotDetailComponent from './SlotDetail.component';

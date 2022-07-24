@@ -7,7 +7,7 @@ const Tag = ({ className = '', tag, hideCount = false }) => (
     data-nc-id='Tag'
     to={tag.href}>
     {`${tag.name}`}
-    {!hideCount && <span className='text-xs font-normal'> ({tag.count})</span>}
+    {!hideCount && <span className='text-xs font-normal'></span>}
   </Link>
 );
 

@@ -1,6 +1,6 @@
 import { getDetailEvent } from '../../../services/EventService';
 import { getDistrictById } from '../../../services/DistrictService';
-import { getProvinceByid } from '../../../services/ProvinceService';
+import { getProvinceById } from '../../../services/ProvinceService';
 import { handleNotification } from '../../../notification/DetailEventNotification';
 import DetailEventFormComponent from './components/DetailEvent/DetailEventForm.component';
 import React, { useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ const DetailEventFormContainer = (props) => {
   }, []);
 
   const getProvince = (id) => {
-    getProvinceByid(id).then((result) => {
+    getProvinceById(id).then((result) => {
       setprovince(result.data.data.name);
     });
   };

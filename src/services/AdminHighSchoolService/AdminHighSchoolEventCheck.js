@@ -1,8 +1,8 @@
 import {
   APPROVE_REJECT_EVENT_CHECK_ENDPOINT,
   GET_LIST_EVENT_CHECK_ENDPOINT
-} from '../constants/Endpoints/AdminHighSchoolEventCheckEndpoint';
-import { CallAPI } from './axiosBase';
+} from '../../constants/Endpoints/AdminHighSchoolEventCheckEndpoint';
+import { CallAPI } from '../axiosBase';
 
 export const getListEventCheck = (payload) =>
   CallAPI(`${GET_LIST_EVENT_CHECK_ENDPOINT}?page=${payload.page}&limit=${payload.limit}`, 'get');

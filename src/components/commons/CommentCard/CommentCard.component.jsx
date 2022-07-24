@@ -7,10 +7,12 @@ import ModalReportItem from '../ModalReportItem/ModalReportItem.component';
 import NcDropDown from '../NcDropDown/NcDropDown.component';
 import React, { useRef, useState } from 'react';
 import SingleCommentForm from '../SingleCommentForm/SingleCommentForm.component';
+import moment from 'moment';
 import twFocusClass from '../../../utils/twFocusClass';
 
-const CommentCard = ({ className = '', comment, size = 'large' }) => {
-  const { author, id, date, parentId, content } = comment;
+const CommentCard = ({ comment }) => {
+  console.log(comment);
+  const size = 'large';
   const actions = [
     { id: 'edit', name: 'Edit', icon: 'las la-edit' },
     { id: 'reply', name: 'Reply', icon: 'las la-reply' },
@@ -61,20 +63,20 @@ const CommentCard = ({ className = '', comment, size = 'large' }) => {
       }}
       onClickCancel={closeReplyForm}
       className='flex-grow'
-      commentId={id}
+      commentId={comment.id}
     />
   );
 
   return (
     <>
       <div
-        className={`nc-CommentCard flex ${className}`}
+        className={`nc-CommentCard flex`}
         data-nc-id='CommentCard'
-        data-comment-id={id}
-        data-comment-parent-id={parentId}>
+        data-comment-id={comment.id}
+        data-comment-parent-id={comment.id}>
         <Avatar
-          imgUrl={author.avatar}
-          userName={author.displayName}
+          imgUrl='https://i.pinimg.com/564x/cf/86/12/cf861202e182d167000ea49d711e9c87.jpg'
+          userName={comment.userName}
           sizeClass={`h-6 w-6 text-base ${size === 'large' ? 'sm:text-lg sm:h-8 sm:w-8' : ''}`}
           radius='rounded-full'
           containerClassName='mt-4'
@@ -89,17 +91,17 @@ const CommentCard = ({ className = '', comment, size = 'large' }) => {
                 onClick={hanldeClickDropDown}
               />
             </div>
-            <Link className='flex-shrink-0 font-semibold text-neutral-800 dark:text-neutral-100' to={author.href}>
-              {author.displayName}
+            <Link className='flex-shrink-0 font-semibold text-neutral-800 dark:text-neutral-100' to=''>
+              {comment.userName}
             </Link>
             <span className='mx-2'>·</span>
-            <span className='text-neutral-500 dark:text-neutral-400 text-xs line-clamp-1 sm:text-sm'>{date}</span>
+            <span className='text-neutral-500 dark:text-neutral-400 text-xs line-clamp-1 sm:text-sm'>
+              {moment(comment.createdDateString).format('LLL')}
+            </span>
           </div>
-
-          {/* CONTENT */}
-          <span className='block text-neutral-700 mt-2 mb-3 sm:mt-3 sm:mb-4 dark:text-neutral-300'>{content}</span>
-
-          {/* ACTION LIKE REPLY */}
+          <span className='block text-neutral-700 mt-2 mb-3 sm:mt-3 sm:mb-4 dark:text-neutral-300'>
+            {comment.content}
+          </span>
           {isReplying ? (
             renderCommentForm()
           ) : (
