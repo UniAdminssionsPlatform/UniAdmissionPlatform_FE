@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import SingleNewContainer from '../../features/public/singleNewFeature/SingleNew.container';
 import React from 'react';
+import SingleNewContainer from '../../features/public/singleNewFeature/SingleNew.container';
 
 const NewsDetailStudentPage = () => {
   const location = useLocation();
