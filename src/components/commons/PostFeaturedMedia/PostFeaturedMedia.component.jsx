@@ -4,7 +4,6 @@ import MediaVideo from './MediaVideo.component';
 import NcImage from '../NcImage/NcImage.component';
 import PostTypeFeaturedIcon from '../../commons/PostTypeFeaturedIcon/PostTypeFeaturedIcon.component';
 import React, { useRef } from 'react';
-import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 
 // CHECK FOR VIDEO CARD ON VIEW
 let PREV_RATIO = 0.0;
@@ -17,11 +16,6 @@ const PostFeaturedMedia = ({ className = ' w-full h-full ', post, isHover = fals
   let IS_MOBILE = false;
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) IS_MOBILE = true;
 
-  const cardIntersectionObserver = useIntersectionObserver(videoRef, {
-    freezeOnceVisible: false,
-    threshold: 0.999,
-    rootMargin: '20px'
-  });
   const IN_VIEW = (cardIntersectionObserver?.intersectionRatio || -1) > PREV_RATIO;
   PREV_RATIO = cardIntersectionObserver?.intersectionRatio || 0;
 

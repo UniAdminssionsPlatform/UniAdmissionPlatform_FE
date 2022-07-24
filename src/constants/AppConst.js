@@ -1,5 +1,6 @@
 export const TOKEN_KEY = 'token';
 export const SCHOOL_KEY = 'school_key';
+export const LOADING_KEY = 'load_key';
 export const TOKEN = '';
 export const USER_STORAGE = 'user';
 export const SLOT_01_START = 7;

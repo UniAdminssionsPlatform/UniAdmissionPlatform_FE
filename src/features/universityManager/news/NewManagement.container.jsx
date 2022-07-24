@@ -8,9 +8,9 @@ import {
 import { getListTagService } from '../../../services/TagService';
 import { initFormNewValue } from './components/initNewValue';
 import Layout from '../../../components/Layout';
-import SingleNewComponent from '../../public/singleNewFeature/components/SingleNew.component';
 import NewManagementComponent from './components/NewManagement.component';
 import React, { useEffect, useState } from 'react';
+import SingleNewComponent from '../../public/singleNewFeature/components/SingleNew.component';
 const NewManagementContainer = () => {
   const [data, setData] = useState([]);
   const [listTag, setListTag] = useState([]);

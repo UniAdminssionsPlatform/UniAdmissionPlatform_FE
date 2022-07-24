@@ -1,16 +1,14 @@
-import SingleNewComponent from './components/SingleNew.component';
-import React, { useEffect, useState } from 'react';
+import { PATH } from '../../../constants/Paths/Path';
 import { getANewPublishByEventIdService } from '../../../services/PublishService';
 import { notification } from 'antd';
-import { PATH } from '../../../constants/Paths/Path';
+import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import SingleNewComponent from './components/SingleNew.component';
 const SingleNewContainer = (props) => {
   const { newId } = props;
   const [newDetail, setNewsDetail] = useState();
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    newsDetail(newId);
-  }, [newId]);
+  const history = useHistory();
   const newsDetail = () => {
     getANewPublishByEventIdService(newId)
       .then((result) => {
@@ -25,7 +23,10 @@ const SingleNewContainer = (props) => {
         history.push(PATH.PAGE_NOT_FOUND);
       });
   };
-  return <SingleNewComponent newDetail={newDetail} loading={loading} />;
+  useEffect(() => {
+    newsDetail(newId);
+  }, [newId]);
+  return newDetail ? <SingleNewComponent newDetail={newDetail} loading={loading} /> : null;
 };
 
 export default SingleNewContainer;
