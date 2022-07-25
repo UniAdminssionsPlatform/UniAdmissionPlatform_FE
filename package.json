@@ -42,6 +42,7 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "firebase": "^9.6.11",
+    "framer-motion": "^6.5.1",
     "helmet": "^5.1.0",
     "http-proxy-middleware": "^2.0.4",
     "install": "^0.13.0",

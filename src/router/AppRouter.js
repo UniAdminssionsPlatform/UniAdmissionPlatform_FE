@@ -5,6 +5,7 @@ import {
   PATH_UNIVERSITY_MANAGER
 } from '../constants/Paths/Path';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import AboutUsPage from '../pages/public/AboutUsPage';
 import CertificationPage from '../pages/highSchoolStudent/CertificationPage';
 import ChangePasswordPage from '../pages/auth/ChangePasswordPage';
@@ -13,7 +14,6 @@ import DetailEventPage from '../pages/universityManager/DetailEventPage';
 import DetailMajorGroupPage from '../pages/highSchoolStudent/DetailMajorGroupPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import EventCheckPage from '../pages/universityManager/EventCheckPage';
-import EventPage from '../pages/public/EventPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
@@ -23,16 +23,19 @@ import HomePage from '../pages/public/HomePage';
 import ListEventGorStudentPage from '../pages/highSchoolStudent/ListEventForStudentPage';
 import ListMajorGroupPage from '../pages/highSchoolStudent/ListMajorGroupPage';
 import ListUniversityToFollowPage from '../pages/highSchoolStudent/ListUniversityToFollowPage';
+import LoadingPage from '../pages/public/LoadingPage';
 import LoginPage from '../pages/auth/Login.page';
 import ManageProfilePage from '../pages/auth/manageProfilePage';
 import ManagementRouter from './ManagementRouter';
-import NewsDetailPage from '../pages/public/NewsDetailPage';
-import NewsPage from '../pages/public/NewsPage';
+import NewsDetailStudentPage from '../pages/highSchoolStudent/NewsDetailStudentPage';
+import NewsPageStudent from '../pages/highSchoolStudent/NewsPageStudent';
 import PolicyPage from '../pages/public/PolicyPage';
 import PublicEventPage from '../pages/universityManager/PublicEventPage';
 import React from 'react';
 import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
+import SingleEventPage from '../pages/public/SingleEventPage';
+import SingleNewPage from '../pages/public/SingleNewPage';
 import StudentProfilePage from '../pages/auth/StudentProfilePage.jsx';
 import StudentScorePage from '../pages/highSchoolStudent/StudentScorePage.jsx';
 import UnPublicEventPage from '../pages/universityManager/UnpublicEventPage';
@@ -49,9 +52,12 @@ const AppRouter = () => (
     <ScrollToTop />
     <HeaderContainer />
     <Switch>
-      //Manage show page publish
+      //Manage publish page
       <Route path={PATH.EVENT_PAGE} exact>
-        <EventPage />
+        <SingleEventPage />
+      </Route>
+      <Route path={PATH.NEW_PAGE} exact>
+        <SingleNewPage />
       </Route>
       //Publish Page
       <Route path={PATH.INDEX} exact>
@@ -142,13 +148,13 @@ const AppRouter = () => (
         exact
       />
       <HighSchoolStudentRouter
-        component={() => <NewsPage />}
+        component={() => <NewsPageStudent />}
         path={PATH_HIGH_SCHOOL_STUDENT.NEWS}
         key={PATH_HIGH_SCHOOL_STUDENT.NEWS}
         exact
       />
       <HighSchoolStudentRouter
-        component={() => <NewsDetailPage />}
+        component={() => <NewsDetailStudentPage />}
         path={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
         key={PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL}
         exact
@@ -224,9 +230,9 @@ const AppRouter = () => (
       <Route path={PATH.PAGE_NOT_FOUND} exact>
         <ErrorPage code={404} />
       </Route>
-      <Route path='*' component={() => <ErrorPage code={404} />} />
       //Index Page
       <ManagementRouter />
+      <Route path='*' component={() => <ErrorPage code={404} />} />
     </Switch>
   </>
 );

@@ -8,9 +8,9 @@ import {
 import { getListTagService } from '../../../services/TagService';
 import { initFormNewValue } from './components/initNewValue';
 import Layout from '../../../components/Layout';
-import NewDetailComponent from '../../public/news/components/NewDetail.component';
 import NewManagementComponent from './components/NewManagement.component';
 import React, { useEffect, useState } from 'react';
+import SingleNewComponent from '../../public/singleNewFeature/components/SingleNew.component';
 const NewManagementContainer = () => {
   const [data, setData] = useState([]);
   const [listTag, setListTag] = useState([]);
@@ -236,7 +236,7 @@ const NewManagementContainer = () => {
   return (
     <>
       <Modal title='' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
-        <NewDetailComponent newDetail={selectedNew} loading={false} />
+        <SingleNewComponent newDetail={selectedNew} loading={false} />
       </Modal>
       <NewManagementComponent
         data={data}

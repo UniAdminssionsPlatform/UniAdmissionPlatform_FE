@@ -26,7 +26,7 @@ const SingleCommentLists = (props) => {
     </li>
   );
 
-  return <ul className='nc-SingleCommentLists space-y-5'>{comments.map(renderComment)}</ul>;
+  return <ul className='nc-SingleCommentLists space-y-5'>{comments?.list.map(renderComment)}</ul>;
 };
 
 export default SingleCommentLists;

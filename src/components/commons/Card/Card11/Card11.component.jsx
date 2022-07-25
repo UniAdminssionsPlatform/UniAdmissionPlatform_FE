@@ -10,7 +10,6 @@ const Card11 = ({ className = 'h-full', post, hiddenAuthor = false, ratio = 'asp
   const { title, href, categories, date } = post;
 
   const [isHover, setIsHover] = useState(false);
-
   return (
     <div
       className={`nc-Card11 relative flex flex-col group [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ] ${className}`}

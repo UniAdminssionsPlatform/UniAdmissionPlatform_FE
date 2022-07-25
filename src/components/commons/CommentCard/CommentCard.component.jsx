@@ -75,7 +75,11 @@ const CommentCard = ({ comment }) => {
         data-comment-id={comment.id}
         data-comment-parent-id={comment.id}>
         <Avatar
-          imgUrl='https://i.pinimg.com/564x/cf/86/12/cf861202e182d167000ea49d711e9c87.jpg'
+          imgUrl={
+            comment.avatarUrl
+              ? comment.avatarUrl
+              : 'https://i.pinimg.com/564x/cf/86/12/cf861202e182d167000ea49d711e9c87.jpg'
+          }
           userName={comment.userName}
           sizeClass={`h-6 w-6 text-base ${size === 'large' ? 'sm:text-lg sm:h-8 sm:w-8' : ''}`}
           radius='rounded-full'

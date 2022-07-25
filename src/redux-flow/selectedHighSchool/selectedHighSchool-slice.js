@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {SCHOOL_KEY, USER_STORAGE} from "../../constants/AppConst";
+import {SCHOOL_KEY} from "../../constants/AppConst";
 
 const selectedHighSchoolSlice = createSlice({
   name: 'selectedHighSchool',
