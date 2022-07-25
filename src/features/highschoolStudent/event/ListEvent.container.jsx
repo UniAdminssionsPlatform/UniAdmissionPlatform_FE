@@ -43,7 +43,19 @@ const ListEventContainer = () => {
       });
     },
     // delay in ms
-    2000
+    1000
+  );
+
+  const onClick = useDebouncedCallback(
+    // function
+    () => {
+      setLoading(true);
+      setDataSearch({
+        ...dataSearch
+      });
+    },
+    // delay in ms
+    1000
   );
 
   const onChangePage = (page) => {
@@ -57,6 +69,7 @@ const ListEventContainer = () => {
         total={total}
         onSearch={onSearch}
         onChangePage={onChangePage}
+        onClick={onClick}
       />
     </>
   );
