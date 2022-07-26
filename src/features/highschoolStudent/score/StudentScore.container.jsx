@@ -1,3 +1,5 @@
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { Modal } from 'antd';
 import { getAllSchoolYear } from '../../../services/SchoolYearService';
 import { getScore } from '../../../services/StudentScoreService';
 import { handleNotification } from '../../../notification/StudentScoreNotification';
@@ -11,6 +13,7 @@ const StudentScoreContainer = () => {
   const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(true);
   const [data, setData] = useState();
+  const [schoolRecordId, setSchoolRecordId] = useState();
   const [disableAddButton, setDisableAddButton] = useState(false);
   const [disableEditButton, setDisableEditButton] = useState(false);
 
@@ -28,6 +31,7 @@ const StudentScoreContainer = () => {
     getScore(schoolYear)
       .then((result) => {
         setData(result.data.data.studentRecordItems);
+        setSchoolRecordId(result.data.data.id);
         setLoading(false);
         setDisableEditButton(false);
         setDisableAddButton(true);
@@ -50,6 +54,42 @@ const StudentScoreContainer = () => {
     });
   };
 
+  const handleDeleteRecordItem = (record) => {
+    console.log('record item: ', record);
+  };
+  const confirmDeleteRecordItem = (value) => {
+    let context;
+    Modal.confirm({
+      title: `Bạn muốn xóa môn ${value.subject.name} khỏi học bạ ?`,
+      icon: <ExclamationCircleOutlined />,
+      content: context,
+      okText: 'Có',
+      cancelText: 'Không',
+      onOk() {
+        handleDeleteRecordItem(value);
+      },
+      onCancel() {}
+    });
+  };
+
+  const handleDeleteSchoolRecordItem = (value) => {
+    console.log('value: ', value);
+  };
+  const confirmDeleteSchoolRecord = () => {
+    let context;
+    Modal.confirm({
+      title: `Bạn muốn xóa học bạ này ?`,
+      icon: <ExclamationCircleOutlined />,
+      content: context,
+      okText: 'Có',
+      cancelText: 'Không',
+      onOk() {
+        handleDeleteSchoolRecordItem(schoolRecordId);
+      },
+      onCancel() {}
+    });
+  };
+
   return (
     <>
       <StudentScoreComponent
@@ -63,6 +103,8 @@ const StudentScoreContainer = () => {
         data={data}
         disableAddButton={disableAddButton}
         disableEditButton={disableEditButton}
+        confirmDeleteRecordItem={confirmDeleteRecordItem}
+        confirmDeleteSchoolRecord={confirmDeleteSchoolRecord}
       />
     </>
   );
