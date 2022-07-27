@@ -58,3 +58,19 @@ export const handleDeleteRecordItemNotification = (status, input) => {
     });
   }
 };
+
+export const handleDeleteSchoolRecordNotification = (status, input) => {
+  if (status === 'success') {
+    notification.success({
+      message: 'Xóa học baj thành công',
+      description: 'Vui lòng đợi trong giây lát...',
+      duration: 1
+    });
+  } else if (status === 'error') {
+    notification.error({
+      message: 'Truy vấn thất bại!',
+      description: `${input}`,
+      duration: 3
+    });
+  }
+};

@@ -1,8 +1,12 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Modal } from 'antd';
+import { deleteSchoolRecord, deleteScore, getScore } from '../../../services/StudentScoreService';
 import { getAllSchoolYear } from '../../../services/SchoolYearService';
-import { getScore, deleteScore } from '../../../services/StudentScoreService';
-import { handleNotification, handleDeleteRecordItemNotification } from '../../../notification/StudentScoreNotification';
+import {
+  handleDeleteRecordItemNotification,
+  handleDeleteSchoolRecordNotification,
+  handleNotification
+} from '../../../notification/StudentScoreNotification';
 import { useDebouncedCallback } from 'use-debounce';
 import React, { useEffect, useState } from 'react';
 import StudentScoreComponent from './components/StudentScore.component';
@@ -81,7 +85,15 @@ const StudentScoreContainer = () => {
   };
 
   const handleDeleteSchoolRecord = (value) => {
-    console.log('value: ', value);
+    deleteSchoolRecord(value)
+      .then((record) => {
+        handleDeleteSchoolRecordNotification('success');
+        setLoading(true);
+        setTimeout(loadData(selectedSchoolYear), 3000);
+      })
+      .then((error) => {
+        handleDeleteSchoolRecordNotification('error', error.response.data.msg);
+      });
   };
   const confirmDeleteSchoolRecord = () => {
     let context;
