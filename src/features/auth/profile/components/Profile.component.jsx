@@ -18,6 +18,29 @@ const UpdaterForm = (props) => {
     onChangeNation,
     accountInformation
   } = props;
+  const { Option } = Select;
+  const dateFormat = 'DD/MM/YYYY';
+  console.log(moment(accountInformation.dateOfBirth).format(dateFormat));
+  function onSearch(val) {
+    console.log('search:', val);
+  }
+
+  const account = {
+    lastName: accountInformation.lastName,
+    middleName: accountInformation.middleName,
+    firstName: accountInformation.firstName,
+    profileImageUrl: accountInformation.profileImageUrl,
+    genderId: accountInformation.genderId,
+    placeOfBirth: accountInformation.placeOfBirth,
+    phoneNumber: accountInformation.phoneNumber,
+    address: accountInformation.address,
+    religion: accountInformation.religion,
+    nationality: accountInformation.nationality,
+    idCard: accountInformation.idCard,
+    emailContact: accountInformation.emailContact,
+    dateOfBirth: moment(accountInformation.dateOfBirth)
+  };
+
   const field = [
     {
       name: ['lastName'],
@@ -66,21 +89,19 @@ const UpdaterForm = (props) => {
     {
       name: ['emailContact'],
       value: accountInformation.emailContact
+    },
+    {
+      name: ['dateOfBirth'],
+      value: moment(accountInformation.dateOfBirth).format(dateFormat)
     }
   ];
-  const { Option } = Select;
-  const dateFormat = 'DD/MM/YYYY';
-  console.log(moment(accountInformation.dateOfBirth).format(dateFormat));
-  function onSearch(val) {
-    console.log('search:', val);
-  }
 
   return (
     <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
       <Helmet>
         <title>Chỉnh sửa thông tin cá nhân</title>
       </Helmet>
-      <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish} fields={field}>
+      <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish} initialValues={account}>
         <div className='grid md:grid-cols-3 gap-6 block md:col-span-2'>
           <label className='block'>
             <Label>Họ</Label>
@@ -115,14 +136,7 @@ const UpdaterForm = (props) => {
           <div className='mt-1'>
             <Label>Ngày sinh</Label>
             <Form.Item name='dateOfBirth'>
-              <div>
-                <DatePicker
-                  defaultValue={moment(moment(accountInformation.dateOfBirth).format(dateFormat), dateFormat)}
-                  format={dateFormat}
-                  onChange={handleDatePicker}
-                  placeholder='ngày tháng năm sinh'
-                />
-              </div>
+              <DatePicker format={dateFormat} onChange={handleDatePicker} placeholder='ngày tháng năm sinh' />
             </Form.Item>
           </div>
 

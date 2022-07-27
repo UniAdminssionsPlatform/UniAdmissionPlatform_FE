@@ -70,7 +70,7 @@ const ProfileContainer = () => {
           {/* CONTENT */}
           <div className='p-5 mx-auto bg-white rounded-[40px] shadow-lg sm:p-10 mt-10 lg:mt-20 lg:p-16 dark:bg-neutral-900'>
             {isLoading ? (
-              <Skeleton />
+              <Skeleton active />
             ) : (
               <UpdaterForm
                 accountInformation={accountInformation}
