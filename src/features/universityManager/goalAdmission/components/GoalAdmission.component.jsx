@@ -1,10 +1,11 @@
-import { Button, Col, Divider, Drawer, Row, Select, Skeleton, Space, Table } from 'antd';
+import { Button, Col, Divider, Drawer, Row, Select, Skeleton, Space, Table, Tooltip } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import { Helmet } from 'react-helmet';
 import AddGoalAdmissionFormContainer from '../AddGoalAdmissionForm.container';
 import React, { useState } from 'react';
 
 const GoalAdmissionComponent = (props) => {
-  const { listSchoolYear, data, onChangeYear, loading, selectedSchoolYear, loadingHeader } = props;
+  const { listSchoolYear, data, onChangeYear, loading, selectedSchoolYear, loadingHeader, confirmDelete } = props;
   const { Option } = Select;
   const [visibleAdd, setVisibleAdd] = useState(false);
 
@@ -57,6 +58,21 @@ const GoalAdmissionComponent = (props) => {
       title: 'Chỉ tiêu',
       dataIndex: 'sumOfQuantity',
       key: 'sumOfQuantity'
+    },
+    {
+      title: 'Thao tác',
+      render: (record) => (
+        <Tooltip title='Xóa'>
+          <Button
+            shape='circle'
+            type='danger'
+            icon={<CloseOutlined />}
+            onClick={() => {
+              confirmDelete(record);
+            }}
+          />
+        </Tooltip>
+      )
     }
   ];
 

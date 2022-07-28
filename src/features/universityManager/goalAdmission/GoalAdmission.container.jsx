@@ -1,6 +1,8 @@
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { GetGoalAdmisisonsNotification } from '../../../notification/GoalAdmisisonNotification';
+import { Modal } from 'antd';
+import { deleteGoalAdmission, getGoalAdmission } from '../../../services/GoalAdmissionService';
 import { getAllSchoolYear } from '../../../services/SchoolYearService';
-import { getGoalAdmission } from '../../../services/GoalAdmissionService';
 import { useDebouncedCallback } from 'use-debounce';
 import { useSelector } from 'react-redux';
 import GoalAdmissionComponent from './components/GoalAdmission.component';
@@ -54,6 +56,23 @@ const GoalAdmissionContainer = () => {
       'school-year-id': selectedSchoolYear
     });
   }, [selectedSchoolYear, user.university_id]);
+
+  const handleDelete = (data) => {
+    console.log('delete: ', data);
+  };
+  const confirmDelete = (value) => {
+    Modal.confirm({
+      title: 'Xác thực',
+      icon: <ExclamationCircleOutlined />,
+      content: `Xóa ngành ${value.parentProgramName} ?`,
+      okText: 'Có',
+      cancelText: 'Không',
+      onOk() {
+        handleDelete(value);
+      },
+      onCancel() {}
+    });
+  };
   return (
     <>
       <TitlePageComponent
@@ -67,6 +86,7 @@ const GoalAdmissionContainer = () => {
         onChangeYear={onChangeYear}
         loading={loading}
         loadingHeader={loadingHeader}
+        confirmDelete={confirmDelete}
       />
     </>
   );
