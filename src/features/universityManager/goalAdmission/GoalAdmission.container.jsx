@@ -15,11 +15,12 @@ const GoalAdmissionContainer = () => {
   const [data, setData] = useState();
 
   const [loading, setLoading] = useState(true);
+  const [loadingHeader, setLoadingheader] = useState(true);
 
   const getSchoolYear = () => {
     getAllSchoolYear().then((result) => {
       setListSchoolYear(result.data.data.list);
-      setLoading(false);
+      setLoadingheader(false);
     });
   };
 
@@ -29,9 +30,11 @@ const GoalAdmissionContainer = () => {
         if (result.data.data.universityProgramAdmissions.length === 0) {
           setData([]);
           GetGoalAdmisisonsNotification('success', 'Năm học này chưa có tiêu chí tuyển sinh');
+          setLoading(false);
         } else {
           setData(result.data.data.universityProgramAdmissions);
           GetGoalAdmisisonsNotification('success', 'Lấy tiêu chí tuyển sinh thành công');
+          setLoading(false);
         }
       })
       .catch((err) => {
@@ -47,8 +50,8 @@ const GoalAdmissionContainer = () => {
   useEffect(() => {
     getSchoolYear();
     loadData({
-      university: user.universityId ? user.universityId : '',
-      'school-year-id': selectedSchoolYear ? selectedSchoolYear : ''
+      university: user.universityId,
+      'school-year-id': selectedSchoolYear
     });
   }, [selectedSchoolYear, user.university_id]);
   return (
@@ -63,6 +66,7 @@ const GoalAdmissionContainer = () => {
         data={data}
         onChangeYear={onChangeYear}
         loading={loading}
+        loadingHeader={loadingHeader}
       />
     </>
   );

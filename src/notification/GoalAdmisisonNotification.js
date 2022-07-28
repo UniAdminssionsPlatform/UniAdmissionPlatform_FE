@@ -11,3 +11,15 @@ export const GetGoalAdmisisonsNotification = (status, input) => {
     });
   }
 };
+
+export const CreateGoalAdmisisonsNotification = (status, input) => {
+  if (status === 'success') {
+    notification.success({
+      message: `Thêm tiêu chí tuyển sinh thành công`
+    });
+  } else if (status === 'error') {
+    notification.error({
+      message: `${input}`
+    });
+  }
+};

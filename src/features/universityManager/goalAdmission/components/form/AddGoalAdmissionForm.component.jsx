@@ -1,6 +1,4 @@
-import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space } from 'antd';
-import { MinusCircleOutlined } from '@ant-design/icons';
-import Label from '../../../../../components/commons/Label/Label.component';
+import { Button, Col, Form, Input, Row, Select, Skeleton } from 'antd';
 import React from 'react';
 
 const AddGoalAdmisisonFormComponent = (props) => {
@@ -10,78 +8,121 @@ const AddGoalAdmisisonFormComponent = (props) => {
     schoolYear,
     onChangeMajor,
     onChangeSubjectGroup,
-    visibleSubjectGroup
+    onFinish,
+    loading,
+    form
   } = props;
   const { Option } = Select;
-
-  const onFinish = (values) => {
-    console.log('Received values of form:', values);
-  };
 
   const onSearch = (value) => {
     console.log('search:', value);
   };
 
-  const fieldsMajorDepartment = listMajorDepartment?.map((item) => ({
-    majorDepartmentId: `${item.id}`,
-    majorDepartmentName: `${item.name}`,
-    name: `Tiêu chí tuyển sinh ngành ${item.name} năm học ${schoolYear}`,
-    description: `Tiêu chí tuyển sinh ngành ${item.name} năm học ${schoolYear}`
-  }));
-
   return (
-    <Form name='add_goal_admission_form' onFinish={onFinish} autoComplete='off'>
-      Năm học: {schoolYear}
-      <Form.List name='majorDepartmentDetails'>
-        {(fields, { add, remove }) => (
-          <>
-            {fields.map(({ key, name, ...restField }) => (
-              <Space
-                key={key}
-                style={{
-                  display: 'flex',
-                  marginBottom: 8
-                }}>
-                <div className='box-content p-4 border-2 rounded-lg'>
-                  <Form.Item name='majorDepartmentId' style={{ width: '42.5vw' }}>
-                    <label className='block'>
-                      <Label>Chuyên ngành</Label>
-                      <div className='mt-1'>
-                        <Select
-                          showSearch
-                          placeholder=''
-                          optionFilterProp='children'
-                          onChange={onChangeMajor}
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }>
-                          {listMajorDepartment?.map((item) => (
-                            <Option value={item.id}>{item.name}</Option>
-                          ))}
-                        </Select>
-                      </div>
-                    </label>
-                  </Form.Item>
-                </div>
-
-                <MinusCircleOutlined onClick={() => remove(name)} />
-              </Space>
-            ))}
-            <Form.Item>
-              <Button type='dashed' onClick={() => add()} block>
-                Thêm ngành
-              </Button>
+    <Skeleton active loading={loading}>
+      <Form form={form} id='add_goal_admission_form' layout='vertical' hideRequiredMark onFinish={onFinish}>
+        <Row>
+          <h1>Tiêu chí tuyển sinh năm {schoolYear}</h1>
+        </Row>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              name='majorDepartmentId'
+              label='Chuyên ngành'
+              rules={[
+                {
+                  required: true,
+                  message: 'Chọn Chuyên ngành'
+                }
+              ]}>
+              <Select
+                showSearch
+                placeholder='Chọn Chuyên ngành'
+                optionFilterProp='children'
+                onChange={onChangeMajor}
+                onSearch={onSearch}
+                filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}>
+                {listMajorDepartment.map((item) => (
+                  <Option value={item.id}>{item.name}</Option>
+                ))}
+              </Select>
             </Form.Item>
-          </>
-        )}
-      </Form.List>
-      <Form.Item>
-        <Button type='primary' htmlType='submit'>
-          Lưu
-        </Button>
-      </Form.Item>
-    </Form>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name='subjectGroupId'
+              label='Khối thi'
+              rules={[
+                {
+                  required: true,
+                  message: 'Chọn khối thi'
+                }
+              ]}>
+              <Select
+                showSearch
+                placeholder='Chọn khối thi'
+                optionFilterProp='children'
+                onChange={onChangeSubjectGroup}
+                onSearch={onSearch}
+                filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}>
+                {listSubjectGroup.map((item) => (
+                  <Option value={item.id}>{item.name}</Option>
+                ))}
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              name='quantity'
+              label='Chỉ tiêu'
+              rules={[
+                {
+                  required: true,
+                  message: 'Nhập chỉ tiêu'
+                },
+                () => ({
+                  validator(_, value) {
+                    if (value < 0) return Promise.reject('Chỉ tiêu phải lớn hơn 0');
+
+                    return Promise.resolve();
+                  }
+                })
+              ]}>
+              <Input type='number' placeholder='Nhập chỉ tiêu' />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name='recordPoint'
+              label='Điểm chuẩn'
+              rules={[
+                {
+                  required: true,
+                  message: 'Nhập điểm chuẩn'
+                },
+                () => ({
+                  validator(_, value) {
+                    if (value < 0) return Promise.reject('Điểm không hợp lệ');
+
+                    if (value > 30) return Promise.reject('Điểm không hợp lệ');
+
+                    return Promise.resolve();
+                  }
+                })
+              ]}>
+              <Input type='number' placeholder='Nhập điểm chuẩn' />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Form.Item>
+          <Button type='primary' htmlType='submit'>
+            Lưu
+          </Button>
+        </Form.Item>
+      </Form>
+    </Skeleton>
   );
 };
 export default AddGoalAdmisisonFormComponent;

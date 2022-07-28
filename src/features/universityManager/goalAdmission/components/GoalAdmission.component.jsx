@@ -1,10 +1,10 @@
 import { Button, Col, Divider, Drawer, Row, Select, Skeleton, Space, Table } from 'antd';
 import { Helmet } from 'react-helmet';
-import React, { useState } from 'react';
 import AddGoalAdmissionFormContainer from '../AddGoalAdmissionForm.container';
+import React, { useState } from 'react';
 
 const GoalAdmissionComponent = (props) => {
-  const { listSchoolYear, data, onChangeYear, loading, selectedSchoolYear } = props;
+  const { listSchoolYear, data, onChangeYear, loading, selectedSchoolYear, loadingHeader } = props;
   const { Option } = Select;
   const [visibleAdd, setVisibleAdd] = useState(false);
 
@@ -67,7 +67,7 @@ const GoalAdmissionComponent = (props) => {
           <title>Tiêu chí tuyển sinh</title>
         </Helmet>
         <div>
-          <Skeleton active loading={loading}>
+          <Skeleton active loading={loadingHeader}>
             <Row justify='space-between'>
               <Col span={4}>
                 <Space>
@@ -94,24 +94,19 @@ const GoalAdmissionComponent = (props) => {
                     // disabled={disableAddButton}
                     style={{ marginBottom: '10px', borderRadius: 5 }}
                     onClick={showLargeDrawer}>
-                    Tạo tiêu chí tuyển sinh
+                    Thêm tiêu chí tuyển sinh
                   </Button>
-                  {/* <Button
-                  disabled={disableEditButton}
-                  style={{ marginBottom: '10px', borderRadius: 5 }}
-                  onClick={() => setVisibleEdit(true)}>
-                  Chỉnh sửa học bạ
-                </Button> */}
                 </Space>
               </Col>
             </Row>
-
+          </Skeleton>
+          <Skeleton active loading={loading}>
             <Table pagination={false} dataSource={data} columns={columns} bordered />
           </Skeleton>
         </div>
       </div>
       <Drawer
-        title='Tạo tiêu chí tuyển sinh'
+        title='Thêm tiêu chí tuyển sinh'
         placement='right'
         size='large'
         onClose={onCloseDrawer}
