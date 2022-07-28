@@ -1,4 +1,4 @@
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { FrownTwoTone } from '@ant-design/icons';
 import { GetGoalAdmisisonsNotification } from '../../../notification/GoalAdmisisonNotification';
 import { Modal } from 'antd';
 import { deleteGoalAdmission, getGoalAdmission } from '../../../services/GoalAdmissionService';
@@ -62,10 +62,10 @@ const GoalAdmissionContainer = () => {
   };
   const confirmDelete = (value) => {
     Modal.confirm({
-      title: 'Xác thực',
-      icon: <ExclamationCircleOutlined />,
-      content: `Xóa ngành ${value.parentProgramName} ?`,
-      okText: 'Có',
+      title: 'Rất tiếc',
+      icon: <FrownTwoTone twoToneColor='#eb2f96' />,
+      content: `Chức năng chưa implement :(`,
+      okText: 'ok',
       cancelText: 'Không',
       onOk() {
         handleDelete(value);
