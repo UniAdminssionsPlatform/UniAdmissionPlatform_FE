@@ -5,7 +5,7 @@ import React from 'react';
 import SectionLatestPosts from './components/SectionLatestPosts.component';
 
 const NewsComponent = (props) => {
-  const { news } = props;
+  const { news, onChange, handleChangeNewsName } = props;
   console.log('newscomponent : ', news);
   return (
     <div className='nc-PageHomeDemo6 relative [ nc-section-rounded-md ]'>
@@ -26,6 +26,8 @@ const NewsComponent = (props) => {
         <div className='dark bg-neutral-900 dark:bg-black dark:bg-opacity-20 text-neutral-100'>
           <div className='relative container'>
             <SectionLatestPosts
+              handleChangeNewsName={handleChangeNewsName}
+              onChange={onChange}
               heading='Tất Cả Bài Viết'
               className='py-16 lg:py-24'
               news={news}

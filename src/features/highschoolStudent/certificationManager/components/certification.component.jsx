@@ -193,7 +193,6 @@ const CertificationComponent = (props) => {
                 </div>
               </div>
             </div>
-            <Pagination />
           </div>
 
           <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8' style={{ width: '100%' }}>
