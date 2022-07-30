@@ -4,11 +4,13 @@ import { notification } from 'antd';
 import { useHistory } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import SingleNewComponent from './components/SingleNew.component';
+import { useDispatch } from 'react-redux';
 const SingleNewContainer = (props) => {
   const { newId } = props;
   const [newDetail, setNewsDetail] = useState();
   const [loading, setLoading] = useState(true);
   const history = useHistory();
+  const dispatch = useDispatch();
   const newsDetail = () => {
     getANewPublishByEventIdService(newId)
       .then((result) => {

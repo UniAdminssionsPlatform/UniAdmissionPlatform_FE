@@ -2,6 +2,8 @@ import { commentToTheEventService, getCommentByEventIdService } from '../../serv
 import { notification } from 'antd';
 import CommentComponent from './Comment.component';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { storeComment } from '../../redux-flow/comment/comment-action';
 const CommentContainer = (props) => {
   const { eventId } = props;
   const [isCommentLoading, setIsCommentLoading] = useState(true);
@@ -13,6 +15,7 @@ const CommentContainer = (props) => {
     limit: 3,
     page: 1
   });
+  const dispatch = useDispatch();
   const reRender = () => {
     setForceRender(Math.random());
   };
@@ -20,6 +23,7 @@ const CommentContainer = (props) => {
     getCommentByEventIdService(request)
       .then((res) => {
         setListComment(res.data.data);
+        dispatch(storeComment(res.data.data));
         setIsCommentLoading(false);
       })
       .catch(() => {

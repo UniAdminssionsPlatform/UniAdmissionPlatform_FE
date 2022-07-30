@@ -4,13 +4,19 @@ import { notification } from 'antd';
 import { useHistory } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import SingleEventComponent from './components/SingleEvent.component';
+import { storeEventPublish } from '../../../redux-flow/eventPublish/eventPublish-action';
+import { useDispatch } from 'react-redux';
 const SingleEventContainer = (props) => {
   const { eventId } = props;
   const history = useHistory();
-  const [event, setEvent] = useState({});
+  const [event, setEvent] = useState();
+  const dispatch = useDispatch();
   const getEventByEventId = () => {
     getAEventPublishByIdService(eventId)
-      .then((res) => setEvent(res.data))
+      .then((res) => {
+        setEvent(res.data.data);
+        dispatch(storeEventPublish(res.data.data));
+      })
       .catch(() => {
         notification.error({
           message: 'Không tìm thấy sự kiện này',
