@@ -46,11 +46,15 @@ import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
+import ProSideBarComponent from './ProSideBar.component';
 
 const AppRouter = () => (
   <>
     <ScrollToTop />
     <HeaderContainer />
+    <div className={'fixed'}>
+      <ProSideBarComponent />
+    </div>
     <Switch>
       //Manage publish page
       <Route path={PATH.EVENT_PAGE} exact>

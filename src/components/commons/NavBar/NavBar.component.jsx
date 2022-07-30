@@ -1,4 +1,3 @@
-import ButtonPrimary from '../../field/Button/Button.component';
 import React from 'react';
 import { PATH } from '../../../constants/Paths/Path';
 import { Button, Divider, Space, Tag, Typography } from 'antd';
