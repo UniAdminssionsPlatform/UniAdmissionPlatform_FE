@@ -5,18 +5,37 @@ import React, { useEffect, useState } from 'react';
 const SingleNewContainer = () => {
   const [news, setNews] = useState();
 
-  useEffect(() => {
-    getPageNews();
-  }, []);
+  const [dataSearch, setDataSearch] = useState({
+    page: 1,
+    limit: 10,
+    title: ''
+  });
 
-  const getPageNews = () => {
-    getNews().then((result) => {
-      setNews(result.data.data.list);
+  const onChange = (page, limit) => {
+    setDataSearch({
+      ...dataSearch,
+      page,
+      limit
+    });
+  };
+
+  const handleChangeNewsName = (data) => {
+    if (data !== undefined) setDataSearch({ ...dataSearch, title: data });
+    else setDataSearch({ ...dataSearch, title: '' });
+  };
+
+  useEffect(() => {
+    getPageNews(dataSearch);
+  }, [dataSearch]);
+
+  const getPageNews = (data) => {
+    getNews(data).then((result) => {
+      setNews(result.data.data);
     });
   };
   return (
     <>
-      <NewsComponent news={news} />
+      <NewsComponent news={news} onChange={onChange} handleChangeNewsName={handleChangeNewsName} />
     </>
   );
 };
