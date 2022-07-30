@@ -1,5 +1,8 @@
+import { FrownTwoTone } from '@ant-design/icons';
+import { GetGoalAdmisisonsNotification } from '../../../notification/GoalAdmisisonNotification';
+import { Modal } from 'antd';
+import { deleteGoalAdmission, getGoalAdmission } from '../../../services/GoalAdmissionService';
 import { getAllSchoolYear } from '../../../services/SchoolYearService';
-import { getGoalAdmission } from '../../../services/GoalAdmissionService';
 import { useDebouncedCallback } from 'use-debounce';
 import { useSelector } from 'react-redux';
 import GoalAdmissionComponent from './components/GoalAdmission.component';
@@ -14,21 +17,30 @@ const GoalAdmissionContainer = () => {
   const [data, setData] = useState();
 
   const [loading, setLoading] = useState(true);
+  const [loadingHeader, setLoadingheader] = useState(true);
 
   const getSchoolYear = () => {
     getAllSchoolYear().then((result) => {
       setListSchoolYear(result.data.data.list);
-      setLoading(false);
+      setLoadingheader(false);
     });
   };
 
   const loadData = (value) => {
     getGoalAdmission(value)
       .then((result) => {
-        setData(result.data.data.universityProgramAdmissions);
+        if (result.data.data.universityProgramAdmissions.length === 0) {
+          setData([]);
+          GetGoalAdmisisonsNotification('success', 'Năm học này chưa có tiêu chí tuyển sinh');
+          setLoading(false);
+        } else {
+          setData(result.data.data.universityProgramAdmissions);
+          GetGoalAdmisisonsNotification('success', 'Lấy tiêu chí tuyển sinh thành công');
+          setLoading(false);
+        }
       })
       .catch((err) => {
-        console.log(err.responses.data.msg);
+        GetGoalAdmisisonsNotification('error');
       });
   };
 
@@ -40,10 +52,34 @@ const GoalAdmissionContainer = () => {
   useEffect(() => {
     getSchoolYear();
     loadData({
-      university: user.universityId ? user.universityId : '',
-      'school-year-id': selectedSchoolYear ? selectedSchoolYear : ''
+      university: user.universityId,
+      'school-year-id': selectedSchoolYear
     });
   }, [selectedSchoolYear, user.university_id]);
+
+  const handleDelete = (data) => {
+    console.log('delete: ', data);
+  };
+  const confirmDelete = (value) => {
+    Modal.confirm({
+      title: 'Rất tiếc',
+      icon: (
+        <FrownTwoTone
+          twoToneColor='#eb2f96'
+          style={{
+            fontSize: '32px'
+          }}
+        />
+      ),
+      content: `Chức năng chưa implement :(`,
+      okText: 'ok',
+      cancelText: 'Đóng',
+      onOk() {
+        handleDelete(value);
+      },
+      onCancel() {}
+    });
+  };
   return (
     <>
       <TitlePageComponent
@@ -52,9 +88,12 @@ const GoalAdmissionContainer = () => {
       />
       <GoalAdmissionComponent
         listSchoolYear={listSchoolYear}
+        selectedSchoolYear={selectedSchoolYear}
         data={data}
         onChangeYear={onChangeYear}
         loading={loading}
+        loadingHeader={loadingHeader}
+        confirmDelete={confirmDelete}
       />
     </>
   );
