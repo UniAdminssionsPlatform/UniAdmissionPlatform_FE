@@ -46,7 +46,8 @@ export const PATH_UNIVERSITY_MANAGER = {
   LIST_ACCOUNT_PENDING: '/uni/account',
   PUBLIC_EVENT: '/uni/public-event',
   UN_PUBLIC_EVENT: '/uni/unpublic-event',
-  EVENT_CHECK: '/uni/event-check'
+  EVENT_CHECK: '/uni/event-check',
+  ANALYTICS_DATA: '/uni/analytics-student-data'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',

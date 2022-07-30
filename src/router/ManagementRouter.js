@@ -1,5 +1,6 @@
 import {
   ApartmentOutlined,
+  BarChartOutlined,
   BookOutlined,
   CalendarOutlined,
   ContactsOutlined,
@@ -30,6 +31,7 @@ import SelectHighSchoolPage from '../pages/universityManager/manageEvent/SelectH
 import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
+import FlexMonsterPage from '../pages/universityManager/FlexMonster.page';
 
 const ManagementRouter = () => {
   const { Header, Content, Sider } = Layout;
@@ -53,7 +55,8 @@ const ManagementRouter = () => {
       getItem('Lịch sử sự kiện', '5')
     ]),
     getItem('Quản lý Bài viết', '6', <StarOutlined />),
-    getItem('Tiêu chí tuyển sinh', '9', <WalletOutlined />)
+    getItem('Tiêu chí tuyển sinh', '9', <WalletOutlined />),
+    getItem('Dữ liệu học sinh', '10', <BarChartOutlined />)
   ];
   const itemsHighSchool = [
     getItem('Lịch', '1', <CalendarOutlined />),
@@ -86,6 +89,9 @@ const ManagementRouter = () => {
         break;
       case '9':
         history.push(PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION);
+        break;
+      case '10':
+        history.push(PATH_UNIVERSITY_MANAGER.ANALYTICS_DATA);
         break;
     }
   };
@@ -138,6 +144,12 @@ const ManagementRouter = () => {
                 component={() => <GoalAdmissionPage />}
                 path={PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION}
                 key={PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION}
+                exact
+              />
+              <UniversityManagerRouter
+                component={() => <FlexMonsterPage />}
+                path={PATH_UNIVERSITY_MANAGER.ANALYTICS_DATA}
+                key={PATH_UNIVERSITY_MANAGER.ANALYTICS_DATA}
                 exact
               />
               <UniversityManagerRouter
