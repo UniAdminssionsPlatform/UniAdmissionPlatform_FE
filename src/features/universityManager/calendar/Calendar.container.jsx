@@ -1,9 +1,9 @@
 import { getListEventFromDateToDateApi } from '../../../services/AdminUniversityService/AdminUniversityEventService';
 import { useSelector } from 'react-redux';
 import CalendarComponent from './Calendar.component';
-import Layout from '../../../components/Layout';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
+import { Layout } from 'antd';
 
 const CalendarContainer = () => {
   const [listSlot, setListSlot] = useState();
@@ -15,11 +15,7 @@ const CalendarContainer = () => {
     getListEventFromDateToDateApi({
       universityID: user?.universityId,
       fromDate: '',
-      // selectedDate?.startDateSelect !== undefined ? selectedDate.startDateSelect.format('L') : moment().format('L'),
       toDate: ''
-      // selectedDate?.endDateSelect !== undefined
-      //   ? selectedDate.endDateSelect.format('L')
-      //   : moment().add(30, 'days').format('L')
     })
       .then((res) => {
         setListSlot(res.data.data);

@@ -6,10 +6,11 @@ import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
 import FlashOnRoundedIcon from '@mui/icons-material/FlashOnRounded';
 import NewReleasesRoundedIcon from '@mui/icons-material/NewReleasesRounded';
+
 const ProSideBarComponent = () => {
   const { Text, Title, Link } = Typography;
   return (
-    <div className='z-11'>
+    <div className='z-100'>
       <ProSidebar>
         <SidebarHeader>
           <div

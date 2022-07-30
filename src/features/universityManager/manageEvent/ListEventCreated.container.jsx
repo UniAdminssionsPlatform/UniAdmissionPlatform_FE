@@ -153,12 +153,14 @@ const ListEventCreatedContainer = (props) => {
       </Space>
       <Space direction={'vertical'}>
         <Table
+          size={'small'}
           columns={column}
           dataSource={refactorData(listEventRegister?.list)}
           bordered={true}
           pagination={false}
           loading={isLoading}
-          style={{ width: '82vw' }}
+          style={{ width: '85vw' }}
+          scroll={{ x: 700, y: 544 }}
         />
         {listEventRegister?.total > 10 ? (
           <Pagination showSizeChanger onChange={onShowSizeChange} total={listEventRegister?.total} />
