@@ -1,8 +1,7 @@
-import { Tabs, Typography } from 'antd';
+import { Layout, Tabs, Typography } from 'antd';
 import { useState } from 'react';
 import CreateEventContainer from '../../../features/universityManager/manageEvent/CreateEvent.container';
 import EventCheckContainer from '../../../features/universityManager/eventCheck/eventCheck.container';
-import Layout from '../../../components/Layout';
 import ListEventCreatedContainer from '../../../features/universityManager/manageEvent/ListEventCreated.container';
 import PublicEventContainer from '../../../features/universityManager/publicEvent/publicEvent.container';
 import UnPublicEventContainer from '../../../features/universityManager/publicEvent/unpublicEvent.container';

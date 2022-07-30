@@ -28,12 +28,18 @@ const PublicEventComponent = (props) => {
       title: 'Tên Sự Kiện',
       dataIndex: 'name',
       key: 'name',
-      width: '10%'
+      width: '15%'
     },
     {
       title: 'Địa Chỉ',
       dataIndex: 'address',
       key: 'address',
+      width: '10%'
+    },
+    {
+      title: 'Diễn giả',
+      dataIndex: 'hostName',
+      key: 'hostName',
       width: '10%'
     },
     {
@@ -45,7 +51,7 @@ const PublicEventComponent = (props) => {
         if (type === EVENT_UNI) return <Tag color='#87d068'>Sự kiện tổ chức tại trường đại học</Tag>;
         if (type === EVENT_ORG) return <Tag color='#108ee9'>Sự kiện tổ chức tại doanh nghiệp</Tag>;
       },
-      width: '10%'
+      width: '15%'
     },
     {
       title: 'Trạng thái',
@@ -56,7 +62,7 @@ const PublicEventComponent = (props) => {
         if (type === EVENT.DONE) return <Tag color='#87d068'>Sự kiện đã kết thúc</Tag>;
         if (type === EVENT.CANCEL) return <Tag color='#108ee9'>Sự kiện bị hủy</Tag>;
       },
-      width: '20%'
+      width: '10%'
     },
     {
       title: 'Thời gian bắt đầu',
@@ -107,7 +113,9 @@ const PublicEventComponent = (props) => {
           columns={columns}
           dataSource={refactorData(event134?.list)}
           pagination={false}
-          style={{ width: '80vw' }}
+          size={'small'}
+          style={{ width: '85vw' }}
+          scroll={{ x: 700, y: 544 }}
         />
         <Pagination showSizeChanger onChange={onChange} total={event134?.total} bordered={true} />
       </Space>
