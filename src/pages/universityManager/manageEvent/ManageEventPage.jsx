@@ -1,10 +1,11 @@
 import { Layout, Tabs, Typography } from 'antd';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import CreateEventContainer from '../../../features/universityManager/manageEvent/CreateEvent.container';
 import EventCheckContainer from '../../../features/universityManager/eventCheck/eventCheck.container';
 import ListEventCreatedContainer from '../../../features/universityManager/manageEvent/ListEventCreated.container';
 import PublicEventContainer from '../../../features/universityManager/publicEvent/publicEvent.container';
 import UnPublicEventContainer from '../../../features/universityManager/publicEvent/unpublicEvent.container';
+import TitlePageComponent from '../../../components/decorator/TitlePage.component';
 
 const ManageEventPage = () => {
   const { TabPane } = Tabs;
@@ -15,11 +16,12 @@ const ManageEventPage = () => {
   };
   return (
     <Layout>
-      <Title level={3}>Quản lý sự kiện</Title>
-      <Text type='secondary'>
-        Trong mục quản lý sự kiện, bạn có thể xem, tạo mới và chỉnh sửa các sự kiện đã tạo. Bạn có thể thay đổi một sự
-        kiện truyền thông hay đóng một sự kiện
-      </Text>
+      <TitlePageComponent
+        title={'Quản lý sự kiện'}
+        subTitle={
+          'Trong mục quản lý sự kiện, bạn có thể xem, tạo mới và chỉnh sửa các sự kiện đã tạo. Bạn có thể thay đổi một sự kiện truyền thông hay đóng một sự kiện'
+        }
+      />
       <Tabs
         defaultActiveKey='1'
         type='card'

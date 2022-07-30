@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification } from 'antd';
+import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification, Divider } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
 import { getListEventForUniversity } from '../../../services/GetListEventForUniversity';
 import { refactorData } from '../../../utils/common';
@@ -7,12 +7,18 @@ import { useStateWithCallback } from '../../../components/CustomHOOK/SyncUseStat
 import DetailEventComponent from '../../../components/detailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-
+import EditIcon from '@mui/icons-material/Edit';
+import PreviewIcon from '@mui/icons-material/Preview';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import { COLOR_ICON } from '../../../constants/Color';
+import FlexmonsterReact from 'react-flexmonster';
+import { ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING } from '../../../constants/Endpoints/ReportEndpoint';
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
   const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
+  const [resource, setResource] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = (data) => {
     setCurrentSelectedEvent(data);
@@ -120,26 +126,38 @@ const ListEventCreatedContainer = (props) => {
       title: 'Hành Động',
       render: (status, data) => (
         <Space>
-          <Button type={'primary'} danger onClick={() => showModal(data)}>
-            Xem chi tiết
-          </Button>
-          <Button type={'primary'} onClick={() => showModal(data)}>
-            Cập nhật
-          </Button>
+          <PreviewIcon onClick={() => showModal(data)} style={{ cursor: 'pointer', color: COLOR_ICON }} />
+          <Divider type={'vertical'} />
+          <EditIcon onClick={() => showModal(data)} style={{ cursor: 'pointer', color: COLOR_ICON }} />
+          <Divider type={'vertical'} />
+          <AssessmentIcon style={{ cursor: 'pointer', color: COLOR_ICON }} onClick={() => handleShowReport(data)} />
         </Space>
       ),
-      width: '12%'
+      width: '10%'
     }
   ];
-
+  const handleShowReport = (data) => {
+    setResource(`${ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING}?event-id=${data.id}&token=${user.token}`);
+    showModal();
+  };
   const onShowSizeChange = (page, PageSize) => {
     setDataSearch({ ...dataSearch, page, limit: PageSize });
   };
   return (
     <div>
-      <Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
-        <DetailEventComponent event={currentSelectedEvent} loading={false} />
-      </Modal>
+      {/*<Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>*/}
+      {/*  {resource ? (*/}
+      {/*    <FlexmonsterReact.Pivot*/}
+      {/*      toolbar={true}*/}
+      {/*      componentFolder='https://cdn.flexmonster.com/'*/}
+      {/*      width='100%'*/}
+      {/*      report={resource}*/}
+      {/*      reportcomplete={onReportComplete}*/}
+      {/*    />*/}
+      {/*  ) : (*/}
+      {/*    <DetailEventComponent event={currentSelectedEvent} loading={false} />*/}
+      {/*  )}*/}
+      {/*</Modal>*/}
       <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />
         <Search placeholder='Nhập tên diễn giả' style={{ width: 300 }} onSearch={handleChangeEventHost} />
