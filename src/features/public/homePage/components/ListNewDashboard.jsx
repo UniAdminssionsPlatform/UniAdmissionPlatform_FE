@@ -1,4 +1,3 @@
-import { DEMO_AUTHORS } from '../../../../data/authors';
 import { DEMO_CATEGORIES } from '../../../../data/taxonomies';
 import { DEMO_POSTS } from '../../../../data/posts';
 import { Helmet } from 'react-helmet';
@@ -10,8 +9,9 @@ import Card11 from '../../../../components/commons/Card/Card11/Card11.component'
 import Pagination from '../../../../components/commons/Pagination/Pagination';
 import SectionGridCategoryBox from '../../../../components/commons/SectionGridCategoryBox/SectionGridCategoryBox.component';
 import SectionSliderNewAuthors from '../../../../components/commons/SectionSliderNewAuthors/SectionSliderNewAuthors.component';
-
-const posts = DEMO_POSTS.filter((_, i) => i < 12);
+import { DEMO_AUTHORS } from '../../../../data/authors';
+import { Typography } from 'antd';
+const posts = DEMO_POSTS;
 const AUTHOR = DEMO_AUTHORS[0];
 const FILTERS = [
   { name: 'Most Recent' },
@@ -21,17 +21,18 @@ const FILTERS = [
   { name: 'Most Viewed' }
 ];
 const TABS = ['Articles', 'Favorites', 'Saved'];
-
-const ListNewComponent = () => {
+const ListNewDashboard = () => {
+  const { Text, Title } = Typography;
   return (
     <div className={`nc-PageAuthorV2`} data-nc-id='PageAuthorV2'>
       <Helmet>
         <title>Author || Blog Magazine React Template</title>
       </Helmet>
-      <div className='container py-16 lg:pb-28 lg:pt-20 space-y-16 lg:space-y-28'>
+      <div className='py-16 lg:pb-28 lg:pt-20 space-y-16 lg:space-y-28'>
         <main>
           <div className='flex flex-col sm:items-center sm:justify-between sm:flex-row'>
             <div className='block my-4 border-b w-full border-neutral-100 sm:hidden'></div>
+            <Title level={1}>🧩 Sự kiện tuyển sinh</Title>
             <div className='flex justify-end'>
               <ArchiveFilterListBox lists={FILTERS} />
             </div>
@@ -63,5 +64,4 @@ const ListNewComponent = () => {
     </div>
   );
 };
-
-export default ListNewComponent;
+export default ListNewDashboard;
