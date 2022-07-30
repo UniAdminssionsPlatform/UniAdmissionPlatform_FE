@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form, Input, Select } from 'antd';
+import { Button, DatePicker, Form, Input, Select, Tooltip } from 'antd';
 import {
   address,
   email,
@@ -248,9 +248,13 @@ const RegisterForm = (props) => {
               </Form.Item>
               <Form.Item name={codeWithRole} rules={vcode}>
                 <label className='block'>
-                  <Label>Mã</Label>
-                  <Input type='text' onChange={(e) => handleCode(e.target.value)} />
-
+                  <Label>Mã xác thực</Label>
+                  <Tooltip
+                    trigger={['focus']}
+                    placement='topLeft'
+                    title='Mã xác thực dùng để xác định vai trò của bạn trong hệ thống và được nhận từ người đứng đầu tổ chức của bạn.'>
+                    <Input type='text' onChange={(e) => handleCode(e.target.value)} />
+                  </Tooltip>
                   {schoolName !== '' ? (
                     <font color='green'>{schoolName}</font>
                   ) : (

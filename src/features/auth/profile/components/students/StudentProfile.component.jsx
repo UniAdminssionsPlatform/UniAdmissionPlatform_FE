@@ -22,7 +22,7 @@ const StudentProfileComponent = (props) => {
           <div className='rounded-3xl md:rounded-[40px] relative aspect-w-16 aspect-h-12 sm:aspect-h-7 xl:sm:aspect-h-6 overflow-hidden '>
             <NcImage
               containerClassName='absolute inset-0'
-              src='https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+              src='https://firebasestorage.googleapis.com/v0/b/uni-admission-platform.appspot.com/o/image%2F48f1aea6-a1b1-4102-8b60-10b4e716ae607%2F27%2F2022%207%3A52%3A18%20AM.jpg?alt=media'
               className='object-cover w-full h-full'
             />
           </div>

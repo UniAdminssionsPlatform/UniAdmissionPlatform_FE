@@ -7,7 +7,7 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-
+import 'flexmonster/flexmonster.css';
 ReactDOM.render(
   <React.StrictMode>
     <App />

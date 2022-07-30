@@ -1,11 +1,12 @@
-import { Empty, Input, Pagination, Skeleton } from 'antd';
+import { Button, Empty, Input, Pagination, Skeleton } from 'antd';
 import { Helmet } from 'react-helmet';
+import { SearchOutlined } from '@ant-design/icons';
 import CardEvent from '../listEvent/Card/CardEvent.component';
 import HeadBackgroundCommon from '../../../../../components/commons/HeadBackgroundCommon/HeadBackgroundCommon.component';
 import React from 'react';
 
 const ListEventComponent = (props) => {
-  const { listEvent, onSearch, loading, total, onChangePage } = props;
+  const { listEvent, onSearch, loading, total, onChangePage, onClick } = props;
 
   return (
     <>
@@ -16,19 +17,36 @@ const ListEventComponent = (props) => {
         </Helmet>
         <div className='container'>
           <header className='max-w-2xl mx-auto -mt-10 flex flex-col lg:-mt-7'>
-            <Input
-              size='large'
-              placeholder='Bạn muốn tìm sự kiện gì...'
-              allowClear
-              onChange={(e) => {
-                onSearch(e.target.value);
-              }}
-              style={{
-                width: '100%',
-                height: 50,
-                borderRadius: 30
-              }}
-            />
+            <div className='grid grid-cols-3 gap-1'>
+              <div className='col-span-2'>
+                <Input
+                  size='large'
+                  placeholder='Bạn muốn tìm sự kiện gì...'
+                  allowClear
+                  onChange={(e) => {
+                    onSearch(e.target.value);
+                  }}
+                  style={{
+                    width: '100%',
+                    height: 50,
+                    borderRadius: 10
+                  }}
+                />
+              </div>
+              <div>
+                <Button
+                  type='primary'
+                  size='large'
+                  style={{
+                    width: '50%',
+                    height: 50,
+                    borderRadius: 10
+                  }}
+                  onClick={() => onClick()}>
+                  Tìm kiếm
+                </Button>
+              </div>
+            </div>
           </header>
         </div>
         <div className='container py-16 lg:py-28 space-y-16 lg:space-y-28'>

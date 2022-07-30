@@ -3,7 +3,9 @@ import { notification } from 'antd';
 export const handleNotification = (status) => {
   if (status === 'success') {
     notification.success({
-      message: 'Cập nhật thành công!'
+      message: 'Cập nhật thành công!',
+      description: 'Vui lòng đợi trong giây lát',
+      duration: 2
     });
   } else if (status === 'error') {
     notification.error({
