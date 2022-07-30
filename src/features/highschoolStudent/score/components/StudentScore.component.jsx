@@ -1,4 +1,5 @@
-import { Button, Col, Row, Select, Skeleton, Space, Table } from 'antd';
+import { Button, Select, Skeleton, Space, Table, Tooltip } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import { Helmet } from 'react-helmet';
 import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import ModalAddContainer from '../modalAdd.container';
@@ -14,7 +15,9 @@ const StudentScoreComponent = (props) => {
     data,
     selectedSchoolYear,
     disableEditButton,
-    disableAddButton
+    disableAddButton,
+    confirmDeleteRecordItem,
+    confirmDeleteSchoolRecord
   } = props;
 
   const { Option } = Select;
@@ -29,6 +32,22 @@ const StudentScoreComponent = (props) => {
     {
       title: 'Điểm',
       dataIndex: 'score'
+    },
+    {
+      title: 'Thao tác',
+      width: 100,
+      render: (records) => (
+        <Tooltip title='Xóa môn học khỏi học bạ'>
+          <Button
+            shape='circle'
+            type='danger'
+            icon={<CloseOutlined />}
+            onClick={() => {
+              confirmDeleteRecordItem(records);
+            }}
+          />
+        </Tooltip>
+      )
     }
   ];
 
@@ -40,8 +59,8 @@ const StudentScoreComponent = (props) => {
         </Helmet>
         <LayoutPage subHeading='' headingEmoji='🔑' heading=''>
           <div>
-            <Row justify='space-between'>
-              <Col span={4}>
+            <div className='grid grid-cols-4 gap-4'>
+              <div>
                 <Space>
                   Năm học
                   <Select
@@ -56,10 +75,10 @@ const StudentScoreComponent = (props) => {
                     ))}
                   </Select>
                 </Space>
-              </Col>
-              <Col span={2}></Col>
-              <Col span={2}></Col>
-              <Col span={4}>
+              </div>
+              <div></div>
+              <div></div>
+              <div>
                 <Space>
                   <Button
                     type='primary'
@@ -74,9 +93,19 @@ const StudentScoreComponent = (props) => {
                     onClick={() => setVisibleEdit(true)}>
                     Chỉnh sửa học bạ
                   </Button>
+                  <Button
+                    onClick={() => {
+                      confirmDeleteSchoolRecord();
+                    }}
+                    type='danger'
+                    disabled={disableEditButton}
+                    style={{ marginBottom: '10px', borderRadius: 5 }}>
+                    Xóa học bạ
+                  </Button>
                 </Space>
-              </Col>
-            </Row>
+              </div>
+            </div>
+
             <Skeleton active loading={loading}>
               <Table pagination={false} dataSource={data} columns={columns} bordered />
             </Skeleton>

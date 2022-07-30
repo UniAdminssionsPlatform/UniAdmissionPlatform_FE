@@ -1,12 +1,14 @@
-import { Skeleton } from 'antd';
+import { PATH_HIGH_SCHOOL_STUDENT } from '../../../constants/Paths/Path';
 import { getAccountInfor } from '../../../services/ManageProfileService';
 import { getListNation } from '../../../services/NationalityService';
 import { getListProvinces } from '../../../services/ProvinceService';
 import { handleNotification } from '../../../notification/UpdateAccountNotification';
 import { updateAccount } from '../../../services/Accounts/Accounts.service';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import UpdaterForm from './components/Profile.component';
+import moment from 'moment';
 
 const ProfileContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,14 +16,21 @@ const ProfileContainer = () => {
   const [accountInformation, setAccountInformation] = useState('');
   const [provinces, setProvinces] = useState();
   const [nationalities, setNationalities] = useState();
+  const [imgeUrl, setImageUrl] = useState();
   const { user } = useSelector((state) => state.authentication);
+  const history = useHistory();
+  const reload = () => {
+    history.push(PATH_HIGH_SCHOOL_STUDENT.PROFILE);
+  };
 
   const onFinish = (values) => {
     values.dateOfBirth = dob;
     values.wardId = accountInformation.wardId;
+    values.profileImageUrl = imgeUrl;
     updateAccount(values)
       .then((result) => {
         handleNotification('success');
+        setTimeout(reload, 2000);
       })
       .catch((error) => {
         handleNotification('error');
@@ -37,6 +46,7 @@ const ProfileContainer = () => {
   const accountDetail = (accountId) => {
     getAccountInfor(accountId).then((result) => {
       setAccountInformation(result.data.data);
+      setDob(result.data.data.dateOfBirth);
       setIsLoading(false);
     });
   };
@@ -53,7 +63,8 @@ const ProfileContainer = () => {
   };
 
   const handleDatePicker = (date, dateString) => {
-    setDob(dateString);
+    const newDate = moment(dateString, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+    setDob(newDate);
   };
 
   return (
@@ -62,24 +73,20 @@ const ProfileContainer = () => {
         <div className='container relative pt-10 pb-16 lg:pt-20 lg:pb-28'>
           {/* HEADER */}
           <header className='text-center max-w-2xl mx-auto'>
-            <span className='block text-sm mt-2 text-neutral-700 sm:text-base dark:text-neutral-200'>
-              Chỉnh Sửa Thông Tin Cá Nhân
-            </span>
+            <h1>Chỉnh Sửa Thông Tin Cá Nhân</h1>
           </header>
 
           {/* CONTENT */}
           <div className='p-5 mx-auto bg-white rounded-[40px] shadow-lg sm:p-10 mt-10 lg:mt-20 lg:p-16 dark:bg-neutral-900'>
-            {isLoading ? (
-              <Skeleton />
-            ) : (
-              <UpdaterForm
-                accountInformation={accountInformation}
-                onFinish={onFinish}
-                provinces={provinces}
-                nation={nationalities}
-                handleDatePicker={handleDatePicker}
-              />
-            )}
+            <UpdaterForm
+              accountInformation={accountInformation}
+              onFinish={onFinish}
+              provinces={provinces}
+              nation={nationalities}
+              handleDatePicker={handleDatePicker}
+              setImageUrl={setImageUrl}
+              isLoading={isLoading}
+            />
           </div>
         </div>
       </div>
