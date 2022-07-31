@@ -1,4 +1,4 @@
-import { getDetailEvent } from '../../../services/EventService';
+import { getDetailEventByEventIdService } from '../../../services/EventService';
 import { handleNotification } from '../../../notification/DetailEventNotification';
 import DetailEventComponent from '../../../components/detailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ const DetailEventContainer = (props) => {
   }, [eventId]);
 
   const getEvent = (eventID) => {
-    getDetailEvent(eventID)
+    getDetailEventByEventIdService(eventID)
       .then((result) => {
         setEvent(result.data.data);
         setLoading(false);

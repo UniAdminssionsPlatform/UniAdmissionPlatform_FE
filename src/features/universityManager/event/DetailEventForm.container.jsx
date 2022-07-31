@@ -1,4 +1,4 @@
-import { getDetailEvent } from '../../../services/EventService';
+import { getDetailEventByEventIdService } from '../../../services/EventService';
 import { getDistrictById } from '../../../services/DistrictService';
 import { getProvinceById } from '../../../services/ProvinceService';
 import { handleNotification } from '../../../notification/DetailEventNotification';
@@ -28,7 +28,7 @@ const DetailEventFormContainer = (props) => {
   };
 
   const getEvent = (id) => {
-    getDetailEvent(id)
+    getDetailEventByEventIdService(id)
       .then((result) => {
         setEvent(result.data.data);
         getProvince(result.data.data.provinceId);

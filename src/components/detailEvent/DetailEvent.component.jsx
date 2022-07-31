@@ -1,12 +1,14 @@
-import { Spin } from 'antd';
+import { Spin, Typography } from 'antd';
 import DetailEventContent from './DetailEventContent.component';
 import DetailEventHeader from './DetailEventHeader.component';
 import React from 'react';
 import MakeDownView from '../MarkdownView/MarkdownView.component';
-
+import WidgetHeading1 from '../commons/WidgetTags/WidgetHeading.component';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 const DetailEventComponent = (props) => {
   const { event, loading } = props;
   console.log(event);
+  const { Title, Text } = Typography;
   return (
     <>
       <div className={`nc-PageSingleTemplate3`} data-nc-id='PageSingleTemplate3'>
@@ -25,10 +27,23 @@ const DetailEventComponent = (props) => {
             </div>
           </header>
           {/* SINGLE MAIN CONTENT */}
-          <div className='container mt-10'>
-            <MakeDownView str={event.description} />
-            <DetailEventContent event={event} />
+          <div className='container flex flex-col my-10 lg:flex-row '>
+            <div className='w-full'>
+              <MakeDownView str={event.description} />
+            </div>
+            <div className='w-full mt-12 lg:mt-0 lg:w-2/5 lg:pl-10 xl:pl-0 xl:w-1/3'>
+              <div className='nc-WidgetTags rounded-3xl overflow-hidden bg-orange-200 dark:bg-neutral-800 w-96'>
+                <WidgetHeading1 title='✨  Chi tiết về sự kiện' viewAll={{ label: 'View all' }} />
+                <div className='flex flex-wrap p-4 xl:p-5'>
+                  <Text>
+                    <AccessTimeIcon />
+                    {/*{event.startTime ? event.startTime : event.slot.timeStart}*/}
+                  </Text>
+                </div>
+              </div>
+            </div>
           </div>
+          <DetailEventContent event={event} />
         </Spin>
       </div>
     </>
