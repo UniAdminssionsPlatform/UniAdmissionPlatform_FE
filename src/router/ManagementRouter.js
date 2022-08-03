@@ -49,11 +49,7 @@ const ManagementRouter = () => {
 
   const itemsUni = [
     getItem('Lịch', '1', <CalendarOutlined />),
-    getItem('Sự kiện', '2', <BookOutlined />, [
-      getItem('Quản lý sự kiện', '3'),
-      getItem('Đăng ký sự kiện', '4'),
-      getItem('Lịch sử sự kiện', '5')
-    ]),
+    getItem('Sự kiện', '2', <BookOutlined />, [getItem('Quản lý sự kiện', '3'), getItem('Đăng ký sự kiện', '4')]),
     getItem('Quản lý Bài viết', '6', <StarOutlined />),
     getItem('Tiêu chí tuyển sinh', '9', <WalletOutlined />),
     getItem('Dữ liệu học sinh', '10', <BarChartOutlined />)
@@ -75,9 +71,6 @@ const ManagementRouter = () => {
         break;
       case '4':
         history.push(PATH_UNIVERSITY_MANAGER.REGIS_EVENT);
-        break;
-      case '5':
-        history.push(PATH_UNIVERSITY_MANAGER.REGISTERED_EVENT);
         break;
       case '6':
         history.push('');

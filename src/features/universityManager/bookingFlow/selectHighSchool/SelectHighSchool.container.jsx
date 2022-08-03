@@ -1,4 +1,4 @@
-import { Avatar, Pagination, Space, Table } from 'antd';
+import { Avatar, Divider, Layout, Pagination, Space, Table, Tooltip } from 'antd';
 import { PATH_UNIVERSITY_MANAGER } from '../../../../constants/Paths/Path';
 import { getListDistrictByProvince } from '../../../../services/DistrictService';
 import { getListHighSchool } from '../../../../services/HighSchoolService';
@@ -7,11 +7,12 @@ import { handleFailNotification, handleSuccessNotification } from '../../../../n
 import { setSelectedHighSchool } from '../../../../redux-flow/selectedHighSchool/selectedHighSchool-action';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Layout from '../../../../components/Layout';
 import React, { useEffect, useState } from 'react';
 import SearchBarComponent from './SearchBar.component';
 import TitlePageComponent from '../../../../components/decorator/TitlePage.component';
-
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import HistoryIcon from '@mui/icons-material/History';
+import { COLOR_ICON } from '../../../../constants/Color';
 const SelectHighSchoolContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -75,22 +76,25 @@ const SelectHighSchoolContainer = () => {
     {
       title: 'Hành động',
       render: (id, data) => (
-        <Space size='middle'>
+        <Space Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
           {data.status === 1 ? (
-            <a
-              className='text-primary-800 dark:text-primary-500 hover:text-primary-900'
-              onClick={() => handleBookHighSchool(data)}>
-              lựa chọn
-            </a>
+            <Tooltip title='Xem lịch sử event'>
+              <HistoryIcon style={{ cursor: 'pointer', color: COLOR_ICON }} className={`hover:fill-neutral-100`} />
+            </Tooltip>
           ) : (
             <a className='text-primary-800/25 dark:text-primary-500 cursor-not-allowed'>không khả dụng</a>
           )}
-          <a href='/#' className='text-rose-600 hover:text-rose-900'>
-            | xem lịch sử
-          </a>
+          <Divider type={'vertical'} />
+          <Tooltip title='Chọn trường'>
+            <ArrowForwardIosIcon
+              onClick={() => handleBookHighSchool(data)}
+              style={{ cursor: 'pointer', color: COLOR_ICON }}
+              className={`hover:fill-neutral-100`}
+            />
+          </Tooltip>
         </Space>
       ),
-      width: '20%'
+      width: '10%'
     }
   ];
   const handleBookHighSchool = (data) => {

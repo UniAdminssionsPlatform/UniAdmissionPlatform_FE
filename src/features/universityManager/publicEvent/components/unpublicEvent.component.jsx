@@ -1,17 +1,14 @@
-import { Button, Input, Modal, Pagination, Space, Table, Tag } from 'antd';
-import { CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { Input, Modal, Pagination, Space, Table, Tag, Tooltip } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../../constants/AppConst';
-import { refactorData, refactorDataSlot } from '../../../../utils/common';
+import { refactorData } from '../../../../utils/common';
 import React from 'react';
 import moment from 'moment';
-
+import CancelIcon from '@mui/icons-material/Cancel';
+import { COLOR_ICON } from '../../../../constants/Color';
 const UnPublicEventComponent = (props) => {
   const { event2, onChange, handleChangeEventName, handlePublicButton, handleChangeEventHost } = props;
   const { Search } = Input;
-  const stylePaging = {
-    paddingTop: 20,
-    paddingBottom: 20
-  };
 
   const confirm = (value) => {
     Modal.confirm({
@@ -83,18 +80,19 @@ const UnPublicEventComponent = (props) => {
     {
       title: 'Thao Tác',
       render: (record) => (
-        <>
-          <Button
-            style={{ background: 'red', color: 'white' }}
-            onClick={() => {
-              confirm(record);
-            }}>
-            <CloseOutlined />
-            Hủy công khai sự kiện
-          </Button>
-        </>
+        <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
+          <Tooltip title='Hủy sự kiện'>
+            <CancelIcon
+              onClick={() => {
+                confirm(record);
+              }}
+              style={{ cursor: 'pointer', color: COLOR_ICON, fontSize: '2vw' }}
+              className={`hover:fill-neutral-100`}
+            />
+          </Tooltip>
+        </Space>
       ),
-      width: '20%'
+      width: '7%'
     }
   ];
   return (
@@ -104,7 +102,13 @@ const UnPublicEventComponent = (props) => {
         <Search placeholder='Nhập tên diễn giả' style={{ width: 300 }} onSearch={handleChangeEventHost} />
       </Space>
       <Space direction={'vertical'}>
-        <Table columns={columns} dataSource={refactorData(event2?.list)} pagination={false} style={{ width: '80vw' }} />
+        <Table
+          columns={columns}
+          dataSource={refactorData(event2?.list)}
+          pagination={false}
+          style={{ width: '85vw' }}
+          scroll={{ x: 700, y: 450 }}
+        />
         <Pagination showSizeChanger onChange={onChange} total={event2?.total} bordered={true} />
       </Space>
     </div>

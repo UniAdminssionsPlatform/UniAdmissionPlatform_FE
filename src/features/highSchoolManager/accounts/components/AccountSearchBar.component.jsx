@@ -26,7 +26,6 @@ const SearchBarComponent = (props) => {
   );
   return (
     <>
-      <Title level={2}>Tìm kiếm</Title>
       <Form>
         <Form.Item name='firstName'>
           <Input

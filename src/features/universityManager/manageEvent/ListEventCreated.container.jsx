@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification } from 'antd';
+import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification, Divider } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
 import { getListEventForUniversity } from '../../../services/GetListEventForUniversity';
 import { refactorData } from '../../../utils/common';
@@ -7,7 +7,10 @@ import { useStateWithCallback } from '../../../components/CustomHOOK/SyncUseStat
 import DetailEventComponent from '../../../components/detailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-
+import PreviewIcon from '@mui/icons-material/Preview';
+import EditIcon from '@mui/icons-material/Edit';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import { COLOR_ICON } from '../../../constants/Color';
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
   const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
@@ -119,13 +122,20 @@ const ListEventCreatedContainer = (props) => {
     {
       title: 'Hành Động',
       render: (status, data) => (
-        <Space>
-          <Button type={'primary'} danger onClick={() => showModal(data)}>
-            Xem chi tiết
-          </Button>
-          <Button type={'primary'} onClick={() => showModal(data)}>
-            Cập nhật
-          </Button>
+        <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
+          <PreviewIcon
+            onClick={() => showModal(data)}
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            className={`hover:fill-neutral-100`}
+          />
+          <Divider type={'vertical'} />
+          <EditIcon
+            onClick={() => showModal(data)}
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            className={`hover:fill-neutral-100`}
+          />
+          <Divider type={'vertical'} />
+          <AssessmentIcon style={{ cursor: 'pointer', color: COLOR_ICON }} className={`hover:fill-neutral-100`} />
         </Space>
       ),
       width: '12%'
@@ -137,7 +147,7 @@ const ListEventCreatedContainer = (props) => {
   };
   return (
     <div>
-      <Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
+      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
         <DetailEventComponent event={currentSelectedEvent} loading={false} />
       </Modal>
       <Space>

@@ -35,11 +35,15 @@ const EventCheckComponent = (props) => {
   ];
   return (
     <div>
-      <Space>
-        <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} />
-      </Space>
       <Space direction={'vertical'}>
-        <Table columns={columns} dataSource={eventCheck?.list} pagination={false} style={{ width: '80vw' }} />
+        <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} />
+        <Table
+          columns={columns}
+          dataSource={eventCheck?.list}
+          pagination={false}
+          style={{ width: '85vw' }}
+          scroll={{ x: 700, y: 450 }}
+        />
         <Pagination showSizeChanger onChange={onChange} total={eventCheck?.total} bordered={true} />
       </Space>
     </div>

@@ -32,7 +32,6 @@ const SearchBarComponent = (props) => {
   }
   return (
     <>
-      <Title level={2}>Tìm kiếm</Title>
       <Collapse defaultActiveKey={['1']}>
         <Panel header='Thông tin cơ bản' key='1'>
           <Text strong>Tên trường cấp 3</Text>
@@ -73,7 +72,7 @@ const SearchBarComponent = (props) => {
           />
         </Panel>
         <Panel key='2' header='Thông tin thành phố'>
-          <Divider orientation='left'>Thành Phố</Divider>
+          <Text strong>Thành phố</Text>
           <Select
             showSearch
             placeholder='Tỉnh/Thành phố'
@@ -87,7 +86,8 @@ const SearchBarComponent = (props) => {
               </Option>
             ))}
           </Select>
-          <Divider orientation='left'>Quận huyện</Divider>
+          <br />
+          <Text strong>Quận huyện</Text>
           <Select
             showSearch
             placeholder='Quận/Huyện'
@@ -101,7 +101,8 @@ const SearchBarComponent = (props) => {
               </Option>
             ))}
           </Select>
-          <Divider orientation='left'>Trạng thái</Divider>
+          <br />
+          <Text strong>Trạng thái</Text>
           <Select placeholder='Trạng thái' onChange={onChangeStatus} style={{ width: '200px' }}>
             <Option value={1}>Đã kích hoạt</Option>
             <Option value={0}>Đang bị đóng</Option>

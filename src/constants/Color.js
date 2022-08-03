@@ -8,3 +8,4 @@ export const COLOR_LOGO = '#FFE156';
 export const COLOR_BACKGROUND = '#FFE9CE';
 export const COLOR_COMMENT = '#FFBEC2';
 export const COLOR_THINGS = '#3777FF';
+export const COLOR_REQUIRE_FIELD = '#F15156';
