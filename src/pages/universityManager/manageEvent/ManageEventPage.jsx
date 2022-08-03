@@ -1,5 +1,5 @@
 import { Layout, Tabs, Typography } from 'antd';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import CreateEventContainer from '../../../features/universityManager/manageEvent/CreateEvent.container';
 import EventCheckContainer from '../../../features/universityManager/eventCheck/eventCheck.container';
 import ListEventCreatedContainer from '../../../features/universityManager/manageEvent/ListEventCreated.container';

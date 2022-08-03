@@ -16,6 +16,7 @@ const ListEventCreatedContainer = (props) => {
   const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
+  const [resource, setResource] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = (data) => {
     setCurrentSelectedEvent(data);
@@ -138,10 +139,13 @@ const ListEventCreatedContainer = (props) => {
           <AssessmentIcon style={{ cursor: 'pointer', color: COLOR_ICON }} className={`hover:fill-neutral-100`} />
         </Space>
       ),
-      width: '12%'
+      width: '10%'
     }
   ];
-
+  const handleShowReport = (data) => {
+    setResource(`${ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING}?event-id=${data.id}&token=${user.token}`);
+    showModal();
+  };
   const onShowSizeChange = (page, PageSize) => {
     setDataSearch({ ...dataSearch, page, limit: PageSize });
   };
