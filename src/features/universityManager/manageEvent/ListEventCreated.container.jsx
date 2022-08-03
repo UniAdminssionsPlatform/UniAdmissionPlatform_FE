@@ -7,12 +7,10 @@ import { useStateWithCallback } from '../../../components/CustomHOOK/SyncUseStat
 import DetailEventComponent from '../../../components/detailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import EditIcon from '@mui/icons-material/Edit';
 import PreviewIcon from '@mui/icons-material/Preview';
+import EditIcon from '@mui/icons-material/Edit';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import { COLOR_ICON } from '../../../constants/Color';
-import FlexmonsterReact from 'react-flexmonster';
-import { ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING } from '../../../constants/Endpoints/ReportEndpoint';
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
   const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
@@ -125,12 +123,20 @@ const ListEventCreatedContainer = (props) => {
     {
       title: 'Hành Động',
       render: (status, data) => (
-        <Space>
-          <PreviewIcon onClick={() => showModal(data)} style={{ cursor: 'pointer', color: COLOR_ICON }} />
+        <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
+          <PreviewIcon
+            onClick={() => showModal(data)}
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            className={`hover:fill-neutral-100`}
+          />
           <Divider type={'vertical'} />
-          <EditIcon onClick={() => showModal(data)} style={{ cursor: 'pointer', color: COLOR_ICON }} />
+          <EditIcon
+            onClick={() => showModal(data)}
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            className={`hover:fill-neutral-100`}
+          />
           <Divider type={'vertical'} />
-          <AssessmentIcon style={{ cursor: 'pointer', color: COLOR_ICON }} onClick={() => handleShowReport(data)} />
+          <AssessmentIcon style={{ cursor: 'pointer', color: COLOR_ICON }} className={`hover:fill-neutral-100`} />
         </Space>
       ),
       width: '10%'
@@ -145,19 +151,9 @@ const ListEventCreatedContainer = (props) => {
   };
   return (
     <div>
-      {/*<Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>*/}
-      {/*  {resource ? (*/}
-      {/*    <FlexmonsterReact.Pivot*/}
-      {/*      toolbar={true}*/}
-      {/*      componentFolder='https://cdn.flexmonster.com/'*/}
-      {/*      width='100%'*/}
-      {/*      report={resource}*/}
-      {/*      reportcomplete={onReportComplete}*/}
-      {/*    />*/}
-      {/*  ) : (*/}
-      {/*    <DetailEventComponent event={currentSelectedEvent} loading={false} />*/}
-      {/*  )}*/}
-      {/*</Modal>*/}
+      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
+        <DetailEventComponent event={currentSelectedEvent} loading={false} />
+      </Modal>
       <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />
         <Search placeholder='Nhập tên diễn giả' style={{ width: 300 }} onSearch={handleChangeEventHost} />

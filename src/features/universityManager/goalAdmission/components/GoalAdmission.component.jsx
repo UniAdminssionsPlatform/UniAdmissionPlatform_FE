@@ -3,7 +3,8 @@ import { CloseOutlined } from '@ant-design/icons';
 import { Helmet } from 'react-helmet';
 import AddGoalAdmissionFormContainer from '../AddGoalAdmissionForm.container';
 import React, { useState } from 'react';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import { COLOR_ICON } from '../../../../constants/Color';
 const GoalAdmissionComponent = (props) => {
   const { listSchoolYear, data, onChangeYear, loading, selectedSchoolYear, loadingHeader, confirmDelete } = props;
   const { Option } = Select;
@@ -63,16 +64,18 @@ const GoalAdmissionComponent = (props) => {
       title: 'Thao tác',
       render: (record) => (
         <Tooltip title='Xóa'>
-          <Button
-            shape='circle'
-            type='danger'
-            icon={<CloseOutlined />}
-            onClick={() => {
-              confirmDelete(record);
-            }}
-          />
+          <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
+            <DeleteIcon
+              onClick={() => {
+                confirmDelete(record);
+              }}
+              style={{ cursor: 'pointer', color: COLOR_ICON }}
+              className={`hover:fill-neutral-100`}
+            />
+          </Space>
         </Tooltip>
-      )
+      ),
+      width: '7%'
     }
   ];
 

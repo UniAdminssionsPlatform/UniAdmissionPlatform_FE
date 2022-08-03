@@ -1,20 +1,25 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import thunkMiddleware from 'redux-thunk';
 import authenticationReducer from './authentication/authentication-slice';
 import selectedHighSchoolReducer from './selectedHighSchool/selectedHighSchool-slice';
 import selectedSlotSliceReducer from './slot/selectedSlot-slice';
 import loadTimeSliceReducer from './loadTime/loadTime-slice';
+import commentReducer from './comment/comment-slice';
+import eventPublishReducer from './eventPublish/eventPublish-slice';
+import listEventPublishReducer from './listEventPublish/listEventPublish-slice';
+import listNewPublishReducer from './newPublish/listNewPublish-slice';
 const store = configureStore({
   reducer: {
     authentication: authenticationReducer,
     selectedHighSchool: selectedHighSchoolReducer,
     selectedSlot: selectedSlotSliceReducer,
-    loadTime: loadTimeSliceReducer
+    loadTime: loadTimeSliceReducer,
+    comments: commentReducer,
+    eventPublish: eventPublishReducer,
+    listEventPublish: listEventPublishReducer,
+    listNewPublish: listNewPublishReducer
   },
-  middleware: [
-    ...getDefaultMiddleware({
-      serializableCheck: false
-    })
-  ]
+  middleware: [thunkMiddleware]
 });
 
 export default store;

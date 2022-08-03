@@ -9,7 +9,6 @@ import TitlePageComponent from '../../../components/decorator/TitlePage.componen
 
 const ManageEventPage = () => {
   const { TabPane } = Tabs;
-  const { Title, Text } = Typography;
   const [currentTab, setCurrentTab] = useState('1');
   const handleChangeActiveKey = (data) => {
     setCurrentTab(data ? data : '1');
@@ -19,7 +18,8 @@ const ManageEventPage = () => {
       <TitlePageComponent
         title={'Quản lý sự kiện'}
         subTitle={
-          'Trong mục quản lý sự kiện, bạn có thể xem, tạo mới và chỉnh sửa các sự kiện đã tạo. Bạn có thể thay đổi một sự kiện truyền thông hay đóng một sự kiện'
+          'Trong mục quản lý sự kiện, bạn có thể xem, tạo mới và chỉnh sửa các sự kiện đã tạo. Bạn có thể thay đổi một sự\n' +
+          'kiện truyền thông hay đóng một sự kiện'
         }
       />
       <Tabs

@@ -5,39 +5,38 @@ import PostCardMeta from '../../PostCardMeta/PostCardMeta.component';
 import PostCardSaveAction from '../../PostCardSaveAction/PostCardSaveAction.component';
 import PostFeaturedMedia from '../../PostFeaturedMedia/PostFeaturedMedia.component';
 import React, { useState } from 'react';
+import { Typography } from 'antd';
+import ButtonTimeComponent from '../../../../features/public/homePage/components/ButtonTime.component';
 
-const Card11 = ({ className = 'h-full', post, hiddenAuthor = false, ratio = 'aspect-w-4 aspect-h-3' }) => {
-  const { title, href, categories, date } = post;
-
+const Card11 = ({ className = 'h-full', event, hiddenAuthor = false, ratio = 'aspect-w-4 aspect-h-3' }) => {
+  const { name, shortDescription, startTime } = event;
+  const { Text, Title } = Typography;
   const [isHover, setIsHover] = useState(false);
   return (
     <div
       className={`nc-Card11 relative flex flex-col group [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ] ${className}`}
       data-nc-id='Card11'
       onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-      //
-    >
+      onMouseLeave={() => setIsHover(false)}>
       <div className={`block flex-shrink-0 relative w-full rounded-t-xl overflow-hidden ${ratio}`}>
         <div>
-          <PostFeaturedMedia post={post} isHover={isHover} />
+          <PostFeaturedMedia event={event} isHover={isHover} />
         </div>
       </div>
-      <Link to={href} className='absolute inset-0'></Link>
-      <span className='absolute top-3 inset-x-3 z-10'>
-        <CategoryBadgeList categories={categories} />
-      </span>
-
       <div className='p-4 flex flex-col flex-grow space-y-3'>
-        {!hiddenAuthor ? <PostCardMeta meta={post} /> : <span className='text-xs text-neutral-500'>{date}</span>}
+        {!hiddenAuthor ? (
+          <PostCardMeta university={event.university} startTime={startTime} />
+        ) : (
+          <span className='text-xs text-neutral-500'>{startTime}</span>
+        )}
         <h2 className='nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100 '>
-          <Link to={href} className='line-clamp-2' title={title}>
-            {title}
-          </Link>
+          <Text strong style={{ fontSize: 'large' }}>
+            {name}
+          </Text>
         </h2>
         <div className='flex items-end justify-between mt-auto'>
-          <PostCardLikeAndComment className='relative' postData={post} />
-          <PostCardSaveAction className='relative' postData={post} />
+          <ButtonTimeComponent event={event} />
+          {/*<PostCardSaveAction className='relative' postData={startTime} />*/}
         </div>
       </div>
     </div>

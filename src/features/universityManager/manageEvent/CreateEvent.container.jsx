@@ -14,7 +14,6 @@ const CreateEventContainer = (props) => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [describe, setDescribe] = useState('');
-  const [shortDescribe, setShortDescribe] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const geAllProvince = () => {
     getListProvinces()
@@ -62,7 +61,7 @@ const CreateEventContainer = (props) => {
     data.event.districtId = district;
     data.event.provinceId = province;
     data.event.description = describe;
-    data.event.shortDescription = shortDescribe;
+    data.event.shortDescription = data.shortDescription;
     data.event.thumbnailUrl = imageUrl;
     data.event.eventTypeId = data.event.eventTypeId ? data.event.eventTypeId : 2;
     data.event.districtId = 1;
@@ -90,8 +89,6 @@ const CreateEventContainer = (props) => {
         event={event}
         describe={describe}
         setDescribe={setDescribe}
-        shortDescribe={shortDescribe}
-        setShortDescribe={setShortDescribe}
         setImageUrl={setImageUrl}
       />
     </>

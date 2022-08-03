@@ -16,7 +16,6 @@ const SingleHeader4 = (props) => {
             mainClass='text-neutral-900 font-bold text-3xl md:text-4xl md:!leading-[120%] lg:text-5xl 2xl:text-6xl dark:text-neutral-100'
             title={newDetail?.title}
           />
-
           <span className='block text-base text-neutral-500 md:text-lg dark:text-neutral-400 pb-1'>
             {newDetail?.shortDescription}
           </span>

@@ -40,7 +40,7 @@ const MainNav = ({ isTop }) => {
               <Space>
                 <Text>
                   Xin chào <Divider type={'vertical'} />
-                  <Text strong>{user.roles}</Text>
+                  <Text strong>{user.userName}</Text>
                 </Text>
                 <Text type='success' strong>
                   {user.user_id}

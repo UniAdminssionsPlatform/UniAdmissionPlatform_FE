@@ -17,7 +17,6 @@ const SearchBarComponent = (props) => {
   };
   return (
     <>
-      <Title level={2}>Tìm kiếm</Title>
       <Form onFinish={handleOnFinish}>
         <Form.Item name='name'>
           <Input placeholder='Tên sự kiện...' type='text' defaultValue='' />

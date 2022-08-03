@@ -1,4 +1,4 @@
-import { getListEvent } from '../../../services/EventService';
+import { getListEventService } from '../../../services/EventService';
 import { useDebouncedCallback } from 'use-debounce';
 import ListEventComponent from './components/listEvent/ListEvent.component';
 import React, { useEffect, useState } from 'react';
@@ -14,7 +14,7 @@ const ListEventContainer = () => {
     page: 1
   });
   const LoadData = (value) => {
-    getListEvent(value).then((result) => {
+    getListEventService(value).then((result) => {
       if (result.data.data.total === 0) setData('');
       else {
         setData(result.data.data.list);

@@ -1,10 +1,11 @@
-import { Button, Image, Input, Modal, Pagination, Space, Table, Tag, Typography } from 'antd';
-import { CheckOutlined, ExclamationCircleOutlined, StarOutlined } from '@ant-design/icons';
+import { Button, Input, Modal, Pagination, Space, Table, Tag, Tooltip, Typography } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../../constants/AppConst';
 import { refactorData } from '../../../../utils/common';
 import React from 'react';
 import moment from 'moment';
-
+import PublishIcon from '@mui/icons-material/Publish';
+import { COLOR_ICON } from '../../../../constants/Color';
 const PublicEventComponent = (props) => {
   const { event134, onChange, handleChangeEventName, handlePublicButton, handleChangeEventHost } = props;
   const { Search } = Input;
@@ -77,28 +78,33 @@ const PublicEventComponent = (props) => {
     {
       title: 'Thao Tác',
       render: (text, record, index) => (
-        <>
+        <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
           {record?.isApprove === true ? (
-            <Button
-              style={{ background: 'green', color: 'white' }}
-              onClick={() => {
-                confirm(record);
-              }}>
-              Công Khai Sự Kiện
-            </Button>
+            <Tooltip title='Công khai sự kiện'>
+              <PublishIcon
+                onClick={() => {
+                  confirm(record);
+                }}
+                style={{ cursor: 'pointer', color: COLOR_ICON, fontSize: '2vw' }}
+                className={`hover:fill-neutral-100`}
+              />
+            </Tooltip>
           ) : record.status === EVENT.INIT ? (
-            <Button
-              style={{ background: 'green', color: 'white' }}
-              onClick={() => {
-                confirm(record);
-              }}>
-              Công Khai Sự Kiện
-            </Button>
+            <Tooltip title='Công khai sự kiện'>
+              <PublishIcon
+                onClick={() => {
+                  confirm(record);
+                }}
+                style={{ cursor: 'pointer', color: COLOR_ICON, fontSize: '2vw' }}
+                className={`hover:fill-neutral-100`}
+              />
+            </Tooltip>
           ) : (
             <Tag color='red'> Sự kiện chưa đủ điều kiện để công khai</Tag>
           )}
-        </>
-      )
+        </Space>
+      ),
+      width: '5%'
     }
   ];
   const { Title, Text } = Typography;

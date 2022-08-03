@@ -2,7 +2,9 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 import ListNewDashboard from './ListNewDashboard';
 import WelcomeComponent from './Welcome.component';
-import { Typography } from 'antd';
+import { Divider, Typography } from 'antd';
+import BackgroundSection from '../../../../components/commons/BackgroundSection/BackgroundSection.component';
+import SectionSliderPostsComponent from '../../../../components/commons/SectionSliderPosts/SectionSliderPosts.component';
 
 const HomePageComponent = (props) => {
   const { Text, Title } = Typography;
@@ -15,6 +17,13 @@ const HomePageComponent = (props) => {
         <WelcomeComponent />
       </div>
       <ListNewDashboard />
+      <Divider>
+        <Title level={2}> 🎉Tin tức mới nhất</Title>
+      </Divider>
+      <div className='relative py-16'>
+        <BackgroundSection />
+        {/*<SectionSliderPostsComponent posts={POSTS.filter((_, i) => i < 8)} />*/}
+      </div>
       {/*<FeaturedEvent events={events} />*/}
     </div>
   );

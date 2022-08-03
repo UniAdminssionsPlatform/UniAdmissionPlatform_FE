@@ -1,4 +1,4 @@
-import { getNews } from '../../../services/NewsService';
+import { getNewsService } from '../../../services/NewsService';
 import NewsComponent from '../../universityManager/news/components/CardNewsStyle1/News.component';
 import React, { useEffect, useState } from 'react';
 
@@ -29,7 +29,7 @@ const SingleNewContainer = () => {
   }, [dataSearch]);
 
   const getPageNews = (data) => {
-    getNews(data).then((result) => {
+    getNewsService(data).then((result) => {
       setNews(result.data.data);
     });
   };

@@ -1,6 +1,5 @@
 import { SINGLE } from '../../../../../data/single';
 import DetailEventContent from './DetailEventContent.component';
-import DetailEventHeader from './DetailEventHeader.component';
 import DetailEventRelatedPosts from './DetailEventRelatedPosts.component';
 import React from 'react';
 
@@ -13,7 +12,7 @@ const DetailEventComponent = (props, { className = '' }) => {
           {/* SINGLE HEADER */}
           <div className='dark container relative z-10'>
             <div className='max-w-screen-md'>
-              <DetailEventHeader hiddenDesc metaActionStyle='style2' pageData={event} />
+              {/*<DetailEventHeader hiddenDesc metaActionStyle='style2' pageData={event} />*/}
             </div>
           </div>
 
