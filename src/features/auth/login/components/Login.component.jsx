@@ -9,12 +9,6 @@ import googleSvg from '../../../../images/Google.svg';
 
 const loginSocials = [
   {
-    name: 'Đăng nhập bằng Facebook',
-    href: '#',
-    icon: facebookSvg,
-    action: 'facebook'
-  },
-  {
     name: 'Đăng nhập bằng Google',
     href: '#',
     icon: googleSvg,
@@ -46,57 +40,57 @@ const LoginComponent = (props) => {
             ))}
           </div>
           {/* OR */}
-          <div className='relative text-center'>
-            <span className='relative z-10 inline-block px-4 font-medium text-sm bg-white dark:text-neutral-400 dark:bg-neutral-900'>
-              HOẶC
-            </span>
-          </div>
-          <Form
-            name='normal_login'
-            className='grid grid-cols-1'
-            initialValues={{
-              remember: true
-            }}
-            onFinish={onFinish}>
-            <Form.Item name='email' rules={username}>
-              <label className='block'>
-                <span className='text-neutral-800 dark:text-neutral-200'>Email</span>
-                <Input
-                  prefix={<UserOutlined className='site-form-item-icon' />}
-                  placeholder='email'
-                  className='text-neutral-800 dark:text-neutral-200'
-                />
-              </label>
-            </Form.Item>
-            <span className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Mật khẩu</span>
-            <Form.Item name='password' rules={password}>
-              <label className='block'>
-                <Input
-                  prefix={<LockOutlined className='site-form-item-icon' />}
-                  type='password'
-                  placeholder='Password'
-                  className='mt-1'
-                />
-              </label>
-            </Form.Item>
+          {/*<div className='relative text-center'>*/}
+          {/*  <span className='relative z-10 inline-block px-4 font-medium text-sm bg-white dark:text-neutral-400 dark:bg-neutral-900'>*/}
+          {/*    HOẶC*/}
+          {/*  </span>*/}
+          {/*</div>*/}
+          {/*<Form*/}
+          {/*  name='normal_login'*/}
+          {/*  className='grid grid-cols-1'*/}
+          {/*  initialValues={{*/}
+          {/*    remember: true*/}
+          {/*  }}*/}
+          {/*  onFinish={onFinish}>*/}
+          {/*  <Form.Item name='email' rules={username}>*/}
+          {/*    <label className='block'>*/}
+          {/*      <span className='text-neutral-800 dark:text-neutral-200'>Email</span>*/}
+          {/*      <Input*/}
+          {/*        prefix={<UserOutlined className='site-form-item-icon' />}*/}
+          {/*        placeholder='email'*/}
+          {/*        className='text-neutral-800 dark:text-neutral-200'*/}
+          {/*      />*/}
+          {/*    </label>*/}
+          {/*  </Form.Item>*/}
+          {/*  <span className='flex justify-between items-center text-neutral-800 dark:text-neutral-200'>Mật khẩu</span>*/}
+          {/*  <Form.Item name='password' rules={password}>*/}
+          {/*    <label className='block'>*/}
+          {/*      <Input*/}
+          {/*        prefix={<LockOutlined className='site-form-item-icon' />}*/}
+          {/*        type='password'*/}
+          {/*        placeholder='Password'*/}
+          {/*        className='mt-1'*/}
+          {/*      />*/}
+          {/*    </label>*/}
+          {/*  </Form.Item>*/}
 
-            <Form.Item>
-              <Form.Item name='remember' valuePropName='checked' noStyle>
-                <Checkbox>Ghi nhớ tôi</Checkbox>
-              </Form.Item>
+          {/*  <Form.Item>*/}
+          {/*    <Form.Item name='remember' valuePropName='checked' noStyle>*/}
+          {/*      <Checkbox>Ghi nhớ tôi</Checkbox>*/}
+          {/*    </Form.Item>*/}
 
-              <a className='login-form-forgot' href='/'>
-                Quên mật khẩu ?
-              </a>
-            </Form.Item>
-            <span className='block text-center text-neutral-700 dark:text-neutral-300'>
-              <Form.Item>
-                <Button type='danger' htmlType='submit' className='login-form-button w-3/6'>
-                  Đăng nhập
-                </Button>
-              </Form.Item>
-            </span>
-          </Form>
+          {/*    <a className='login-form-forgot' href='/'>*/}
+          {/*      Quên mật khẩu ?*/}
+          {/*    </a>*/}
+          {/*  </Form.Item>*/}
+          {/*  <span className='block text-center text-neutral-700 dark:text-neutral-300'>*/}
+          {/*    <Form.Item>*/}
+          {/*      <Button type='danger' htmlType='submit' className='login-form-button w-3/6'>*/}
+          {/*        Đăng nhập*/}
+          {/*      </Button>*/}
+          {/*    </Form.Item>*/}
+          {/*  </span>*/}
+          {/*</Form>*/}
         </div>
       </LayoutPage>
     </div>
