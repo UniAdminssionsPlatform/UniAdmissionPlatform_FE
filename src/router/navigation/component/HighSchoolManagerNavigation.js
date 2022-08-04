@@ -47,6 +47,11 @@ const profile = [
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE,
     name: 'Chỉnh sửa hồ sơ'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH_HIGH_SCHOOL_MANAGER.ACCOUNT_PROFILE,
+    name: 'Hồ Sơ Cá Nhân'
   }
 ];
 export const HighSchoolManagerNavigation = [

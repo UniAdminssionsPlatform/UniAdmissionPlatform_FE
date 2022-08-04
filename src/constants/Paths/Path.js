@@ -28,7 +28,8 @@ export const PATH_HIGH_SCHOOL_MANAGER = {
   REGISTERED_EVENT: '/high-school/registered-events',
   LIST_STUDENT: '/high-school/students',
   PROFILE: '/high-school/profile',
-  LIST_ACCOUNT_PENDING: '/high-school/account'
+  LIST_ACCOUNT_PENDING: '/high-school/account',
+  ACCOUNT_PROFILE: '/high-school/account-profile'
 };
 export const PATH_UNIVERSITY_MANAGER = {
   INDEX: '/',
@@ -49,7 +50,8 @@ export const PATH_UNIVERSITY_MANAGER = {
   PUBLIC_EVENT: '/uni/public-event',
   UN_PUBLIC_EVENT: '/uni/unpublic-event',
   EVENT_CHECK: '/uni/event-check',
-  ANALYTICS_DATA: '/uni/analytics-student-data'
+  ANALYTICS_DATA: '/uni/analytics-student-data',
+  ACCOUNT_PROFILE: '/uni/account-profile'
 };
 export const PATH_HIGH_SCHOOL_STUDENT = {
   INDEX: '/',

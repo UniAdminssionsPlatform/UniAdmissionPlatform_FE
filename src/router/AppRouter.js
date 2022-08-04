@@ -117,6 +117,12 @@ const AppRouter = () => {
           key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
           exact
         />
+        <HighSchoolManagerRouter
+          component={() => <ManageProfilePage />}
+          path={PATH_HIGH_SCHOOL_MANAGER.ACCOUNT_PROFILE}
+          key={PATH_HIGH_SCHOOL_MANAGER.ACCOUNT_PROFILE}
+          exact
+        />
         //Univer
         <UniversityManagerRouter
           component={() => <UniversityListAccountPendingPage />}
@@ -220,6 +226,12 @@ const AppRouter = () => {
           component={() => <EventCheckPage />}
           path={PATH_UNIVERSITY_MANAGER.EVENT_CHECK}
           key={PATH_UNIVERSITY_MANAGER.EVENT_CHECK}
+          exact
+        />
+        <UniversityManagerRouter
+          component={() => <ManageProfilePage />}
+          path={PATH_UNIVERSITY_MANAGER.ACCOUNT_PROFILE}
+          key={PATH_UNIVERSITY_MANAGER.ACCOUNT_PROFILE}
           exact
         />
         //University

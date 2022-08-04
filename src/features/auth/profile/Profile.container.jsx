@@ -18,9 +18,8 @@ const ProfileContainer = () => {
   const [nationalities, setNationalities] = useState();
   const [imgeUrl, setImageUrl] = useState();
   const { user } = useSelector((state) => state.authentication);
-  const history = useHistory();
   const reload = () => {
-    history.push(PATH_HIGH_SCHOOL_STUDENT.PROFILE);
+    window.location.reload();
   };
 
   const onFinish = (values) => {
@@ -30,7 +29,7 @@ const ProfileContainer = () => {
     updateAccount(values)
       .then((result) => {
         handleNotification('success');
-        setTimeout(reload, 2000);
+        setTimeout(reload, 1000);
       })
       .catch((error) => {
         handleNotification('error');
