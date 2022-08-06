@@ -1,11 +1,12 @@
-import { Button, Divider, Image, Layout, Pagination, Space, Switch, Table, Tag, Typography } from 'antd';
+import { Button, Divider, Image, Layout, Pagination, Space, Switch, Table, Tag, Tooltip, Typography } from 'antd';
 import { COLOR_HOVER, COLOR_ICON } from '../../../../constants/Color';
 import { EditOutlined } from '@mui/icons-material';
 import CreateNewComponent from './CreateNew.compomnent';
 import ListTagComponent from '../../../../components/ListTag.component';
-import React, { useState } from 'react';
+import React from 'react';
 import SearchNewComponent from './SearchNew.component';
 import TitlePageComponent from '../../../../components/decorator/TitlePage.component';
+import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import moment from 'moment';
 const NewManagementComponent = (props) => {
@@ -29,7 +30,8 @@ const NewManagementComponent = (props) => {
     isUpdate,
     handleUpdateNew,
     handlePaging,
-    handleViewNew
+    handleViewNew,
+    handleDeleteNew
   } = props;
   const layoutTable = [
     {
@@ -37,7 +39,7 @@ const NewManagementComponent = (props) => {
       dataIndex: 'title',
       key: 'title',
       render: (data) => <Text strong>{data}</Text>,
-      width: '13%'
+      width: '20%'
     },
     {
       title: 'Hình nền sự kiện',
@@ -51,21 +53,21 @@ const NewManagementComponent = (props) => {
       dataIndex: 'tagList',
       key: 'tagList',
       render: (key, record) => <ListTagComponent listData={record?.tagList} />,
-      width: '5%'
+      width: '15%'
     },
     {
       title: 'Mô tả',
       dataIndex: 'shortDescription',
       key: 'shortDescription',
       render: (data) => <Text>{data}</Text>,
-      width: '15%'
+      width: '25%'
     },
     {
       title: 'Ngày tạo',
       dataIndex: 'createDate',
       key: 'createDate',
       render: (data) => <Text strong>{moment(data).format('LLL')}</Text>,
-      width: '8%'
+      width: '10%'
     },
     {
       title: 'Trạng thái công khai',
@@ -95,34 +97,40 @@ const NewManagementComponent = (props) => {
           );
         }
       },
-      width: '7%'
+      width: '15%'
     },
     {
       title: 'Hành động',
       dataIndex: '',
       key: 'key',
       render: (index, record) => (
-        <Space direction={'horizontal'} style={{ marginLeft: '1rem' }}>
-          <VisibilityIcon
-            onClick={() => handleViewNew(record)}
-            style={{ cursor: 'pointer', color: COLOR_ICON }}
-            className={`hover:fill-neutral-100`}
-          />
-          <EditOutlined
-            onClick={() => handleUpdateANew(record)}
-            style={{ cursor: 'pointer', color: COLOR_ICON }}
-            className={`hover:fill-neutral-100`}
-          />
+        <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
+          <Tooltip title='Xem chi tiết bài viết'>
+            <VisibilityIcon
+              onClick={() => handleViewNew(record)}
+              style={{ cursor: 'pointer', color: COLOR_ICON }}
+              className={`hover:fill-neutral-100`}
+            />
+          </Tooltip>
+          <Divider type={'vertical'} />
+          <Tooltip title='Chỉnh sửa bài viết'>
+            <EditOutlined
+              onClick={() => handleUpdateANew(record)}
+              style={{ cursor: 'pointer', color: COLOR_ICON }}
+              className={`hover:fill-neutral-100`}
+            />
+          </Tooltip>
+          <Divider type={'vertical'} />
+          <Tooltip title='Xóa bài viết'>
+            <DeleteIcon
+              style={{ cursor: 'pointer', color: COLOR_ICON }}
+              className={`hover:fill-neutral-100`}
+              onClick={() => handleDeleteNew(record)}
+            />
+          </Tooltip>
         </Space>
       ),
-      width: '3%'
-    },
-    {
-      title: '',
-      dataIndex: '',
-      key: 'createDate',
-      render: (data) => '',
-      width: '0.5%'
+      width: '10%'
     }
   ];
 

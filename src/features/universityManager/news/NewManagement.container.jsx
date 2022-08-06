@@ -1,6 +1,7 @@
 import { Modal, notification } from 'antd';
 import {
   createANewService,
+  deleteANewService,
   getListNewsForUniversityService,
   setNewPublishService,
   uploadANewService
@@ -233,6 +234,24 @@ const NewManagementContainer = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  const handleDeleteNew = (payload) => {
+    deleteANewService(payload.id)
+      .then((res) => {
+        reloadTable();
+        notification.success({
+          message: 'Xóa bài viết thành công!',
+          description: `Xóa bài viết thành công!`,
+          duration: 2
+        });
+      })
+      .catch((err) => {
+        notification.error({
+          message: 'Thay đổi thất bại thất bại!',
+          description: `${err.message}`,
+          duration: 2
+        });
+      });
+  };
   return (
     <>
       <Modal title='' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
@@ -258,6 +277,7 @@ const NewManagementContainer = () => {
         handleUpdateNew={handleUpdateNew}
         handlePaging={handlePaging}
         handleViewNew={handleViewNew}
+        handleDeleteNew={handleDeleteNew}
       />
     </>
   );
