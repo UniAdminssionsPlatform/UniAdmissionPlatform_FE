@@ -29,7 +29,7 @@ import NewsDetailStudentPage from '../pages/highSchoolStudent/NewsDetailStudentP
 import NewsPageStudent from '../pages/highSchoolStudent/NewsPageStudent';
 import PolicyPage from '../pages/public/PolicyPage';
 import PublicEventPage from '../pages/universityManager/PublicEventPage';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import RegistrationPage from '../pages/auth/RegistrationPage';
 import ScrollToTop from '../components/commons/ScrollToTopProps/ScrollToTopProps.component';
 import SingleEventPage from '../pages/public/SingleEventPage';
@@ -46,6 +46,7 @@ import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniv
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
 import ProSideBarComponent from './ProSideBar.component';
 import SingleUniversityProfilePage from '../pages/public/SingleUniversityProfilePage';
+import SingleHighSchoolProfilePage from '../pages/public/SingleHighSchoolProfilePage';
 
 const AppRouter = () => {
   const location = useLocation();
@@ -64,6 +65,9 @@ const AppRouter = () => {
         </Route>
         <Route path={PATH.UNIVERSITY_PROFILE_PAGE} exact>
           <SingleUniversityProfilePage />
+        </Route>
+        <Route path={PATH.HIGH_SCHOOL_PROFILE_PAGE} exact>
+          <SingleHighSchoolProfilePage />
         </Route>
         //Publish Page
         <Route path={PATH.INDEX} exact>
