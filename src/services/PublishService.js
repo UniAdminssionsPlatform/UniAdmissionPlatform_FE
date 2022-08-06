@@ -4,7 +4,8 @@ import {
   ENDPOINT_GET_A_HIGH_SCHOOL_BY_ID,
   ENDPOINT_GET_A_NEW_PUBLISH,
   ENDPOINT_GET_COMMENT_BY_EVENT_PUBLISH_ID,
-  ENDPOINT_GET_EVENT_PUBLISH_BY_ID
+  ENDPOINT_GET_EVENT_PUBLISH_BY_ID,
+  ENDPOINT_GET_UNIVERSITY_PROFILE_BY_ID
 } from '../constants/Endpoints/PublishEndpoint';
 //get event by id
 export const getAEventPublishByIdService = (id) => CallAPI(`${ENDPOINT_GET_EVENT_PUBLISH_BY_ID}${id}`, 'GET');
@@ -17,4 +18,6 @@ export const commentToTheEventService = (data) =>
 //get new by id
 export const getANewPublishByEventIdService = (id) => CallAPI(`${ENDPOINT_GET_A_NEW_PUBLISH}/${id}`, 'get');
 //get high school by id
-export const getAHighSchoolByID = (id) => CallAPI(`${ENDPOINT_GET_A_HIGH_SCHOOL_BY_ID}/${id}`, 'get');
+export const getAHighSchoolProfileByIdService = (id) => CallAPI(`${ENDPOINT_GET_A_HIGH_SCHOOL_BY_ID}/${id}`, 'get');
+//get university by id
+export const getAUniversityProfileByIdService = (id) => CallAPI(`${ENDPOINT_GET_UNIVERSITY_PROFILE_BY_ID}${id}`, 'get');
