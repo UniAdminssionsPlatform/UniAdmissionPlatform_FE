@@ -16,6 +16,7 @@ export const PATH = {
   EVENT_PAGE: '/event/:eventId',
   NEW_PAGE: '/new/:newId',
   UNIVERSITY_PROFILE_PAGE: '/university/:universityId',
+  HIGH_SCHOOL_PROFILE_PAGE: '/highSchool/:highSchoolId',
   NEW: '/new/',
   EVENT: '/event/',
   PAGE_NOT_FOUND: '/404'
