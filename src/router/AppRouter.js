@@ -45,6 +45,7 @@ import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolPro
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
 import ProSideBarComponent from './ProSideBar.component';
+import SingleUniversityProfilePage from '../pages/public/SingleUniversityProfilePage';
 
 const AppRouter = () => {
   const location = useLocation();
@@ -60,6 +61,9 @@ const AppRouter = () => {
         </Route>
         <Route path={PATH.NEW_PAGE} exact>
           <SingleNewPage />
+        </Route>
+        <Route path={PATH.UNIVERSITY_PROFILE_PAGE} exact>
+          <SingleUniversityProfilePage />
         </Route>
         //Publish Page
         <Route path={PATH.INDEX} exact>

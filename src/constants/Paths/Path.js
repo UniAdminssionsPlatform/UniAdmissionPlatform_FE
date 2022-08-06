@@ -15,6 +15,7 @@ export const PATH = {
   ACCOUNT_WAITING_APPROVE: '/auth/pending',
   EVENT_PAGE: '/event/:eventId',
   NEW_PAGE: '/new/:newId',
+  UNIVERSITY_PROFILE_PAGE: '/university/:universityId',
   NEW: '/new/',
   EVENT: '/event/',
   PAGE_NOT_FOUND: '/404'
