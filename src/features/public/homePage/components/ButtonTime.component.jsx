@@ -13,7 +13,7 @@ const ButtonTimeComponent = (props) => {
     <div className={`nc-PostCardLikeAndComment flex items-center space-x-2`} data-nc-id='PostCardLikeAndComment'>
       <Space>
         <Link
-          className={`nc-PostCardCommentBtn relative items-center min-w-[68px] rounded-full text-neutral-6000 bg-orange-100 transition-colors dark:text-teal-600 dark:bg-neutral-800 hover:bg-teal-50 dark:hover:bg-teal-100 hover:text-teal-600 dark:hover:text-teal-500 flex px-3 h-8 text-xs`}
+          className={`nc-PostCardCommentBtn relative items-center min-w-[68px] rounded-full text-neutral-6000 bg-sky-300 transition-colors dark:text-teal-600 dark:bg-neutral-800 hover:bg-teal-50 dark:hover:bg-teal-100 hover:text-teal-600 dark:hover:text-teal-500 flex px-3 h-8 text-xs`}
           title='Thời gian bắt đầu'
           data-nc-id='PostCardCommentBtn'>
           <span className='ml-1 text-neutral-900 dark:text-neutral-200'>
