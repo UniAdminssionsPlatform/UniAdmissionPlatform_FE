@@ -8,6 +8,7 @@ import commentReducer from './comment/comment-slice';
 import eventPublishReducer from './eventPublish/eventPublish-slice';
 import listEventPublishReducer from './listEventPublish/listEventPublish-slice';
 import listNewPublishReducer from './newPublish/listNewPublish-slice';
+import listEventCheckHighSchoolReducer from './highSchoolManageEventCheck/listEventCheckHighSchool-slice';
 const store = configureStore({
   reducer: {
     authentication: authenticationReducer,
@@ -17,7 +18,8 @@ const store = configureStore({
     comments: commentReducer,
     eventPublish: eventPublishReducer,
     listEventPublish: listEventPublishReducer,
-    listNewPublish: listNewPublishReducer
+    listNewPublish: listNewPublishReducer,
+    listEventCheckHighSchool: listEventCheckHighSchoolReducer
   },
   middleware: [thunkMiddleware]
 });

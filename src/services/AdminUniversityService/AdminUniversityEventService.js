@@ -9,4 +9,4 @@ export const getListEventFromDateToDateApi = (data) =>
     'get'
   );
 export const getListEventCheck = (data) =>
-  CallAPI(`${GET_LIST_EVENT_CHECK}?status=${data.status}&page=${data.page}&${data.limit}`);
+  CallAPI(`${GET_LIST_EVENT_CHECK}?status=${data.status}&page=${data.page}&limit=${data.limit}`);

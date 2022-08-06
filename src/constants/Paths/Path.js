@@ -30,6 +30,7 @@ export const PATH_HIGH_SCHOOL_MANAGER = {
   REGISTERED_EVENT: '/high-school/registered-events',
   LIST_STUDENT: '/high-school/students',
   PROFILE: '/high-school/profile',
+  CALENDAR: '/high-school/calendar',
   LIST_ACCOUNT_PENDING: '/high-school/account',
   ACCOUNT_PROFILE: '/high-school/account-profile'
 };

@@ -1,11 +1,11 @@
 import { getListEventFromDateToDateApi } from '../../../services/AdminUniversityService/AdminUniversityEventService';
 import { useSelector } from 'react-redux';
-import CalendarComponent from './Calendar.component';
+import UniversityCalendarComponent from './UniversityCalendar.component';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { Layout } from 'antd';
 
-const CalendarContainer = () => {
+const UniversityCalendarContainer = () => {
   const [listSlot, setListSlot] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState();
@@ -40,8 +40,12 @@ const CalendarContainer = () => {
   useEffect(() => getListEventByStartDateToEndDate(), [triggerUpdate]);
   return (
     <Layout>
-      <CalendarComponent listSlot={listSlot} handleChangeSelection={handleChangeSelection} isLoading={isLoading} />
+      <UniversityCalendarComponent
+        listSlot={listSlot}
+        handleChangeSelection={handleChangeSelection}
+        isLoading={isLoading}
+      />
     </Layout>
   );
 };
-export default CalendarContainer;
+export default UniversityCalendarContainer;

@@ -16,22 +16,23 @@ import { useSelector } from 'react-redux';
 import CalendarPage from '../pages/universityManager/CalendarPage';
 import GoalAdmissionPage from '../pages/universityManager/GoalAdmissionPage';
 import HighSchoolBookingPage from '../pages/universityManager/manageEvent/HighSchoolBookingPage';
-import HighSchoolListAccountPendingPage from '../pages/highSchoolManager/ListAccountPendingPage';
+import HighSchoolListAccountPendingPage from '../pages/highSchoolManager/listAccountPendingPage';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
 import ListEventForHighSchoolPage from '../pages/universityManager/ListEventForHighschoolPage';
 import ListNewContainer from '../features/public/news/ListNew.container';
-import ListStudentForHighschoolPage from '../pages/highSchoolManager/ListStudentForHighschoolPage';
+import ListStudentForHighschoolPage from '../pages/highSchoolManager/listStudentForHighSchoolPage';
 import ManageEventPage from '../pages/universityManager/manageEvent/ManageEventPage';
 import ManageNewPage from '../pages/universityManager/manageNew/manageNewPage';
 import NewManagementPage from '../pages/universityManager/NewManagementPage';
 import React from 'react';
-import RegisteredEventHighSchoolPage from '../pages/highSchoolManager/RegisteredEventHighSchoolPage';
+import RegisteredEventHighSchoolPage from '../pages/highSchoolManager/registeredEventHighSchoolPage';
 import RegisteredEventPage from '../pages/universityManager/manageEvent/RegisteredEventPage';
 import SelectHighSchoolPage from '../pages/universityManager/manageEvent/SelectHighSchoolPage';
-import SlotManagerPage from '../pages/highSchoolManager/SlotManagerPage';
+import SlotManagerPage from '../pages/highSchoolManager/slotManagerPage';
 import UniversityDetailPage from '../pages/universityManager/UniversityDetailPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import FlexMonsterPage from '../pages/universityManager/FlexMonster.page';
+import HighSchoolCalendarPage from '../pages/highSchoolManager/highSchoolCalendarPage';
 
 const ManagementRouter = () => {
   const { Header, Content, Sider } = Layout;
@@ -92,7 +93,7 @@ const ManagementRouter = () => {
     const { item, key, keyPath, selectedKeys, domEvent } = data;
     switch (key) {
       case '1':
-        history.push(PATH_UNIVERSITY_MANAGER.CALENDAR);
+        history.push(PATH_HIGH_SCHOOL_MANAGER.CALENDAR);
         break;
       case '3':
         history.push(PATH_HIGH_SCHOOL_MANAGER.SLOT_MANAGER);
@@ -215,6 +216,12 @@ const ManagementRouter = () => {
                 component={() => <HighSchoolListAccountPendingPage />}
                 path={PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING}
                 key={PATH_HIGH_SCHOOL_MANAGER.LIST_ACCOUNT_PENDING}
+                exact
+              />
+              <HighSchoolManagerRouter
+                component={() => <HighSchoolCalendarPage />}
+                path={PATH_HIGH_SCHOOL_MANAGER.CALENDAR}
+                key={PATH_HIGH_SCHOOL_MANAGER.CALENDAR}
                 exact
               />
               <HighSchoolManagerRouter

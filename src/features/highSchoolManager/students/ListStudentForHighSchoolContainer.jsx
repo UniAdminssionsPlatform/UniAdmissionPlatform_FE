@@ -13,7 +13,7 @@ import ListStudentForHighschoolComponent from './components/ListStudentForHighsc
 import React, { useEffect, useState } from 'react';
 import TitlePageComponent from '../../../components/decorator/TitlePage.component';
 
-const ListStudentForHighschoolContainer = () => {
+const ListStudentForHighSchoolContainer = () => {
   const { user } = useSelector((state) => state.authentication);
 
   const [students, setStudents] = useState();
@@ -127,4 +127,4 @@ const ListStudentForHighschoolContainer = () => {
     </Layout>
   );
 };
-export default ListStudentForHighschoolContainer;
+export default ListStudentForHighSchoolContainer;

@@ -2,7 +2,7 @@ import { Count, FollowUniversity, Following } from '../../../services/FollowUniv
 import { FollowSuccessNotification, UnFollowSuccessNotification } from '../../../notification/FollowNotification';
 import { UniversityDetail } from '../../../services/UniversityDetail';
 import React, { useEffect, useState } from 'react';
-import UniversityProfileComponent from '../../../features/public/universityProfile/components/UniversityProfile.component';
+import UniversityProfileComponent from '../../universityManager/universityProfile/components/UniversityProfile.component';
 
 const UniversityProfileToFollowContainer = (props) => {
   const { universityID } = props;
