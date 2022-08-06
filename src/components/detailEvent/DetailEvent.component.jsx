@@ -1,10 +1,13 @@
-import { Spin, Typography } from 'antd';
+import { Divider, Space, Spin, Typography } from 'antd';
 import DetailEventContent from './DetailEventContent.component';
 import DetailEventHeader from './DetailEventHeader.component';
 import React from 'react';
 import MakeDownView from '../MarkdownView/MarkdownView.component';
 import WidgetHeading1 from '../commons/WidgetTags/WidgetHeading.component';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import EventBusyIcon from '@mui/icons-material/EventBusy';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import moment from 'moment';
 const DetailEventComponent = (props) => {
   const { event, loading } = props;
   console.log(event);
@@ -35,10 +38,29 @@ const DetailEventComponent = (props) => {
               <div className='nc-WidgetTags rounded-3xl overflow-hidden bg-orange-200 dark:bg-neutral-800 w-96'>
                 <WidgetHeading1 title='✨  Chi tiết về sự kiện' viewAll={{ label: 'View all' }} />
                 <div className='flex flex-wrap p-4 xl:p-5'>
-                  <Text>
-                    <AccessTimeIcon />
-                    {/*{event.startTime ? event.startTime : event.slot.timeStart}*/}
-                  </Text>
+                  <Space direction={'vertical'}>
+                    <Text type={'secondary'}>
+                      Đơn vị tổ chức: <Text strong> {event.university.name}</Text>
+                    </Text>
+                    <Text type={'secondary'}>
+                      Email:<Text strong> {event.university.websiteUrl}</Text>
+                    </Text>
+                    <Text type={'secondary'}>
+                      Số điện thoại: <Text strong> {event.university.phoneNumber}</Text>
+                    </Text>
+                    <Text>
+                      <LocationOnIcon /> <Divider type={'vertical'} />
+                      <Text strong> {event.slots[0].highSchoolAddress}</Text>
+                    </Text>
+                    <Text>
+                      <EventAvailableIcon /> <Divider type={'vertical'} />
+                      <Text strong> {moment(event.slots[0].startDate).format('LLL')}</Text>
+                    </Text>
+                    <Text>
+                      <EventBusyIcon /> <Divider type={'vertical'} />
+                      <Text strong> {moment(event.slots[0].endDate).format('LLL')}</Text>
+                    </Text>
+                  </Space>
                 </div>
               </div>
             </div>

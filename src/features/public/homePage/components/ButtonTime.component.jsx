@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { Button, Space, Typography } from 'antd';
 import moment from 'moment';
+import { useSelector } from 'react-redux';
+import { HIGH_SCHOOL_STUDENT } from '../../../../constants/RoleType';
 const ButtonTimeComponent = (props) => {
   const { event } = props;
   const { Text } = Typography;
+  const { user } = useSelector((state) => state.authentication);
   return (
     <div className={`nc-PostCardLikeAndComment flex items-center space-x-2`} data-nc-id='PostCardLikeAndComment'>
       <Space>
@@ -20,9 +23,11 @@ const ButtonTimeComponent = (props) => {
             </Text>
           </span>
         </Link>
-        <Button type={'primary'} size={'middle'} shape={'round'}>
-          Theo dõi
-        </Button>
+        {user?.roles === HIGH_SCHOOL_STUDENT ? (
+          <Button type={'primary'} size={'middle'} shape={'round'}>
+            Theo dõi
+          </Button>
+        ) : null}
       </Space>
     </div>
   );
