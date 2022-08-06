@@ -2,9 +2,14 @@ import { Link } from 'react-router-dom';
 import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../../../constants/Paths/Path';
 import NcImage from '../../../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
+import { Divider, Tag } from 'antd';
+import { TagOutlined } from '@ant-design/icons';
 
 const Card4 = (props) => {
   const { post } = props;
+  const style = {
+    color: '#0099FF'
+  };
 
   return (
     <div
@@ -26,11 +31,24 @@ const Card4 = (props) => {
       <div className='p-4 flex flex-col flex-grow'>
         <div className='space-y-2.5 mb-4'>
           <h2 className='nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100 '>
-            <Link to='#' className='line-clamp-2' title={post.title}>
-              {post.title}
-            </Link>
+            {post.title}
           </h2>
-          <div className='flex items-end justify-between mt-auto'>{post.createDate}</div>
+          <div>
+            <Tag color='blue'>Đơn vị viết bài</Tag>: {post.university.name}
+          </div>
+          <div>
+            <Tag color='blue'>Ngày viết bài </Tag>: {post.createDate}
+          </div>
+          <Divider orientation='left' style={style}>
+            Các thẻ bài viết
+          </Divider>
+          <div>
+            {post?.tagList.map((item, index) => (
+              <Tag key={index} color='volcano' icon={<TagOutlined />}>
+                {item.name}
+              </Tag>
+            ))}
+          </div>
         </div>
       </div>
     </div>
