@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import React from 'react';
 import ScheduleEventComponent from '../../../components/schedule/ScheduleEvent.component';
 
-const CalendarComponent = (props) => {
+const UniversityCalendarComponent = (props) => {
   const { listSlot, handleChangeSelection, isLoading } = props;
   const { Title, Text } = Typography;
   const history = useHistory();
@@ -17,7 +17,7 @@ const CalendarComponent = (props) => {
         <div className='flex-shrink-0 max-w-xl xl:w-80 xl:pr-8'>
           <Space direction='vertical' size='small' style={{ display: 'flex' }}>
             <Title level={3} strong>
-              CALENDAR
+              Lịch sự kiện
             </Title>
             <Button type='primary' danger size={'large'} style={{ width: '15rem' }} onClick={handleRedirect}>
               Đăng ký sự kiện
@@ -76,4 +76,4 @@ const CalendarComponent = (props) => {
     </>
   );
 };
-export default CalendarComponent;
+export default UniversityCalendarComponent;

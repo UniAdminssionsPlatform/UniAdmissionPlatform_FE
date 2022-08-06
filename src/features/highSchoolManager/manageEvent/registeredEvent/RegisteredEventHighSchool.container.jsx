@@ -1,14 +1,13 @@
-import { Button, Form, Modal, Pagination, Space, Table, Tag, Typography, notification } from 'antd';
+import { Button, Form, Modal, Pagination, Space, Table, Tag, Typography, notification, Layout } from 'antd';
 import { CheckCircleTwoTone, CloseCircleTwoTone } from '@ant-design/icons';
 import { EVENT_CHECK } from '../../../../constants/AppConst';
 import {
-  approveAEvent,
-  getListEventCheck,
-  rejectAEvent
+  approveAEventService,
+  getListEventCheckService,
+  rejectAEventService
 } from '../../../../services/AdminHighSchoolService/AdminHighSchoolEventCheck';
-import { refactorData, refactorDataSlotEventCheckID } from '../../../../utils/common';
+import { refactorDataSlotEventCheckID } from '../../../../utils/common';
 import DetailEventComponent from '../../../../components/detailEvent/DetailEvent.component';
-import Layout from '../../../../components/Layout';
 import React, { useEffect, useState } from 'react';
 import TextArea from 'antd/es/input/TextArea';
 import TitlePageComponent from '../../../../components/decorator/TitlePage.component';
@@ -28,7 +27,7 @@ const RegisteredEventHighSchoolContainer = () => {
     limit: requestPayload?.limit ? requestPayload.limit : 10
   };
   const getListEventCheckRegistered = () => {
-    getListEventCheck(payload)
+    getListEventCheckService(payload)
       .then((res) => {
         setData(res.data.data);
       })
@@ -39,7 +38,7 @@ const RegisteredEventHighSchoolContainer = () => {
     setIdEventCheck(data.eventCheckId);
   };
   const handleApproveEvent = (data) => {
-    approveAEvent(data.eventCheckId)
+    approveAEventService(data.eventCheckId)
       .then((res) => {
         notification.success({
           message: 'Thành công',
@@ -151,7 +150,7 @@ const RegisteredEventHighSchoolContainer = () => {
       id: idEventCheck,
       reason: data.reason
     };
-    rejectAEvent(payload)
+    rejectAEventService(payload)
       .then((res) => {
         notification.success({
           message: 'Thành công',

@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from './AccountSearchBar.component';
 import Table from './AccountPendingTable.component';
 
-const AccountPendinglComponent = (props) => {
+const AccountPendingComponent = (props) => {
   const { data, setDataSearch, loading, setLoading, handleOk, dataSearch, total, onChangePage } = props;
   return (
     <>
@@ -15,4 +15,4 @@ const AccountPendinglComponent = (props) => {
     </>
   );
 };
-export default AccountPendinglComponent;
+export default AccountPendingComponent;

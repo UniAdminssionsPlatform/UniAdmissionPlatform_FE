@@ -1,5 +1,5 @@
 import React from 'react';
-import UpdateUniversityProfileContainer from '../../features/public/universityProfile/EditUniversityProfile.container';
+import UpdateUniversityProfileContainer from '../../features/universityManager/universityProfile/EditUniversityProfile.container';
 
 const UpdateUniversityProfilePage = () => (
   <>

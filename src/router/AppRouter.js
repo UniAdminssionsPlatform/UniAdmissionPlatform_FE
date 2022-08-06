@@ -16,7 +16,7 @@ import EventCheckPage from '../pages/universityManager/EventCheckPage';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 import HeaderContainer from '../features/public/header/Header.container';
 import HighSchoolManagerRouter from './components/HighSchoolManagerRouter';
-import HighSchoolProfilePage from '../pages/highSchoolManager/HighschoolProfilePage';
+import HighschoolProfilePage from '../pages/highSchoolManager/highschoolProfilePage';
 import HighSchoolStudentRouter from './components/HighSchoolStudentRouter';
 import HomePage from '../pages/public/HomePage';
 import ListEventGorStudentPage from '../pages/highSchoolStudent/ListEventForStudentPage';
@@ -41,7 +41,7 @@ import UniversityDetailPage from '../pages/universityManager/UniversityDetailPag
 import UniversityDetailToFollowPage from '../pages/UniversityProfilePage/UniversityDetailToFollowPage';
 import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 import UniversityManagerRouter from './components/UniversityManagerRouter';
-import UpdateHighSchoolPage from '../pages/highSchoolManager/UpdateHighschoolProfilePage';
+import UpdateHighSchoolPage from '../pages/highSchoolManager/updateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
 import ProSideBarComponent from './ProSideBar.component';
@@ -108,7 +108,7 @@ const AppRouter = () => {
         </Route>
         // HighSchool Page
         <HighSchoolManagerRouter
-          component={() => <HighSchoolProfilePage />}
+          component={() => <HighschoolProfilePage />}
           path={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
           key={PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE}
           exact
@@ -120,7 +120,7 @@ const AppRouter = () => {
           exact
         />
         <HighSchoolManagerRouter
-          component={() => <HighSchoolProfilePage />}
+          component={() => <HighschoolProfilePage />}
           path={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
           key={PATH_HIGH_SCHOOL_MANAGER.PROFILE}
           exact
@@ -158,7 +158,7 @@ const AppRouter = () => {
           exact
         />
         <HighSchoolStudentRouter
-          component={() => <HighSchoolProfilePage />}
+          component={() => <HighschoolProfilePage />}
           path={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
           key={PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE}
           exact

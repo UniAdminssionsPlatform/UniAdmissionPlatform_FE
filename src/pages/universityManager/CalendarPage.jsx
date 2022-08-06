@@ -1,5 +1,5 @@
-import CalendarContainer from '../../features/universityManager/calendar/Calendar.container';
+import UniversityCalendarContainer from '../../features/universityManager/calendar/UniversityCalendar.container';
 import React from 'react';
 
-const CalendarPage = () => <CalendarContainer />;
+const CalendarPage = () => <UniversityCalendarContainer />;
 export default CalendarPage;
