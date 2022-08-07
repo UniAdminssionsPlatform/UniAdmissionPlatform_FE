@@ -14,7 +14,7 @@ export const fetchEventCheckHighSchool = createAsyncThunk(
     };
     await getListEventCheckService(param)
       .then((res) => {
-        dispatch(storeListEventCheckHighSchool(res.data.data));
+        dispatch(storeListEventCheckHighSchool(res.data));
       })
       .catch((err) => {
         notification.error({

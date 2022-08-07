@@ -1,5 +1,17 @@
-import { Button, Form, Modal, Pagination, Space, Table, Tag, Typography, notification, Layout } from 'antd';
-import { CheckCircleTwoTone, CloseCircleTwoTone } from '@ant-design/icons';
+import {
+  Button,
+  Form,
+  Modal,
+  Pagination,
+  Space,
+  Table,
+  Tag,
+  Typography,
+  notification,
+  Layout,
+  Divider,
+  Tooltip
+} from 'antd';
 import { EVENT_CHECK } from '../../../../constants/AppConst';
 import {
   approveAEventService,
@@ -12,7 +24,13 @@ import React, { useEffect, useState } from 'react';
 import TextArea from 'antd/es/input/TextArea';
 import TitlePageComponent from '../../../../components/decorator/TitlePage.component';
 import moment from 'moment';
-
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import PreviewIcon from '@mui/icons-material/Preview';
+import UnpublishedIcon from '@mui/icons-material/Unpublished';
+import { COLOR_ICON, COLOR_ICON_REJECT } from '../../../../constants/Color';
+import SingleEventContainer from '../../../public/singleEventFeature/SingleEvent.container';
 const RegisteredEventHighSchoolContainer = () => {
   const [requestPayload, setRequestPayload] = useState();
   const [forceLoad, setForceLoad] = useState();
@@ -24,7 +42,8 @@ const RegisteredEventHighSchoolContainer = () => {
   const [data, setData] = useState();
   const payload = {
     page: requestPayload?.page ? requestPayload.page : 1,
-    limit: requestPayload?.limit ? requestPayload.limit : 10
+    limit: requestPayload?.limit ? requestPayload.limit : 10,
+    status: ''
   };
   const getListEventCheckRegistered = () => {
     getListEventCheckService(payload)
@@ -53,7 +72,7 @@ const RegisteredEventHighSchoolContainer = () => {
         })
       );
   };
-  const handelDetailEvent = (data) => {
+  const handleViewDetailEvent = (data) => {
     setCurrentSelectedEvent(data);
     setIsSecondModalVisible(true);
   };
@@ -62,24 +81,30 @@ const RegisteredEventHighSchoolContainer = () => {
       title: 'Tên Sự kiện',
       dataIndex: 'name',
       render: (name) => `${name}`,
-      width: '15%'
+      width: '20%'
     },
     {
       title: 'Diễn giả',
       dataIndex: 'hostName',
       render: (name) => `${name}`,
-      width: '5%'
+      width: '15%'
+    },
+    {
+      title: 'Thời gian đăng ký',
+      dataIndex: 'eventCreateAt',
+      render: (eventCreateAt) => `${eventCreateAt ? moment(eventCreateAt).format('LLL') : ''}`,
+      width: '10%'
     },
     {
       title: 'Thời gian bắt đầu',
-      dataIndex: 'startDate',
-      render: (time) => `${time ? moment(time).format('LLL') : ''}`,
+      dataIndex: 'startTime',
+      render: (startTime) => `${startTime ? moment(startTime).format('LLL') : ''}`,
       width: '10%'
     },
     {
       title: 'Thời gian kết thúc',
-      dataIndex: 'endDate',
-      render: (time) => `${time ? moment(time).format('LLL') : ''}`,
+      dataIndex: 'endTime',
+      render: (endTime) => `${endTime ? moment(endTime).format('LLL') : ''}`,
       width: '10%'
     },
     {
@@ -93,35 +118,54 @@ const RegisteredEventHighSchoolContainer = () => {
       width: '10%'
     },
     {
-      title: 'Xem chi tiết',
-      dataIndex: 'status',
-      render: (index, data) => <Button onClick={() => handelDetailEvent(data)}>Xem chi tiết</Button>,
-      width: '10%'
-    },
-    {
       title: 'Hành động',
       dataIndex: 'status',
       render: (eventCheckStatus, data) => (
-        <Space>
+        <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
+          <Tooltip title='Xem chi tiết sự kiện'>
+            <PreviewIcon
+              onClick={() => handleViewDetailEvent(data)}
+              style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON }}
+            />
+          </Tooltip>
+
+          <Divider type={'vertical'} />
           {data.eventCheckStatus === EVENT_CHECK.Approved ? (
-            <CheckCircleTwoTone style={{ fontSize: '2rem' }} twoToneColor='green' />
+            <Tooltip title='Sự kiện đã được chấp thuận'>
+              <ThumbUpIcon style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON }} />
+              <Divider type={'vertical'} />
+              <Text type={'secondary'}>Sự kiện đã chấp nhận</Text>
+            </Tooltip>
           ) : null}
           {data.eventCheckStatus === EVENT_CHECK.REJECT ? (
-            <CloseCircleTwoTone style={{ fontSize: '2rem' }} twoToneColor='red' />
+            <Tooltip title='Sự kiện đã từ chối'>
+              <ThumbDownIcon style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON_REJECT }} />
+              <Divider type={'vertical'} />
+              <Text type={'secondary'}>Sự kiện đã từ chối</Text>
+            </Tooltip>
           ) : null}
           {data.eventCheckStatus === EVENT_CHECK.PENDING ? (
             <>
-              <Button type={'primary'} onClick={() => handleApproveEvent(data)}>
-                Chấp nhận
-              </Button>
-              <Button type={'primary'} danger onClick={() => handleOpenModal(data)}>
-                Từ chối
-              </Button>
+              <Tooltip title='Chấp thuận sự kiện'>
+                <CheckCircleIcon
+                  onClick={() => handleApproveEvent(data)}
+                  style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON }}
+                />
+              </Tooltip>
+
+              <Divider type={'vertical'} />
+              <Tooltip title='Từ chối sự kiện'>
+                <UnpublishedIcon
+                  danger
+                  onClick={() => handleOpenModal(data)}
+                  style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON_REJECT }}
+                />
+              </Tooltip>
             </>
           ) : null}
         </Space>
       ),
-      width: '10%'
+      width: '15%'
     }
   ];
   const handleOk = () => {
@@ -174,7 +218,7 @@ const RegisteredEventHighSchoolContainer = () => {
         onCancel={handleCancelSecondModal}
         footer={null}
         width={'80vw'}>
-        <DetailEventComponent event={currentSelectedEvent} loading={false} />
+        <SingleEventContainer eventId={currentSelectedEvent.id} loading={false} />
       </Modal>
       <Modal
         title='Từ chối tổ chức sự kiện'
@@ -203,7 +247,7 @@ const RegisteredEventHighSchoolContainer = () => {
         />
         <Table
           columns={column}
-          dataSource={refactorDataSlotEventCheckID(data?.list)}
+          dataSource={refactorDataSlotEventCheckID(data)}
           bordered={true}
           size='middle'
           style={{ width: '100rem' }}
