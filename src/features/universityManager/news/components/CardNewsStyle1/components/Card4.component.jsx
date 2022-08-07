@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../../../constants/Paths/Path';
+import { PATH } from '../../../../../../constants/Paths/Path';
 import NcImage from '../../../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 import { Divider, Tag } from 'antd';
@@ -7,6 +7,7 @@ import { TagOutlined } from '@ant-design/icons';
 
 const Card4 = (props) => {
   const { post } = props;
+  console.log(post);
   const style = {
     color: '#0099FF'
   };
@@ -21,10 +22,7 @@ const Card4 = (props) => {
 
       <Link
         to={{
-          pathname: PATH_HIGH_SCHOOL_STUDENT.NEWS_DETAIL,
-          state: {
-            newsId: post?.id
-          }
+          pathname: `${PATH.NEW}${post?.id}`
         }}
         className='absolute inset-0'></Link>
 

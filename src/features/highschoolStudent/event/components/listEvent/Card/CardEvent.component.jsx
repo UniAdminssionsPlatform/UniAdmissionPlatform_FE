@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../../../constants/Paths/Path';
+import { PATH, PATH_HIGH_SCHOOL_STUDENT } from '../../../../../../constants/Paths/Path';
 import EventFeaturedMedia from '../EventFeaturedMedia/EventFeaturedMedia.component';
 import React, { useState } from 'react';
 
@@ -21,10 +21,7 @@ const EventCard = ({ event }) => {
       </div>
       <Link
         to={{
-          pathname: PATH_HIGH_SCHOOL_STUDENT.DETAIL_EVENT,
-          state: {
-            eventId: id
-          }
+          pathname: `${PATH.EVENT}${id}`
         }}
         className='absolute inset-0'></Link>
 
