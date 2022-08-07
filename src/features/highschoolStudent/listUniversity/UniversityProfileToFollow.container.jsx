@@ -1,4 +1,8 @@
-import { Count, FollowUniversity, Following } from '../../../services/FollowUniversityService';
+import {
+  CountStudentFollowService,
+  FollowUniversityService,
+  Following
+} from '../../../services/FollowUniversityService';
 import { FollowSuccessNotification, UnFollowSuccessNotification } from '../../../notification/FollowNotification';
 import { UniversityDetail } from '../../../services/UniversityDetail';
 import React, { useEffect, useState } from 'react';
@@ -16,14 +20,14 @@ const UniversityProfileToFollowContainer = (props) => {
 
   //Count
   const CountStudentFollowed = (universityID) => {
-    Count(universityID).then((result) => {
+    CountStudentFollowService(universityID).then((result) => {
       setCountStudent(result.data.data);
     });
   };
 
   //Follow Button
   const handleFollowButton = (value) => {
-    FollowUniversity({
+    FollowUniversityService({
       universityId: value.id
     })
       .then((result) => {
@@ -37,7 +41,7 @@ const UniversityProfileToFollowContainer = (props) => {
 
   //Unfollow Button
   const handleUnFollowButton = (value) => {
-    FollowUniversity({
+    FollowUniversityService({
       universityId: value.id
     })
       .then((result) => {

@@ -1,10 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from '../../../../components/commons/Avatar/Avatar.component';
 import MarkdownViewComponent from '../../../../components/MarkdownView/MarkdownView.component';
 import ShowImageComponent from '../../../../commons/ShowImage.component';
+import MailIcon from '@mui/icons-material/Mail';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import { Button, Divider, notification, Typography } from 'antd';
+import { COLOR_ICON } from '../../../../constants/Color';
+import { CountStudentFollowService, FollowUniversityService } from '../../../../services/FollowUniversityService';
+
 const SingleUniversityProfileComponent = (props) => {
+  const { Text, Title } = Typography;
   const { universityProfile } = props;
-  console.log(universityProfile);
+  const [isFollowed, setIsFollowed] = useState(universityProfile.isFollow);
+  const [countStudent, setCountStudent] = useState();
+  const handleFollowUniversity = () => {
+    setIsFollowed(true);
+    FollowUniversityService(universityProfile.id)
+      .then((res) => {
+        notification.success({
+          message: 'Theo dõi Trường đại học thành công!',
+          description: `Bạn đã theo dõi thành công trường đại học này!`
+        });
+      })
+      .catch((err) => {
+        notification.error({
+          message: 'Theo dõi trường đại học thất bại',
+          description: `Lỗi ${err.response.data.msg}`
+        });
+      });
+  };
+  const handleUnFollowUniversity = () => {
+    setIsFollowed(false);
+    FollowUniversityService(universityProfile.id)
+      .then((res) => {
+        notification.success({
+          message: 'Theo dõi Trường đại học thành công!',
+          description: `Bạn đã theo dõi thành công trường đại học này!`
+        });
+      })
+      .catch((err) => {
+        notification.error({
+          message: 'Theo dõi trường đại học thất bại',
+          description: `Lỗi ${err.response.data.msg}`
+        });
+      });
+  };
+  const handleCountFollow = () => {
+    CountStudentFollowService(universityProfile.id).then((res) => {
+      setCountStudent(res.data.data);
+    });
+  };
+  useEffect(() => handleCountFollow(), []);
   return (
     <div>
       <div className='w-screen px-2 xl:max-w-screen-2xl mx-auto'>
@@ -28,6 +74,36 @@ const SingleUniversityProfileComponent = (props) => {
               <span className='block text-sm text-neutral-6000 dark:text-neutral-300 md:text-base'>
                 {universityProfile.shortDescription}
               </span>
+            </div>
+            <Divider type={'vertical'} />
+            <div className='mt-10 sm:mt-0 sm:ml-8 space-y-4 max-w-lg'>
+              <Text>
+                <MailIcon style={{ color: COLOR_ICON }} /> <Divider type={'vertical'} />
+                {universityProfile.email}
+              </Text>
+              <br />
+              <Text>
+                <ContactPhoneIcon style={{ color: COLOR_ICON }} /> <Divider type={'vertical'} />
+                {universityProfile.phoneNumber}
+              </Text>
+              <br />
+              {universityProfile.isFollow !== true || !isFollowed ? (
+                <Button type={'primary'} shape={'round'} size={'large'} onClick={handleFollowUniversity}>
+                  Theo dõi
+                </Button>
+              ) : (
+                <Button type={'primary'} shape={'round'} size={'large'} onClick={handleUnFollowUniversity}>
+                  Hủy theo dõi
+                </Button>
+              )}
+              <Divider type={'vertical'} />
+              <Text type='secondary'>
+                Hiện đang có{' '}
+                <Text strong style={{ color: COLOR_ICON }}>
+                  {countStudent}
+                </Text>{' '}
+                người theo dõi
+              </Text>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { FollowSuccessNotification } from '../../../notification/FollowNotification';
-import { FollowUniversity, ListUniversityPaging } from '../../../services/FollowUniversityService';
+import { FollowUniversityService, ListUniversityPaging } from '../../../services/FollowUniversityService';
 import { Skeleton } from 'antd';
 import ListUniversityComponent from './components/listUniversity.component';
 import React, { useEffect, useState } from 'react';
@@ -15,7 +15,7 @@ const ListUniversityContainer = () => {
 
   //Follow button
   const handleFollowButton = (value) => {
-    FollowUniversity({
+    FollowUniversityService({
       universityId: value.id
     })
       .then((result) => {
