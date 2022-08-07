@@ -17,6 +17,7 @@ export const fetchListEventPublish = createAsyncThunk(
       .then(async (res) => {
         const listEvent = [];
         await res.data.data.list.map((event) => {
+          console.log(event);
           if (event.eventTypeId === EVENT_HS) {
             event.slots.map((slot) => {
               if (slot.eventCheckStatus === EVENT_CHECK.Approved) {
@@ -24,8 +25,10 @@ export const fetchListEventPublish = createAsyncThunk(
                 listEvent.push(event);
               }
             });
+          } else {
+            console.log('run here');
+            listEvent.push(event);
           }
-          if (event.eventTypeId !== EVENT_HS) listEvent.push(event);
         });
         dispatch(storeListEventPublish(listEvent));
       })

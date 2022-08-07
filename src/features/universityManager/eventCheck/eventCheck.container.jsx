@@ -33,7 +33,7 @@ const EventCheckContainer = () => {
 
   return (
     <>
-      <EventCheckComponent eventCheck={eventCheck} onChange={onChange} />;
+      <EventCheckComponent listEventCheck={eventCheck} onChange={onChange} />;
     </>
   );
 };

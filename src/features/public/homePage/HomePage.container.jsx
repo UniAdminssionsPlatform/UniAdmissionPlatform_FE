@@ -7,10 +7,10 @@ import { fetchListNewPublish } from '../../../redux-flow/newPublish/listNewPubli
 const HomePageContainer = () => {
   const dispatch = useDispatch();
   const getListEventPublish = () => {
-    dispatch(fetchListEventPublish({ page: 1, limit: 1, status: EVENT.ON_GOING }));
+    dispatch(fetchListEventPublish({ page: 1, limit: 10, status: EVENT.ON_GOING }));
   };
   const getListNewPublish = () => {
-    dispatch(fetchListNewPublish({ page: 1, limit: 1 }));
+    dispatch(fetchListNewPublish({ page: 1, limit: 10 }));
   };
   useEffect(() => {
     getListEventPublish();

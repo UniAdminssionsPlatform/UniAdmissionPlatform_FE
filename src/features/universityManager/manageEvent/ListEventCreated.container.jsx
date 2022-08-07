@@ -12,6 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import { COLOR_ICON } from '../../../constants/Color';
 import { ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING } from '../../../constants/Endpoints/ReportEndpoint';
+import SingleEventContainer from '../../public/singleEventFeature/SingleEvent.container';
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
   const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
@@ -19,8 +20,7 @@ const ListEventCreatedContainer = (props) => {
   const { user } = useSelector((state) => state.authentication);
   const [resource, setResource] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const showModal = (data) => {
-    setCurrentSelectedEvent(data);
+  const showModal = () => {
     setIsModalVisible(true);
   };
   const handleOk = () => {
@@ -126,7 +126,10 @@ const ListEventCreatedContainer = (props) => {
       render: (status, data) => (
         <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
           <PreviewIcon
-            onClick={() => showModal(data)}
+            onClick={() => {
+              setCurrentSelectedEvent(data);
+              showModal();
+            }}
             style={{ cursor: 'pointer', color: COLOR_ICON }}
             className={`hover:fill-neutral-100`}
           />
@@ -147,13 +150,14 @@ const ListEventCreatedContainer = (props) => {
     setResource(`${ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING}?event-id=${data.id}&token=${user.token}`);
     showModal();
   };
+  useEffect(() => console.log(currentSelectedEvent), [currentSelectedEvent]);
   const onShowSizeChange = (page, PageSize) => {
     setDataSearch({ ...dataSearch, page, limit: PageSize });
   };
   return (
     <div>
       <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
-        <DetailEventComponent event={currentSelectedEvent} loading={false} />
+        <SingleEventContainer eventId={currentSelectedEvent?.id} />
       </Modal>
       <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />
