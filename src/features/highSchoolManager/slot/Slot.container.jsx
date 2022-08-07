@@ -1,7 +1,7 @@
 import { Layout, Spin } from 'antd';
 import {
-  createNewSlot,
-  getListSlotHighSchool
+  createNewSlotService,
+  getListSlotHighSchoolService
 } from '../../../services/AdminHighSchoolService/AdminHighSchoolSlotsService';
 import { handleCreateNotification, handleQueryNotification } from '../../../notification/CreateSlotNotification';
 import LeftBarComponent from './components/LeftBar.component';
@@ -18,11 +18,10 @@ const SlotContainer = () => {
   const [listAddingSlot, setListAddingSlot] = useState([]);
   const getListSlot = () => {
     setIsLoading(true);
-    getListSlotHighSchool(dataSearch)
+    getListSlotHighSchoolService(dataSearch)
       .then((res) => {
         setReloadTrigger(false);
         setIsLoading(false);
-        handleQueryNotification('success');
         setListSlot(res?.data.data.list);
       })
       .catch((err) => {
@@ -38,7 +37,7 @@ const SlotContainer = () => {
   const createListSLotEvent = (listSlot) => {
     if (listSlot !== undefined && listSlot.length > 0) {
       setReloadTrigger(false);
-      createNewSlot(listSlot)
+      createNewSlotService(listSlot)
         .then((res) => {
           setIsButtonCreateSlotClicked(false);
           handleCreateNotification('success', res);

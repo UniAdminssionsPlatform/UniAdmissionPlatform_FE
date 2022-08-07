@@ -139,7 +139,7 @@ const RegisteredEventHighSchoolContainer = () => {
             </Tooltip>
           ) : null}
           {data.eventCheckStatus === EVENT_CHECK.REJECT ? (
-            <Popover content={data.reason} title='Title' trigger='click'>
+            <Popover content={data.reason} title='Lý do từ chối' trigger='click'>
               <Tooltip title='Nhấp vào để xem lý do từ chối'>
                 <ThumbDownIcon style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON_REJECT }} />
                 <Divider type={'vertical'} />

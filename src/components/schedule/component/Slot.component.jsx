@@ -1,19 +1,17 @@
 import { SLOT } from '../../../constants/AppConst';
-import { Tag, Typography } from 'antd';
+import { Badge, Tag, Typography } from 'antd';
 import React from 'react';
 import moment from 'moment';
+import { COLOR_HIPPIES } from '../../../constants/Color';
 
 const { Text } = Typography;
 const CloseSlotComponent = (props) => {
   const { data } = props;
   return (
     <>
-      <Text type='secondary' strong style={{ padding: '1px' }}>
-        Slot đã bị đóng
+      <Text type='secondary' strong style={{ padding: '1px', color: 'white' }}>
+        Slot Đóng
       </Text>
-      <Tag color='processing' style={{ fontSize: '0.6rem' }}>
-        {moment(data?.startDate).format('LT')} > {moment(data?.endDate).format('LT')}
-      </Tag>
     </>
   );
 };
@@ -21,12 +19,9 @@ const OpenSlotComponent = (props) => {
   const { data } = props;
   return (
     <>
-      <Text type='secondary' strong style={{ padding: '1px' }}>
-        Slot đang mở
+      <Text type='secondary' strong style={{ padding: '1px', color: 'white', marginTop: '100px' }}>
+        Slot Mở
       </Text>
-      <Tag color='processing' style={{ fontSize: '0.6rem' }}>
-        {moment(data?.startDate).format('LT')} > {moment(data?.endDate).format('LT')}
-      </Tag>
     </>
   );
 };
@@ -34,26 +29,28 @@ const FullSlotComponent = (props) => {
   const { data } = props;
   return (
     <>
-      <Text type='secondary' strong style={{ padding: '1px' }}>
-        Slot đã được đặt
+      <Text type='secondary' strong style={{ padding: '1px', color: 'white' }}>
+        Slot đầy
       </Text>
-      <Tag color='processing' style={{ fontSize: '0.6rem' }}>
-        {moment(data?.startDate).format('LT')} > {moment(data?.endDate).format('LT')}
-      </Tag>
     </>
   );
 };
 const SlotComponent = (props) => {
   const { data } = props;
-  console.log(data);
   return (
     <>
       {data.status === SLOT.OPEN ? (
-        <OpenSlotComponent data={data} />
+        <Badge.Ribbon text={moment(data?.startDate).format('LT')} color={COLOR_HIPPIES}>
+          <OpenSlotComponent data={data} />
+        </Badge.Ribbon>
       ) : data.status === SLOT.CLOSE ? (
-        <CloseSlotComponent data={data} />
+        <Badge.Ribbon text={moment(data?.startDate).format('LT')} color={COLOR_HIPPIES}>
+          <CloseSlotComponent data={data} />
+        </Badge.Ribbon>
       ) : (
-        <FullSlotComponent data={data} />
+        <Badge.Ribbon text={moment(data?.startDate).format('LT')} color={COLOR_HIPPIES}>
+          <FullSlotComponent data={data} />
+        </Badge.Ribbon>
       )}
     </>
   );

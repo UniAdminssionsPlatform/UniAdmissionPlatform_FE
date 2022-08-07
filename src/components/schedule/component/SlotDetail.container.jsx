@@ -1,4 +1,8 @@
-import { closeASlot, fullASlot } from '../../../services/AdminHighSchoolService/AdminHighSchoolSlotsService';
+import {
+  closeASlotService,
+  fullASlotService,
+  openASlotService
+} from '../../../services/AdminHighSchoolService/AdminHighSchoolSlotsService';
 import { handleSlotNotification } from '../../../notification/CreateSlotNotification';
 import React from 'react';
 import SlotDetailComponent from './SlotDetail.component';
@@ -6,28 +10,41 @@ const SlotDetailContainer = (props) => {
   const { slotSelected, setReloadTrigger } = props;
   const handleUpdateFullSlot = (id) => {
     if (id != null) {
-      fullASlot({ 'slot-id': id })
+      fullASlotService({ 'slot-id': id })
         .then((res) => {
           handleSlotNotification('success', 'Chuyển trạng thái slot full thành công', 'Hành động đóng slot thành công');
           setReloadTrigger(true);
         })
         .catch((err) => {
-          handleSlotNotification('error', 'Chuyển trạng thái slot full thất bại', 'Hành động đóng slot thất bại');
+          handleSlotNotification('error', 'Chuyển trạng thái slot full thất bại', err);
         });
     }
     setReloadTrigger(true);
   };
   const handleUpdateCloseSlot = (id) => {
     if (id != null) {
-      closeASlot({ 'slot-id': id })
+      closeASlotService({ 'slot-id': id })
         .then((res) => {
           handleSlotNotification('success', 'Đóng slot thành công', 'Hành động đóng slot thành công');
           setReloadTrigger(true);
         })
         .catch((err) => {
-          handleSlotNotification('error', 'Đóng slot thất bại', 'Hành động đóng slot thất bại');
+          handleSlotNotification('error', 'Đóng slot thất bại', 'Slot đang có sự kiện đăng ký, không thể đóng slot!');
         });
     }
+  };
+  const handleOpenASlot = (id) => {
+    if (id != null) {
+      openASlotService({ 'slot-id': id })
+        .then((res) => {
+          handleSlotNotification('success', 'Mở slot thành công', 'Hành động mở thành công');
+          setReloadTrigger(true);
+        })
+        .catch((err) => {
+          handleSlotNotification('error', 'Chuyển trạng thái open thất bại', err);
+        });
+    }
+    setReloadTrigger(true);
   };
   return (
     <>
@@ -35,6 +52,7 @@ const SlotDetailContainer = (props) => {
         slotSelected={slotSelected}
         handleUpdateFullSlot={handleUpdateFullSlot}
         handleUpdateCloseSlot={handleUpdateCloseSlot}
+        handleOpenASlot={handleOpenASlot}
       />
     </>
   );
