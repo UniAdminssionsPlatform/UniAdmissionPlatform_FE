@@ -50,15 +50,15 @@ const DetailEventComponent = (props) => {
                     </Text>
                     <Text>
                       <LocationOnIcon /> <Divider type={'vertical'} />
-                      <Text strong> {event.slots[0].highSchoolAddress}</Text>
+                      <Text strong> {event?.slots[0]?.highSchoolAddress}</Text>
                     </Text>
                     <Text>
                       <EventAvailableIcon /> <Divider type={'vertical'} />
-                      <Text strong> {moment(event.slots[0].startDate).format('LLL')}</Text>
+                      <Text strong> {moment(event?.slots[0]?.startDate).format('LLL')}</Text>
                     </Text>
                     <Text>
                       <EventBusyIcon /> <Divider type={'vertical'} />
-                      <Text strong> {moment(event.slots[0].endDate).format('LLL')}</Text>
+                      <Text strong> {moment(event?.slots[0]?.endDate).format('LLL')}</Text>
                     </Text>
                   </Space>
                 </div>
