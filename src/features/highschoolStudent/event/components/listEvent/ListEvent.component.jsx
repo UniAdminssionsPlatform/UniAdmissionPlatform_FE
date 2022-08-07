@@ -7,7 +7,9 @@ import React from 'react';
 
 const ListEventComponent = (props) => {
   const { listEvent, onSearch, loading, total, onChangePage, onClick } = props;
-
+  const handleRedirectToDetailPage = (data) => {
+    console.log(data);
+  };
   return (
     <>
       <div className={`nc-PageSearchV2`} data-nc-id='PageSearchV2'>
