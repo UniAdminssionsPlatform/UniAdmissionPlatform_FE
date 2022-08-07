@@ -1,12 +1,43 @@
 import PostCardLikeAndComment from '../PostCardLikeAndComment/PostCardLikeAndComment.component';
 import React from 'react';
-import { Button } from 'antd';
+import { Button, notification } from 'antd';
 import { useSelector } from 'react-redux';
 import { HIGH_SCHOOL_STUDENT } from '../../../constants/RoleType';
+import { followAEventByEventID, unFollowAEventByEventID } from '../../../services/PublishService';
 
 const SingleMetaAction2 = ({ className, meta }) => {
   const { user } = useSelector((state) => state.authentication);
   const { eventPublish } = useSelector((state) => state.eventPublish);
+  const handleFollowAEvent = () => {
+    followAEventByEventID(eventPublish.id)
+      .then((res) => {
+        notification.success({
+          message: 'Theo dõi Event thành công!',
+          description: `Bạn đã theo dõi thành công event này!`
+        });
+      })
+      .catch((err) => {
+        notification.error({
+          message: 'Theo dõi Event thất bại',
+          description: `Lỗi ${err.response.data.msg}`
+        });
+      });
+  };
+  const handleUnFollowAEvent = () => {
+    unFollowAEventByEventID(eventPublish.id)
+      .then((res) => {
+        notification.success({
+          message: 'Hủy theo dõi Event thành công!',
+          description: `Bạn đã hủy theo dõi thành công event này!`
+        });
+      })
+      .catch((err) => {
+        notification.error({
+          message: 'Hủy theo dõi Event thất bại',
+          description: `Lỗi ${err.response.data.msg}`
+        });
+      });
+  };
   return (
     <div className={`nc-SingleMetaAction2 ${className}`}>
       <div className='flex flex-row space-x-2.5 items-center'>
@@ -20,9 +51,17 @@ const SingleMetaAction2 = ({ className, meta }) => {
           <div className='border-l border-neutral-200 dark:border-neutral-700 h-6' />
         </div>
         {user?.roles === HIGH_SCHOOL_STUDENT ? (
-          <Button type={'primary'} size={'middle'} shape={'round'}>
-            Theo dõi
-          </Button>
+          <>
+            {eventPublish.isFollow === false ? (
+              <Button type={'prmiary'} size={'middle'} shape={'round'} onClick={handleFollowAEvent}>
+                Theo dõi
+              </Button>
+            ) : (
+              <Button type={'primary'} size={'middle'} shape={'round'} onClick={handleUnFollowAEvent}>
+                Hủy theo dõi
+              </Button>
+            )}
+          </>
         ) : null}
       </div>
     </div>

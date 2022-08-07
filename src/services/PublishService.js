@@ -1,6 +1,7 @@
 import { CallAPI } from './axiosBase';
 import {
   ENDPOINT_COMMENT_EVENT_PUBLISH_BY_EVENT_ID,
+  ENDPOINT_FOLLOW_EVENT_BY_EVENT_ID,
   ENDPOINT_GET_A_HIGH_SCHOOL_BY_ID,
   ENDPOINT_GET_A_NEW_PUBLISH,
   ENDPOINT_GET_COMMENT_BY_EVENT_PUBLISH_ID,
@@ -21,3 +22,9 @@ export const getANewPublishByEventIdService = (id) => CallAPI(`${ENDPOINT_GET_A_
 export const getAHighSchoolProfileByIdService = (id) => CallAPI(`${ENDPOINT_GET_A_HIGH_SCHOOL_BY_ID}/${id}`, 'get');
 //get university by id
 export const getAUniversityProfileByIdService = (id) => CallAPI(`${ENDPOINT_GET_UNIVERSITY_PROFILE_BY_ID}${id}`, 'get');
+//follow a event by event id
+export const followAEventByEventID = (id) =>
+  CallAPI(`${ENDPOINT_FOLLOW_EVENT_BY_EVENT_ID}?event-id=${id}&is-follow=true`, 'POST');
+//unfollow a event by event id
+export const unFollowAEventByEventID = (id) =>
+  CallAPI(`${ENDPOINT_FOLLOW_EVENT_BY_EVENT_ID}?event-id=${id}&is-follow=false`, 'POST');

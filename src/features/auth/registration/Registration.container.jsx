@@ -11,7 +11,6 @@ const RegisterContainer = () => {
   const onSubmit = (value) => {
     createUserWithEmailAndPassword(auth, value.email, value.password)
       .then((userCredential) => {
-        console.log(userCredential);
         notification.success({
           message: 'Tạo tài khoản thành công!',
           description: `Bạn đã tạo tài khoản thành công với email. ${value.email}`
