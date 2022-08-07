@@ -33,10 +33,9 @@ export const handleSlotNotification = (status, messageI, descriptionI) => {
       description: descriptionI
     });
   } else if (status === 'error') {
-    console.log(descriptionI.response);
     notification.error({
       message: `${messageI}`,
-      description: `${descriptionI.response.data.msg}`
+      description: `${descriptionI?.response.data.msg}`
     });
   }
 };

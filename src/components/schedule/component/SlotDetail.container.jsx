@@ -19,7 +19,6 @@ const SlotDetailContainer = (props) => {
           handleSlotNotification('error', 'Chuyển trạng thái slot full thất bại', err);
         });
     }
-    setReloadTrigger(true);
   };
   const handleUpdateCloseSlot = (id) => {
     if (id != null) {
@@ -29,7 +28,7 @@ const SlotDetailContainer = (props) => {
           setReloadTrigger(true);
         })
         .catch((err) => {
-          handleSlotNotification('error', 'Đóng slot thất bại', 'Slot đang có sự kiện đăng ký, không thể đóng slot!');
+          handleSlotNotification('error', 'Đóng slot thất bại', err);
         });
     }
   };
@@ -44,7 +43,6 @@ const SlotDetailContainer = (props) => {
           handleSlotNotification('error', 'Chuyển trạng thái open thất bại', err);
         });
     }
-    setReloadTrigger(true);
   };
   return (
     <>
