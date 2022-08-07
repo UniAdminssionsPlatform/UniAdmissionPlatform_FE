@@ -18,10 +18,13 @@ export const refactorDataSlot = (listData) => {
 };
 export const refactorDataSlotEventCheckID = (listData) => {
   const result = [];
-  listData?.map((data) => {
+  listData?.list.map((data) => {
     const event = data.event;
     event.eventCheckStatus = data.status;
     event.eventCheckId = data.id;
+    event.eventCreateAt = data.createdAt;
+    event.startTime = data.slot.startDate;
+    event.endTime = data.slot.endDate;
     result.push(event);
   });
   return result;
