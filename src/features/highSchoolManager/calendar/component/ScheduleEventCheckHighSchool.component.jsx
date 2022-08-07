@@ -19,7 +19,7 @@ import { Paper } from '@mui/material';
 import AppointmentHeaderComponent from '../../../../components/schedule/component/AppointmentHeader.component';
 import AppointmentContentComponent from '../../../../components/schedule/component/AppointmentContent.component';
 import SlotComponent from '../../../../components/schedule/component/Slot.component';
-
+import './ScheduleEventCheckHighSchool.module.css';
 const ScheduleEventCheckHighSchoolComponent = (props) => {
   const { listEventCheck } = props;
   const AppointmentComponent = ({ children, style, data, ...restProps }) => (

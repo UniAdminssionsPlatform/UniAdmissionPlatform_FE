@@ -27,17 +27,16 @@ export const handleQueryNotification = (status, input) => {
   }
 };
 export const handleSlotNotification = (status, messageI, descriptionI) => {
-  console.log(messageI);
   if (status === 'success') {
     notification.success({
       message: messageI,
       description: descriptionI
     });
   } else if (status === 'error') {
-    console.log('Loi');
+    console.log(descriptionI.response);
     notification.error({
       message: `${messageI}`,
-      description: `${descriptionI}`
+      description: `${descriptionI.response.data.msg}`
     });
   }
 };

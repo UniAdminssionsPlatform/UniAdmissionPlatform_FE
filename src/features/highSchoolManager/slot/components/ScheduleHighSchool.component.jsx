@@ -13,10 +13,17 @@ import {
   ViewSwitcher,
   WeekView
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../../../constants/Color';
+import {
+  COLOR_SLOT_CLOSE,
+  COLOR_SLOT_FULL,
+  COLOR_SLOT_IS_CLOSE,
+  COLOR_SLOT_IS_FULL,
+  COLOR_SLOT_IS_OPEN,
+  COLOR_SLOT_OPEN
+} from '../../../../constants/Color';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import { Modal } from 'antd';
-import { SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../../constants/AppConst';
+import { SLOT, SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../../constants/AppConst';
 import { useState } from 'react';
 import AppointmentHeaderComponent from '../../../../components/schedule/component/AppointmentHeader.component';
 import Paper from '@mui/material/Paper';
@@ -46,20 +53,18 @@ const ScheduleHighSchoolComponent = (props) => {
       style={{
         ...style,
         backgroundColor:
-          data?.status === SLOT_IS_OPEN
-            ? COLOR_SLOT_IS_OPEN
-            : data?.status === SLOT_IS_FULL
-            ? COLOR_SLOT_IS_FULL
-            : COLOR_SLOT_IS_CLOSE,
+          data?.status === SLOT.OPEN
+            ? COLOR_SLOT_OPEN
+            : data?.status === SLOT.FULL
+            ? COLOR_SLOT_FULL
+            : COLOR_SLOT_CLOSE,
         borderRadius: '8px'
       }}
       data={data}
       onClick={() => {
         setIsModalVisible(true);
         SetSlotSelected(data);
-      }}
-      // onDoubleClick={data?.status === 1 ? () => setIsModalOpen(true) : null}
-    >
+      }}>
       <SlotComponent data={data} />
       {children}
     </Appointments.Appointment>
@@ -81,7 +86,7 @@ const ScheduleHighSchoolComponent = (props) => {
         title='Thông tin Slot'
         visible={isModalVisible}
         footer={<></>}
-        width={500}
+        width={700}
         onCancel={handleCloseModal}
         onOk={handleCloseModal}>
         <SlotDetail slotSelected={slotSelected} setReloadTrigger={setReloadTrigger} />
