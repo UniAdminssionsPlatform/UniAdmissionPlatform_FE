@@ -17,13 +17,13 @@ const major = [
   }
 ];
 
-const eventMenu = [
-  {
-    id: ncNanoId(),
-    href: PATH_UNIVERSITY_MANAGER.NEW,
-    name: 'Danh sách news'
-  }
-];
+// const eventMenu = [
+//   {
+//     id: ncNanoId(),
+//     href: PATH.NEW,
+//     name: 'Danh sách news'
+//   }
+// ];
 
 export const DefaultNavigation = [
   {
@@ -40,10 +40,8 @@ export const DefaultNavigation = [
 
   {
     id: ncNanoId(),
-    href: '#',
-    name: 'Sự kiện',
-    type: 'dropdown',
-    children: eventMenu
+    href: PATH.NEW,
+    name: 'Danh sách tin tức'
   },
   {
     id: ncNanoId(),
