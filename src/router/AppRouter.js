@@ -63,6 +63,9 @@ const AppRouter = () => {
         <Route path={PATH.NEW_PAGE} exact>
           <SingleNewPage />
         </Route>
+        <Route path={PATH.NEW} exact>
+          <NewsPageStudent />
+        </Route>
         <Route path={PATH.UNIVERSITY_PROFILE_PAGE} exact>
           <SingleUniversityProfilePage />
         </Route>
