@@ -10,7 +10,8 @@ import {
   notification,
   Layout,
   Divider,
-  Tooltip
+  Tooltip,
+  Popover
 } from 'antd';
 import { EVENT_CHECK } from '../../../../constants/AppConst';
 import {
@@ -138,11 +139,13 @@ const RegisteredEventHighSchoolContainer = () => {
             </Tooltip>
           ) : null}
           {data.eventCheckStatus === EVENT_CHECK.REJECT ? (
-            <Tooltip title='Sự kiện đã từ chối'>
-              <ThumbDownIcon style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON_REJECT }} />
-              <Divider type={'vertical'} />
-              <Text type={'secondary'}>Sự kiện đã từ chối</Text>
-            </Tooltip>
+            <Popover content={data.reason} title='Title' trigger='click'>
+              <Tooltip title='Nhấp vào để xem lý do từ chối'>
+                <ThumbDownIcon style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON_REJECT }} />
+                <Divider type={'vertical'} />
+                <Text type={'secondary'}>Sự kiện đã từ chối</Text>
+              </Tooltip>
+            </Popover>
           ) : null}
           {data.eventCheckStatus === EVENT_CHECK.PENDING ? (
             <>

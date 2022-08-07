@@ -25,6 +25,7 @@ export const refactorDataSlotEventCheckID = (listData) => {
     event.eventCreateAt = data.createdAt;
     event.startTime = data.slot.startDate;
     event.endTime = data.slot.endDate;
+    event.reason = data.reason;
     result.push(event);
   });
   return result;
