@@ -1,14 +1,16 @@
 import PostCardLikeAndComment from '../PostCardLikeAndComment/PostCardLikeAndComment.component';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, notification } from 'antd';
 import { useSelector } from 'react-redux';
 import { HIGH_SCHOOL_STUDENT } from '../../../constants/RoleType';
 import { followAEventByEventID, unFollowAEventByEventID } from '../../../services/PublishService';
 
 const SingleMetaAction2 = ({ className, meta }) => {
+  const [isFollowed, setIsFollowed] = useState(true);
   const { user } = useSelector((state) => state.authentication);
   const { eventPublish } = useSelector((state) => state.eventPublish);
   const handleFollowAEvent = () => {
+    setIsFollowed(true);
     followAEventByEventID(eventPublish.id)
       .then((res) => {
         notification.success({
@@ -24,6 +26,7 @@ const SingleMetaAction2 = ({ className, meta }) => {
       });
   };
   const handleUnFollowAEvent = () => {
+    setIsFollowed(false);
     unFollowAEventByEventID(eventPublish.id)
       .then((res) => {
         notification.success({
@@ -52,7 +55,7 @@ const SingleMetaAction2 = ({ className, meta }) => {
         </div>
         {user?.roles === HIGH_SCHOOL_STUDENT ? (
           <>
-            {eventPublish.isFollow === false ? (
+            {eventPublish.isFollow === false || !isFollowed ? (
               <Button type={'prmiary'} size={'middle'} shape={'round'} onClick={handleFollowAEvent}>
                 Theo dõi
               </Button>
