@@ -1,14 +1,14 @@
 import { DEMO_TAGS } from '../../../../../../data/taxonomies';
+import { Input, Pagination } from 'antd';
 import Card4 from './Card4.component';
 import Heading from './Heading.component';
 import React from 'react';
 import WidgetTags from '../../../../../../components/commons/WidgetTags/WidgetTags.component';
-import { Input, Pagination } from 'antd';
-
-const tagsDemo = DEMO_TAGS.filter((_, i) => i > 5);
 
 const SectionLatestPosts = ({
-  tags = tagsDemo,
+  tags,
+  setPayload,
+  payload,
   heading = 'Tất Cả Bài Viết 🎈',
   gridClass = '',
   news,
@@ -40,7 +40,7 @@ const SectionLatestPosts = ({
             size='large'
             onSearch={handleChangeNewsName}
           />
-          <WidgetTags tags={tags} />
+          <WidgetTags tags={tags} setPayload={setPayload} payload={payload} />
         </div>
       </div>
     </div>

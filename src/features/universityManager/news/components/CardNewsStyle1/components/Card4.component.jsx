@@ -4,14 +4,14 @@ import NcImage from '../../../../../../components/commons/NcImage/NcImage.compon
 import React from 'react';
 import { Divider, Tag } from 'antd';
 import { TagOutlined } from '@ant-design/icons';
+import moment from 'moment';
 
 const Card4 = (props) => {
   const { post } = props;
-  console.log(post);
   const style = {
     color: '#0099FF'
   };
-
+  const dateFormat = 'DD/MM/YYYY HH:mm:ss';
   return (
     <div
       className={`nc-Card4 relative flex flex-col group [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ] h-full`}
@@ -35,7 +35,7 @@ const Card4 = (props) => {
             <Tag color='blue'>Đơn vị viết bài</Tag>: {post.university.name}
           </div>
           <div>
-            <Tag color='blue'>Ngày viết bài </Tag>: {post.createDate}
+            <Tag color='blue'>Ngày viết bài </Tag>: {moment(post.createDate).format(dateFormat)}
           </div>
           <Divider orientation='left' style={style}>
             Các thẻ bài viết

@@ -11,6 +11,8 @@ export const fetchListNewPublish = createAsyncThunk(
       page: payload.page ? payload.page : 1,
       limit: payload.limit ? payload.limit : 10,
       title: payload.title ? payload.title : '',
+      tags: payload?.tags ? payload.tags : [],
+      sort: payload?.sort ? payload.sort : '',
     };
     await getNewsService(param)
       .then((res) => {
