@@ -18,7 +18,6 @@ const ListEventRegisteredContainer = () => {
   const getListEventRegistered = () => {
     getListEventCheck(dataSearch)
       .catch((res) => {
-        console.log(res);
         setListEvent(res.data);
         setIsLoading(false);
       })

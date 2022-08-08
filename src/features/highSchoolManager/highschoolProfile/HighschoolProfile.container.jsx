@@ -1,26 +1,12 @@
-import { getDetailHighSchool } from '../../../services/HighSchoolService';
 import { useSelector } from 'react-redux';
-import HighSchoolProfileComponent from './components/HighschoolProfile.component';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import SingleHighSchoolProfileContainer from '../../public/singleHighSchoolProfileFeature/SingleHighSchoolProfile.container';
 
 const HighSchoolProfileContainer = () => {
-  const [highSchool, setHighSchool] = useState();
-  const [loading, setLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
-
-  useEffect(() => {
-    loadData(user.highSchoolId);
-  }, [user.highSchoolId]);
-
-  const loadData = (id) => {
-    getDetailHighSchool(id).then((result) => {
-      setHighSchool(result.data.data);
-      setLoading(false);
-    });
-  };
   return (
     <>
-      <HighSchoolProfileComponent highSchool={highSchool} loading={loading} />
+      <SingleHighSchoolProfileContainer highSchoolId={user.highSchoolId} />
     </>
   );
 };

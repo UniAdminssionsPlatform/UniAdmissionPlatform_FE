@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 
 const HighSchoolInforComponent = () => {
   const { highSchool } = useSelector((state) => state.selectedHighSchool);
-  console.log(highSchool);
   const data = [
     { name: 'Địa chỉ', content: highSchool.address },
     { name: 'Số Điện Thoại', content: highSchool.phoneNumber },

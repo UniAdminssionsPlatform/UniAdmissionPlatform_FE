@@ -17,7 +17,6 @@ export const refactorDataSlot = (listData) => {
   return result;
 };
 export const refactorDataSlotEventCheckID = (listData) => {
-  console.log(listData);
   const result = [];
   listData?.list.map((data) => {
     const event = data.event;
@@ -30,6 +29,5 @@ export const refactorDataSlotEventCheckID = (listData) => {
     event.status = data.status;
     result.push(event);
   });
-  console.log(result);
   return result;
 };

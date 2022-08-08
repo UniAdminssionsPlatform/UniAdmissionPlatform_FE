@@ -23,7 +23,6 @@ const UpdaterForm = (props) => {
   } = props;
   const { Option } = Select;
   const dateFormat = 'DD/MM/YYYY';
-  console.log(moment(accountInformation.dateOfBirth).format(dateFormat));
   function onSearch(val) {
     console.log('search:', val);
   }

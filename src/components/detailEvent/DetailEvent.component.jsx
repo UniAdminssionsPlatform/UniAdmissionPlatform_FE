@@ -10,7 +10,6 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import moment from 'moment';
 const DetailEventComponent = (props) => {
   const { event, loading } = props;
-  console.log(event);
   const { Title, Text } = Typography;
   return (
     <>
@@ -35,7 +34,7 @@ const DetailEventComponent = (props) => {
               <MakeDownView str={event.description} />
             </div>
             <div className='w-full mt-12 lg:mt-0 lg:w-2/5 lg:pl-10 xl:pl-0 xl:w-1/3'>
-              <div className='nc-WidgetTags rounded-3xl overflow-hidden bg-sky-400 dark:bg-neutral-800 w-96'>
+              <div className='nc-WidgetTags rounded-3xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 w-96'>
                 <WidgetHeading1 title='✨  Chi tiết về sự kiện' viewAll={{ label: 'View all' }} />
                 <div className='flex flex-wrap p-4 xl:p-5'>
                   <Space direction={'vertical'}>

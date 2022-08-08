@@ -8,16 +8,8 @@ const NewsComponent = (props) => {
 
   return (
     <div className='nc-PageHomeDemo6 relative [ nc-section-rounded-md ]'>
-      <Helmet>
-        <title>Tổng Hợp Bài Viết</title>
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true' />
-        <link
-          href='https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600&display=swap'
-          rel='stylesheet'></link>
-      </Helmet>
       <div className='relative overflow-hidden'>
-        <div className='dark bg-neutral-900 dark:bg-black dark:bg-opacity-20 text-neutral-100'>
+        <div className='bg-neutral-100 dark:bg-black dark:bg-opacity-20  text-neutral-100'>
           <div className='relative container'>
             <Skeleton active loading={loading}>
               <SectionLatestPosts

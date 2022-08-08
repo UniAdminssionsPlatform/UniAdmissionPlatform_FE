@@ -4,6 +4,7 @@ import React from 'react';
 import SingleTitle from './singleTitle.component';
 import { Divider, Tag } from 'antd';
 import { TagOutlined } from '@ant-design/icons';
+import CategoryBadgeList from '../../../../components/commons/CategoryBadgeList/CategoryBadgeList.component';
 
 const SingleHeader4 = (props) => {
   const { newDetail } = props;
@@ -22,11 +23,7 @@ const SingleHeader4 = (props) => {
             CÁC THẺ BÀI VIẾT
           </Divider>
           <div>
-            {newDetail?.tagList.map((item, index) => (
-              <Tag key={index} color='volcano' icon={<TagOutlined />} style={{ borderRadius: '8px' }}>
-                {item.name}
-              </Tag>
-            ))}
+            <CategoryBadgeList tagList={newDetail.tagList} />
           </div>
           <span className='block text-base text-neutral-500 md:text-lg dark:text-neutral-400 pb-1'>
             {newDetail?.shortDescription}
