@@ -23,7 +23,7 @@ const NewsComponent = (props) => {
         {/* ======= START CONTAINER ============= */}
 
         {/* === SECTION 11 === */}
-        <div className='dark bg-neutral-900 dark:bg-black dark:bg-opacity-20 text-neutral-100'>
+        <div>
           <div className='relative container'>
             <SectionLatestPosts
               handleChangeNewsName={handleChangeNewsName}
