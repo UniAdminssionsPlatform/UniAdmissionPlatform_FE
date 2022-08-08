@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom';
 import { PATH } from '../../../../../../constants/Paths/Path';
 import NcImage from '../../../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
-import { Divider, Tag } from 'antd';
+import { Divider, Tag, Typography, Space } from 'antd';
 import { TagOutlined } from '@ant-design/icons';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import moment from 'moment';
 
 const Card4 = (props) => {
   const { post } = props;
-  console.log(post);
+  const { Text } = Typography;
   const style = {
     color: '#0099FF'
   };
@@ -32,17 +34,37 @@ const Card4 = (props) => {
             {post.title}
           </h2>
           <div>
-            <Tag color='blue'>Đơn vị viết bài</Tag>: {post.university.name}
+            <Tag color='blue' style={{ borderRadius: '6px' }}>
+              Đơn vị viết bài
+            </Tag>
+            : {post.university.name}
           </div>
-          <div>
-            <Tag color='blue'>Ngày viết bài </Tag>: {post.createDate}
+          <div className={`flex flex-nowrap`}>
+            <Tag color='blue' style={{ borderRadius: '6px' }}>
+              Thời gian viết bài :{' '}
+            </Tag>
+            <div
+              className={`nc-PostCardLikeAndComment flex items-center space-x-1 pr-2`}
+              data-nc-id='PostCardLikeAndComment'>
+              <Space>
+                <Link
+                  className={`nc-PostCardCommentBtn relative items-center min-w-[68px] rounded-full text-neutral-6000 bg-sky-300 hover:bg-teal-50 dark:hover:bg-teal-100 hover:text-teal-600 dark:hover:text-teal-500 flex px-3 h-8 text-xs`}
+                  title='Thời gian viết bài'
+                  data-nc-id='PostCardCommentBtn'>
+                  <span className='ml-1 text-neutral-900 dark:text-neutral-200'>
+                    <CalendarTodayIcon style={{ fontSize: 'medium', color: 'black' }} />
+                    <Text type='secondary'>{moment(post.createDate).format('L')}</Text>
+                  </span>
+                </Link>
+              </Space>
+            </div>
           </div>
           <Divider orientation='left' style={style}>
             Các thẻ bài viết
           </Divider>
           <div>
             {post?.tagList.map((item, index) => (
-              <Tag key={index} color='volcano' icon={<TagOutlined />}>
+              <Tag key={index} color='volcano' icon={<TagOutlined />} style={{ borderRadius: '8px' }}>
                 {item.name}
               </Tag>
             ))}

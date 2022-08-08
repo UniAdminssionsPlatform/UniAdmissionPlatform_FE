@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 import SingleTitle from './singleTitle.component';
+import { Divider, Tag } from 'antd';
+import { TagOutlined } from '@ant-design/icons';
 
 const SingleHeader4 = (props) => {
   const { newDetail } = props;
@@ -16,6 +18,16 @@ const SingleHeader4 = (props) => {
             mainClass='text-neutral-900 font-bold text-3xl md:text-4xl md:!leading-[120%] lg:text-5xl 2xl:text-6xl dark:text-neutral-100'
             title={newDetail?.title}
           />
+          <Divider orientation='left' style={{ color: 'white' }}>
+            CÁC THẺ BÀI VIẾT
+          </Divider>
+          <div>
+            {newDetail?.tagList.map((item, index) => (
+              <Tag key={index} color='volcano' icon={<TagOutlined />} style={{ borderRadius: '8px' }}>
+                {item.name}
+              </Tag>
+            ))}
+          </div>
           <span className='block text-base text-neutral-500 md:text-lg dark:text-neutral-400 pb-1'>
             {newDetail?.shortDescription}
           </span>
