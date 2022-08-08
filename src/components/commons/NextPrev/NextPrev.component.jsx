@@ -1,6 +1,8 @@
 import React from 'react';
 import twFocusClass from '../../../utils/twFocusClass';
-
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import { COLOR_ICON } from '../../../constants/Color';
 const NextPrev = ({
   containerClassName = '',
   onClickNext = () => {},
@@ -21,7 +23,7 @@ const NextPrev = ({
         onClick={onClickPrev}
         title='Prev'
         data-glide-dir='<'>
-        <i className='las la-angle-left'></i>
+        <NavigateBeforeIcon style={{ color: COLOR_ICON }} />
       </button>
     )}
     {!onlyPrev && (
@@ -30,7 +32,7 @@ const NextPrev = ({
         onClick={onClickNext}
         title='Next'
         data-glide-dir='>'>
-        <i className='las la-angle-right'></i>
+        <NavigateNextIcon style={{ color: COLOR_ICON }} />
       </button>
     )}
   </div>

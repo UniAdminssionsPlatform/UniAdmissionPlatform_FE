@@ -5,15 +5,15 @@ import WelcomeComponent from './Welcome.component';
 import { Divider, Typography } from 'antd';
 import BackgroundSection from '../../../../components/commons/BackgroundSection/BackgroundSection.component';
 import SectionSliderPostsComponent from '../../../../components/commons/SectionSliderPosts/SectionSliderPosts.component';
+import { DEMO_POSTS } from '../../../../data/posts';
+import { useSelector } from 'react-redux';
 
 const HomePageComponent = (props) => {
+  const { listNewPublish, isFetching } = useSelector((state) => state.listNewPublish);
   const { Text, Title } = Typography;
   return (
     <div className='container relative'>
       <div className='nc-PageHome relative'>
-        <Helmet>
-          <title>Dashboard || UniFlatForm</title>
-        </Helmet>
         <WelcomeComponent />
       </div>
       <ListNewDashboard />
@@ -22,7 +22,7 @@ const HomePageComponent = (props) => {
       </Divider>
       <div className='relative py-16'>
         <BackgroundSection />
-        {/*<SectionSliderPostsComponent posts={POSTS.filter((_, i) => i < 8)} />*/}
+        {!isFetching ? <SectionSliderPostsComponent posts={listNewPublish} /> : null}
       </div>
       {/*<FeaturedEvent events={events} />*/}
     </div>
