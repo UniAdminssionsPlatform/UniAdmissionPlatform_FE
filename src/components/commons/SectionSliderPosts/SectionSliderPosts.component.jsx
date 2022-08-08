@@ -6,7 +6,6 @@ import Card9 from '../Card/Card9/Card9';
 import Heading from '../Heading/Heading.component';
 const SectionSliderPostsComponent = (props) => {
   const { posts } = props;
-  console.log(posts);
   const UNIQUE_CLASS = 'SectionSliderPosts_';
   const perView = 4;
   const MY_GLIDE = new Glide(`.${UNIQUE_CLASS}`, {

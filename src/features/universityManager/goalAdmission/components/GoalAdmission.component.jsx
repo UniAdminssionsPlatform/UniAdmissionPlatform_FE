@@ -82,9 +82,6 @@ const GoalAdmissionComponent = (props) => {
   return (
     <>
       <div className={`nc-PageAdmission`} data-nc-id='ScorePage'>
-        <Helmet>
-          <title>Tiêu chí tuyển sinh</title>
-        </Helmet>
         <div>
           <Skeleton active loading={loadingHeader}>
             <Row justify='space-between'>

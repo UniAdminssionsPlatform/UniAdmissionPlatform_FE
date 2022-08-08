@@ -12,7 +12,6 @@ const SingleHighSchoolProfileContainer = (props) => {
   const getHighSchoolById = () => {
     getAHighSchoolProfileByIdService(highSchoolId)
       .then((result) => {
-        console.log(result);
         setHighSchoolProfile(result.data.data);
         setIsLoading(false);
       })

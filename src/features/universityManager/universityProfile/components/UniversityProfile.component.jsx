@@ -6,8 +6,6 @@ import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 const UniversityProfileComponent = (props) => {
   const { universityDetail, followed, handleFollowButton, handleUnFollowButton, countStudent } = props;
-  console.log(followed);
-
   const confirmFollow = (value) => {
     Modal.confirm({
       title: 'Xác nhận',

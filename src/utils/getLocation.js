@@ -4,8 +4,6 @@ export const city = () => {
   const cities = data.filter((c) => c);
   const name = [];
   for (let i = 0; i < cities.length; i++) name.push(cities[i].name);
-
-  console.log('city: ', name);
   return name;
 };
 
@@ -18,12 +16,10 @@ export const distric = (cityName) => {
   const ditrics = cityByName(cityName).filter((ds) => ds);
   const name = [];
   for (let i = 0; i < ditrics[0].districts.length; i++) name.push(ditrics[i].name);
-  console.log('distric: ', name);
   return name;
 };
 
 export const ward = (districID) => {
   const ward = distric(districID).filter((wa) => wa);
-  console.log('ward: ', ward);
   return ward;
 };
