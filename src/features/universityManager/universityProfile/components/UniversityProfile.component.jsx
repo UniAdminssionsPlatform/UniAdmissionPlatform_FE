@@ -6,33 +6,6 @@ import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 const UniversityProfileComponent = (props) => {
   const { universityDetail, followed, handleFollowButton, handleUnFollowButton, countStudent } = props;
-  const confirmFollow = (value) => {
-    Modal.confirm({
-      title: 'Xác nhận',
-      icon: <ExclamationCircleOutlined />,
-      content: `Xác nhận theo dõi trường ${value.name}`,
-      okText: 'Có',
-      cancelText: 'Không',
-      onOk() {
-        handleFollowButton(value);
-      },
-      onCancel() {}
-    });
-  };
-
-  const confirmUnfollow = (value) => {
-    Modal.confirm({
-      title: 'Xác nhận',
-      icon: <ExclamationCircleOutlined />,
-      content: `Xác nhận bỏ theo dõi trường ${value.name}`,
-      okText: 'Có',
-      cancelText: 'Không',
-      onOk() {
-        handleUnFollowButton(value);
-      },
-      onCancel() {}
-    });
-  };
 
   return (
     <div>
@@ -58,27 +31,7 @@ const UniversityProfileComponent = (props) => {
                 {universityDetail.shortDescription}
               </span>
             </div>
-            <div>
-              <Tag color='orange'>Hiện có {countStudent} người theo dõi</Tag>
-              {followed?.status === 1 ? (
-                <Button
-                  style={{ background: 'gray', color: 'white' }}
-                  onClick={() => {
-                    confirmFollow(universityDetail);
-                  }}>
-                  Theo Dõi
-                </Button>
-              ) : (
-                <Button
-                  style={{ background: 'green', color: 'white' }}
-                  onClick={() => {
-                    confirmUnfollow(universityDetail);
-                  }}>
-                  <CheckOutlined />
-                  Đã Theo Dõi
-                </Button>
-              )}
-            </div>
+            <div></div>
           </div>
         </div>
       </div>
