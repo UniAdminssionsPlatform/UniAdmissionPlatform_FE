@@ -26,10 +26,8 @@ const SingleImageUploadWithReviewContainer = (props) => {
     action: UPLOAD_A_NEW_IMAGE_ENDPOINT,
     onChange(info) {
       if (info.file.status !== 'uploading') console.log(info.file, info.fileList);
-      console.log(info);
       if (info.file.status === 'done') {
         message.success(`${info.file.name} Tải hình ảnh lên thành công`);
-        console.log(info);
         setImageUrl(info.file.response.data.fileUrl);
       } else if (info.file.status === 'error') message.error(`${info.file.name} Tải hình ảnh thất bại`);
     },
@@ -75,7 +73,7 @@ const SingleImageUploadWithReviewContainer = (props) => {
     <>
       <Upload
         {...requestProps}
-        headers={{ 'x-token': token && token !== 'undefined' ? token : null }}
+        headers={{ 'x-token': token && token !== 'undefined' ? token : null, 'content-type': 'multipart/form-data' }}
         onPreview={handlePreview}
         onChange={handleChange}
         listType='picture-card'
