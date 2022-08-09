@@ -55,7 +55,7 @@ const StudentScoreComponent = (props) => {
       <div className={`nc-PageScore ${className}`} data-nc-id='ScorePage'>
         <LayoutPage subHeading='' headingEmoji='🔑' heading=''>
           <div>
-            <div className='grid grid-cols-4 gap-4'>
+            <div className='grid grid-cols-4 gap-4 '>
               <div>
                 <Space>
                   Năm học
@@ -73,32 +73,33 @@ const StudentScoreComponent = (props) => {
                 </Space>
               </div>
               <div></div>
-              <div></div>
-              <div>
-                <Space>
-                  <Button
-                    type='primary'
-                    disabled={disableAddButton}
-                    style={{ marginBottom: '10px', borderRadius: 5 }}
-                    onClick={() => setVisibleAdd(true)}>
-                    Tạo học bạ
-                  </Button>
-                  <Button
-                    disabled={disableEditButton}
-                    style={{ marginBottom: '10px', borderRadius: 5 }}
-                    onClick={() => setVisibleEdit(true)}>
-                    Chỉnh sửa học bạ
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      confirmDeleteSchoolRecord();
-                    }}
-                    type='danger'
-                    disabled={disableEditButton}
-                    style={{ marginBottom: '10px', borderRadius: 5 }}>
-                    Xóa học bạ
-                  </Button>
-                </Space>
+              <div className='grid justify-items-end col-span-2'>
+                <div>
+                  <Space>
+                    <Button
+                      type='primary'
+                      disabled={disableAddButton}
+                      style={{ marginBottom: '10px', borderRadius: 5 }}
+                      onClick={() => setVisibleAdd(true)}>
+                      Tạo học bạ
+                    </Button>
+                    <Button
+                      disabled={disableEditButton}
+                      style={{ marginBottom: '10px', borderRadius: 5 }}
+                      onClick={() => setVisibleEdit(true)}>
+                      Chỉnh sửa học bạ
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        confirmDeleteSchoolRecord();
+                      }}
+                      type='danger'
+                      disabled={disableEditButton}
+                      style={{ marginBottom: '10px', borderRadius: 5 }}>
+                      Xóa học bạ
+                    </Button>
+                  </Space>
+                </div>
               </div>
             </div>
 

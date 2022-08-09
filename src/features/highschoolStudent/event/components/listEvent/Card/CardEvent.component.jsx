@@ -2,11 +2,14 @@ import { Link } from 'react-router-dom';
 import { PATH, PATH_HIGH_SCHOOL_STUDENT } from '../../../../../../constants/Paths/Path';
 import EventFeaturedMedia from '../EventFeaturedMedia/EventFeaturedMedia.component';
 import React, { useState } from 'react';
+import moment from 'moment';
 
 const EventCard = ({ event }) => {
   const { name, id, startTime, endTime } = event;
 
   const [isHover, setIsHover] = useState(false);
+
+  const dateFormat = 'DD/MM/YYYY';
 
   return (
     <div
@@ -27,7 +30,7 @@ const EventCard = ({ event }) => {
 
       <div className='p-4 flex flex-col flex-grow space-y-3'>
         <span className='text-xs text-neutral-500'>
-          {startTime} - {endTime}
+          {moment(startTime).format(dateFormat)} - {moment(startTime).format(dateFormat)}
         </span>
         <h2 className='nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100 '>
           <Link
