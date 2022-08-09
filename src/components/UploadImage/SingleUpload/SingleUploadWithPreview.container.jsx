@@ -1,16 +1,15 @@
 import { Button, Upload, message } from 'antd';
-import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
+import { HOST_UPLOAD, UPLOAD_A_NEW_IMAGE_ENDPOINT } from '../../../constants/Endpoints/FilesEndpoint';
 import { TOKEN_KEY } from '../../../constants/AppConst';
-import { UPLOAD_A_NEW_IMAGE_ENDPOINT } from '../../../constants/Endpoints/FilesEndpoint';
+import { UploadOutlined } from '@ant-design/icons';
 import Cookies from 'js-cookie';
 import React from 'react';
 
 const SingleUploadWithPreviewContainer = (props) => {
   const { setImageUrl } = props;
-  const { Dragger } = Upload;
   const DragProp = {
     name: 'file',
-    action: process.env.REACT_APP_API_URL + UPLOAD_A_NEW_IMAGE_ENDPOINT,
+    action: `${HOST_UPLOAD}${UPLOAD_A_NEW_IMAGE_ENDPOINT}`,
     onChange(info) {
       if (info.file.status !== 'uploading') console.log(info.file, info.fileList);
       if (info.file.status === 'done') {
