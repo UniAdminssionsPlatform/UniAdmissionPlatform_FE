@@ -1,7 +1,8 @@
 import { CallAPI } from '../axiosBase';
 import {
   GET_LIST_EVENT_BY_DATE_TO_DATE_ENDPOINT,
-  GET_LIST_EVENT_CHECK
+  GET_LIST_EVENT_CHECK,
+  UPDATE_EVENT
 } from '../../constants/Endpoints/AdminUniveristyEventEndpoint';
 export const getListEventFromDateToDateApi = (data) =>
   CallAPI(
@@ -10,3 +11,5 @@ export const getListEventFromDateToDateApi = (data) =>
   );
 export const getListEventCheck = (data) =>
   CallAPI(`${GET_LIST_EVENT_CHECK}?status=${data.status}&page=${data.page}&limit=${data.limit}`);
+
+export const updateEvent = (data) => CallAPI(`${UPDATE_EVENT}/${data.id}`, 'put', data);

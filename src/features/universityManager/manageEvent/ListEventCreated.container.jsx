@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification, Divider } from 'antd';
+import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification, Divider, Drawer } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
 import { getListEventForUniversity } from '../../../services/GetListEventForUniversity';
 import { refactorData } from '../../../utils/common';
@@ -13,13 +13,18 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import { COLOR_ICON } from '../../../constants/Color';
 import { ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING } from '../../../constants/Endpoints/ReportEndpoint';
 import SingleEventContainer from '../../public/singleEventFeature/SingleEvent.container';
+import { ExclamationCircleTwoTone } from '@ant-design/icons';
+import UpdateEventContainer from './UpdateEvent.container';
+
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
   const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
+  const [eventId, setEventId] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
   const [resource, setResource] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -29,6 +34,13 @@ const ListEventCreatedContainer = (props) => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const showDrawer = () => {
+    setIsDrawerVisible(true);
+  };
+  const onCloseDrawer = () => {
+    setIsDrawerVisible(false);
   };
   const { Search } = Input;
   const { Option } = Select;
@@ -73,6 +85,24 @@ const ListEventCreatedContainer = (props) => {
           description: `Lỗi: ${err.message}`
         });
       });
+  };
+  const notifyNotEditable = () => {
+    Modal.confirm({
+      title: 'Cảnh báo',
+      icon: (
+        <ExclamationCircleTwoTone
+          twoToneColor='#ff9d52'
+          style={{
+            fontSize: '32px'
+          }}
+        />
+      ),
+      content: `Bạn không thể chỉnh sửa sự kiện này`,
+      okText: 'ok',
+      cancelText: 'Đóng',
+      onOk() {},
+      onCancel() {}
+    });
   };
   const column = [
     {
@@ -123,7 +153,7 @@ const ListEventCreatedContainer = (props) => {
     },
     {
       title: 'Hành Động',
-      render: (status, data) => (
+      render: (data) => (
         <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
           <PreviewIcon
             onClick={() => {
@@ -134,11 +164,23 @@ const ListEventCreatedContainer = (props) => {
             className={`hover:fill-neutral-100`}
           />
           <Divider type={'vertical'} />
-          <EditIcon
-            onClick={() => showModal(data)}
-            style={{ cursor: 'pointer', color: COLOR_ICON }}
-            className={`hover:fill-neutral-100`}
-          />
+          {data.status === EVENT.INIT ? (
+            <EditIcon
+              onClick={() => {
+                showDrawer();
+                setEventId(data);
+              }}
+              style={{ cursor: 'pointer', color: COLOR_ICON }}
+              className={`hover:fill-neutral-100`}
+            />
+          ) : (
+            <EditIcon
+              onClick={() => notifyNotEditable(data)}
+              style={{ cursor: 'pointer', color: COLOR_ICON }}
+              className={`hover:fill-red-500`}
+            />
+          )}
+
           <Divider type={'vertical'} />
           <AssessmentIcon style={{ cursor: 'pointer', color: COLOR_ICON }} className={`hover:fill-neutral-100`} />
         </Space>
@@ -159,6 +201,14 @@ const ListEventCreatedContainer = (props) => {
       <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
         <SingleEventContainer eventId={currentSelectedEvent?.id} />
       </Modal>
+      <Drawer
+        title='Chỉnh sửa sự kiện'
+        placement='right'
+        size='large'
+        onClose={onCloseDrawer}
+        visible={isDrawerVisible}>
+        <UpdateEventContainer eventId={eventId} />
+      </Drawer>
       <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />
         <Search placeholder='Nhập tên diễn giả' style={{ width: 300 }} onSearch={handleChangeEventHost} />

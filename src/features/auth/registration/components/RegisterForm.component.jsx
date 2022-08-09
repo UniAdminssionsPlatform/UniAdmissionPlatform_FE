@@ -134,7 +134,7 @@ const RegisterForm = (props) => {
               <Form.Item name='address' rules={address}>
                 <label className='block'>
                   <Label>Địa chỉ</Label>
-                  <Input placeholder='Doe' type='text' className='mt-1' />
+                  <Input placeholder='Ex: 123 bình Phú...' type='text' className='mt-1' />
                 </label>
               </Form.Item>
             </div>
