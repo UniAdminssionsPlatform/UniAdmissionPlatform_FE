@@ -1,7 +1,5 @@
 import { Button, DatePicker, Form, Image, Input, Select, Skeleton } from 'antd';
-import { Helmet } from 'react-helmet';
 import { address, email, firstname, idcard, lastname, phone } from '../../../../validate/RegisterForm.validate';
-
 import Label from '../../../../components/commons/Label/Label.component';
 import React from 'react';
 import SingleUploadWithPreviewContainer from '../../../../components/UploadImage/SingleUpload/SingleUploadWithPreview.container';
@@ -45,9 +43,6 @@ const UpdaterForm = (props) => {
 
   return (
     <>
-      <Helmet>
-        <title>Chỉnh sửa thông tin cá nhân</title>
-      </Helmet>
       <Form className='grid grid-rows-1 grid-flow-col gap-4' onFinish={onFinish}>
         <div className='row-span-3'>
           <Skeleton active loading={isLoading}>

@@ -1,6 +1,4 @@
 import { Button, Col, Divider, Drawer, Row, Select, Skeleton, Space, Table, Tooltip } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
-import { Helmet } from 'react-helmet';
 import AddGoalAdmissionFormContainer from '../AddGoalAdmissionForm.container';
 import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';

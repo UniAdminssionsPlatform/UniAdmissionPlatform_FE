@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import { Input, Pagination } from 'antd';
 import { ListUniversityPaging } from '../../../services/FollowUniversityService';
 import CardUniversityComponent from './components/CardUniversity.component';
@@ -42,11 +41,6 @@ const ListUniversityToFollowContainer = () => {
   return (
     <>
       <div>
-        <Helmet>
-          <title>Các trường đại học</title>
-        </Helmet>
-
-        {/* HEADER */}
         <div className='w-screen px-2 xl:max-w-screen-2xl mx-auto'>
           <div className='rounded-3xl md:rounded-[40px] relative aspect-w-16 aspect-h-16 sm:aspect-h-9 lg:aspect-h-5 overflow-hidden '>
             <NcImage

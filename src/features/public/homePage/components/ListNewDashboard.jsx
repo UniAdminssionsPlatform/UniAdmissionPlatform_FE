@@ -1,25 +1,14 @@
-import { DEMO_CATEGORIES } from '../../../../data/taxonomies';
-import { Helmet } from 'react-helmet';
-import BackgroundSection from '../../../../components/commons/BackgroundSection/BackgroundSection.component';
-import ButtonSecondary from '../../../../components/field/ButtonSecondary/ButtonSecondary.component';
 import Card11 from '../../../../components/commons/Card/Card11/Card11.component';
-import SectionGridCategoryBox from '../../../../components/commons/SectionGridCategoryBox/SectionGridCategoryBox.component';
-import SectionSliderNewAuthors from '../../../../components/commons/SectionSliderNewAuthors/SectionSliderNewAuthors.component';
-import { DEMO_AUTHORS } from '../../../../data/authors';
 import { Divider, Typography } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { PATH } from '../../../../constants/Paths/Path';
-import SectionSliderPostsComponent from '../../../../components/commons/SectionSliderPosts/SectionSliderPosts.component';
 const ListNewDashboard = () => {
   const { listEventPublish, isFetching } = useSelector((state) => state.listEventPublish);
   const history = useHistory();
   const { Text, Title } = Typography;
   return (
     <div className={`nc-PageAuthorV2`} data-nc-id='PageAuthorV2'>
-      <Helmet>
-        <title>Author || Blog Magazine React Template</title>
-      </Helmet>
       <div className='py-16 lg:pb-28 lg:pt-20 space-y-16 lg:space-y-28'>
         <main>
           <div className='flex flex-col sm:items-center sm:justify-between sm:flex-row'>

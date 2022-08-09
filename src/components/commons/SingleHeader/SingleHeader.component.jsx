@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import CategoryBadgeList from '../CategoryBadgeList/CategoryBadgeList.component';
 import PostMeta2 from '../PostMeta2/PostMeta2.component';
 import React from 'react';
@@ -10,9 +9,6 @@ const SingleHeader = ({ pageData, titleMainClass, hiddenDesc, className }) => {
 
   return (
     <>
-      <Helmet>
-        <title>Event || Detail</title>
-      </Helmet>
       <div className={`nc-SingleHeader ${className}`}>
         <div className='space-y-5'>
           <CategoryBadgeList itemClass='!px-3' categories={categories} />

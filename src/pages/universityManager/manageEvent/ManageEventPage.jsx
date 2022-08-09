@@ -6,6 +6,7 @@ import ListEventCreatedContainer from '../../../features/universityManager/manag
 import PublicEventContainer from '../../../features/universityManager/publicEvent/publicEvent.container';
 import UnPublicEventContainer from '../../../features/universityManager/publicEvent/unpublicEvent.container';
 import TitlePageComponent from '../../../components/decorator/TitlePage.component';
+import { Helmet } from 'react-helmet';
 
 const ManageEventPage = () => {
   const { TabPane } = Tabs;
@@ -15,6 +16,9 @@ const ManageEventPage = () => {
   };
   return (
     <Layout>
+      <Helmet>
+        <title>Trang quản lý sự kiện</title>
+      </Helmet>
       <TitlePageComponent
         title={'Quản lý sự kiện'}
         subTitle={

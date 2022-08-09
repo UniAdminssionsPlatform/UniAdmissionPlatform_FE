@@ -1,6 +1,5 @@
 import { Button, Form, Image, Input, Modal, Select, Space } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Helmet } from 'react-helmet';
 import { description, imgUrl, name, score } from '../../../../validate/Addcertification.validate';
 import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
@@ -61,9 +60,6 @@ const CertificationComponent = (props) => {
 
   return (
     <div className={`nc-PageLogin `} data-nc-id='ScorePage'>
-      <Helmet>
-        <title>Chứng Chỉ</title>
-      </Helmet>
       <LayoutPage subHeading='' headingEmoji='🔑' heading=''>
         <div className='flex flex-col space-y-8 xl:space-y-0 xl:flex-row'>
           <div className='flex flex-col space-y-8'>

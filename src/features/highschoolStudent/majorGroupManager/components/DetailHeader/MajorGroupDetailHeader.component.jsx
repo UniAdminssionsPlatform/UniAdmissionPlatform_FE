@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import { SINGLE } from '../../../../../data/single';
 import CategoryBadgeList from '../../../../../components/commons/CategoryBadgeList/CategoryBadgeList.component';
 import React from 'react';
@@ -7,9 +6,6 @@ const DetailHeader = ({ pageData, titleMainClass, hiddenDesc = false, className 
   const { name } = pageData;
   return (
     <>
-      <Helmet>
-        <title>Nhóm Ngành || Blog Magazine React Template</title>
-      </Helmet>
       <div className={`nc-SingleHeader ${className}`}>
         <div className='space-y-5'>
           <CategoryBadgeList itemClass='!px-3' categories={SINGLE.categories} />
