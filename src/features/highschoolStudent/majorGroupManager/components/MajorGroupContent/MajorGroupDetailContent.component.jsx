@@ -22,11 +22,7 @@ const DetailContent = ({ data }) => {
         className='prose prose-sm !max-w-screen-md sm:prose lg:prose-lg mx-auto dark:prose-invert'>
         <MajorGroupContentDemo data={data} />
       </div>
-      <div className='max-w-screen-md mx-auto flex flex-wrap'>
-        {SINGLE.tags.map((item) => (
-          <Tag hideCount key={item.id} tag={item} className='mr-2 mb-2' />
-        ))}
-      </div>
+      <div className='max-w-screen-md mx-auto flex flex-wrap'></div>
       <div className='max-w-screen-md mx-auto border-b border-t border-neutral-100 dark:border-neutral-700'></div>
     </div>
   );
