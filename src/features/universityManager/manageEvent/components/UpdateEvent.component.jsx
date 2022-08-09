@@ -3,7 +3,7 @@ import MarkdownEditorComponent from '../../../../components/MarkdownEditor/Markd
 import React from 'react';
 import SingleImageUploadWithReviewContainer from '../../../../components/UploadImage/SingleUpload/SingImageUploadWithReview.container';
 const UpdateEventComponent = (props) => {
-  const { event, handleUpdate, setDescription, setImageUrl } = props;
+  const { event, handleUpdate, setDescription, setImageUrl, description } = props;
   const { Text } = Typography;
 
   const eventUpdate = {
@@ -55,7 +55,7 @@ const UpdateEventComponent = (props) => {
           </Col>
         </Row>
         <Space direction={'vertical'}>
-          <MarkdownEditorComponent value={eventUpdate.description} setValue={setDescription} />
+          <MarkdownEditorComponent value={description} setValue={setDescription} />
           <Form.Item>
             <Button type='primary' htmlType='submit'>
               Cập nhật

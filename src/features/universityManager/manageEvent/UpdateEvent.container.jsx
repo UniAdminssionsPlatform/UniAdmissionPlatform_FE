@@ -6,8 +6,10 @@ import { notification } from 'antd';
 const UpdateEventContainer = (props) => {
   const { eventId } = props;
   const [imageUrl, setImageUrl] = useState('');
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState();
   const [fileUrl, setFileUrl] = useState('');
+
+  useEffect(() => setDescription(eventId.description), []);
 
   const handleUpdate = (values) => {
     values.thumbnailUrl = imageUrl ? imageUrl : eventId.thumbnailUrl;
@@ -20,7 +22,7 @@ const UpdateEventContainer = (props) => {
     values.startTime = eventId.startTime;
     values.endTime = eventId.endTime;
     values.id = eventId.id;
-    console.log('value update: ', values);
+
     updateEvent(values)
       .then(() => {
         notification.success({
@@ -39,6 +41,7 @@ const UpdateEventContainer = (props) => {
     <>
       <UpdateEventComponent
         event={eventId}
+        description={description}
         handleUpdate={handleUpdate}
         setDescription={setDescription}
         setImageUrl={setImageUrl}
