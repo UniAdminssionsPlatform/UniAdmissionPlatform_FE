@@ -23,7 +23,7 @@ const SingleImageUploadWithReviewContainer = (props) => {
     });
   const requestProps = {
     name: 'file',
-    action: UPLOAD_A_NEW_IMAGE_ENDPOINT,
+    action: process.env.REACT_APP_API_URL + UPLOAD_A_NEW_IMAGE_ENDPOINT,
     onChange(info) {
       if (info.file.status !== 'uploading') console.log(info.file, info.fileList);
       if (info.file.status === 'done') {
