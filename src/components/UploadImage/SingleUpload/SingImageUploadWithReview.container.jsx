@@ -52,22 +52,10 @@ const SingleImageUploadWithReviewContainer = (props) => {
       </div>
     </div>
   );
-  const handleChange = ({ fileList: newFileList, file }) => {
-    setFileList(newFileList);
-    if (file.status !== 'uploading') console.log(file, fileList);
-    if (file.status === 'done') {
-      message.success(`${file.name} Tải hình ảnh lên thành công`);
-      setImageUrl(file.response.data.fileUrl);
-    } else if (file.status === 'error') message.error(`${file.name} Tải hình ảnh thất bại`);
-  };
+
   return (
     <>
-      <Upload
-        customRequest={uploadImage}
-        onPreview={handlePreview}
-        onChange={handleChange}
-        listType='picture-card'
-        fileList={fileList}>
+      <Upload customRequest={uploadImage} onPreview={handlePreview} listType='picture-card' fileList={fileList}>
         {fileList.length >= 1 ? null : uploadButton}
       </Upload>
       <Modal visible={previewVisible} title={previewTitle} footer={null} onCancel={handleCancel}>
