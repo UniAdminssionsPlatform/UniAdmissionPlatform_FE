@@ -78,7 +78,7 @@ const CommentCard = ({ comment }) => {
           imgUrl={
             comment.avatarUrl
               ? comment.avatarUrl
-              : 'https://i.pinimg.com/564x/cf/86/12/cf861202e182d167000ea49d711e9c87.jpg'
+              : 'https://firebasestorage.googleapis.com/v0/b/uni-admission-platform.appspot.com/o/image%2F07b3c9ba-6b7c-4736-ab9d-a47bc31ca0888%2F9%2F2022%207%3A27%3A41%20PM.png?alt=media'
           }
           userName={comment.userName}
           sizeClass={`h-6 w-6 text-base ${size === 'large' ? 'sm:text-lg sm:h-8 sm:w-8' : ''}`}
