@@ -4,7 +4,9 @@ import ShowImageComponent from '../../../../commons/ShowImage.component';
 import { Button, Space } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { PATH } from '../../../../constants/Paths/Path';
+import { useSelector } from 'react-redux';
 const WelcomeComponent = () => {
+  const { isAuthUser } = useSelector((state) => state.authentication);
   const history = useHistory();
   return (
     <div
@@ -22,9 +24,11 @@ const WelcomeComponent = () => {
               trường, cũng như những trải nghiệm về dạy và học của cộng đồng.
             </span>
           </div>
-          <Button type='primary' shape={'round'} size={'large'} onClick={() => history.push(PATH.LOGIN)}>
-            Đăng ký ngay
-          </Button>
+          {isAuthUser ? null : (
+            <Button type='primary' shape={'round'} size={'large'} onClick={() => history.push(PATH.LOGIN)}>
+              Đăng nhập ngay
+            </Button>
+          )}
         </Space>
       </div>
       <div className='flex-grow'>

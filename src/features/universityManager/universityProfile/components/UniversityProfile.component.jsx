@@ -1,12 +1,15 @@
-import { Button, Modal, Tag } from 'antd';
-import { CheckOutlined, CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { Button, Divider, Modal, Tag, Typography } from 'antd';
 import Avatar from '../../../../components/commons/Avatar/Avatar.component';
 import MarkdownViewComponent from '../../../../components/MarkdownView/MarkdownView.component';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
+import MailIcon from '@mui/icons-material/Mail';
+import { COLOR_ICON } from '../../../../constants/Color';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import FmdGoodIcon from '@mui/icons-material/FmdGood';
 const UniversityProfileComponent = (props) => {
   const { universityDetail, followed, handleFollowButton, handleUnFollowButton, countStudent } = props;
-
+  const { Text } = Typography;
   return (
     <div>
       <div className='w-screen px-2 xl:max-w-screen-2xl mx-auto'>
@@ -31,7 +34,25 @@ const UniversityProfileComponent = (props) => {
                 {universityDetail.shortDescription}
               </span>
             </div>
-            <div></div>
+            <div>
+              <Divider type={'vertical'} />
+              <div className='mt-10 sm:mt-0 sm:ml-8 space-y-4 max-w-lg'>
+                <Text>
+                  <MailIcon style={{ color: COLOR_ICON }} /> <Divider type={'vertical'} />
+                  {universityDetail.email}
+                </Text>
+                <br />
+                <Text>
+                  <ContactPhoneIcon style={{ color: COLOR_ICON }} /> <Divider type={'vertical'} />
+                  {universityDetail.phoneNumber}
+                </Text>
+                <br />
+                <Text>
+                  <FmdGoodIcon style={{ color: COLOR_ICON }} /> <Divider type={'vertical'} />
+                  {universityDetail.address}
+                </Text>
+              </div>
+            </div>
           </div>
         </div>
       </div>

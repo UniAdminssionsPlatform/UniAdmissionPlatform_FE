@@ -30,7 +30,7 @@ const MarkdownEditorComponent = (props) => {
     if (imgUrl !== undefined && imgUrl !== null) setValue(`${value}\n ![](${imgUrl}) \n`);
   }, [imgUrl]);
   return (
-    <>
+    <div data-color-mode='light'>
       <MDEditor
         value={value}
         onChange={(val) => {
@@ -61,7 +61,7 @@ const MarkdownEditorComponent = (props) => {
           })
         ]}
       />
-    </>
+    </div>
   );
 };
 export default MarkdownEditorComponent;

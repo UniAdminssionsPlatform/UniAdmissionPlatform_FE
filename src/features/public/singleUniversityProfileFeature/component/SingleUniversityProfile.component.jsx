@@ -7,6 +7,7 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import { Button, Divider, notification, Typography } from 'antd';
 import { COLOR_ICON } from '../../../../constants/Color';
 import { CountStudentFollowService, FollowUniversityService } from '../../../../services/FollowUniversityService';
+import FmdGoodIcon from '@mui/icons-material/FmdGood';
 
 const SingleUniversityProfileComponent = (props) => {
   const { Text, Title } = Typography;
@@ -85,6 +86,11 @@ const SingleUniversityProfileComponent = (props) => {
               <Text>
                 <ContactPhoneIcon style={{ color: COLOR_ICON }} /> <Divider type={'vertical'} />
                 {universityProfile.phoneNumber}
+              </Text>
+              <br />
+              <Text>
+                <FmdGoodIcon style={{ color: COLOR_ICON }} /> <Divider type={'vertical'} />
+                {universityProfile.address}
               </Text>
               <br />
               {universityProfile.isFollow !== true || !isFollowed ? (
