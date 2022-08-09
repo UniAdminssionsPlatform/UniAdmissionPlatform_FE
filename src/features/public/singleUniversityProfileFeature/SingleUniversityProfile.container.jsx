@@ -12,7 +12,6 @@ const SingleUniversityProfileContainer = (props) => {
   const getUniversityProfileById = () => {
     getAUniversityProfileByIdService(universityId)
       .then((result) => {
-        console.log(result);
         setUniversityProfile(result.data.data);
         setIsLoading(false);
       })

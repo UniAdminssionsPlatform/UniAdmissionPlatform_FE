@@ -17,7 +17,6 @@ export const fetchListEventPublish = createAsyncThunk(
       .then(async (res) => {
         const listEvent = [];
         await res.data.data.list.map((event) => {
-          console.log(event);
           if (event.eventTypeId === EVENT_HS) {
             event.slots.map((slot) => {
               if (slot.eventCheckStatus === EVENT_CHECK.Approved) {

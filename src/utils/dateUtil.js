@@ -13,7 +13,6 @@ export const enumerateDaysBetweenDates = function (startDate, endDate) {
 };
 export const parseCorrectDateBaseSlot = (arr, slot) => {
   const result = [];
-  console.log(slot);
   arr.map((date) => {
     const currDate = moment(date).startOf('day');
     switch (slot) {
@@ -24,7 +23,6 @@ export const parseCorrectDateBaseSlot = (arr, slot) => {
         });
         break;
       case 2:
-        console.log('running');
         result.push({
           startDate: moment(currDate).add(SLOT_02_START, 'hours').format('YYYY-MM-DD HH:mm:ss'),
           endDate: moment(currDate).add(SLOT_02_END, 'hours').format('YYYY-MM-DD HH:mm:ss')

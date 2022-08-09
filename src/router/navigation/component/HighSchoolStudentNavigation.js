@@ -19,11 +19,6 @@ const eventMenu = [
 const profile = [
   {
     id: ncNanoId(),
-    href: PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE,
-    name: 'Hồ sơ trường'
-  },
-  {
-    id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_STUDENT.PROFILE,
     name: 'Hồ sơ cá nhân'
   },
@@ -44,8 +39,8 @@ const profile = [
   },
   {
     id: ncNanoId(),
-    href: PATH_HIGH_SCHOOL_STUDENT.HIGHSCHOOL_PROFILE,
-    name: 'Hồ sơ trường cấp 3'
+    href: PATH_HIGH_SCHOOL_STUDENT.HIGH_SCHOOL_PROFILE,
+    name: 'Hồ sơ trường'
   }
 ];
 export const HighSchoolStudentNavigation = [
@@ -56,16 +51,16 @@ export const HighSchoolStudentNavigation = [
     type: '',
     children: homePage
   },
-  {
-    id: ncNanoId(),
-    name: 'Tổng hợp sự kiện',
-    href: PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT
-  },
-  {
-    id: ncNanoId(),
-    name: 'Tổng hợp bài viết',
-    href: PATH_HIGH_SCHOOL_STUDENT.NEWS
-  },
+  // {
+  //   id: ncNanoId(),
+  //   name: 'Tổng hợp sự kiện',
+  //   href: PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT
+  // },
+  // {
+  //   id: ncNanoId(),
+  //   name: 'Tổng hợp bài viết',
+  //   href: PATH_HIGH_SCHOOL_STUDENT.NEWS
+  // },
   {
     id: ncNanoId(),
     href: PATH.LIST_MAJOR_GROUP,
@@ -73,13 +68,13 @@ export const HighSchoolStudentNavigation = [
   },
   {
     id: ncNanoId(),
-    name: 'Quản lý hồ sơ',
-    type: 'dropdown',
-    children: profile
+    href: PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY,
+    name: 'Danh Sách Trường Đại Học'
   },
   {
     id: ncNanoId(),
-    href: PATH_HIGH_SCHOOL_STUDENT.LIST_UNIVERSITY,
-    name: 'Danh Sách Trường Đại Học'
+    name: 'Quản lý hồ sơ',
+    type: 'dropdown',
+    children: profile
   }
 ];

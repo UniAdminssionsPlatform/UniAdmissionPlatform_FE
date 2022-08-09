@@ -26,7 +26,6 @@ const CreateEventContainer = (props) => {
   };
 
   useEffect(() => {
-    console.log(event);
     geAllProvince();
   }, []);
 
@@ -52,9 +51,7 @@ const CreateEventContainer = (props) => {
     setEndDate(dateString);
   };
 
-  const onSearch = (value) => {
-    console.log('search:', value);
-  };
+  const onSearch = (value) => {};
 
   const onFinish = (data) => {
     data.event.name = data.event.name ? data.event.name : '';

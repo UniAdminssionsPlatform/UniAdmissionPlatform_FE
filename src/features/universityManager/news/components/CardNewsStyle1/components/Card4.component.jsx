@@ -2,16 +2,17 @@ import { Link } from 'react-router-dom';
 import { PATH } from '../../../../../../constants/Paths/Path';
 import NcImage from '../../../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
-import { Divider, Tag } from 'antd';
-import { TagOutlined } from '@ant-design/icons';
+import { Divider, Tag, Typography } from 'antd';
+import moment from 'moment';
+import CategoryBadgeList from '../../../../../../components/commons/CategoryBadgeList/CategoryBadgeList.component';
 
 const Card4 = (props) => {
+  const { Title, Text } = Typography;
   const { post } = props;
-  console.log(post);
   const style = {
     color: '#0099FF'
   };
-
+  const dateFormat = 'DD/MM/YYYY HH:mm:ss';
   return (
     <div
       className={`nc-Card4 relative flex flex-col group [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ] h-full`}
@@ -32,20 +33,20 @@ const Card4 = (props) => {
             {post.title}
           </h2>
           <div>
-            <Tag color='blue'>Đơn vị viết bài</Tag>: {post.university.name}
+            <Text type={'secondary'}>
+              Đơn vị viết bài: <Text strong>{post.university.name}</Text>
+            </Text>
           </div>
           <div>
-            <Tag color='blue'>Ngày viết bài </Tag>: {post.createDate}
+            <Text type={'secondary'}>
+              Ngày viết bài : <Text strong>{moment(post.createDate).format(dateFormat)}</Text>
+            </Text>
           </div>
           <Divider orientation='left' style={style}>
             Các thẻ bài viết
           </Divider>
           <div>
-            {post?.tagList.map((item, index) => (
-              <Tag key={index} color='volcano' icon={<TagOutlined />}>
-                {item.name}
-              </Tag>
-            ))}
+            <CategoryBadgeList tagList={post.tagList} />
           </div>
         </div>
       </div>

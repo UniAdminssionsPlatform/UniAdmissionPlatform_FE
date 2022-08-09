@@ -7,7 +7,6 @@ import {
 } from '../../constants/Endpoints/AdminHighSchoolSlotsEndpoint';
 import { CallAPI } from '../axiosBase';
 const bindingData = (data) => {
-  console.log(data);
   let endPoint = '?';
   if (data?.startDate) endPoint = `${endPoint}?start-date=${data?.startDate}`;
   if (data?.endDate) endPoint = `${endPoint}&end-date=${data?.endDate}`;
