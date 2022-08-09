@@ -4,7 +4,6 @@ import { getListEventForUniversity } from '../../../services/GetListEventForUniv
 import { refactorData } from '../../../utils/common';
 import { useSelector } from 'react-redux';
 import { useStateWithCallback } from '../../../components/CustomHOOK/SyncUseState';
-import DetailEventComponent from '../../../components/detailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import PreviewIcon from '@mui/icons-material/Preview';

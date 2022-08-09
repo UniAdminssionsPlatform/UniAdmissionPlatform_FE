@@ -11,7 +11,14 @@ import {
   ViewSwitcher,
   WeekView
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { COLOR_SLOT_IS_CLOSE, COLOR_SLOT_IS_FULL, COLOR_SLOT_IS_OPEN } from '../../../../../constants/Color';
+import {
+  COLOR_SLOT_CLOSE,
+  COLOR_SLOT_FULL,
+  COLOR_SLOT_IS_CLOSE,
+  COLOR_SLOT_IS_FULL,
+  COLOR_SLOT_IS_OPEN,
+  COLOR_SLOT_OPEN
+} from '../../../../../constants/Color';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import { SLOT, SLOT_IS_FULL, SLOT_IS_OPEN } from '../../../../../constants/AppConst';
 import AppointmentContentComponent from '../../../../../components/schedule/component/AppointmentContent.component';
@@ -28,11 +35,11 @@ const SelectSlotComponent = (props) => {
       style={{
         ...style,
         backgroundColor:
-          data?.status === SLOT_IS_OPEN
-            ? COLOR_SLOT_IS_OPEN
-            : data?.status === SLOT_IS_FULL
-            ? COLOR_SLOT_IS_FULL
-            : COLOR_SLOT_IS_CLOSE,
+          data?.status === SLOT.OPEN
+            ? COLOR_SLOT_OPEN
+            : data?.status === SLOT.FULL
+            ? COLOR_SLOT_FULL
+            : COLOR_SLOT_CLOSE,
         borderRadius: '8px'
       }}
       data={data}

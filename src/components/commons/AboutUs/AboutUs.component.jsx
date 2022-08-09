@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import BgGlassmorphism from './component/BgGlassmorphism/BgGlassmorphism';
 import React from 'react';
 import SectionFounder from './component/SectionFounder/SectionFounder.component';
@@ -7,13 +6,7 @@ import rightImg from '../../../images/about-hero-right.png';
 
 const PageAbout = ({ className = '' }) => (
   <div className={`nc-PageAbout overflow-hidden relative ${className}`} data-nc-id='PageAbout'>
-    <Helmet>
-      <title>About || Blog Magazine React Template</title>
-    </Helmet>
-
-    {/* ======== BG GLASS ======== */}
     <BgGlassmorphism />
-
     <div className='container py-16 lg:py-28 space-y-16 lg:space-y-28'>
       <SectionHero
         rightImg={rightImg}

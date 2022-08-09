@@ -1,17 +1,10 @@
-import { Helmet } from 'react-helmet';
-import { SINGLE } from '../../../../../data/single';
-import PostMeta2 from './DetailEventPostMeta2.component';
 import React from 'react';
 import SingleTitle from '../../../../../components/commons/SingleTitle/SingleTitle.component';
-
 const DetailEventHeader = ({ pageData, titleMainClass, className = '' }) => {
   const { name, shortDescription, startTime, endTime } = pageData;
 
   return (
     <>
-      <Helmet>
-        <title>Chi tiết sự kiện</title>
-      </Helmet>
       <div className={`nc-SingleHeader ${className}`}>
         <div className='space-y-5'>
           <SingleTitle mainClass={titleMainClass} title={name} />

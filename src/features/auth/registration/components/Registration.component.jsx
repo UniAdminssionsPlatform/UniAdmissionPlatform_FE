@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import { Tag, Typography } from 'antd';
 import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPage.component';
 import React, { useState } from 'react';
@@ -28,14 +27,11 @@ const loginSocials = [
 ];
 const RegisterComponent = (props) => {
   const [role, setRole] = useState();
-  const { Text, Link } = Typography;
-  const { onSubmit, loginWithGoogle, className } = props;
+  const { Text } = Typography;
+  const { className } = props;
   const [isSelected, setIsSelected] = useState(false);
   return (
     <div className={`nc-PageLogin ${className}`} data-nc-id='PageLogin'>
-      <Helmet>
-        <title>Xác thực || Blog Magazine React Template</title>
-      </Helmet>
       <LayoutPage subHeading='Chào mừng đến với UniAdmissionPlatform' headingEmoji='🔑' heading='Xác thực tài khoản'>
         {isSelected === false ? (
           <div className='max-w-md mx-auto space-y-6'>

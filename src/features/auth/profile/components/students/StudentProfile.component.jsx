@@ -1,5 +1,4 @@
 import { Button, Card, Skeleton } from 'antd';
-import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../../constants/Paths/Path';
 import Avatar from '../../../../../components/commons/Avatar/Avatar.component';
@@ -12,11 +11,6 @@ const StudentProfileComponent = (props) => {
   const { student, loading } = props;
   return (
     <div className='nc-PageAuthor' data-nc-id='PageAuthor'>
-      <Helmet>
-        <title>Trang cá nhân</title>
-      </Helmet>
-
-      {/* HEADER */}
       <div className='w-screen px-2 xl:max-w-screen-2xl mx-auto'>
         <Skeleton active loading={loading}>
           <div className='rounded-3xl md:rounded-[40px] relative aspect-w-16 aspect-h-12 sm:aspect-h-7 xl:sm:aspect-h-6 overflow-hidden '>
