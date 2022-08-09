@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification, Divider } from 'antd';
+import { Button, Input, Modal, Pagination, Select, Space, Table, Tag, notification, Divider, Skeleton } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
 import { getListEventForUniversity } from '../../../services/GetListEventForUniversity';
 import { refactorData } from '../../../utils/common';
@@ -12,21 +12,30 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import { COLOR_ICON } from '../../../constants/Color';
 import { ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING } from '../../../constants/Endpoints/ReportEndpoint';
 import SingleEventContainer from '../../public/singleEventFeature/SingleEvent.container';
+import SingleFlexMonsterComponent from '../flexMonsterData/SingleFlexMonster.component';
 const ListEventCreatedContainer = (props) => {
   const [listEventRegister, setListEventRegister] = useState();
   const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useSelector((state) => state.authentication);
-  const [resource, setResource] = useState();
+  const [forceReload, setForceReload] = useState(true);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible2, setIsModalVisible2] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
   };
+  const showModal2 = () => {
+    setIsModalVisible2(true);
+  };
   const handleOk = () => {
+    setForceReload(true);
+    setCurrentSelectedEvent({});
     setIsModalVisible(false);
   };
 
   const handleCancel = () => {
+    setForceReload(true);
+    setCurrentSelectedEvent({});
     setIsModalVisible(false);
   };
   const { Search } = Input;
@@ -126,6 +135,7 @@ const ListEventCreatedContainer = (props) => {
         <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
           <PreviewIcon
             onClick={() => {
+              setForceReload(false);
               setCurrentSelectedEvent(data);
               showModal();
             }}
@@ -139,24 +149,44 @@ const ListEventCreatedContainer = (props) => {
             className={`hover:fill-neutral-100`}
           />
           <Divider type={'vertical'} />
-          <AssessmentIcon style={{ cursor: 'pointer', color: COLOR_ICON }} className={`hover:fill-neutral-100`} />
+          <AssessmentIcon
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            className={`hover:fill-neutral-100`}
+            onClick={() => {
+              setForceReload(false);
+              setCurrentSelectedEvent(data);
+              showModal2();
+            }}
+          />
         </Space>
       ),
       width: '10%'
     }
   ];
-  const handleShowReport = (data) => {
-    setResource(`${ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING}?event-id=${data.id}&token=${user.token}`);
-    showModal();
-  };
   useEffect(() => console.log(currentSelectedEvent), [currentSelectedEvent]);
   const onShowSizeChange = (page, PageSize) => {
     setDataSearch({ ...dataSearch, page, limit: PageSize });
   };
+  const handleOk2 = () => {
+    setForceReload(true);
+    setCurrentSelectedEvent({});
+    setIsModalVisible2(false);
+  };
+  const handleCancel2 = () => {
+    setForceReload(true);
+    setCurrentSelectedEvent({});
+    setIsModalVisible2(false);
+  };
   return (
     <div>
-      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
-        <SingleEventContainer eventId={currentSelectedEvent?.id} />
+      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'} forceRender={true}>
+        {!forceReload ? <SingleEventContainer eventId={currentSelectedEvent?.id} /> : null}
+      </Modal>
+      <Modal visible={isModalVisible2} onOk={handleOk2} onCancel={handleCancel2} width={'80vw'} forceRender={true}>
+        <SingleFlexMonsterComponent
+          isReload={forceReload}
+          requestData={`${process.env.REACT_APP_API_URL}${ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING}?event-id=${currentSelectedEvent?.id}&token=${user.token}`}
+        />
       </Modal>
       <Space>
         <Search placeholder='Nhập tên sự kiện' style={{ width: 300 }} onSearch={handleChangeEventName} />

@@ -40,7 +40,12 @@ const FlexMonsterContainer = () => {
   };
   const onChange = (data) => {
     setIsLoading(true);
-    setRequestData(`${ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING}?event-id=${data}&token=${user.token}`);
+    setRequestData(
+      `${process.env.REACT_APP_API_URL}${ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING}?event-id=${data}&token=${user.token}`
+    );
+    console.log(
+      `${process.env.REACT_APP_API_URL}${ENDPOINT_REPORT_GET_STUDENT_RECORD_SETTING}?event-id=${data}&token=${user.token}`
+    );
   };
   useEffect(() => getListEvent(), []);
   return (

@@ -2,22 +2,17 @@ import { Divider, Space, Spin, Typography } from 'antd';
 import React from 'react';
 import SingleContent from '../../news/components/singleContent.component.jsx';
 import SingleHeader4 from '../../news/components/singleHeader4.component';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import EventAvailableIcon from '@mui/icons-material/EventAvailable';
-import moment from 'moment';
-import EventBusyIcon from '@mui/icons-material/EventBusy';
 import { Link } from 'react-router-dom';
 import Avatar from '../../../../components/commons/Avatar/Avatar.component';
 const SingleNewComponent = (props) => {
   const { newDetail, loading } = props;
   const { Text, Title } = Typography;
-  console.log(newDetail);
   return (
     <>
       <div>
         <Spin size='large' spinning={loading}>
           <div className={`nc-PageSingleTemp4Sidebar relative pt-10 lg:pt-16`} data-nc-id='PageSingleTemp4Sidebar'>
-            <div className='absolute top-0 inset-x-0 bg-emerald-900	 dark:bg-black/30 h-[480px] md:h-[600px] lg:h-[700px] xl:h-[95vh]'></div>
+            <div className='absolute top-0 inset-x-0 bg-emerald-900 dark:bg-black/30 h-[480px] md:h-[600px] lg:h-[700px] xl:h-[95vh]'></div>
             <div className='relative'>
               <header className='container rounded-xl '>
                 <SingleHeader4 newDetail={newDetail} />
@@ -33,8 +28,8 @@ const SingleNewComponent = (props) => {
                         <div className='nc-SingleAuthor flex'>
                           <Link to={''}>
                             <Avatar
-                              imgUrl={newDetail.university.profileImageUrl}
-                              userName={newDetail.hostName}
+                              imgUrl={newDetail.university?.profileImageUrl}
+                              userName={newDetail?.hostName}
                               sizeClass='h-12 w-12 text-lg sm:text-xl sm:h-24 sm:w-24 '
                               radius='rounded-xl'
                             />
@@ -42,10 +37,10 @@ const SingleNewComponent = (props) => {
                           <div className='flex flex-col ml-3 max-w-lg sm:ml-5'>
                             <span className='text-xs text-neutral-400 uppercase tracking-wider'>Người viết bài</span>
                             <h2 className='text-lg font-semibold text-neutral-900 dark:text-neutral-200'>
-                              <Link to={newDetail.hostName}>{newDetail.university.name}</Link>
+                              <Link to={newDetail?.hostName}>{newDetail.university?.name}</Link>
                             </h2>
                             <span className='text-sm text-neutral-500 sm:text-base dark:text-neutral-300'>
-                              {newDetail.university.websiteUrl}
+                              {newDetail.university?.websiteUrl}
                             </span>
                           </div>
                         </div>
@@ -53,13 +48,13 @@ const SingleNewComponent = (props) => {
                       <Divider type={'horizontal'} />
                       <Space direction={'vertical'}>
                         <Text type={'secondary'}>
-                          Đơn vị viết bài: <Text strong> {newDetail.university.name}</Text>
+                          Đơn vị viết bài: <Text strong> {newDetail.university?.name}</Text>
                         </Text>
                         <Text type={'secondary'}>
-                          Email:<Text strong> {newDetail.university.websiteUrl}</Text>
+                          Email:<Text strong> {newDetail.university?.websiteUrl}</Text>
                         </Text>
                         <Text type={'secondary'}>
-                          Số điện thoại: <Text strong> {newDetail.university.phoneNumber}</Text>
+                          Số điện thoại: <Text strong> {newDetail.university?.phoneNumber}</Text>
                         </Text>
                       </Space>
                     </div>

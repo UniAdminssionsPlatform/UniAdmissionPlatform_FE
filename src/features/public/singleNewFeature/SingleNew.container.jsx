@@ -1,6 +1,6 @@
 import { PATH } from '../../../constants/Paths/Path';
 import { getANewPublishByEventIdService } from '../../../services/PublishService';
-import { notification } from 'antd';
+import { notification, Skeleton } from 'antd';
 import { useHistory } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import SingleNewComponent from './components/SingleNew.component';
@@ -16,6 +16,7 @@ const SingleNewContainer = (props) => {
         setLoading(false);
       })
       .catch(() => {
+        setLoading(true);
         notification.error({
           message: 'Không tìm thấy bài viết này',
           description: `Bài viết với [ID-${newId}] không tìm thấy trong hệ thống`
@@ -26,7 +27,7 @@ const SingleNewContainer = (props) => {
   useEffect(() => {
     newsDetail(newId);
   }, [newId]);
-  return newDetail ? <SingleNewComponent newDetail={newDetail} loading={loading} /> : null;
+  return !loading ? <SingleNewComponent newDetail={newDetail} loading={loading} /> : <Skeleton />;
 };
 
 export default SingleNewContainer;
