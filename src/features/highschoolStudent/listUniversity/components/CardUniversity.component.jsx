@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
+import { PATH, PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 
@@ -19,10 +19,7 @@ const CardUniversityComponent = (props) => {
 
       <Link
         to={{
-          pathname: PATH_HIGH_SCHOOL_STUDENT.PROFILE_UNIVERSITY,
-          state: {
-            universityID: item?.id
-          }
+          pathname: `${PATH.UNIVERSITY}${item?.id}`
         }}
         className='absolute inset-0'></Link>
 

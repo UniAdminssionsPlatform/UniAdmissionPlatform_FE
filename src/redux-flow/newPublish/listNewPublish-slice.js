@@ -20,8 +20,8 @@ export const fetchListNewPublish = createAsyncThunk(
       })
       .catch((err) => {
         notification.error({
-          message: 'Truy vấn thất bại!',
-          description: `Lỗi: ${err.message}`
+          message: 'Lỗi!',
+          description: `Đã có lỗi xảy ra. Vui lòng reload lại website!`
         });
         return rejectWithValue(err.response);
       });

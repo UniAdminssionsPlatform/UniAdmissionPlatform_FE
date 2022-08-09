@@ -3,7 +3,7 @@ import { ListUniversityPaging } from '../../../services/FollowUniversityService'
 import CardUniversityComponent from './components/CardUniversity.component';
 import NcImage from '../../../components/commons/NcImage/NcImage.component';
 import React, { useEffect, useState } from 'react';
-
+import searchImg from '../../../images/search.svg';
 const { Search } = Input;
 const ListUniversityToFollowContainer = () => {
   const [universities, setUniversities] = useState();
@@ -43,11 +43,7 @@ const ListUniversityToFollowContainer = () => {
       <div>
         <div className='w-screen px-2 xl:max-w-screen-2xl mx-auto'>
           <div className='rounded-3xl md:rounded-[40px] relative aspect-w-16 aspect-h-16 sm:aspect-h-9 lg:aspect-h-5 overflow-hidden '>
-            <NcImage
-              containerClassName='absolute inset-0'
-              src='https://sixdegreesfromdave.com/wp-content/uploads/2019/05/image3-12.jpg'
-              className='object-cover w-full h-full'
-            />
+            <NcImage containerClassName='absolute inset-0' src={searchImg} className='object-cover w-full h-full' />
           </div>
           {/* CONTENT */}
           <div className='relative container -mt-20 lg:-mt-48'>

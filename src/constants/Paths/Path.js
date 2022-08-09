@@ -19,6 +19,7 @@ export const PATH = {
   HIGH_SCHOOL_PROFILE_PAGE: '/highSchool/:highSchoolId',
   NEW: '/new/',
   EVENT: '/event/',
+  UNIVERSITY: '/university/',
   PAGE_NOT_FOUND: '/404'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
