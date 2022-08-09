@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import React from 'react';
 import SectionLatestPosts from './components/SectionLatestPosts.component';
 import { Skeleton } from 'antd';

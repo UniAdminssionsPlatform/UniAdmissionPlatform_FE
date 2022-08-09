@@ -39,6 +39,7 @@ const FlexMonsterComponent = (props) => {
               width='100%'
               report={requestData}
               reportcomplete={onReportComplete}
+              licenseKey={'Z75X-XBG62E-565Z5T-5G6Q48'}
             />
           )}
         </Col>

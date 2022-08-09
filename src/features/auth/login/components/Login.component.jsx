@@ -1,10 +1,5 @@
-import { Button, Checkbox, Form, Input } from 'antd';
-import { Helmet } from 'react-helmet';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { password, username } from '../../../../validate/Login.validate';
 import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPage.component';
 import React from 'react';
-import facebookSvg from '../../../../images/Facebook.svg';
 import googleSvg from '../../../../images/Google.svg';
 
 const loginSocials = [
@@ -16,12 +11,9 @@ const loginSocials = [
   }
 ];
 const LoginComponent = (props) => {
-  const { onFinish, signInWithPopupOption, className } = props;
+  const { signInWithPopupOption, className } = props;
   return (
     <div className={`nc-PageLogin ${className}`} data-nc-id='PageLogin'>
-      <Helmet>
-        <title>Đăng nhập</title>
-      </Helmet>
       <LayoutPage subHeading='Chào mừng đến với UniAdmissionPlatform' headingEmoji='🔑' heading='Đăng nhập'>
         <div className='max-w-md mx-auto space-y-6'>
           <div className='grid gap-3'>

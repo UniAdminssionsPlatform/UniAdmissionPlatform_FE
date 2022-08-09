@@ -12,6 +12,7 @@ import Layout from '../../../components/Layout';
 import NewManagementComponent from './components/NewManagement.component';
 import React, { useEffect, useState } from 'react';
 import SingleNewComponent from '../../public/singleNewFeature/components/SingleNew.component';
+import SingleNewContainer from '../../public/singleNewFeature/SingleNew.container';
 const NewManagementContainer = () => {
   const [data, setData] = useState([]);
   const [listTag, setListTag] = useState([]);
@@ -252,11 +253,20 @@ const NewManagementContainer = () => {
         });
       });
   };
+  console.log(selectedNew);
   return (
     <>
-      <Modal title='' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
-        <SingleNewComponent newDetail={selectedNew} loading={false} />
-      </Modal>
+      {selectedNew !== undefined ? (
+        <Modal
+          title=''
+          visible={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          width={'80vw'}
+          forceRender={true}>
+          <SingleNewContainer newId={selectedNew?.id} />
+        </Modal>
+      ) : null}
       <NewManagementComponent
         data={data}
         listTag={listTag}

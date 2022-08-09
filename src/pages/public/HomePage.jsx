@@ -1,4 +1,12 @@
 import React from 'react';
 import HomePageContainer from '../../features/public/homePage/HomePage.container';
-const HomePagePage = () => <HomePageContainer />;
+import { Helmet } from 'react-helmet';
+const HomePagePage = () => (
+  <>
+    <Helmet>
+      <title>Trang chủ</title>
+    </Helmet>
+    <HomePageContainer />
+  </>
+);
 export default HomePagePage;

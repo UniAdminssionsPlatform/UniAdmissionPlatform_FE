@@ -1,14 +1,12 @@
-import { Helmet } from 'react-helmet';
 import React from 'react';
 import ListNewDashboard from './ListNewDashboard';
 import WelcomeComponent from './Welcome.component';
 import { Divider, Typography } from 'antd';
 import BackgroundSection from '../../../../components/commons/BackgroundSection/BackgroundSection.component';
 import SectionSliderPostsComponent from '../../../../components/commons/SectionSliderPosts/SectionSliderPosts.component';
-import { DEMO_POSTS } from '../../../../data/posts';
 import { useSelector } from 'react-redux';
 
-const HomePageComponent = (props) => {
+const HomePageComponent = () => {
   const { listNewPublish, isFetching } = useSelector((state) => state.listNewPublish);
   const { Text, Title } = Typography;
   return (

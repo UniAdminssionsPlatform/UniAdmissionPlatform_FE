@@ -1,8 +1,5 @@
 import { Button, Divider, Space, Steps, Typography, notification } from 'antd';
-import {
-  CancelSelectedHighSchool,
-  setSelectedHighSchool
-} from '../../../redux-flow/selectedHighSchool/selectedHighSchool-action';
+import { CancelSelectedHighSchool } from '../../../redux-flow/selectedHighSchool/selectedHighSchool-action';
 import { LoadingOutlined } from '@ant-design/icons';
 import { PATH_UNIVERSITY_MANAGER } from '../../../constants/Paths/Path';
 import { bookASlotInAdminUniversity } from '../../../services/AdminUniversityService/AdminUniversitySlotServices';
@@ -11,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import ConfirmBookingComponent from './confirmBooking/ConfirmBooking.component';
 import HighSchoolInforComponent from './components/HighSchoolInfor.component';
 import Layout from '../../../components/Layout';
-import LayoutPageWithout from '../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import React, { useEffect, useState } from 'react';
 import SelectEventContainer from './selectEvent/SelectEvent.container';
 import SelectSlotContainer from './selectSlot/SelectSlot.container';
@@ -39,6 +35,7 @@ const BookingFlowContainer = () => {
   useEffect(() => {
     if (currentStep === 2 && currentEventSelected !== undefined) setCurrentStep(3);
   }, [currentEventSelected]);
+
   const handleSubmit = () => {
     const bookingObject = {
       eventId: currentEventSelected?.id,
@@ -60,7 +57,7 @@ const BookingFlowContainer = () => {
       });
   };
   const handleFinish = () => {
-    history.push();
+    history.push(PATH_UNIVERSITY_MANAGER.MANAGE_EVENT);
   };
   return (
     <Layout>

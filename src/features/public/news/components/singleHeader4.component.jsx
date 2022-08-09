@@ -1,18 +1,13 @@
-import { Helmet } from 'react-helmet';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
 import React from 'react';
 import SingleTitle from './singleTitle.component';
-import { Divider, Tag } from 'antd';
-import { TagOutlined } from '@ant-design/icons';
+import { Divider } from 'antd';
 import CategoryBadgeList from '../../../../components/commons/CategoryBadgeList/CategoryBadgeList.component';
 
 const SingleHeader4 = (props) => {
   const { newDetail } = props;
   return (
     <>
-      <Helmet>
-        <title>Tin Tức || Chi Tiết Tin Tức</title>
-      </Helmet>
       <div className={`nc-SingleHeader4 `}>
         <div className='max-w-5xl mx-auto space-y-5 dark'>
           <SingleTitle

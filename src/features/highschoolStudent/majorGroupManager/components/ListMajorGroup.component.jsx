@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import { Pagination, Spin } from 'antd';
 import CardMajor from './Card/CardMajor.component';
 import NcImage from '../../../../components/commons/NcImage/NcImage.component';
@@ -8,9 +7,6 @@ const ListMajorComponent = (props) => {
   const { data, loading, totalPage, onChangePage, dataSearch } = props;
   return (
     <div className={`nc-PageArchive overflow-hidden `} data-nc-id='PageArchive'>
-      <Helmet>
-        <title>Trang chủ || Chuyên ngành đào tạo</title>
-      </Helmet>
       <Spin tip='Đang tải...' spinning={loading}>
         <div className='w-full px-2 xl:max-w-screen-2xl mx-auto'>
           <div className='rounded-3xl md:rounded-[40px] relative aspect-w-16 aspect-h-13 sm:aspect-h-9 lg:aspect-h-8 xl:aspect-h-5 overflow-hidden '>

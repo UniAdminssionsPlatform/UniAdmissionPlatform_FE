@@ -1,20 +1,14 @@
 import { Button, Empty, Input, Pagination, Skeleton } from 'antd';
-import { Helmet } from 'react-helmet';
-import { SearchOutlined } from '@ant-design/icons';
 import CardEvent from '../listEvent/Card/CardEvent.component';
 import HeadBackgroundCommon from '../../../../../components/commons/HeadBackgroundCommon/HeadBackgroundCommon.component';
 import React from 'react';
 
 const ListEventComponent = (props) => {
   const { listEvent, onSearch, loading, total, onChangePage, onClick } = props;
-  const handleRedirectToDetailPage = (data) => {};
   return (
     <>
       <div className={`nc-PageSearchV2`} data-nc-id='PageSearchV2'>
         <HeadBackgroundCommon className='h-24 2xl:h-28' />
-        <Helmet>
-          <title>Sự kiện</title>
-        </Helmet>
         <div className='container'>
           <header className='max-w-2xl mx-auto -mt-10 flex flex-col lg:-mt-7'>
             <div className='grid grid-cols-3 gap-1'>

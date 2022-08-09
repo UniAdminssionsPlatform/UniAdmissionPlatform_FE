@@ -1,15 +1,21 @@
-import { Avatar, Button, Input, Pagination, Space, Table } from 'antd';
+import { Button, Divider, Image, Input, Modal, Pagination, Space, Table } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { getListEventForUniversity } from '../../../../services/GetListEventForUniversity';
 import { refactorData } from '../../../../utils/common';
 import { useSelector } from 'react-redux';
 import Highlighter from 'react-highlight-words';
 import React, { useEffect, useRef, useState } from 'react';
+import PreviewIcon from '@mui/icons-material/Preview';
+import { COLOR_ICON } from '../../../../constants/Color';
+import SingleEventContainer from '../../../public/singleEventFeature/SingleEvent.container';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 const SelectEventContainer = (props) => {
   const { setCurrentEventSelected } = props;
   const { user } = useSelector((state) => state.authentication);
   const [isLoading, setIsLoading] = useState(true);
   const [listEvent, setListEvent] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [currentSelectedEvent, setCurrentSelectedEvent] = useState({});
   const [dataSearch, setDataSearch] = useState({
     name: '',
     hostname: '',
@@ -29,6 +35,7 @@ const SelectEventContainer = (props) => {
     };
     getListEventForUniversity(dataSearch)
       .then((result) => {
+        console.log(result.data.data.list);
         setListEvent(result.data.data.list);
         setIsLoading(false);
       })
@@ -46,7 +53,16 @@ const SelectEventContainer = (props) => {
     clearFilters();
     setSearchText('');
   };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
 
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div
@@ -131,7 +147,13 @@ const SelectEventContainer = (props) => {
       sorter: (a, b) => a.name.length - b.name.length,
       render: (name) => `${name}`,
       ...getColumnSearchProps('name'),
-      width: '20%'
+      width: '15%'
+    },
+    {
+      title: 'Ảnh bìa',
+      dataIndex: 'thumbnailUrl',
+      render: (url) => <Image src={url} />,
+      width: '15%'
     },
     {
       title: 'Diễn giả',
@@ -145,16 +167,31 @@ const SelectEventContainer = (props) => {
       title: 'Chú giải',
       dataIndex: 'shortDescription',
       render: (name) => `${name}`,
-      width: '20%'
+      width: '25%'
     },
     {
       title: 'Hành Động',
       render: (status, data) => (
-        <Button onClick={() => setCurrentEventSelected(data)} type={'primary'} danger>
-          Lựa chọn
-        </Button>
+        <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
+          <PreviewIcon
+            onClick={() => {
+              setCurrentSelectedEvent(data);
+              showModal();
+            }}
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            fontSize={'large'}
+            className={`hover:fill-neutral-100`}
+          />
+          <Divider type={'vertical'} />
+          <CheckCircleIcon
+            onClick={() => setCurrentEventSelected(data)}
+            style={{ cursor: 'pointer', color: COLOR_ICON }}
+            fontSize={'large'}
+            className={`hover:fill-neutral-100`}
+          />
+        </Space>
       ),
-      width: '12%'
+      width: '10%'
     }
   ];
   const onShowSizeChange = (page, PageSize) => {
@@ -162,16 +199,19 @@ const SelectEventContainer = (props) => {
   };
   return (
     <>
+      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={'80vw'}>
+        <SingleEventContainer eventId={currentSelectedEvent?.id} />
+      </Modal>
       <Space direction={'vertical'}>
         <Table
           columns={column}
           dataSource={refactorData(listEvent)}
           bordered={true}
-          size='middle'
-          style={{ width: '70rem' }}
+          size='small'
           pagination={false}
           loading={isLoading}
-          scroll={{ y: 600 }}
+          style={{ width: '65vw' }}
+          scroll={{ x: 700, y: 450 }}
         />
         <Pagination showSizeChanger onChange={onShowSizeChange} total={listEvent?.total} />
       </Space>

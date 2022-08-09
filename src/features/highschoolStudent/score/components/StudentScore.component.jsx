@@ -1,6 +1,5 @@
 import { Button, Select, Skeleton, Space, Table, Tooltip } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
-import { Helmet } from 'react-helmet';
 import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPageWithout.component';
 import ModalAddContainer from '../modalAdd.container';
 import ModalEditContainer from '../modalEdit.container';
@@ -54,9 +53,6 @@ const StudentScoreComponent = (props) => {
   return (
     <>
       <div className={`nc-PageScore ${className}`} data-nc-id='ScorePage'>
-        <Helmet>
-          <title>Quản lí điểm</title>
-        </Helmet>
         <LayoutPage subHeading='' headingEmoji='🔑' heading=''>
           <div>
             <div className='grid grid-cols-4 gap-4 '>
