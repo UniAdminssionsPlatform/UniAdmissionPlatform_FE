@@ -1,4 +1,5 @@
 import 'antd/dist/antd.css';
+import { HOST_UPLOAD, UPLOAD_A_NEW_IMAGE_ENDPOINT } from '../../../constants/Endpoints/FilesEndpoint';
 import { Modal, Upload, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { uploadImageService } from '../../../services/AdminUniversityService/UploadImageService';
