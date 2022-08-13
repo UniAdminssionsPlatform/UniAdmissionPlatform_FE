@@ -55,6 +55,7 @@ const LeftBarComponent = (props) => {
                   <Radio.Button value={SLOT_IS_FULL}>Đã đầy</Radio.Button>
                   <Radio.Button value={SLOT_IS_OPEN}>Còn trống</Radio.Button>
                   <Radio.Button value={SLOT_IS_CLOSE}>Đã đóng</Radio.Button>
+                  <Radio.Button value={''}>Tất cả</Radio.Button>
                 </Radio.Group>
               </Space>
             </Form.Item>

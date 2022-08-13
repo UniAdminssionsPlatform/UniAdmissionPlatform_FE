@@ -33,6 +33,7 @@ import UniversityDetailPage from '../pages/universityManager/UniversityDetailPag
 import UniversityManagerRouter from './components/UniversityManagerRouter';
 import FlexMonsterPage from '../pages/universityManager/FlexMonster.page';
 import HighSchoolCalendarPage from '../pages/highSchoolManager/highSchoolCalendarPage';
+import UniversityListAccountPendingPage from '../pages/universityManager/UniversityListAccountPendingPage';
 
 const ManagementRouter = () => {
   const { Header, Content, Sider } = Layout;
@@ -53,7 +54,8 @@ const ManagementRouter = () => {
     getItem('Sự kiện', '2', <BookOutlined />, [getItem('Quản lý sự kiện', '3'), getItem('Đăng ký sự kiện', '4')]),
     getItem('Quản lý Bài viết', '6', <StarOutlined />),
     getItem('Tiêu chí tuyển sinh', '9', <WalletOutlined />),
-    getItem('Dữ liệu học sinh', '10', <BarChartOutlined />)
+    getItem('Dữ liệu học sinh', '10', <BarChartOutlined />),
+    getItem('Xét duyệt tài khoản', '11', <ApartmentOutlined />)
   ];
   const itemsHighSchool = [
     getItem('Lịch', '1', <CalendarOutlined />),
@@ -86,6 +88,9 @@ const ManagementRouter = () => {
         break;
       case '10':
         history.push(PATH_UNIVERSITY_MANAGER.ANALYTICS_DATA);
+        break;
+      case '11':
+        history.push(PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING);
         break;
     }
   };
@@ -134,6 +139,12 @@ const ManagementRouter = () => {
           }}>
           <Content className='site-layout-background'>
             <Switch>
+              <UniversityManagerRouter
+                component={() => <UniversityListAccountPendingPage />}
+                path={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
+                key={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
+                exact
+              />
               <UniversityManagerRouter
                 component={() => <GoalAdmissionPage />}
                 path={PATH_UNIVERSITY_MANAGER.GOAL_ADMISSION}

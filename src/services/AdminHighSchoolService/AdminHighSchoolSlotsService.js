@@ -8,7 +8,7 @@ import {
 import { CallAPI } from '../axiosBase';
 const bindingData = (data) => {
   let endPoint = '?';
-  if (data?.startDate) endPoint = `${endPoint}?start-date=${data?.startDate}`;
+  if (data?.startDate) endPoint = `${endPoint}start-date=${data?.startDate}`;
   if (data?.endDate) endPoint = `${endPoint}&end-date=${data?.endDate}`;
   if (data?.status) endPoint = `${endPoint}&status=${data?.status}`;
   return `${endPoint}&limit=100`;

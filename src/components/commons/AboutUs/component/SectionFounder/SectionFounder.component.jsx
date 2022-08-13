@@ -44,10 +44,10 @@ const SectionFounder = () => (
   <div className='nc-SectionFounder relative'>
     <Heading
       desc='Chúng tôi là sinh viên năm cuối của đại học FPT. Chúng tôi vô tư và độc lập và mỗi ngày chúng tôi đều tạo ra
-          chương trình và nội dung đẳng cấp thế giới '>
+          chương trình và nội dung giúp cuộc sống thêm phần thú vị.'>
       ⛱ Thành viên trong nhóm
     </Heading>
-    <div className='grid sm:grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4 xl:gap-x-8'>
+    <div className='grid sm:grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-5 xl:gap-x-8'>
       {FOUNDER_DEMO.map((item) => (
         <div key={item.id} className='max-w-sm'>
           <NcImage
