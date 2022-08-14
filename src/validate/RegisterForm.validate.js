@@ -20,8 +20,12 @@ export const middlename = [
 
 export const email = [
   {
+    required: true,
+    message: 'Vui lòng nhập Email'
+  },
+  {
     pattern: new RegExp(emailRegex),
-    message: 'email phải có cấu trúc đầy đủ ( abc@gmail.com )'
+    message: 'Email phải có cấu trúc đầy đủ ( abc@gmail.com )'
   }
 ];
 
