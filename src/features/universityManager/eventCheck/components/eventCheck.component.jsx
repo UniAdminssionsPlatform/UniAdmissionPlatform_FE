@@ -31,7 +31,7 @@ const EventCheckComponent = (props) => {
     },
     {
       title: 'Trường đăng ký',
-      render: (record) => <p>{moment(record.eventCreateAt).format('LLL')}</p>,
+      render: (record) => <p>{record.highschool}</p>,
       width: '10%'
     },
     {

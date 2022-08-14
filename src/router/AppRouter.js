@@ -133,13 +133,6 @@ const AppRouter = () => (
         key={PATH_HIGH_SCHOOL_MANAGER.ACCOUNT_PROFILE}
         exact
       />
-      //Univer
-      <UniversityManagerRouter
-        component={() => <UniversityListAccountPendingPage />}
-        path={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
-        key={PATH_UNIVERSITY_MANAGER.LIST_ACCOUNT_PENDING}
-        exact
-      />
       //Student
       <HighSchoolStudentRouter
         component={() => <ListEventGorStudentPage />}

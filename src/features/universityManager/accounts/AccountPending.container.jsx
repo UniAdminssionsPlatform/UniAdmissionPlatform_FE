@@ -3,8 +3,10 @@ import {
   GetListNotification
 } from '../../../notification/HighSchoolRepresentativesPendingNotification';
 import { activeAccount, getAllPendingAccount } from '../../../services/UniversityRepresentatives';
-import AccountPendinglComponent from './components/AccountPending.component';
+import AccountPendingComponent from './components/AccountPending.component';
 import React, { useEffect, useState } from 'react';
+import { Layout } from 'antd';
+import TitlePageComponent from '../../../components/decorator/TitlePage.component';
 
 const AccountPendingContainer = () => {
   const [data, setData] = useState([]);
@@ -70,8 +72,14 @@ const AccountPendingContainer = () => {
   };
 
   return (
-    <>
-      <AccountPendinglComponent
+    <Layout>
+      <TitlePageComponent
+        title={'Xét duyệt tài khoản'}
+        subTitle={
+          'Bạn có thể tìm kiếm tài khoản cần được xét duyệt bằng tên, email và số điện thoại. Thực hiện thao tác xét duyệt trong panel dưới đây'
+        }
+      />
+      <AccountPendingComponent
         data={data}
         loading={loading}
         setDataSearch={setDataSearch}
@@ -81,7 +89,7 @@ const AccountPendingContainer = () => {
         onChangePage={onChangePage}
         dataSearch={dataSearch}
       />
-    </>
+    </Layout>
   );
 };
 export default AccountPendingContainer;

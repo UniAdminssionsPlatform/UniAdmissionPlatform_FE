@@ -20,8 +20,12 @@ export const middlename = [
 
 export const email = [
   {
+    required: true,
+    message: 'Vui lòng nhập Email'
+  },
+  {
     pattern: new RegExp(emailRegex),
-    message: 'email phải có cấu trúc đầy đủ ( abc@gmail.com )'
+    message: 'Email phải có cấu trúc đầy đủ ( abc@gmail.com )'
   }
 ];
 
@@ -67,59 +71,59 @@ export const vcode = [
 export const idcard = [
   {
     required: true,
-    message: 'vui lòng nhập cmnd/cccd !'
+    message: 'Vui lòng nhập cmnd/cccd !'
   },
   {
     pattern: new RegExp(idcardRegex),
-    message: 'cmnd/cccd không hợp lệ !'
+    message: 'Cmnd/cccd không hợp lệ !'
   }
 ];
 
 export const dob = [
   {
     required: true,
-    message: 'vui lòng chọn ngày sinh !'
+    message: 'Vui lòng chọn ngày sinh !'
   }
 ];
 
 export const sex = [
   {
     required: true,
-    message: 'vui lòng chọn giới tính !'
+    message: 'Vui lòng chọn giới tính !'
   }
 ];
 
 export const placeOfBirth = [
   {
     required: true,
-    message: 'vui lòng chọn nơi sinh !'
+    message: 'Vui lòng chọn nơi sinh !'
   }
 ];
 
 export const province = [
   {
     required: true,
-    message: 'vui lòng chọn thành phố !'
+    message: 'Vui lòng chọn thành phố !'
   }
 ];
 
 export const district = [
   {
     required: true,
-    message: 'vui lòng chọn quận/huyện !'
+    message: 'Vui lòng chọn quận/huyện !'
   }
 ];
 
 export const ward = [
   {
     required: true,
-    message: 'vui lòng chọn phường xã !'
+    message: 'Vui lòng chọn phường xã !'
   }
 ];
 
 export const nation = [
   {
     required: true,
-    message: 'vui lòng chọn quốc tịch !'
+    message: 'Vui lòng chọn quốc tịch !'
   }
 ];

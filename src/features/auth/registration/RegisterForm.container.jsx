@@ -33,6 +33,9 @@ const RegisterFormContainer = (props) => {
   const [isDisableWard, setIsDisableWard] = useState(true);
   const [codeWithRole, setCodeWithRole] = useState();
   const history = useHistory();
+
+  console.log('role: ', role);
+
   useEffect(() => {
     getAllProvinces();
     getAllNation();
@@ -101,8 +104,7 @@ const RegisterFormContainer = (props) => {
         .catch(() => {
           setSchoolName('');
         });
-    }
-    if (role === 'uni') {
+    } else if (role === 'uni') {
       getUniversityByCode(value)
         .then((result) => {
           setSchoolName(result.data.data.name);
@@ -110,8 +112,7 @@ const RegisterFormContainer = (props) => {
         .catch(() => {
           setSchoolName('');
         });
-    }
-    if (role === 'hs') {
+    } else if (role === 'hs') {
       getHighSchoolByManagerCode(value)
         .then((result) => {
           setSchoolName(result.data.data.name);
@@ -139,8 +140,7 @@ const RegisterFormContainer = (props) => {
         .catch((err) => {
           handleNotification('error', err);
         });
-    }
-    if (role === 'hs') {
+    } else if (role === 'hs') {
       registerForSchoolManager(values)
         .then((result) => {
           handleNotification('success', result.message);
@@ -149,9 +149,7 @@ const RegisterFormContainer = (props) => {
         .catch((err) => {
           handleNotification('error', err);
         });
-    }
-
-    if (role === 'uni') {
+    } else if (role === 'uni') {
       registerForUniversityManager(values)
         .then((result) => {
           handleNotification('success', result.message);

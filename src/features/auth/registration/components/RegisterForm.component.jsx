@@ -89,7 +89,7 @@ const RegisterForm = (props) => {
           <div>
             <Form.Item name='placeOfBirth'>
               <label className='block'>
-                <Label>nơi sinh</Label>
+                <Label>Nơi sinh</Label>
                 <div className='mt-1'>
                   <Select
                     showSearch

@@ -19,6 +19,7 @@ import {
   getListEventCheckService,
   rejectAEventService
 } from '../../../../services/AdminHighSchoolService/AdminHighSchoolEventCheck';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { refactorDataSlotEventCheckID } from '../../../../utils/common';
 import DetailEventComponent from '../../../../components/detailEvent/DetailEvent.component';
 import React, { useEffect, useState } from 'react';
@@ -72,6 +73,19 @@ const RegisteredEventHighSchoolContainer = () => {
           description: `Chấp nhận sự kiện thất bại${err}`
         })
       );
+  };
+  const confirmApproveEvent = (value) => {
+    Modal.confirm({
+      title: 'Xác thực',
+      icon: <ExclamationCircleOutlined />,
+      content: 'Chấp nhận sự kiện này ?',
+      okText: 'Có',
+      cancelText: 'Không',
+      onOk() {
+        handleApproveEvent(value);
+      },
+      onCancel() {}
+    });
   };
   const handleViewDetailEvent = (data) => {
     setCurrentSelectedEvent(data);
@@ -151,7 +165,7 @@ const RegisteredEventHighSchoolContainer = () => {
             <>
               <Tooltip title='Chấp thuận sự kiện'>
                 <CheckCircleIcon
-                  onClick={() => handleApproveEvent(data)}
+                  onClick={() => confirmApproveEvent(data)}
                   style={{ fontSize: '2rem', cursor: 'pointer', color: COLOR_ICON }}
                 />
               </Tooltip>
