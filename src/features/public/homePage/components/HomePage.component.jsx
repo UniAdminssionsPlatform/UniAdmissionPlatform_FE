@@ -5,6 +5,7 @@ import { Divider, Typography } from 'antd';
 import BackgroundSection from '../../../../components/commons/BackgroundSection/BackgroundSection.component';
 import SectionSliderPostsComponent from '../../../../components/commons/SectionSliderPosts/SectionSliderPosts.component';
 import { useSelector } from 'react-redux';
+import FooterComponent from '../../Footer.component';
 
 const HomePageComponent = () => {
   const { listNewPublish, isFetching } = useSelector((state) => state.listNewPublish);
@@ -23,6 +24,7 @@ const HomePageComponent = () => {
         {!isFetching ? <SectionSliderPostsComponent posts={listNewPublish} /> : null}
       </div>
       {/*<FeaturedEvent events={events} />*/}
+      <FooterComponent />
     </div>
   );
 };

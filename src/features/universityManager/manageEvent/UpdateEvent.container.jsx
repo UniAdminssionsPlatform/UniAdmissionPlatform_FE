@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import UpdateEventComponent from './components/UpdateEvent.component';
-import { updateEvent } from '../../../services/AdminUniversityService/AdminUniversityEventService';
+import { updateEventService } from '../../../services/AdminUniversityService/AdminUniversityEventService';
 import { notification } from 'antd';
 
 const UpdateEventContainer = (props) => {
@@ -23,7 +23,7 @@ const UpdateEventContainer = (props) => {
     values.endTime = eventId.endTime;
     values.id = eventId.id;
 
-    updateEvent(values)
+    updateEventService(values)
       .then(() => {
         notification.success({
           message: 'Chỉnh sửa sự kiện thành công'

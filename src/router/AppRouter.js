@@ -93,6 +93,9 @@ const AppRouter = () => (
       <Route path={PATH.POLICY} exact>
         <PolicyPage />
       </Route>
+      <Route path={PATH.LIST_UNIVERSITY_PAGE} exact>
+        <ListUniversityToFollowPage />
+      </Route>
       <Route path={PATH_HIGH_SCHOOL_STUDENT.LIST_EVENT} exact>
         <ListEventGorStudentPage />
       </Route>

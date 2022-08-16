@@ -34,8 +34,6 @@ const RegisterFormContainer = (props) => {
   const [codeWithRole, setCodeWithRole] = useState();
   const history = useHistory();
 
-  console.log('role: ', role);
-
   useEffect(() => {
     getAllProvinces();
     getAllNation();
@@ -124,6 +122,7 @@ const RegisterFormContainer = (props) => {
   }, 1000);
 
   const onFinish = (values) => {
+    console.log(values);
     values.dateOfBirth = dob;
     values.wardId = wardId;
     values.genderId = sex;

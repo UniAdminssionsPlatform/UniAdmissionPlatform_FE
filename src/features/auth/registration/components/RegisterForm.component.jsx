@@ -1,13 +1,19 @@
-import { Button, DatePicker, Form, Input, Select, Tooltip } from 'antd';
+import { Button, DatePicker, Form, Input, Select, Tooltip, Typography } from 'antd';
 import {
   address,
+  district,
+  dob,
   email,
   firstname,
-  idcard,
   lastname,
-  middlename,
+  nationality,
   phone,
-  vcode
+  placeOfBirth,
+  province,
+  relogion,
+  sex,
+  vcode,
+  ward
 } from '../../../../validate/RegisterForm.validate';
 
 import Label from '../../../../components/commons/Label/Label.component';
@@ -39,18 +45,20 @@ const RegisterForm = (props) => {
   function onSearch(val) {
     console.log('search:', val);
   }
-
+  const { Text, Title } = Typography;
   return (
     <div className='rounded-xl md:border md:border-neutral-100 dark:border-neutral-800 md:p-6'>
       <Form className='grid md:grid-cols-2 gap-6' onFinish={onFinish}>
         <div className='grid md:grid-cols-3 gap-6 block md:col-span-2'>
           <Form.Item name='lastName' rules={lastname}>
             <label className='block'>
-              <Label>Họ</Label>
+              <Label>
+                Họ<Text style={{ color: 'red' }}>*</Text>
+              </Label>
               <Input placeholder='Nguyễn, Trần, Lê,...' type='text' className='mt-1' />
             </label>
           </Form.Item>
-          <Form.Item name='middleName' rules={middlename}>
+          <Form.Item name='middleName'>
             <label className='block'>
               <Label>Tên đệm</Label>
               <Input placeholder='Thị, Văn,...' type='text' className='mt-1' />
@@ -58,16 +66,20 @@ const RegisterForm = (props) => {
           </Form.Item>
           <Form.Item name='firstName' rules={firstname}>
             <label className='block'>
-              <Label>Tên</Label>
+              <Label>
+                Tên <Text style={{ color: 'red' }}>*</Text>
+              </Label>
               <Input placeholder='Tín, Đạt, Hào,...' type='text' className='mt-1' />
             </label>
           </Form.Item>
         </div>
 
         <div className='grid md:grid-cols-3 '>
-          <Form.Item name='dateOfBirth'>
+          <Form.Item name='dateOfBirth' rules={dob}>
             <div>
-              <Label>Ngày sinh</Label>
+              <Label>
+                Ngày sinh <Text style={{ color: 'red' }}>*</Text>
+              </Label>
               <div className='mt-1'>
                 <DatePicker onChange={handleDatePicker} placeholder='ngày tháng năm sinh' />
               </div>
@@ -75,8 +87,10 @@ const RegisterForm = (props) => {
           </Form.Item>
 
           <div>
-            <Form.Item name='genderId' hasFeedback>
-              <Label>Giới tính</Label>
+            <Form.Item name='genderId' hasFeedback rules={sex}>
+              <Label>
+                Giới tính <Text style={{ color: 'red' }}>*</Text>
+              </Label>
               <div className='mt-1'>
                 <Select placeholder='Giới tính' style={{ width: 150 }} onChange={onChangeSex}>
                   <Option value={1}>Nam</Option>
@@ -87,9 +101,11 @@ const RegisterForm = (props) => {
           </div>
 
           <div>
-            <Form.Item name='placeOfBirth'>
+            <Form.Item name='placeOfBirth' rules={placeOfBirth}>
               <label className='block'>
-                <Label>Nơi sinh</Label>
+                <Label>
+                  Nơi sinh <Text style={{ color: 'red' }}>*</Text>
+                </Label>
                 <div className='mt-1'>
                   <Select
                     showSearch
@@ -113,16 +129,20 @@ const RegisterForm = (props) => {
             <div className='mt-1'>
               <Form.Item name='phoneNumber' rules={phone}>
                 <label className='block'>
-                  <Label>Số điện thoại</Label>
-                  <Input type='text' className='mt-1' />
+                  <Label>
+                    Số điện thoại <Text style={{ color: 'red' }}>*</Text>
+                  </Label>
+                  <Input type='text' className='mt-1' placeholder={'Nhập thông tin số điện thoại'} />
                 </label>
               </Form.Item>
             </div>
             <div className='mt-1'>
               <Form.Item name='emailContact' rules={email}>
                 <label className='block'>
-                  <Label>Email</Label>
-                  <Input type='text' className='mt-1' />
+                  <Label>
+                    Email <Text style={{ color: 'red' }}>*</Text>
+                  </Label>
+                  <Input type='text' className='mt-1' placeholder={'Nhập thông tin email'} />
                 </label>
               </Form.Item>
             </div>
@@ -133,7 +153,9 @@ const RegisterForm = (props) => {
             <div className='mt-1'>
               <Form.Item name='address' rules={address}>
                 <label className='block'>
-                  <Label>Địa chỉ</Label>
+                  <Label>
+                    Địa chỉ <Text style={{ color: 'red' }}>*</Text>
+                  </Label>
                   <Input placeholder='Ex: 123 bình Phú...' type='text' className='mt-1' />
                 </label>
               </Form.Item>
@@ -143,9 +165,11 @@ const RegisterForm = (props) => {
         <label className='block '>
           <div className='grid md:grid-cols-2 gap-6 block md:col-span-2 '>
             <div className='mt-1'>
-              <Form.Item name='religion'>
+              <Form.Item name='religion' rules={relogion}>
                 <label className='block'>
-                  <Label>Tôn giáo</Label>
+                  <Label>
+                    Tôn giáo <Text style={{ color: 'red' }}>*</Text>
+                  </Label>
                   <Select placeholder='Tôn giáo' onChange={onChangeReligion}>
                     <Option value='Phật giáo'>Phật giáo</Option>
                     <Option value='Thiên Chúa Giáo'>Thiên chúa giáo</Option>
@@ -156,9 +180,11 @@ const RegisterForm = (props) => {
               </Form.Item>
             </div>
             <div className='mt-1'>
-              <Form.Item name='nationality'>
+              <Form.Item name='nationality' rules={nationality}>
                 <label className='block'>
-                  <Label>Quốc tịch</Label>
+                  <Label>
+                    Quốc tịch <Text style={{ color: 'red' }}>*</Text>
+                  </Label>
                   <Select
                     showSearch
                     placeholder='Quốc tịch'
@@ -177,9 +203,11 @@ const RegisterForm = (props) => {
         </label>
         <label className='block '>
           <div className='grid md:grid-cols-3 gap-6 block md:col-span-2 '>
-            <Form.Item>
+            <Form.Item name={'provinces'} rules={province}>
               <label className='block'>
-                <Label>Tỉnh/thành phố</Label>
+                <Label>
+                  Tỉnh/thành phố <Text style={{ color: 'red' }}>*</Text>
+                </Label>
                 <div className='mt-1'>
                   <Select
                     showSearch
@@ -196,9 +224,11 @@ const RegisterForm = (props) => {
               </label>
             </Form.Item>
 
-            <Form.Item>
+            <Form.Item name={'districts'} rules={district}>
               <label className='block'>
-                <Label>Quận/Huyện</Label>
+                <Label>
+                  Quận/Huyện <Text style={{ color: 'red' }}>*</Text>
+                </Label>
                 <div className='mt-1'>
                   <Select
                     showSearch
@@ -216,9 +246,11 @@ const RegisterForm = (props) => {
               </label>
             </Form.Item>
 
-            <Form.Item name='wardId'>
+            <Form.Item name='wardId' rules={ward}>
               <label className='block'>
-                <Label>Phường/Xã</Label>
+                <Label>
+                  Phường/Xã <Text style={{ color: 'red' }}>*</Text>
+                </Label>
                 <div className='mt-1'>
                   <Select
                     showSearch
@@ -240,7 +272,7 @@ const RegisterForm = (props) => {
         <label className='block '>
           <div className='mt-1'>
             <div className='grid md:grid-cols-2 gap-6 block md:col-span-2 '>
-              <Form.Item name='idCard' rules={idcard}>
+              <Form.Item name='idCard'>
                 <label className='block'>
                   <Label>CMND/CCCD</Label>
                   <Input type='text' />
@@ -248,12 +280,14 @@ const RegisterForm = (props) => {
               </Form.Item>
               <Form.Item name={codeWithRole} rules={vcode}>
                 <label className='block'>
-                  <Label>Mã xác thực</Label>
+                  <Label>
+                    Mã xác thực <Text style={{ color: 'red' }}>*</Text>
+                  </Label>
                   <Tooltip
                     trigger={['focus']}
                     placement='topLeft'
                     title='Mã xác thực dùng để xác định vai trò của bạn trong hệ thống và được nhận từ người đứng đầu tổ chức của bạn.'>
-                    <Input type='text' onChange={(e) => handleCode(e.target.value)} />
+                    <Input type='text' onChange={(e) => handleCode(e.target.value)} placeholder={'Nhập mã xác nhận'} />
                   </Tooltip>
                   {schoolName !== '' ? (
                     <font color='green'>{schoolName}</font>

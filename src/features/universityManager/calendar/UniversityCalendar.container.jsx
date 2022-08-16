@@ -1,4 +1,4 @@
-import { getListEventFromDateToDateApi } from '../../../services/AdminUniversityService/AdminUniversityEventService';
+import { getListEventCheckService } from '../../../services/AdminUniversityService/AdminUniversityEventService';
 import { useSelector } from 'react-redux';
 import UniversityCalendarComponent from './UniversityCalendar.component';
 import React, { useEffect, useState } from 'react';
@@ -11,15 +11,28 @@ const UniversityCalendarContainer = () => {
   const [selectedDate, setSelectedDate] = useState();
   const [triggerUpdate, setTriggerUpdate] = useState(true);
   const { user } = useSelector((state) => state.authentication);
+  const parseListEvent = (data) => {
+    const listEvent = [];
+    data.map((event) => {
+      listEvent.push({
+        startDate: event.slot.startDate,
+        endDate: event.slot.endDate,
+        infor: event
+      });
+    });
+    return listEvent;
+  };
   const getListEventByStartDateToEndDate = () => {
-    getListEventFromDateToDateApi({
-      universityID: user?.universityId,
-      fromDate: '',
-      toDate: ''
-    })
+    const payload = {
+      status: '',
+      page: '1',
+      limit: '1000'
+    };
+    getListEventCheckService(payload)
       .then((res) => {
-        setListSlot(res.data.data);
+        setListSlot(res.data.data.list);
         setIsLoading(false);
+        console.log(res.data.data.list);
       })
       .catch((err) => {
         setListSlot(false);
@@ -41,7 +54,7 @@ const UniversityCalendarContainer = () => {
   return (
     <Layout>
       <UniversityCalendarComponent
-        listSlot={listSlot}
+        listSlot={!isLoading ? parseListEvent(listSlot) : null}
         handleChangeSelection={handleChangeSelection}
         isLoading={isLoading}
       />

@@ -1,4 +1,4 @@
-import { Tag, Typography } from 'antd';
+import { Button, Tag, Typography } from 'antd';
 import LayoutPage from '../../../../components/commons/LayoutPage/LayoutPage.component';
 import React, { useState } from 'react';
 import RegisterFormContainer from '../RegisterForm.container';
@@ -60,10 +60,12 @@ const RegisterComponent = (props) => {
           </div>
         ) : (
           <div>
-            <Tag color='orange' onClick={() => setIsSelected(false)}>
-              hoàn tác
-            </Tag>
-            <RegisterFormContainer role={role} />
+            <div>
+              <Button onClick={() => setIsSelected(false)} type='primary' danger shape={'round'}>
+                Hoàn Tác
+              </Button>
+            </div>
+            <RegisterFormContainer role={role} setIsSelected={setIsSelected} />
           </div>
         )}
       </LayoutPage>

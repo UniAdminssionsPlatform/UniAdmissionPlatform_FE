@@ -4,6 +4,8 @@ import { SINGLE } from '../../data/single';
 import Avatar from '../commons/Avatar/Avatar.component';
 import React from 'react';
 import { Space, Typography } from 'antd';
+import { PATH } from '../../constants/Paths/Path';
+import moment from 'moment';
 
 const PostMeta2 = (props) => {
   const { Title, Text } = Typography;
@@ -12,7 +14,7 @@ const PostMeta2 = (props) => {
     <div
       className={`nc-PostMeta2 flex items-center flex-wrap text-neutral-700 text-left dark:text-neutral-200 text-xs`}
       data-nc-id='PostMeta2'>
-      <Link to={SINGLE.author.href} className='flex items-center space-x-2'>
+      <Link to={`${PATH.UNIVERSITY}${event.universityId}`} className='flex items-center space-x-2'>
         <Avatar
           // radius={avatarRounded}
           sizeClass={'h-10 w-10 sm:h-11 sm:w-11 text-xl'}
@@ -30,7 +32,7 @@ const PostMeta2 = (props) => {
           </>
         </div>
         <div className='text-xs mt-[6px]'>
-          <span className='text-neutral-700 dark:text-neutral-300'>{event.startTime}</span>
+          <span className='text-neutral-700 dark:text-neutral-300'>{moment(event.startTime).format('LLL')}</span>
           <span className='mx-2 font-semibold'>·</span>
           <span className='text-neutral-700 dark:text-neutral-300'>{SINGLE.readingTime} min read</span>
         </div>

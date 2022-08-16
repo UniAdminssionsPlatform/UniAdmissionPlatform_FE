@@ -93,6 +93,12 @@ export const sex = [
   }
 ];
 
+export const nationality = [
+  {
+    required: true,
+    message: 'Vui lòng nhập quốc tịch !'
+  }
+];
 export const placeOfBirth = [
   {
     required: true,
