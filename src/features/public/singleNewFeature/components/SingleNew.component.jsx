@@ -4,6 +4,7 @@ import SingleContent from '../../news/components/singleContent.component.jsx';
 import SingleHeader4 from '../../news/components/singleHeader4.component';
 import { Link } from 'react-router-dom';
 import Avatar from '../../../../components/commons/Avatar/Avatar.component';
+import { PATH } from '../../../../constants/Paths/Path';
 const SingleNewComponent = (props) => {
   const { newDetail, loading } = props;
   const { Text, Title } = Typography;
@@ -26,7 +27,7 @@ const SingleNewComponent = (props) => {
                     <div className='flex flex-wrap p-4 xl:p-5'>
                       <div className='max-w-screen-md mx-auto '>
                         <div className='nc-SingleAuthor flex'>
-                          <Link to={''}>
+                          <Link to={`${PATH.UNIVERSITY}${newDetail.university.id}`}>
                             <Avatar
                               imgUrl={newDetail.university?.profileImageUrl}
                               userName={newDetail?.hostName}
@@ -37,7 +38,9 @@ const SingleNewComponent = (props) => {
                           <div className='flex flex-col ml-3 max-w-lg sm:ml-5'>
                             <span className='text-xs text-neutral-400 uppercase tracking-wider'>Người viết bài</span>
                             <h2 className='text-lg font-semibold text-neutral-900 dark:text-neutral-200'>
-                              <Link to={newDetail?.hostName}>{newDetail.university?.name}</Link>
+                              <Link to={`${PATH.UNIVERSITY}${newDetail.university.id}`}>
+                                {newDetail.university?.name}
+                              </Link>
                             </h2>
                             <span className='text-sm text-neutral-500 sm:text-base dark:text-neutral-300'>
                               {newDetail.university?.websiteUrl}

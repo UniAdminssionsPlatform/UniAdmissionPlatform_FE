@@ -41,11 +41,16 @@ export const DefaultNavigation = [
   {
     id: ncNanoId(),
     href: PATH.NEW,
-    name: 'Danh sách tin tức'
+    name: 'Danh Sách Tin Tức'
+  },
+  {
+    id: ncNanoId(),
+    href: PATH.LIST_UNIVERSITY_PAGE,
+    name: 'Danh Sách Trường Đại Học'
   },
   {
     id: ncNanoId(),
     href: PATH.ABOUT_US,
-    name: 'Giới thiệu'
+    name: 'Giới Thiệu'
   }
 ];

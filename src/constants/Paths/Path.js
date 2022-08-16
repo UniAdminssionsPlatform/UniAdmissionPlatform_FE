@@ -20,7 +20,8 @@ export const PATH = {
   NEW: '/new/',
   EVENT: '/event/',
   UNIVERSITY: '/university/',
-  PAGE_NOT_FOUND: '/404'
+  PAGE_NOT_FOUND: '/404',
+  LIST_UNIVERSITY_PAGE: '/list-university'
 };
 export const PATH_HIGH_SCHOOL_MANAGER = {
   INDEX: '/',

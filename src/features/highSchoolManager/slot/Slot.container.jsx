@@ -48,7 +48,7 @@ const SlotContainer = () => {
         });
     }
   };
-
+  console.log(listSlot);
   return (
     <Layout>
       <TitlePageComponent title={'Tạo slot đăng ký'} subTitle={'Bạn có thể tạo slot đăng ký tại đây'} />

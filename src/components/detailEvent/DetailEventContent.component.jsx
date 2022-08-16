@@ -3,6 +3,7 @@ import { Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import Avatar from '../commons/Avatar/Avatar.component';
 import MarkdownViewComponent from '../MarkdownView/MarkdownView.component';
+import { PATH } from '../../constants/Paths/Path';
 const DetailEventContent = (props) => {
   const { event } = props;
   const { Title, Text } = Typography;
@@ -15,7 +16,7 @@ const DetailEventContent = (props) => {
       <div className='max-w-screen-md mx-auto border-b border-t border-neutral-100 dark:border-neutral-700'></div>
       <div className='max-w-screen-md mx-auto '>
         <div className='nc-SingleAuthor flex'>
-          <Link to={''}>
+          <Link to={`${PATH.UNIVERSITY}${event.universityId}`}>
             <Avatar
               imgUrl={event.university.profileImageUrl}
               userName={event.hostName}

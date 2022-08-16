@@ -16,3 +16,10 @@ export const COLOR_SLOT_OPEN = '#6CCADF';
 export const COLOR_SLOT_CLOSE = '#DD7876';
 export const COLOR_SLOT_FULL = '#FAC492';
 export const COLOR_HIPPIES = '#4F6367';
+
+//Color for slot
+export const COLOR_EVENT_ON_GOING = '#87d068';
+export const COLOR_EVENT_CANCEL = '#DD7876';
+export const COLOR_EVENT_DONE = '#2db7f5';
+export const COLOR_EVENT_REGISTERING = '#FAC492';
+export const COLOR_EVENT_DENY = '#babab5';
