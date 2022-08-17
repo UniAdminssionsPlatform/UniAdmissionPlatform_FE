@@ -1,5 +1,5 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { Modal } from 'antd';
+import { Layout, Modal } from 'antd';
 import { changeStatus } from '../../../services/ChangeStatusService';
 import { getListStudentByHighSchool } from '../../../services/Accounts/Accounts.service';
 import {
@@ -8,7 +8,6 @@ import {
 } from '../../../notification/ChangeStatusStudentNotification.js';
 import { handleNotification } from '../../../notification/ListStudentForHighschoolNotification';
 import { useSelector } from 'react-redux';
-import Layout from '../../../components/Layout';
 import ListStudentForHighschoolComponent from './components/ListStudentForHighschool.component';
 import React, { useEffect, useState } from 'react';
 import TitlePageComponent from '../../../components/decorator/TitlePage.component';

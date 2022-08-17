@@ -5,6 +5,7 @@ import ErrorHandlerComponent from './components/commons/ErrorHandler/ErrorHandle
 import './styles/customSideBar.scss';
 import React, { Suspense } from 'react';
 import store from './redux-flow/index';
+import FooterComponent from './features/public/Footer.component';
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ function App() {
           <Suspense fallback='loading'>
             <div className='bg-white text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200'>
               <AppRouter />
+              <FooterComponent />
             </div>
           </Suspense>
         </Provider>

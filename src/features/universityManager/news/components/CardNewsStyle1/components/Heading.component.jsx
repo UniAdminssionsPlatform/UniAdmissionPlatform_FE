@@ -3,7 +3,7 @@ import React from 'react';
 
 const Heading = ({
   children,
-  desc = 'Tổng hợp tất cả bài viết, cùng xem qua nhé !',
+  desc = 'Tổng hợp `tất cả bài viết, cùng xem qua nhé !',
   className = 'mb-12 md:mb-16 text-neutral-900 dark:text-neutral-50',
   isCenter = false,
   hasNextPrev = false,
