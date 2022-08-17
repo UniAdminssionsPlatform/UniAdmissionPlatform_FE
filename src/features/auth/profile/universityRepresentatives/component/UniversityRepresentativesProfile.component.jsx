@@ -1,11 +1,11 @@
 import { Button, DatePicker, Form, Image, Input, Select, Skeleton } from 'antd';
-import { address, email, firstname, idcard, lastname, phone } from '../../../../validate/RegisterForm.validate';
-import Label from '../../../../components/commons/Label/Label.component';
+import { address, email, firstname, idcard, lastname, phone } from '../../../../../validate/RegisterForm.validate';
+import Label from '../../../../../components/commons/Label/Label.component';
 import React from 'react';
-import SingleUploadWithPreviewContainer from '../../../../components/UploadImage/SingleUpload/SingleUploadWithPreview.container';
+import SingleUploadWithPreviewContainer from '../../../../../components/UploadImage/SingleUpload/SingleUploadWithPreview.container';
 import moment from 'moment';
 
-const UpdaterForm = (props) => {
+const UniversityRepresentativesProfileComponent = (props) => {
   const {
     onFinish,
     handleDatePicker,
@@ -220,4 +220,4 @@ const UpdaterForm = (props) => {
     </>
   );
 };
-export default UpdaterForm;
+export default UniversityRepresentativesProfileComponent;

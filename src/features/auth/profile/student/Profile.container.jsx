@@ -1,0 +1,96 @@
+import { PATH_HIGH_SCHOOL_STUDENT } from '../../../../constants/Paths/Path';
+import { getProfileStudent } from '../../../../services/StudentProfileService';
+import { getListNation } from '../../../../services/NationalityService';
+import { getListProvinces } from '../../../../services/ProvinceService';
+import { handleNotification } from '../../../../notification/UpdateAccountNotification';
+import { updateAccount } from '../../../../services/Accounts/Accounts.service';
+import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import UpdaterForm from './components/Profile.component';
+import moment from 'moment';
+
+const ProfileContainer = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [dob, setDob] = useState('');
+  const [accountInformation, setAccountInformation] = useState('');
+  const [provinces, setProvinces] = useState();
+  const [nationalities, setNationalities] = useState();
+  const [imgeUrl, setImageUrl] = useState();
+  const { user } = useSelector((state) => state.authentication);
+  const reload = () => {
+    window.location.reload();
+  };
+
+  const onFinish = (values) => {
+    values.dateOfBirth = dob;
+    values.wardId = accountInformation.wardId;
+    values.profileImageUrl = imgeUrl;
+    updateAccount(values)
+      .then((result) => {
+        handleNotification('success');
+        setTimeout(reload, 1000);
+      })
+      .catch((error) => {
+        handleNotification('error');
+      });
+  };
+
+  useEffect(() => {
+    getAllProvinces();
+    getAllNation();
+    accountDetail(user.userId);
+  }, [user.userId]);
+
+  const accountDetail = (accountId) => {
+    getProfileStudent().then((result) => {
+      setAccountInformation(result.data.data);
+      setDob(result.data.data.dateOfBirth);
+      setIsLoading(false);
+    });
+  };
+
+  const getAllNation = () => {
+    getListNation().then((result) => {
+      setNationalities(result.data.data.list);
+    });
+  };
+  const getAllProvinces = () => {
+    getListProvinces().then((result) => {
+      setProvinces(result.data.data.list);
+    });
+  };
+
+  const handleDatePicker = (date, dateString) => {
+    const newDate = moment(dateString, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+    setDob(newDate);
+  };
+
+  return (
+    <>
+      <div className={`nc-LayoutPage relative`} data-nc-id='LayoutPage'>
+        <div className='container relative pt-10 pb-16 lg:pt-20 lg:pb-28'>
+          {/* HEADER */}
+          <header className='text-center max-w-2xl mx-auto'>
+            <h1>Chỉnh Sửa Thông Tin Cá Nhân</h1>
+          </header>
+
+          {/* CONTENT */}
+          <div className='p-5 mx-auto bg-white rounded-[40px] shadow-lg sm:p-10 mt-10 lg:mt-20 lg:p-16 dark:bg-neutral-900'>
+            <UpdaterForm
+              accountInformation={accountInformation}
+              onFinish={onFinish}
+              provinces={provinces}
+              nation={nationalities}
+              handleDatePicker={handleDatePicker}
+              setImageUrl={setImageUrl}
+              isLoading={isLoading}
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default ProfileContainer;

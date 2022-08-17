@@ -47,6 +47,8 @@ import UniversityManagerRouter from './components/UniversityManagerRouter';
 import UpdateHighSchoolPage from '../pages/highSchoolManager/updateHighschoolProfilePage';
 import UpdateUniversityProfilePage from '../pages/UniversityProfilePage/EditUniversityProfilePage';
 import WaitingApprovePage from '../pages/auth/WaitingApprovePage';
+import HighSchoolRepresentativesProfilePage from '../pages/auth/HighSchoolRepresentativesProfilePage';
+import UniversityRepresentativesProfilePage from '../pages/auth/UniversityRepresentativesProfilePage';
 
 const AppRouter = () => (
   // const location = useLocation();
@@ -131,7 +133,7 @@ const AppRouter = () => (
         exact
       />
       <HighSchoolManagerRouter
-        component={() => <ManageProfilePage />}
+        component={() => <HighSchoolRepresentativesProfilePage />}
         path={PATH_HIGH_SCHOOL_MANAGER.ACCOUNT_PROFILE}
         key={PATH_HIGH_SCHOOL_MANAGER.ACCOUNT_PROFILE}
         exact
@@ -235,7 +237,7 @@ const AppRouter = () => (
         exact
       />
       <UniversityManagerRouter
-        component={() => <ManageProfilePage />}
+        component={() => <UniversityRepresentativesProfilePage />}
         path={PATH_UNIVERSITY_MANAGER.ACCOUNT_PROFILE}
         key={PATH_UNIVERSITY_MANAGER.ACCOUNT_PROFILE}
         exact

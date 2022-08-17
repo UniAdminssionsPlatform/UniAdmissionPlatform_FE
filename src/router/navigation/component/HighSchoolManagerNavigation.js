@@ -41,12 +41,12 @@ const profile = [
   {
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_MANAGER.VIEW_PROFILE,
-    name: 'Hồ sơ trường cấp 3'
+    name: 'Hồ sơ trường'
   },
   {
     id: ncNanoId(),
     href: PATH_HIGH_SCHOOL_MANAGER.EDIT_PROFILE,
-    name: 'Chỉnh sửa hồ sơ'
+    name: 'Chỉnh sửa hồ sơ trường'
   },
   {
     id: ncNanoId(),
