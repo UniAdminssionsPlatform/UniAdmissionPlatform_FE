@@ -1,4 +1,4 @@
-import { Divider, Space, Spin, Typography } from 'antd';
+import { Avatar, Badge, Divider, List, Space, Spin, Typography } from 'antd';
 import DetailEventContent from './DetailEventContent.component';
 import DetailEventHeader from './DetailEventHeader.component';
 import React from 'react';
@@ -8,9 +8,17 @@ import EventBusyIcon from '@mui/icons-material/EventBusy';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import moment from 'moment';
+import GroupsIcon from '@mui/icons-material/Groups';
+import { EVENT, EVENT_CHECK } from '../../constants/AppConst';
 const DetailEventComponent = (props) => {
   const { event, loading } = props;
-  const { Title, Text } = Typography;
+  const { Title, Text, Link } = Typography;
+  const IconText = ({ icon, text }) => (
+    <Space>
+      {React.createElement(icon)}
+      {text}
+    </Space>
+  );
   return (
     <>
       <div className={`nc-PageSingleTemplate3`} data-nc-id='PageSingleTemplate3'>
@@ -39,7 +47,7 @@ const DetailEventComponent = (props) => {
                 <div className='flex flex-wrap p-4 xl:p-5'>
                   <Space direction={'vertical'}>
                     <Text type={'secondary'}>
-                      Đơn vị tổ chức: <Text strong> {event.university.name}</Text>
+                      Đơn vị tổ chức: <Text strong> {event.university.name}</Text>{' '}
                     </Text>
                     <Text type={'secondary'}>
                       Email:<Text strong> {event.university.websiteUrl}</Text>
@@ -47,18 +55,61 @@ const DetailEventComponent = (props) => {
                     <Text type={'secondary'}>
                       Số điện thoại: <Text strong> {event.university.phoneNumber}</Text>
                     </Text>
-                    <Text>
-                      <LocationOnIcon /> <Divider type={'vertical'} />
-                      <Text strong> {event?.slots[0]?.highSchoolAddress}</Text>
-                    </Text>
-                    <Text>
-                      <EventAvailableIcon /> <Divider type={'vertical'} />
-                      <Text strong> {moment(event?.slots[0]?.startDate).format('LLL')}</Text>
-                    </Text>
-                    <Text>
-                      <EventBusyIcon /> <Divider type={'vertical'} />
-                      <Text strong> {moment(event?.slots[0]?.endDate).format('LLL')}</Text>
-                    </Text>
+                    <Divider />
+                    {event.slots.length >= 1 ? (
+                      <List
+                        itemLayout='vertical'
+                        size='small'
+                        dataSource={event.slots.filter((event) => event.eventCheckStatus === EVENT_CHECK.Approved)}
+                        renderItem={(item) => (
+                          <List.Item.Meta
+                            avatar={
+                              <Avatar src='https://firebasestorage.googleapis.com/v0/b/uni-admission-platform.appspot.com/o/image%2F07b3c9ba-6b7c-4736-ab9d-a47bc31ca0888%2F9%2F2022%207%3A27%3A41%20PM.png?alt=media' />
+                            }
+                            title={<Text strong>{item.highSchoolName}</Text>}
+                            description={
+                              <Space direction={'vertical'}>
+                                <Text>
+                                  <LocationOnIcon /> <Divider type={'vertical'} />
+                                  <Text strong> {item.highSchoolAddress}</Text>
+                                </Text>
+                                <Text>
+                                  <EventAvailableIcon /> <Divider type={'vertical'} />
+                                  <Text strong> {moment(item.startDate).format('LLL')}</Text>
+                                </Text>
+                                <Text>
+                                  <EventBusyIcon /> <Divider type={'vertical'} />
+                                  <Text strong> {moment(item.endDate).format('LLL')}</Text>
+                                </Text>
+                              </Space>
+                            }
+                          />
+                        )}
+                      />
+                    ) : (
+                      <>
+                        {event.meetingUrl ? (
+                          <Text>
+                            <GroupsIcon /> <Divider type={'vertical'} />
+                            <Link strong href={event.meetingUrl}>
+                              Link meet tham gia event
+                            </Link>
+                          </Text>
+                        ) : null}
+                        <Text>
+                          <LocationOnIcon /> <Divider type={'vertical'} />
+                          <Text strong> {event?.university.address}</Text>
+                        </Text>
+                        <Text>
+                          <EventAvailableIcon /> <Divider type={'vertical'} />
+                          <Text strong> {moment(event?.startTime).format('LLL')}</Text>
+                        </Text>
+                        <Text>
+                          <EventBusyIcon /> <Divider type={'vertical'} />
+                          <Text strong> {moment(event?.endTime).format('LLL')}</Text>
+                        </Text>
+                      </>
+                    )}
                   </Space>
                 </div>
               </div>
