@@ -1,5 +1,5 @@
-import { getProfileStudent } from '../../../services/StudentProfileService';
-import { handleNotification } from '../../../notification/DetailStudentNotification';
+import { getProfileStudent } from '../../../../services/StudentProfileService';
+import { handleNotification } from '../../../../notification/DetailStudentNotification';
 import React, { useEffect, useState } from 'react';
 import StudentProfileComponent from './components/students/StudentProfile.component';
 

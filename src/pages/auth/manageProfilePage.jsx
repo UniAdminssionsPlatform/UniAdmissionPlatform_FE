@@ -1,4 +1,4 @@
-import ProfileContainer from '../../features/auth/profile/Profile.container';
+import ProfileContainer from '../../features/auth/profile/student/Profile.container';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 

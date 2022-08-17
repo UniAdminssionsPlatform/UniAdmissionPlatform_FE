@@ -55,7 +55,7 @@ const profile = [
   {
     id: ncNanoId(),
     href: PATH_UNIVERSITY_MANAGER.UPDATE_PROFILE,
-    name: 'Cập nhật trang cá nhân của trường'
+    name: 'Cập nhật hồ sơ trường'
   },
   {
     id: ncNanoId(),

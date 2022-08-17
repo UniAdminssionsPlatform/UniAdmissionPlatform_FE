@@ -1,16 +1,14 @@
-import { PATH_HIGH_SCHOOL_STUDENT } from '../../../constants/Paths/Path';
-import { getAccountInfor } from '../../../services/ManageProfileService';
-import { getListNation } from '../../../services/NationalityService';
-import { getListProvinces } from '../../../services/ProvinceService';
-import { handleNotification } from '../../../notification/UpdateAccountNotification';
-import { updateAccount } from '../../../services/Accounts/Accounts.service';
-import { useHistory } from 'react-router-dom';
+import { getListNation } from '../../../../services/NationalityService';
+import { getListProvinces } from '../../../../services/ProvinceService';
+import { getUniversityRepresentatives } from '../../../../services/ManageProfileService';
+import { handleNotification } from '../../../../notification/UpdateAccountNotification';
+import { updateAccount } from '../../../../services/Accounts/Accounts.service';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import UpdaterForm from './components/Profile.component';
+import UniversityRepresentativesProfileComponent from './component/UniversityRepresentativesProfile.component';
 import moment from 'moment';
 
-const ProfileContainer = () => {
+const UniversityRepresentativesProfileContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [dob, setDob] = useState('');
   const [accountInformation, setAccountInformation] = useState('');
@@ -43,7 +41,7 @@ const ProfileContainer = () => {
   }, [user.userId]);
 
   const accountDetail = (accountId) => {
-    getAccountInfor(accountId).then((result) => {
+    getUniversityRepresentatives().then((result) => {
       setAccountInformation(result.data.data);
       setDob(result.data.data.dateOfBirth);
       setIsLoading(false);
@@ -77,7 +75,7 @@ const ProfileContainer = () => {
 
           {/* CONTENT */}
           <div className='p-5 mx-auto bg-white rounded-[40px] shadow-lg sm:p-10 mt-10 lg:mt-20 lg:p-16 dark:bg-neutral-900'>
-            <UpdaterForm
+            <UniversityRepresentativesProfileComponent
               accountInformation={accountInformation}
               onFinish={onFinish}
               provinces={provinces}
@@ -93,4 +91,4 @@ const ProfileContainer = () => {
   );
 };
 
-export default ProfileContainer;
+export default UniversityRepresentativesProfileContainer;
