@@ -10,7 +10,8 @@ import {
   notification,
   Divider,
   Skeleton,
-  Drawer
+  Drawer,
+  Tooltip
 } from 'antd';
 import { EVENT, EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../constants/AppConst';
 import { getListEventForUniversity } from '../../../services/GetListEventForUniversity';
@@ -173,42 +174,48 @@ const ListEventCreatedContainer = (props) => {
       title: 'Hành Động',
       render: (status, data) => (
         <Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
-          <PreviewIcon
-            onClick={() => {
-              setForceReload(false);
-              setCurrentSelectedEvent(data);
-              showModal();
-            }}
-            style={{ cursor: 'pointer', color: COLOR_ICON }}
-            className={`hover:fill-neutral-100`}
-          />
-          <Divider type={'vertical'} />
-          {data.status === EVENT.INIT ? (
-            <EditIcon
+          <Tooltip title='Chi tiết sự kiện'>
+            <PreviewIcon
               onClick={() => {
-                showDrawer();
-                setEventId(data);
+                setForceReload(false);
+                setCurrentSelectedEvent(data);
+                showModal();
               }}
               style={{ cursor: 'pointer', color: COLOR_ICON }}
               className={`hover:fill-neutral-100`}
             />
-          ) : (
-            <EditIcon
-              onClick={() => notifyNotEditable(data)}
-              style={{ cursor: 'pointer', color: COLOR_ICON }}
-              className={`hover:fill-red-500`}
-            />
-          )}
+          </Tooltip>
           <Divider type={'vertical'} />
-          <AssessmentIcon
-            style={{ cursor: 'pointer', color: COLOR_ICON }}
-            className={`hover:fill-neutral-100`}
-            onClick={() => {
-              setForceReload(false);
-              setCurrentSelectedEvent(data);
-              showModal2();
-            }}
-          />
+          <Tooltip title='Chỉnh sửa sự kiện'>
+            {data.status === EVENT.INIT ? (
+              <EditIcon
+                onClick={() => {
+                  showDrawer();
+                  setEventId(data);
+                }}
+                style={{ cursor: 'pointer', color: COLOR_ICON }}
+                className={`hover:fill-neutral-100`}
+              />
+            ) : (
+              <EditIcon
+                onClick={() => notifyNotEditable(data)}
+                style={{ cursor: 'pointer', color: COLOR_ICON }}
+                className={`hover:fill-red-500`}
+              />
+            )}
+          </Tooltip>
+          <Divider type={'vertical'} />
+          <Tooltip title='Thống kê sự kiện'>
+            <AssessmentIcon
+              style={{ cursor: 'pointer', color: COLOR_ICON }}
+              className={`hover:fill-neutral-100`}
+              onClick={() => {
+                setForceReload(false);
+                setCurrentSelectedEvent(data);
+                showModal2();
+              }}
+            />
+          </Tooltip>
         </Space>
       ),
       width: '10%'
