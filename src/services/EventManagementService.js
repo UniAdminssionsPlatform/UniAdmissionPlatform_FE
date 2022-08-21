@@ -7,14 +7,14 @@ import {
 
 export const getListEventPublishService = (data) =>
   CallAPI(
-    `${GET_LIST_EVENT_TO_PUBLIC}/${data.universityID}/list-event?event-name=${data.name}&status-event=${data.status}&event-host-name=${data.hostname}&page=${data.page}&limit=${data.limit}`,
+    `${GET_LIST_EVENT_TO_PUBLIC}/${data.universityID}/list-event?event-name=${data.name}&status-event=${data.status}&event-host-name=${data.hostname}&page=${data.page}&limit=${data.limit}&sort=CreatedAt%20desc`,
     'get',
     data
   );
 
 export const getListEventUnPublishService = (data) =>
   CallAPI(
-    `${GET_LIST_EVENT_TO_UNPUBLIC}/${data.universityID}/list-event?event-name=${data.name}&status-event=${data.status}&event-host-name=${data.hostname}&page=${data.page}&limit=${data.limit}`,
+    `${GET_LIST_EVENT_TO_UNPUBLIC}/${data.universityID}/list-event?event-name=${data.name}&status-event=${data.status}&event-host-name=${data.hostname}&page=${data.page}&limit=${data.limit}&sort=CreatedAt%20desc`,
     'get',
     data
   );

@@ -15,7 +15,8 @@ const ManageEventContainer = () => {
     status: '2',
     universityID: user.universityId ? user.universityId : 1,
     page: 1,
-    limit: 10
+    limit: 10,
+    sort: 'CreatedAt%20desc'
   });
 
   useEffect(() => {

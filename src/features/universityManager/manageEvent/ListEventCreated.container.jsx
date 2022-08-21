@@ -65,7 +65,8 @@ const ListEventCreatedContainer = (props) => {
     status: '',
     universityID: user?.universityId,
     page: 1,
-    limit: 10
+    limit: 10,
+    sort: 'CreatedAt%20desc'
   });
   const handleChangeEvent = (data) => {
     if (data !== undefined && data !== 0) setDataSearch({ ...dataSearch, eventType: data });

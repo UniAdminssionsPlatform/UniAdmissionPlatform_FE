@@ -7,13 +7,13 @@ import student from '../../../../images/student.svg';
 import university from '../../../../images/university.svg';
 const loginSocials = [
   {
-    name: 'Tài khoản quản lý đại học',
+    name: 'Tài khoản đại diện trường đại học',
     href: '#',
     icon: university,
     role: 'uni'
   },
   {
-    name: 'Tài khoản quản lý trường cấp 3 ',
+    name: 'Tài khoản đại diện trường cấp 3 ',
     href: '#',
     icon: highschool,
     role: 'hs'
