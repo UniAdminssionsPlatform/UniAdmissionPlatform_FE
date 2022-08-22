@@ -2,6 +2,7 @@ import { CallAPI } from './axiosBase';
 import {
   ENDPOINT_COMMENT_EVENT_PUBLISH_BY_EVENT_ID,
   ENDPOINT_FOLLOW_EVENT_BY_EVENT_ID,
+  ENDPOINT_GET_A_GOING_EVENT_BY_HIGH_SCHOOL_ID,
   ENDPOINT_GET_A_HIGH_SCHOOL_BY_ID,
   ENDPOINT_GET_A_NEW_PUBLISH,
   ENDPOINT_GET_COMMENT_BY_EVENT_PUBLISH_ID,
@@ -28,3 +29,5 @@ export const followAEventByEventID = (id) =>
 //unfollow a event by event id
 export const unFollowAEventByEventID = (id) =>
   CallAPI(`${ENDPOINT_FOLLOW_EVENT_BY_EVENT_ID}?event-id=${id}&is-follow=false`, 'POST');
+export const getAOnGoingEventByUniversityId = (id) =>
+  CallAPI(`${ENDPOINT_GET_A_GOING_EVENT_BY_HIGH_SCHOOL_ID}${id}/list-events`, 'get');

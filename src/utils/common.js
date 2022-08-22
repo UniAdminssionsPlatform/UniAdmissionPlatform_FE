@@ -1,3 +1,5 @@
+import { EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../constants/AppConst';
+
 export const refactorData = (listData) => {
   const result = [];
   listData?.map((data) => {
@@ -31,4 +33,10 @@ export const refactorDataSlotEventCheckID = (listData) => {
     result.push(event);
   });
   return result;
+};
+export const eventType = (eventType) => {
+  if (eventType === EVENT_ONLINE) return 'Sự Kiện Trực Tuyến';
+  if (eventType === EVENT_HS) return 'Sự Kiện Tại Trường Cấp 3';
+  if (eventType === EVENT_ORG) return 'Sự Kiện Tại Một Địa Điểm Khác';
+  if (eventType === EVENT_UNI) return 'Sự Kiện Tại Trường Đại Học';
 };

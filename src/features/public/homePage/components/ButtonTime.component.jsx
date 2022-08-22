@@ -18,7 +18,7 @@ const ButtonTimeComponent = (props) => {
           <span className='ml-1 text-neutral-900 dark:text-neutral-200'>
             <CalendarTodayIcon style={{ fontSize: 'medium' }} />{' '}
             <Text type='secondary'>
-              {event.timeStart ? moment(event.startTime).format('L') : moment(event.slots.startDate).format('L')}
+              {event?.timeStart ? moment(event?.startTime).format('L') : moment(event.slots?.startDate).format('L')}
             </Text>
           </span>
         </Link>

@@ -100,7 +100,7 @@ const CommentCard = ({ comment }) => {
             </Link>
             <span className='mx-2'>·</span>
             <span className='text-neutral-500 dark:text-neutral-400 text-xs line-clamp-1 sm:text-sm'>
-              {moment(comment.createdDateString).format('LLL')}
+              {moment(comment.createdDateString).add(7, 'hours').format('LLL')}
             </span>
           </div>
           <span className='block text-neutral-700 mt-2 mb-3 sm:mt-3 sm:mb-4 dark:text-neutral-300'>

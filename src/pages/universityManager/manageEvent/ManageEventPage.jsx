@@ -1,4 +1,4 @@
-import { Layout, Tabs, Typography } from 'antd';
+import { Layout, Space, Tabs, Typography } from 'antd';
 import React, { useState } from 'react';
 import CreateEventContainer from '../../../features/universityManager/manageEvent/CreateEvent.container';
 import EventCheckContainer from '../../../features/universityManager/eventCheck/eventCheck.container';
@@ -7,9 +7,12 @@ import PublicEventContainer from '../../../features/universityManager/publicEven
 import UnPublicEventContainer from '../../../features/universityManager/publicEvent/unpublicEvent.container';
 import TitlePageComponent from '../../../components/decorator/TitlePage.component';
 import { Helmet } from 'react-helmet';
-
+import './ManageEvent.module.css';
+import { COLOR_EVENT_ON_GOING } from '../../../constants/Color';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 const ManageEventPage = () => {
   const { TabPane } = Tabs;
+  const { Text } = Typography;
   const [currentTab, setCurrentTab] = useState('1');
   const handleChangeActiveKey = (data) => {
     setCurrentTab(data ? data : '1');
@@ -45,7 +48,16 @@ const ManageEventPage = () => {
         <TabPane tab='Sự kiện sắp diễn ra' key='3'>
           <UnPublicEventContainer />
         </TabPane>
-        <TabPane tab='Tạo sự kiện' key='4'>
+        <TabPane
+          tab={
+            <Space style={{ color: COLOR_EVENT_ON_GOING }}>
+              <AddBoxIcon />
+              <Text strong style={{ color: COLOR_EVENT_ON_GOING }}>
+                Tạo sự kiện
+              </Text>
+            </Space>
+          }
+          key='4'>
           <CreateEventContainer handleChangeActiveKey={handleChangeActiveKey} />
         </TabPane>
       </Tabs>
