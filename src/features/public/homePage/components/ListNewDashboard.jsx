@@ -1,8 +1,9 @@
 import Card11 from '../../../../components/commons/Card/Card11/Card11.component';
-import { Divider, Typography } from 'antd';
+import { Badge, Divider, Typography } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { PATH } from '../../../../constants/Paths/Path';
+import { eventType } from '../../../../utils/common';
 const ListNewDashboard = () => {
   const { listEventPublish, isFetching } = useSelector((state) => state.listEventPublish);
   const history = useHistory();
@@ -21,7 +22,9 @@ const ListNewDashboard = () => {
             {!isFetching
               ? listEventPublish.map((event) => (
                   <div onClick={() => history.push(PATH.EVENT + event.id)} style={{ cursor: 'pointer' }}>
-                    <Card11 key={event.id} event={event} />
+                    <Badge.Ribbon text={eventType(event.eventTypeId)} className='z-10 h-48'>
+                      <Card11 key={event.id} event={event} />
+                    </Badge.Ribbon>
                   </div>
                 ))
               : null}

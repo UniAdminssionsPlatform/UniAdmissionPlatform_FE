@@ -5,3 +5,4 @@ export const ENDPOINT_GET_A_NEW_PUBLISH = '/api/v1/news';
 export const ENDPOINT_GET_A_HIGH_SCHOOL_BY_ID = '/api/v1/high-school/profile';
 export const ENDPOINT_GET_UNIVERSITY_PROFILE_BY_ID = '/api/v1/universities/';
 export const ENDPOINT_FOLLOW_EVENT_BY_EVENT_ID = '/api/v1/student/follow';
+export const ENDPOINT_GET_A_GOING_EVENT_BY_HIGH_SCHOOL_ID = '/api/v1/events/';

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ListNewDashboard from './ListNewDashboard';
 import WelcomeComponent from './Welcome.component';
-import { Divider, Typography } from 'antd';
+import { Badge, Divider, Typography } from 'antd';
 import BackgroundSection from '../../../../components/commons/BackgroundSection/BackgroundSection.component';
 import SectionSliderPostsComponent from '../../../../components/commons/SectionSliderPosts/SectionSliderPosts.component';
 import { useSelector } from 'react-redux';
@@ -11,11 +11,35 @@ import HighSchoolCalendarContainer from '../../../highSchoolManager/calendar/Hig
 import FlexMonsterContainer from '../../../universityManager/flexMonsterData/FlexMonster.container';
 import ListStudentForHighSchoolContainer from '../../../highSchoolManager/students/ListStudentForHighSchoolContainer';
 import SingleNewContainer from '../../news/SingleNew.container';
+import { getAOnGoingEventByUniversityId } from '../../../../services/PublishService';
+import { PATH } from '../../../../constants/Paths/Path';
+import Card11 from '../../../../components/commons/Card/Card11/Card11.component';
+import { useHistory } from 'react-router-dom';
+import { EVENT_HS, EVENT_ONLINE, EVENT_ORG, EVENT_UNI } from '../../../../constants/AppConst';
+import { eventType } from '../../../../utils/common';
 
 const HomePageComponent = () => {
   const { listNewPublish, isFetching } = useSelector((state) => state.listNewPublish);
   const { user, isAuthUser } = useSelector((state) => state.authentication);
+  const [listEvent, setListEvent] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const history = useHistory();
   const { Text, Title } = Typography;
+  const getListEvent = () => {
+    if (user.roles === HIGH_SCHOOL_STUDENT) {
+      getAOnGoingEventByUniversityId(user.highSchoolId)
+        .then((res) => {
+          setListEvent(res.data.data.list);
+          console.log(res.data.data.list);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+  useEffect(() => getListEvent(), []);
+
   return (
     <div className='container relative'>
       <div className='nc-PageHome relative'>
@@ -53,6 +77,18 @@ const HomePageComponent = () => {
             <Divider>
               <Title level={2}> Sự kiện diễn ra tại trường bạn</Title>
             </Divider>
+
+            <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10'>
+              {!isLoading
+                ? listEvent.map((event) => (
+                    <div onClick={() => history.push(PATH.EVENT + event.event.id)} style={{ cursor: 'pointer' }}>
+                      <Badge.Ribbon text={eventType(event.event.eventTypeId)} className='z-10 h-48'>
+                        <Card11 key={event.id} event={event.event} />
+                      </Badge.Ribbon>
+                    </div>
+                  ))
+                : null}
+            </div>
           </div>
         ) : null}
       </div>

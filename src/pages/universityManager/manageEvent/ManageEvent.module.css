@@ -1,0 +1,5 @@
+.ant-tabs-ink-bar {
+    position: absolute;
+    background: #000000;
+    pointer-events: none;
+}

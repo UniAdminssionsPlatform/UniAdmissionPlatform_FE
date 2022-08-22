@@ -10,6 +10,7 @@ import ButtonTimeComponent from '../../../../features/public/homePage/components
 
 const Card11 = ({ className = 'h-full', event, hiddenAuthor = false, ratio = 'aspect-w-4 aspect-h-3' }) => {
   const { name, shortDescription, startTime } = event;
+  console.log(event);
   const { Text, Title } = Typography;
   const [isHover, setIsHover] = useState(false);
   return (
@@ -25,9 +26,9 @@ const Card11 = ({ className = 'h-full', event, hiddenAuthor = false, ratio = 'as
       </div>
       <div className='p-4 flex flex-col flex-grow space-y-3'>
         {!hiddenAuthor ? (
-          <PostCardMeta university={event.university} startTime={startTime} />
+          <PostCardMeta university={event.university} startTime={event?.startTime} />
         ) : (
-          <span className='text-xs text-neutral-500'>{startTime}</span>
+          <span className='text-xs text-neutral-500'>{event?.startTime}</span>
         )}
         <h2 className='nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100 '>
           <Text strong style={{ fontSize: 'large' }}>
@@ -36,7 +37,7 @@ const Card11 = ({ className = 'h-full', event, hiddenAuthor = false, ratio = 'as
         </h2>
         <div className='flex items-end justify-between mt-auto'>
           <ButtonTimeComponent event={event} />
-          {/*<PostCardSaveAction className='relative' postData={startTime} />*/}
+          <PostCardSaveAction className='relative' postData={startTime} />
         </div>
       </div>
     </div>
