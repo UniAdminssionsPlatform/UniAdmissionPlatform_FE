@@ -102,7 +102,7 @@ const ListStudentForHighSchoolContainer = () => {
   };
 
   const onChangePage = (page) => {
-    setDataSearch({ ...dataSearch, page, limit: 10 });
+    setDataSearch({ ...dataSearch, page, limit: 5 });
   };
 
   return (

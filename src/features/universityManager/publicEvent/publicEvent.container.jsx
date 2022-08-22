@@ -16,7 +16,8 @@ const PublicEventContainer = (props) => {
     status: '0',
     universityID: user?.universityId,
     page: 1,
-    limit: 10
+    limit: 10,
+    sort: 'CreatedAt%20desc'
   });
 
   //Public button

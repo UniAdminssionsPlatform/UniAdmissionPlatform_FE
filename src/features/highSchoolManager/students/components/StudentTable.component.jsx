@@ -7,6 +7,8 @@ const TableStudentComponent = (props) => {
   const { listStudent, loading, confirm, onChangePage, total } = props;
   const [visible, setVisible] = useState(false);
 
+  console.log('total in component: ', total);
+
   const [studentID, setStudentID] = useState('');
 
   const handleVisible = (id) => {
@@ -81,7 +83,7 @@ const TableStudentComponent = (props) => {
                 <div className='shadow dark:border dark:border-neutral-800 overflow-hidden sm:rounded-lg'>
                   <Table columns={columns} dataSource={listStudent} pagination={false} />
                 </div>
-                <Pagination onChange={onChangePage} total={total} />
+                <Pagination onChange={onChangePage} total={total} pageSize={5} />
               </div>
             </div>
           </div>

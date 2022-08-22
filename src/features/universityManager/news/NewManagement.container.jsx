@@ -27,7 +27,7 @@ const NewManagementContainer = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   //payload
   const [payload, setPayload] = useState({
-    sort: 'CreateDate desc',
+    sort: 'createDate%20desc',
     page: 1,
     limit: 10,
     tags: '',
