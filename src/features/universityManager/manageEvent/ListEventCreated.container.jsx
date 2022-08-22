@@ -99,7 +99,7 @@ const ListEventCreatedContainer = (props) => {
           }}
         />
       ),
-      content: `Bạn không thể chỉnh sửa sự kiện này`,
+      content: `Bạn không thể chỉnh sửa sự kiện này!`,
       okText: 'ok',
       cancelText: 'Đóng',
       onOk() {},
