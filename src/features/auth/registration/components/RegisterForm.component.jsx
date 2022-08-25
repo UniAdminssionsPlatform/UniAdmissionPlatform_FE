@@ -75,51 +75,41 @@ const RegisterForm = (props) => {
         </div>
 
         <div className='grid md:grid-cols-3 '>
-          <Form.Item name='dateOfBirth' rules={dob}>
-            <div>
-              <Label>
-                Ngày sinh <Text style={{ color: 'red' }}>*</Text>
-              </Label>
-              <div className='mt-1'>
-                <DatePicker onChange={handleDatePicker} placeholder='ngày tháng năm sinh' />
-              </div>
-            </div>
-          </Form.Item>
-
           <div>
-            <Form.Item name='genderId' hasFeedback rules={sex}>
-              <Label>
-                Giới tính <Text style={{ color: 'red' }}>*</Text>
-              </Label>
-              <div className='mt-1'>
-                <Select placeholder='Giới tính' style={{ width: 150 }} onChange={onChangeSex}>
-                  <Option value={1}>Nam</Option>
-                  <Option value={2}>Nữ</Option>
-                </Select>
-              </div>
+            <Label>
+              Ngày sinh <Text style={{ color: 'red' }}>*</Text>
+            </Label>
+            <Form.Item name='dateOfBirth' rules={dob}>
+              <DatePicker onChange={handleDatePicker} placeholder='ngày tháng năm sinh' />
             </Form.Item>
           </div>
-
           <div>
+            <Label>
+              Giới tính <Text style={{ color: 'red' }}>*</Text>
+            </Label>
+            <Form.Item name='genderId' hasFeedback rules={sex}>
+              <Select placeholder='Giới tính' style={{ width: 150 }} onChange={onChangeSex}>
+                <Option value={1}>Nam</Option>
+                <Option value={2}>Nữ</Option>
+              </Select>
+            </Form.Item>
+          </div>
+          <div>
+            <Label>
+              Nơi sinh <Text style={{ color: 'red' }}>*</Text>
+            </Label>
             <Form.Item name='placeOfBirth' rules={placeOfBirth}>
-              <label className='block'>
-                <Label>
-                  Nơi sinh <Text style={{ color: 'red' }}>*</Text>
-                </Label>
-                <div className='mt-1'>
-                  <Select
-                    showSearch
-                    placeholder='Thành Phố Hồ Chí Minh..'
-                    optionFilterProp='children'
-                    onChange={onChangePlaceOfBirth}
-                    onSearch={onSearch}
-                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                    {provinces?.map((item) => (
-                      <Option value={item.name}>{item.name}</Option>
-                    ))}
-                  </Select>
-                </div>
-              </label>
+              <Select
+                showSearch
+                placeholder='Thành Phố Hồ Chí Minh..'
+                optionFilterProp='children'
+                onChange={onChangePlaceOfBirth}
+                onSearch={onSearch}
+                filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                {provinces?.map((item) => (
+                  <Option value={item.name}>{item.name}</Option>
+                ))}
+              </Select>
             </Form.Item>
           </div>
         </div>
@@ -165,108 +155,96 @@ const RegisterForm = (props) => {
         <label className='block '>
           <div className='grid md:grid-cols-2 gap-6 block md:col-span-2 '>
             <div className='mt-1'>
+              <Label>
+                Tôn giáo <Text style={{ color: 'red' }}>*</Text>
+              </Label>
               <Form.Item name='religion' rules={relogion}>
-                <label className='block'>
-                  <Label>
-                    Tôn giáo <Text style={{ color: 'red' }}>*</Text>
-                  </Label>
-                  <Select placeholder='Tôn giáo' onChange={onChangeReligion}>
-                    <Option value='Phật giáo'>Phật giáo</Option>
-                    <Option value='Thiên Chúa Giáo'>Thiên chúa giáo</Option>
-                    <Option value='không'>Không</Option>
-                    <Option value='Khác'>Khác</Option>
-                  </Select>
-                </label>
+                <Select placeholder='Tôn giáo' onChange={onChangeReligion}>
+                  <Option value='Phật giáo'>Phật giáo</Option>
+                  <Option value='Thiên Chúa Giáo'>Thiên chúa giáo</Option>
+                  <Option value='không'>Không</Option>
+                  <Option value='Khác'>Khác</Option>
+                </Select>
               </Form.Item>
             </div>
             <div className='mt-1'>
+              <Label>
+                Quốc tịch <Text style={{ color: 'red' }}>*</Text>
+              </Label>
               <Form.Item name='nationality' rules={nationality}>
-                <label className='block'>
-                  <Label>
-                    Quốc tịch <Text style={{ color: 'red' }}>*</Text>
-                  </Label>
-                  <Select
-                    showSearch
-                    placeholder='Quốc tịch'
-                    optionFilterProp='children'
-                    onChange={onChangeNation}
-                    onSearch={onSearch}
-                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                    {nation?.map((item) => (
-                      <Option value={item.name}>{item.name}</Option>
-                    ))}
-                  </Select>
-                </label>
+                <Select
+                  showSearch
+                  placeholder='Quốc tịch'
+                  optionFilterProp='children'
+                  onChange={onChangeNation}
+                  onSearch={onSearch}
+                  filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {nation?.map((item) => (
+                    <Option value={item.name}>{item.name}</Option>
+                  ))}
+                </Select>
               </Form.Item>
             </div>
           </div>
         </label>
         <label className='block '>
           <div className='grid md:grid-cols-3 gap-6 block md:col-span-2 '>
-            <Form.Item name={'provinces'} rules={province}>
-              <label className='block'>
-                <Label>
-                  Tỉnh/thành phố <Text style={{ color: 'red' }}>*</Text>
-                </Label>
-                <div className='mt-1'>
-                  <Select
-                    showSearch
-                    placeholder='Tỉnh/thành phố'
-                    optionFilterProp='children'
-                    onChange={onChangeProvince}
-                    onSearch={onSearch}
-                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                    {provinces?.map((item) => (
-                      <Option value={item.id}>{item.name}</Option>
-                    ))}
-                  </Select>
-                </div>
-              </label>
-            </Form.Item>
-
-            <Form.Item name={'districts'} rules={district}>
-              <label className='block'>
-                <Label>
-                  Quận/Huyện <Text style={{ color: 'red' }}>*</Text>
-                </Label>
-                <div className='mt-1'>
-                  <Select
-                    showSearch
-                    placeholder='Quận/huyện..'
-                    optionFilterProp='children'
-                    onChange={onChangeDistricts}
-                    onSearch={onSearch}
-                    disabled={isDisableDistrict}
-                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                    {districts?.map((item) => (
-                      <Option value={item.id}>{item.name}</Option>
-                    ))}
-                  </Select>
-                </div>
-              </label>
-            </Form.Item>
-
-            <Form.Item name='wardId' rules={ward}>
-              <label className='block'>
-                <Label>
-                  Phường/Xã <Text style={{ color: 'red' }}>*</Text>
-                </Label>
-                <div className='mt-1'>
-                  <Select
-                    showSearch
-                    placeholder='Phường/xã...'
-                    optionFilterProp='children'
-                    onChange={onChangeWard}
-                    onSearch={onSearch}
-                    disabled={isDisableWard}
-                    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                    {wards?.map((item) => (
-                      <Option value={item.id}>{item.name}</Option>
-                    ))}
-                  </Select>
-                </div>
-              </label>
-            </Form.Item>
+            <div>
+              <Label>
+                Tỉnh/thành phố <Text style={{ color: 'red' }}>*</Text>
+              </Label>
+              <Form.Item name={'provinces'} rules={province}>
+                <Select
+                  showSearch
+                  placeholder='Tỉnh/thành phố'
+                  optionFilterProp='children'
+                  onChange={onChangeProvince}
+                  onSearch={onSearch}
+                  filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {provinces?.map((item) => (
+                    <Option value={item.id}>{item.name}</Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </div>
+            <div>
+              <Label>
+                Quận/Huyện <Text style={{ color: 'red' }}>*</Text>
+              </Label>
+              <Form.Item name={'districts'} rules={district}>
+                <Select
+                  showSearch
+                  placeholder='Quận/huyện..'
+                  optionFilterProp='children'
+                  onChange={onChangeDistricts}
+                  onSearch={onSearch}
+                  disabled={isDisableDistrict}
+                  filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {districts?.map((item) => (
+                    <Option value={item.id}>{item.name}</Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </div>
+            <div>
+              <Label>
+                Phường/Xã <Text style={{ color: 'red' }}>*</Text>
+              </Label>
+              <Form.Item name='wardId' rules={ward}>
+                <Select
+                  showSearch
+                  placeholder='Phường/xã...'
+                  optionFilterProp='children'
+                  onChange={onChangeWard}
+                  onSearch={onSearch}
+                  disabled={isDisableWard}
+                  filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {wards?.map((item) => (
+                    <Option value={item.id}>{item.name}</Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </div>
           </div>
         </label>
         <label className='block '>
