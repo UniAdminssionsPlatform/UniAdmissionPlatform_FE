@@ -7,6 +7,7 @@ import {
   ENDPOINT_GET_A_NEW_PUBLISH,
   ENDPOINT_GET_COMMENT_BY_EVENT_PUBLISH_ID,
   ENDPOINT_GET_EVENT_PUBLISH_BY_ID,
+  ENDPOINT_GET_LIST_CURRENT_EVENT_WITH_STUDENT_ID,
   ENDPOINT_GET_UNIVERSITY_PROFILE_BY_ID
 } from '../constants/Endpoints/PublishEndpoint';
 //get event by id
@@ -31,3 +32,5 @@ export const unFollowAEventByEventID = (id) =>
   CallAPI(`${ENDPOINT_FOLLOW_EVENT_BY_EVENT_ID}?event-id=${id}&is-follow=false`, 'POST');
 export const getAOnGoingEventByUniversityId = (id) =>
   CallAPI(`${ENDPOINT_GET_A_GOING_EVENT_BY_HIGH_SCHOOL_ID}${id}/list-events`, 'get');
+export const getListCurrentEventByStudentRole = () =>
+  CallAPI(`${ENDPOINT_GET_LIST_CURRENT_EVENT_WITH_STUDENT_ID}?page=1&limit=1000`, 'get');

@@ -11,7 +11,7 @@ import HighSchoolCalendarContainer from '../../../highSchoolManager/calendar/Hig
 import FlexMonsterContainer from '../../../universityManager/flexMonsterData/FlexMonster.container';
 import ListStudentForHighSchoolContainer from '../../../highSchoolManager/students/ListStudentForHighSchoolContainer';
 import SingleNewContainer from '../../news/SingleNew.container';
-import { getAOnGoingEventByUniversityId } from '../../../../services/PublishService';
+import { getListCurrentEventByStudentRole } from '../../../../services/PublishService';
 import { PATH } from '../../../../constants/Paths/Path';
 import Card11 from '../../../../components/commons/Card/Card11/Card11.component';
 import { useHistory } from 'react-router-dom';
@@ -27,10 +27,9 @@ const HomePageComponent = () => {
   const { Text, Title } = Typography;
   const getListEvent = () => {
     if (user.roles === HIGH_SCHOOL_STUDENT) {
-      getAOnGoingEventByUniversityId(user.highSchoolId)
+      getListCurrentEventByStudentRole()
         .then((res) => {
           setListEvent(res.data.data.list);
-          console.log(res.data.data.list);
           setIsLoading(false);
         })
         .catch((err) => {
