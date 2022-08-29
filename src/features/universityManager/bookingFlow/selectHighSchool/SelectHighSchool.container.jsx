@@ -77,14 +77,6 @@ const SelectHighSchoolContainer = () => {
       title: 'Hành động',
       render: (id, data) => (
         <Space Space direction='horizontal' style={{ width: '100%', justifyContent: 'center' }}>
-          {data.status === 1 ? (
-            <Tooltip title='Xem lịch sử event'>
-              <HistoryIcon style={{ cursor: 'pointer', color: COLOR_ICON }} className={`hover:fill-neutral-100`} />
-            </Tooltip>
-          ) : (
-            <a className='text-primary-800/25 dark:text-primary-500 cursor-not-allowed'>không khả dụng</a>
-          )}
-          <Divider type={'vertical'} />
           <Tooltip title='Chọn trường'>
             <ArrowForwardIosIcon
               onClick={() => handleBookHighSchool(data)}

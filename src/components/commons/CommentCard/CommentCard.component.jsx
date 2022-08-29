@@ -88,13 +88,6 @@ const CommentCard = ({ comment }) => {
         <div className='flex-grow flex flex-col p-4 ml-2 text-sm border border-neutral-200 rounded-xl sm:ml-3 sm:text-base dark:border-neutral-700'>
           {/* AUTHOR INFOR */}
           <div className='relative flex items-center pr-6'>
-            <div className='absolute -right-3 -top-3'>
-              <NcDropDown
-                className={`p-2 text-neutral-500 flex items-center justify-center rounded-lg hover:text-neutral-800 dark:hover:text-neutral-200 sm:hover:bg-neutral-100 dark:hover:bg-neutral-800 ${twFocusClass()}`}
-                data={actions}
-                onClick={hanldeClickDropDown}
-              />
-            </div>
             <Link className='flex-shrink-0 font-semibold text-neutral-800 dark:text-neutral-100' to=''>
               {comment.userName}
             </Link>
@@ -109,18 +102,19 @@ const CommentCard = ({ comment }) => {
           {isReplying ? (
             renderCommentForm()
           ) : (
-            <CommentCardLikeReplyContainer onClickReply={openReplyForm} comment={comment} />
+            // <CommentCardLikeReplyContainer onClickReply={openReplyForm} comment={comment} />
+            <></>
           )}
         </div>
       </div>
 
-      <ModalEditComment show={isEditting} comment={comment} onCloseModalEditComment={closeModalEditComment} />
-      <ModalReportItem show={isReporting} id={comment.id} onCloseModalReportItem={closeModalReportComment} />
-      <ModalDeleteComment
-        show={isDeleting}
-        commentId={comment.id}
-        onCloseModalDeleteComment={closeModalDeleteComment}
-      />
+      {/*<ModalEditComment show={isEditting} comment={comment} onCloseModalEditComment={closeModalEditComment} />*/}
+      {/*<ModalReportItem show={isReporting} id={comment.id} onCloseModalReportItem={closeModalReportComment} />*/}
+      {/*<ModalDeleteComment*/}
+      {/*  show={isDeleting}*/}
+      {/*  commentId={comment.id}*/}
+      {/*  onCloseModalDeleteComment={closeModalDeleteComment}*/}
+      {/*/>*/}
     </>
   );
 };
