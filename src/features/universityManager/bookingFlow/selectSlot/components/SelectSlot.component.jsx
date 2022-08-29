@@ -54,8 +54,8 @@ const SelectSlotComponent = (props) => {
       data={data}
       onClick={() => {
         if (
-          moment(data.startDate).isAfter(moment('2022-06-01T01:14:00.000Z')) ||
-          moment(data.startDate).isBefore(moment('2022-09-01T01:14:00.000Z'))
+          moment(data.startDate).isAfter(moment('2022-06-01T01:14:00.000Z')) &&
+          moment(data.startDate).isBefore(moment('2022-10-01T01:14:00.000Z'))
         ) {
           if (data?.status === SLOT.OPEN) setCurrentSlotSelected(data);
           openNotification();
